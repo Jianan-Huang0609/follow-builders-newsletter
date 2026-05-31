@@ -1,0 +1,179 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-05-29",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天 X 端继续等 Bearer Token 更新，但播客端来了一期重量级对话——Box CEO Aaron Levie 用 90 分钟把 2026 年企业 AI 的底牌全摊开了。Token 成本正在失控？五年后软件还有什么用？怎么让自己的工作在 AI 时代不被替代？Levie 作为 CEO 里的重度 AI 用户，每一句都打在当前建设者最关心的点上。本期四个话题构成一条完整逻辑链：成本→架构→职业→部署，建议按顺序读。"
+  },
+  "archive": {
+    "title": "Token 成本失控日报",
+    "desc": "Box CEO Aaron Levie 拆解 2026 企业 AI 四重奏：模型越强 Token 越贵、无头软件吃掉 UI、内部 FDE 成为新岗位、部署永远追不上模型速度。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-05-29 source feeds. Note: X/Twitter feed unavailable today due to Bearer Token pending.",
+  "sections": [
+    {
+      "title": "Tokenmaxxing / Token 通胀",
+      "desc": "模型越强，Token 越贵——不是你的错觉，是行业正在发生的结构性变化。",
+      "cards": [
+        {
+          "authorKey": "podcast:aaron-levie",
+          "sourceUrl": "https://www.youtube.com/watch?v=Gs2styCcwro",
+          "authorName": "Aaron Levie (CEO, Box)",
+          "authorTag": "Mad Podcast with Matt Turck",
+          "en": {
+            "rewrite": [
+              "Aaron Levie introduces the concept of 'tokenmaxxing' — the uncomfortable reality that as AI models get more capable, they consume dramatically more tokens per task, and their inference costs aren't dropping as fast as people assumed. 'Models are way bigger, hardware is not getting cheaper at the same pace, and we've compressed what should be a ten-year rollout into eighteen months.'",
+              "The practical result: tools like Cursor saw usage explode when token costs were subsidized under a flat subscription fee. But as autonomous agents do more work with longer context windows, the economics break. 'All of a sudden these agents can do way more work, their context is way larger, the models are way larger.'",
+              "Levie's prediction for enterprise: every company will use a 'mosaic' of half a dozen models, routing different tasks to different cost tiers. 'For coding I want the highest capability. For summarization or classification, smaller models work fine.' The new enterprise skill is knowing where to spend the expensive tokens.",
+              "One practical note: 'Maybe you don't want your agent to re-render a UI every single morning at $30 per day.' Some agent architectures will need to be rethought entirely for cost efficiency."
+            ],
+            "original": [
+              "No, these models are just way bigger and the hardware is not getting cheaper at the same pace. We've compressed normally what should happen in like ten years of rollout into like eighteen months.",
+              "All of a sudden these agents can do way more work, their context is way larger, the models are way larger.",
+              "I think the average enterprise will certainly be using half a dozen models in the organization. You're not going to throw everything at the most expensive model.",
+              "Maybe you don't want your agent to re-render a UI every single morning. And that costs $30 per day of using the interface."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie 引入了一个让所有建设者感同身受的词——'tokenmaxxing'：模型越强，消耗的 token 越多，推理成本却没有按预期速度下降。「模型越来越大，硬件降价的速度跟不上，我们把本该十年走完的 rollout 压缩到了十八个月。」",
+              "直接结果：Cursor 这类工具的用量在订阅制补贴下爆炸式增长，但当 agent 可以自主做更多事、上下文窗口拉长，经济模型就崩了。「突然间这些 agent 能做更多工作，它们的上下文窗口大得多，模型本身也大得多。」",
+              "Levie 的企业预测：每家公司会用半打不同模型，按任务分流到不同成本层。「写代码我要最高能力的模型，做摘要或分类用小的就行。」新的企业核心能力是：知道在哪花贵的 token，在哪省钱。",
+              "一个实战提醒：「也许你不希望你的 agent 每天早上用 30 美元的成本重新渲染一遍 UI。」有些 agent 架构可能需要为成本效率重新设计。"
+            ],
+            "original": [
+              "模型越来越大，硬件降价速度跟不上。我们把本该十年走完的 rollout 压缩到了十八个月。",
+              "突然间这些 agent 能做更多工作，上下文窗口大得多，模型本身也大得多。",
+              "我认为一般企业会同时使用半打模型。你不会把所有任务都扔给最贵的模型。",
+              "也许你不希望你的 agent 每天早上花 30 美元重新渲染一遍 UI。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Headless Software / 无头软件",
+      "desc": "Agent 不吃 UI——它们直接调 API。整个企业软件的商业模式正在被改写。",
+      "cards": [
+        {
+          "authorKey": "podcast:aaron-levie",
+          "sourceUrl": "https://www.youtube.com/watch?v=Gs2styCcwro",
+          "authorName": "Aaron Levie (CEO, Box)",
+          "authorTag": "Mad Podcast with Matt Turck",
+          "en": {
+            "rewrite": [
+              "Levie's bet on the enterprise software business model of the future: 'Any enterprise software company in three years that gets through this AI transformation will have both a seat business model and a consumption business model.' The shift is driven by a simple reality — agents don't need UIs, they hit APIs.",
+              "The forecast: agents will generate more API volume than humans ever did. 'We'll have to understand that by volume, agents are going to be banging on these systems far more than humans ever did. The human will land as an end-user seat and get a certain allocation, and then the agent headless access will be on a consumption model.'",
+              "This isn't theoretical — Box customers are already testing whether agents should have their own 'seats' in the system. 'Does the agent need an ongoing seat, or do they just need to call the API?' The answer will vary by use case, and pricing will be cheaper than human seats but additive on volume.",
+              "Levie sees AI agents as a net expansion of software usage, not a replacement: 'Agents are going to be banging on APIs in ways we can't even imagine today.' This makes the total addressable market for enterprise software much larger."
+            ],
+            "original": [
+              "Any enterprise software company in three years from now that gets through this AI transformation period will have a seat business model, assuming it has an end user component, and it'll have a consumption business model.",
+              "By volume, agents are going to be banging on these systems far more than humans ever did. The human will probably land as an end user seat within that piece of software, and they'll get a certain amount of allocation of usage as that end user seat.",
+              "Should agents have a Box seat? Probably it's got to be cheaper than a human seat. But there's a lot of situations where the agent doesn't need an ongoing seat, they just need to call the API."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Levie 对未来企业软件商业模式的判断：「三年后，任何活过 AI 转型的企业软件公司都会同时拥有 seat 模式和 consumption 模式。」推动力很简单——agent 不需要 UI，它们直接调 API。",
+              "核心预测：agent 产生的 API 调用量会远超人类。「我们必须接受：以调用量论，agent 会以人类从未有过的频率冲击这些系统。人类作为最终用户占一个 seat 获得一定配额，然后 agent 的无头访问走 consumption 计费。」",
+              "这不是理论推演——Box 的客户已经在测试「agent 需不需要自己的 seat」。「它需要一直占个位子，还是只需要调 API？」答案因场景而异，定价会比人类 seat 便宜，但用量上去了就是增量收入。",
+              "Levie 认为 AI agent 本质是扩大软件使用总量而非替代：「agent 会以我们今天无法想象的方式冲击 API。」这让企业软件的总可寻址市场变大。"
+            ],
+            "original": [
+              "三年后，任何活过 AI 转型的企业软件公司都会同时拥有 seat 模式和 consumption 模式。",
+              "以调用量论，agent 会以人类从未有过的频率冲击这些系统。人类作为最终用户占一个 seat 获得一定配额。",
+              "agent 需要 Box seat 吗？大概率比人类 seat 便宜。但很多情况下 agent 不需要一直占位，只需要调 API。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "AI-Proofing & Internal FDE / 职业防护与新岗位",
+      "desc": "怎么让自己的工作不被 AI 替代？Levie 的答案不是技术——是位置。",
+      "cards": [
+        {
+          "authorKey": "podcast:aaron-levie",
+          "sourceUrl": "https://www.youtube.com/watch?v=Gs2styCcwro",
+          "authorName": "Aaron Levie (CEO, Box)",
+          "authorTag": "Mad Podcast with Matt Turck",
+          "en": {
+            "rewrite": [
+              "The most practical career advice Levie offered: 'The people who become amazing at AI, they are the ones that are going to succeed.' Not in the shallow sense of 'learn to prompt,' but in the deeper sense of becoming the person inside an organization who figures out how to deploy AI against real business problems.",
+              "A new role is emerging that Levie calls the 'internal FDE' (Forward Deployed Engineer). 'Your job is to understand the patterns of how people work, and make sure they have the ability to use agents to do that work.' This requires CS-level training but a business-facing mindset — and most companies don't have this talent yet.",
+              "The meta-skill: bridging advanced technology to real-world constraints. 'Our job is to take super-advanced technology breakthroughs and bridge them to the real world.' This has been Levie's North Star since Box's early cloud days, and it applies more than ever with AI.",
+              "On whether this role is here to stay or temporary: the cynical view is that FDEs exist because 'none of this really works yet.' Levie's view is that the gap between what's possible and what's deployed is structural, not transitional. The role persists precisely because the technology keeps changing."
+            ],
+            "original": [
+              "Your job is to understand the patterns of how these people work, and make sure that they have the ability to use agents to go and do that work.",
+              "A lot of companies don't have this talent right now. So they're going to actually have to go and hire people out of CS programs or pivot engineers into these kinds of systems engineering roles.",
+              "Our job is take super advanced technology breakthroughs and bridge them to the real world.",
+              "The breakthroughs keep happening faster than the customer can implement any kind of standard architecture. And those breakthroughs oftentimes basically undo or make obsolete the last thing you implemented."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Levie 给出了本期最实用的职业建议：「在 AI 这件事上做得特别出色的人，就是会成功的人。」不是浅层的「学会 prompt」，而是成为组织内部那个弄清楚怎么用 AI 解决真实业务问题的人。",
+              "一个新岗位正在成型，Levie 称之为「内部 FDE」（Forward Deployed Engineer，前方部署工程师）。「你的工作是理解人们的工作模式，确保他们有能力用 agent 去完成那些工作。」这需要 CS 基础的训练但面向业务的思维方式——而大多数公司还没有这类人才。",
+              "元技能：把超级前沿的技术突破架接到现实世界的约束条件上。「我们的工作就是把超级先进的技术突破桥接到真实世界。」从 Box 早期的云计算时期起这就是 Levie 的北极星，AI 时代更加适用。",
+              "关于这个岗位是暂时的还是永久的：悲观的看法是 FDE 存在只是因为「这些技术现在还不怎么好用」。Levie 的看法是：技术可能性和实际部署之间的差距是结构性的，不是过渡性的——正是因为技术一直在变，这个角色才一直需要。"
+            ],
+            "original": [
+              "你的工作是理解人们的工作模式，确保他们有能力用 agent 去完成工作。",
+              "很多公司现在没有这类人才。他们得去 CS 专业招人，或者把工程师转向这种系统工程师角色。",
+              "我们的工作就是把超级先进的技术突破桥接到真实世界。",
+              "技术突破的速度永远比客户能实现标准架构的速度快。而这些突破往往让你上次实现的东西直接过时。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Deployment Paradox / 部署悖论",
+      "desc": "模型进步太快，反而拖慢了企业部署——这不是玩笑，是 2026 最真实的矛盾。",
+      "cards": [
+        {
+          "authorKey": "podcast:aaron-levie",
+          "sourceUrl": "https://www.youtube.com/watch?v=Gs2styCcwro",
+          "authorName": "Aaron Levie (CEO, Box)",
+          "authorTag": "Mad Podcast with Matt Turck",
+          "en": {
+            "rewrite": [
+              "Levie names the central paradox of enterprise AI in 2026: 'The breakthroughs keep happening faster than the customer can implement any kind of standard architecture. And those breakthroughs oftentimes undo or make obsolete the last thing you implemented.' The better the tech gets, the harder it is to land.",
+              "His advice for enterprises: start with the data. 'Most agentic challenges are inversions of data problems.' Enterprises have spent 20-30 years being sloppy with data architecture — systems don't talk to each other, unstructured data lives in five different places. Before agents can work, the data needs to be agent-accessible.",
+              "The agent maintenance burden is real and ongoing: 'Once the model changes, there's another set of work to be done. Did you get the gains of that model improvement? Or do you have to leave behind your old implementation?' This isn't implement-once-and-done — it's a continuous engineering practice.",
+              "Bottom line optimism: Levie sees AI adding 5-10x productivity in some areas and 10% in others, but the net effect is massive. 'In five years from now, we'll find the next version of that.' The rate of change feels chaotic, but that's the price of being early."
+            ],
+            "original": [
+              "The breakthroughs keep happening faster than the customer can implement any kind of standard architecture. And those breakthroughs oftentimes basically undo or make obsolete the last thing you implemented.",
+              "Most agentic challenges are inversions of data problems.",
+              "That is not a one-time you implement the agent and it works forever. Once the model changes, there's another set of work to be done.",
+              "Some areas will be a 5x productivity gain, other areas will be a 10% productivity gain. In five years from now, we'll find the next version of that."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Levie 点明了 2026 年企业 AI 的核心悖论：「技术突破的速度永远比客户能建立标准架构的速度快。而这些突破往往让你上次实现的东西直接作废。」技术越好，落地越难——这不是反讽，是正在发生的事实。",
+              "他的企业起步建议：从数据开始。「大多数 agent 挑战本质上是数据问题的倒置。」企业过去二三十年对数据架构的管理很松散——系统之间不互通，非结构化数据分散在五个地方。在 agent 能工作之前，数据必须先变得 agent 可访问。",
+              "Agent 的维护负担是持续的：「这不实现一次就永远跑着。模型一换，又有一堆工作要做——你能不能拿到模型提升的收益？还是得把旧实现扔掉？」这不是一次性的工程交付，而是持续工程实践。",
+              "最终态度是乐观的：Levie 认为 AI 在某些领域带来 5-10 倍效率提升，有些领域 10%，但净效应是巨大的。「五年后我们会找到下一代版本。」速度看起来混乱，但这只是「早期」的代价。"
+            ],
+            "original": [
+              "技术突破的速度永远比客户能建立标准架构的速度快。而这些突破往往让你上次实现的东西直接过时。",
+              "大多数 agent 挑战本质上是数据问题的倒置。",
+              "这不是实现一次就永远跑着。模型一换，又有一堆工作要做。",
+              "某些领域 5 倍效率提升，另一些 10%。五年后我们会找到下一代版本。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

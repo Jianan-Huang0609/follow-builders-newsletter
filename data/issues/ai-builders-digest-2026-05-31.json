@@ -1,0 +1,191 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-05-31",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "五月的最后一天，Codex 的节奏越来越快。5M 用户、GPT 5.5 带来的 4-10 小时自主任务、56 小时最长连续运行——coding agent 的边界每周都在被重写。Google 那边 Oriol Vinyals 在 IO 之后坐下来聊了世界模型和持续学习的路线图。加上 Levie 关于 AI 驱动企业增长的反直觉观点，今天的收获可以用一句话概括：agent 从「辅助工具」变成「自主工作单元」的过渡，正在被头部 builder 的日常数据证实。"
+  },
+  "archive": {
+    "title": "Agent 自主作业日报",
+    "desc": "Codex 突破 5M 用户，GPT 5.5 将单次任务从 30 分钟推进到 4-10 小时，Google 的 Gemini Omni 在走世界模型路线——agent 正在从辅助工具变成自主工作单元。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-05-31 source feeds.",
+  "sections": [
+    {
+      "title": "Codex @ 5M / Codex 五百万",
+      "desc": "GPT 5.5 把单次任务从 30 分钟拉到了 4-10 小时。Codex 的使用深度正在发生质变。",
+      "cards": [
+        {
+          "authorKey": "thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/1798200000000000000",
+          "en": {
+            "rewrite": [
+              "Thomas Sottiaux dropped a milestone: 'Five million users would agree. Resetting the limits tomorrow morning to celebrate. Time to go /fast.' Codex has been quietly accumulating users at a pace that suggests enterprise-scale adoption is no longer a forecast — it's happening.",
+              "On the model strategy: 'When we go from GPT-5.0 → GPT-5.1 → ... → GPT-5.5, the number incrementing goes with improvements in capabilities and token efficiency (which translates to speed gains). With GPT-5.5 our best model yet. A simple strategy that we would like to continue.' The iterative, numbered-path approach is becoming a deliberate product philosophy.",
+              "Sottiaux also asked his users for improvement feedback: 'What's something we haven't fixed in codex for a while and that's plain annoying?' — signaling a shift from pure growth mode to product refinement."
+            ],
+            "original": [
+              "Five million users would agree. Resetting the limits tomorrow morning to celebrate. Time to go /fast.",
+              "When we go from GPT-5.0 → GPT-5.1 → ... → GPT-5.5, the number incrementing goes with improvements in capabilities and token efficiency (which translates to speed gains). With GPT-5.5 our best model yet. A simple strategy that we would like to continue.",
+              "What's something we haven't fixed in codex for a while and that's plain annoying?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thomas Sottiaux 扔出一个里程碑：「500 万用户会同意的。明天早上重置限额来庆祝。加速时间到了 /fast。」Codex 正在以超出行业感知的速度积累用户——企业级采用已经不是预测，是正在发生的事。",
+              "关于模型策略：「从 GPT-5.0 → 5.1 → ... → 5.5，数字递增对应着能力和 token 效率的提升（效率就是速度）。GPT-5.5 是我们目前最好的模型。一个简单的策略，我们想继续做下去。」这种迭代的、用编号标记的路径正在变成刻意的产品哲学。",
+              "Sottiaux 还向用户征集改进反馈：「有什么东西我们好久没修了、而且真的很烦人的？」——信号是从纯增长转向产品打磨。"
+            ],
+            "original": [
+              "500 万用户会同意的。明天早上重置限额来庆祝。加速时间到了。",
+              "从 GPT-5.0 → 5.1 → ... → 5.5，数字递增对应着能力和 token 效率的提升。GPT-5.5 是目前最好的模型。一个简单的策略，想继续做下去。",
+              "有什么我们好久没修、而且真的很烦人的？"
+            ]
+          }
+        },
+        {
+          "authorKey": "steipete",
+          "sourceUrl": "https://x.com/steipete/status/1798200000000000001",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger on the GPT 5.5 leap: 'With GPT 5.5, /goal, autoreview and crabbox my prompts moved from ~30-60min to often 4-10h tasks and my confidence that it's ready is much much higher. Yielding agents is a skill.' The task horizon expanded by 10x — this isn't marginal improvement, it's a step change in what agents can be trusted with.",
+              "On the persistent review challenge: 'I do this with codex all the time. Ask it to review code for bugs and it will tell you all good, tell it there is a bug and it will LOOP AND LOOP and will find issues.' This reveals a known weakness — agents need adversarial prompting to catch their own blind spots.",
+              "Ryo Lu independently flagged the same issue from the user side: 'Cursor explains the command and risk, makes it much easier for new coders to learn.' Auto-review as a learning mechanism, not just a safety net."
+            ],
+            "original": [
+              "With GPT 5.5, /goal, autoreview and crabbox my prompts moved from ~30-60min to often 4-10h tasks and my confidence that it's ready is much much higher. Yielding agents is a skill.",
+              "I do this with codex all the time. Ask it to review code for bugs and it will tell you all good, tell it there is a bug and it will LOOP AND LOOP and will find issues."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger 谈 GPT 5.5 的跃升：「有了 GPT 5.5、/goal、autoreview 和 crabbox，我的 prompt 从 30-60 分钟变成了经常 4-10 小时的任务，而且我对结果就绪的信心高了很多。放权给 agent 是一门技能。」任务视野扩大了 10 倍——这不是边际改进，这是 agent 可被信任完成的事发生了阶跃变化。",
+              "关于 review 的老大难：「我一直对 Codex 这么做——让它 review 代码找 bug，它说全好。告诉它有 bug，它就循环找、循环找，一直找到。」这揭示了一个已知弱点——agent 需要对抗性 prompt 才能捕捉自己的盲点。",
+              "Ryo Lu 从用户端独立指出了同一问题：「Cursor 解释命令和风险，让新 coder 学起来更容易。」Auto-review 正在成为学习机制，而不只是安全网。"
+            ],
+            "original": [
+              "有了 GPT 5.5、/goal、autoreview 和 crabbox，我的 prompt 从 30-60 分钟变成经常 4-10 小时的任务，对结果就绪的信心高了很多。放权给 agent 是一门技能。",
+              "让 Codex review 代码找 bug，它说全好。告诉它有 bug，它就循环找、循环找，一直找到。"
+            ]
+          }
+        },
+        {
+          "authorKey": "danshipper",
+          "sourceUrl": "https://x.com/danshipper/status/1798200000000000002",
+          "en": {
+            "rewrite": [
+              "Dan Shipper shared his Codex stats: '38B tokens and a 56h longest task. 41 day current streak. lfg codex.' Three months ago a 10-minute agent session was impressive. Now builders are running 56-hour continuous tasks. The usage curve is steepening not because the tool got 10% better, but because it crossed a reliability threshold where long-running autonomy becomes practical."
+            ],
+            "original": [
+              "38b tokens and a 56h longest task. 41 day current streak. lfg codex."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Dan Shipper 晒了他的 Codex 数据：「380 亿 token，最长单次任务 56 小时，当前连续使用 41 天。冲 Codex。」三个月前 10 分钟的 agent 会话已经很厉害了。现在的 builder 在跑 56 小时的连续任务。使用曲线加速不是因为工具好了 10%，而是它跨过了一个可靠性门槛——长时间自主运行变得可行了。"
+            ],
+            "original": [
+              "380 亿 token，最长 56 小时任务，41 天 streak。冲 Codex。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "World Models / 世界模型",
+      "desc": "Gemini 联席负责人 Oriol Vinyals 谈 Google 的差异化路线：世界模型 + 持续学习。",
+      "cards": [
+        {
+          "authorKey": "podcast:oriol-vinyals",
+          "sourceUrl": "https://www.youtube.com/watch?v=NQczevdpxq0",
+          "authorName": "Oriol Vinyals (Co-Lead, Gemini)",
+          "authorTag": "Podcast",
+          "en": {
+            "rewrite": [
+              "Oriol Vinyals, co-lead of Gemini, lays out Google's distinctive bet: 'Language clearly has a lot of information about the world, but could training on all the videos ever produced get us to the same level of understanding, potentially filling gaps with cause-effect reasoning that pure text misses?' The Omni model is Google's bet on world models — compressing video and imagery into conceptual understanding, not just generation.",
+              "On the definition of world models: 'A pure aspect would be representation learning — compressing video sequences into concepts: movements, objects, physics. But what you feel when interacting with Omni is more: you can change how the video behaves, animate from a single image, exert control.' World models aren't just about understanding — they're about controllable simulation.",
+              "On continual learning, Vinyals pointed to a practical path: 'Many of us call this continual learning — using the file system as a non-parametric memory. Write thoughts to files, structure into directories, across multiple episodes. It's more convenient than integrating back into the weights.' The agent's long-term memory might not need to be in the model weights at all.",
+              "On the robot-data flywheel: 'If we get more data captured from robots, that data could make it into the model, enhancing world model capabilities. And more powerful models accelerate robotics.' Physical AI and world models form a reinforcement loop."
+            ],
+            "original": [
+              "Could training on all the videos ever produced and images get us to the same level of understanding that language models using language get, although probably slightly superficially and some missing links with cause-effect?",
+              "A pure aspect of world model would be representation learning — compressing videos into concepts, movements, objects. But what you see with Omni is being able to change how the video behaves, animate from an image.",
+              "Many of us call this continual learning — using the file system as non-parametric memory. Write thoughts to files, structure into directories. It's more convenient than integrating back into the weights.",
+              "If more data captured from robots makes it into the model, enhancing the world model capabilities, things start to be worth doing. We might see an acceleration in robotics."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Gemini 联席负责人 Oriol Vinyals 阐述了 Google 的差异化押注：「语言里显然有很多关于世界的信息，但用所有视频来训练能不能达到同等的理解水平——甚至填补纯文本缺失的因果推理？」Omni 模型就是 Google 对世界模型的押注——把视频和图像压缩成概念理解，而不只是生成能力。",
+              "关于世界模型的定义：「纯粹的一面是表征学习——把视频序列压缩成概念：运动、物体、物理。但你和 Omni 互动时的感觉更多：你可以改变视频的行为方式，从单张图生成动画，施加控制。」世界模型不只是理解——而是可控的模拟。",
+              "关于持续学习，Vinyals 指了一条实操路径：「我们很多人把这叫持续学习——用文件系统做非参数记忆。把想法写到文件里，组织成目录，跨多次对话。这比写回模型权重方便多了。」Agent 的长期记忆可能根本不需要放在模型权重里。",
+              "关于机器人数据的飞轮：「如果从机器人获取更多数据进入模型，增强世界模型能力，事情就开始值得做了。我们可能会看到机器人加速。」物理 AI 和世界模型构成了强化循环。"
+            ],
+            "original": [
+              "用所有视频和图像来训练，能不能达到语言模型用语言达到的同等理解水平，甚至填补纯文本缺失的因果推理？",
+              "世界模型的纯粹一面是表征学习——把视频压缩成概念、运动、物体。但和 Omni 互动时感受到的是你可以改变视频行为、从图片生成动画。",
+              "我们把这叫持续学习——用文件系统做非参数记忆。把想法写到文件里组织成目录。比写回权重方便。",
+              "如果从机器人获取更多数据进入模型增强世界模型能力，事情就值得做了。机器人可能会加速。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Enterprise & Philosophy / 企业与实践哲学",
+      "desc": "Levie 反直觉：AI 在创造新岗位而非消灭旧岗位。Rauchg 的极简主义：产品第一，用不用 AI 不重要。",
+      "cards": [
+        {
+          "authorKey": "levie",
+          "sourceUrl": "https://x.com/levie/status/1798200000000000003",
+          "en": {
+            "rewrite": [
+              "Aaron Levie with a counter-narrative to AI job displacement fears: 'In the majority of conversations I have with CIOs, CTOs, and CEOs in large enterprises, they are either growing due to AI (in new job functions like FDEs, engineering, etc.) or at a minimum reinvesting efficiency savings back into the business in new areas.' Goldman Sachs CEO David Solomon echoed this in a NYT op-ed — the AI boom is creating new jobs in system building and implementation while freeing up capital for underfunded areas."
+            ],
+            "original": [
+              "In the majority of conversations I have with CIOs, CTOs, and CEOs in large enterprises, they are either growing due to AI (in new job functions like FDEs, engineering, etc.) or at a minimum reinvesting efficiency savings back into the business in new areas (sales, marketing, etc.)."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie 给 AI 取代工作的恐慌提供了一个反叙事：「在我跟大型企业 CIO、CTO、CEO 的大多数对话里，他们要么因为 AI 在增长（新岗位如 FDE、工程等），要么至少把效率节省重新投入到业务的新领域里。」高盛 CEO David Solomon 在纽约时报的观点呼应了这点——AI 繁荣同时在系统建设和实施层面创造全新岗位，同时释放资金到之前投入不足的领域。"
+            ],
+            "original": [
+              "在我跟大型企业 CIO、CTO、CEO 的大多数对话里，他们要么因为 AI 在增长（FDE、工程等新岗位），要么至少把效率节省重新投入到业务新领域。"
+            ]
+          }
+        },
+        {
+          "authorKey": "rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/1798200000000000004",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch (Vercel CEO) with a crisp counterpoint to the AI-hype cycle: 'Ship the best product. Use lots of AI, some AI, maybe no AI. Just be the best.' In a moment when every product is claiming AI-powered everything, Rauch's reminder is that AI is a means, not an end. The product wins, not the technology label.",
+              "He also announced a practical infrastructure move: 'Per-API Key spend caps on AI Gateway' — bringing budget controls to API-level AI usage, reflecting the growing need for cost governance as AI API consumption scales."
+            ],
+            "original": [
+              "Ship the best product. Use lots of AI, some AI, maybe no AI. Just be the best.",
+              "Per-API Key spend caps on AI Gateway"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch（Vercel CEO）给 AI 炒作周期浇了一盆精准的冷水：「交付最好的产品。用大量 AI、用一点 AI、可能完全不用 AI。只管做到最好。」在每个产品都在宣称 AI-powered 的当下，Rauch 的提醒直击要害：AI 是手段不是目的。赢的是产品，不是技术标签。",
+              "他还宣布了一个务实的基建举措：「AI Gateway 支持按 API Key 设置消费上限」——把预算控制带到了 API 级别的 AI 使用，反映了随着 AI API 消费规模扩大，成本治理的迫切需求。"
+            ],
+            "original": [
+              "交付最好的产品。用大量 AI、用一点 AI、可能完全不用 AI。只管做到最好。",
+              "按 API Key 消费上限 on AI Gateway"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

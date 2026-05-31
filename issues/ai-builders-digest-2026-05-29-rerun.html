@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Builders Digest · 2026-05-29</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f6f3ed;
+    --accent: #c0392b;
+    --accent-light: #e8d5c4;
+    --border: #d4cdc0;
+    --muted: #7a7265;
+    --tag-bg: #e8e2d6;
+    --en-bg: #ffffff;
+    --cn-bg: #faf7f2;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.7;
+  }
+
+  .masthead, .intro, .section-header, .feed, footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .masthead { padding-top: 48px; }
+  .masthead-rule { border: none; border-top: 3px solid var(--ink); margin: 0 0 12px; }
+  .masthead-inner { display: flex; justify-content: center; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .masthead-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; letter-spacing: -0.4px; }
+  .masthead-subtitle { margin-top: 8px; padding-bottom: 10px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  .edition-strip {
+    position: relative;
+    margin-top: 8px;
+    min-height: 46px;
+    padding: 10px 132px 12px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.34);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+
+  .edition-strip .edition-sep { margin: 0 8px; color: #b8ae9f; }
+  .edition-strip-text { display: block; }
+  .edition-return-link { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; padding: 6px 10px; border: 1px dashed rgba(192, 57, 43, 0.55); border-radius: 999px; color: var(--accent); text-decoration: none; font-size: 12px; line-height: 1; letter-spacing: 0.06em; background: rgba(255, 255, 255, 0.45); transition: background 160ms ease, border-color 160ms ease, transform 160ms ease; }
+  .edition-return-link:hover, .edition-return-link:focus-visible { background: rgba(255, 255, 255, 0.82); border-color: var(--accent); transform: translateY(-50%) translateX(-1px); }
+  .edition-return-link:focus-visible { outline: none; }
+  .intro { padding-top: 22px; }
+  .intro-inner { max-width: 920px; margin: 0 auto; padding: 0 0 0 18px; border-left: 3px solid #d9cdbc; }
+  .intro-kicker { margin: 0 0 8px; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+  .intro p { margin: 0; max-width: none; color: var(--muted); font-size: clamp(15px, 1.6vw, 16px); line-height: 1.9; text-wrap: pretty; font-family: 'Noto Serif SC', serif; overflow-wrap: anywhere; }
+
+  .section-header { margin-top: 40px; }
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 4px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 24px; margin: 0 0 6px; }
+  .section-desc { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+
+  .feed { display: flex; flex-direction: column; gap: 20px; }
+  .card { background: var(--en-bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .card-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid #eee7dd; flex-wrap: wrap; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .avatar-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .avatar.is-fallback img { display: none; }
+  .avatar.is-fallback .avatar-fallback { display: flex; }
+
+  .author-info { flex: 1; min-width: 160px; }
+  .author-name { font-weight: 600; font-size: 15px; }
+  .author-name-row { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .author-handle { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+  .author-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; background: var(--tag-bg); color: var(--muted); padding: 4px 8px; border-radius: 999px; }
+  .author-tag.is-inline { padding: 3px 8px; }
+
+  .card-controls { margin-left: auto; display: inline-flex; gap: 8px; }
+  .view-toggle { border: 1px solid var(--border); background: transparent; color: var(--muted); padding: 6px 10px; border-radius: 999px; font-size: 12px; line-height: 1; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; }
+  .view-toggle.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .card-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .lang-col { padding: 18px 20px 22px; }
+  .lang-col.cn { background: var(--cn-bg); border-right: 1px solid #f0ece4; font-family: 'Noto Serif SC', serif; }
+  .lang-col.en { background: var(--en-bg); }
+  .lang-label { margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+  .content-shell { position: relative; transition: height 220ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .content-variant { position: absolute; inset: 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(4px); transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms; will-change: opacity, transform; }
+  .content-variant.is-active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s; }
+  .content-variant p, .content-variant li { margin: 0 0 12px; font-size: 14px; }
+  .content-variant ol { margin: 0 0 12px 20px; padding: 0; }
+  .inline-code { display: inline-block; font-family: 'IBM Plex Mono', monospace; background: #f4efe7; padding: 3px 6px; border-radius: 6px; margin-bottom: 8px; }
+
+  .card-footer { padding: 12px 20px 16px; border-top: 1px solid #eee7dd; background: #fcfaf6; }
+  .card-footer { display: flex; align-items: center; justify-content: space-between; }
+.card-footer a { color: var(--accent); text-decoration: none; font-size: 14px; }
+.eureka-btn { border: 1px dashed var(--accent); background: transparent; color: var(--accent); padding: 5px 12px; border-radius: 999px; font-size: 12px; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; opacity: 0.55; }
+.eureka-btn:hover { background: var(--accent); color: #fff; opacity: 1; border-style: solid; }
+.eureka-btn:active { transform: scale(0.96); }
+.eureka-toast { position: fixed; bottom: 32px; right: 32px; background: #1a1a1a; color: #fff; padding: 12px 20px; border-radius: 10px; font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 9999; opacity: 0; transform: translateY(12px); transition: opacity 240ms ease, transform 240ms ease; pointer-events: none; }
+.eureka-toast.show { opacity: 1; transform: translateY(0); }
+  footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 680px) {
+    .masthead-inner { align-items: center; }
+    .edition-strip { padding-right: 12px; padding-left: 12px; }
+    .edition-strip-text { padding-right: 0; }
+    .edition-return-link { position: static; transform: none; margin-top: 8px; font-size: 11px; }
+    .card-controls { margin-left: 0; }
+    .card-body { grid-template-columns: 1fr; }
+    .lang-col.cn { border-right: none; border-bottom: 1px solid #f0ece4; }
+    .edition-strip .edition-sep { margin: 0 5px; }
+    .intro-inner { padding-left: 14px; }
+    .intro p { line-height: 1.84; }
+  }
+</style>
+</head>
+<body data-publish-date="2026-05-29" data-issue-number="11" data-edition-name="双语精选版" data-view-label-rewrite="速读" data-view-label-original="原文" data-author-identities-path="/Users/jianan/.follow-builders/assets/author-identities.json" data-avatar-manifest-path="/Users/jianan/.follow-builders/assets/avatar-manifest.json">
+  <header class="masthead">
+    <hr class="masthead-rule">
+    <div class="masthead-inner">
+      <div class="masthead-title">AI Builders Digest</div>
+    </div>
+    <div class="masthead-subtitle">Bilingual edition · 双语对照版</div>
+    <div class="edition-strip">
+      <span class="edition-strip-text" id="edition-strip-text">第 11 期｜2026-05-29｜双语精选版｜4 条精选｜1 位作者｜4 个主题</span>
+      <a class="edition-return-link" href="../index.html">返回目录</a>
+    </div>
+  </header>
+
+  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="今天 X 端继续等 Bearer Token 更新，但播客端来了一期重量级对话——Box CEO Aaron Levie 用 90 分钟把 2026 年企业 AI 的底牌全摊开了。Token 成本正在失控？五年后软件还有什么用？怎么让自己的工作在 AI 时代不被替代？Levie 作为 CEO 里的重度 AI 用户，每一句都打在当前建设者最关心的点上。本期四个话题构成一条完整逻辑链：成本→架构→职业→部署，建议按顺序读。">
+    <div class="intro-inner">
+      <div class="intro-kicker">编者导语 / Editor&#39;s Note</div>
+      <p class="intro-copy">今天 X 端继续等 Bearer Token 更新，但播客端来了一期重量级对话——Box CEO Aaron Levie 用 90 分钟把 2026 年企业 AI 的底牌全摊开了。Token 成本正在失控？五年后软件还有什么用？怎么让自己的工作在 AI 时代不被替代？Levie 作为 CEO 里的重度 AI 用户，每一句都打在当前建设者最关心的点上。本期四个话题构成一条完整逻辑链：成本→架构→职业→部署，建议按顺序读。</p>
+    </div>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 01</div>
+    <h2 class="section-title">Tokenmaxxing / Token 通胀</h2>
+    <p class="section-desc">模型越强，Token 越贵——不是你的错觉，是行业正在发生的结构性变化。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="podcast:aaron-levie" data-author-name="Aaron Levie (CEO, Box)" data-author-tag="Mad Podcast with Matt Turck" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Aaron Levie (CEO, Box) avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie (CEO, Box)</div>
+            <div class="author-tag is-inline">Mad Podcast with Matt Turck</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie 引入了一个让所有建设者感同身受的词——&#39;tokenmaxxing&#39;：模型越强，消耗的 token 越多，推理成本却没有按预期速度下降。「模型越来越大，硬件降价的速度跟不上，我们把本该十年走完的 rollout 压缩到了十八个月。」</p>
+              <p>直接结果：Cursor 这类工具的用量在订阅制补贴下爆炸式增长，但当 agent 可以自主做更多事、上下文窗口拉长，经济模型就崩了。「突然间这些 agent 能做更多工作，它们的上下文窗口大得多，模型本身也大得多。」</p>
+              <p>Levie 的企业预测：每家公司会用半打不同模型，按任务分流到不同成本层。「写代码我要最高能力的模型，做摘要或分类用小的就行。」新的企业核心能力是：知道在哪花贵的 token，在哪省钱。</p>
+              <p>一个实战提醒：「也许你不希望你的 agent 每天早上用 30 美元的成本重新渲染一遍 UI。」有些 agent 架构可能需要为成本效率重新设计。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>模型越来越大，硬件降价速度跟不上。我们把本该十年走完的 rollout 压缩到了十八个月。</p>
+              <p>突然间这些 agent 能做更多工作，上下文窗口大得多，模型本身也大得多。</p>
+              <p>我认为一般企业会同时使用半打模型。你不会把所有任务都扔给最贵的模型。</p>
+              <p>也许你不希望你的 agent 每天早上花 30 美元重新渲染一遍 UI。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie introduces the concept of &#39;tokenmaxxing&#39; — the uncomfortable reality that as AI models get more capable, they consume dramatically more tokens per task, and their inference costs aren&#39;t dropping as fast as people assumed. &#39;Models are way bigger, hardware is not getting cheaper at the same pace, and we&#39;ve compressed what should be a ten-year rollout into eighteen months.&#39;</p>
+              <p>The practical result: tools like Cursor saw usage explode when token costs were subsidized under a flat subscription fee. But as autonomous agents do more work with longer context windows, the economics break. &#39;All of a sudden these agents can do way more work, their context is way larger, the models are way larger.&#39;</p>
+              <p>Levie&#39;s prediction for enterprise: every company will use a &#39;mosaic&#39; of half a dozen models, routing different tasks to different cost tiers. &#39;For coding I want the highest capability. For summarization or classification, smaller models work fine.&#39; The new enterprise skill is knowing where to spend the expensive tokens.</p>
+              <p>One practical note: &#39;Maybe you don&#39;t want your agent to re-render a UI every single morning at $30 per day.&#39; Some agent architectures will need to be rethought entirely for cost efficiency.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>No, these models are just way bigger and the hardware is not getting cheaper at the same pace. We&#39;ve compressed normally what should happen in like ten years of rollout into like eighteen months.</p>
+              <p>All of a sudden these agents can do way more work, their context is way larger, the models are way larger.</p>
+              <p>I think the average enterprise will certainly be using half a dozen models in the organization. You&#39;re not going to throw everything at the most expensive model.</p>
+              <p>Maybe you don&#39;t want your agent to re-render a UI every single morning. And that costs $30 per day of using the interface.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://www.youtube.com/watch?v=Gs2styCcwro" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="Aaron Levie (CEO, Box)" data-url="https://www.youtube.com/watch?v=Gs2styCcwro" data-author="Aaron Levie (CEO, Box)">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 02</div>
+    <h2 class="section-title">Headless Software / 无头软件</h2>
+    <p class="section-desc">Agent 不吃 UI——它们直接调 API。整个企业软件的商业模式正在被改写。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="podcast:aaron-levie" data-author-name="Aaron Levie (CEO, Box)" data-author-tag="Mad Podcast with Matt Turck" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Aaron Levie (CEO, Box) avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie (CEO, Box)</div>
+            <div class="author-tag is-inline">Mad Podcast with Matt Turck</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Levie 对未来企业软件商业模式的判断：「三年后，任何活过 AI 转型的企业软件公司都会同时拥有 seat 模式和 consumption 模式。」推动力很简单——agent 不需要 UI，它们直接调 API。</p>
+              <p>核心预测：agent 产生的 API 调用量会远超人类。「我们必须接受：以调用量论，agent 会以人类从未有过的频率冲击这些系统。人类作为最终用户占一个 seat 获得一定配额，然后 agent 的无头访问走 consumption 计费。」</p>
+              <p>这不是理论推演——Box 的客户已经在测试「agent 需不需要自己的 seat」。「它需要一直占个位子，还是只需要调 API？」答案因场景而异，定价会比人类 seat 便宜，但用量上去了就是增量收入。</p>
+              <p>Levie 认为 AI agent 本质是扩大软件使用总量而非替代：「agent 会以我们今天无法想象的方式冲击 API。」这让企业软件的总可寻址市场变大。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>三年后，任何活过 AI 转型的企业软件公司都会同时拥有 seat 模式和 consumption 模式。</p>
+              <p>以调用量论，agent 会以人类从未有过的频率冲击这些系统。人类作为最终用户占一个 seat 获得一定配额。</p>
+              <p>agent 需要 Box seat 吗？大概率比人类 seat 便宜。但很多情况下 agent 不需要一直占位，只需要调 API。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Levie&#39;s bet on the enterprise software business model of the future: &#39;Any enterprise software company in three years that gets through this AI transformation will have both a seat business model and a consumption business model.&#39; The shift is driven by a simple reality — agents don&#39;t need UIs, they hit APIs.</p>
+              <p>The forecast: agents will generate more API volume than humans ever did. &#39;We&#39;ll have to understand that by volume, agents are going to be banging on these systems far more than humans ever did. The human will land as an end-user seat and get a certain allocation, and then the agent headless access will be on a consumption model.&#39;</p>
+              <p>This isn&#39;t theoretical — Box customers are already testing whether agents should have their own &#39;seats&#39; in the system. &#39;Does the agent need an ongoing seat, or do they just need to call the API?&#39; The answer will vary by use case, and pricing will be cheaper than human seats but additive on volume.</p>
+              <p>Levie sees AI agents as a net expansion of software usage, not a replacement: &#39;Agents are going to be banging on APIs in ways we can&#39;t even imagine today.&#39; This makes the total addressable market for enterprise software much larger.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Any enterprise software company in three years from now that gets through this AI transformation period will have a seat business model, assuming it has an end user component, and it&#39;ll have a consumption business model.</p>
+              <p>By volume, agents are going to be banging on these systems far more than humans ever did. The human will probably land as an end user seat within that piece of software, and they&#39;ll get a certain amount of allocation of usage as that end user seat.</p>
+              <p>Should agents have a Box seat? Probably it&#39;s got to be cheaper than a human seat. But there&#39;s a lot of situations where the agent doesn&#39;t need an ongoing seat, they just need to call the API.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://www.youtube.com/watch?v=Gs2styCcwro" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="Aaron Levie (CEO, Box)" data-url="https://www.youtube.com/watch?v=Gs2styCcwro" data-author="Aaron Levie (CEO, Box)">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 03</div>
+    <h2 class="section-title">AI-Proofing &amp; Internal FDE / 职业防护与新岗位</h2>
+    <p class="section-desc">怎么让自己的工作不被 AI 替代？Levie 的答案不是技术——是位置。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="podcast:aaron-levie" data-author-name="Aaron Levie (CEO, Box)" data-author-tag="Mad Podcast with Matt Turck" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Aaron Levie (CEO, Box) avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie (CEO, Box)</div>
+            <div class="author-tag is-inline">Mad Podcast with Matt Turck</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Levie 给出了本期最实用的职业建议：「在 AI 这件事上做得特别出色的人，就是会成功的人。」不是浅层的「学会 prompt」，而是成为组织内部那个弄清楚怎么用 AI 解决真实业务问题的人。</p>
+              <p>一个新岗位正在成型，Levie 称之为「内部 FDE」（Forward Deployed Engineer，前方部署工程师）。「你的工作是理解人们的工作模式，确保他们有能力用 agent 去完成那些工作。」这需要 CS 基础的训练但面向业务的思维方式——而大多数公司还没有这类人才。</p>
+              <p>元技能：把超级前沿的技术突破架接到现实世界的约束条件上。「我们的工作就是把超级先进的技术突破桥接到真实世界。」从 Box 早期的云计算时期起这就是 Levie 的北极星，AI 时代更加适用。</p>
+              <p>关于这个岗位是暂时的还是永久的：悲观的看法是 FDE 存在只是因为「这些技术现在还不怎么好用」。Levie 的看法是：技术可能性和实际部署之间的差距是结构性的，不是过渡性的——正是因为技术一直在变，这个角色才一直需要。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>你的工作是理解人们的工作模式，确保他们有能力用 agent 去完成工作。</p>
+              <p>很多公司现在没有这类人才。他们得去 CS 专业招人，或者把工程师转向这种系统工程师角色。</p>
+              <p>我们的工作就是把超级先进的技术突破桥接到真实世界。</p>
+              <p>技术突破的速度永远比客户能实现标准架构的速度快。而这些突破往往让你上次实现的东西直接过时。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>The most practical career advice Levie offered: &#39;The people who become amazing at AI, they are the ones that are going to succeed.&#39; Not in the shallow sense of &#39;learn to prompt,&#39; but in the deeper sense of becoming the person inside an organization who figures out how to deploy AI against real business problems.</p>
+              <p>A new role is emerging that Levie calls the &#39;internal FDE&#39; (Forward Deployed Engineer). &#39;Your job is to understand the patterns of how people work, and make sure they have the ability to use agents to do that work.&#39; This requires CS-level training but a business-facing mindset — and most companies don&#39;t have this talent yet.</p>
+              <p>The meta-skill: bridging advanced technology to real-world constraints. &#39;Our job is to take super-advanced technology breakthroughs and bridge them to the real world.&#39; This has been Levie&#39;s North Star since Box&#39;s early cloud days, and it applies more than ever with AI.</p>
+              <p>On whether this role is here to stay or temporary: the cynical view is that FDEs exist because &#39;none of this really works yet.&#39; Levie&#39;s view is that the gap between what&#39;s possible and what&#39;s deployed is structural, not transitional. The role persists precisely because the technology keeps changing.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Your job is to understand the patterns of how these people work, and make sure that they have the ability to use agents to go and do that work.</p>
+              <p>A lot of companies don&#39;t have this talent right now. So they&#39;re going to actually have to go and hire people out of CS programs or pivot engineers into these kinds of systems engineering roles.</p>
+              <p>Our job is take super advanced technology breakthroughs and bridge them to the real world.</p>
+              <p>The breakthroughs keep happening faster than the customer can implement any kind of standard architecture. And those breakthroughs oftentimes basically undo or make obsolete the last thing you implemented.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://www.youtube.com/watch?v=Gs2styCcwro" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="Aaron Levie (CEO, Box)" data-url="https://www.youtube.com/watch?v=Gs2styCcwro" data-author="Aaron Levie (CEO, Box)">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 04</div>
+    <h2 class="section-title">The Deployment Paradox / 部署悖论</h2>
+    <p class="section-desc">模型进步太快，反而拖慢了企业部署——这不是玩笑，是 2026 最真实的矛盾。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="podcast:aaron-levie" data-author-name="Aaron Levie (CEO, Box)" data-author-tag="Mad Podcast with Matt Turck" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Aaron Levie (CEO, Box) avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie (CEO, Box)</div>
+            <div class="author-tag is-inline">Mad Podcast with Matt Turck</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Levie 点明了 2026 年企业 AI 的核心悖论：「技术突破的速度永远比客户能建立标准架构的速度快。而这些突破往往让你上次实现的东西直接作废。」技术越好，落地越难——这不是反讽，是正在发生的事实。</p>
+              <p>他的企业起步建议：从数据开始。「大多数 agent 挑战本质上是数据问题的倒置。」企业过去二三十年对数据架构的管理很松散——系统之间不互通，非结构化数据分散在五个地方。在 agent 能工作之前，数据必须先变得 agent 可访问。</p>
+              <p>Agent 的维护负担是持续的：「这不实现一次就永远跑着。模型一换，又有一堆工作要做——你能不能拿到模型提升的收益？还是得把旧实现扔掉？」这不是一次性的工程交付，而是持续工程实践。</p>
+              <p>最终态度是乐观的：Levie 认为 AI 在某些领域带来 5-10 倍效率提升，有些领域 10%，但净效应是巨大的。「五年后我们会找到下一代版本。」速度看起来混乱，但这只是「早期」的代价。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>技术突破的速度永远比客户能建立标准架构的速度快。而这些突破往往让你上次实现的东西直接过时。</p>
+              <p>大多数 agent 挑战本质上是数据问题的倒置。</p>
+              <p>这不是实现一次就永远跑着。模型一换，又有一堆工作要做。</p>
+              <p>某些领域 5 倍效率提升，另一些 10%。五年后我们会找到下一代版本。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Levie names the central paradox of enterprise AI in 2026: &#39;The breakthroughs keep happening faster than the customer can implement any kind of standard architecture. And those breakthroughs oftentimes undo or make obsolete the last thing you implemented.&#39; The better the tech gets, the harder it is to land.</p>
+              <p>His advice for enterprises: start with the data. &#39;Most agentic challenges are inversions of data problems.&#39; Enterprises have spent 20-30 years being sloppy with data architecture — systems don&#39;t talk to each other, unstructured data lives in five different places. Before agents can work, the data needs to be agent-accessible.</p>
+              <p>The agent maintenance burden is real and ongoing: &#39;Once the model changes, there&#39;s another set of work to be done. Did you get the gains of that model improvement? Or do you have to leave behind your old implementation?&#39; This isn&#39;t implement-once-and-done — it&#39;s a continuous engineering practice.</p>
+              <p>Bottom line optimism: Levie sees AI adding 5-10x productivity in some areas and 10% in others, but the net effect is massive. &#39;In five years from now, we&#39;ll find the next version of that.&#39; The rate of change feels chaotic, but that&#39;s the price of being early.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The breakthroughs keep happening faster than the customer can implement any kind of standard architecture. And those breakthroughs oftentimes basically undo or make obsolete the last thing you implemented.</p>
+              <p>Most agentic challenges are inversions of data problems.</p>
+              <p>That is not a one-time you implement the agent and it works forever. Once the model changes, there&#39;s another set of work to be done.</p>
+              <p>Some areas will be a 5x productivity gain, other areas will be a 10% productivity gain. In five years from now, we&#39;ll find the next version of that.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://www.youtube.com/watch?v=Gs2styCcwro" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="Aaron Levie (CEO, Box)" data-url="https://www.youtube.com/watch?v=Gs2styCcwro" data-author="Aaron Levie (CEO, Box)">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <footer data-source-note="Source: Follow Builders curated daily digest. Rebuilt from the 2026-05-29 source feeds. Note: X/Twitter feed unavailable today due to Bearer Token pending.">Source: Follow Builders curated daily digest. Rebuilt from the 2026-05-29 source feeds. Note: X/Twitter feed unavailable today due to Bearer Token pending.</footer>
+
+  <script>
+    function getTemplateAuthorSources() {
+      const sources = window.AI_BUILDERS_TEMPLATE_SOURCES || {};
+      return { identities: sources.identities || {}, avatars: sources.avatars || {} };
+    }
+
+    function getAuthorInitials(name) {
+      return (name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(function(part) { return part[0]; }).join('').toUpperCase();
+    }
+
+    function hydrateTemplateCopy() {
+      const intro = document.querySelector('.intro');
+      if (intro) {
+        const kicker = intro.querySelector('.intro-kicker');
+        const copy = intro.querySelector('.intro-copy');
+        if (kicker) kicker.textContent = intro.dataset.kicker || '';
+        if (copy) copy.textContent = intro.dataset.text || '';
+      }
+
+      const footer = document.querySelector('footer');
+      if (footer) footer.textContent = footer.dataset.sourceNote || '';
+
+      const rewriteLabel = document.body.dataset.viewLabelRewrite || '速读';
+      const originalLabel = document.body.dataset.viewLabelOriginal || '原文';
+      document.querySelectorAll('.view-toggle').forEach(function(button) {
+        if (button.dataset.viewTarget === 'rewrite') button.textContent = rewriteLabel;
+        if (button.dataset.viewTarget === 'original') button.textContent = originalLabel;
+      });
+    }
+
+    function hydrateAuthorMeta() {
+      const sources = getTemplateAuthorSources();
+      document.querySelectorAll('.card').forEach(function(card) {
+        const authorKey = card.dataset.authorKey || '';
+        const identity = sources.identities[authorKey] || {};
+        const avatarEntry = sources.avatars[authorKey] || {};
+
+        const name = identity.name || card.dataset.authorName || '';
+        const rawHandle = identity.handle || card.dataset.authorHandle || '';
+        const handle = rawHandle && rawHandle.startsWith('@') ? rawHandle : (rawHandle ? '@' + rawHandle : '');
+        const tag = identity.label || card.dataset.authorTag || '';
+        const avatar = avatarEntry.fileUrl || avatarEntry.localPath || card.dataset.authorAvatar || '';
+
+        const nameNode = card.querySelector('.author-name');
+        const tagNode = card.querySelector('.author-tag');
+        const handleNode = card.querySelector('.author-handle');
+        const avatarNode = card.querySelector('.avatar');
+        const avatarImg = card.querySelector('.avatar img');
+        const avatarFallback = card.querySelector('.avatar-fallback');
+
+        if (nameNode) nameNode.textContent = name;
+        if (tagNode) tagNode.textContent = tag;
+        if (handleNode) handleNode.textContent = handle;
+        if (avatarImg) {
+          avatarImg.src = avatar;
+          avatarImg.alt = name ? name + ' avatar' : 'Author avatar';
+        }
+        if (avatarNode) avatarNode.classList.toggle('is-fallback', !avatar);
+        if (avatarFallback) avatarFallback.textContent = getAuthorInitials(name);
+      });
+    }
+
+    function updateEditionStrip() {
+      const publishDate = document.body.dataset.publishDate;
+      const editionName = document.body.dataset.editionName || '双语精选版';
+      const editionStrip = document.getElementById('edition-strip-text');
+      if (!publishDate || !editionStrip) return;
+
+      const issueNumber = document.body.dataset.issueNumber || '';
+      if (!issueNumber) return;
+
+      const selectedCount = document.querySelectorAll('.card').length;
+      const authorCount = new Set([].slice.call(document.querySelectorAll('.author-handle')).map(function(node) { return node.textContent.trim(); }).filter(Boolean)).size;
+      const themeCount = document.querySelectorAll('.section-header').length;
+      const parts = ['第 ' + issueNumber + ' 期', publishDate, editionName, selectedCount + ' 条精选', authorCount + ' 位作者', themeCount + ' 个主题'];
+      editionStrip.innerHTML = parts.map(function(part) { return '<span class="edition-item">' + part + '</span>'; }).join('<span class="edition-sep">|</span>');
+    }
+
+    function measureVariantHeight(variant) {
+      const prevPosition = variant.style.position;
+      const prevInset = variant.style.inset;
+      const prevVisibility = variant.style.visibility;
+      const prevPointerEvents = variant.style.pointerEvents;
+      const prevOpacity = variant.style.opacity;
+      const prevTransform = variant.style.transform;
+      const prevTransition = variant.style.transition;
+      const prevOverflowY = variant.style.overflowY;
+      const prevDisplay = variant.style.display;
+
+      variant.style.position = 'relative';
+      variant.style.inset = 'auto';
+      variant.style.visibility = 'hidden';
+      variant.style.pointerEvents = 'none';
+      variant.style.opacity = '1';
+      variant.style.transform = 'none';
+      variant.style.transition = 'none';
+      variant.style.overflowY = 'visible';
+      variant.style.display = 'block';
+
+      const height = variant.scrollHeight;
+
+      variant.style.position = prevPosition;
+      variant.style.inset = prevInset;
+      variant.style.visibility = prevVisibility;
+      variant.style.pointerEvents = prevPointerEvents;
+      variant.style.opacity = prevOpacity;
+      variant.style.transform = prevTransform;
+      variant.style.transition = prevTransition;
+      variant.style.overflowY = prevOverflowY;
+      variant.style.display = prevDisplay;
+
+      return Math.ceil(height);
+    }
+
+    function getTargetHeight(shell, target) {
+      const variant = shell.querySelector('.content-variant[data-view="' + target + '"]');
+      return measureVariantHeight(variant);
+    }
+
+    function syncShellHeights() {
+      document.querySelectorAll('.content-shell').forEach(function(shell) {
+        const active = shell.querySelector('.content-variant.is-active');
+        const target = active ? active.dataset.view : 'rewrite';
+        shell.style.height = getTargetHeight(shell, target) + 'px';
+      });
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', function() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(syncShellHeights, 120);
+    });
+
+    document.querySelectorAll('.card').forEach(function(card) {
+      const buttons = card.querySelectorAll('.view-toggle');
+      const shells = card.querySelectorAll('.content-shell');
+
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          const target = button.dataset.viewTarget;
+          if (button.classList.contains('is-active')) return;
+
+          buttons.forEach(function(btn) {
+            btn.classList.toggle('is-active', btn === button);
+          });
+
+          shells.forEach(function(shell) {
+            const current = shell.querySelector('.content-variant.is-active');
+            const next = shell.querySelector('.content-variant[data-view="' + target + '"]');
+            if (!current || !next || current === next) return;
+
+            shell.style.height = shell.offsetHeight + 'px';
+            requestAnimationFrame(function() {
+              current.classList.remove('is-active');
+              next.classList.add('is-active');
+              shell.style.height = getTargetHeight(shell, target) + 'px';
+            });
+          });
+        });
+      });
+    });
+
+    hydrateTemplateCopy();
+    hydrateAuthorMeta();
+    updateEditionStrip();
+    syncShellHeights();
+
+    // Eureka save buttons
+    var EUREKA_URL = 'http://127.0.0.1:8087/eureka';
+    function showToast(msg, isError) {
+      var t = document.querySelector('.eureka-toast');
+      if (!t) {
+        t = document.createElement('div');
+        t.className = 'eureka-toast';
+        document.body.appendChild(t);
+      }
+      t.textContent = msg;
+      if (isError) t.style.background = '#c0392b';
+      else t.style.background = '#1a1a1a';
+      t.classList.add('show');
+      setTimeout(function() { t.classList.remove('show'); }, 2200);
+    }
+    document.querySelectorAll('.eureka-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var title = this.dataset.title || '';
+        var url = this.dataset.url || '';
+        var author = this.dataset.author || '';
+        var note = title ? title.slice(0, 80) : '';
+        var origText = this.textContent;
+        this.textContent = '...';
+        this.disabled = true;
+        fetch(EUREKA_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ title: note, url: url, author: author })
+        }).then(function(r) { return r.json(); })
+          .then(function(d) {
+            btn.textContent = d.ok ? '✓ Saved' : '✗ Error';
+            showToast(d.ok ? 'Saved to Eurekas ✓' : 'Save failed: ' + (d.error || 'unknown'), !d.ok);
+            if (d.ok) setTimeout(function() { btn.textContent = origText; btn.disabled = false; }, 1500);
+            else { btn.textContent = origText; btn.disabled = false; }
+          })
+          .catch(function(e) {
+            btn.textContent = origText; btn.disabled = false;
+            showToast('Eureka server not running — start it first', true);
+          });
+      });
+    });
+  </script>
+</body>
+</html>

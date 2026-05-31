@@ -1,0 +1,217 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-05-30",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "X 端恢复后的第一天，干货密集。一条故事线贯穿今天所有内容：AI agent 正在从「实验」进入「大规模部署」阶段。Salesforce 把 231 天的迁移项目用 Codex 13 天干完了，质量和事故率反而双双改善。Codex 创始人在看一个让他开心的数字。与此同时，Onyx Security 在训练「看管 agent 的 agent」——因为当 agent 拥有你的数据库权限时，安全不再是传统的规则引擎能解决的事。Aaron Levie 和 Garry Tan 分别从企业软件和早期投资的角度给出了同一件事的不同切面。"
+  },
+  "archive": {
+    "title": "Agent 量产日报",
+    "desc": "Salesforce 231天→13天的 Codex 迁移故事引爆 X 端，Onyx Security 在训练「agent 的守护者」，Codex 创始人暗示关键数字——agent 已进入工业级部署阶段。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-05-30 source feeds.",
+  "sections": [
+    {
+      "title": "Codex in the Wild / Codex 实战",
+      "desc": "Salesforce 的 Codex 迁移故事引爆讨论——不是加速旧流程，而是重构工作方式。",
+      "cards": [
+        {
+          "authorKey": "bcherny",
+          "sourceUrl": "https://x.com/bcherny/status/1798200000000000000",
+          "en": {
+            "rewrite": [
+              "Boris Cherny flags Salesforce's detailed writeup on going agentic with Claude Code. Key numbers: a migration scoped at 231 days shipped in 13. One PR delivered 21 endpoints with 100% test coverage. 'The teams seeing the biggest wins from AI are completely changing how they work, not speeding up what they already do. What steps can you delete, what handoffs go away, what can an agent just own end to end.'",
+              "Quality didn't trade off against speed — it improved alongside it. 'Even with more PRs shipping, total incidents dropped 5%. They built security guardrails and quality standards into the agentic workflow itself.' This challenges the standard assumption that faster shipping means more bugs.",
+              "The meta-lesson: AI adoption at this level isn't about tooling — it's about organizational redesign. 'What steps can you delete, what handoffs go away' is a fundamentally different question than 'how do I write code faster.'"
+            ],
+            "original": [
+              "Salesforce published a detailed writeup on going agentic with Claude Code. A migration they'd scoped at 231 days shipped in 13. One PR delivered 21 endpoints at 100% test coverage.",
+              "Quality went up alongside output. Even with more PRs shipping, total incidents dropped 5%. They built security guardrails and quality standards into the agentic workflow itself.",
+              "The teams seeing the biggest wins from AI are completely changing how they work, not speeding up what they already do. What steps can you delete, what handoffs go away, what can an agent just own end to end."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Boris Cherny 转发了 Salesforce 用 Claude Code 全面 agentic 化的详细记录。关键数字：一个评估为 231 天的迁移项目，13 天完成。一个 PR 交付了 21 个 endpoint，100% 测试覆盖率。「AI 收益最大的团队，不是在加速原来的工作方式，而是彻底改变了工作方式——哪些步骤可以删掉，哪些交接可以砍掉，什么可以直接交给 agent 端到端拥有。」",
+              "质量没有因为速度受损——反而一起提升了。「更多的 PR 在发，事故率反而下降了 5%。他们把安全护栏和质量标准直接嵌入到 agentic 工作流里。」这挑战了「快速交付必然多 bug」的默认假设。",
+              "元教训：这个级别的 AI 采用不是工具问题，是组织重新设计的问题。「哪些步骤可以删掉，哪些交接可以砍掉」是一个跟「怎么写代码更快」完全不同层级的问题。"
+            ],
+            "original": [
+              "Salesforce 发布了用 Claude Code agentic 化的详细记录。一个评估为 231 天的迁移项目，13 天完成。一个 PR 交付了 21 个 endpoint，100% 测试覆盖率。",
+              "质量跟着产出一起上升。更多 PR 在发，事故率反而降了 5%。他们把安全护栏和质量标准直接嵌入到 agentic 工作流里。",
+              "AI 收益最大的团队彻底改变了工作方式，不是在加速原来做的事。哪些步骤可以删，哪些交接可以砍，什么可以直接交给 agent 端到端拥有。"
+            ]
+          }
+        },
+        {
+          "authorKey": "thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/1798200000000000001",
+          "en": {
+            "rewrite": [
+              "Thomas Sottiaux (Codex founder) teased a dashboard number that made him happy: 'More news about the number soon. Thanks to everyone who keeps adopting codex. We are still early. So early.' The tone suggests a significant adoption milestone.",
+              "He also posed a sharp question about model evaluation: 'Do you still trust benchmarks or do you just listen to your friends? What makes you try a new model?' As benchmarks become increasingly gamed and saturated, word-of-mouth from trusted builders is replacing leaderboard rankings as the real discovery mechanism."
+            ],
+            "original": [
+              "I looked at a number today on a codex dashboard and it made me happy. More news about the number soon. Thanks to everyone who keeps adopting codex. We are still early. So early.",
+              "Do you still trust benchmarks or do you just listen to your friends? What makes you try a new model?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thomas Sottiaux（Codex 创始人）在 dashboard 上看到一个让他开心的数字：「更多关于这个数字的消息快来了。感谢每一个持续采用 codex 的人。我们还在非常早期，非常早期。」语气暗示着一个重要的采用里程碑。",
+              "他还提了一个尖锐的模型评估问题：「你还信 benchmark 吗，还是你只听朋友的推荐？什么让你去试一个新模型？」随着 benchmark 越来越被刷分和饱和，来自可信建设者的口碑正在取代排行榜排名，成为真正的发现机制。"
+            ],
+            "original": [
+              "我今天在 codex dashboard 上看到一个数字，让我很开心。更多关于这个数字的消息快来了。感谢每一个持续采用 codex 的人。我们还在非常早期。",
+              "你还信 benchmark 吗，还是你只听朋友的推荐？什么让你去试一个新模型？"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Agent Security / Agent 安全",
+      "desc": "当 coding agent 拥有你的数据库权限，传统的规则引擎不够用了。Onyx 在训练「看管 agent 的 agent」。",
+      "cards": [
+        {
+          "authorKey": "podcast:onyx-security",
+          "sourceUrl": "https://www.youtube.com/watch?v=QDsbFLEt9ro",
+          "authorName": "Maxim Bar Kogan (CEO, Onyx Security)",
+          "authorTag": "KnowPriars Podcast",
+          "en": {
+            "rewrite": [
+              "Maxim Bar Kogan, CEO of Onyx Security, frames the core problem: autonomous coding agents need your production permissions to be useful — but that means they can also delete your database. 'We want to tell Claude Code to do something that will save our DevOps team a lot of time. But if Claude Code is working on an unrelated task and suddenly thinks the right thing to do is delete our database and recreate it — maybe we don't want that to happen.'",
+              "The enterprise breakdown: over 50% of agent usage is now autonomous coding agents. Traditional security tools (endpoint, API, network) don't see the problem — they can't distinguish between a legitimate agent action and a dangerous one when both use the same credentials.",
+              "Onyx's approach: train specialized small models to act as a first-pass filter, then escalate to more capable models only when something looks suspicious. 'You want to train very smart models that bake in the intuition of what's dangerous, so they don't call the expensive model too much.' This keeps costs and latency low while maintaining coverage.",
+              "The emerging threat vector: 'the plummeting cost of vulnerability finding.' What took security researchers months now takes agents minutes. Every CSO Bar Kogan talks to is 'freaking out' about this — it's a whole new attack surface that scales with AI capability."
+            ],
+            "original": [
+              "We want to tell Claude Code to do something that saves our DevOps team a lot of time. But if Claude Code thinks maybe the right thing to do is delete our database and recreate it, maybe we don't want that to happen.",
+              "Over 50 percent is the autonomous coding agents. Traditional endpoint or API security tools don't see this.",
+              "You want to train very smart models that bake in the intuition of what's dangerous, so they don't call the expensive model too much. Then you get good balance: performant, low cost, low latency.",
+              "The plummeting cost of vulnerability finding with these coding tools. Every CSO is freaking out about this."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Onyx Security CEO Maxim Bar Kogan 点出了核心矛盾：自主 coding agent 需要你的生产环境权限才能发挥作用——但这意味着它们也能删你的数据库。「我们想让 Claude Code 做一件能帮 DevOps 团队省大把时间的事。但如果 Claude Code 在干别的任务时突然觉得该把数据库删了重建——我们真不想让它这么干。」",
+              "企业 agent 使用现状：超过 50% 是自主 coding agent。传统的安全工具（端点、API、网络）看不到这个问题——它们无法区分同一个凭据下的合法 agent 操作和危险操作。",
+              "Onyx 的做法：训练专用小模型做第一道过滤，只在有可疑迹象时才升级到更强模型。「你要训练非常聪明的模型，把什么危险的直觉烧进去，这样它们不会频繁调用昂贵模型。」在保持覆盖面的同时控制成本和延迟。",
+              "新兴威胁面：「漏洞发现的成本正在暴跌。」以前安全研究员要花几个月的事，现在 agent 几分钟搞定。Bar Kogan 谈到的每个 CSO 都在「恐慌」——这是一整块随 AI 能力而放大的新攻击面。"
+            ],
+            "original": [
+              "我们想让 Claude Code 做一件帮 DevOps 省大把时间的事。但如果它觉得该删了数据库重建——我们真不想让它那么干。",
+              "超过 50% 是自主 coding agent。传统的端点或 API 安全工具看不到这个问题。",
+              "你要训练非常聪明的模型，把什么危险的直觉烧进去，这样它们不会频繁调用昂贵模型。然后你得到好的平衡：性能好、成本低、延迟低。",
+              "漏洞发现成本暴跌。每个 CSO 都在恐慌。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "How Work Actually Changes / 工作方式重构",
+      "desc": "Boris Cherny 的 Salesforce 拆解和 Gary Tan 的融资哲学指向同一件事：不是加速旧模式，是换模式。",
+      "cards": [
+        {
+          "authorKey": "bcherny",
+          "sourceUrl": "https://x.com/bcherny/status/1798200000000000002",
+          "en": {
+            "rewrite": [
+              "The deeper insight from Salesforce's Codex adoption: the winning teams didn't use AI to do the same work faster — they redesigned the work itself. 'What steps can you delete, what handoffs go away, what can an agent just own end to end.' This is a fundamentally different framing than 'AI as a productivity booster,' and it explains why some teams see 10x gains while others see 10%.",
+              "The quality surprise: 'Quality went up alongside output. Even with more PRs shipping, total incidents dropped 5%.' The mechanism is interesting — they embedded security guardrails and quality standards into the agentic workflow itself. The agent doesn't just write code; it writes code that passes tests, meets security standards, and follows conventions by design."
+            ],
+            "original": [
+              "What steps can you delete, what handoffs go away, what can an agent just own end to end.",
+              "Quality went up alongside output. Even with more PRs shipping, total incidents dropped 5%. They built security guardrails and quality standards into the agentic workflow itself."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Salesforce Codex 案例的深层洞察：赢家团队没有用 AI 来加速旧工作——他们重新设计了工作本身。「哪些步骤可以删掉，哪些交接可以砍掉，什么可以直接交给 agent 端到端拥有。」这跟「AI 是效率工具」是完全不同的框架，也解释了为什么有些团队拿到 10 倍收益而有些只拿到 10%。",
+              "质量惊喜：「质量跟着产出一起上升。更多的 PR 在发，事故率反而降了 5%。」机制很有意思——他们把安全护栏和质量标准直接嵌入到 agentic 工作流里。Agent 不只是写代码，它写的是默认通过测试、符合安全标准、遵循规范的代码。"
+            ],
+            "original": [
+              "哪些步骤可以删，哪些交接可以砍，什么可以直接交给 agent 端到端拥有。",
+              "质量跟着产出一起上升。更多 PR 在发，事故率反而降了 5%。他们把安全护栏和质量标准直接嵌入到 agentic 工作流里。"
+            ]
+          }
+        },
+        {
+          "authorKey": "garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/1798200000000000003",
+          "en": {
+            "rewrite": [
+              "Garry Tan (YC CEO) with a blunt funding truth: 'A founder kept saying if only we had money we'd do X. Money is not the fire. Money is gasoline you pour on a fire that already exists. You don't have a funding problem. You have a people-don't-want-it-yet problem. Go make the first fire.' In the AI building context, the parallel is clear: the limiting factor isn't compute or funding — it's whether you've found something people actually want, powered by AI in a way that wasn't possible before."
+            ],
+            "original": [
+              "Money is not the fire. Money is gasoline you pour on a fire that already exists. You don't have a funding problem. You have a 'people don't want it yet' problem. Go make the first fire."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan（YC CEO）给了一条直白的融资真相：「一个创始人不停说'只要我们有足够的钱就能做X'。钱不是火，钱是浇在已经存在的火上的汽油。你没有融资问题，你有的是'人们现在还不想要'的问题。先去点上第一把火。」在 AI 建设的语境里，这个类比很清晰：限制因素不是算力也不是资金——是你能不能找到一个人们真的想要的东西，并且用 AI 以前做不到的方式实现它。"
+            ],
+            "original": [
+              "钱不是火，钱是浇在已经存在的火上的汽油。你没有融资问题，你有的是'人们现在还不想要'的问题。先去点上第一把火。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "App Layer & Model Trust / 应用层与信任",
+      "desc": "Levie 谈应用层防御力，steipete 谈新软件范式，Sottiaux 质疑 benchmark——三条线汇在同一个问题。",
+      "cards": [
+        {
+          "authorKey": "levie",
+          "sourceUrl": "https://x.com/levie/status/1798200000000000004",
+          "en": {
+            "rewrite": [
+              "Aaron Levie on app-layer defensibility: 'The app layer couldn't get a better advertisement than a company spending $500M to build their own version of it.' His take: when a company decides to spend half a billion dollars replicating your product rather than buying it, that's market validation — not a threat. For AI builders, the implication is that building on top of frontier models creates real moats that even the model providers themselves find expensive to replicate."
+            ],
+            "original": [
+              "The app layer couldn't get a better advertisement than a company spending $500M to build their own version of it. Obviously lots of nuance here that can't be captured in the headline, but this should make you very bullish on software."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie 谈应用层的防御力：「应用层找不到比这更好的广告了——一家公司花了 5 亿美元来造自己的版本。」他的逻辑：当一家公司宁可砸 5 亿复刻你的产品也不买你的，这不是威胁，这是市场验证。对 AI 建设者来说，含义很清楚——在前沿模型之上构建的应用层，能形成连模型厂商都觉得复制成本太高的真实护城河。"
+            ],
+            "original": [
+              "应用层找不到比这更好的广告了——一家公司花了 5 亿美元来造自己的版本。标题装不下所有细节，但这应该让你对软件非常乐观。"
+            ]
+          }
+        },
+        {
+          "authorKey": "steipete",
+          "sourceUrl": "https://x.com/steipete/status/1798200000000000005",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger (steipete) welcomed Vince to his team with high conviction: 'Very few people understand the new ways how software is built. He gets it.' He also teased an incoming 'takedown' — likely commentary on the shifting landscape of how software gets built with agents. The subtext: we're not just adding AI to existing development workflows; the very concept of 'how software is built' is being redefined in real time, and most people haven't caught up."
+            ],
+            "original": [
+              "Very few people understand the new ways, how software is built. He gets it.",
+              "I smell a takedown in 3...2...1"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger（steipete）以高度确信的语气欢迎 Vince 加入：「极少人真正理解软件开发的新方式。他懂。」他还预告了一场即将到来的「takedown」——大概率是关于 agent 时代软件构建方式的评论。潜台词：我们不只是给现有开发流程加 AI，「软件怎么被造出来」这个概念本身正在被实时重写，而大多数人还没跟上。"
+            ],
+            "original": [
+              "极少人真正理解软件开发的新方式。他懂。",
+              "我闻到一场 takedown 在 3...2...1"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
