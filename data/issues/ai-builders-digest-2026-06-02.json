@@ -1,0 +1,267 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-06-02",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的 X 信息流有四条主线交汇：OpenAI 正式登陆 AWS（\"the cool kids are here\"），Codex 从写代码进化到建农场、开公司（\"改名 ChadGPT\" 拿 3K 赞），Anthropic 内部 Claude 协作 prompt 外泄拿下 6K 赞成为当日最高互动帖，MiniMax M3 作为开源模型第一次在 Next.js Agent 评测上紧追 Opus 和 GPT5 但便宜 10 倍。加上 Demis Hassabis 传记作者的长访谈，从平台博弈到内部实践到开源追赶，今天是 AI 生态格局的一天。"
+  },
+  "archive": {
+    "title": "平台博弈日报",
+    "desc": "OpenAI 登陆 AWS，Codex 进化到「ChadGPT」，Anthropic 内部 Claude 用法外泄 6K 赞，MiniMax M3 开源紧追闭源模型。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-02 source feeds.",
+  "sections": [
+    {
+      "title": "OpenAI Lands on AWS / 平台博弈日",
+      "desc": "OpenAI 正式登陆 AWS——GPT-5.5 进入企业主战场。Levie：这不是新闻，是代理权的转移。",
+      "cards": [
+        {
+          "authorKey": "thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2061644307111796984",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux with the day's most quotable announcement: 'Heard that AWS is where the cool kids are. Hello. We have GPT-5.5.' The tone is deliberately casual, but the signal is massive — OpenAI is no longer just a direct-to-consumer API; it's now on the platform where Fortune 500 procurement lives.",
+              "The AWS move means enterprise CIOs who were blocked by internal governance on direct OpenAI API usage can now route GPT-5.5 through their existing AWS committed spend. This is the distribution multiplier moment."
+            ],
+            "original": [
+              "Heard that AWS is where the cool kids are. Hello. We have GPT-5.5."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux 发了当天最可引用的声明：「听说 cool kids 都在 AWS。你好，我们有 GPT-5.5。」语气刻意轻描淡写，信号却极重——OpenAI 不再只是直接面向开发者的 API，现在它登上了 Fortune 500 采购所在的平台。",
+              "AWS 这一步意味着：被内部治理卡住无法直接使用 OpenAI API 的企业 CIO，现在可以把 GPT-5.5 走已有 AWS 承诺消费。这是分发杠杆的倍增时刻。"
+            ],
+            "original": [
+              "听说 cool kids 都在 AWS。你好，我们有 GPT-5.5。"
+            ]
+          }
+        },
+        {
+          "authorKey": "levie",
+          "sourceUrl": "https://x.com/levie/status/2061612625574944804",
+          "en": {
+            "rewrite": [
+              "Aaron Levie puts the AWS deal in enterprise context: 'AWS has massive enterprise traction, with large committed contracts from enterprises. This partnership opens up both increased distribution for OpenAI and native integration into a big portion of the enterprise stack.'",
+              "In a separate thread, he frames the bigger question: 'As we enter the era of AI agents, one of the defining questions is how you develop competitive advantage when your competitor has access to the same AI models.' The answer increasingly looks like: data + workflow + distribution — which is exactly what the AWS partnership provides."
+            ],
+            "original": [
+              "AWS has massive enterprise traction, with large committed contracts from enterprises. This partnership opens up both increased distribution for OpenAI and native integration.",
+              "As we enter the era of AI agents, one of the defining questions is how you develop competitive advantage when your competitor has access to the same AI models."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie 把 AWS 合作放到企业语境里：「AWS 有巨大的企业渗透率，手握大额承诺合同。这次合作对 OpenAI 打开了两扇门——更大的分发通道，以及直接嵌入企业技术栈的能力。」",
+              "在另一条帖子里，他提了更大的问题：「进入 AI agent 时代，一个定义性问题是如何在竞争对手同样使用相同 AI 模型的情况下建立竞争壁垒。」答案越来越指向：数据 + 工作流 + 分发——正是 AWS 合作提供的。"
+            ],
+            "original": [
+              "AWS 有巨大的企业渗透率和承诺合同。合作打开了 OpenAI 的分发通道和原生嵌入。",
+              "进入 AI agent 时代，定义性问题是：竞争对手用同样的 AI 模型，你如何建立壁垒。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Codex Goes Everywhere / Codex 进化到「ChadGPT」",
+      "desc": "不是写代码，是建农场、开公司、Distracted Mode 主动求助——Codex 的能力边界在今天的 feed 里被重新定义。",
+      "cards": [
+        {
+          "authorKey": "thsottiaux-chadgpt",
+          "sourceUrl": "https://x.com/thsottiaux/status/2061572602888589807",
+          "en": {
+            "rewrite": [
+              "The day's most viral post at nearly 3K likes: 'Should we rename Codex to ChadGPT?' — a single-line joke that captures the vibe shift. Codex has gone from 'the coding sidekick' to the agent that builds entire farms and businesses. The name joke is actually a capability signal: people are using Codex for far more than code.",
+              "Earlier in the day, Thibault posted 'You can just codex ... a farm' (516 likes) with a real demo. The gap between 'AI writes code' and 'AI operates your farm' is collapsing in public, day by day."
+            ],
+            "original": [
+              "Should we rename Codex to ChadGPT?",
+              "You can just codex ... a farm"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "当天最病毒式传播的帖子，近 3K 赞：「我们应该把 Codex 改名叫 ChadGPT 吗？」——一句话的笑话，抓住了 vibe shift。Codex 从「写代码的副驾」变成了建农场、开公司的 agent。名字笑话其实是能力信号：人们用 Codex 做的事远超代码。",
+              "稍早 Thibault 发了「你可以直接 codex... 一个农场」（516 赞），附真实 demo。'AI 写代码'和'AI 运营你的农场'之间的差距正在公开坍塌，一天一天地。"
+            ],
+            "original": [
+              "应该把 Codex 改名叫 ChadGPT 吗？",
+              "你可以直接 codex 一个农场。"
+            ]
+          }
+        },
+        {
+          "authorKey": "steipete",
+          "sourceUrl": "https://x.com/steipete/status/2061574752574283858",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger on his 'Distracted Mode' setup: 'I told Codex to use TTS whenever I'm distracted and it needs my help to be unblocked, and every once in a while I hear it talking to me.' This is the inversion of the human-AI relationship — the AI is now the one reaching out to the human when it needs help, not the other way around.",
+              "What's understated here: Codex is running autonomously in the background, hits a blocker, knows it's stuck, and initiates a voice interaction to unblock. That's not 'AI assistant' — that's 'AI mentee with initiative.'"
+            ],
+            "original": [
+              "I told codex to use TTS whenever I'm distracted and it needs my help to be unblocked, and every once in a while I hear it talking to me."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger 描述了他的「分心模式」设置：「我告诉 Codex，只要我分心了、它需要帮助解除阻塞时就用 TTS 叫我。时不时我就听到它在跟我说话。」这是人机关系的倒转——现在是 AI 需要帮助时主动找人，而不是反过来。",
+              "被低估的点：Codex 在后台自主运行，碰到阻塞，知道自己卡住了，主动发起语音交互来解除阻塞。这不是「AI 助手」——这是「有主动性的 AI 学徒」。"
+            ],
+            "original": [
+              "我让 Codex 在需要我帮助解除阻塞时用 TTS 叫我。时不时听到它在跟我说话。"
+            ]
+          }
+        },
+        {
+          "authorKey": "danshipper",
+          "sourceUrl": "https://x.com/danshipper/status/2061443674311999739",
+          "en": {
+            "rewrite": [
+              "Dan Shipper on the new work ethic: 'You don't have to work 7 days a week if you just have a swarm of Codex's running on /goal all the time — but you'll probably want to.' The tweet captures the psychological flip: when your AI agents are producing value around the clock, checking in becomes a pleasure rather than an obligation.",
+              "He also posted 'it happened!' referencing a milestone moment — sans details, but the energy is that of a builder watching their agent team cross a finish line."
+            ],
+            "original": [
+              "You don't have to work 7 days a week if you just have a swarm of Codex's running on /goal all the time — but you'll probably want to."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Dan Shipper 谈新工作伦理：「如果你有一群 Codex 全天候跑 /goal，你不需要一周工作 7 天——但你大概率会想。」这条推文抓住了心理学翻转：当你的 AI agent 昼夜不停地产出价值，查看它们变成了一种享受而不是义务。",
+              "他还发了「it happened!」标记一个里程碑时刻——没给细节，但那种建设者看着自己的 agent 团队冲过终点线的能量很清楚。"
+            ],
+            "original": [
+              "如果你有一群 Codex 全天候跑 /goal，你不需要一周工作 7 天——但你大概率会想。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Anthropic Insider: How to Stay in the Loop / Anthropic 内部 Claude 协作法外泄",
+      "desc": "Thariq 分享了 Anthropic 内部如何用 Claude 保持项目掌控感——帖子 6K 赞，当日最高互动量。",
+      "cards": [
+        {
+          "authorKey": "trq212",
+          "sourceUrl": "https://x.com/trq212/status/2061545633560010826",
+          "en": {
+            "rewrite": [
+              "The highest-engagement post of the day (6,183 likes): Thariq at Anthropic asked his colleagues how they stay in the loop with Claude and fully understand the work being done. His favorite response came from Suzanne — a structured prompt that keeps the human informed while the agent works.",
+              "Thariq shared the full gist. The key insight: 'Suzanne also mentioned she uses this with voice mode to make it easier to respond and more natural.' This isn't about 'AI replacing the human in the loop' — it's about designing the loop so the human stays genuinely informed, not just nominally cc'd. The prompt itself is a collaboration protocol, not a delegation script."
+            ],
+            "original": [
+              "Been asking others at Anthropic how they stay in the loop with Claude and fully understand the work being done. This is one of my favorites from Suzanne.",
+              "Suzanne also mentioned she uses this with voice mode to make it easier to respond and more natural."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "当日最高互动帖（6,183 赞）：Anthropic 的 Thariq 问同事们怎么用 Claude 保持对工作的掌控感。最喜欢的答案来自 Suzanne——一个结构化 prompt，让 agent 干活时人类保持知情。",
+              "Thariq 公开了完整 gist。关键洞察：'Suzanne 提到她用 voice mode 做这个，让回复更轻松、更自然。'这不是「AI 替掉人」——而是设计协作循环让人真正知情，不只是名义上抄送。这个 prompt 本身是协作协议，不是委派脚本。"
+            ],
+            "original": [
+              "问 Anthropic 同事们怎么用 Claude 保持掌控感。这是我从 Suzanne 那得到的最喜欢的方案。",
+              "Suzanne 提到她用 voice mode，让回复更轻松自然。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "MiniMax M3 & The Open Model Surge / 开源模型追赶闭源",
+      "desc": "Rauchg：MiniMax M3 在 Next.js Agent 评测上紧追 Opus 和 GPT5，但便宜一个数量级。Git 依然是一切。",
+      "cards": [
+        {
+          "authorKey": "rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2061593874498531707",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch drops a benchmark that matters: 'MiniMax M3 is now the leading open model on the Next.js agent evaluations. Right behind Opus & GPT5, but 10× cheaper.' The open-source gap to frontier closed models is shrinking in agentic coding — the hardest real-world benchmark.",
+              "In a separate post he reaffirms the fundamentals: 'Git is all you need. Always has been.' A timely reminder when every platform is pitching their own agent-native version control alternative. And a third post showcasing a 'beautiful example of a full-stack agent on Vercel. Great learning material!'"
+            ],
+            "original": [
+              "MiniMax M3 is now the leading open model on the Next.js agent evaluations. Right behind Opus & GPT5, but 10× cheaper.",
+              "Git is all you need. Always has been.",
+              "Beautiful example of a full-stack agent on @vercel. Great learning material!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch 发布了一个有分量的测评：「MiniMax M3 现在是 Next.js Agent 评测上领先的开源模型，紧追 Opus 和 GPT5 之后，但便宜 10 倍。」开源与闭源前沿模型在 agentic coding 上的差距正在缩小——这是最难的现实世界基准。",
+              "另一帖他重申基础：「Git is all you need. Always has been.」当所有平台都在推销自己的 agent 原生版本控制时，这句很及时。第三条展示了一个「Vercel 全栈 agent 的美妙案例，绝佳学习材料！」"
+            ],
+            "original": [
+              "MiniMax M3 是 Next.js Agent 评测领先的开源模型。紧追 Opus/GPT5 之后，但便宜 10 倍。",
+              "Git 是你需要的一切。一直如此。",
+              "Vercel 全栈 agent 的美妙案例，绝佳学习材料。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Leadership, Strategy & Demis Hassabis / 领导力、竞争壁垒与 Demis 的超级智能之路",
+      "desc": "Garry Tan 援引 Brian Chesky：领导力是存在感。Levie：AI 时代的 moat 在哪。播客：Demis Hassabis 传记作者深度访谈。",
+      "cards": [
+        {
+          "authorKey": "garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2061495739637960927",
+          "en": {
+            "rewrite": [
+              "Garry Tan quotes Brian Chesky: 'Leadership is presence, not absence.' In an age where agents handle commoditized execution, the role of human leadership is less about doing the work and more about being genuinely present for the decisions only humans can make. 241 likes from an audience that's thinking about this tension daily.",
+              "He also launched a one-click way to try GStack office-hours for product ideas — the infrastructure layer for founders to get feedback without scheduling overhead."
+            ],
+            "original": [
+              "Leadership is presence, not absence. — @bchesky"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan 援引 Brian Chesky：「领导力是存在感，不是缺席。」在 agent 处理商品化执行的时代，人类领导的角色越来越少关于「做事」，越来越多关于「真正存在于只有人能做的决策里」。241 赞，来自一群每天都在思考这个张力的观众。",
+              "他还推出了一键体验 GStack office-hours 的产品咨询功能——创始人无需排日程就能获得反馈的基础设施层。"
+            ],
+            "original": [
+              "领导力是存在感，不是缺席。——@bchesky"
+            ]
+          }
+        },
+        {
+          "authorKey": "podcast:demis-hassabis",
+          "sourceUrl": "https://www.youtube.com/@RedpointAI",
+          "authorName": "Sebastian Mallaby (Demis Hassabis Biographer)",
+          "authorTag": "Unsupervised Learning Ep 88 with Jordan Thibodeau & Joe Zadeh",
+          "en": {
+            "rewrite": [
+              "Sebastian Mallaby spent over 30 hours with DeepMind CEO Demis Hassabis to write his book 'The Infinity Machine.' Key revelations from this interview: Demis would sometimes erupt in conversation, banging the table and saying his quest to understand nature through science was 'getting closer to something that we could perhaps call God.'",
+              "The contrast between Demis and Sam Altman is striking: Demis has a Nobel Prize (AlphaFold), Sam 'didn't finish his first degree.' Mallaby's assessment: 'Demis doesn't take Sam very seriously.' Yet he also notes that Demis is 'in some ways, too sensible' — his scientific rigor might make him less suited to the theatrical requirements of modern tech leadership.",
+              "Mallaby's insight on Demis's vision: it's not about building an AGI product — it's about using AI as a telescope to understand the universe itself. The commercial product is a side effect."
+            ],
+            "original": [
+              "He would sometimes erupt in these conversations, banging the table and saying, maybe if we approach science the right way, we understand more about nature, we will be getting closer to something that we could perhaps call God.",
+              "Demis has a Nobel Prize. Sam didn't finish his first degree. Therefore, Demis doesn't take Sam very seriously.",
+              "Demis, in some ways, is too sensible."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Sebastian Mallaby 花了 30 多小时与 DeepMind CEO Demis Hassabis 对话，为撰写传记《The Infinity Machine》。访谈中几个关键披露：Demis 有时会在谈话中情绪激动，拍着桌子说——通过科学正确理解自然，我们也许正靠近某种可以称之为「神」的东西。",
+              "Demis 与 Sam Altman 的对比很鲜明：Demis 有诺贝尔奖（AlphaFold），Sam「第一学位没读完」。Mallaby 的判断：「Demis 没有太把 Sam 当回事。」但他也承认 Demis「某种意义上太理性了」——他的科学严谨可能让他在现代科技领导力所需的表演性上不太合拍。",
+              "Mallaby 对 Demis 愿景的洞察：不是做 AGI 产品——是用 AI 当望远镜理解宇宙本身。商业产品只是副作用。"
+            ],
+            "original": [
+              "他在谈话中情绪激动，拍着桌子说——通过科学正确理解自然，我们也许正靠近可以称之为神的东西。",
+              "Demis 有诺贝尔奖。Sam 第一学位没读完。所以 Demis 没太把 Sam 当回事。",
+              "Demis 某种意义上太理性了。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
