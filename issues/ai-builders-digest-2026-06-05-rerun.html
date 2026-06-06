@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Builders Digest · 2026-06-05</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f6f3ed;
+    --accent: #c0392b;
+    --accent-light: #e8d5c4;
+    --border: #d4cdc0;
+    --muted: #7a7265;
+    --tag-bg: #e8e2d6;
+    --en-bg: #ffffff;
+    --cn-bg: #faf7f2;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.7;
+  }
+
+  .masthead, .intro, .section-header, .feed, footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .masthead { padding-top: 48px; }
+  .masthead-rule { border: none; border-top: 3px solid var(--ink); margin: 0 0 12px; }
+  .masthead-inner { display: flex; justify-content: center; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .masthead-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; letter-spacing: -0.4px; }
+  .masthead-subtitle { margin-top: 8px; padding-bottom: 10px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  .edition-strip {
+    position: relative;
+    margin-top: 8px;
+    min-height: 46px;
+    padding: 10px 132px 12px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.34);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+
+  .edition-strip .edition-sep { margin: 0 8px; color: #b8ae9f; }
+  .edition-strip-text { display: block; }
+  .edition-return-link { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; padding: 6px 10px; border: 1px dashed rgba(192, 57, 43, 0.55); border-radius: 999px; color: var(--accent); text-decoration: none; font-size: 12px; line-height: 1; letter-spacing: 0.06em; background: rgba(255, 255, 255, 0.45); transition: background 160ms ease, border-color 160ms ease, transform 160ms ease; }
+  .edition-return-link:hover, .edition-return-link:focus-visible { background: rgba(255, 255, 255, 0.82); border-color: var(--accent); transform: translateY(-50%) translateX(-1px); }
+  .edition-return-link:focus-visible { outline: none; }
+  .intro { padding-top: 22px; }
+  .intro-inner { max-width: 920px; margin: 0 auto; padding: 0 0 0 18px; border-left: 3px solid #d9cdbc; }
+  .intro-kicker { margin: 0 0 8px; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+  .intro p { margin: 0; max-width: none; color: var(--muted); font-size: clamp(15px, 1.6vw, 16px); line-height: 1.9; text-wrap: pretty; font-family: 'Noto Serif SC', serif; overflow-wrap: anywhere; }
+
+  .section-header { margin-top: 40px; }
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 4px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 24px; margin: 0 0 6px; }
+  .section-desc { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+
+  .feed { display: flex; flex-direction: column; gap: 20px; }
+  .card { background: var(--en-bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .card-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid #eee7dd; flex-wrap: wrap; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .avatar-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .avatar.is-fallback img { display: none; }
+  .avatar.is-fallback .avatar-fallback { display: flex; }
+
+  .author-info { flex: 1; min-width: 160px; }
+  .author-name { font-weight: 600; font-size: 15px; }
+  .author-name-row { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .author-handle { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+  .author-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; background: var(--tag-bg); color: var(--muted); padding: 4px 8px; border-radius: 999px; }
+  .author-tag.is-inline { padding: 3px 8px; }
+
+  .card-controls { margin-left: auto; display: inline-flex; gap: 8px; }
+  .view-toggle { border: 1px solid var(--border); background: transparent; color: var(--muted); padding: 6px 10px; border-radius: 999px; font-size: 12px; line-height: 1; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; }
+  .view-toggle.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .card-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .lang-col { padding: 18px 20px 22px; }
+  .lang-col.cn { background: var(--cn-bg); border-right: 1px solid #f0ece4; font-family: 'Noto Serif SC', serif; }
+  .lang-col.en { background: var(--en-bg); }
+  .lang-label { margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+  .content-shell { position: relative; transition: height 220ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .content-variant { position: absolute; inset: 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(4px); transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms; will-change: opacity, transform; }
+  .content-variant.is-active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s; }
+  .content-variant p, .content-variant li { margin: 0 0 12px; font-size: 14px; }
+  .content-variant ol { margin: 0 0 12px 20px; padding: 0; }
+  .inline-code { display: inline-block; font-family: 'IBM Plex Mono', monospace; background: #f4efe7; padding: 3px 6px; border-radius: 6px; margin-bottom: 8px; }
+
+  .card-footer { padding: 12px 20px 16px; border-top: 1px solid #eee7dd; background: #fcfaf6; }
+  .card-footer { display: flex; align-items: center; justify-content: space-between; }
+.card-footer a { color: var(--accent); text-decoration: none; font-size: 14px; }
+.eureka-btn { border: 1px dashed var(--accent); background: transparent; color: var(--accent); padding: 5px 12px; border-radius: 999px; font-size: 12px; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; opacity: 0.55; }
+.eureka-btn:hover { background: var(--accent); color: #fff; opacity: 1; border-style: solid; }
+.eureka-btn:active { transform: scale(0.96); }
+.eureka-toast { position: fixed; bottom: 32px; right: 32px; background: #1a1a1a; color: #fff; padding: 12px 20px; border-radius: 10px; font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 9999; opacity: 0; transform: translateY(12px); transition: opacity 240ms ease, transform 240ms ease; pointer-events: none; }
+.eureka-toast.show { opacity: 1; transform: translateY(0); }
+  footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 680px) {
+    .masthead-inner { align-items: center; }
+    .edition-strip { padding-right: 12px; padding-left: 12px; }
+    .edition-strip-text { padding-right: 0; }
+    .edition-return-link { position: static; transform: none; margin-top: 8px; font-size: 11px; }
+    .card-controls { margin-left: 0; }
+    .card-body { grid-template-columns: 1fr; }
+    .lang-col.cn { border-right: none; border-bottom: 1px solid #f0ece4; }
+    .edition-strip .edition-sep { margin: 0 5px; }
+    .intro-inner { padding-left: 14px; }
+    .intro p { line-height: 1.84; }
+  }
+</style>
+</head>
+<body data-publish-date="2026-06-05" data-issue-number="17" data-edition-name="双语精选版" data-view-label-rewrite="速读" data-view-label-original="原文" data-author-identities-path="/Users/jianan/.follow-builders/assets/author-identities.json" data-avatar-manifest-path="/Users/jianan/.follow-builders/assets/avatar-manifest.json">
+  <header class="masthead">
+    <hr class="masthead-rule">
+    <div class="masthead-inner">
+      <div class="masthead-title">AI Builders Digest</div>
+    </div>
+    <div class="masthead-subtitle">Bilingual edition · 双语对照版</div>
+    <div class="edition-strip">
+      <span class="edition-strip-text" id="edition-strip-text">第 17 期｜2026-06-05｜双语精选版｜10 条精选｜10 位作者｜5 个主题</span>
+      <a class="edition-return-link" href="../index.html">返回目录</a>
+    </div>
+  </header>
+
+  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="今天只有一条主线，但它够大：Anthropic 宣布 Claude Cowork 用量翻倍，Claude 官方号的帖子拿下 8,810 赞——这是近期 AI 工具侧最高互动的产品动态之一。Boris Cherny 紧跟着解释了 Cowork 最适合长尾、跨会话的脏活，并剧透了「一个月后到期」的稀缺感。
+
+另一条暗线是 agent 基础设施在悄悄变厚：Vercel 发布了 Skills API（被比作「agent 的 npm registry」）并解耦了 agent 文件系统状态；OpenAI 的 Codex 在纸面问题持续收敛的同时 adoption 在爬升。Garry Tan 也在推 GBrain + OpenClaw / Hermes Agent，agent 操作系统层的拼图正在加速合拢。
+
+Aaron Levie 写了一条长帖，核心论点值得咀嚼：编程已经是 AI 能自动化的事里最「容易」的那一类——代码可验证、上下文已数字化、用户高度技术化——如果连编程都还需要人类工程师大量参与，那其他知识工作的自动化只会更难。这不是泼冷水，是提醒我们把期望值校准到正确位置。
+
+Today&#39;s dominant headline needs little introduction: Anthropic doubled Claude Cowork usage limits, and the official Claude account&#39;s announcement hit 8,810 likes — one of the highest-engagement product updates in recent AI-tooling memory. Boris Cherny followed up with a clear articulation of where Cowork shines: research across dozens of accounts, recurring reports, inbox triage. The month-long window adds a welcome dose of urgency.
+
+The infrastructure layer keeps thickening too. Vercel shipped a Skills API — pitched as &#39;the npm registry for agent capabilities&#39; — and decoupled agent filesystem state from sandbox lifecycle. OpenAI&#39;s Codex is quietly reducing papercuts while adoption climbs. Garry Tan surfaced GBrain powering OpenClaw and Hermes Agent. The agent OS puzzle pieces are clicking into place faster than most people realize.
+
+Aaron Levie wrote the most thoughtful thread of the day: coding is arguably the best-case scenario for AI automation — verifiable output, digitized context, highly technical users — and yet human engineers remain in fierce demand. If that&#39;s the ceiling, knowledge-work automation elsewhere will be harder, not easier. It&#39;s less a bear case and more a calibration reminder.">
+    <div class="intro-inner">
+      <div class="intro-kicker">编者导语 / Editor&#39;s Note</div>
+      <p class="intro-copy">今天只有一条主线，但它够大：Anthropic 宣布 Claude Cowork 用量翻倍，Claude 官方号的帖子拿下 8,810 赞——这是近期 AI 工具侧最高互动的产品动态之一。Boris Cherny 紧跟着解释了 Cowork 最适合长尾、跨会话的脏活，并剧透了「一个月后到期」的稀缺感。
+
+另一条暗线是 agent 基础设施在悄悄变厚：Vercel 发布了 Skills API（被比作「agent 的 npm registry」）并解耦了 agent 文件系统状态；OpenAI 的 Codex 在纸面问题持续收敛的同时 adoption 在爬升。Garry Tan 也在推 GBrain + OpenClaw / Hermes Agent，agent 操作系统层的拼图正在加速合拢。
+
+Aaron Levie 写了一条长帖，核心论点值得咀嚼：编程已经是 AI 能自动化的事里最「容易」的那一类——代码可验证、上下文已数字化、用户高度技术化——如果连编程都还需要人类工程师大量参与，那其他知识工作的自动化只会更难。这不是泼冷水，是提醒我们把期望值校准到正确位置。
+
+Today&#39;s dominant headline needs little introduction: Anthropic doubled Claude Cowork usage limits, and the official Claude account&#39;s announcement hit 8,810 likes — one of the highest-engagement product updates in recent AI-tooling memory. Boris Cherny followed up with a clear articulation of where Cowork shines: research across dozens of accounts, recurring reports, inbox triage. The month-long window adds a welcome dose of urgency.
+
+The infrastructure layer keeps thickening too. Vercel shipped a Skills API — pitched as &#39;the npm registry for agent capabilities&#39; — and decoupled agent filesystem state from sandbox lifecycle. OpenAI&#39;s Codex is quietly reducing papercuts while adoption climbs. Garry Tan surfaced GBrain powering OpenClaw and Hermes Agent. The agent OS puzzle pieces are clicking into place faster than most people realize.
+
+Aaron Levie wrote the most thoughtful thread of the day: coding is arguably the best-case scenario for AI automation — verifiable output, digitized context, highly technical users — and yet human engineers remain in fierce demand. If that&#39;s the ceiling, knowledge-work automation elsewhere will be harder, not easier. It&#39;s less a bear case and more a calibration reminder.</p>
+    </div>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 01</div>
+    <h2 class="section-title">Claude Cowork 用量翻倍 / Limits Doubled</h2>
+    <p class="section-desc">Anthropic 宣布 Claude Cowork 未来一个月用量翻倍。Claude 官方号拿下 8,810 赞——近期 AI 工具侧最高互动动态。Boris Cherny 详解 Cowork 的适用场景。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="claudeai" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>全场最高互动帖（8,810 赞）：Anthropic 的 Claude 官方号宣布，未来一个月（至 7 月 5 日）Claude Cowork 在所有付费计划上用量翻倍。文案直接：「把更大、更复杂的任务交给 Claude。」没有 beta 标签，没有 waitlist——现在就可用。</p>
+              <p>官方在跟帖里附上了桌面端下载链接和明确的截止日期。一个月的窗口制造了自然的试用紧迫感，而 8.8K 的互动量说明市场对长运行 agent 工作负载的需求是真实且正在增长的。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Claude Cowork 用量翻倍，为期一个月。把更大、更复杂的任务交给 Claude。</p>
+              <p>现在在所有付费计划上线，至 7 月 5 日。下载 Claude 桌面端试试 Cowork。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>The day&#39;s top post (8,810 likes): Anthropic&#39;s official Claude account announced that Cowork usage limits have been doubled across all paid plans for the next month, through July 5. The framing is deliberately inviting: &#39;Delegate bigger, more complex tasks to Claude.&#39;</p>
+              <p>The announcement thread included a direct call to action — download the Claude desktop app and give Cowork a try. This isn&#39;t a beta or waitlist; it&#39;s live now on all paid plans. The one-month window creates a natural trial period, and the 8.8K engagement suggests the appetite for long-running agent workloads is real and growing.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>We&#39;ve doubled usage limits in Claude Cowork for the next month. Delegate bigger, more complex tasks to Claude.</p>
+              <p>Live now on all paid plans through July 5. Download the Claude desktop app to give Cowork a try.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/claudeai/status/2063018337567670285" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/claudeai/status/2063018337567670285" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="bcherny" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Claude Code 团队的 Boris Cherny 紧跟官方公告，清晰划定了 Cowork 的最佳战场：那些对单次聊天来说太大的工作——跨几十个账号的研究、周期性报告、收件箱分类和草拟回复。这些脏活跨会话、需要后台运行，正是 agent 模式（委托→走开→回来收结果）区别于 chat 模式的分界线。</p>
+              <p>这个定位很有用，因为它把抽象的产品升级翻译成了可操作的决策框架：如果你的任务跨多个账号、包含周期性模式、或需要后台处理——那就是 Cowork 的地盘。他还加了一句邀请：「如果你好奇，这个月是搞清楚它能卸掉你多少负担的好时机。」</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Cowork 最适合那些对单次聊天来说太大的工作：跨几十个账号的研究、周期性报告、收件箱分类和草拟回复。</p>
+              <p>如果你好奇，这个月是搞清楚它能卸掉你多少负担的好时机。期待看到你们做什么。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Boris Cherny, who works on Claude Code at Anthropic, followed the announcement with a clear articulation of where Cowork is at its best: work that&#39;s too big for a chat. Research across dozens of accounts, recurring reports, triaging inbox and drafting replies — the kind of messy, cross-session tasks that don&#39;t fit neatly into a single prompt.</p>
+              <p>His framing is useful because it draws a sharp line between chat-mode AI (one prompt, one response, iterative refinement) and agent-mode AI (delegate, walk away, come back to results). If you&#39;ve been curious about where that boundary lies in practice, he&#39;s effectively given you the test: if the task spans multiple accounts, involves recurring patterns, or requires background processing, it&#39;s Cowork territory.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Cowork is at its best on work that&#39;s too big for a chat: research across dozens of accounts, recurring reports, triaging my inbox and drafting replies.</p>
+              <p>If you&#39;ve been curious, this is a good month to find out what it can take off your plate. Can&#39;t wait to see what you do.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/bcherny/status/2063028956211867837" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/bcherny/status/2063028956211867837" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 02</div>
+    <h2 class="section-title">Agent 基础设施推进 / Infrastructure Advances</h2>
+    <p class="section-desc">Vercel 发布 Skills API 并解耦 agent 文件系统状态。OpenAI Codex 在收敛纸面问题的同时 adoption 爬升。Garry Tan 展示 GBrain 为 OpenClaw / Hermes 提供动力。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="rauchg" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Vercel CEO Guillermo Rauch 在这个周期发布了两项重要的基础设施更新。Skills API——他描述为「agent 能力与可扩展性的 npm registry，免费且开放」——是更高层的策略：一个跨平台共享、可发现的 agent 技能层。</p>
+              <p>第二项更底层：agent 文件系统状态现在可以独立于 Sandbox 生命周期进行读、写和挂载。Rauch 形容为「一套为所有计算产品设计的新型虚拟存储基础设施——存储解耦，但可附加到 Builds、Functions、Sandboxes 等多个产品上。」两项更新合在一起，勾勒出一个 agent 既有共享能力层（npm 层）、又有持久可移植状态层（文件系统层）的基础设施蓝图。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>使用 Skills API 让你的所有 agent 和平台更聪明。把它看作 agent 能力和可扩展性的 npm registry。免费且开放。</p>
+              <p>Agent 文件系统状态现在可以独立于 Sandbox 生命周期进行读、写和挂载。我们一直在为所有计算产品开发一套新型虚拟存储基础设施。存储解耦，但可附加到 Builds、Functions、Sandboxes 等。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Vercel CEO Guillermo Rauch shipped two significant infrastructure updates this cycle. The Skills API — which he describes as &#39;the npm registry for agent capabilities and extensibility, free and open&#39; — is the higher-level play: a shared, discoverable layer for agent skills across platforms.</p>
+              <p>The second update is a lower-level storage primitive: agent filesystem state can now be read, written, and mounted independently of Sandbox lifecycle. Rauch describes it as &#39;a novel virtual storage infrastructure solution for all our compute products — storage that&#39;s decoupled, but attachable to Builds, Functions, Sandboxes and more.&#39; Together, these two moves sketch a vision where agents get both shared capabilities (the npm layer) and persistent, portable state (the filesystem layer).</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Use the Skills API to make all your agents and platforms smarter. Think of it as the npm registry for agent capabilities and extensibility. Free and open.</p>
+              <p>Agent filesystem state can now be read, written and mounted independently of Sandbox lifecycle. We&#39;ve been developing a novel virtual storage infrastructure solution for all our compute products. Storage that&#39;s decoupled, but attachable to Builds, Functions, Sandboxes and more.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/rauchg/status/2062951924677128455" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/rauchg/status/2062951924677128455" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="thsottiaux" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>OpenAI 的 Thibault Sottiaux（Codex &amp; ChatGPT 团队）用一条三词公式拿下 1,675 赞：「更好的记忆 = 更短的 prompt = 每 token 更高的效用。」这是产品团队把第一性原理内化到可以压缩成口号的程度：每一个花在重建上下文上的 token，都是没花在干正事上的 token。</p>
+              <p>在另一条帖子里（976 赞），他贴出图表显示 Codex 的纸面问题（papercuts）趋势向下、adoption 趋势向上——开发者工具「跨越鸿沟」的经典信号。当一个工具的摩擦力在缩小、用户量在扩大的时候，通常意味着产品找到了可重复的高价值工作流，不再需要持续手把手。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>更好的记忆 = 更短的 prompt = 每 token 更高的效用</p>
+              <p>Codex 纸面问题 📉
+              Codex 采用率 📈</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>OpenAI&#39;s Thibault Sottiaux (Codex &amp; ChatGPT) posted a crisp three-word thesis that resonated (1,675 likes): &#39;Better memory = Shorter prompts = More utility per token.&#39; It&#39;s the kind of compression that signals a product team has internalized a first principle — every token spent on re-establishing context is a token not spent on doing useful work.</p>
+              <p>In a separate post (976 likes), he shared a chart showing Codex papercuts trending down while adoption trends up — the classic &#39;crossing the chasm&#39; signal for developer tools. When a tool&#39;s friction surface shrinks at the same time its user base expands, it usually means the product has found repeatable, high-value workflows that don&#39;t need constant hand-holding.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Better memory = Shorter prompts = More utility per token</p>
+              <p>Codex papercuts 📉
+              Codex adoption 📈</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/thsottiaux/status/2062966625733861752" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/thsottiaux/status/2062966625733861752" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="garrytan" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Y Combinator CEO Garry Tan 展示了一项新集成：「GBrain 为 OpenClaw 和 Hermes Agent 插上了翅膀。」GBrain 被定位为 agent 平台背后的认知引擎——不是独立的 agent，而是让 agent 在规划和执行上更聪明的推理层。与 OpenClaw（多 agent 编排框架）和 Hermes 的联动暗示了一个正在成型的栈：专用推理模型为通用 agent 运行时提供智力支撑。</p>
+              <p>另一条帖子里，Tan 预告了一个他筹备了几个月的项目终于可试：「现在终于可以尝试我几个月前开始挑逗的那个大项目了。我们希望它能越来越好地帮助你学习构建更好软件的最佳技术。」细节仍保密，但「学习最佳技术来更快构建更好软件」的定位暗示这更像是教育或技能层产品，而不是纯基础设施。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>GBrain 为 OpenClaw 和 Hermes Agent 插上了翅膀</p>
+              <p>现在终于可以尝试我几个月前开始挑逗的那个大项目了。我们希望它能越来越好地帮助你学习构建更好软件的最佳技术，更快。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Y Combinator CEO Garry Tan surfaced a new integration: &#39;GBrain gives OpenClaw and Hermes Agent wings.&#39; GBrain is positioned as the cognitive engine behind agent platforms — not a standalone agent, but the reasoning layer that makes agents smarter at planning and executing. The mention alongside OpenClaw (the multi-agent orchestration framework) and Hermes suggests an emerging stack where specialized reasoning models complement general-purpose agent runtimes.</p>
+              <p>In a separate post about a project he&#39;s been teasing for months, Tan wrote: &#39;You can now finally try one of those big projects I was teasing that I started working on a few months ago. We want this to over time get better at helping you learn the best techniques to build better software, faster.&#39; The details are still under wraps, but the framing — &#39;learn the best techniques to build better software&#39; — suggests an educational or skill-building layer rather than a pure infrastructure product.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>GBrain gives OpenClaw and Hermes Agent wings</p>
+              <p>You can now finally try one of those big projects I was teasing that I started working on a few months ago. We want this to over time get better at helping you learn the best techniques to build better software, faster.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/garrytan/status/2063157328753594505" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/garrytan/status/2063157328753594505" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 03</div>
+    <h2 class="section-title">AI 编程的边界与未来 / Coding&#39;s Automation Frontier</h2>
+    <p class="section-desc">Aaron Levie 长文论证编程是 AI 自动化最理想场景——即便如此人类工程师仍供不应求。Ryo Lu 展示 Cursor 中「设计即代码」的新范式。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="levie" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Box CEO Aaron Levie 写了当天分析力最强的长帖（283 赞）。核心论点：编程基本上是 AI 自动化中最理想的目标场景——模型在海量高质量代码上训练、用户高度技术化、输出可验证（跑一下就知道对不对）、上下文已数字化在代码库中、代码质量与产品结果甚至经常脱耦（烂代码也能跑出好产品）。每一项都是 AI agent 梦寐以求的条件。</p>
+              <p>然而，即便拥有所有这些优势，人类工程师仍然供不应求。他的结论：「如果连编程在这种条件下都需要人类工程师大量参与，那其他知识工作领域的自动化风险只会被高估。Agent 会让人们比过去做更多事，但人不会消失。」这不是泼冷水，是把期望值校准到一个清醒的位置。如果最理想的自动化目标仍需人类监督，其他领域只会更难。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>编程基本上是你能用 AI 合理自动化的终极场景，但我们仍然需要人类工程师来监督 agent 才能让它们有效。AI 模型在海量复杂代码上训练。用户高度技术化，能快速使用最新工具。工作成果可验证——你可以测试应用。结果往往与代码质量脱钩（烂代码也能跑出好产品）。agent 的上下文往往已经数字化在代码库中。</p>
+              <p>AI 编码 agent 享有大量优势。其中一些适用于知识工作，但大多数不适用——尤其是那些需要全面审阅才有用的工作，或数据没那么丰富的领域。这让 agent 在知识工作中更复杂。所以如果连这种条件下工程师都还很抢手，其他知识工作的风险只会比感知到的更低。Agent 会让人们做比以前更多的事，但人不会消失。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Box CEO Aaron Levie wrote the day&#39;s most analytically rigorous thread (283 likes). His core argument: coding is essentially the best-case scenario for AI automation — the models are trained on enormous amounts of sophisticated code, the users are highly technical, the output is verifiable (you can test the app), the context is already digitized in the codebase, and the outcome quality is often decoupled from code quality (sloppy code can still ship a working app).</p>
+              <p>And yet, with all of those advantages, human engineers remain in very high demand. His conclusion: &#39;If with all of that, engineers still remain in very high demand, the risks are going to be less than what&#39;s perceived for other areas of knowledge work. Agents will let people do far more than they did before, but the people don&#39;t go away.&#39; It&#39;s a sobering calibration for anyone who&#39;s been forecasting mass displacement of knowledge workers. If coding — the ideal automation target — still needs human oversight, everything else needs it more.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Coding is basically the pinnacle of what you could reasonably automate with AI, and yet we still need human engineers to oversee agents for them to be effective. The AI models are trained on an incredible amount of sophisticated code. The users are highly technical and can use the latest tools quickly. The work is &#39;verifiable&#39; because you can test an app. The outcomes are often removed from the quality of the code (you can have sloppy code but the app can still work). And the context for the agent is often already digitized and sitting in the codebase.</p>
+              <p>That&#39;s an incredible amount of benefits that AI coding agents get to work with. Some of those apply to knowledge work, but most don&#39;t in areas where the work needs to be fully reviewed to be useful, or where data isn&#39;t as abundantly digitized. This makes the job for agents in knowledge work more complicated. So if with all of that, engineers still remain in very high demand, the risks are going to be less than what&#39;s perceived for other areas of knowledge work. Agents will let people do far more than they did before, but the people don&#39;t go away.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/levie/status/2063055332545540096" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/levie/status/2063055332545540096" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="ryolu_" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Cursor 设计师 Ryo Lu 展示了最新的 Composer 2.5 工作流（288 赞）：「在代码中做设计现在简单到这个程度：点击、聊天、按住 shift 多选。」他展示的交互模型不只是快——而是在压缩设计意图和代码输出之间的距离。点击定位元素，聊天描述需求，shift 多选批量编辑组件。</p>
+              <p>这就是 Figma 和 Cursor 从相反方向赛跑交汇的那个点——设计工具向代码编辑器的收敛。Ryo 之前在 Notion、Stripe 和创业公司的经历给了他一个罕见的视角：要真正替代传统设计工具，「在代码中做设计」需要长成什么样。shift-多选这个手势看起来简单，却是只有观察真实用户工作才会长出来的细节。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>在代码中做设计现在简单到：
+              点击、聊天、按住 shift 多选。
+
+              配合 Composer 2.5 最佳</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Cursor designer Ryo Lu demonstrated the latest Composer 2.5 workflow (288 likes): &#39;Designing in code is now as easy as: click, chat, hold shift to multi-select.&#39; The interaction model he&#39;s showing isn&#39;t just about speed — it&#39;s about collapsing the gap between design intent and code output. Click to target an element, chat to describe what you want, shift-select to batch-edit multiple components.</p>
+              <p>This is the design-tool-to-code-editor convergence that Figma and Cursor are both racing toward from opposite directions. Ryo&#39;s former experience at Notion, Stripe, and startups gives him a rare lens on what &#39;design in code&#39; actually needs to feel like for it to replace traditional design tools — and the shift-to-multi-select gesture is the kind of detail that only comes from watching real users work.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>designing in code is now as easy as:
+              click, chat, hold shift to multi-select.
+
+              works best with Composer 2.5</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/ryolu_/status/2063038983408615435" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/ryolu_/status/2063038983408615435" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 04</div>
+    <h2 class="section-title">工程方法论 / Engineering Practices</h2>
+    <p class="section-desc">Swyx 提出「把任务框定为问题」的 prompt 技巧。Peter Yang 系统化分享可自我检查、自我进化的 AI skill 构建方法论。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="swyx" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx 给越来越流行的「始终使用 plan mode」建议提出了一个更聪明的替代方案：把任务框定为问题，这样模型会被邀请去质疑和评估想法质量、提出替代方案，而不是盲目执行你「说」的——你说的往往不是你真正「想」的。</p>
+              <p>这个建议的优雅之处在于它的极简：「在 prompt 末尾加个问号往往就够了。」一个字符的改变，把模型从执行模式切换到了咨询模式。在这个人人都忙着构建复杂多步 prompt 框架的时代，Swyx 在提醒我们：有时候最高杠杆的干预手段是语法层面的。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>一个比「始终使用 plan mode」更聪明的替代方案：始终把任务框定为问题，这样模型会被邀请去质疑和评估想法质量、提出替代方案，而不是盲目执行你「说」要做的（这往往不是你真正「想」要的）。在 prompt 末尾加个问号往往就够了。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx proposed a smarter alternative to the increasingly popular &#39;always use plan mode&#39; advice: frame your task as a question, so the model is invited to push back and rate the quality of the idea or suggest alternatives, rather than blindly executing what you said — which is often not precisely what you meant.</p>
+              <p>The elegance of this advice is in its minimalism: &#39;Literally just appending &quot;?&quot; to the end of your prompt often does it.&#39; It&#39;s a one-character change to your workflow that shifts the model from execution mode to consultation mode. In an era where everyone is building complex multi-step prompting frameworks, Swyx is reminding us that sometimes the highest-leverage intervention is grammatical.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>a smarter alternative to &#39;always use plan mode&#39;: always frame your task as a question, so that the model is invited to push back and rate the quality of the idea/suggest alternatives, rather than blindly execute what you SAID to do (which is often not precisely what you MEANT). literally just appending &#39;?&#39; to the end of your prompt often does it</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/swyx/status/2063082950317486133" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/swyx/status/2063082950317486133" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="petergyang" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang 发布了一套构建「可自我检查、自我进化」AI skill 的五步框架（154 赞）。步骤是刻意累积的：（1）给上下文——展示好的输出示例让 AI 内化质量标准。（2）让触发变简单——用标准化描述让 skill 易于调用。（3）加 evals——10 条常见错误的 pass/fail 清单。（4）加 memory——从过往对话中提取一句话经验持续记录。（5）元技能——构建一个能编辑其他 skill 的 skill，清理重复、过时指令、模糊规则和「AI 水话」。</p>
+              <p>第五步最有趣，因为它闭环了：一个维护其他 skill 的 skill 是最接近自进化 agent 的东西，而且不需要复杂的基础设施。这套框架刻意设计为在现有工具约束内运行——不需要向量数据库、不需要 RAG 流水线，只有 markdown 文件和 evals 清单。这是「无聊但有效」的 AI 工程流派，对大多数人来说可能比任何前沿 agent 架构都更有用。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>如何构建可自我检查、自我进化的 AI skill：1. 给上下文——「为这个重复任务创建一个 skill。这里是好输出的示例，让它知道好是什么样子。」2. 让触发变简单——「用这个模式写一个清晰的 skill 描述：当用户想要做这个时使用。」3. 加 evals——「创建一个包含 10 个常见错误 pass/fail 检查的 evals md。」4. 加 memory——「创建一个 memory md 来捕获使用这个 skill 的过往对话中的一句话经验。」5. 构建编辑 skill 的 skill——「创建一个 skill 来清理其他 skill，移除重复或过时指令、模糊规则和 AI 水话。」</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang published a practical five-step framework for building AI skills that check their own work and improve over time (154 likes). The progression is deliberately cumulative: (1) Give the AI context by showing examples of good output so it internalizes quality standards. (2) Make skills easy to trigger with clear, standardized descriptions. (3) Add evals — a simple pass/fail checklist of 10 common errors. (4) Add memory — a running log of one-sentence learnings from past sessions. (5) Meta: build a skill that edits other skills — cleaning up duplicates, stale instructions, vague rules, and &#39;AI slop.&#39;</p>
+              <p>Step 5 is the most interesting because it closes the loop: a skill that maintains other skills is the closest thing to a self-improving agent without requiring complex infrastructure. The framework is explicitly designed to work within current tool constraints — no vector databases, no RAG pipelines, just markdown files and evals checklists. It&#39;s the &#39;boring but effective&#39; school of AI engineering, and it&#39;s probably more useful to more people than any cutting-edge agent architecture.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>How to build AI skills that check their own work and improve over time: 1. Give it context: Ask AI &#39;Create a skill for this repeated task. Here are examples of good output so it knows what good looks like.&#39; 2. Make it easy to trigger: &#39;Write a clear skill description using this pattern: Use when the user wants to do this.&#39; 3. Add evals: &#39;Create an evals md with 10 pass/fail checks for common errors in the skill&#39;s output.&#39; 4. Add memory: &#39;Create a memory md to capture one-sentence learnings from past chats using this skill.&#39; 5. Build a skill to edit skills: &#39;Create a skill that cleans up other skills by removing duplicate or stale instructions, vague rules, and AI slop.&#39;</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/petergyang/status/2062899832965255443" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/petergyang/status/2062899832965255443" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 05</div>
+    <h2 class="section-title">播客精选 / Podcast Highlight</h2>
+    <p class="section-desc">Every 的 AI &amp; I 播客请到 Figma 开发者产品总监 Matt Colyer，讨论 SaaS 末日论为什么其实是金矿。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="every" data-author-name="Dan Shipper x Matt Colyer" data-author-tag="AI &amp; I by Every" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Dan Shipper x Matt Colyer avatar"><span class="avatar-fallback">DS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Dan Shipper x Matt Colyer</div>
+            <div class="author-tag is-inline">AI &amp; I by Every</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Dan Shipper 与 Figma 开发者产品总监 Matt Colyer 的对谈重新框定了「SaaS 末日论」这个叙事。Colyer 的核心论点：传统 SaaS 利润率的崩塌不是末日——对那些理解开发者受众即将从约 3,000 万膨胀到潜在 10 亿级的企业来说，这是金矿。</p>
+              <p>主线：Figma 一直在重注投入开发者平台——插件、API、Dev Mode，以及现在的 AI 原生设计工具。Colyer 认为「技术的民主化」意味着会有巨量软件被建造出来，而提供画布、原语和分发的公司将捕获不成比例的价值。对谈覆盖了 Figma 如何把 AI 视为设计伙伴而非替代品、为什么设计工具中的开发者角色正变得比设计师角色更重要，以及为「人人都是开发者」的世界做产品意味着什么。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>SaaS 末日，或者说软件的下一个时代。我对此非常兴奋，我想 Figma 和很多其他 SaaS 公司也是如此。我在开发者工具领域工作了很长时间，也许五到十年前，全球开发者数量的估计是 2,500 万、3,000 万、4,000 万左右。我觉得这个时代最令人兴奋的是，我认为这个数字会变成 10 亿，甚至更多。我们正在经历一个不可思议的产品开发和技术民主化时代。</p>
+              <p>我认为最终结果是世界上会有大量的软件。如果你在那个领域，这意味着它是一个金矿。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Dan Shipper sits down with Matt Colyer, Director of Product Management for Developers at Figma, for a conversation that reframes the &#39;SaaS apocalypse&#39; narrative. Colyer&#39;s thesis: the collapse of traditional SaaS margins isn&#39;t a doom story — it&#39;s a goldmine for companies that understand the developer audience is about to explode from ~30 million to potentially a billion people who can build software.</p>
+              <p>The core thread: Figma has been investing heavily in its developer platform — plugins, APIs, the Dev Mode, and now AI-native design tools. Colyer argues that the &#39;democratization of technology&#39; means dramatically more software gets built, and the companies that provide the canvas, the primitives, and the distribution will capture disproportionate value. The conversation covers how Figma thinks about AI as a design partner rather than a replacement, why the developer persona inside design tools is becoming more important than the designer persona, and what it means to build for a world where &#39;everyone is a developer.&#39;</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The SaaS apocalypse or the next era of software, if you will. I&#39;m really excited about it, and I think Figma and a lot of other SaaS businesses are too. Because, like, I&#39;ve worked in developer tools for a long time, and maybe five, ten years ago, the estimate of number of developers worldwide was like 25,000,000, 30,000,000, 40,000,000, give or take. I think what&#39;s most exciting about this time is that I think it&#39;s gonna be like a billion, maybe even more than that. I think there&#39;s this incredible time that we&#39;re moving through of product development and really the democratization of technology.</p>
+              <p>I think the end result is that there is dramatically more software out there in the world. If you&#39;re in that space, it means it&#39;s a gold mine.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://www.youtube.com/watch?v=kYKebKB3-d0" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="Dan Shipper x Matt Colyer" data-url="https://www.youtube.com/watch?v=kYKebKB3-d0" data-author="Dan Shipper x Matt Colyer">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <footer data-source-note="Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-05 source feeds.">Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-05 source feeds.</footer>
+
+  <script>
+    function getTemplateAuthorSources() {
+      const sources = window.AI_BUILDERS_TEMPLATE_SOURCES || {};
+      return { identities: sources.identities || {}, avatars: sources.avatars || {} };
+    }
+
+    function getAuthorInitials(name) {
+      return (name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(function(part) { return part[0]; }).join('').toUpperCase();
+    }
+
+    function hydrateTemplateCopy() {
+      const intro = document.querySelector('.intro');
+      if (intro) {
+        const kicker = intro.querySelector('.intro-kicker');
+        const copy = intro.querySelector('.intro-copy');
+        if (kicker) kicker.textContent = intro.dataset.kicker || '';
+        if (copy) copy.textContent = intro.dataset.text || '';
+      }
+
+      const footer = document.querySelector('footer');
+      if (footer) footer.textContent = footer.dataset.sourceNote || '';
+
+      const rewriteLabel = document.body.dataset.viewLabelRewrite || '速读';
+      const originalLabel = document.body.dataset.viewLabelOriginal || '原文';
+      document.querySelectorAll('.view-toggle').forEach(function(button) {
+        if (button.dataset.viewTarget === 'rewrite') button.textContent = rewriteLabel;
+        if (button.dataset.viewTarget === 'original') button.textContent = originalLabel;
+      });
+    }
+
+    function hydrateAuthorMeta() {
+      const sources = getTemplateAuthorSources();
+      document.querySelectorAll('.card').forEach(function(card) {
+        const authorKey = card.dataset.authorKey || '';
+        const identity = sources.identities[authorKey] || {};
+        const avatarEntry = sources.avatars[authorKey] || {};
+
+        const name = identity.name || card.dataset.authorName || '';
+        const rawHandle = identity.handle || card.dataset.authorHandle || '';
+        const handle = rawHandle && rawHandle.startsWith('@') ? rawHandle : (rawHandle ? '@' + rawHandle : '');
+        const tag = identity.label || card.dataset.authorTag || '';
+        const avatar = avatarEntry.fileUrl || avatarEntry.localPath || card.dataset.authorAvatar || '';
+
+        const nameNode = card.querySelector('.author-name');
+        const tagNode = card.querySelector('.author-tag');
+        const handleNode = card.querySelector('.author-handle');
+        const avatarNode = card.querySelector('.avatar');
+        const avatarImg = card.querySelector('.avatar img');
+        const avatarFallback = card.querySelector('.avatar-fallback');
+
+        if (nameNode) nameNode.textContent = name;
+        if (tagNode) tagNode.textContent = tag;
+        if (handleNode) handleNode.textContent = handle;
+        if (avatarImg) {
+          avatarImg.src = avatar;
+          avatarImg.alt = name ? name + ' avatar' : 'Author avatar';
+        }
+        if (avatarNode) avatarNode.classList.toggle('is-fallback', !avatar);
+        if (avatarFallback) avatarFallback.textContent = getAuthorInitials(name);
+      });
+    }
+
+    function updateEditionStrip() {
+      const publishDate = document.body.dataset.publishDate;
+      const editionName = document.body.dataset.editionName || '双语精选版';
+      const editionStrip = document.getElementById('edition-strip-text');
+      if (!publishDate || !editionStrip) return;
+
+      const issueNumber = document.body.dataset.issueNumber || '';
+      if (!issueNumber) return;
+
+      const selectedCount = document.querySelectorAll('.card').length;
+      const authorCount = new Set([].slice.call(document.querySelectorAll('.author-handle')).map(function(node) { return node.textContent.trim(); }).filter(Boolean)).size;
+      const themeCount = document.querySelectorAll('.section-header').length;
+      const parts = ['第 ' + issueNumber + ' 期', publishDate, editionName, selectedCount + ' 条精选', authorCount + ' 位作者', themeCount + ' 个主题'];
+      editionStrip.innerHTML = parts.map(function(part) { return '<span class="edition-item">' + part + '</span>'; }).join('<span class="edition-sep">|</span>');
+    }
+
+    function measureVariantHeight(variant) {
+      const prevPosition = variant.style.position;
+      const prevInset = variant.style.inset;
+      const prevVisibility = variant.style.visibility;
+      const prevPointerEvents = variant.style.pointerEvents;
+      const prevOpacity = variant.style.opacity;
+      const prevTransform = variant.style.transform;
+      const prevTransition = variant.style.transition;
+      const prevOverflowY = variant.style.overflowY;
+      const prevDisplay = variant.style.display;
+
+      variant.style.position = 'relative';
+      variant.style.inset = 'auto';
+      variant.style.visibility = 'hidden';
+      variant.style.pointerEvents = 'none';
+      variant.style.opacity = '1';
+      variant.style.transform = 'none';
+      variant.style.transition = 'none';
+      variant.style.overflowY = 'visible';
+      variant.style.display = 'block';
+
+      const height = variant.scrollHeight;
+
+      variant.style.position = prevPosition;
+      variant.style.inset = prevInset;
+      variant.style.visibility = prevVisibility;
+      variant.style.pointerEvents = prevPointerEvents;
+      variant.style.opacity = prevOpacity;
+      variant.style.transform = prevTransform;
+      variant.style.transition = prevTransition;
+      variant.style.overflowY = prevOverflowY;
+      variant.style.display = prevDisplay;
+
+      return Math.ceil(height);
+    }
+
+    function getTargetHeight(shell, target) {
+      const variant = shell.querySelector('.content-variant[data-view="' + target + '"]');
+      return measureVariantHeight(variant);
+    }
+
+    function syncShellHeights() {
+      document.querySelectorAll('.content-shell').forEach(function(shell) {
+        const active = shell.querySelector('.content-variant.is-active');
+        const target = active ? active.dataset.view : 'rewrite';
+        shell.style.height = getTargetHeight(shell, target) + 'px';
+      });
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', function() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(syncShellHeights, 120);
+    });
+
+    document.querySelectorAll('.card').forEach(function(card) {
+      const buttons = card.querySelectorAll('.view-toggle');
+      const shells = card.querySelectorAll('.content-shell');
+
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          const target = button.dataset.viewTarget;
+          if (button.classList.contains('is-active')) return;
+
+          buttons.forEach(function(btn) {
+            btn.classList.toggle('is-active', btn === button);
+          });
+
+          shells.forEach(function(shell) {
+            const current = shell.querySelector('.content-variant.is-active');
+            const next = shell.querySelector('.content-variant[data-view="' + target + '"]');
+            if (!current || !next || current === next) return;
+
+            shell.style.height = shell.offsetHeight + 'px';
+            requestAnimationFrame(function() {
+              current.classList.remove('is-active');
+              next.classList.add('is-active');
+              shell.style.height = getTargetHeight(shell, target) + 'px';
+            });
+          });
+        });
+      });
+    });
+
+    hydrateTemplateCopy();
+    hydrateAuthorMeta();
+    updateEditionStrip();
+    syncShellHeights();
+
+    // Eureka save buttons
+    var EUREKA_URL = 'http://127.0.0.1:8087/eureka';
+    function showToast(msg, isError) {
+      var t = document.querySelector('.eureka-toast');
+      if (!t) {
+        t = document.createElement('div');
+        t.className = 'eureka-toast';
+        document.body.appendChild(t);
+      }
+      t.textContent = msg;
+      if (isError) t.style.background = '#c0392b';
+      else t.style.background = '#1a1a1a';
+      t.classList.add('show');
+      setTimeout(function() { t.classList.remove('show'); }, 2200);
+    }
+    document.querySelectorAll('.eureka-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var title = this.dataset.title || '';
+        var url = this.dataset.url || '';
+        var author = this.dataset.author || '';
+        var note = title ? title.slice(0, 80) : '';
+        var origText = this.textContent;
+        this.textContent = '...';
+        this.disabled = true;
+        fetch(EUREKA_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ title: note, url: url, author: author })
+        }).then(function(r) { return r.json(); })
+          .then(function(d) {
+            btn.textContent = d.ok ? '✓ Saved' : '✗ Error';
+            showToast(d.ok ? 'Saved to Eurekas ✓' : 'Save failed: ' + (d.error || 'unknown'), !d.ok);
+            if (d.ok) setTimeout(function() { btn.textContent = origText; btn.disabled = false; }, 1500);
+            else { btn.textContent = origText; btn.disabled = false; }
+          })
+          .catch(function(e) {
+            btn.textContent = origText; btn.disabled = false;
+            showToast('Eureka server not running — start it first', true);
+          });
+      });
+    });
+  </script>
+</body>
+</html>
