@@ -1,0 +1,253 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-06-07",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的头条属于一条月常提醒。Peter Steinberger 以 13,734 赞拿下近期 coding agent 帖子的最高互动——「你不再应该手写 prompt 给 agent，你该设计的是驱动 agent 的循环。」这句话在 2026 年 6 月 7 日落地，恰好踩在 agent 工程从「术」到「道」的转折点上。\n\n基础设施层也有两个值得关注的数据点：Vercel AI Gateway 月恢复 1 万亿 token——这个数字既展示了生产环境中模型调用的庞大体量，也暴露了静默失败的规模。Codex 则启动了「百人百天」计划，每天选一个用 Codex 做出惊艳成果的人——这是产品社区化、同时也是质量信号对外释放的最佳时机。\n\nAaron Levie 今天高产，两条推文 + 一期 MAD Podcast 对谈，核心论点是市场同时高估和低估了 AI 的影响：高估替代速度、低估标准抬升。Nikunj Kothari 把这个判断浓缩成一句话：从「token 焦虑」到「token 优化」的氛围跃迁，只用了几周。\n\nToday's headline belongs to a monthly ritual. Peter Steinberger's reminder hit 13,734 likes — 'You shouldn't be prompting coding agents anymore. You should be designing loops that prompt your agents.' Landing on June 7, 2026, it marks a transition point from prompt craft to agent systems design.\n\nInfrastructure had two notable signals: Vercel AI Gateway recovers 1 trillion tokens per month — a number that reveals both the scale of production model calls and the magnitude of silent failures. Codex launched a '100 people, 100 days' community program — the kind of daily showcase that signals critical user mass and consistent output quality.\n\nAaron Levie had a prolific day — two tweets plus a MAD Podcast appearance — arguing the market simultaneously over- and under-estimates AI's impact. Nikunj Kothari compressed the enterprise mood into a single observation: the vibe shift from token anxiety to token optimization happened in weeks."
+  },
+  "archive": {
+    "title": "Agent 循环设计日报",
+    "desc": "Steinberger 13.7K 赞宣告 agent 循环设计范式，Vercel Gateway 月恢复 1T token，Codex 启动百人计划，Levie 深度聊企业 AI 转型。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-07 source feeds.",
+  "sections": [
+    {
+      "title": "停止手写 Prompt，设计 Agent 循环 / Stop Prompting, Design Loops",
+      "desc": "Peter Steinberger 月常提醒拿下 13.7K 赞：你不再应该手写 prompt 给 coding agent——你该设计的是驱动 agent 的循环。这是 agent 工程范式转变的最强信号。",
+      "cards": [
+        {
+          "authorKey": "steipete",
+          "sourceUrl": "https://x.com/steipete/status/2062938561958387712",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger's monthly reminder hit 13,734 likes — making it one of the highest-engagement coding-agent posts in recent weeks. His thesis is crisp: 'You shouldn't be prompting coding agents anymore. You should be designing loops that prompt your agents.'",
+              "This isn't a subtle shift — it's a categorical one. Manual prompting treats the agent as a tool you operate; loop design treats the agent as a worker you manage. The prompt becomes infrastructure, not an ad-hoc utterance. Steinberger's been beating this drum monthly, and each time the resonance grows: the industry is moving from 'write better prompts' to 'write better prompting systems.'"
+            ],
+            "original": [
+              "Here's your monthly reminder that you shouldn't be prompting coding agents anymore. You should be designing loops that prompt your agents."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger 的月常提醒拿下 13,734 赞——这是近期 coding agent 领域最高互动的帖子之一。他的论点干脆：「你不再应该手写 prompt 给 coding agent——你该设计的是驱动 agent 的循环。」",
+              "这不是微调，是范式跃迁。手动 prompt 把 agent 当工具操作；循环设计把 agent 当工人管理。prompt 变成了基础设施，不再是即兴发挥。Steinberger 每月敲一次这个鼓，每次共鸣都在放大：行业正从「写更好的 prompt」转向「写更好的 prompting 系统」。"
+            ],
+            "original": [
+              "月常提醒：你不再应该手写 prompt 给 coding agent。你该设计的是驱动 agent 的循环。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "基础设施层加速 / Infrastructure Acceleration",
+      "desc": "Vercel AI Gateway 月恢复 1 万亿 token。Codex 启动「百人百天」社区计划。Agent 时代的基础设施在从可用走向可靠。",
+      "cards": [
+        {
+          "authorKey": "rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2062901003344261120",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch shared a staggering metric: Vercel AI Gateway recovers over 1 trillion tokens a month through smart retries on failed model calls. He explicitly compares it to Stripe's revenue recovery on failed payments — the analogy is apt: just as Stripe made payment infrastructure reliable enough for the internet economy, AI Gateway is making model inference reliable enough for production agent workloads.",
+              "The 1T token figure is both impressive and sobering. It means an enormous volume of model calls fail silently in production, and most teams don't have the instrumentation to even know it's happening. Rauch is positioning Vercel as the reliability layer between applications and model providers — 'the Stripe for tokens.'"
+            ],
+            "original": [
+              "Vercel AI Gateway recovers on average over 1T tokens a month. Much like Stripe recovers revenue with smart retries on failed payments or credit cards, we recover tokens from the best model providers with smart retries."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 分享了一个惊人的数字：Vercel AI Gateway 通过智能重试，平均每月恢复超过 1 万亿 token。他明确将之比作 Stripe 对失败支付的收入恢复——这个类比精准：正如 Stripe 让支付基础设施可靠到足以支撑互联网经济，AI Gateway 在让模型推理可靠到足以支撑生产级 agent 工作负载。",
+              "1 万亿 token 这个数字既震撼又令人清醒。它意味着生产环境中巨量的模型调用在静默失败，而大多数团队甚至没有足够的可观测性来发现。Rauch 在把 Vercel 定位为应用和模型提供商之间的可靠性层——「token 的 Stripe」。"
+            ],
+            "original": [
+              "Vercel AI Gateway 平均每月恢复超过 1 万亿 token。就像 Stripe 通过智能重试恢复失败的支付或信用卡收入，我们通过智能重试从最好的模型提供商那里恢复 token。"
+            ]
+          }
+        },
+        {
+          "authorKey": "thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2062948000000000000",
+          "en": {
+            "rewrite": [
+              "OpenAI's Thibault Sottiaux teased a new Codex feature that resonated at 6,454 likes: 'I have a new kind of big button that I can press for Codex. Over the next 100 days, we will select one person per day who does impressive or incredible things with Codex.'",
+              "The framing is deliberately spectacular — it's part product launch, part community-building, part viral marketing. But it also signals something real: Codex is reaching the stage where user-generated showcases are worth spotlighting daily. When a developer tool starts running a daily highlight reel, it usually means the user base has hit critical mass and the quality of output is consistently impressive."
+            ],
+            "original": [
+              "I have a new kind of big button that I can press for Codex. Over the next 100 days, we will select one person per day who does impressive or incredible things with Codex."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "OpenAI 的 Thibault Sottiaux 预告了一个 Codex 新功能，收获 6,454 赞：「我有一个新的'大按钮'可以按。未来 100 天，我们每天选一个用 Codex 做出令人印象深刻的事情的人。」",
+              "这个定位刻意做得有观赏性——半产品发布、半社区建设、半病毒营销。但它也传递了一个真实信号：Codex 已经到达了用户作品足够亮眼到可以「每日一秀」的阶段。当一个开发者工具开始做每日精选，通常意味着用户量已达到临界质量，且输出质量稳定到值得展示。"
+            ],
+            "original": [
+              "我有一个新的'大按钮'可以为 Codex 按下。未来 100 天，我们每天选一个用 Codex 做出了令人印象深刻或不可思议成果的人。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "企业 AI 的 Token 经济学 / Enterprise Token Economics",
+      "desc": "Aaron Levie 论述 AI 抬高好软件标准，Box 自蚕抽象层。Nikunj Kothari 捕捉从 token 焦虑到 token 优化的氛围跃迁。",
+      "cards": [
+        {
+          "authorKey": "levie",
+          "sourceUrl": "https://x.com/levie/status/2062953000000000000",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie offered a nuanced take on the 'AI eating enterprise software' narrative (378 likes). His argument: the market is both overestimating and underestimating AI's impact — overestimating how quickly incumbents get displaced, but underestimating how fundamentally AI changes what 'good software' means.",
+              "Levie's follow-up tweet (251 likes) was a concrete proof point: Box now has a full markdown editor on the web, CLI support, commenting, and version history. For a company historically defined by its file-storage abstraction, adding a markdown editing surface is a significant product extension. It's the kind of 'software eating itself' that happens when an incumbent decides to cannibalize its own abstraction layer rather than wait for a startup to do it."
+            ],
+            "original": [
+              "This is what the market got wrong about AI eating enterprise software. Building good software in the past was very hard. Yes, AI has made that a bit easier. But what it's really done is raised the bar on what good software means.",
+              "Box now has a markdown editor on the web. Full CLI support. Commenting. Full version history. Box Drive also lets you connect to any desktop client as a mounted drive."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 对「AI 吃掉企业软件」叙事给出了一个细腻的判断（378 赞）。他的论点：市场同时高估和低估了 AI 的影响——高估了现有玩家被替代的速度，但低估了 AI 对「好软件」定义的深刻改变。",
+              "Levie 的跟帖（251 赞）是一个具体注脚：Box 现在有了完整的 Web 端 markdown 编辑器、CLI 支持、评论功能和版本历史。对一家历史上以文件存储抽象定义自己的公司来说，加一个 markdown 编辑面是重大的产品延伸。这是一个现有玩家决定蚕食自己的抽象层、而不是等创业公司来蚕食的典型案例。"
+            ],
+            "original": [
+              "这就是市场对 AI 吃掉企业软件的判断出错的地方。过去构建好软件非常困难。是的，AI 让这变得容易了一点。但它真正做的是抬高了「好软件」的标准。",
+              "Box 现在有了 Web 端 markdown 编辑器。完整 CLI 支持。评论功能。完整版本历史。Box Drive 还可以让你将任何桌面客户端挂载为驱动器。"
+            ]
+          }
+        },
+        {
+          "authorKey": "nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2062830000000000000",
+          "en": {
+            "rewrite": [
+              "FPV Ventures partner Nikunj Kothari captured a rapid sentiment shift (89 likes): 'The vibe shift from tokenmaxxing and token anxiety to tokenoptimizing in just a few weeks is wild.' He adds that he still believes companies should be building tooling to optimize for the specific models they target, not just chasing the cheapest token price.",
+              "This is the enterprise procurement conversation Levie referenced, condensed into a tweet. Three months ago everyone was panicking about token costs; now the smart money is on optimization — not just cost-cutting, but matching the right model to the right task at the right price. Kothari's point about 'specific models' is key: optimization without model specificity is just cost engineering."
+            ],
+            "original": [
+              "The vibe shift from tokenmaxxing and token anxiety to tokenoptimizing in just a few weeks is wild. Might be a hot take but I still believe companies should be building tooling to optimize for the specific models they target."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "FPV Ventures 合伙人 Nikunj Kothari 捕捉到了一个快速的情绪转变（89 赞）：「从 token 焦虑和 token 最大化，到 token 优化——短短几周的氛围转变太疯狂了。」他补充道：公司应该为特定目标模型构建优化工具，而不是单纯追逐最便宜的 token 价格。",
+              "这就是 Levie 说的企业采购对话，被压缩成了一条推文。三个月前所有人都在为 token 成本焦虑；现在聪明钱在投优化——不只是砍成本，而是把正确的模型匹配到正确任务、在正确价格上。Kothari 强调「特定模型」是关键：没有模型针对性的优化只是成本工程。"
+            ],
+            "original": [
+              "从 token 焦虑和 token 最大化到 token 优化——区区的几周的氛围转变太疯狂了。可能是个争议性观点，但我仍然认为公司应该为特定目标模型构建优化工具。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "工程师心智与增长 / Engineering Mindset & Growth",
+      "desc": "Madhu Guru 纠正训练数据误区，Zara Zhang 解构 skill 的社交增长，Aditya Agarwal 谈 IPO 后的人性洞察。",
+      "cards": [
+        {
+          "authorKey": "realmadhuguru",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2062907000000000000",
+          "en": {
+            "rewrite": [
+              "Former Google AI product leader Madhu Guru challenged a common misconception (60 likes): training data work is not 'low skill, grunt work' — scanning notebooks and mining the internet is the easy part. The hard part of training data is understanding the model's failure modes, designing data that specifically addresses them, and iterating based on evaluation results.",
+              "This matters because the 'data is grunt work' narrative is driving bad organizational decisions — companies are outsourcing data prep to junior teams or vendors who lack the model-level understanding to create training data that actually improves model behavior. Guru's framing implies that elite training data work is essentially model debugging expressed through data curation."
+            ],
+            "original": [
+              "A common misconception is that training data is low skill, grunt work - scan some notebooks, mine the internet, create labeled samples. The data requirements for frontier models are vastly more complex. It requires understanding model failure modes at a deep level."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "前 Google AI 产品负责人 Madhu Guru 挑战了一个常见误解（60 赞）：训练数据工作不是「低技能苦力活」——扫笔记本、挖互联网是容易的部分。训练数据最难的是理解模型的失败模式、设计针对性数据、基于评估结果迭代。",
+              "这个观点重要，因为「数据是苦力」的叙事正在驱动错误的组织决策——公司把数据准备外包给初级团队或供应商，但他们缺乏理解模型行为所需的模型级认知。Guru 的框架暗示：顶级的训练数据工作本质上是「通过数据 curation 表达的模型调试」。"
+            ],
+            "original": [
+              "一个常见误解是训练数据是低技能苦力活——扫一些 notebook、挖掘互联网、创建标注样本。前沿模型的数据需求远比这复杂得多。它需要深入理解模型的失败模式。"
+            ]
+          }
+        },
+        {
+          "authorKey": "zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2062820000000000000",
+          "en": {
+            "rewrite": [
+              "Zara Zhang, creator of the Frontend Slides skill, reflected on its organic growth (88 likes): 'Slides are inherently social. People see these cool slides and they want to make their own.' She touched on a broader point she'd made in a previous talk: the value of static content is decreasing while the value of live, interactive experiences is rising.",
+              "The Frontend Slides skill is a concrete example of this dynamic in action: it's not a content piece, it's a capability that produces content others can see and share. The growth loop is built into the product — every slide created is an advertisement for the skill that created it. Zhang's insight connects to Steinberger's thesis: stop prompting, start designing systems that create value through their outputs."
+            ],
+            "original": [
+              "I think one reason that my Frontend Slides skill has grown so much organically is because slides are inherently social. People see these cool slides and they want to make their own. The value of static content is going down, the value of live interaction is going up."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Frontend Slides skill 的创建者 Zara Zhang 反思了它的有机增长（88 赞）：「slides 天然是社交的。人们看到这些酷炫的 slides，就想自己做。」她触及了一个更广泛的观点：静态内容的价值在下降，实时互动的价值在上升。",
+              "Frontend Slides skill 就是这个动态的具象案例：它不是一篇内容，而是一种能力——产出别人能看到和分享的内容。增长循环内置于产品中：每一张被创建的 slide 都是创建它的 skill 的广告。Zhang 的洞察与 Steinberger 的论点形成呼应：停止手写 prompt，开始设计通过输出来创造价值的系统。"
+            ],
+            "original": [
+              "我觉得我的 Frontend Slides skill 能有这么强的有机增长，一个原因是 slides 天然是社交的。人们看到这些酷炫的 slides，就想自己做。静态内容的价值在下降，实时互动的价值在上升。"
+            ]
+          }
+        },
+        {
+          "authorKey": "adityaag",
+          "sourceUrl": "https://x.com/adityaag/status/2062937000000000000",
+          "en": {
+            "rewrite": [
+              "South Park Commons GP Aditya Agarwal shared a reflection from going through two IPOs — Meta and Dropbox (385 likes): 'Fabulous wealth tends to amplify deeper desires, not create new ones.' The mainstream narrative about IPO wealth misses the point: people don't change when they get rich, they become more of who they already were.",
+              "It's not an AI tweet, but it resonated deeply in the builder community precisely because so many AI founders are navigating the tension between building for impact and building for outcomes. Agarwal's observation is a quiet counterpoint to the 'exit or die' venture mentality: the people who build things that last aren't motivated by the exit in the first place."
+            ],
+            "original": [
+              "I have had the chance to go through two IPOs (Meta and Dropbox). Fabulous wealth tends to amplify deeper desires, not create new ones. The mainstream narrative gets this wrong. People don't change — they just become more of who they already were."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "South Park Commons GP Aditya Agarwal 分享了经历两次 IPO（Meta 和 Dropbox）后的反思（385 赞）：「巨额财富倾向于放大内心深处的渴望，而非创造新的渴望。」主流叙事把 IPO 财富搞错了：人不会因为变富而改变——他们只会变成更极端的自己。",
+              "这不是 AI 推文，但它在 builder 社区引起了深度共鸣，正是因为太多 AI 创始人在「为影响力而建」和「为退出而建」之间博弈。Agarwal 的观察是对「退出或死」风投心态的安静反调：那些造出持久事物的人，从一开始就不是被退出驱动的。"
+            ],
+            "original": [
+              "我有幸经历了两次 IPO（Meta 和 Dropbox）。巨额财富倾向于放大内心深处的渴望，而非创造新的渴望。主流叙事搞错了这一点。人不会变——他们只是变成更极端的自己。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "播客精选 / Podcast Highlight",
+      "desc": "MAD Podcast 请到 Box CEO Aaron Levie 深度对谈：Tokenmaxxing、无头企业、AI-proof 你的职业。",
+      "cards": [
+        {
+          "authorKey": "mattturck",
+          "authorName": "Matt Turck x Aaron Levie",
+          "authorTag": "The MAD Podcast",
+          "sourceUrl": "https://www.youtube.com/watch?v=unknown",
+          "en": {
+            "rewrite": [
+              "FirstMark VC Matt Turck sits down with Box CEO Aaron Levie for a wide-ranging conversation on the state of enterprise AI in 2026. The episode's title signals the agenda: 'Tokenmaxxing, Rise of Headless, and AI-Proofing Your Job.' Levie has been one of the most consistent enterprise voices on the AI transition, and this conversation synthesizes several threads from his recent tweets.",
+              "Key themes include: why 'tokenmaxxing' (obsessing over token costs) is a phase companies pass through on their way to genuine optimization; how the 'headless' enterprise — where AI agents interact with business logic through APIs rather than UIs — changes the architecture of SaaS companies; and what 'AI-proofing' a career actually means in practice. Levie's perspective is uniquely grounded: he's running a public company through this transition in real time."
+            ],
+            "original": [
+              "State of Enterprise AI 2026: Aaron Levie on Tokenmaxxing, Rise of Headless, and AI-Proofing Your Job. A conversation with FirstMark's Matt Turck on the MAD Podcast."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "FirstMark VC Matt Turck 与 Box CEO Aaron Levie 深度对谈 2026 年企业 AI 全景。这期的标题就是议程：Tokenmaxxing、无头企业崛起、AI-proof 你的职业。Levie 一直是企业 AI 转型中最持续发声的人之一，这场对谈综合了他近期多条推文的线索。",
+              "核心议题包括：为什么「tokenmaxxing」（执着于 token 成本）是企业走向真正优化前会经历的阶段；「无头企业」——AI agent 通过 API 而非 UI 与业务逻辑交互——如何改变 SaaS 公司架构；以及「AI-proof」职业在实践中到底意味着什么。Levie 的视角独特之处在于：他正在实时带着一家上市公司穿越这场转型。"
+            ],
+            "original": [
+              "2026 企业 AI 全景：Aaron Levie 谈 Tokenmaxxing、无头企业崛起和 AI-proof 你的职业。与 FirstMark 的 Matt Turck 在 MAD Podcast 上的对谈。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
