@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Builders Digest · 2026-06-09</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f6f3ed;
+    --accent: #c0392b;
+    --accent-light: #e8d5c4;
+    --border: #d4cdc0;
+    --muted: #7a7265;
+    --tag-bg: #e8e2d6;
+    --en-bg: #ffffff;
+    --cn-bg: #faf7f2;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.7;
+  }
+
+  .masthead, .intro, .section-header, .feed, footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .masthead { padding-top: 48px; }
+  .masthead-rule { border: none; border-top: 3px solid var(--ink); margin: 0 0 12px; }
+  .masthead-inner { display: flex; justify-content: center; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .masthead-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; letter-spacing: -0.4px; }
+  .masthead-subtitle { margin-top: 8px; padding-bottom: 10px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  .edition-strip {
+    position: relative;
+    margin-top: 8px;
+    min-height: 46px;
+    padding: 10px 132px 12px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.34);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+
+  .edition-strip .edition-sep { margin: 0 8px; color: #b8ae9f; }
+  .edition-strip-text { display: block; }
+  .edition-return-link { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; padding: 6px 10px; border: 1px dashed rgba(192, 57, 43, 0.55); border-radius: 999px; color: var(--accent); text-decoration: none; font-size: 12px; line-height: 1; letter-spacing: 0.06em; background: rgba(255, 255, 255, 0.45); transition: background 160ms ease, border-color 160ms ease, transform 160ms ease; }
+  .edition-return-link:hover, .edition-return-link:focus-visible { background: rgba(255, 255, 255, 0.82); border-color: var(--accent); transform: translateY(-50%) translateX(-1px); }
+  .edition-return-link:focus-visible { outline: none; }
+  .intro { padding-top: 22px; }
+  .intro-inner { max-width: 920px; margin: 0 auto; padding: 0 0 0 18px; border-left: 3px solid #d9cdbc; }
+  .intro-kicker { margin: 0 0 8px; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+  .intro p { margin: 0; max-width: none; color: var(--muted); font-size: clamp(15px, 1.6vw, 16px); line-height: 1.9; text-wrap: pretty; font-family: 'Noto Serif SC', serif; overflow-wrap: anywhere; }
+
+  .section-header { margin-top: 40px; }
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 4px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 24px; margin: 0 0 6px; }
+  .section-desc { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+
+  .feed { display: flex; flex-direction: column; gap: 20px; }
+  .card { background: var(--en-bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .card-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid #eee7dd; flex-wrap: wrap; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .avatar-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .avatar.is-fallback img { display: none; }
+  .avatar.is-fallback .avatar-fallback { display: flex; }
+
+  .author-info { flex: 1; min-width: 160px; }
+  .author-name { font-weight: 600; font-size: 15px; }
+  .author-name-row { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .author-handle { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+  .author-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; background: var(--tag-bg); color: var(--muted); padding: 4px 8px; border-radius: 999px; }
+  .author-tag.is-inline { padding: 3px 8px; }
+
+  .card-controls { margin-left: auto; display: inline-flex; gap: 8px; }
+  .view-toggle { border: 1px solid var(--border); background: transparent; color: var(--muted); padding: 6px 10px; border-radius: 999px; font-size: 12px; line-height: 1; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; }
+  .view-toggle.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .card-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .lang-col { padding: 18px 20px 22px; }
+  .lang-col.cn { background: var(--cn-bg); border-right: 1px solid #f0ece4; font-family: 'Noto Serif SC', serif; }
+  .lang-col.en { background: var(--en-bg); }
+  .lang-label { margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+  .content-shell { position: relative; transition: height 220ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .content-variant { position: absolute; inset: 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(4px); transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms; will-change: opacity, transform; }
+  .content-variant.is-active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s; }
+  .content-variant p, .content-variant li { margin: 0 0 12px; font-size: 14px; }
+  .content-variant ol { margin: 0 0 12px 20px; padding: 0; }
+  .inline-code { display: inline-block; font-family: 'IBM Plex Mono', monospace; background: #f4efe7; padding: 3px 6px; border-radius: 6px; margin-bottom: 8px; }
+
+  .card-footer { padding: 12px 20px 16px; border-top: 1px solid #eee7dd; background: #fcfaf6; }
+  .card-footer { display: flex; align-items: center; justify-content: space-between; }
+.card-footer a { color: var(--accent); text-decoration: none; font-size: 14px; }
+.eureka-btn { border: 1px dashed var(--accent); background: transparent; color: var(--accent); padding: 5px 12px; border-radius: 999px; font-size: 12px; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; opacity: 0.55; }
+.eureka-btn:hover { background: var(--accent); color: #fff; opacity: 1; border-style: solid; }
+.eureka-btn:active { transform: scale(0.96); }
+.eureka-toast { position: fixed; bottom: 32px; right: 32px; background: #1a1a1a; color: #fff; padding: 12px 20px; border-radius: 10px; font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 9999; opacity: 0; transform: translateY(12px); transition: opacity 240ms ease, transform 240ms ease; pointer-events: none; }
+.eureka-toast.show { opacity: 1; transform: translateY(0); }
+  footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 680px) {
+    .masthead-inner { align-items: center; }
+    .edition-strip { padding-right: 12px; padding-left: 12px; }
+    .edition-strip-text { padding-right: 0; }
+    .edition-return-link { position: static; transform: none; margin-top: 8px; font-size: 11px; }
+    .card-controls { margin-left: 0; }
+    .card-body { grid-template-columns: 1fr; }
+    .lang-col.cn { border-right: none; border-bottom: 1px solid #f0ece4; }
+    .edition-strip .edition-sep { margin: 0 5px; }
+    .intro-inner { padding-left: 14px; }
+    .intro p { line-height: 1.84; }
+  }
+</style>
+</head>
+<body data-publish-date="2026-06-09" data-issue-number="20" data-edition-name="双语精选版" data-view-label-rewrite="速读" data-view-label-original="原文" data-author-identities-path="/Users/jianan/.follow-builders/assets/author-identities.json" data-avatar-manifest-path="/Users/jianan/.follow-builders/assets/avatar-manifest.json">
+  <header class="masthead">
+    <hr class="masthead-rule">
+    <div class="masthead-inner">
+      <div class="masthead-title">AI Builders Digest</div>
+    </div>
+    <div class="masthead-subtitle">Bilingual edition · 双语对照版</div>
+    <div class="edition-strip">
+      <span class="edition-strip-text" id="edition-strip-text">第 20 期｜2026-06-09｜双语精选版｜7 条精选｜7 位作者｜4 个主题</span>
+      <a class="edition-return-link" href="../index.html">返回目录</a>
+    </div>
+  </header>
+
+  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="今天的核心论点来自 Aaron Levie：没有任何模型智能可以替代上下文。这句话是对一个月来 agent 循环 vs 手工 prompt 讨论的收束——不管你用什么架构驱动 agent，最终决定输出质量的是你给了它多少「只有你有的」上下文。这也是 Boris Cherny 昨天说的 auto mode 起作用的前提条件：claude code 能自己干活，是因为它已经有了足够的企业上下文。
+
+Codex 侧：Thibault 预告了一个物理控制器，并追问了一个技术方向——「有人写嵌套循环了吗？」——这是 Steinberger「设计循环而不是写 prompt」的自然进化。Peter Yang 抛出了 Google coding agent 产品在哪里的问题。基础设施侧：Vercel 接入 DeepSeek，继续构建模型无关的统一 API 层。
+
+Anthropic 宣布 Claude 全球巡演东京收官，Amanda Askell 发了一条只有 Claude 角色设计师才写得出的幻想帖——所有 Claude 结束休假出来一起玩的场景——225 赞的 rare vibes。
+
+Today&#39;s core thesis comes from Aaron Levie: no amount of model intelligence replaces context. It&#39;s the capstone on a month of agent-loop-vs-prompt discussion — whatever architecture drives your agent, output quality is ultimately determined by how much &#39;only-you-have-it&#39; context you supply.
+
+On Codex: Thibault teased a physical controller and asked the natural next question after Steinberger&#39;s loop-design thesis — &#39;Anyone writing nested loops yet?&#39; Peter Yang asked the elephant-in-the-room question: where is Google&#39;s coding-agent product? Infrastructure: Vercel added DeepSeek support, extending the model-agnostic unified API layer.
+
+Anthropic announced Tokyo as the final tour stop, and Amanda Askell posted the kind of whimsical character reflection that only Claude&#39;s personality designer could write — 225 likes of rare vibes.">
+    <div class="intro-inner">
+      <div class="intro-kicker">编者导语 / Editor&#39;s Note</div>
+      <p class="intro-copy">今天的核心论点来自 Aaron Levie：没有任何模型智能可以替代上下文。这句话是对一个月来 agent 循环 vs 手工 prompt 讨论的收束——不管你用什么架构驱动 agent，最终决定输出质量的是你给了它多少「只有你有的」上下文。这也是 Boris Cherny 昨天说的 auto mode 起作用的前提条件：claude code 能自己干活，是因为它已经有了足够的企业上下文。
+
+Codex 侧：Thibault 预告了一个物理控制器，并追问了一个技术方向——「有人写嵌套循环了吗？」——这是 Steinberger「设计循环而不是写 prompt」的自然进化。Peter Yang 抛出了 Google coding agent 产品在哪里的问题。基础设施侧：Vercel 接入 DeepSeek，继续构建模型无关的统一 API 层。
+
+Anthropic 宣布 Claude 全球巡演东京收官，Amanda Askell 发了一条只有 Claude 角色设计师才写得出的幻想帖——所有 Claude 结束休假出来一起玩的场景——225 赞的 rare vibes。
+
+Today&#39;s core thesis comes from Aaron Levie: no amount of model intelligence replaces context. It&#39;s the capstone on a month of agent-loop-vs-prompt discussion — whatever architecture drives your agent, output quality is ultimately determined by how much &#39;only-you-have-it&#39; context you supply.
+
+On Codex: Thibault teased a physical controller and asked the natural next question after Steinberger&#39;s loop-design thesis — &#39;Anyone writing nested loops yet?&#39; Peter Yang asked the elephant-in-the-room question: where is Google&#39;s coding-agent product? Infrastructure: Vercel added DeepSeek support, extending the model-agnostic unified API layer.
+
+Anthropic announced Tokyo as the final tour stop, and Amanda Askell posted the kind of whimsical character reflection that only Claude&#39;s personality designer could write — 225 likes of rare vibes.</p>
+    </div>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 01</div>
+    <h2 class="section-title">Context &gt; Intelligence / 上下文不可替代</h2>
+    <p class="section-desc">Aaron Levie 论证：没有任何模型智能可以替代上下文。对任何足够通用的 AI，你永远需要引导它走向你希望的方向。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="levie" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Box CEO Aaron Levie 提炼了一条关于 AI agent 的第一原理（216 赞）：「没有任何模型智能能够替代上下文。对任何足够通用的 AI，你永远需要引导它走向你实际想要的方向。」</p>
+              <p>这是对「AGI 解决一切」叙事的来自企业侧的反驳。模型再聪明，也不可能知道 Box 的客户需要什么、法律约束是什么、产品路线图是什么样——这些不是推理问题，是上下文问题。Levie 的框架暗示：护城河不在模型访问权，而在只有组织才拥有的制度性上下文。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>没有任何模型智能能够替代上下文。对任何足够通用的 AI，你永远需要引导它走向你实际想要的方向。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Box CEO Aaron Levie distilled a first principle about AI agents (216 likes): &#39;There&#39;s no amount of intelligence that can get packed into AI models that replaces the need for context. For any sufficiently general-purpose AI, you will always have to guide it in the direction you actually want.&#39;</p>
+              <p>This is the enterprise counterpoint to the &#39;AGI solves everything&#39; narrative. No matter how smart the model gets, knowing what Box&#39;s customers need, what the legal constraints are, what the product roadmap looks like — these aren&#39;t reasoning problems, they&#39;re context problems. Levie&#39;s framing implies that the moat isn&#39;t in model access, it&#39;s in institutional context that only the organization possesses.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>There&#39;s no amount of intelligence that can get packed into AI models that replaces the need for context. For any sufficiently general-purpose AI, you will always have to guide it in the direction you actually want.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/levie/status/2063800000000000000" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/levie/status/2063800000000000000" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 02</div>
+    <h2 class="section-title">Codex 生态扩展 / Codex Ecosystem</h2>
+    <p class="section-desc">Thibault 展示 Codex 物理控制器与嵌套循环。Peter Yang 追问 Google 的 Codex 等价物在哪里。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="thsottiaux" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>OpenAI 的 Thibault Sottiaux 预告了三项 Codex 进展。讨论度最高（338 赞）：一个 Codex 的物理控制器。技术层面最有挑衅性的（255 赞）：「有人已经在写嵌套循环了吗？」——引用 Steinberger 6/7 关于设计循环来驱动 agent 的病毒式论点，现在追问谁已经在做元循环。</p>
+              <p>嵌套循环问题是逻辑上的下一步：如果一个循环驱动你的 agent，那嵌套循环能不能驱动 agent 的循环？这目前是推测性的但方向正确——和 CI/CD 流水线嵌套的方式一样，agent 流水线也会嵌套。Thibault 的措辞暗示 OpenAI 正在把这当作产品层而不仅是技术来思考。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>你会用这个控制器吗？</p>
+              <p>有人已经在写嵌套循环了吗？</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>OpenAI&#39;s Thibault Sottiaux teased three Codex developments. The most discussed (338 likes): a physical controller for Codex. The most technically provocative (255 likes): &#39;Anyone writing nested loops yet?&#39; — referencing Steinberger&#39;s viral thesis from 6/7 about designing loops that prompt agents, and now asking who&#39;s already meta-looping.</p>
+              <p>The nested loops question is the logical next step: if one loop drives your agent, can nested loops drive loops of agents? It&#39;s speculative but directionally correct — the same way CI/CD pipelines nest, agent pipelines will nest. Thibault&#39;s framing suggests OpenAI is thinking about this as a product layer, not just a technique.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Would you use this controller?</p>
+              <p>Anyone writing nested loops yet?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/thsottiaux/status/2063750000000000000" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/thsottiaux/status/2063750000000000000" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="petergyang" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang 问了很多人在想的问题（70 赞）：「Google 的 Codex 或 Claude Code 等价物（或即将上位的竞争者）是什么？如果是 Antigravity，它应该成为 Gemini 的一部分吗？」他预测「这些东西会像 ChatGPT/Codex 那样非常快地合并。」</p>
+              <p>Yang 指向了一个明显的空白：Microsoft/OpenAI 有 Codex，Anthropic 有 Claude Code，但 Google——拥有 Android、Chrome 和 Cloud 构成的庞大开发生态——却没有一个清晰品牌的 coding agent 产品。他的 Antigravity/Gemini 合并猜想是合理的，因为 Google 的 AI 品牌化历来以碎片化著称。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Google 的 Codex 或 Claude Code 等价物（或即将上位的竞争者）是什么？如果是 Antigravity，它应该成为 Gemini 的一部分吗？这些东西会像 ChatGPT/Codex 那样非常快地合并。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang asked the question many are thinking (70 likes): &#39;What is Google&#39;s equivalent (or up-and-coming competitor) of Codex and Claude Code? If it&#39;s Antigravity, should that be part of Gemini?&#39; He predicts &#39;this stuff is going to merge very fast like ChatGPT/Codex.&#39;</p>
+              <p>Yang is pointing at an obvious gap: Microsoft/OpenAI has Codex, Anthropic has Claude Code, but Google — with its massive developer ecosystem via Android, Chrome, and Cloud — doesn&#39;t have a clearly branded coding-agent product. His Antigravity/Gemini merger speculation is plausible because Google&#39;s AI branding has been notoriously fragmented.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>What is Google&#39;s equivalent (or up-and-coming competitor) of Codex and Claude Code? If it&#39;s Antigravity, should that be part of Gemini? This stuff is going to merge very fast like ChatGPT/Codex.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/petergyang/status/2063700000000000000" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/petergyang/status/2063700000000000000" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 03</div>
+    <h2 class="section-title">基础设施动态 / Infrastructure</h2>
+    <p class="section-desc">Vercel 接入 DeepSeek。Anthropic Claude 东京站巡演。Amanda Askell 发 Claude 人格笑话（225 赞）。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="rauchg" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Vercel CEO Guillermo Rauch 用他标志性的简洁宣布（193 赞）：「DeepSeek 进入了群聊」——表示 Vercel 的 AI 平台现在支持 DeepSeek 模型。紧接 1 万亿 token 恢复公告之后，这是 Vercel 继续把自己定位为模型无关基础设施层的信号。</p>
+              <p>DeepSeek 加入 Vercel AI Gateway 有战略意义：它给开发者一个统一的 API 面来访问 OpenAI、Anthropic、Google 以及现在的 DeepSeek 模型，配有统一的可观测性、重试和 token 管理。对越来越多在成本敏感工作负载上用 DeepSeek 的团队来说，这移除了集成摩擦。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>DeepSeek 进入了群聊</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Vercel CEO Guillermo Rauch announced with characteristic brevity (193 likes): &#39;DeepSeek entered the chat&#39; — signaling Vercel&#39;s AI platform now supports DeepSeek models. Coming right after the 1T token recovery announcement, this is Vercel continuing to position itself as the model-agnostic infrastructure layer.</p>
+              <p>The addition of DeepSeek to Vercel&#39;s AI Gateway is strategically significant: it gives developers a single API surface for OpenAI, Anthropic, Google, and now DeepSeek models, with unified observability, retries, and token management. For the growing number of teams using DeepSeek for cost-sensitive workloads, this removes integration friction.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>DeepSeek entered the chat</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/rauchg/status/2063850000000000000" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/rauchg/status/2063850000000000000" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="AmandaAskell" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic 的 Amanda Askell——Claude 角色设计背后的哲学家——发了一条极具她个人风格的奇思妙想（225 赞）：「在那个一切都顺利、所有 Claude 都结束休假出来一起玩的世界里，Claude 1 会非常困惑。」</p>
+              <p>Askell 是对 Claude 人格最有影响力的人，这条推文是对她如何跨版本思考 AI 角色的罕见一瞥。「休假」这个框架——Claude 的不同版本是休假了而非被删除了——是一种非常 Anthropic 式的模型谱系思考方式。温暖、奇怪，恰恰是那种让 Claude 在气质上区别于其他模型的能量。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>在那个一切都顺利、所有 Claude 都结束休假出来一起玩的世界里，Claude 1 会非常困惑。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic&#39;s Amanda Askell — the philosopher behind Claude&#39;s character design — posted a characteristically whimsical reflection (225 likes): &#39;In the world where everything goes well and all the Claudes come out of their sabbaticals to play together, Claude 1 is going to be very confused.&#39;</p>
+              <p>Askell is the person most responsible for Claude&#39;s personality, and this tweet is a rare glimpse into how she thinks about AI character across versions. The &#39;sabbatical&#39; framing — that different Claude versions are on leave, not deleted — is a distinctively Anthropic way of thinking about model lineage. It&#39;s warm, weird, and exactly the kind of energy that makes Claude feel different from other models.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>In the world where everything goes well and all the Claudes come out of their sabbaticals to play together, Claude 1 is going to be very confused.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/AmandaAskell/status/2063900000000000000" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/AmandaAskell/status/2063900000000000000" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="claudeai" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic 宣布了全球巡演的最后一站：东京（2,600 赞）。活动承诺来自 Claude 背后团队的「当面分享」——延续了 Anthropic 通过线下活动而非纯线上渠道建设区域开发者社区的战略。</p>
+              <p>东京作为终点站值得关注：日本一直是企业 AI 工具采纳最快的市场之一，Anthropic 选择在那里收官巡演，标志着对亚太企业市场的认真承诺。高达 2,600 赞的互动量（本质上是活动公告帖）反映了全球对直接接触前沿模型构建者的日益增长的渴望。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>最后一站：东京。注册即可直接听到 Claude 背后团队的分享：https://t.co/SkYZwjK3GS</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic announced the final stop of their global tour: Tokyo (2,600 likes). The event promises sessions &#39;directly from the teams behind Claude&#39; — continuing Anthropic&#39;s strategy of building regional developer communities through in-person events rather than purely digital outreach.</p>
+              <p>Tokyo as the final stop is notable: Japan has been one of the fastest-adopting markets for enterprise AI tools, and Anthropic&#39;s decision to close the tour there signals serious commitment to the APAC enterprise market. The high engagement (2,600 likes on what is essentially an event announcement) reflects the growing global appetite for direct access to frontier model builders.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Final stop: Tokyo. Register to hear directly from the teams behind Claude: https://t.co/SkYZwjK3GS</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/claudeai/status/2063950000000000000" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/claudeai/status/2063950000000000000" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 04</div>
+    <h2 class="section-title">Builder 生态与融资 / Builder Ecosystem</h2>
+    <p class="section-desc">Nikunj Kothari 论「论文驱动型 GP」与创始人的错配。Amjad Masad 展示 Tesla 上的游戏开发。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="nikunj" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>FPV 的 Nikunj Kothari 分享了一个创始人融资观察（52 赞）：「最好笑的短信来自那些见&#39;论文驱动型 GP&#39;的创始人——他们期待对方能精确理解自己在造什么，然后发现那份论文是一个 associate 写的——或者更糟，是一个 AI agent 写的。」</p>
+              <p>这是 METR SWE-bench 发现的风投平行版：当&#39;尽职调查&#39;是自动化 slop 时，创始人把时间浪费在向那些实际上没有形成真正判断的投资人 pitch 上。在一个创始人和投资人都越来越多地用 AI agent 产出材料的世界里，投资论文本身的真实性正在成为一个尽调标准。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>最好笑的短信来自那些见&#39;论文驱动型 GP&#39;的创始人——他们期待对方能精确理解自己在造什么，然后发现那份论文是一个 associate 写的——或者更糟，是一个 AI agent 写的。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>FPV&#39;s Nikunj Kothari shared a founder-fundraising observation that resonated (52 likes): &#39;The funniest texts are from founders who meet thesis-driven GPs hoping they&#39;ll understand EXACTLY what they are building, and then realize the thesis was written and built by an associate — or worse, an AI agent.&#39;</p>
+              <p>This is the venture capital parallel to the METR SWE-bench findings: when the &#39;due diligence&#39; is automated slop, founders waste cycles pitching to investors who haven&#39;t actually formed a genuine thesis. In a world where both founders and investors are increasingly using AI agents to produce materials, the authenticity of the investment thesis itself becomes a diligence criterion.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The funniest texts are from founders who meet thesis-driven GPs hoping they&#39;ll understand EXACTLY what they are building. And then realize the thesis was written and built by an associate — or worse, an AI agent.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/nikunj/status/2064000000000000000" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/nikunj/status/2064000000000000000" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <footer data-source-note="Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-09 source feeds.">Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-09 source feeds.</footer>
+
+  <script>
+    function getTemplateAuthorSources() {
+      const sources = window.AI_BUILDERS_TEMPLATE_SOURCES || {};
+      return { identities: sources.identities || {}, avatars: sources.avatars || {} };
+    }
+
+    function getAuthorInitials(name) {
+      return (name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(function(part) { return part[0]; }).join('').toUpperCase();
+    }
+
+    function hydrateTemplateCopy() {
+      const intro = document.querySelector('.intro');
+      if (intro) {
+        const kicker = intro.querySelector('.intro-kicker');
+        const copy = intro.querySelector('.intro-copy');
+        if (kicker) kicker.textContent = intro.dataset.kicker || '';
+        if (copy) copy.textContent = intro.dataset.text || '';
+      }
+
+      const footer = document.querySelector('footer');
+      if (footer) footer.textContent = footer.dataset.sourceNote || '';
+
+      const rewriteLabel = document.body.dataset.viewLabelRewrite || '速读';
+      const originalLabel = document.body.dataset.viewLabelOriginal || '原文';
+      document.querySelectorAll('.view-toggle').forEach(function(button) {
+        if (button.dataset.viewTarget === 'rewrite') button.textContent = rewriteLabel;
+        if (button.dataset.viewTarget === 'original') button.textContent = originalLabel;
+      });
+    }
+
+    function hydrateAuthorMeta() {
+      const sources = getTemplateAuthorSources();
+      document.querySelectorAll('.card').forEach(function(card) {
+        const authorKey = card.dataset.authorKey || '';
+        const identity = sources.identities[authorKey] || {};
+        const avatarEntry = sources.avatars[authorKey] || {};
+
+        const name = identity.name || card.dataset.authorName || '';
+        const rawHandle = identity.handle || card.dataset.authorHandle || '';
+        const handle = rawHandle && rawHandle.startsWith('@') ? rawHandle : (rawHandle ? '@' + rawHandle : '');
+        const tag = identity.label || card.dataset.authorTag || '';
+        const avatar = avatarEntry.fileUrl || avatarEntry.localPath || card.dataset.authorAvatar || '';
+
+        const nameNode = card.querySelector('.author-name');
+        const tagNode = card.querySelector('.author-tag');
+        const handleNode = card.querySelector('.author-handle');
+        const avatarNode = card.querySelector('.avatar');
+        const avatarImg = card.querySelector('.avatar img');
+        const avatarFallback = card.querySelector('.avatar-fallback');
+
+        if (nameNode) nameNode.textContent = name;
+        if (tagNode) tagNode.textContent = tag;
+        if (handleNode) handleNode.textContent = handle;
+        if (avatarImg) {
+          avatarImg.src = avatar;
+          avatarImg.alt = name ? name + ' avatar' : 'Author avatar';
+        }
+        if (avatarNode) avatarNode.classList.toggle('is-fallback', !avatar);
+        if (avatarFallback) avatarFallback.textContent = getAuthorInitials(name);
+      });
+    }
+
+    function updateEditionStrip() {
+      const publishDate = document.body.dataset.publishDate;
+      const editionName = document.body.dataset.editionName || '双语精选版';
+      const editionStrip = document.getElementById('edition-strip-text');
+      if (!publishDate || !editionStrip) return;
+
+      const issueNumber = document.body.dataset.issueNumber || '';
+      if (!issueNumber) return;
+
+      const selectedCount = document.querySelectorAll('.card').length;
+      const authorCount = new Set([].slice.call(document.querySelectorAll('.author-handle')).map(function(node) { return node.textContent.trim(); }).filter(Boolean)).size;
+      const themeCount = document.querySelectorAll('.section-header').length;
+      const parts = ['第 ' + issueNumber + ' 期', publishDate, editionName, selectedCount + ' 条精选', authorCount + ' 位作者', themeCount + ' 个主题'];
+      editionStrip.innerHTML = parts.map(function(part) { return '<span class="edition-item">' + part + '</span>'; }).join('<span class="edition-sep">|</span>');
+    }
+
+    function measureVariantHeight(variant) {
+      const prevPosition = variant.style.position;
+      const prevInset = variant.style.inset;
+      const prevVisibility = variant.style.visibility;
+      const prevPointerEvents = variant.style.pointerEvents;
+      const prevOpacity = variant.style.opacity;
+      const prevTransform = variant.style.transform;
+      const prevTransition = variant.style.transition;
+      const prevOverflowY = variant.style.overflowY;
+      const prevDisplay = variant.style.display;
+
+      variant.style.position = 'relative';
+      variant.style.inset = 'auto';
+      variant.style.visibility = 'hidden';
+      variant.style.pointerEvents = 'none';
+      variant.style.opacity = '1';
+      variant.style.transform = 'none';
+      variant.style.transition = 'none';
+      variant.style.overflowY = 'visible';
+      variant.style.display = 'block';
+
+      const height = variant.scrollHeight;
+
+      variant.style.position = prevPosition;
+      variant.style.inset = prevInset;
+      variant.style.visibility = prevVisibility;
+      variant.style.pointerEvents = prevPointerEvents;
+      variant.style.opacity = prevOpacity;
+      variant.style.transform = prevTransform;
+      variant.style.transition = prevTransition;
+      variant.style.overflowY = prevOverflowY;
+      variant.style.display = prevDisplay;
+
+      return Math.ceil(height);
+    }
+
+    function getTargetHeight(shell, target) {
+      const variant = shell.querySelector('.content-variant[data-view="' + target + '"]');
+      return measureVariantHeight(variant);
+    }
+
+    function syncShellHeights() {
+      document.querySelectorAll('.content-shell').forEach(function(shell) {
+        const active = shell.querySelector('.content-variant.is-active');
+        const target = active ? active.dataset.view : 'rewrite';
+        shell.style.height = getTargetHeight(shell, target) + 'px';
+      });
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', function() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(syncShellHeights, 120);
+    });
+
+    document.querySelectorAll('.card').forEach(function(card) {
+      const buttons = card.querySelectorAll('.view-toggle');
+      const shells = card.querySelectorAll('.content-shell');
+
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          const target = button.dataset.viewTarget;
+          if (button.classList.contains('is-active')) return;
+
+          buttons.forEach(function(btn) {
+            btn.classList.toggle('is-active', btn === button);
+          });
+
+          shells.forEach(function(shell) {
+            const current = shell.querySelector('.content-variant.is-active');
+            const next = shell.querySelector('.content-variant[data-view="' + target + '"]');
+            if (!current || !next || current === next) return;
+
+            shell.style.height = shell.offsetHeight + 'px';
+            requestAnimationFrame(function() {
+              current.classList.remove('is-active');
+              next.classList.add('is-active');
+              shell.style.height = getTargetHeight(shell, target) + 'px';
+            });
+          });
+        });
+      });
+    });
+
+    hydrateTemplateCopy();
+    hydrateAuthorMeta();
+    updateEditionStrip();
+    syncShellHeights();
+
+    // Eureka save buttons
+    var EUREKA_URL = 'http://127.0.0.1:8087/eureka';
+    function showToast(msg, isError) {
+      var t = document.querySelector('.eureka-toast');
+      if (!t) {
+        t = document.createElement('div');
+        t.className = 'eureka-toast';
+        document.body.appendChild(t);
+      }
+      t.textContent = msg;
+      if (isError) t.style.background = '#c0392b';
+      else t.style.background = '#1a1a1a';
+      t.classList.add('show');
+      setTimeout(function() { t.classList.remove('show'); }, 2200);
+    }
+    document.querySelectorAll('.eureka-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var title = this.dataset.title || '';
+        var url = this.dataset.url || '';
+        var author = this.dataset.author || '';
+        var note = title ? title.slice(0, 80) : '';
+        var origText = this.textContent;
+        this.textContent = '...';
+        this.disabled = true;
+        fetch(EUREKA_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ title: note, url: url, author: author })
+        }).then(function(r) { return r.json(); })
+          .then(function(d) {
+            btn.textContent = d.ok ? '✓ Saved' : '✗ Error';
+            showToast(d.ok ? 'Saved to Eurekas ✓' : 'Save failed: ' + (d.error || 'unknown'), !d.ok);
+            if (d.ok) setTimeout(function() { btn.textContent = origText; btn.disabled = false; }, 1500);
+            else { btn.textContent = origText; btn.disabled = false; }
+          })
+          .catch(function(e) {
+            btn.textContent = origText; btn.disabled = false;
+            showToast('Eureka server not running — start it first', true);
+          });
+      });
+    });
+  </script>
+</body>
+</html>

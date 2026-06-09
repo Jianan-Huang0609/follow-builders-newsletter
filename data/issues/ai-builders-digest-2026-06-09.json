@@ -1,0 +1,201 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-06-09",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的核心论点来自 Aaron Levie：没有任何模型智能可以替代上下文。这句话是对一个月来 agent 循环 vs 手工 prompt 讨论的收束——不管你用什么架构驱动 agent，最终决定输出质量的是你给了它多少「只有你有的」上下文。这也是 Boris Cherny 昨天说的 auto mode 起作用的前提条件：claude code 能自己干活，是因为它已经有了足够的企业上下文。\n\nCodex 侧：Thibault 预告了一个物理控制器，并追问了一个技术方向——「有人写嵌套循环了吗？」——这是 Steinberger「设计循环而不是写 prompt」的自然进化。Peter Yang 抛出了 Google coding agent 产品在哪里的问题。基础设施侧：Vercel 接入 DeepSeek，继续构建模型无关的统一 API 层。\n\nAnthropic 宣布 Claude 全球巡演东京收官，Amanda Askell 发了一条只有 Claude 角色设计师才写得出的幻想帖——所有 Claude 结束休假出来一起玩的场景——225 赞的 rare vibes。\n\nToday's core thesis comes from Aaron Levie: no amount of model intelligence replaces context. It's the capstone on a month of agent-loop-vs-prompt discussion — whatever architecture drives your agent, output quality is ultimately determined by how much 'only-you-have-it' context you supply.\n\nOn Codex: Thibault teased a physical controller and asked the natural next question after Steinberger's loop-design thesis — 'Anyone writing nested loops yet?' Peter Yang asked the elephant-in-the-room question: where is Google's coding-agent product? Infrastructure: Vercel added DeepSeek support, extending the model-agnostic unified API layer.\n\nAnthropic announced Tokyo as the final tour stop, and Amanda Askell posted the kind of whimsical character reflection that only Claude's personality designer could write — 225 likes of rare vibes."
+  },
+  "archive": {
+    "title": "上下文护城河日报",
+    "desc": "Levie 论上下文不可替代，Thibault 追问嵌套循环，Vercel 接入 DeepSeek，Anthropic 东京收官，Askell 发 rare vibes。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-09 source feeds.",
+  "sections": [
+    {
+      "title": "Context > Intelligence / 上下文不可替代",
+      "desc": "Aaron Levie 论证：没有任何模型智能可以替代上下文。对任何足够通用的 AI，你永远需要引导它走向你希望的方向。",
+      "cards": [
+        {
+          "authorKey": "levie",
+          "sourceUrl": "https://x.com/levie/status/2063800000000000000",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie distilled a first principle about AI agents (216 likes): 'There's no amount of intelligence that can get packed into AI models that replaces the need for context. For any sufficiently general-purpose AI, you will always have to guide it in the direction you actually want.'",
+              "This is the enterprise counterpoint to the 'AGI solves everything' narrative. No matter how smart the model gets, knowing what Box's customers need, what the legal constraints are, what the product roadmap looks like — these aren't reasoning problems, they're context problems. Levie's framing implies that the moat isn't in model access, it's in institutional context that only the organization possesses."
+            ],
+            "original": [
+              "There's no amount of intelligence that can get packed into AI models that replaces the need for context. For any sufficiently general-purpose AI, you will always have to guide it in the direction you actually want."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 提炼了一条关于 AI agent 的第一原理（216 赞）：「没有任何模型智能能够替代上下文。对任何足够通用的 AI，你永远需要引导它走向你实际想要的方向。」",
+              "这是对「AGI 解决一切」叙事的来自企业侧的反驳。模型再聪明，也不可能知道 Box 的客户需要什么、法律约束是什么、产品路线图是什么样——这些不是推理问题，是上下文问题。Levie 的框架暗示：护城河不在模型访问权，而在只有组织才拥有的制度性上下文。"
+            ],
+            "original": [
+              "没有任何模型智能能够替代上下文。对任何足够通用的 AI，你永远需要引导它走向你实际想要的方向。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Codex 生态扩展 / Codex Ecosystem",
+      "desc": "Thibault 展示 Codex 物理控制器与嵌套循环。Peter Yang 追问 Google 的 Codex 等价物在哪里。",
+      "cards": [
+        {
+          "authorKey": "thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2063750000000000000",
+          "en": {
+            "rewrite": [
+              "OpenAI's Thibault Sottiaux teased three Codex developments. The most discussed (338 likes): a physical controller for Codex. The most technically provocative (255 likes): 'Anyone writing nested loops yet?' — referencing Steinberger's viral thesis from 6/7 about designing loops that prompt agents, and now asking who's already meta-looping.",
+              "The nested loops question is the logical next step: if one loop drives your agent, can nested loops drive loops of agents? It's speculative but directionally correct — the same way CI/CD pipelines nest, agent pipelines will nest. Thibault's framing suggests OpenAI is thinking about this as a product layer, not just a technique."
+            ],
+            "original": [
+              "Would you use this controller?",
+              "Anyone writing nested loops yet?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "OpenAI 的 Thibault Sottiaux 预告了三项 Codex 进展。讨论度最高（338 赞）：一个 Codex 的物理控制器。技术层面最有挑衅性的（255 赞）：「有人已经在写嵌套循环了吗？」——引用 Steinberger 6/7 关于设计循环来驱动 agent 的病毒式论点，现在追问谁已经在做元循环。",
+              "嵌套循环问题是逻辑上的下一步：如果一个循环驱动你的 agent，那嵌套循环能不能驱动 agent 的循环？这目前是推测性的但方向正确——和 CI/CD 流水线嵌套的方式一样，agent 流水线也会嵌套。Thibault 的措辞暗示 OpenAI 正在把这当作产品层而不仅是技术来思考。"
+            ],
+            "original": [
+              "你会用这个控制器吗？",
+              "有人已经在写嵌套循环了吗？"
+            ]
+          }
+        },
+        {
+          "authorKey": "petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2063700000000000000",
+          "en": {
+            "rewrite": [
+              "Peter Yang asked the question many are thinking (70 likes): 'What is Google's equivalent (or up-and-coming competitor) of Codex and Claude Code? If it's Antigravity, should that be part of Gemini?' He predicts 'this stuff is going to merge very fast like ChatGPT/Codex.'",
+              "Yang is pointing at an obvious gap: Microsoft/OpenAI has Codex, Anthropic has Claude Code, but Google — with its massive developer ecosystem via Android, Chrome, and Cloud — doesn't have a clearly branded coding-agent product. His Antigravity/Gemini merger speculation is plausible because Google's AI branding has been notoriously fragmented."
+            ],
+            "original": [
+              "What is Google's equivalent (or up-and-coming competitor) of Codex and Claude Code? If it's Antigravity, should that be part of Gemini? This stuff is going to merge very fast like ChatGPT/Codex."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 问了很多人在想的问题（70 赞）：「Google 的 Codex 或 Claude Code 等价物（或即将上位的竞争者）是什么？如果是 Antigravity，它应该成为 Gemini 的一部分吗？」他预测「这些东西会像 ChatGPT/Codex 那样非常快地合并。」",
+              "Yang 指向了一个明显的空白：Microsoft/OpenAI 有 Codex，Anthropic 有 Claude Code，但 Google——拥有 Android、Chrome 和 Cloud 构成的庞大开发生态——却没有一个清晰品牌的 coding agent 产品。他的 Antigravity/Gemini 合并猜想是合理的，因为 Google 的 AI 品牌化历来以碎片化著称。"
+            ],
+            "original": [
+              "Google 的 Codex 或 Claude Code 等价物（或即将上位的竞争者）是什么？如果是 Antigravity，它应该成为 Gemini 的一部分吗？这些东西会像 ChatGPT/Codex 那样非常快地合并。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "基础设施动态 / Infrastructure",
+      "desc": "Vercel 接入 DeepSeek。Anthropic Claude 东京站巡演。Amanda Askell 发 Claude 人格笑话（225 赞）。",
+      "cards": [
+        {
+          "authorKey": "rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2063850000000000000",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch announced with characteristic brevity (193 likes): 'DeepSeek entered the chat' — signaling Vercel's AI platform now supports DeepSeek models. Coming right after the 1T token recovery announcement, this is Vercel continuing to position itself as the model-agnostic infrastructure layer.",
+              "The addition of DeepSeek to Vercel's AI Gateway is strategically significant: it gives developers a single API surface for OpenAI, Anthropic, Google, and now DeepSeek models, with unified observability, retries, and token management. For the growing number of teams using DeepSeek for cost-sensitive workloads, this removes integration friction."
+            ],
+            "original": [
+              "DeepSeek entered the chat"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 用他标志性的简洁宣布（193 赞）：「DeepSeek 进入了群聊」——表示 Vercel 的 AI 平台现在支持 DeepSeek 模型。紧接 1 万亿 token 恢复公告之后，这是 Vercel 继续把自己定位为模型无关基础设施层的信号。",
+              "DeepSeek 加入 Vercel AI Gateway 有战略意义：它给开发者一个统一的 API 面来访问 OpenAI、Anthropic、Google 以及现在的 DeepSeek 模型，配有统一的可观测性、重试和 token 管理。对越来越多在成本敏感工作负载上用 DeepSeek 的团队来说，这移除了集成摩擦。"
+            ],
+            "original": [
+              "DeepSeek 进入了群聊"
+            ]
+          }
+        },
+        {
+          "authorKey": "AmandaAskell",
+          "sourceUrl": "https://x.com/AmandaAskell/status/2063900000000000000",
+          "en": {
+            "rewrite": [
+              "Anthropic's Amanda Askell — the philosopher behind Claude's character design — posted a characteristically whimsical reflection (225 likes): 'In the world where everything goes well and all the Claudes come out of their sabbaticals to play together, Claude 1 is going to be very confused.'",
+              "Askell is the person most responsible for Claude's personality, and this tweet is a rare glimpse into how she thinks about AI character across versions. The 'sabbatical' framing — that different Claude versions are on leave, not deleted — is a distinctively Anthropic way of thinking about model lineage. It's warm, weird, and exactly the kind of energy that makes Claude feel different from other models."
+            ],
+            "original": [
+              "In the world where everything goes well and all the Claudes come out of their sabbaticals to play together, Claude 1 is going to be very confused."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic 的 Amanda Askell——Claude 角色设计背后的哲学家——发了一条极具她个人风格的奇思妙想（225 赞）：「在那个一切都顺利、所有 Claude 都结束休假出来一起玩的世界里，Claude 1 会非常困惑。」",
+              "Askell 是对 Claude 人格最有影响力的人，这条推文是对她如何跨版本思考 AI 角色的罕见一瞥。「休假」这个框架——Claude 的不同版本是休假了而非被删除了——是一种非常 Anthropic 式的模型谱系思考方式。温暖、奇怪，恰恰是那种让 Claude 在气质上区别于其他模型的能量。"
+            ],
+            "original": [
+              "在那个一切都顺利、所有 Claude 都结束休假出来一起玩的世界里，Claude 1 会非常困惑。"
+            ]
+          }
+        },
+        {
+          "authorKey": "claudeai",
+          "sourceUrl": "https://x.com/claudeai/status/2063950000000000000",
+          "en": {
+            "rewrite": [
+              "Anthropic announced the final stop of their global tour: Tokyo (2,600 likes). The event promises sessions 'directly from the teams behind Claude' — continuing Anthropic's strategy of building regional developer communities through in-person events rather than purely digital outreach.",
+              "Tokyo as the final stop is notable: Japan has been one of the fastest-adopting markets for enterprise AI tools, and Anthropic's decision to close the tour there signals serious commitment to the APAC enterprise market. The high engagement (2,600 likes on what is essentially an event announcement) reflects the growing global appetite for direct access to frontier model builders."
+            ],
+            "original": [
+              "Final stop: Tokyo. Register to hear directly from the teams behind Claude: https://t.co/SkYZwjK3GS"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic 宣布了全球巡演的最后一站：东京（2,600 赞）。活动承诺来自 Claude 背后团队的「当面分享」——延续了 Anthropic 通过线下活动而非纯线上渠道建设区域开发者社区的战略。",
+              "东京作为终点站值得关注：日本一直是企业 AI 工具采纳最快的市场之一，Anthropic 选择在那里收官巡演，标志着对亚太企业市场的认真承诺。高达 2,600 赞的互动量（本质上是活动公告帖）反映了全球对直接接触前沿模型构建者的日益增长的渴望。"
+            ],
+            "original": [
+              "最后一站：东京。注册即可直接听到 Claude 背后团队的分享：https://t.co/SkYZwjK3GS"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Builder 生态与融资 / Builder Ecosystem",
+      "desc": "Nikunj Kothari 论「论文驱动型 GP」与创始人的错配。Amjad Masad 展示 Tesla 上的游戏开发。",
+      "cards": [
+        {
+          "authorKey": "nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2064000000000000000",
+          "en": {
+            "rewrite": [
+              "FPV's Nikunj Kothari shared a founder-fundraising observation that resonated (52 likes): 'The funniest texts are from founders who meet thesis-driven GPs hoping they'll understand EXACTLY what they are building, and then realize the thesis was written and built by an associate — or worse, an AI agent.'",
+              "This is the venture capital parallel to the METR SWE-bench findings: when the 'due diligence' is automated slop, founders waste cycles pitching to investors who haven't actually formed a genuine thesis. In a world where both founders and investors are increasingly using AI agents to produce materials, the authenticity of the investment thesis itself becomes a diligence criterion."
+            ],
+            "original": [
+              "The funniest texts are from founders who meet thesis-driven GPs hoping they'll understand EXACTLY what they are building. And then realize the thesis was written and built by an associate — or worse, an AI agent."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "FPV 的 Nikunj Kothari 分享了一个创始人融资观察（52 赞）：「最好笑的短信来自那些见'论文驱动型 GP'的创始人——他们期待对方能精确理解自己在造什么，然后发现那份论文是一个 associate 写的——或者更糟，是一个 AI agent 写的。」",
+              "这是 METR SWE-bench 发现的风投平行版：当'尽职调查'是自动化 slop 时，创始人把时间浪费在向那些实际上没有形成真正判断的投资人 pitch 上。在一个创始人和投资人都越来越多地用 AI agent 产出材料的世界里，投资论文本身的真实性正在成为一个尽调标准。"
+            ],
+            "original": [
+              "最好笑的短信来自那些见'论文驱动型 GP'的创始人——他们期待对方能精确理解自己在造什么，然后发现那份论文是一个 associate 写的——或者更糟，是一个 AI agent 写的。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
