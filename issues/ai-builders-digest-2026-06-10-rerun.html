@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Builders Digest · 2026-06-10</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f6f3ed;
+    --accent: #c0392b;
+    --accent-light: #e8d5c4;
+    --border: #d4cdc0;
+    --muted: #7a7265;
+    --tag-bg: #e8e2d6;
+    --en-bg: #ffffff;
+    --cn-bg: #faf7f2;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.7;
+  }
+
+  .masthead, .intro, .section-header, .feed, footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .masthead { padding-top: 48px; }
+  .masthead-rule { border: none; border-top: 3px solid var(--ink); margin: 0 0 12px; }
+  .masthead-inner { display: flex; justify-content: center; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .masthead-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; letter-spacing: -0.4px; }
+  .masthead-subtitle { margin-top: 8px; padding-bottom: 10px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  .edition-strip {
+    position: relative;
+    margin-top: 8px;
+    min-height: 46px;
+    padding: 10px 132px 12px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.34);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+
+  .edition-strip .edition-sep { margin: 0 8px; color: #b8ae9f; }
+  .edition-strip-text { display: block; }
+  .edition-return-link { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; padding: 6px 10px; border: 1px dashed rgba(192, 57, 43, 0.55); border-radius: 999px; color: var(--accent); text-decoration: none; font-size: 12px; line-height: 1; letter-spacing: 0.06em; background: rgba(255, 255, 255, 0.45); transition: background 160ms ease, border-color 160ms ease, transform 160ms ease; }
+  .edition-return-link:hover, .edition-return-link:focus-visible { background: rgba(255, 255, 255, 0.82); border-color: var(--accent); transform: translateY(-50%) translateX(-1px); }
+  .edition-return-link:focus-visible { outline: none; }
+  .intro { padding-top: 22px; }
+  .intro-inner { max-width: 920px; margin: 0 auto; padding: 0 0 0 18px; border-left: 3px solid #d9cdbc; }
+  .intro-kicker { margin: 0 0 8px; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+  .intro p { margin: 0; max-width: none; color: var(--muted); font-size: clamp(15px, 1.6vw, 16px); line-height: 1.9; text-wrap: pretty; font-family: 'Noto Serif SC', serif; overflow-wrap: anywhere; }
+
+  .section-header { margin-top: 40px; }
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 4px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 24px; margin: 0 0 6px; }
+  .section-desc { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+
+  .feed { display: flex; flex-direction: column; gap: 20px; }
+  .card { background: var(--en-bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .card-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid #eee7dd; flex-wrap: wrap; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .avatar-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .avatar.is-fallback img { display: none; }
+  .avatar.is-fallback .avatar-fallback { display: flex; }
+
+  .author-info { flex: 1; min-width: 160px; }
+  .author-name { font-weight: 600; font-size: 15px; }
+  .author-name-row { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .author-handle { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+  .author-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; background: var(--tag-bg); color: var(--muted); padding: 4px 8px; border-radius: 999px; }
+  .author-tag.is-inline { padding: 3px 8px; }
+
+  .card-controls { margin-left: auto; display: inline-flex; gap: 8px; }
+  .view-toggle { border: 1px solid var(--border); background: transparent; color: var(--muted); padding: 6px 10px; border-radius: 999px; font-size: 12px; line-height: 1; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; }
+  .view-toggle.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .card-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .lang-col { padding: 18px 20px 22px; }
+  .lang-col.cn { background: var(--cn-bg); border-right: 1px solid #f0ece4; font-family: 'Noto Serif SC', serif; }
+  .lang-col.en { background: var(--en-bg); }
+  .lang-label { margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+  .content-shell { position: relative; transition: height 220ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .content-variant { position: absolute; inset: 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(4px); transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms; will-change: opacity, transform; }
+  .content-variant.is-active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s; }
+  .content-variant p, .content-variant li { margin: 0 0 12px; font-size: 14px; }
+  .content-variant ol { margin: 0 0 12px 20px; padding: 0; }
+  .inline-code { display: inline-block; font-family: 'IBM Plex Mono', monospace; background: #f4efe7; padding: 3px 6px; border-radius: 6px; margin-bottom: 8px; }
+
+  .card-footer { padding: 12px 20px 16px; border-top: 1px solid #eee7dd; background: #fcfaf6; }
+  .card-footer { display: flex; align-items: center; justify-content: space-between; }
+.card-footer a { color: var(--accent); text-decoration: none; font-size: 14px; }
+.eureka-btn { border: 1px dashed var(--accent); background: transparent; color: var(--accent); padding: 5px 12px; border-radius: 999px; font-size: 12px; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; opacity: 0.55; }
+.eureka-btn:hover { background: var(--accent); color: #fff; opacity: 1; border-style: solid; }
+.eureka-btn:active { transform: scale(0.96); }
+.eureka-toast { position: fixed; bottom: 32px; right: 32px; background: #1a1a1a; color: #fff; padding: 12px 20px; border-radius: 10px; font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 9999; opacity: 0; transform: translateY(12px); transition: opacity 240ms ease, transform 240ms ease; pointer-events: none; }
+.eureka-toast.show { opacity: 1; transform: translateY(0); }
+  footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 680px) {
+    .masthead-inner { align-items: center; }
+    .edition-strip { padding-right: 12px; padding-left: 12px; }
+    .edition-strip-text { padding-right: 0; }
+    .edition-return-link { position: static; transform: none; margin-top: 8px; font-size: 11px; }
+    .card-controls { margin-left: 0; }
+    .card-body { grid-template-columns: 1fr; }
+    .lang-col.cn { border-right: none; border-bottom: 1px solid #f0ece4; }
+    .edition-strip .edition-sep { margin: 0 5px; }
+    .intro-inner { padding-left: 14px; }
+    .intro p { line-height: 1.84; }
+  }
+</style>
+</head>
+<body data-publish-date="2026-06-10" data-issue-number="21" data-edition-name="双语精选版" data-view-label-rewrite="速读" data-view-label-original="原文" data-author-identities-path="/Users/jianan/.follow-builders/assets/author-identities.json" data-avatar-manifest-path="/Users/jianan/.follow-builders/assets/avatar-manifest.json">
+  <header class="masthead">
+    <hr class="masthead-rule">
+    <div class="masthead-inner">
+      <div class="masthead-title">AI Builders Digest</div>
+    </div>
+    <div class="masthead-subtitle">Bilingual edition / 双语对照版</div>
+    <div class="edition-strip">
+      <span class="edition-strip-text" id="edition-strip-text">第 21 期｜2026-06-10｜双语精选版｜9 条精选｜9 位作者｜4 个主题</span>
+      <a class="edition-return-link" href="../index.html">返回目录</a>
+    </div>
+  </header>
+
+  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="今天最爆的内容来自 Thibault：一个 Codex 物理控制器 +「我想要 1% 版税」——3.5K 赞，本周 builder 圈最高互动量。这个玩笑之所以成立，是因为它不完全是个玩笑：coding agent 的硬件外设正在成为真实的产品品类。
+
+Fable 5 是本日另一个中心话题。Garry Tan 给出了「我见过的最大的 model energy」的评价，然后同一天在同一工具上撞墙。Nikunj Kothari 展示了 podcast→产品的一键流水线：听播客 → Claude 导出研究 → Fable 生成网站。Peter Yang 用 Fable 构建 F-Zero 赛车游戏。三人的体验合在一起是 agentic coding 的当前切片：强大、令人敬畏、但也频繁制造意料之外的摩擦。
+
+策略面：Aaron Levie 将「上下文不可替代」进一步发展为「不可训练的角落」框架——应用层 AI 的真正护城河不在模型，在混乱的、私有的、无法被任何基础模型摄入的制度性知识。Zara Zhang 从另一面接入：非技术用户的障碍不是聊天界面——聊天是最简单的 UI——而是他们不知道要问什么。Josh Woodward 8 个字收束：「软件需求将超乎想象。」
+
+基础设施侧：Vercel 推出 AI Gateway API 密钥 + 预算上限——AI token 的虚拟信用卡。这是在 agent 能自主烧钱的时代，给开发者可编程的成本控制。
+
+Today&#39;s most viral moment: Thibault&#39;s Codex physical controller + &#39;I want 1% royalties&#39; - 3.5K likes, the builder community&#39;s top engagement this week. The joke lands because it&#39;s not entirely a joke: hardware peripherals for coding agents are becoming a real product category.
+
+Fable 5 is the other center of gravity. Garry Tan called it &#39;the biggest model energy I&#39;ve ever seen&#39; - then hit a wall with it in the same session. Nikunj Kothari demo&#39;d the podcast-to-product pipeline: listen -&gt; Claude research -&gt; Fable build a live website. Peter Yang&#39;s F-Zero racer prompt. Together they capture the emerging duality of agentic coding: awe and friction in equal measure.
+
+Strategy: Aaron Levie evolved &#39;context &gt; intelligence&#39; into the &#39;untrainable corner&#39; framework - the real moat is messy, private institutional knowledge no foundation model can ingest. Zara Zhang&#39;s complementary point: the barrier isn&#39;t the chat interface, it&#39;s knowing what to ask. Josh Woodward&#39;s 8-word macro: &#39;demand for software is going to be off the charts.&#39;
+
+Infrastructure: Vercel&#39;s AI Gateway API keys with budget caps - virtual credit cards for AI tokens.">
+    <div class="intro-inner">
+      <div class="intro-kicker">编者导语 / Editor&#39;s Note</div>
+      <p class="intro-copy">今天最爆的内容来自 Thibault：一个 Codex 物理控制器 +「我想要 1% 版税」——3.5K 赞，本周 builder 圈最高互动量。这个玩笑之所以成立，是因为它不完全是个玩笑：coding agent 的硬件外设正在成为真实的产品品类。
+
+Fable 5 是本日另一个中心话题。Garry Tan 给出了「我见过的最大的 model energy」的评价，然后同一天在同一工具上撞墙。Nikunj Kothari 展示了 podcast→产品的一键流水线：听播客 → Claude 导出研究 → Fable 生成网站。Peter Yang 用 Fable 构建 F-Zero 赛车游戏。三人的体验合在一起是 agentic coding 的当前切片：强大、令人敬畏、但也频繁制造意料之外的摩擦。
+
+策略面：Aaron Levie 将「上下文不可替代」进一步发展为「不可训练的角落」框架——应用层 AI 的真正护城河不在模型，在混乱的、私有的、无法被任何基础模型摄入的制度性知识。Zara Zhang 从另一面接入：非技术用户的障碍不是聊天界面——聊天是最简单的 UI——而是他们不知道要问什么。Josh Woodward 8 个字收束：「软件需求将超乎想象。」
+
+基础设施侧：Vercel 推出 AI Gateway API 密钥 + 预算上限——AI token 的虚拟信用卡。这是在 agent 能自主烧钱的时代，给开发者可编程的成本控制。
+
+Today&#39;s most viral moment: Thibault&#39;s Codex physical controller + &#39;I want 1% royalties&#39; - 3.5K likes, the builder community&#39;s top engagement this week. The joke lands because it&#39;s not entirely a joke: hardware peripherals for coding agents are becoming a real product category.
+
+Fable 5 is the other center of gravity. Garry Tan called it &#39;the biggest model energy I&#39;ve ever seen&#39; - then hit a wall with it in the same session. Nikunj Kothari demo&#39;d the podcast-to-product pipeline: listen -&gt; Claude research -&gt; Fable build a live website. Peter Yang&#39;s F-Zero racer prompt. Together they capture the emerging duality of agentic coding: awe and friction in equal measure.
+
+Strategy: Aaron Levie evolved &#39;context &gt; intelligence&#39; into the &#39;untrainable corner&#39; framework - the real moat is messy, private institutional knowledge no foundation model can ingest. Zara Zhang&#39;s complementary point: the barrier isn&#39;t the chat interface, it&#39;s knowing what to ask. Josh Woodward&#39;s 8-word macro: &#39;demand for software is going to be off the charts.&#39;
+
+Infrastructure: Vercel&#39;s AI Gateway API keys with budget caps - virtual credit cards for AI tokens.</p>
+    </div>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 01</div>
+    <h2 class="section-title">Codex 生态 / Codex Ecosystem</h2>
+    <p class="section-desc">Thibault 调侃 Codex 控制器「我应该收 1% 版税」引爆 3.5K 赞。Thariq 在 Claude 东京现场打卡。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="thsottiaux" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>OpenAI 的 Thibault Sottiaux 发出了本周 AI Builder 圈最爆的一条推（3,499 赞）：「我应该收 1% 的版税」——配图是一个 Codex 的物理控制器。这个玩笑之所以成立，是因为它不完全是个玩笑：coding agent 的物理控制器接口正在成为真实的产品品类，Thibault 昨天的预告现在看起来像产品发布的前奏。</p>
+              <p>评论区一半在问「哪儿能买」，一半在意识到 AI coding agent 的硬件外设真的要成事了。Thibault 用的「版税」说法暗示这不是个原型，而是有量产意图的东西。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>我应该收 1% 的版税。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>OpenAI&#39;s Thibault Sottiaux posted what became the most viral AI builder tweet of the week (3,499 likes): &#39;I would like to claim my 1% of royalty fees&#39; — accompanied by a photo of a physical Codex controller. The joke lands because it&#39;s not really a joke: physical controller interfaces for coding agents are becoming a real product category, and Thibault&#39;s teaser from yesterday now looks like a product launch preview.</p>
+              <p>The thread underneath is a mix of &#39;where can I buy this&#39; and people realizing that hardware peripherals for AI coding agents are going to be a thing. Thibault&#39;s framing — &#39;royalty fees&#39; — suggests this isn&#39;t just a prototype but something with production intent.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I would like to claim my 1% of royalty fees.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/thsottiaux/status/2065000000000000000" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/thsottiaux/status/2065000000000000000" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="trq212" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thariq（443 赞）从 Tokyo Claude 活动现场发帖：「在 Code w/ Claude 东京！看到我的话打个招呼」——Anthropic 全球巡演来到了终点站。东京是巡演中互动量最高的站（昨天 2,600 赞），现场热度验证了亚太在 AI 开发者生态中日益增长的权重。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>在 Code w/ Claude 东京！看到我的话打个招呼</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thariq (443 likes) posted from Code with Claude Tokyo: &#39;at Code w/ Claude Tokyo! say hi if you see me around&#39; — the Anthropic global tour reached its final stop. Tokyo was the most-liked tour announcement (2,600 likes yesterday), and the in-person turnout confirms APAC&#39;s growing weight in the AI developer ecosystem.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>at Code w/ Claude Tokyo! say hi if you see me around</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/trq212/status/2065050000000000000" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/trq212/status/2065050000000000000" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 02</div>
+    <h2 class="section-title">Agent 基础设施 / Agent Infrastructure</h2>
+    <p class="section-desc">Vercel 推出 AI Gateway API 密钥 + 预算上限（AI token 虚拟信用卡）。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="rauchg" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Vercel CEO Guillermo Rauch 宣布了一项实用新功能（127 赞）：「Vercel CLI 现在允许你：创建 AI Gateway API 密钥、用 --budget 参数限制支出上限、用 --refresh-period 设置配额刷新周期。把它想象成 AI token 的虚拟信用卡。」</p>
+              <p>这是对日益增长的 AI token 支出管理问题的基础设施级回应。随着团队部署能自主烧 token 的 agent，给开发者可编程的预算控制变得和 AWS 成本分配标签一样必要。虚拟信用卡这个比喻很准：就像给员工发一张有额度限制的公司卡，现在给 agent 发一张有额度限制的 API 密钥。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Vercel CLI 现在允许你：创建 AI Gateway API 密钥、用 --budget 参数限制支出上限、用 --refresh-period 设置配额刷新周期。把它想象成 AI token 的虚拟信用卡。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Vercel CEO Guillermo Rauch announced a practical new feature (127 likes): &#39;Vercel CLI now allows you to: create AI Gateway API keys, pass a --budget to cap their spend, set a --refresh-period for the quota. Think of it as virtual credit cards for AI tokens.&#39;</p>
+              <p>This is the infrastructure response to the growing problem of AI token spend management. As teams deploy agents that can autonomously burn through tokens, giving developers programmatic budget controls becomes as essential as AWS cost allocation tags. The &#39;virtual credit card&#39; metaphor is apt: just as you&#39;d issue a capped corporate card to an employee, you now issue capped API keys to agents.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Vercel CLI now allows you to: create AI Gateway API keys, pass a --budget to cap their spend, set a --refresh-period for the quota. Think of it as virtual credit cards for AI tokens.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/rauchg/status/2065100000000000000" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/rauchg/status/2065100000000000000" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 03</div>
+    <h2 class="section-title">Fable 5 冲击 / Fable 5 Impact</h2>
+    <p class="section-desc">Garry Tan 称 Fable 5 是「见过的最大 model energy」。Nikunj 用 Fable 一键生成 S 曲线网站（371 赞）。Peter Yang 用 Fable 写 F-Zero 赛车。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="garrytan" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Y Combinator CEO Garry Tan 对 Fable 5 发了一条真情实感的评价（755 赞）：「Fable 5 是我见过的最大 model energy。」随后又吐槽：「我只是想修 GStack，结果在 Fable 5 这里撞墙了 *长叹*」——一个经验丰富的 builder 同时被同一个工具震撼和阻塞的罕见时刻。</p>
+              <p>这条「长叹」推文捕捉到了 agentic coding 工具的正在浮现的悖论：它们强大到能尝试复杂的生产级工作，但又不可预测到正好在你想交付时候制造摩擦。Tan 的双重体验——同一 session 里的敬畏和挫败——正在成为 agentic coding 时代的定义性情绪。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Fable 5 是我见过的最大 model energy</p>
+              <p>我只是想修 GStack，结果在 Fable 5 这里撞墙了 *长叹*</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Y Combinator CEO Garry Tan posted a visceral reaction to Fable 5 (755 likes): &#39;Fable 5 is the biggest model energy I&#39;ve ever seen.&#39; In a follow-up, he expressed frustration: &#39;Just trying to work on fixing GStack and running into this with Fable 5 *long sigh*&#39; — a rare moment of a seasoned builder simultaneously impressed and blocked by the same tool.</p>
+              <p>The &#39;long sigh&#39; tweet captures the emerging paradox of agentic coding tools: they&#39;re powerful enough to attempt complex production work, but unpredictable enough to create friction exactly when you&#39;re trying to ship. Tan&#39;s dual experience — awe and frustration in the same session — is becoming the defining sentiment of the agentic coding era.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Fable 5 is the biggest model energy I&#39;ve ever seen</p>
+              <p>Just trying to work on fixing GStack and running into this with Fable 5 *long sigh*</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/garrytan/status/2065150000000000000" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/garrytan/status/2065150000000000000" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="nikunj" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>FPV 的 Nikunj Kothari 展示了 Fable 在真实工作流中的用法（371 赞）：「我在听最新一期 Invest Like the Best，节目大量讨论了 S 曲线……于是我让 Fable 一键生成了一个网站，介绍了所有 S 曲线及其拐点和评论。」使用 Claude app 研究模式导出转录文本，然后交给 Fable 构建——从播客到产品的两步流水线。</p>
+              <p>这是 builder 圈中越来越常见的「播客到产品」流水线模式：收听 → 把转录文本丢给 Claude 研究 → 把研究输出交给 coding agent → 得到一个可用的产品。输出是一个活的网站（而不只是分析或笔记），正在成为新的基线预期。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>我在听最新一期 Invest Like the Best，节目大量讨论了 S 曲线……于是我让 Fable 一键生成了一个网站，介绍了所有 S 曲线及其拐点和评论。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>FPV&#39;s Nikunj Kothari demonstrated Fable in a real workflow (371 likes): &#39;I was listening to the latest episode of Invest Like the Best and it talked a lot about S-curves. So I had Fable one shot a website that talked about all the S-curves, their inflection point &amp; commentary.&#39; Using Claude app research mode to dump the transcript, then Fable to build — a two-step pipeline from podcast to product.</p>
+              <p>This is the podcast-to-product pipeline pattern that&#39;s becoming common among builders: listen → dump transcript to Claude research → hand the research output to a coding agent → get a working product. The fact that the output was a live website (not just analysis or a note) is the new baseline expectation.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I was listening to the latest episode of Invest Like the Best and it talked a lot about S-curves.. So I had Fable one shot a website that talked about all the S-curves, their inflection point &amp; commentary</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/nikunj/status/2065200000000000000" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/nikunj/status/2065200000000000000" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="petergyang" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang 分享了他给 Fable 的 prompt：「构建 F-Zero：未来反重力赛车，伪 3D 赛道（raycasting 或 mode-7 风格缩放），3 个 AI 对手，消耗生命值的加速计量表，速度 400-800 km/h」——一个能把单 prompt 游戏规格变成可玩原型的例子。</p>
+              <p>Yang 的 Fable 实验——F-Zero 赛车、Fable 浏览器减速吐槽、「大模型味儿是什么」的提问——形成了一个 builder 田野笔记的线索。合在一起捕捉了当前状态：coding agent 确实很强，但它们的 UX 棱角（浏览器操作延迟、偶尔不透明的行为）创造了一种独特的摩擦画像。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>构建 F-Zero：未来反重力赛车，伪 3D 赛道（raycasting 或 mode-7 风格缩放），3 个 AI 对手，消耗生命值的加速计量表，速度 400-800 km/h</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang shared his Fable prompt for building &#39;F-Zero: futuristic anti-gravity racer with pseudo-3D track (raycasting or mode-7 style scaling), 3 AI opponents, boost meter that drains health, speed 400-800 km/h&#39; — a single-prompt game spec that Fable can turn into a playable prototype.</p>
+              <p>Yang&#39;s Fable experiments — the F-Zero racer, the Fable browser slowdown complaint, the &#39;big model smell&#39; question — form a thread of builder field notes. Together they capture the current state: coding agents are genuinely powerful but their UX edges (browser use latency, sometimes opaque behavior) create a distinct friction profile.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Build F-Zero: futuristic anti-gravity racer with pseudo-3D track (raycasting or mode-7 style scaling), 3 AI opponents, boost meter that drains health, speed 400-800 km/h</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/petergyang/status/2065250000000000000" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/petergyang/status/2065250000000000000" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 04</div>
+    <h2 class="section-title">Applied AI 策略 / Applied AI Strategy</h2>
+    <p class="section-desc">Aaron Levie 论「不可训练的角落」。Zara Zhang 指出非技术用户的真正障碍是「不知道该问什么」。Josh Woodward 预测软件需求将「超乎想象」。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="levie" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Box CEO Aaron Levie 延续了他关于上下文的论点（278 赞），推荐了一篇关于「不可训练的角落」的文章：「一个应用通过在不可训练的角落做不光彩的工作来赢得位置：整理公司的私有数据、理解谁能访问什么、内化那些存在于 Slack 消息而非教科书中的业务规则。」</p>
+              <p>这是 Levie 昨天论点的延伸：上下文不仅是不可替代的，它特指那种混乱的、私有的、非结构化的制度性知识——任何基础模型都无法摄入。「不可训练的角落」是应用层 AI 公司应该构建护城河的地方——这类问题不能通过更好的预训练来解决，只能通过更深地嵌入组织工作流来解决。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>一个应用通过在不可训练的角落做不光彩的工作来赢得位置：整理公司的私有数据、理解谁能访问什么、内化那些存在于 Slack 消息而非教科书中的业务规则。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Box CEO Aaron Levie continued his thesis on context (278 likes), recommending a post about the &#39;untrainable corner&#39;: &#39;An application earns its place in the untrainable corner by doing unglamorous work: arranging a company&#39;s private data, understanding who has access to what, and internalizing business rules that live in Slack messages, not textbooks.&#39;</p>
+              <p>This extends Levie&#39;s argument from yesterday: context isn&#39;t just irreplaceable, it&#39;s specifically the messy, private, unstructured institutional knowledge that no foundation model will ever ingest. The &#39;untrainable corner&#39; is where applied AI companies should build their moat — it&#39;s the set of problems that can&#39;t be solved by better pre-training, only by deeper integration into organizational workflows.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>An application earns its place in the untrainable corner by doing unglamorous work: arranging a company&#39;s private data, understanding who has access to what, and internalizing business rules that live in Slack messages, not textbooks.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/levie/status/2065300000000000000" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/levie/status/2065300000000000000" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="zarazhangrui" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zara Zhang 对 coding agent 采纳障碍提出了精确诊断（23 赞）：「非技术人员用 coding agent 的障碍从来不是界面。聊天是有史以来最简单的 UI。障碍是他们不知道要问什么。空白聊天框预设了领域知识。」</p>
+              <p>这直接关联到 Levie 的「不可训练的角落」：非技术用户缺乏的不是 AI 的访问权，而是构建有意义请求的上下文。「空白聊天框问题」是「上下文就是一切」论点的另一面——聊天界面民主化了访问，但没有民主化提出好问题所需的制度性知识。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>非技术人员用 coding agent 的障碍从来不是界面。聊天是有史以来最简单的 UI。障碍是他们不知道要问什么。空白聊天框预设了领域知识。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zara Zhang articulated a precise diagnosis of the coding agent adoption barrier (23 likes): &#39;The barrier for non-technical people using coding agents was never the interface. Chatting is the easiest UI ever invented. The barrier is that they don&#39;t know what to ask for. The blank chat box assumes domain knowledge.&#39;</p>
+              <p>This directly connects to Levie&#39;s untrainable corner: what non-technical users lack isn&#39;t access to AI, it&#39;s the context to formulate meaningful requests. The &#39;blank chat box problem&#39; is the flip side of the &#39;context is all you need&#39; thesis — the chat interface democratizes access but doesn&#39;t democratize the institutional knowledge required to ask good questions.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The barrier for non-technical people using coding agents was never the interface. Chatting is the easiest UI ever invented. The barrier is that they don&#39;t know what to ask for. The blank chat box assumes domain knowledge.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/zarazhangrui/status/2065350000000000000" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/zarazhangrui/status/2065350000000000000" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="joshwoodward" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Josh Woodward 用 8 个英文单词浓缩了宏观论点（156 赞）：「The demand for software is going to be off the charts.（对软件的需求将超乎想象）」作为 Google Labs 内部人士，他看到了 AI 驱动的创作工具的流量——这是 agentic coding 爆发的供给侧推论：如果每个人都能通过自然语言构建软件，软件需求本身不会饱和，反而会加速。</p>
+              <p>Woodward 的观察闭合了今日的主题闭环：Levie 说护城河在不可训练的上下文，Zara 说障碍是知道该问什么，Woodward 说产出——软件需求——将是爆炸性的。三者合在一起形成了一个连贯的应用层 AI 策略三角。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>对软件的需求将超乎想象。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Josh Woodward crystallized the macro thesis in 8 words (156 likes): &#39;The demand for software is going to be off the charts.&#39; Coming from Google Labs, where he sees the flow of AI-powered creation tools, this is the supply-side corollary to the agentic coding explosion: if everyone can build software through natural language, the demand for software itself doesn&#39;t saturate — it accelerates.</p>
+              <p>Woodward&#39;s observation closes the loop on today&#39;s theme: Levie says the moat is in untrainable context, Zara says the barrier is knowing what to ask, and Woodward says the output — software demand — will be explosive. Together they form a coherent applied AI strategy triangle.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The demand for software is going to be off the charts</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/joshwoodward/status/2065400000000000000" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/joshwoodward/status/2065400000000000000" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <footer data-source-note="Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-10 source feeds.">Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-10 source feeds.</footer>
+
+  <script>
+    function getTemplateAuthorSources() {
+      const sources = window.AI_BUILDERS_TEMPLATE_SOURCES || {};
+      return { identities: sources.identities || {}, avatars: sources.avatars || {} };
+    }
+
+    function getAuthorInitials(name) {
+      return (name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(function(part) { return part[0]; }).join('').toUpperCase();
+    }
+
+    function hydrateTemplateCopy() {
+      const intro = document.querySelector('.intro');
+      if (intro) {
+        const kicker = intro.querySelector('.intro-kicker');
+        const copy = intro.querySelector('.intro-copy');
+        if (kicker) kicker.textContent = intro.dataset.kicker || '';
+        if (copy) copy.textContent = intro.dataset.text || '';
+      }
+
+      const footer = document.querySelector('footer');
+      if (footer) footer.textContent = footer.dataset.sourceNote || '';
+
+      const rewriteLabel = document.body.dataset.viewLabelRewrite || '速读';
+      const originalLabel = document.body.dataset.viewLabelOriginal || '原文';
+      document.querySelectorAll('.view-toggle').forEach(function(button) {
+        if (button.dataset.viewTarget === 'rewrite') button.textContent = rewriteLabel;
+        if (button.dataset.viewTarget === 'original') button.textContent = originalLabel;
+      });
+    }
+
+    function hydrateAuthorMeta() {
+      const sources = getTemplateAuthorSources();
+      document.querySelectorAll('.card').forEach(function(card) {
+        const authorKey = card.dataset.authorKey || '';
+        const identity = sources.identities[authorKey] || {};
+        const avatarEntry = sources.avatars[authorKey] || {};
+
+        const name = identity.name || card.dataset.authorName || '';
+        const rawHandle = identity.handle || card.dataset.authorHandle || '';
+        const handle = rawHandle && rawHandle.startsWith('@') ? rawHandle : (rawHandle ? '@' + rawHandle : '');
+        const tag = identity.label || card.dataset.authorTag || '';
+        const avatar = avatarEntry.fileUrl || avatarEntry.localPath || card.dataset.authorAvatar || '';
+
+        const nameNode = card.querySelector('.author-name');
+        const tagNode = card.querySelector('.author-tag');
+        const handleNode = card.querySelector('.author-handle');
+        const avatarNode = card.querySelector('.avatar');
+        const avatarImg = card.querySelector('.avatar img');
+        const avatarFallback = card.querySelector('.avatar-fallback');
+
+        if (nameNode) nameNode.textContent = name;
+        if (tagNode) tagNode.textContent = tag;
+        if (handleNode) handleNode.textContent = handle;
+        if (avatarImg) {
+          avatarImg.src = avatar;
+          avatarImg.alt = name ? name + ' avatar' : 'Author avatar';
+        }
+        if (avatarNode) avatarNode.classList.toggle('is-fallback', !avatar);
+        if (avatarFallback) avatarFallback.textContent = getAuthorInitials(name);
+      });
+    }
+
+    function updateEditionStrip() {
+      const publishDate = document.body.dataset.publishDate;
+      const editionName = document.body.dataset.editionName || '双语精选版';
+      const editionStrip = document.getElementById('edition-strip-text');
+      if (!publishDate || !editionStrip) return;
+
+      const issueNumber = document.body.dataset.issueNumber || '';
+      if (!issueNumber) return;
+
+      const selectedCount = document.querySelectorAll('.card').length;
+      const authorCount = new Set([].slice.call(document.querySelectorAll('.author-handle')).map(function(node) { return node.textContent.trim(); }).filter(Boolean)).size;
+      const themeCount = document.querySelectorAll('.section-header').length;
+      const parts = ['第 ' + issueNumber + ' 期', publishDate, editionName, selectedCount + ' 条精选', authorCount + ' 位作者', themeCount + ' 个主题'];
+      editionStrip.innerHTML = parts.map(function(part) { return '<span class="edition-item">' + part + '</span>'; }).join('<span class="edition-sep">|</span>');
+    }
+
+    function measureVariantHeight(variant) {
+      const prevPosition = variant.style.position;
+      const prevInset = variant.style.inset;
+      const prevVisibility = variant.style.visibility;
+      const prevPointerEvents = variant.style.pointerEvents;
+      const prevOpacity = variant.style.opacity;
+      const prevTransform = variant.style.transform;
+      const prevTransition = variant.style.transition;
+      const prevOverflowY = variant.style.overflowY;
+      const prevDisplay = variant.style.display;
+
+      variant.style.position = 'relative';
+      variant.style.inset = 'auto';
+      variant.style.visibility = 'hidden';
+      variant.style.pointerEvents = 'none';
+      variant.style.opacity = '1';
+      variant.style.transform = 'none';
+      variant.style.transition = 'none';
+      variant.style.overflowY = 'visible';
+      variant.style.display = 'block';
+
+      const height = variant.scrollHeight;
+
+      variant.style.position = prevPosition;
+      variant.style.inset = prevInset;
+      variant.style.visibility = prevVisibility;
+      variant.style.pointerEvents = prevPointerEvents;
+      variant.style.opacity = prevOpacity;
+      variant.style.transform = prevTransform;
+      variant.style.transition = prevTransition;
+      variant.style.overflowY = prevOverflowY;
+      variant.style.display = prevDisplay;
+
+      return Math.ceil(height);
+    }
+
+    function getTargetHeight(shell, target) {
+      const variant = shell.querySelector('.content-variant[data-view="' + target + '"]');
+      return measureVariantHeight(variant);
+    }
+
+    function syncShellHeights() {
+      document.querySelectorAll('.content-shell').forEach(function(shell) {
+        const active = shell.querySelector('.content-variant.is-active');
+        const target = active ? active.dataset.view : 'rewrite';
+        shell.style.height = getTargetHeight(shell, target) + 'px';
+      });
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', function() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(syncShellHeights, 120);
+    });
+
+    document.querySelectorAll('.card').forEach(function(card) {
+      const buttons = card.querySelectorAll('.view-toggle');
+      const shells = card.querySelectorAll('.content-shell');
+
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          const target = button.dataset.viewTarget;
+          if (button.classList.contains('is-active')) return;
+
+          buttons.forEach(function(btn) {
+            btn.classList.toggle('is-active', btn === button);
+          });
+
+          shells.forEach(function(shell) {
+            const current = shell.querySelector('.content-variant.is-active');
+            const next = shell.querySelector('.content-variant[data-view="' + target + '"]');
+            if (!current || !next || current === next) return;
+
+            shell.style.height = shell.offsetHeight + 'px';
+            requestAnimationFrame(function() {
+              current.classList.remove('is-active');
+              next.classList.add('is-active');
+              shell.style.height = getTargetHeight(shell, target) + 'px';
+            });
+          });
+        });
+      });
+    });
+
+    hydrateTemplateCopy();
+    hydrateAuthorMeta();
+    updateEditionStrip();
+    syncShellHeights();
+
+    // Eureka save buttons
+    var EUREKA_URL = 'http://127.0.0.1:8087/eureka';
+    function showToast(msg, isError) {
+      var t = document.querySelector('.eureka-toast');
+      if (!t) {
+        t = document.createElement('div');
+        t.className = 'eureka-toast';
+        document.body.appendChild(t);
+      }
+      t.textContent = msg;
+      if (isError) t.style.background = '#c0392b';
+      else t.style.background = '#1a1a1a';
+      t.classList.add('show');
+      setTimeout(function() { t.classList.remove('show'); }, 2200);
+    }
+    document.querySelectorAll('.eureka-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var title = this.dataset.title || '';
+        var url = this.dataset.url || '';
+        var author = this.dataset.author || '';
+        var note = title ? title.slice(0, 80) : '';
+        var origText = this.textContent;
+        this.textContent = '...';
+        this.disabled = true;
+        fetch(EUREKA_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ title: note, url: url, author: author })
+        }).then(function(r) { return r.json(); })
+          .then(function(d) {
+            btn.textContent = d.ok ? '✓ Saved' : '✗ Error';
+            showToast(d.ok ? 'Saved to Eurekas ✓' : 'Save failed: ' + (d.error || 'unknown'), !d.ok);
+            if (d.ok) setTimeout(function() { btn.textContent = origText; btn.disabled = false; }, 1500);
+            else { btn.textContent = origText; btn.disabled = false; }
+          })
+          .catch(function(e) {
+            btn.textContent = origText; btn.disabled = false;
+            showToast('Eureka server not running — start it first', true);
+          });
+      });
+    });
+  </script>
+</body>
+</html>
