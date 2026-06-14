@@ -1,0 +1,315 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-06-13",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线不是某个新模型，而是 AI 进入真实世界后，开始撞上三件硬东西：监管、路由和组织方式。Aaron Levie 把 Fable 事件拆成模型层监管的预演，也顺手指出「能把任务路由到合适模型」会变成应用层优势；Madhu Guru 从模型发布评审的角度解释，为什么 frontier model 永远不是传统软件发布。另一边，Biohub 这期 No Priors 把问题拉到更长期：如果 AI 真要改变科学，关键不是一个中心模型解决一切，而是把开放工具交到更多科学家手里。"
+  },
+  "archive": {
+    "title": "路由监管日报",
+    "desc": "AI 应用层开始同时面对模型监管、模型路由和开放科学这三条现实主线。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-13 source feeds.",
+  "sections": [
+    {
+      "title": "Regulation Moves to the Model Layer / 监管开始盯上模型层",
+      "desc": "Fable 相关讨论让大家看到一个很现实的问题：如果监管对象从应用变成模型本身，整个发布节奏都会变慢。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2065842361834651996",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie argues that the Fable export-control situation is useful because it shows what AI regulation looks like when it happens at the model layer, not the application layer.",
+              "His worry is practical: every major model launch could turn into months of negotiation with government over capabilities, risks, and subjective threat assessments. That would create a backlog of releases and make AI look like a slow, sclerotic industry.",
+              "His preferred line is clear: regulate dangerous uses of AI in cyber, fraud, financial services, biowarfare and other domains, but be careful about slowing down model progress itself."
+            ],
+            "original": [
+              "This whole Fable export control situation is actually net positive to regulation discourse. It’s an early peek into what AI regulation would end up looking like at scale when enacted at the model layer instead of the specific application of the AI.",
+              "So thus the whole challenge will be that you’re debating with the government, over months and months, with every model release, what these models are actually capable of and what their risks are.",
+              "This is why, wherever possible, we should be regulating the applied use of AI."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 认为，Fable 出口管制事件的价值在于，它让大家提前看到了「监管模型层」会是什么样，而不是只监管具体 AI 应用。",
+              "他的担心很实际：以后每次重要模型发布，都可能要和政府围绕能力、风险、主观威胁评估拉扯几个月。结果就是发布堆积、市场进展变慢，AI 变得像其他行动迟缓的行业。",
+              "他的边界也很明确：应该监管 AI 在 cyber、欺诈、金融服务、生物武器等场景里的危险使用，但要小心不要太早拖慢模型本身的进展。"
+            ],
+            "original": [
+              "整个 Fable 出口管制事件，对监管讨论反而是净正面。它提前展示了当 AI 监管发生在模型层，而不是具体应用层时，规模化之后会是什么样。",
+              "挑战会变成：每一次模型发布，都要和政府花几个月辩论模型到底有什么能力、风险是什么。",
+              "所以只要可能，我们应该监管 AI 的应用使用方式。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:realmadhuguru",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2065911676000752122",
+          "en": {
+            "rewrite": [
+              "Madhu Guru gives the inside-baseball version of the same problem: launching an LLM is not like shipping normal software. You are deciding whether to release a black box with effectively infinite use cases and failure modes.",
+              "Labs can build evals, red-team, compare checkpoints, and still have early-access partners uncover behavior nobody expected. The goal is not certainty, because certainty is impossible. The goal is reducing uncertainty enough to launch.",
+              "That framing is useful because it explains why frontier model release decisions are getting harder for both labs and regulators."
+            ],
+            "original": [
+              "Launching an LLM isn't like shipping traditional software - you're making a decision about a black box with effectively infinite use cases and infinite failure modes.",
+              "Then early-access partners still uncover behaviors you didn't anticipate.",
+              "You can never be 100% certain you've understood a frontier model. You focus on reducing the uncertainty enough to launch."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Madhu Guru 从模型发布评审的内部视角补了一刀：发布 LLM 不是发布传统软件。你面对的是一个黑箱，它有近乎无限的使用场景，也有近乎无限的失败模式。",
+              "实验室可以做 eval、red-team、比较不同 checkpoint，但 early-access partners 依然会发现你没预料到的行为。目标不是百分百确定，因为这件事做不到；目标只是把不确定性降到足够可以发布。",
+              "这个说法很有价值，因为它解释了为什么 frontier model 的发布决策会同时让实验室和监管者越来越难受。"
+            ],
+            "original": [
+              "发布 LLM 不像发布传统软件，你是在决定是否发布一个有近乎无限用途和近乎无限失败模式的黑箱。",
+              "然后 early-access partners 仍然会发现你没预料到的行为。",
+              "你永远不可能 100% 确定自己已经理解了一个 frontier model。你只能把不确定性降到足够可以发布。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Model Routing Becomes Infrastructure / 模型路由成为基础设施",
+      "desc": "当模型能力、成本和可用性都不稳定时，应用层真正值钱的地方可能不是绑定某一个模型，而是会调度。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2065989559905812973",
+          "en": {
+            "rewrite": [
+              "Aaron Levie says the layer that routes each job to the right AI model is going to become much more valuable. He names three reasons: cost optimization, capability maximization, and risk mitigation.",
+              "The cost point is especially concrete: the same workflow may use frontier intelligence for planning and review, while sending the bulk of the work to an OSS or cheaper model. That will become standard for large categories of work.",
+              "The regulation angle now matters too. If governments can restrict specific models, applications need provider flexibility as a resilience layer, not just as a cost trick."
+            ],
+            "original": [
+              "The layer that can route to the best AI model for the particular job is going to increase in value substantially.",
+              "Even in the same task you may use frontier intelligence for planning and review of the work, but an OSS or cheaper model for the bulk of the workload.",
+              "Ultimately, it’s going to increasingly be a a strategic advantage for the applied AI layer that they can effectively route between models."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie 说，能把不同任务路由给最合适 AI 模型的那一层，会明显变得更值钱。他给了三个理由：成本优化、能力最大化、风险缓释。",
+              "成本这点尤其具体：同一个 workflow 里，你可能用 frontier model 做规划和复核，但把大部分执行交给 OSS 或更便宜的模型。以后很多大规模工作都会这么跑。",
+              "监管因素现在也变重要了。如果政府可能限制某些模型，应用就需要能在 provider 之间切换，这不只是省钱技巧，而是韧性设计。"
+            ],
+            "original": [
+              "能把具体任务路由到最佳 AI 模型的那一层，价值会大幅上升。",
+              "同一个任务里，你可能用 frontier intelligence 做规划和复核，但用 OSS 或更便宜的模型完成大部分工作。",
+              "应用 AI 层能有效在模型之间路由，会越来越成为战略优势。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2065997212015067508",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger posts a tiny but telling coding-agent moment: he got a PayPal verification text, thought he had been hacked, and then realized Codex was signing up for a web service it needed.",
+              "It is funny, but it also hints at the next operational boundary: agents are no longer just editing files. They are crossing into accounts, services, verification flows, and real-world side effects."
+            ],
+            "original": [
+              "Got a PayPal verification text and thought I been hacked, but it was just codex signing up for a web service it needed."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger 发了一个很小但很有代表性的 coding agent 时刻：他收到 PayPal 验证短信，以为自己被黑了，结果发现只是 Codex 在注册它需要用的 web service。",
+              "这很好笑，但也说明 agent 的边界正在往外扩：它不只是改文件了，而是在进入账号、服务、验证流程，以及会产生现实副作用的操作。"
+            ],
+            "original": [
+              "收到一条 PayPal 验证短信，我以为自己被黑了，结果只是 Codex 在注册它需要的一个 web service。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Open Biology, Not Centralized Science / 开放生物学，而不是中心化科学",
+      "desc": "No Priors 这期 Biohub 访谈把 AI 的开放工具逻辑带到了科学领域：真正的瓶颈不只是模型，而是数据、湿实验和长期工具建设。",
+      "cards": [
+        {
+          "authorKey": "podcast:no-priors",
+          "authorName": "No Priors",
+          "authorTag": "Mark Zuckerberg, Priscilla Chan, and Alex Rives on Biohub",
+          "sourceUrl": "https://www.youtube.com/@NoPriorsPodcast",
+          "en": {
+            "rewrite": [
+              "The takeaway: Biohub is betting that AI can move biology from discovery-by-fragment to engineering-by-model, but only if frontier AI is coupled tightly with frontier wet-lab biology.",
+              "Mark Zuckerberg frames the nonprofit choice as a distribution strategy: the point is not for Biohub itself to cure diseases, but to build open tools that let the whole scientific community move faster. Priscilla Chan adds the human reason: if tools are decentralized, rare disease communities and long-tail researchers can make progress where normal biotech economics would not go first.",
+              "Alex Rives gives the technical hinge: models like ESM Fold can learn protein structure and function from billions of protein sequences, then help design binders and antibodies digitally before a much smaller lab validation loop. The big next challenge is the virtual cell: connecting proteomic, genetic, transcriptomic and phenotype layers well enough to ask new experimental questions digitally."
+            ],
+            "original": [
+              "We just wanna give tools to the whole scientific community.",
+              "We'll have a bigger impact by getting us in more scientists hands quicker by doing it as open source projects instead.",
+              "We folded over 1,100,000,000 proteins and predicted their structures.",
+              "You need to have kind of the right basis for modeling at every level."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "核心 takeaway：Biohub 赌的是，AI 可以把生物学从碎片化发现推进到模型驱动的工程学，但前提是 frontier AI 必须和 frontier 湿实验紧密耦合。",
+              "Mark Zuckerberg 把 nonprofit 选择解释成一种分发策略：Biohub 不是要自己治愈疾病，而是要做开放工具，让整个科学共同体跑得更快。Priscilla Chan 补上了更人的一面：如果工具被分散到更多人手里，罕见病社区和长尾研究者也能推进那些传统 biotech 经济账不会优先支持的问题。",
+              "Alex Rives 给出技术关键：像 ESM Fold 这样的模型，可以从数十亿蛋白序列中学到结构和功能，再先在数字空间设计 binder 和 antibody，最后用更小的实验循环验证。下一步的大问题是 virtual cell：把 proteomic、genetic、transcriptomic 和 phenotype 层连起来，让模型能回答新的实验问题。"
+            ],
+            "original": [
+              "我们只是想把工具交给整个科学共同体。",
+              "用 open source projects 更快地把它交到更多科学家手里，会带来更大影响。",
+              "我们折叠了超过 11 亿个蛋白，并预测了它们的结构。",
+              "每一个层级都需要有合适的建模基础。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "New Maps, New Signals / 新地图和新信号",
+      "desc": "几条短帖都在指向同一件事：AI 时代的判断标准正在重写，旧地图、旧增长姿势和旧协作工具都不太够用了。",
+      "cards": [
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2065877443874038203",
+          "en": {
+            "rewrite": [
+              "YC CEO Garry Tan compresses a whole founder memo into one sentence: in AI, most people are still using old maps on new territory. His advice is to throw the maps away and draw new ones by walking the land.",
+              "That is not just motivational language. It is a warning against copying SaaS-era playbooks into a market where product shape, distribution, margins, and user expectations are still being discovered."
+            ],
+            "original": [
+              "In AI most people are still trying to use old maps on a new territory.",
+              "Throw the maps away. It's time to draw new ones. The only way you can do it is walking the land."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "YC CEO Garry Tan 用一句话压缩了一整篇 founder memo：在 AI 里，大多数人还在用旧地图看新大陆。他的建议是，把地图扔掉，自己走一遍，把新的画出来。",
+              "这不只是鸡血话。它是在提醒大家，不要把 SaaS 时代的 playbook 原封不动搬到一个产品形态、分发方式、利润结构和用户预期都还在重新发现的市场里。"
+            ],
+            "original": [
+              "在 AI 里，大多数人还在用旧地图看新领土。",
+              "把地图扔掉。现在该画新地图了。唯一的方法是亲自走这片土地。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2065889759906644146",
+          "en": {
+            "rewrite": [
+              "Nikunj Kothari offers a useful investor-side warning: paid partnerships and boosted X views have become negative signals in VC group chats.",
+              "The sharper line is the second half: he hopes the same skepticism comes for inflated ARR soon. In other words, in a noisier AI market, manufactured traction is starting to smell worse, not better."
+            ],
+            "original": [
+              "Not sure which founder needs to hear this..",
+              "but paid partnerships and boosting “views” on X are now negative signal in all VC group chats.",
+              "I’m hoping this comes to the inflating ARR trend soon, but that might still take another cycle."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj Kothari 给了一个投资人视角的提醒：paid partnerships 和在 X 上 boost views，现在已经成了 VC 群聊里的负面信号。",
+              "更狠的是后半句：他希望这种怀疑也尽快轮到 inflated ARR。换句话说，在越来越嘈杂的 AI 市场里，人造增长信号开始更像扣分项，而不是加分项。"
+            ],
+            "original": [
+              "不知道哪个 founder 需要听到这个。",
+              "但 paid partnerships 和在 X 上 boost views，现在已经是所有 VC 群聊里的负面信号。",
+              "我希望这种趋势很快也轮到 inflated ARR，但可能还要再等一个周期。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thenanyu",
+          "sourceUrl": "https://x.com/thenanyu/status/2065953400395555255",
+          "en": {
+            "rewrite": [
+              "Nan Yu jokes that if software can freeze tech companies and render them worthless, import restrictions should start with Jira.",
+              "It is a joke, but a good one because it catches the mood: after all the talk about controlling dangerous software capabilities, builders still know the most damaging operational drag often comes from internal process tools."
+            ],
+            "original": [
+              "Imagine a piece of software so powerful it completely disables the operations of tech companies, freezing progress and rendering them worthless. Such damaging capabilities must be controlled and stopped.",
+              "Import restrictions on Jira. Now."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nan Yu 开了个很准的玩笑：如果有一种软件强大到能让科技公司运转停摆、进展冻结、价值归零，那进口限制应该先从 Jira 开始。",
+              "这是玩笑，但好笑在它抓住了 builder 的真实体感：大家都在讨论要控制危险软件能力，可很多团队最痛的 operational drag，其实来自内部流程工具。"
+            ],
+            "original": [
+              "想象一种软件，强大到可以彻底让科技公司的运营瘫痪，冻结进展，让它们变得毫无价值。这种破坏性能力必须被控制和阻止。",
+              "现在就限制 Jira 进口。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Community Data and Security Edges / 社群数据和安全边界",
+      "desc": "剩下两条信号更偏操作层：AI 社群开始用 agent 做数据叙事，同时日常工具的安全边界也变得更显眼。",
+      "cards": [
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2065909887025168887",
+          "en": {
+            "rewrite": [
+              "Swyx is pushing the annual AI Engineering Survey, but the interesting bit is how he used Devin to analyze the registered attendee list and turn it into a live chart of who is coming to the conference.",
+              "He calls it the best data-driven storytelling he has seen about the community gathering around AI Engineering. That is a nice small example of agents doing more than coding: they turn messy operational data into narrative."
+            ],
+            "original": [
+              "Last chance to fill out the annual AI Engineering Survey this weekend and win great Vercel + Notion + AIE tix!",
+              "we had @devinai analyze registered attendee list and output a live chart of the people coming to the conference.",
+              "it ended up being the single best data driven storytelling i've ever seen on what kind of community we are gathering in two weeks."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx 在推 annual AI Engineering Survey，但真正有意思的是，他让 Devin 分析已注册参会者名单，并输出一张展示参会人群的 live chart。",
+              "他说这是他见过最好的 data-driven storytelling，用来说明两周后 AI Engineering 社群到底聚集了什么样的人。这是一个很小但很好的例子：agent 不只是写代码，也能把杂乱运营数据变成叙事。"
+            ],
+            "original": [
+              "这个周末是填写 annual AI Engineering Survey 的最后机会。",
+              "我们让 Devin 分析注册参会名单，并输出了一张参会者 live chart。",
+              "结果它成了我见过最好的 data-driven storytelling，用来说明两周后我们聚集的是怎样一个社群。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2065841885936316797",
+          "en": {
+            "rewrite": [
+              "Peter Yang flags a possible Cal.com security issue after a mysterious 'Nora' booked a meeting with him and he had no idea how it happened.",
+              "It is a small post, but worth keeping because AI-era workflow automation is only useful if the calendar, identity, and permission layers stay legible to the user. Once meetings can appear without a clear cause, trust breaks fast."
+            ],
+            "original": [
+              "Hey @peer_rich this is happening to me too and feels like a big security exploit.",
+              "I have no idea how \"Nora\" booked a meeting with me.",
+              "Can you fix this?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 提醒了一个可能的 Cal.com 安全问题：一个神秘的「Nora」和他约了会，但他完全不知道对方是怎么订上的。",
+              "这条很小，但值得保留，因为 AI 时代的工作流自动化要成立，calendar、identity 和 permission 层必须让用户看得懂。一旦会议可以不明不白地出现在日程里，信任会很快崩掉。"
+            ],
+            "original": [
+              "这也发生在我身上了，而且感觉像一个很大的安全漏洞。",
+              "我完全不知道「Nora」是怎么和我约上会议的。",
+              "能修一下吗？"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
