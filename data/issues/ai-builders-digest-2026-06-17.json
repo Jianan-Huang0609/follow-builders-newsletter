@@ -1,0 +1,307 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-06-17",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线不是某一个大发布，而是 AI 产品正在进入更具体的落地层。Josh Woodward 在 Gemini 里把语音输入做成 70+ 语言、可自由混说、不用改系统语言的入口；Amjad Masad 喜欢 Replit 的 domain-specific agents，因为增长和安全问题可以被 agent 主动翻出来再一键修；Guillermo Rauch 则把 v0 skills、Sandbox、Functions 和 Fluid compute 串成同一套底层计算故事。另一边，Aaron Levie 继续提醒大家：赢的不一定是最大模型，而是能把 intelligence 变成自己独有工作流的公司。今天那期 Dan Roberts 的播客则把这条线拉到更远：RL、test-time compute 和科学发现，正在把模型从“回答问题”推向“沿着一条很长的思路自己走下去”。"
+  },
+  "archive": {
+    "title": "落地底座日报",
+    "desc": "从多语言语音入口、domain-specific agents 到 Fluid compute 和 RL 科学发现，今天的主线是 AI 能力正在沉到产品入口、工作流和基础设施底座里。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-17 source feeds.",
+  "sections": [
+    {
+      "title": "Product Surface Gets More Natural / 产品入口变得更自然",
+      "desc": "AI 产品不只是模型更强，也在把输入方式、测试通道和用户习惯磨得更顺。",
+      "cards": [
+        {
+          "authorKey": "x:joshwoodward",
+          "sourceUrl": "https://x.com/joshwoodward/status/2066673011554435450",
+          "en": {
+            "rewrite": [
+              "Josh Woodward says Gemini's mic icon just got much better on Android and iOS, especially for non-English speakers.",
+              "The useful bit is very concrete: 70+ languages, free mixing between languages, no need to change language settings, and it still does not interrupt you. That is the kind of product detail that turns voice from a demo into a daily input method."
+            ],
+            "original": [
+              "Our mic icon just got way better on Android and iOS! This is HUGE for non-English speakers.",
+              "+ now 70+ languages\n+ mix languages freely\n+ don't have to change language settings\n+ still doesn't interrupt you :)"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Josh Woodward 说，Gemini 在 Android 和 iOS 上的麦克风入口明显升级了，尤其是对非英语用户很重要。",
+              "关键点很具体：支持 70+ 语言，可以自由混用多种语言，不用改语言设置，而且仍然不会打断你。这类产品细节，才会把语音从演示功能变成日常输入方式。"
+            ],
+            "original": [
+              "我们的麦克风图标在 Android 和 iOS 上变得好用多了！这对非英语用户非常重要。",
+              "+ 现在支持 70+ 语言\n+ 可以自由混用语言\n+ 不用更改语言设置\n+ 仍然不会打断你 :)"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2066753125197967653",
+          "en": {
+            "rewrite": [
+              "Peter Yang's one-liner is a good signal of where agent UX is heading: Codex browser use is so good that it almost makes him forget APIs are needed.",
+              "Do not overread it as an API death sentence. The useful read is simpler: when browser use works well enough, the product surface starts feeling less like integration plumbing and more like direct task execution."
+            ],
+            "original": [
+              "Codex browser use is so good that it almost makes me forget APIs are even needed"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 这句短评很能说明 agent UX 的方向：Codex 的 browser use 好到让他几乎忘了 API 还存在。",
+              "别把它过度解读成 API 要消失。更有价值的信号是：当 browser use 足够好，产品体验就会从“接一堆集成管道”变成“直接把事情做完”。"
+            ],
+            "original": [
+              "Codex 的 browser use 好到几乎让我忘了 API 甚至是需要的。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Agents Move Into Workflows / Agent 进入具体工作流",
+      "desc": "今天几条最实用的内容都指向同一件事：agent 正在从聊天框走进增长、安全、开源维护这些具体流程。",
+      "cards": [
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2066683949129330817",
+          "en": {
+            "rewrite": [
+              "Amjad Masad highlights Replit's domain-specific agents: a growth agent that surfaces SEO issues, and a security agent that surfaces potential vulnerabilities.",
+              "The best part, in his words, is the workflow after detection: select all, fix with Agent. This is a nice small picture of where product agents are going: not a general assistant waiting for a prompt, but a specialist that finds issues in its lane and hands you a batch-fix button."
+            ],
+            "original": [
+              "I absolutely love Replit’s domain-specific agents:",
+              "- growth agent surfacing SEO issues\n- security agent surfacing potential vulnerabilities",
+              "My favorite thing is: select all, fix with Agent."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Amjad Masad 点名喜欢 Replit 的 domain-specific agents：增长 agent 会发现 SEO 问题，安全 agent 会发现潜在漏洞。",
+              "最关键的是发现之后的流程，他最喜欢的是：select all, fix with Agent。这是产品 agent 的一个小但很清楚的方向：不是等你提问的通用助手，而是在自己的专业范围内主动找问题，然后给你一个批量修复按钮。"
+            ],
+            "original": [
+              "我非常喜欢 Replit 的 domain-specific agents：",
+              "- 增长 agent 发现 SEO 问题\n- 安全 agent 发现潜在漏洞",
+              "我最喜欢的点是：全选，然后用 Agent 修复。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2066457262571360396",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger describes an open-source maintenance loop: whenever someone creates an issue on one of their open source projects, clawsweeper reviews it, checks whether it fits the VISION.md file, and if it does, picks it up to create and autoreview a PR.",
+              "The important piece is the gate. The agent is not just auto-fixing every issue. It first checks project intent against VISION.md, then decides whether the work belongs in the repo."
+            ],
+            "original": [
+              "Whenever you create an issue on one of oure open source projects, @clawsweeper will review it, and *if* it fits the VISION.md file, will pick it up and create+autoreview a PR."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger 描述了一个开源维护闭环：只要有人在他们的开源项目里创建 issue，clawsweeper 就会 review；如果它符合 VISION.md，就会接手创建 PR，并自动 review。",
+              "这里最重要的是那道门槛。agent 不是无脑修所有 issue，而是先拿项目意图和 VISION.md 对齐，判断这件事到底该不该进仓库。"
+            ],
+            "original": [
+              "只要你在我们的某个开源项目里创建 issue，clawsweeper 就会 review；如果它符合 VISION.md，就会接手并创建 + 自动 review 一个 PR。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Compute Layer Converges / 计算底座开始收束",
+      "desc": "Vercel 今天的几条内容都在讲同一件事：serverless、server、sandbox、build 这些边界正在被同一套底层计算重新组织。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2066553521978097921",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch says longer Vercel function runtime is here, but frames it as much more than changing a constant.",
+              "His point: Builds, Sandbox, and now Functions run on Vercel's homegrown microVM-based Fluid compute infrastructure. The feature is the visible tip; the real story is multi-year platform work enabling longer runtimes, function multi-concurrency, Active CPU pricing, and Secure Compute for private connectivity."
+            ],
+            "original": [
+              "One of our most requested features, longer Vercel function runtime, is here.",
+              "What looks like an innocent tweak of a constant… is actually the conclusion a multi-year compute platform investment.",
+              "Builds, Sandbox, and now Functions run on our homegrown microVM-based Fluid compute infrastructure."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch 说，Vercel 用户呼声很高的 longer function runtime 已经来了，但他强调这不只是改了一个常量。",
+              "他的重点是：Builds、Sandbox，现在还有 Functions，都跑在 Vercel 自研的、基于 microVM 的 Fluid compute infrastructure 上。功能只是露出来的部分，真正的故事是多年计算平台投入，支撑了更长 runtime、function multi-concurrency、Active CPU pricing 和 Secure Compute 私有连接。"
+            ],
+            "original": [
+              "我们最常被请求的功能之一，更长的 Vercel function runtime，现在来了。",
+              "看起来像是无害地调整了一个常量，其实是一项多年计算平台投资的结果。",
+              "Builds、Sandbox，现在还有 Functions，都运行在我们自研的、基于 microVM 的 Fluid compute infrastructure 上。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2066556235961237826",
+          "en": {
+            "rewrite": [
+              "Guillermo compresses the infrastructure thesis into a list: a sandbox, a function, a server, a build are all expressions of the same underlying compute infrastructure.",
+              "The bet is that with tweaks to load balancing, concurrency, persistence, and overcommit, 2026 becomes the year serverless and servers finally converge, with no gotchas. It is a clean way to explain why AI-era platforms keep investing below the API surface."
+            ],
+            "original": [
+              "A sandbox\nA function\nA server\nA build",
+              "Are you getting it!? These are all expressions of the same underlying compute infrastructure.",
+              "2026 is the year serverless and servers finally converge. With no gotchas"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo 把基础设施判断压缩成一个列表：sandbox、function、server、build，本质上都是同一套底层 compute infrastructure 的不同表达。",
+              "他的判断是，只要在负载均衡、并发、持久化、overcommit 上做不同调校，2026 就会成为 serverless 和 servers 真正收束的一年，而且没有那些隐藏坑。这也解释了为什么 AI 时代的平台公司会持续往 API 表层之下投。"
+            ],
+            "original": [
+              "一个 sandbox\n一个 function\n一个 server\n一个 build",
+              "你明白了吗！？这些都是同一套底层 compute infrastructure 的不同表达。",
+              "2026 会是 serverless 和 servers 最终收束的一年，而且没有 gotchas。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2066567117562868009",
+          "en": {
+            "rewrite": [
+              "On the product side, Guillermo says v0 is committed to shipping the best skills by default.",
+              "The goal is to give each prompt the equivalent of a Vercel product engineer, while still letting teams pull skills from the public registry or add private skill sets. This is the same platform story, but at the agent behavior layer: defaults matter, extensibility matters too."
+            ],
+            "original": [
+              "v0 commits to shipping the best skills by default.",
+              "Our goal is to give you the equivalent of a @vercel product engineer like @shuding and @shadcn on each prompt.",
+              "But you can also now grab any skill from https://t.co/pYz1Gn97jD or add your team’s private set."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "在产品层，Guillermo 说 v0 会默认提供最好的 skills。",
+              "目标是让每一个 prompt 都像配了一个 Vercel product engineer，同时团队也可以从公开 registry 拉 skill，或者加自己的私有 skill set。这和底层计算是同一个平台故事，只是发生在 agent 行为层：默认能力很重要，可扩展性也很重要。"
+            ],
+            "original": [
+              "v0 承诺默认提供最好的 skills。",
+              "我们的目标是，让你在每个 prompt 里都获得一个 Vercel product engineer 的等价能力。",
+              "但你现在也可以从 https://t.co/pYz1Gn97jD 获取任意 skill，或添加你团队的私有集合。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Custom Intelligence Wins / 可定制智能胜出",
+      "desc": "Levie 今天继续在讲同一个商业判断：模型大小不是全部，能把 intelligence 变成组织自己的东西更关键。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2066735879213994434",
+          "en": {
+            "rewrite": [
+              "Aaron Levie points to a post that he says gives insight into the future of AI: the most interesting thing is not one model getting smarter, but intelligence becoming increasingly customizable.",
+              "His business takeaway is clear: the companies that win will be the ones that combine unique data, workflows, and a layer that routes intelligence to whichever model performs the task best. In other words, model access is not the moat; turning intelligence into something uniquely yours might be."
+            ],
+            "original": [
+              "The most interesting thing happening in AI isn't that one model is getting smarter. It's that intelligence is becoming increasingly customizable. The companies that win won't necessarily be the ones with the biggest models. They'll be the ones that turn intelligence into something uniquely their own.",
+              "The ability to combine your unique data, workflows, and a layer that can route intelligence to whatever model best performs the task is clearly the future."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie 转发了一段他认为能看出 AI 未来方向的话：最有意思的不是某一个模型变得更聪明，而是 intelligence 变得越来越可定制。",
+              "他的商业判断很清楚：胜出的公司会把自己的独特数据、工作流，以及能把任务路由给最合适模型的智能层组合起来。换句话说，能用模型不是护城河，把 intelligence 变成组织独有的东西，才可能是。"
+            ],
+            "original": [
+              "AI 里最有意思的事情，不是某一个模型变得更聪明，而是 intelligence 正变得越来越可定制。赢的公司不一定是拥有最大模型的公司，而是能把 intelligence 变成自己独有东西的公司。",
+              "把你的独特数据、工作流，以及一个能把 intelligence 路由给最适合该任务模型的层组合起来，这显然就是未来。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2066554018953146689",
+          "en": {
+            "rewrite": [
+              "Levie also pushes back on the simple call for an 'FDA for AI.' His concern is operational: model capabilities have near infinite permutations, and universal pre-release metrics would require extended debate among labs, academics, and governments.",
+              "Then multiply that process across every country and every model release, with a backlog of releases. His conclusion: focus primarily on regulating applied uses of AI, where the risk actually shows up."
+            ],
+            "original": [
+              "It’s very easy to say “we need an FDA for AI” or some equivalent government agency. Well this is what that would look like.",
+              "The capabilities of AI models have near infinite permutations.",
+              "This is why we need to primarily focus on regulating the applied uses of AI, where the risk actually shows up."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Levie 也反驳了那种简单的“我们需要一个 AI 版 FDA”的说法。他担心的是执行层面：AI 模型能力有近乎无限的排列组合，如果每次发布前都要套一套通用指标，就会引发模型实验室、学界和政府之间漫长的反复讨论。",
+              "再把这个过程乘以每个国家、每一次模型发布和积压中的几十个版本。Levie 的结论是：监管重点应该主要放在 AI 的应用场景上，因为风险是在那里真正出现的。"
+            ],
+            "original": [
+              "说“我们需要一个 AI 版 FDA”或类似政府机构很容易。但现实会是这样。",
+              "AI 模型的能力有近乎无限的排列组合。",
+              "这就是为什么我们需要主要关注监管 AI 的具体应用，因为风险真正出现在那里。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "RL, Test-Time Compute & Science / RL、推理计算与科学发现",
+      "desc": "今天的播客把产品层的 agent 讨论拉远了一步：模型为什么能在数学和科学问题上走更长、更反直觉的路。",
+      "cards": [
+        {
+          "authorKey": "podcast:the-mad-podcast-with-matt-turck",
+          "authorName": "The MAD Podcast with Matt Turck",
+          "authorTag": "Podcast",
+          "sourceUrl": "https://www.youtube.com/watch?v=oWOz2htozfI",
+          "en": {
+            "rewrite": [
+              "Matt Turck interviews OpenAI's Dan Roberts, lead of the foundations of reinforcement learning team, about why AI systems are starting to make scientific discoveries rather than just assist with known workflows.",
+              "The most memorable example is the recent Erdos-style math work: Roberts says ChatGPT was able to assume a widely believed conjecture was false, stay contrarian for a long calculation path, and connect the problem to another area of mathematics. That required persistence, exploration, and expertise across fields.",
+              "Roberts' broader frame is that RL helps models use test-time compute: they generate a long scratchpad-like thought process before producing the final answer. In his words, the output of RL training is the ability to have a model that thinks."
+            ],
+            "original": [
+              "OpenAI's Dan Roberts: Why AI Can Now Make Discoveries",
+              "One of the things that CHAT GPT was able to do was assume it was false.",
+              "When you go against the grain and do something contrarian like that, you really have to have strong conviction in what you're doing in order to persevere down a really long calculation path.",
+              "I think maybe the result of the RL process is that the model can then think at test time.",
+              "And so the output of of doing RL training is the ability to have a model that thinks."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Matt Turck 采访了 OpenAI 的 Dan Roberts，他负责 foundations of reinforcement learning team，主题是为什么 AI 系统正在从“辅助已知工作流”走向“自己做出科学发现”。",
+              "最有记忆点的例子是最近的 Erdos 类数学进展：Roberts 说，ChatGPT 能够假设一个大家普遍相信的猜想是错的，沿着一条很长的计算路径坚持这种反直觉判断，并把问题连接到另一个数学领域。这背后需要 persistence、exploration，以及跨领域的专业知识。",
+              "Roberts 更大的框架是：RL 帮模型使用 test-time compute。模型会在给最终答案前生成一段很长的、类似草稿纸的思考过程。用他的话说，RL 训练的输出，就是让模型具备“会思考”的能力。"
+            ],
+            "original": [
+              "OpenAI 的 Dan Roberts：为什么 AI 现在能做出发现",
+              "ChatGPT 能做到的一件事，是假设它是错的。",
+              "当你逆着共识做一件反直觉的事时，你必须对自己正在做的事情有很强的信念，才能沿着一条很长的计算路径坚持下去。",
+              "我认为 RL 过程的结果可能是，模型随后可以在 test time 思考。",
+              "所以 RL 训练的输出，就是让模型具备思考的能力。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
