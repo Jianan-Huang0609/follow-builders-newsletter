@@ -1,0 +1,281 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-06-19",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线是：AI 工具正在从“能用”进入“怎么管、怎么省、怎么嵌进真实工作流”的阶段。GitHub COO Kyle Daigle 讲得最具体：agent PR 已经多到改变平台负载，下一步不是继续堆一个更强模型，而是 code review、merge、model router、personal context 这些基础设施一起上。Levie 从企业应用层补了同一刀：真正的 moat 不在薄薄套一层 LLM，而在 workflow、eval、change management 和行业 GTM。"
+  },
+  "archive": {
+    "title": "Agent 落地日报",
+    "desc": "AI agent 从演示走向真实生产后，核心问题变成了工作流嵌入、模型路由、成本控制、个人上下文和企业实施。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-19 source feeds.",
+  "sections": [
+    {
+      "title": "Agent Scale Hits GitHub / Agent 规模冲到 GitHub",
+      "desc": "当 agent 开始批量写代码，平台问题就不再是“会不会生成”，而是 review、merge、权限、成本和维护者控制权。",
+      "cards": [
+        {
+          "authorKey": "podcast:ai-and-i",
+          "sourceUrl": "https://www.youtube.com/playlist?list=PLuMcoKK9mKgHtW_o9h5sGO2vXrffKHwJL",
+          "authorName": "Kyle Daigle",
+          "authorTag": "GitHub COO on AI & I by Every",
+          "en": {
+            "rewrite": [
+              "GitHub COO Kyle Daigle gives one of the clearest snapshots of the agent economy from the platform layer: in March alone, 17 million pull requests were created by agents, and GitHub is on track for 14 billion commits this year if growth were linear.",
+              "His point is not that all this code is slop. The bigger shift is that developers are starting to work with one, two, or many agents that use their skills, context, and resources. That creates a very practical infrastructure problem: how do you help maintainers handle the flood without taking control away from each community?",
+              "GitHub's answer is building blocks: agentic code review, agentic merge, policy-aware automation, and maintainer controls over who can contribute and under what conditions. The interesting part is the restraint: GitHub wants to provide tools, but not prematurely declare one universal standard for open source." 
+            ],
+            "original": [
+              "In March, you know, there were 17,000,000 pull requests that were created by agents. Yeah. That's just the agent pull requests.",
+              "We're on track to be 14,000,000,000 if the growth is linear this year, which it would not be.",
+              "We're focusing on the the building blocks of controls for maintainers. And then as we all are kinda learning together and as maintainers send feedback in, we'll, you know, we'll cement an entire system if one emerges."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "GitHub COO Kyle Daigle 从平台层给了一个非常清楚的 agent economy 截面：仅 3 月，就有 1700 万个 PR 是由 agent 创建的；如果按线性增长估算，GitHub 今年会走向 140 亿次 commit。",
+              "他的重点不是说这些代码全是 slop。更大的变化是，开发者正在和一个、两个甚至一组 agent 一起工作，这些 agent 会使用他们的技能、上下文和资源。于是问题变得很现实：怎么帮维护者处理 PR 洪水，同时又不替每个开源社区做决定？",
+              "GitHub 的答案是先做 building blocks：agentic code review、agentic merge、等待 CI 和 policy 的自动化，以及维护者控制谁能贡献、贡献前需要证明什么。最值得注意的是克制：GitHub 想给工具，但不急着替开源世界规定唯一标准。"
+            ],
+            "original": [
+              "3 月有 1700 万个 PR 是 agent 创建的，而且这只是 agent PR。",
+              "如果增长是线性的，今年会走向 140 亿次 commit，当然实际不会只是线性。",
+              "我们现在专注于给维护者提供控制权的 building blocks。等大家一起学习、维护者反馈进来，如果某个完整系统自然浮现，我们再把它固化。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2067181377028538431",
+          "en": {
+            "rewrite": [
+              "OpenAI's Thibault Sottiaux reminds Codex users that the Codex App, CLI, and SDK are not locked to OpenAI models. They can be used with any open source model.",
+              "This matters because it echoes the broader direction from the GitHub conversation: serious agent tooling is becoming a harness, not just a model wrapper. Once the interface, CLI, SDK, and workflows stabilize, model choice becomes an operational decision rather than an identity statement."
+            ],
+            "original": [
+              "Reminder that you can use the Codex App, CLI and SDK with any open source model, not just with OpenAI models."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "OpenAI 的 Thibault Sottiaux 提醒 Codex 用户：Codex App、CLI 和 SDK 并不只绑定 OpenAI 模型，也可以搭配任何 open source model 使用。",
+              "这点重要，因为它和 GitHub 那条线是同一个方向：严肃的 agent tooling 正在变成 harness，而不只是某个模型的外壳。当界面、CLI、SDK 和工作流稳定之后，模型选择就会变成运营决策，而不是身份标签。"
+            ],
+            "original": [
+              "提醒一下：Codex App、CLI 和 SDK 可以和任何 open source model 一起使用，不只是 OpenAI 模型。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Applied AI Moat / 应用层的真实护城河",
+      "desc": "企业 AI 的价值开始从“接上模型”转向“把模型嵌进复杂工作”。这也是薄应用和深工作流的分水岭。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2067455756795039957",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie lays out a serious playbook for the applied AI layer at scale. His pushback against the 'thin wrapper' critique is simple: driving agentic workflows inside enterprises is far more complex than putting a chat box on top of an LLM.",
+              "The components he names are the actual moat: workflow-specific features, context capture, bespoke tools, human-in-the-loop UX, model routing between frontier and cheaper models, deep task evals, FDE-style implementation, change management, and domain-specific GTM.",
+              "The line to remember: even if model intelligence keeps improving, enterprises need help changing today. That help is not a temporary inconvenience. It is where applied AI companies can accumulate value."
+            ],
+            "original": [
+              "Despite some of the initial critique that this would just be a thin layer on the LLM, it’s turning out that actually driving agentic workflows in an enterprise is far more complex.",
+              "Act as the model router balancing frontier intelligence with cheaper models.",
+              "A final note. There remains a view that a lot of this is all mitigated by model intelligence alone, and the bitter lesson solves all of this in the limit. That’s possibly true, but enterprises need help changing today."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 系统梳理了 applied AI layer 在规模化时的打法。他对“薄薄套一层 LLM”的反驳很直接：在企业里真正跑通 agentic workflow，复杂度远高于给 LLM 加一个聊天框。",
+              "他列出的组件才是护城河：面向 workflow 的功能、上下文采集、专用工具、human-in-the-loop UX、在 frontier model 和便宜模型之间做 model routing、具体任务的 eval、FDE 式实施、change management，以及行业化 GTM。",
+              "最该记住的一句是：即使模型能力继续进步，企业今天也需要人帮它们改变。这种帮助不是临时麻烦，而是 applied AI 公司积累价值的地方。"
+            ],
+            "original": [
+              "虽然一开始有人批评这只是 LLM 上很薄的一层，但事实证明，在企业里推动 agentic workflow 要复杂得多。",
+              "应用层需要扮演 model router，在 frontier intelligence 和更便宜的模型之间做平衡。",
+              "也许最终 bitter lesson 会解决很多事，但企业今天就需要帮助来改变。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2067242482190979186",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch frames the agent platform problem with a useful analogy: React needed Next.js to become a practical way to build real web applications; agents need a similar layer for building and deployment.",
+              "He also points to intense model competition, noting that GLM 5.2, an open model, surpassed Opus 4.8 in Vercel's Next.js evals. The implication is not just 'open models are good.' It is that the application framework layer becomes more important when model rankings keep moving underneath you."
+            ],
+            "original": [
+              "@aisdk is more relevant than ever, given the intense model competition landscape. Just today, GLM 5.2, an open model, surpassed Opus 4.8 in our Next.js Evals",
+              "But the world needs a practical solution for how to build and deploy agents. Just like React needed Next.js to solve the task of building an actual web application."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 用了一个很有用的类比来解释 agent platform 问题：React 需要 Next.js 才变成构建真实 Web 应用的实用方案；agent 也需要类似的构建和部署层。",
+              "他还提到模型竞争正在加速：在 Vercel 的 Next.js evals 里，open model GLM 5.2 已经超过了 Opus 4.8。这里的意思不只是“开源模型变强了”，而是当底层模型排名不断变化时，上层应用框架会更重要。"
+            ],
+            "original": [
+              "在激烈的模型竞争格局下，AI SDK 比以往更重要。今天 GLM 5.2 这个 open model 在我们的 Next.js Evals 中超过了 Opus 4.8。",
+              "世界需要一个实用方案来构建和部署 agents，就像 React 需要 Next.js 来解决真实 Web 应用构建问题。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Cost, Routing, and Personal Context / 成本、路由与个人上下文",
+      "desc": "下一代 AI 工具的关键体验，可能不是更会聊天，而是知道什么时候该用贵模型、什么时候该省钱，以及怎样像懂你一样工作。",
+      "cards": [
+        {
+          "authorKey": "podcast:ai-and-i",
+          "sourceUrl": "https://www.youtube.com/playlist?list=PLuMcoKK9mKgHtW_o9h5sGO2vXrffKHwJL",
+          "authorName": "Kyle Daigle",
+          "authorTag": "GitHub COO on AI & I by Every",
+          "en": {
+            "rewrite": [
+              "Kyle Daigle's most practical answer to the '$200 subscription becomes $2,000' problem is model routing. Developers drift in and out of hard and simple problems, but almost nobody manually switches from an expensive frontier model to a cheap model for the last naming cleanup.",
+              "His view is that tools should infer task intent and route automatically, while letting the user set quality bars: this is very hard and worth going to the top, or this is small and can run cheaper. That is the difference between AI as a toy and AI as a cost-controlled production system.",
+              "He connects the same idea to personalization: the long-term great experience is an agent that feels like it is completing a thought for you, without forcing you to codify every preference by hand."
+            ],
+            "original": [
+              "I also think it's really, really gonna be about how can we, particularly for developers, help you automatically choose the models.",
+              "Like the auto model router with task intent and GitHub. Microsoft Foundry has a model router as well that can do this, use sort of at an API level.",
+              "Using an agent that you feel like is completing a thought for you, will give you that great experience, especially if you did not have to personally codify that thought to your agent."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Kyle Daigle 对“200 美元订阅变 2000 美元账单”这个问题的最实用答案，是 model routing。开发者的思路会在难题和简单收尾之间来回切换，但几乎没人会为了最后一个命名清理，手动从昂贵 frontier model 切到便宜模型。",
+              "他的判断是，工具应该理解 task intent 并自动路由，同时让用户设置质量阈值：这个问题很难，值得用最强模型；这个只是小修改，可以便宜跑。AI 从玩具变成可控成本的生产系统，差别就在这里。",
+              "他还把同一件事延伸到 personalization：长期的好体验，是 agent 像在替你补完一个想法，而不是逼你把所有偏好都手写成规则。"
+            ],
+            "original": [
+              "我认为关键会是，尤其对开发者来说，工具怎么帮你自动选择模型。",
+              "比如带 task intent 的 auto model router。Microsoft Foundry 也有 model router，可以在 API 层做这件事。",
+              "真正好的体验，是 agent 像在替你补完一个想法，尤其是当你不需要亲手把这个想法 codify 给 agent 时。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2067366749411176831",
+          "en": {
+            "rewrite": [
+              "YC's Garry Tan tries to quantify the cost of removing a frontier coding model from developers' hands. His rough estimate: a Fable 5 ban could cost about $12M per working hour in lost productivity.",
+              "The math is intentionally back-of-the-envelope, but the framing is useful: once coding models become daily production tools for millions of developers, model access stops being a perk and starts looking like infrastructure. Even small percentage changes in throughput become very large economic numbers."
+            ],
+            "original": [
+              "Rough estimate on $ productivity lost by Fable 5 ban: $12M per hour",
+              "Frontier AI-coding daily actives, mid-2026: 5M devs",
+              "Effective throughput loss per dev = 17.8% × 15% ≈ 2.7% of output"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "YC 的 Garry Tan 试图量化一个 frontier coding model 被禁用后会损失多少生产力。他的粗略估算是：Fable 5 ban 每个工作小时可能造成约 1200 万美元的生产力损失。",
+              "这个计算显然是 back-of-the-envelope，但框架有价值：当 coding model 成为数百万开发者的日常生产工具，模型访问权就不再只是福利，而更像基础设施。吞吐量哪怕只变化几个百分点，也会变成很大的经济数字。"
+            ],
+            "original": [
+              "粗略估算：Fable 5 ban 导致的生产力损失约为每小时 1200 万美元。",
+              "2026 年中，frontier AI-coding 日活开发者约 500 万。",
+              "每个开发者的有效吞吐损失 = 17.8% × 15% ≈ 2.7%。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Taste Before Automation / 自动化之前先有品味",
+      "desc": "越是 AI 能快速生成，越需要人先知道什么是好东西、真实用户会不会用，以及哪些词其实在讨论不同问题。",
+      "cards": [
+        {
+          "authorKey": "x:zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2067423674689638652",
+          "en": {
+            "rewrite": [
+              "Zara Zhang gives the cleanest writing advice of the day: don't use AI for writing until you have developed your own taste and voice. The danger is not that AI writing is inherently bad, but that if you do not know what good looks like, you will not recognize slop when it appears.",
+              "Her prescription is old-fashioned in the best way: read a lot, write a lot, then use AI as leverage. AI can help you write, but it should still sound like you."
+            ],
+            "original": [
+              "Don't use AI for writing until you develop your own taste and voice",
+              "Using AI to write isn't inherently bad. The danger is using AI to write before you've developed your taste for what is good content. If the AI produces slop, you won't even recognize it as slop",
+              "Read a lot to figure out what good looks like. Write a lot to know what your voice sounds like. Only then, use AI to help you write, but make sure it actually sounds like you"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zara Zhang 给出了今天最清楚的写作建议：在形成自己的 taste 和 voice 之前，不要用 AI 写作。危险不在于 AI 写作天然不好，而在于如果你不知道什么是好内容，AI 写出 slop 时你也认不出来。",
+              "她的解法很传统，但很对：多读，知道好东西长什么样；多写，知道自己的声音是什么；然后再用 AI 放大自己。AI 可以帮你写，但最后还是要像你。"
+            ],
+            "original": [
+              "在形成自己的 taste 和 voice 之前，不要用 AI 写作。",
+              "用 AI 写作本身不是坏事。危险在于你还没形成对好内容的判断力就开始用 AI 写，如果 AI 产出 slop，你甚至认不出来。",
+              "多读，搞清楚好内容长什么样。多写，知道自己的声音是什么。然后再用 AI 帮你写，但要确保它听起来像你。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2067313780724551853",
+          "en": {
+            "rewrite": [
+              "Zara also nails a common trap in vibe-coded personal apps: building the thing takes a day, but finding out whether you will actually use it takes a week. Most dead projects worked fine. The user just never opened them.",
+              "This is a product lesson hiding inside an AI-builder tweet. The hard part is not whether the agent can make the app. The hard part is designing for the lazy, forgetful, real human who will not reliably follow steps 1, 2, and 3 every day."
+            ],
+            "original": [
+              "The thing about vibe coded personal apps:",
+              "Building the thing takes a day. Finding out if you'll actually use it takes a week. Most of my dead projects worked fine. I just never opened them.",
+              "Most products are built for a person who doesn't exist. Someone who remembers to open the app, clicks the right button, does step 1, 2, 3 every day. Real humans are lazy & forgetful. Build for that person instead"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zara 还点中了 vibe-coded personal app 的一个常见陷阱：做出来可能只要一天，但搞清楚自己到底会不会用，需要一周。很多死掉的小项目其实功能都正常，只是她从来没打开过。",
+              "这是一条藏在 AI-builder 推文里的产品课。难点不是 agent 能不能把 app 做出来，而是你有没有为那个懒惰、健忘、不可能每天稳定完成 1、2、3 步的真实人类设计。"
+            ],
+            "original": [
+              "关于 vibe coded personal apps：",
+              "做出来只要一天。发现自己到底会不会用，需要一周。我的大多数死项目都能正常工作，只是我从来没打开过。",
+              "大多数产品都是为一个不存在的人设计的：会记得打开 app、点正确按钮、每天做第 1、2、3 步。真实人类懒惰又健忘，要为这种人设计。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thenanyu",
+          "sourceUrl": "https://x.com/thenanyu/status/2067327619897446721",
+          "en": {
+            "rewrite": [
+              "Linear head of product Nan Yu adds a useful clarification to the endless 'taste' debate: taste is not just aesthetic taste, just as design is not just visual design.",
+              "This matters because a lot of AI product conversations get stuck when people use the same word for different layers: visual polish, product judgment, interaction feel, and strategic restraint. If you do not separate those, everyone sounds like they disagree when they may just be talking about different objects."
+            ],
+            "original": [
+              "\"taste\" is not just taste in aesthetics, the same way \"design\" is not just visual design. feels like half the conversations on the subject are people talking past each other because of this distinction",
+              "like, pg talks about taste and wears cargo shorts, he's clearly not talking about taste in pants"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Linear 产品负责人 Nan Yu 给“taste”争论补了一个很有用的澄清：taste 不只是审美 taste，就像 design 也不只是视觉设计。",
+              "这点重要，因为很多 AI 产品讨论会卡在同一个词的不同层级上：视觉精致度、产品判断、交互手感、战略克制。如果不拆开，大家听起来像是在反对彼此，其实可能只是在谈不同对象。"
+            ],
+            "original": [
+              "“taste”不只是 aesthetics 上的 taste，就像“design”也不只是 visual design。感觉这个话题里一半讨论都是因为这个区别没讲清楚，大家在各说各话。",
+              "比如 pg 谈 taste，但他穿 cargo shorts，显然他说的不是裤子上的 taste。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
