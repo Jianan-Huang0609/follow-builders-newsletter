@@ -1,0 +1,367 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-06-20",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线是：AI 不再只是帮你写东西，它开始变成团队协作、基础设施和政策讨论里的真实变量。Claude Code 的 Artifacts 把 agent 工作流从终端推进到可分享的网页，Nan Yu 提醒大家好的 agent 体验反而需要一点摩擦；另一边，Lambda 的 Stephen Balaban 把 AI compute 讲成一门从土地、电力、GPU、软件到融资的垂直整合生意。最值得留意的是，工具层在变轻，但底座层在变重。"
+  },
+  "archive": {
+    "title": "底座变重日报",
+    "desc": "Claude Code 把 agent 产物推向团队协作，AI compute 则暴露出土地、电力、GPU、软件和融资共同构成的新基础设施战争。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-20 source feeds.",
+  "sections": [
+    {
+      "title": "Artifacts Become Team Interfaces / Artifacts 变成团队界面",
+      "desc": "Claude Code 的新变化不是多一个展示功能，而是把 agent 的工作结果变成团队可以一起看的、持续刷新的页面。",
+      "cards": [
+        {
+          "authorKey": "x:claudeai",
+          "sourceUrl": "https://x.com/claudeai/status/2067671912038240487",
+          "en": {
+            "rewrite": [
+              "Claude announced Artifacts in Claude Code: interactive pages generated from a session, such as PR walkthroughs or living project dashboards, shared privately with a team link.",
+              "The interesting part is not just output formatting. Claude says Artifacts draw on the full session context, including the codebase, plugins, skills, and connected tools, and refresh as the session continues working. That turns the agent session into a live team surface, not a private terminal log."
+            ],
+            "original": [
+              "New in Claude Code: Artifacts.\n\nInteractive pages built from your session, like a PR walkthrough or a living project dashboard, shared with your team at a private link.\n\nAvailable in beta on Team and Enterprise plans.",
+              "As your session keeps working, the artifact refreshes, so everyone you've shared it with is always looking at the latest version.",
+              "Artifacts draw on the full context of your session: codebase, plugins, skills, connected tools. They're private until you share them, and sharing stays inside your organization."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude 发布了 Claude Code 里的 Artifacts：它可以从一次 session 里生成交互式页面，比如 PR walkthrough 或实时项目 dashboard，并通过私密链接分享给团队。",
+              "重点不只是输出格式更漂亮。Claude 说 Artifacts 会利用整个 session 的上下文，包括 codebase、plugins、skills 和连接的工具，并且会随着 session 继续工作而刷新。这等于把 agent session 从私人终端日志，变成了团队协作界面。"
+            ],
+            "original": [
+              "Claude Code 新增 Artifacts。\n\n它可以从你的 session 生成交互式页面，比如 PR walkthrough 或实时项目 dashboard，并通过私密链接分享给团队。\n\n目前在 Team 和 Enterprise 计划中 beta 可用。",
+              "随着 session 持续工作，artifact 会刷新，所以你分享给别人的始终是最新版。",
+              "Artifacts 会利用 session 的完整上下文：codebase、plugins、skills、连接的工具。默认是私有的，只有你分享后才可见，并且分享范围留在组织内部。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:_catwu",
+          "sourceUrl": "https://x.com/_catwu/status/2067674836726694200",
+          "en": {
+            "rewrite": [
+              "Cat Wu gives the internal use case: Claude Team and Enterprise users can now use Claude Code to deploy HTML sites and share them with teammates.",
+              "Her framing is useful because it names the actual job to be done: architecture changes, data analyses, and prototypes are easier to discuss when the artifact is a page, not a blob of chat output."
+            ],
+            "original": [
+              "On Claude Team and Claude Enterprise, you can now use Claude Code to deploy HTML sites and share these with your teammates!",
+              "This has changed how we work internally. Artifacts is great format for communicating architecture changes, data analyses, and new prototypes."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Cat Wu 给出了内部使用场景：Claude Team 和 Enterprise 用户现在可以用 Claude Code 部署 HTML 网站，并分享给队友。",
+              "她这条的价值在于把真实需求说清楚了：架构变更、数据分析、新原型，如果以网页形式呈现，会比一坨 chat 输出更适合团队讨论。"
+            ],
+            "original": [
+              "在 Claude Team 和 Claude Enterprise 中，你现在可以用 Claude Code 部署 HTML 网站，并分享给队友。",
+              "这已经改变了我们内部的工作方式。Artifacts 是一种很适合沟通架构变更、数据分析和新原型的格式。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:bcherny",
+          "sourceUrl": "https://x.com/bcherny/status/2067700226669060207",
+          "en": {
+            "rewrite": [
+              "Boris Cherny says he has been using Claude Code Artifacts for visual explanations of tricky code, system diagrams, animation previews, data analyses, and dashboards shared with the team.",
+              "That list is a good signal: the first durable agent-native interface may not be a chat replacement. It may be a lightweight canvas for explaining work to humans."
+            ],
+            "original": [
+              "I've been using Artifacts in Claude Code for everything: visual explanations of tricky code, system diagrams, quick previews of a few animation options, data analyses and dashboards I share with the team.",
+              "They are a game changer for how I work with Claude. Can't wait to hear what you think!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Boris Cherny 说，他已经把 Claude Code Artifacts 用在很多事情上：解释复杂代码、画系统图、快速预览动画方案、做数据分析，以及给团队分享 dashboard。",
+              "这个清单很有信号意义：第一个真正耐用的 agent 原生界面，可能不是聊天框替代品，而是一个轻量的、用来把工作解释给人看的 canvas。"
+            ],
+            "original": [
+              "我一直在用 Claude Code 里的 Artifacts 做各种事情：解释棘手代码的可视化、系统图、几个动画方案的快速预览、数据分析，以及分享给团队的 dashboard。",
+              "它们彻底改变了我使用 Claude 的方式。很期待听到你们的反馈。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Agent UX Needs Friction / Agent 体验需要一点摩擦",
+      "desc": "今天几条 builders 的反馈都指向同一个点：真正有用的 AI 工作流，不是把人完全拿掉，而是让人更容易在关键处介入。",
+      "cards": [
+        {
+          "authorKey": "x:thenanyu",
+          "sourceUrl": "https://x.com/thenanyu/status/2067703108344369306",
+          "en": {
+            "rewrite": [
+              "Nan Yu describes a very practical product lesson: they initially hoped an agent could one-shot project updates with little user input, but that produced slop because users disengaged their brains.",
+              "The better pattern was multi-turn interaction. The agent asks what to emphasize, what matters most, and what context is missing. This is a nice reminder that good AI UX sometimes adds friction because the friction restores user judgment."
+            ],
+            "original": [
+              "It took us a lot of iterations to find the right pattern for this. Early on we were very naive and we thought that the agent could one shot project updates without much input from users.",
+              "That approach ended up creating a bunch of slop, because users disengaged their brain from the process of writing an update.",
+              "By switching to a multi turn interactive mode, the agent prompts you and asks you what to emphasize, what's most important, what context is missing, etc.",
+              "A very good example of introducing friction for a net benefit."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nan Yu 分享了一个非常实用的产品教训：他们一开始以为 agent 可以在很少用户输入的情况下，一次性写出项目更新；结果产出了一堆 slop，因为用户把脑子从写更新这件事里撤走了。",
+              "更好的模式是多轮交互。agent 会问你要强调什么、什么最重要、还缺什么上下文。这是一个很好的提醒：好的 AI UX 有时不是减少摩擦，而是加一点摩擦，把人的判断力重新拉回来。"
+            ],
+            "original": [
+              "我们迭代了很多次才找到正确模式。一开始很天真，以为 agent 可以在用户很少输入的情况下，一次性生成项目更新。",
+              "结果这种方式产生了很多 slop，因为用户把大脑从写更新的过程中撤走了。",
+              "切换到多轮交互后，agent 会提示你、问你要强调什么、什么最重要、缺什么上下文等等。",
+              "这是一个为了净收益而引入摩擦的好例子。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2067760098265706566",
+          "en": {
+            "rewrite": [
+              "Peter Yang asks a small but revealing question: how do you steer Claude Code with new prompts in the desktop app while it is already working?",
+              "That is the product problem behind many agent workflows now. Once agents become long-running collaborators, interruption, redirection, and mid-flight steering become core UX, not edge cases."
+            ],
+            "original": [
+              "How do you steer Claude Code with new prompts in the desktop app while it's working?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 问了一个很小但很关键的问题：Claude Code 在桌面 App 里已经开始工作时，怎么用新的 prompt 继续 steering？",
+              "这其实是很多 agent 工作流背后的产品问题。只要 agent 变成长时间运行的协作者，打断、改方向、途中 steering 就不再是边缘场景，而是核心 UX。"
+            ],
+            "original": [
+              "Claude Code 在桌面 App 里工作时，怎么用新的 prompt 去 steer 它？"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The AI Compute Stack Gets Physical / AI Compute 变成物理生意",
+      "desc": "Lambda 这期播客最有价值的地方，是把抽象的 GPU 算力还原成土地、电力、数据中心、网络、存储、软件和金融结构。",
+      "cards": [
+        {
+          "authorKey": "podcast:the-mad-podcast-with-matt-turck",
+          "authorName": "Stephen Balaban on The MAD Podcast with Matt Turck",
+          "authorTag": "Lambda cofounder and CTO · AI compute infrastructure",
+          "sourceUrl": "https://www.youtube.com/watch?v=0NttU4CbyVs",
+          "en": {
+            "rewrite": [
+              "The takeaway: neoclouds are not a thin GPU rental business. Stephen Balaban argues they are vertically integrated infrastructure companies spanning land entitlement, construction, high-performance cluster design, virtualization, cloud software, and financing.",
+              "His most useful correction is that GPU compute was never really a commodity. The bottleneck is not just chips, but 'land powered shell': land with utility megawatt commitments, the data center shell, and the mechanical, electrical, and plumbing systems around it.",
+              "Balaban also makes the financing point concrete: a 2023 H100 can lease for more now than when it was first deployed, because demand remains high and the economic useful life of GPUs is longer than skeptics assumed. In his words, 'We continue to be generally underbuilding.'"
+            ],
+            "original": [
+              "Cloud compute is not a commodity service. It is a very complicated, highly vertically integrated type of service that spans everything from land entitlement, construction, HPC, high performance computing design, software, virtualization, cloud services on top.",
+              "The thing that is the main bottleneck is basically land powered shell, which is basically land that is entitled to have a certain amount of megawatt commitment from a utility And then, of course, the data center and the mechanical, electrical, and plumbing equipment.",
+              "We continue to be generally underbuilding.",
+              "We're now leasing those out at a higher rate now than we were originally in 2023."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "核心 takeaway：neocloud 不是一门薄薄的 GPU 出租生意。Stephen Balaban 的判断是，它更像垂直整合的基础设施公司，横跨土地审批、建设、高性能集群设计、虚拟化、云软件和融资。",
+              "他最有价值的纠偏是：GPU compute 从来就不是真正的 commodity。瓶颈也不只是芯片，而是他说的 land powered shell：有电力兆瓦承诺的土地、数据中心壳体，以及里面的机电管道系统。",
+              "Balaban 还把融资逻辑讲得很具体：2023 年部署的 H100，现在租金反而可能比当初更高，因为需求仍然强，GPU 的经济可用寿命也比怀疑者想得更长。他的原话是：我们总体上仍在 underbuilding。"
+            ],
+            "original": [
+              "云计算不是 commodity 服务。它是一种非常复杂、高度垂直整合的服务，横跨土地审批、建设、HPC 高性能计算设计、软件、虚拟化，以及上层云服务。",
+              "当前主要瓶颈基本上是 land powered shell，也就是获得一定兆瓦电力承诺的土地，然后当然还有数据中心，以及里面的机械、电气、管道设备。",
+              "我们总体上仍在 underbuilding。",
+              "我们现在把那些 GPU 租出去的价格，比 2023 年刚部署时还要高。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:mattturck",
+          "sourceUrl": "https://x.com/mattturck/status/2067646198140358854",
+          "en": {
+            "rewrite": [
+              "Matt Turck's episode outline is basically a map of the 2026 AI compute stack: why GPU compute was never a commodity, where H100 price indices mislead, whether the moat is software or financing, and how frontier inference depends on distributed clusters.",
+              "If you only skim one infrastructure thread today, this is the useful index: photons to tokens, CUDA and cuDNN, networking and storage, off-take agreements, SPVs, credit markets, and why old GPUs may not depreciate the way people expected."
+            ],
+            "original": [
+              "State of AI compute 2026: my conversation with Stephen Balaban of Lambda on the neocloud boom, data centers, GPUs and what's ahead",
+              "01:21 — Why GPU compute was never a commodity",
+              "10:44 — The real bottleneck: land, power, and shell",
+              "15:00 — Opening the hood: from photons to tokens",
+              "38:44 — The financing stack: off-take agreements, SPVs, and credit",
+              "41:16 — Why a 2023 GPU leases for more today"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Matt Turck 发出的节目目录，本身就是一张 2026 AI compute stack 地图：为什么 GPU compute 从来不是 commodity，H100 价格指数哪里会误导人，护城河到底是软件还是融资，以及 frontier inference 为什么依赖分布式集群。",
+              "如果今天只看一条基础设施线索，这个目录就够有用：从 photons 到 tokens，CUDA 和 cuDNN，网络和存储，off-take agreements、SPV、credit markets，以及旧 GPU 为什么不一定按大家预期的方式贬值。"
+            ],
+            "original": [
+              "2026 AI compute 状态：我和 Lambda 的 Stephen Balaban 聊 neocloud boom、数据中心、GPU 和未来。",
+              "01:21 — 为什么 GPU compute 从来不是 commodity",
+              "10:44 — 真正瓶颈：土地、电力和 shell",
+              "15:00 — 打开黑盒：从 photons 到 tokens",
+              "38:44 — 融资栈：off-take agreements、SPV 和 credit",
+              "41:16 — 为什么 2023 年的 GPU 今天租金更高"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Open Models, Regulation, and Agency / 开源模型、监管与能动性",
+      "desc": "模型能力进入政策和组织层面后，讨论也开始从“能不能用”转向“谁能控制、谁能部署、谁能从中获得杠杆”。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2067821985342878180",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie says credible open-weights models at this level of capability should be a major update for the applied AI layer.",
+              "His point is not ideological open source cheerleading. Frontier-level open models would give companies sovereign AI options, let them post-train for specific workflows, optimize costs across workloads, and afford applications that would otherwise be too expensive."
+            ],
+            "original": [
+              "The fact that open weights models are being discussed credibly at this level of capability should be a huge update for many.",
+              "The implications of open models getting to frontier performance ensures that you can always have sovereign AI, have the ability to post train for your specific workflows, cost optimize for various workloads, and actually afford to do much more with AI (which opens up meaningfully different applications).",
+              "Huge win for the applied AI layer."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 说，open weights 模型开始在这个能力层级被认真讨论，对 applied AI layer 来说应该是一次很大的认知更新。",
+              "他的重点不是抽象地为开源欢呼。接近 frontier 水平的开放模型，意味着企业可以拥有 sovereign AI 选项，可以针对具体 workflow 做 post-train，可以按 workload 优化成本，也能负担得起一些原本太贵的 AI 应用。"
+            ],
+            "original": [
+              "open weights 模型能在这个能力水平被认真讨论，对很多人来说都应该是一次巨大更新。",
+              "开放模型达到 frontier 性能的意义在于：你总能拥有 sovereign AI，能为自己的具体 workflow 做 post-train，能为不同 workload 做成本优化，也能真正负担得起更多 AI 应用，从而打开完全不同的应用空间。",
+              "这是 applied AI layer 的巨大胜利。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2067606805459714229",
+          "en": {
+            "rewrite": [
+              "Garry Tan's cleanest line today is about agency: for people without a clear future they want, AI becomes another control mechanism; for people with agency, AI breaks chains and lets them do things no human could do alone.",
+              "This sits next to his stronger political objection to proposals aimed at AI startup revenue. Whether or not you agree with the politics, the builder-side fear is clear: if AI is leverage, then ownership and regulation of that leverage become central startup questions."
+            ],
+            "original": [
+              "For people who don’t have a clear sense of the future they want, AI is just another mechanism of control",
+              "But in the hands of someone with agency, AI is the breaker of chains, something that lets you do things no humans can do alone.",
+              "AI can be a liberator if you choose agency."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan 今天最清楚的一句话是关于 agency：对没有清晰未来感的人来说，AI 只是另一种控制机制；但在有能动性的人手里，AI 是打破锁链的东西，让人能做单个人类做不到的事。",
+              "这和他对 AI startup 收入相关政策提案的强烈反对放在一起看，会更完整。不管你是否同意他的政治判断，builder 侧的担忧很清楚：如果 AI 是杠杆，那么谁拥有、谁监管这个杠杆，就会变成创业公司的核心问题。"
+            ],
+            "original": [
+              "对那些没有清晰未来感的人来说，AI 只是另一种控制机制。",
+              "但在有 agency 的人手里，AI 是打破锁链的东西，让你能做到单个人类做不到的事。",
+              "如果你选择 agency，AI 可以是一种解放力量。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Small Builder Experiments / 小实验里的真实信号",
+      "desc": "不那么宏大的几条内容，反而最能说明 builders 正在怎么把 AI 塞进日常工作：做 deck、做 SEO、重新理解 API。",
+      "cards": [
+        {
+          "authorKey": "x:zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2067850383758901669",
+          "en": {
+            "rewrite": [
+              "Zara Zhang used her Frontend Slides skill to make an HTML deck with interactive details: clickable enlarged images, nested content, hyperlinks, and other easter eggs.",
+              "It is a small but useful signal. Slides are becoming software-shaped artifacts, and skills are becoming repeatable design systems for agents."
+            ],
+            "original": [
+              "Made a beautiful HTML deck using my Frontend Slides skill; very happy with how it turned out!",
+              "Lots of easter eggs (e.g. you can click any image to enlarge them, lots of nested content/hyperlinks/interactive elements etc)",
+              "Check it out: https://t.co/PBTqcZmZYX"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zara Zhang 用自己的 Frontend Slides skill 做了一个 HTML deck，里面有不少交互细节：图片可点击放大、嵌套内容、超链接和各种 easter eggs。",
+              "这是个小信号，但很有用。Slides 正在变成软件形态的 artifact，而 skills 正在变成 agent 可复用的设计系统。"
+            ],
+            "original": [
+              "我用自己的 Frontend Slides skill 做了一个很漂亮的 HTML deck，对结果很满意。",
+              "里面有很多 easter eggs，比如可以点击任意图片放大，还有很多嵌套内容、超链接、交互元素等等。",
+              "可以看看：https://t.co/PBTqcZmZYX"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2067830061009633294",
+          "en": {
+            "rewrite": [
+              "Nikunj Kothari quietly launched a side project to test how far Claude Code and Codex could push SEO/GEO optimization on a website.",
+              "The early result: about 16k impressions and 94 clicks over 28 days, with no backlinks, no social promotion, and no Reddit hacking. Not a huge business result yet, but a clean experiment in using coding agents for distribution work, not just product work."
+            ],
+            "original": [
+              "Launched a side project quietly a few weeks ago..",
+              "Wanted to test how many impressions/clicks I could get by simply having Claude Code / Codex optimize the hell out of the website.",
+              "Got it to about 16k impressions, and 94 clicks over the last 28 days. Not bad eh?",
+              "No backlinks, no mention of this website anywhere on my socials, no Reddit hacking - simply old school SEO/GEO optimization."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj Kothari 悄悄上线了一个 side project，想测试只靠 Claude Code / Codex 把网站 SEO/GEO 优化到极致，能带来多少曝光和点击。",
+              "早期结果是：过去 28 天大约 1.6 万次 impressions、94 次 clicks，没有 backlinks、没有社交媒体宣传、也没有 Reddit hacking。还不是多大的商业结果，但这是一个干净的小实验：coding agents 不只可以做产品，也可以做分发。"
+            ],
+            "original": [
+              "几周前悄悄上线了一个 side project。",
+              "想测试一下，只让 Claude Code / Codex 极限优化网站，能拿到多少 impressions/clicks。",
+              "过去 28 天做到了大约 16k impressions 和 94 clicks，还不错吧？",
+              "没有 backlinks，没有在我的社交账号提过，也没有 Reddit hacking，只是老派 SEO/GEO 优化。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2067821739556413651",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger compresses a lot into one line: everything is either a fast or slow API now.",
+              "That is a good mental model for AI products. Once long-running agent workflows are normal, the distinction is less 'app versus API' and more whether the user expects an immediate answer or a delayed result."
+            ],
+            "original": [
+              "Everything’s either a fast or slow API now."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger 用一句话压缩了很多东西：现在一切不是 fast API，就是 slow API。",
+              "这是理解 AI 产品的好模型。当长时间运行的 agent workflow 变正常后，区别就不再是 app 还是 API，而是用户到底期待立即答案，还是可以等待一个延迟产物。"
+            ],
+            "original": [
+              "现在一切不是 fast API，就是 slow API。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
