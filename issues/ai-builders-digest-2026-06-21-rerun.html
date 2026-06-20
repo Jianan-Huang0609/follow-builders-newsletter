@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Builders Digest · 2026-06-21</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f6f3ed;
+    --accent: #c0392b;
+    --accent-light: #e8d5c4;
+    --border: #d4cdc0;
+    --muted: #7a7265;
+    --tag-bg: #e8e2d6;
+    --en-bg: #ffffff;
+    --cn-bg: #faf7f2;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.7;
+  }
+
+  .masthead, .intro, .section-header, .feed, footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .masthead { padding-top: 48px; }
+  .masthead-rule { border: none; border-top: 3px solid var(--ink); margin: 0 0 12px; }
+  .masthead-inner { display: flex; justify-content: center; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .masthead-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; letter-spacing: -0.4px; }
+  .masthead-subtitle { margin-top: 8px; padding-bottom: 10px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  .edition-strip {
+    position: relative;
+    margin-top: 8px;
+    min-height: 46px;
+    padding: 10px 132px 12px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.34);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+
+  .edition-strip .edition-sep { margin: 0 8px; color: #b8ae9f; }
+  .edition-strip-text { display: block; }
+  .edition-return-link { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; padding: 6px 10px; border: 1px dashed rgba(192, 57, 43, 0.55); border-radius: 999px; color: var(--accent); text-decoration: none; font-size: 12px; line-height: 1; letter-spacing: 0.06em; background: rgba(255, 255, 255, 0.45); transition: background 160ms ease, border-color 160ms ease, transform 160ms ease; }
+  .edition-return-link:hover, .edition-return-link:focus-visible { background: rgba(255, 255, 255, 0.82); border-color: var(--accent); transform: translateY(-50%) translateX(-1px); }
+  .edition-return-link:focus-visible { outline: none; }
+  .intro { padding-top: 22px; }
+  .intro-inner { max-width: 920px; margin: 0 auto; padding: 0 0 0 18px; border-left: 3px solid #d9cdbc; }
+  .intro-kicker { margin: 0 0 8px; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+  .intro p { margin: 0; max-width: none; color: var(--muted); font-size: clamp(15px, 1.6vw, 16px); line-height: 1.9; text-wrap: pretty; font-family: 'Noto Serif SC', serif; overflow-wrap: anywhere; }
+
+  .section-header { margin-top: 40px; }
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 4px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 24px; margin: 0 0 6px; }
+  .section-desc { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+
+  .feed { display: flex; flex-direction: column; gap: 20px; }
+  .card { background: var(--en-bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .card-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid #eee7dd; flex-wrap: wrap; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .avatar-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .avatar.is-fallback img { display: none; }
+  .avatar.is-fallback .avatar-fallback { display: flex; }
+
+  .author-info { flex: 1; min-width: 160px; }
+  .author-name { font-weight: 600; font-size: 15px; }
+  .author-name-row { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .author-handle { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+  .author-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; background: var(--tag-bg); color: var(--muted); padding: 4px 8px; border-radius: 999px; }
+  .author-tag.is-inline { padding: 3px 8px; }
+
+  .card-controls { margin-left: auto; display: inline-flex; gap: 8px; }
+  .view-toggle { border: 1px solid var(--border); background: transparent; color: var(--muted); padding: 6px 10px; border-radius: 999px; font-size: 12px; line-height: 1; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; }
+  .view-toggle.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .card-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .lang-col { padding: 18px 20px 22px; }
+  .lang-col.cn { background: var(--cn-bg); border-right: 1px solid #f0ece4; font-family: 'Noto Serif SC', serif; }
+  .lang-col.en { background: var(--en-bg); }
+  .lang-label { margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+  .content-shell { position: relative; transition: height 220ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .content-variant { position: absolute; inset: 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(4px); transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms; will-change: opacity, transform; }
+  .content-variant.is-active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s; }
+  .content-variant p, .content-variant li { margin: 0 0 12px; font-size: 14px; }
+  .content-variant ol { margin: 0 0 12px 20px; padding: 0; }
+  .inline-code { display: inline-block; font-family: 'IBM Plex Mono', monospace; background: #f4efe7; padding: 3px 6px; border-radius: 6px; margin-bottom: 8px; }
+
+  .card-footer { padding: 12px 20px 16px; border-top: 1px solid #eee7dd; background: #fcfaf6; }
+  .card-footer { display: flex; align-items: center; justify-content: space-between; }
+.card-footer a { color: var(--accent); text-decoration: none; font-size: 14px; }
+.eureka-btn { border: 1px dashed var(--accent); background: transparent; color: var(--accent); padding: 5px 12px; border-radius: 999px; font-size: 12px; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; opacity: 0.55; }
+.eureka-btn:hover { background: var(--accent); color: #fff; opacity: 1; border-style: solid; }
+.eureka-btn:active { transform: scale(0.96); }
+.eureka-toast { position: fixed; bottom: 32px; right: 32px; background: #1a1a1a; color: #fff; padding: 12px 20px; border-radius: 10px; font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 9999; opacity: 0; transform: translateY(12px); transition: opacity 240ms ease, transform 240ms ease; pointer-events: none; }
+.eureka-toast.show { opacity: 1; transform: translateY(0); }
+  footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 680px) {
+    .masthead-inner { align-items: center; }
+    .edition-strip { padding-right: 12px; padding-left: 12px; }
+    .edition-strip-text { padding-right: 0; }
+    .edition-return-link { position: static; transform: none; margin-top: 8px; font-size: 11px; }
+    .card-controls { margin-left: 0; }
+    .card-body { grid-template-columns: 1fr; }
+    .lang-col.cn { border-right: none; border-bottom: 1px solid #f0ece4; }
+    .edition-strip .edition-sep { margin: 0 5px; }
+    .intro-inner { padding-left: 14px; }
+    .intro p { line-height: 1.84; }
+  }
+</style>
+</head>
+<body data-publish-date="2026-06-21" data-issue-number="30" data-edition-name="双语精选版" data-view-label-rewrite="速读" data-view-label-original="原文" data-author-identities-path="/Users/jianan/.follow-builders/assets/author-identities.json" data-avatar-manifest-path="/Users/jianan/.follow-builders/assets/avatar-manifest.json">
+  <header class="masthead">
+    <hr class="masthead-rule">
+    <div class="masthead-inner">
+      <div class="masthead-title">AI Builders Digest</div>
+    </div>
+    <div class="masthead-subtitle">Bilingual edition · 双语对照版</div>
+    <div class="edition-strip">
+      <span class="edition-strip-text" id="edition-strip-text">第 30 期｜2026-06-21｜双语精选版｜10 条精选｜10 位作者｜5 个主题</span>
+      <a class="edition-return-link" href="../index.html">返回目录</a>
+    </div>
+  </header>
+
+  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="今天的主线不是某个新模型发布，而是 builder 们越来越清楚地看见了 AI 工作流的底层形状：agent 需要共享工作区，markdown 正在变成新的编程界面，Codex 和 Claude Code 的竞争开始直接改变日常工具选择。另一条线更硬：Intel CEO Lip-Bu Tan 把 AI 时代的瓶颈讲得很具体，算力不只是 GPU，还有 CPU、foundry、封装、材料、电力、memory 和 supply chain。">
+    <div class="intro-inner">
+      <div class="intro-kicker">编者导语 / Editor&#39;s Note</div>
+      <p class="intro-copy">今天的主线不是某个新模型发布，而是 builder 们越来越清楚地看见了 AI 工作流的底层形状：agent 需要共享工作区，markdown 正在变成新的编程界面，Codex 和 Claude Code 的竞争开始直接改变日常工具选择。另一条线更硬：Intel CEO Lip-Bu Tan 把 AI 时代的瓶颈讲得很具体，算力不只是 GPU，还有 CPU、foundry、封装、材料、电力、memory 和 supply chain。</p>
+    </div>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 01</div>
+    <h2 class="section-title">Agent Workspaces Become the Interface / Agent 工作区成为新界面</h2>
+    <p class="section-desc">今天最值得看的不是某个单点功能，而是几个 builder 都在指向同一件事：agent 真正能工作，靠的是人和模型都能理解的共享上下文。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:levie" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Box CEO Aaron Levie 这条讲得很准：agent 成不成功，关键变量是它能不能拿到完成工作所需的上下文。真正重要的 primitive 不是一个神奇的新 UI，而是一个人和 agent 都能理解的共享工作区。</p>
+              <p>他的具体判断是 filesystem：计划、笔记、任务清单、政策、草稿、摘要、日志、纠错和决策，都应该放在一个清晰的 working set 里。这就是为什么类文件系统界面对 agent 这么重要。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>agent 成功的主要变量，是它能否拿到完成工作所需的上下文；其中一个关键因素，是能否创建一个 agent 和人类都能理解的共享工作区。</p>
+              <p>这就是 agent 使用文件系统为什么重要：它创造了一个人和 agent 都能工作的统一系统，用来传递数据。</p>
+              <p>它们需要的是 working set：计划、笔记、任务列表、政策、草稿、摘要、日志、纠错、决策等。对这一层来说，filesystem-shaped interface 往往对模型和监督它的人都更清晰。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Box CEO Aaron Levie argues that the main variable in agent success is whether the agent can get the context it needs. The important primitive is not a magical new UI, but a shared working area that both humans and agents can understand.</p>
+              <p>His concrete bet is the filesystem: plans, notes, task lists, policies, drafts, summaries, logs, corrections and decisions all belong in a legible working set. That is why file-system-shaped interfaces matter so much for agents.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The main variable in getting success with agents is whether you can get the agent the context it needs to do its work; and a major factor in that is if you can create a shared working area for that agent that a human can understand as well.</p>
+              <p>This is one of the reasons why agents using file systems is such a big deal. It creates a unified system that both the person and the agent can work within to pass around data.</p>
+              <p>What they need is a working set: plans, notes, task lists, policies, drafts, summaries, logs, corrections, decisions, etc. For that layer, a filesystem-shaped interface tends to be more legible to both the model and the humans supervising it.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/levie/status/2068068247413694532" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/levie/status/2068068247413694532" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="x:rauchg" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Vercel CEO Guillermo Rauch 说，下一个热门编程语言是 markdown。他给的 eve agent 最小例子简单到有点过分：一个 instructions.md，加一个 skills 文件夹，然后一条 Vercel 命令部署。</p>
+              <p>重点不是 markdown 本身多强，而是 agent 软件正在把编程推向人类可读、可编辑、可监督的格式。这个方向很朴素，但很关键。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>下一个热门编程语言是 markdown。</p>
+              <p>一个最小 eve agent：agent/ instructions.md skills/ your-expertise.md。一条命令 vercel 就能部署。</p>
+              <p>这是编程有史以来最 accessible 的形态。至少对那一代仍由人类完整定义和控制的软件来说，可能也会是最 accessible 的形态。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Vercel CEO Guillermo Rauch says the next hot programming language is markdown. His example of a minimal eve agent is almost aggressively simple: an instructions.md file plus a skills folder, deployable with one Vercel command.</p>
+              <p>The point is not that markdown is powerful by itself. It is that agent software is pushing programming toward formats humans can read, edit and supervise without specialized tooling.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The next hot programming language is… markdown.</p>
+              <p>A minimal eve agent: agent/ instructions.md skills/ your-expertise.md. Deployable in one command: vercel.</p>
+              <p>It’s the most accessible programming has ever been. And likely will ever be, at least for the generation of software fully defined and controlled by us humans.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/rauchg/status/2068165988005380478" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/rauchg/status/2068165988005380478" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 02</div>
+    <h2 class="section-title">Codex vs Claude Code: Builders Keep Switching / Codex 与 Claude Code 的工作流竞争</h2>
+    <p class="section-desc">Codex 相关内容今天明显占上风，但有意思的是，大家不是在吵模型参数，而是在讲真实工作流：速度、额度、浏览器、computer use、远程和本地交接。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:petergyang" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang 说自己原来是 Claude Code 的死忠用户，但现在被 Codex 拉过去了。理由都很实在：GPT-5.5 质量、Fast mode、宽松额度、steering、手机远程控制，尤其是 browser 和 computer use 能力。</p>
+              <p>他也没有把话说死，仍然用 Claude Code，并认为 Opus 在设计和 frontend 能力上更强。最健康的结论是最后一句：希望 Codex、Claude Code、Cursor、Grok、Gemini 一直竞争，因为 builder 会持续受益。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>我以前是 Claude Code 死忠用户。</p>
+              <p>Codex 赢得了我，因为：GPT-5.5 很强；Fast mode + generous limits = 更多 reps；steering、手机自动远程控制等小细节。</p>
+              <p>但最重要的是，Codex 的 browser 和 computer use 能力太强了。我构建了很多 workflow，只靠这两件事，而不是到处找 API。</p>
+              <p>我仍然也用 Claude Code。这个 app 似乎越来越好，而且 Opus 的设计和 frontend 能力仍然比 GPT 好很多。</p>
+              <p>老实说，我希望这两个永远竞争，Cursor/Grok、Gemini 等其他玩家也都保持竞争力。这样 builder 才一直赢。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang says he used to be a die-hard Claude Code user, but Codex has won him over. His reasons are practical: GPT-5.5 quality, fast mode, generous limits, steering, phone-based remote control, and especially browser plus computer-use capabilities.</p>
+              <p>He still uses Claude Code, and gives Opus the edge on design and frontend work. The healthiest takeaway is his last one: he hopes Codex, Claude Code, Cursor, Grok and Gemini all stay competitive, because that is how builders keep winning.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I used to be a die-hard Claude Code user.</p>
+              <p>Codex has won me over because: GPT-5.5 is excellent; Fast mode + generous limits = more reps; Little touches like steering, auto remote control on phone, etc.</p>
+              <p>But most of all Codex&#39;s browser and computer use capabilities are simply goated. I built so many workflows relying on those two things alone instead of hunting for APIs.</p>
+              <p>I still use Claude Code too. The app seems to be getting better and the design and frontend capability of Opus is still much better than GPT.</p>
+              <p>Honestly, I hope these two compete forever and other players (Cursor/Grok, Gemini, etc) all stay competitive. This way the builder keeps winning.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/petergyang/status/2068175172960690266" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/petergyang/status/2068175172960690266" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="x:thsottiaux" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>OpenAI 的 Thibault Sottiaux 提到 Codex 的 remote/local handoff，说这是又一个边界被拿掉。他真正有意思的一句是：当你让模型坐在驾驶位，反而需要更少基础设施。</p>
+              <p>这和今天的工具趋势能对上：如果 agent 能在本地和远程上下文之间顺畅切换，产品就不必把每一步都包进很重的定制 workflow 里。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Codex 里的 remote / local handoff！一次拿掉一个边界。</p>
+              <p>当你让模型坐在驾驶位时，你实际上需要更少的基础设施。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>OpenAI&#39;s Thibault Sottiaux points to remote/local handoff in Codex as another boundary being removed. His line is the interesting part: when the model is in the driver seat, you actually need less infrastructure.</p>
+              <p>This fits the broader shift in builder tools: if the agent can move between local and remote contexts cleanly, the product no longer needs to wrap every step in a heavy bespoke workflow.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Remote / local handoff in Codex! Removing boundaries one at a time.</p>
+              <p>When you let the model be in the driver seat, you actually need less infrastructure.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/thsottiaux/status/2068120572673077274" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/thsottiaux/status/2068120572673077274" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 03</div>
+    <h2 class="section-title">AI as a Tool for Knowledge Work / AI 进入知识工作的细枝末节</h2>
+    <p class="section-desc">Claude Code 被用来尝试解读古文字，医疗扫描争论也被重新拿出来讨论。这里的共同点是：AI 不只是写代码，它在逼我们重新定义专家、工具和判断之间的关系。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:bcherny" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic 的 Boris Cherny 分享了一个很抓人的 Claude Code 用法：解读来自克里特岛、已有 3500 年历史的 Linear A 文字。他也谨慎地补了一句，希望这能通过 peer review，这个 caveat 很重要。</p>
+              <p>这里的信号不是“Claude Code 已经破解古文字”，而是 coding agent 正在进入研究工作流：这些任务一部分是编程，一部分是模式分析，还有一部分是对不确定性的纪律化处理。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Claude Code 的一个很酷用法：解读 Linear A，一种来自克里特岛、3500 年前的书写语言。</p>
+              <p>希望它能经得起 peer review！</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic&#39;s Boris Cherny shares a striking Claude Code use case: deciphering Linear A, a 3,500-year-old written language from Crete. He is careful to add that he hopes it holds up in peer review, which is exactly the right caveat.</p>
+              <p>The useful signal is not that Claude Code has solved ancient scripts. It is that coding agents are leaking into research workflows where the task is partly programming, partly pattern analysis, and partly disciplined uncertainty.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Cool way to use Claude Code: deciphering Linear A, a 3500 year old written language from Crete.</p>
+              <p>Hope this holds up in peer review!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/bcherny/status/2068064304503660962" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/bcherny/status/2068064304503660962" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="x:AmandaAskell" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic 哲学家 Amanda Askell 反驳了一个常见观点：因为 incidental findings 会带来伤害，所以不该做更多医疗扫描。她的重点更细：问题也许不是扫描本身，而是机构如何回应扫描揭示的信息。</p>
+              <p>她还给这个讨论加了很个人的一层：她大半生都有慢性疼痛，直到医生做 MRI 找到一个先天状况，并通过手术修复。这让政策问题没那么抽象：信息确实会制造噪音，但不给信息也可能造成几十年本可避免的痛苦。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>因为 incidental findings 会造成很多伤害，所以我们不该做更多医疗扫描，这个观点让我不太舒服。它指向的问题似乎不是扫描，而是我们对扫描结果的反应。</p>
+              <p>如果我们进入更频繁扫描的范式，我们处理这些信息的规范肯定也会调整。</p>
+              <p>我大半生都有慢性疼痛，直到医生对疼痛来源做 MRI，发现一个先天状况，后来通过手术修复。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic philosopher Amanda Askell pushes back on a common argument against more medical scans: that incidental findings create harm. Her point is subtle: maybe the problem is not the scan, but how institutions respond to what the scan reveals.</p>
+              <p>She adds a personal edge to the argument: she lived with chronic pain for most of her life until an MRI found a congenital condition that surgery fixed. That makes the policy question feel less abstract: information can create noise, but withholding information can also create decades of avoidable suffering.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The view that we shouldn&#39;t do more medical scans because incidental findings cause a lot of harm doesn&#39;t sit well with me. It seems like the issue it points to isn&#39;t the scan but the response to it.</p>
+              <p>If we move to a scan-more-often paradigm, the norms of what we do with that information will surely adjust.</p>
+              <p>I had chronic pain for most of my life until a doctor did an MRI of the pain source and found a congenital condition that was then fixed with surgery.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/AmandaAskell/status/2068162191740764622" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/AmandaAskell/status/2068162191740764622" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 04</div>
+    <h2 class="section-title">Industrial AI Needs Industrial Infrastructure / 工业级 AI 需要工业级基础设施</h2>
+    <p class="section-desc">今天唯一一条播客内容很重，但值得放进来：Lip-Bu Tan 讲 Intel，不是在讲公司 PR，而是在讲 AI 时代的 supply chain、foundry、材料和资本约束。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="podcast:no-priors" data-author-name="No Priors" data-author-tag="Podcast" data-author-handle="" data-author-avatar="../assets/avatars/podcast-no-priors.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/podcast-no-priors.jpg" alt="No Priors avatar"><span class="avatar-fallback">NP</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">No Priors</div>
+            <div class="author-tag is-inline">Podcast</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>核心 takeaway：Intel CEO Lip-Bu Tan 正在按一个简单但很硬的前提重建 Intel：AI 需求不是靠模型本身就能解决的。它需要更韧性的半导体供应链、更强的 CPU、advanced packaging、新材料，以及政府级别的资本。</p>
+              <p>Tan 把 Intel 转型描述成 crawl、walk、run：先强化资产负债表，简化产品，听客户，改善 foundry 的 yield 和 defect density，再走向 full-stack systems。对 builder 最有价值的一点是：agentic AI 和 physical AI 会改变算力版图。agent 需要编排、reinforcement learning 速度和软件栈访问，不只是 GPU training capacity，所以 CPU 需求可能重新上升。</p>
+              <p>他还给了一个很实用的投资视角：找 bottleneck。interconnect、optical、AI for EDA、电源管理、散热、gallium nitride、silicon carbide、indium phosphide、glass，甚至 artificial diamond 都被他提到，因为 AI infrastructure 正在变成材料和制造问题，不只是软件故事。</p>
+              <p>最值得记住的一句话是很强的 operator 思维：&#39;first of all, you crawl and be humble, listen to customer.&#39; 对 Intel 这么大的公司来说，这可能不是口号，而是生存策略。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>我在 Cadence 和 Intel 一直相信：首先你要 crawl，要谦逊，听客户。</p>
+              <p>现在 agentic AI 让 CPU 变得非常有需求。</p>
+              <p>在 reinforcement learning、编排所有 agents 的速度方面，CPU 实际上更好。</p>
+              <p>这是服务业务，也是信任业务。客户把 wafer 订单交给你，如果 yield 不好，他们就会马上出现收入 miss。</p>
+              <p>Power、thermal，这些正在成为 bottleneck。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>The takeaway: Intel CEO Lip-Bu Tan is trying to rebuild Intel around a simple but brutal premise: AI demand will not be solved by models alone. It needs resilient semiconductor supply chains, stronger CPUs, advanced packaging, new materials, and government-scale capital.</p>
+              <p>Tan describes his Intel turnaround as crawl, walk, run: first strengthen the balance sheet, simplify products, listen to customers, improve foundry yield and defect density, then move toward full-stack systems. His most builder-relevant point is that agentic AI and physical AI change the compute map: CPU demand can rise as agents need orchestration, reinforcement learning speed and software-stack access, not just GPU training capacity.</p>
+              <p>He also gives a useful investor lens: look for bottlenecks. Interconnect, optical, EDA with AI, power management, thermal constraints, gallium nitride, silicon carbide, indium phosphide, glass and even artificial diamond all show up because AI infrastructure is becoming a materials and manufacturing problem, not just a software story.</p>
+              <p>The memorable line is pure operator thinking: &#39;first of all, you crawl and be humble, listen to customer.&#39; For a company as large as Intel, that may be less slogan than survival strategy.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I always believed in when I was at Cadence and also at Intel is, first of all, you crawl and then be humble, listen to customer.</p>
+              <p>Right now, the agentic AI and influence CPU become highly in demand.</p>
+              <p>In terms of reinforced learning, in terms of the speed of orchestrating all the agents, and turn up the CPU is actually is better.</p>
+              <p>It&#39;s a service business. It&#39;s a trust business. If people want to give you orders to have wafer to come, if the yield not good, they will be close in terms of revenue miss.</p>
+              <p>Power, thermal, those become the bottleneck.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://www.youtube.com/watch?v=asCgCv2XB4s" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="No Priors" data-url="https://www.youtube.com/watch?v=asCgCv2XB4s" data-author="No Priors">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 05</div>
+    <h2 class="section-title">Founder Judgment in One Slide / 创始人判断力的一页纸</h2>
+    <p class="section-desc">几条短内容不适合展开成大主题，但放在一起很有味道：AI 时代的个人差异、董事会透明度，以及对 Anthropic 估值的大胆预期。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:zarazhangrui" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zara Zhang 把 AI 时代拉开人与人差距的东西压缩成三个词：agency、taste、distribution。很短，但确实抓住了一个变化：工具越来越便宜，真正的差异转向你决定做什么、把它做得多好，以及能不能把它送到人面前。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>AI 时代让一个人脱颖而出的三个最重要东西：Agency；Taste；Distribution。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zara Zhang compresses the AI-age talent stack into three words: agency, taste and distribution. It is short, but it captures a real shift: tools are getting cheaper, so the differentiator moves toward deciding what to do, making it good, and getting it in front of people.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The 3 most important things that set someone apart in the AI age: Agency; Taste; Distribution.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/zarazhangrui/status/2068094591220531583" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/zarazhangrui/status/2068094591220531583" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="x:garrytan" data-author-name="Garry Tan" data-author-tag="" data-author-handle="@garrytan" data-author-avatar="../assets/avatars/x-garrytan.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-garrytan.jpg" alt="Garry Tan avatar"><span class="avatar-fallback">GT</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Garry Tan</div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle">@garrytan</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Y Combinator CEO Garry Tan 给了一个很具体的董事会建议：下次 board meeting，把你最害怕给董事会看的那件事，放到第一页。他括号里的提醒也重要：这只适用于好的董事会。</p>
+              <p>这条建议简单但有用，因为它把治理从表演变成了解题。如果最难的问题就是第一页，会议就从公司真正需要帮助的地方开始。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>建议：下次董事会，选一件你最害怕给董事会看的事，把它做成第一页（顺便说，这只适用于好的董事会）。</p>
+              <p>要郑重其事地做这件事。让它成为习惯。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Y Combinator CEO Garry Tan gives a very board-meeting-specific founder tip: take the worst thing you are afraid to show the board and make it slide one. The parenthetical matters: this only works with good boards.</p>
+              <p>It is simple advice, but useful because it turns governance from performance theater into problem solving. If the hardest thing is slide one, the meeting starts where the company actually needs help.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Tip: pick the worst thing you are afraid to show your board for your next board meeting and make it slide one (you can only do this with good boards btw).</p>
+              <p>Make it a big deal you did that. Make it a habit.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/garrytan/status/2068007205102842238" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="Garry Tan" data-url="https://x.com/garrytan/status/2068007205102842238" data-author="Garry Tan">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="x:swyx" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx 给了一个很大胆的估值判断：Anthropic 会以 2T 美元 IPO。原推没有展开论证，所以更适合把它当成市场情绪信号，而不是完整 thesis。但它确实说明，Claude 生态在很多 builder 心里已经从实验室产品变成了平台级预期。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Anthropic 会以 2T 美元 IPO。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx makes a bold valuation call: Anthropic is going to IPO at $2T. There is no supporting argument in the post itself, so treat it as a signal of market mood rather than a thesis. Still, it says something about how far the Claude ecosystem has moved from lab product to platform expectation.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Anthropic is going to IPO at $2T.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/swyx/status/2068084391260426345" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/swyx/status/2068084391260426345" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <footer data-source-note="Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-21 source feeds.">Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-21 source feeds.</footer>
+
+  <script>
+    function getTemplateAuthorSources() {
+      const sources = window.AI_BUILDERS_TEMPLATE_SOURCES || {};
+      return { identities: sources.identities || {}, avatars: sources.avatars || {} };
+    }
+
+    function getAuthorInitials(name) {
+      return (name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(function(part) { return part[0]; }).join('').toUpperCase();
+    }
+
+    function hydrateTemplateCopy() {
+      const intro = document.querySelector('.intro');
+      if (intro) {
+        const kicker = intro.querySelector('.intro-kicker');
+        const copy = intro.querySelector('.intro-copy');
+        if (kicker) kicker.textContent = intro.dataset.kicker || '';
+        if (copy) copy.textContent = intro.dataset.text || '';
+      }
+
+      const footer = document.querySelector('footer');
+      if (footer) footer.textContent = footer.dataset.sourceNote || '';
+
+      const rewriteLabel = document.body.dataset.viewLabelRewrite || '速读';
+      const originalLabel = document.body.dataset.viewLabelOriginal || '原文';
+      document.querySelectorAll('.view-toggle').forEach(function(button) {
+        if (button.dataset.viewTarget === 'rewrite') button.textContent = rewriteLabel;
+        if (button.dataset.viewTarget === 'original') button.textContent = originalLabel;
+      });
+    }
+
+    function hydrateAuthorMeta() {
+      const sources = getTemplateAuthorSources();
+      document.querySelectorAll('.card').forEach(function(card) {
+        const authorKey = card.dataset.authorKey || '';
+        const identity = sources.identities[authorKey] || {};
+        const avatarEntry = sources.avatars[authorKey] || {};
+
+        const name = identity.name || card.dataset.authorName || '';
+        const rawHandle = identity.handle || card.dataset.authorHandle || '';
+        const handle = rawHandle && rawHandle.startsWith('@') ? rawHandle : (rawHandle ? '@' + rawHandle : '');
+        const tag = identity.label || card.dataset.authorTag || '';
+        const avatar = avatarEntry.fileUrl || avatarEntry.localPath || card.dataset.authorAvatar || '';
+
+        const nameNode = card.querySelector('.author-name');
+        const tagNode = card.querySelector('.author-tag');
+        const handleNode = card.querySelector('.author-handle');
+        const avatarNode = card.querySelector('.avatar');
+        const avatarImg = card.querySelector('.avatar img');
+        const avatarFallback = card.querySelector('.avatar-fallback');
+
+        if (nameNode) nameNode.textContent = name;
+        if (tagNode) tagNode.textContent = tag;
+        if (handleNode) handleNode.textContent = handle;
+        if (avatarImg) {
+          avatarImg.src = avatar;
+          avatarImg.alt = name ? name + ' avatar' : 'Author avatar';
+        }
+        if (avatarNode) avatarNode.classList.toggle('is-fallback', !avatar);
+        if (avatarFallback) avatarFallback.textContent = getAuthorInitials(name);
+      });
+    }
+
+    function updateEditionStrip() {
+      const publishDate = document.body.dataset.publishDate;
+      const editionName = document.body.dataset.editionName || '双语精选版';
+      const editionStrip = document.getElementById('edition-strip-text');
+      if (!publishDate || !editionStrip) return;
+
+      const issueNumber = document.body.dataset.issueNumber || '';
+      if (!issueNumber) return;
+
+      const selectedCount = document.querySelectorAll('.card').length;
+      const authorCount = new Set([].slice.call(document.querySelectorAll('.author-handle')).map(function(node) { return node.textContent.trim(); }).filter(Boolean)).size;
+      const themeCount = document.querySelectorAll('.section-header').length;
+      const parts = ['第 ' + issueNumber + ' 期', publishDate, editionName, selectedCount + ' 条精选', authorCount + ' 位作者', themeCount + ' 个主题'];
+      editionStrip.innerHTML = parts.map(function(part) { return '<span class="edition-item">' + part + '</span>'; }).join('<span class="edition-sep">|</span>');
+    }
+
+    function measureVariantHeight(variant) {
+      const prevPosition = variant.style.position;
+      const prevInset = variant.style.inset;
+      const prevVisibility = variant.style.visibility;
+      const prevPointerEvents = variant.style.pointerEvents;
+      const prevOpacity = variant.style.opacity;
+      const prevTransform = variant.style.transform;
+      const prevTransition = variant.style.transition;
+      const prevOverflowY = variant.style.overflowY;
+      const prevDisplay = variant.style.display;
+
+      variant.style.position = 'relative';
+      variant.style.inset = 'auto';
+      variant.style.visibility = 'hidden';
+      variant.style.pointerEvents = 'none';
+      variant.style.opacity = '1';
+      variant.style.transform = 'none';
+      variant.style.transition = 'none';
+      variant.style.overflowY = 'visible';
+      variant.style.display = 'block';
+
+      const height = variant.scrollHeight;
+
+      variant.style.position = prevPosition;
+      variant.style.inset = prevInset;
+      variant.style.visibility = prevVisibility;
+      variant.style.pointerEvents = prevPointerEvents;
+      variant.style.opacity = prevOpacity;
+      variant.style.transform = prevTransform;
+      variant.style.transition = prevTransition;
+      variant.style.overflowY = prevOverflowY;
+      variant.style.display = prevDisplay;
+
+      return Math.ceil(height);
+    }
+
+    function getTargetHeight(shell, target) {
+      const variant = shell.querySelector('.content-variant[data-view="' + target + '"]');
+      return measureVariantHeight(variant);
+    }
+
+    function syncShellHeights() {
+      document.querySelectorAll('.content-shell').forEach(function(shell) {
+        const active = shell.querySelector('.content-variant.is-active');
+        const target = active ? active.dataset.view : 'rewrite';
+        shell.style.height = getTargetHeight(shell, target) + 'px';
+      });
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', function() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(syncShellHeights, 120);
+    });
+
+    document.querySelectorAll('.card').forEach(function(card) {
+      const buttons = card.querySelectorAll('.view-toggle');
+      const shells = card.querySelectorAll('.content-shell');
+
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          const target = button.dataset.viewTarget;
+          if (button.classList.contains('is-active')) return;
+
+          buttons.forEach(function(btn) {
+            btn.classList.toggle('is-active', btn === button);
+          });
+
+          shells.forEach(function(shell) {
+            const current = shell.querySelector('.content-variant.is-active');
+            const next = shell.querySelector('.content-variant[data-view="' + target + '"]');
+            if (!current || !next || current === next) return;
+
+            shell.style.height = shell.offsetHeight + 'px';
+            requestAnimationFrame(function() {
+              current.classList.remove('is-active');
+              next.classList.add('is-active');
+              shell.style.height = getTargetHeight(shell, target) + 'px';
+            });
+          });
+        });
+      });
+    });
+
+    hydrateTemplateCopy();
+    hydrateAuthorMeta();
+    updateEditionStrip();
+    syncShellHeights();
+
+    // Eureka save buttons
+    var EUREKA_URL = 'http://127.0.0.1:8087/eureka';
+    function showToast(msg, isError) {
+      var t = document.querySelector('.eureka-toast');
+      if (!t) {
+        t = document.createElement('div');
+        t.className = 'eureka-toast';
+        document.body.appendChild(t);
+      }
+      t.textContent = msg;
+      if (isError) t.style.background = '#c0392b';
+      else t.style.background = '#1a1a1a';
+      t.classList.add('show');
+      setTimeout(function() { t.classList.remove('show'); }, 2200);
+    }
+    document.querySelectorAll('.eureka-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var title = this.dataset.title || '';
+        var url = this.dataset.url || '';
+        var author = this.dataset.author || '';
+        var note = title ? title.slice(0, 80) : '';
+        var origText = this.textContent;
+        this.textContent = '...';
+        this.disabled = true;
+        fetch(EUREKA_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ title: note, url: url, author: author })
+        }).then(function(r) { return r.json(); })
+          .then(function(d) {
+            btn.textContent = d.ok ? '✓ Saved' : '✗ Error';
+            showToast(d.ok ? 'Saved to Eurekas ✓' : 'Save failed: ' + (d.error || 'unknown'), !d.ok);
+            if (d.ok) setTimeout(function() { btn.textContent = origText; btn.disabled = false; }, 1500);
+            else { btn.textContent = origText; btn.disabled = false; }
+          })
+          .catch(function(e) {
+            btn.textContent = origText; btn.disabled = false;
+            showToast('Eureka server not running — start it first', true);
+          });
+      });
+    });
+  </script>
+</body>
+</html>
