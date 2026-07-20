@@ -1,0 +1,281 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-07-19",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线来自 Stripe AI 负责人 Emily Sense 在 MAD Podcast 上的一场深度对谈——Agent 商业基础设施已从理论走入生产。ACP 协议、Link Wallet、Shared Payment Token 全部上线，Shopify、Wix、Best Buy 等品牌正在接入。但硬币的另一面是 Token 盗窃——Emily 称之为 AI 领域最被低估的话题——每六个 AI 公司注册里就有一个是滥用行为。搭配 Aaron Levie 对 AI 经济学的三个判断（成本越低花得越多、开源模型竞争力超预期、AI 进步受限于真实世界反馈速度），以及 Dan Shipper 的 AI 编辑越过 70% 自动化门槛、Zara Zhang 的「一次性代码」理念，今天的内容拼出了一幅完整图景：Agent 经济的基础设施在加速建设，而它带来的风险和机会都比大多数人意识到的更大。"
+  },
+  "archive": {
+    "title": "Agent 基建日报",
+    "desc": "Stripe AI 负责人详解 Agent 商业基础设施层：从 ACP 协议、Link Wallet 到 Token 盗窃危机，搭配 AI 经济学反转旧认知和实用临界点突破。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-19 source feeds.",
+  "sections": [
+    {
+      "title": "Agentic Commerce: From Theory to Infrastructure / Agent 商业：从理论到基础设施",
+      "desc": "一年前还在从第一性原理推演的 Agent 商业，现在有了真实的基础设施、真实的合作伙伴和真实的交易量。",
+      "cards": [
+        {
+          "authorKey": "podcast:mad-podcast",
+          "sourceUrl": "https://www.youtube.com/@DataDrivenNYC/videos",
+          "authorName": "Emily Sense (Head of Data & AI, Stripe)",
+          "authorTag": "The MAD Podcast with Matt Turck",
+          "en": {
+            "rewrite": [
+              "A year ago, Stripe's AI chief Emily Sense was talking about agents as buyers in hypothetical terms. Twelve months later, Stripe has shipped the Agentic Commerce Protocol (ACP), a standardized way for businesses to expose product catalogs, inventory, and prices to agents—once, not once per agent. It also includes the Shared Payment Token, a new payment primitive that lets an agent transact without ever seeing the underlying credentials.",
+              "The real signal is who's building on it: Wix, Shopify, BigCommerce, and Commerce Tools on the platform side; Best Buy, Coach, URBN, and Kate Spade on the brand side. Stripe partnered with Google to let merchants sell inside AI Mode and the Gemini app; similar deals with Microsoft (Copilot) and OpenAI (ChatGPT Instant Checkout). Meta is using it for checkout inside ads.",
+              "Emily describes a three-level autonomy framework for agentic commerce, analogous to self-driving car levels. Level 1: human does all the deciding, agent just executes checkout. Level 2: AI helps discover and recommend, human chooses. Level 3: agent autonomously discovers, negotiates, and transacts. 'On the consumer side, we're mostly hovering at Level 2,' she says. 'We're not in a world where you're booking your summer vacation one-shotting it with an LLM.' But the infrastructure for Level 3 is already deployed."
+            ],
+            "original": [
+              "A year ago, we were talking about agents as buyers in a pretty hypothetical way... Fast forward a year, we have actual infrastructure deployed. We have real companies building on it. We have real patterns to learn from.",
+              "The agentic commerce protocol is just a standardized way for businesses to work with agents... Businesses need to be able to expose their products and their catalogs and their prices. And then consumers need to be able to authorize agents to pay on their behalf, and then agents need to be able to safely execute that transaction.",
+              "We do. Literally. Yes. It's like we have level one, level two, level three... The highest level is sort of the MPP version where the agent is truly autonomous. And sort of the level one is the human does basically all of the decisioning themselves, and it's the simple execution of the transaction."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "一年前 Stripe AI 负责人 Emily Sense 还在用假设性语言讨论「agent 作为买家」。十二个月后，Stripe 已经上线了 Agentic Commerce Protocol（ACP）——一套标准化的方式，让企业向 agent 暴露产品目录、库存和价格信息，注册一次，所有兼容的 agent 都能用。ACP 还包含了 Shared Payment Token，一种全新的支付原语：agent 可以完成交易，但永远看不到底层的支付凭证。",
+              "真正值得关注的信号是谁在上面搭建：平台侧有 Wix、Shopify、BigCommerce、Commerce Tools；品牌侧有 Best Buy、Coach、URBN、Kate Spade。Stripe 跟 Google 合作让商家在 Gemini app 的 AI Mode 里直接卖货，跟微软（Copilot）和 OpenAI（ChatGPT Instant Checkout）也有类似合作。Meta 则在广告内嵌了 Stripe 结账。",
+              "Emily 描述了一个三层自主权框架，类比自动驾驶的 L1-L3。L1：人做全部决策，agent 只执行结账。L2：AI 帮助发现和推荐，人最终选择。L3：agent 自主发现、谈判、交易。「消费侧目前基本徘徊在 L2，」她说，「我们还没到用 LLM 一句话订好暑假旅行那个阶段。」但 L3 的基础设施已经部署完毕。"
+            ],
+            "original": [
+              "一年前我们还在假设性地讨论 agent 作为买家……十二个月后，我们已经有了真实部署的基础设施，有真实公司在上面搭建，有真实模式可以学习。",
+              "ACP 就是一套标准化方式让企业和 agent 协作……企业需要暴露产品目录和价格，消费者需要授权 agent 代为支付，agent 需要安全执行交易。",
+              "我们确实有 L1、L2、L3 的框架……最高级是 agent 完全自主，最低级是人做全部决策、agent 只执行交易。"
+            ]
+          }
+        },
+        {
+          "authorKey": "podcast:mad-podcast",
+          "sourceUrl": "https://www.youtube.com/@DataDrivenNYC/videos",
+          "authorName": "Emily Sense (Head of Data & AI, Stripe)",
+          "authorTag": "The MAD Podcast with Matt Turck",
+          "en": {
+            "rewrite": [
+              "The second piece of Stripe's agentic commerce stack is Link Wallet—Stripe's 300-million-user consumer wallet, now being adapted for agents. The idea: you authorize an agent to pay from your Link Wallet, but with programmable guardrails: spending caps, merchant category restrictions, geographic limits, per-transaction approval requirements. You can always pull it back.",
+              "Underneath Link Wallet is the Shared Payment Token, a new payment primitive built specifically for agent commerce. It encodes exactly what an agent can do—which merchants, up to what amount, in what currency, for how long. The agent never sees the underlying credentials. Stripe Radar, their decade-old fraud detection product, scores every transaction. Emily argues that done right, agent payments could eventually be 'much safer' than humans typing credit card numbers into random websites.",
+              "Emily also introduces a fascinating economic angle: microtransactions never made sense for humans because no one wanted to enter payment details for a 5-cent article, and no processor wanted to handle a 5-cent credit card charge. But for agents, microtransactions become viable—no human friction, and paired with stablecoins, near-zero transaction costs. 'Suddenly, microtransactions become very viable,' especially for buying inference tokens or AI SaaS products. 'You are going to be using your Link Wallet to make a ton of microtransactions and not approve every one.'"
+            ],
+            "original": [
+              "Link is just Stripe's consumer wallet, and 300 million users use it today. We're making that the wallet for agents. So the idea is you can authorize an agent to make payments on your behalf, but you get these built-in controls so you stay in the loop.",
+              "The shared payment token is a new payment primitive... It is a way for a consumer to authorize an AI agent to pay on their behalf without handing over their actual card details. The agent never sees the underlying credentials.",
+              "Microtransactions never actually really made that much sense... Nobody wanted to put in their credit card to buy a 5¢ article. But when we enter a world where the human is not doing any work to execute the transaction, the agent's doing it for you, then microtransactions become viable."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Stripe Agent 商业技术栈的第二块是 Link Wallet——Stripe 拥有 3 亿用户的消费者钱包，现在正在适配给 agent 使用。核心理念：你授权一个 agent 从你的 Link Wallet 支付，但设置有可编程的护栏——消费上限、商户类别限制、地理范围限制、逐笔审批。随时可以收回。",
+              "Link Wallet 底层是 Shared Payment Token，一个专门为 agent 商业构建的新支付原语。它编码了 agent 的精确权限——哪些商户、多少金额、什么币种、多久有效期。agent 永远看不到底层支付凭证。Stripe 做了十年的反欺诈产品 Radar 会给每笔交易打分。Emily 认为，做对了的话，agent 支付最终可能比人类在随机网站上输入信用卡号「安全得多」。",
+              "Emily 还引入了一个有意思的经济视角：微支付对人类一直不合理——没人想为一篇 5 分钱的文章输入信用卡号，也没有支付处理商想处理 5 分钱的信用卡交易。但 agent 改变了这个等式——没有人类摩擦，配合稳定币，交易成本趋近于零。「突然间微交易变得非常可行，」尤其是在购买推理 token 或 AI SaaS 产品时。「你会用 Link Wallet 做大量微交易，不可能每笔都审批。」"
+            ],
+            "original": [
+              "Link 是 Stripe 的消费者钱包，3 亿用户在用。我们把它做成 agent 的钱包——你可以授权 agent 代为支付，但内置了控制机制。",
+              "Shared Payment Token 是新的支付原语……让消费者授权 AI agent 代为支付，但不交出实际卡信息。agent 永远看不到底层凭证。",
+              "微支付对人类一直不合理……没人想输入信用卡买 5 分钱的文章。但 agent 替你执行交易后，微交易突然变得可行。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Token Theft: AI's Most Under-Discussed Crisis / Token 盗窃：AI 领域最被低估的危机",
+      "desc": "Token 盗窃不是理论威胁——它正在发生，规模惊人，而且直接击穿 AI 公司的经济模型。",
+      "cards": [
+        {
+          "authorKey": "podcast:mad-podcast",
+          "sourceUrl": "https://www.youtube.com/@DataDrivenNYC/videos",
+          "authorName": "Emily Sense (Head of Data & AI, Stripe)",
+          "authorTag": "The MAD Podcast with Matt Turck",
+          "en": {
+            "rewrite": [
+              "Emily Sense calls token theft 'one of the most under-discussed topics in AI right now, maybe by a lot.' The core insight: fraudsters have realized that in AI, you don't need to steal money or credentials. You can just steal tokens—which have real value since they can be used to build products, resold on marketplaces, or wrapped into new services and sold without paying a cent for the underlying compute.",
+              "Stripe, which processes payments for essentially all major AI companies, has a front-row seat. Emily identifies three active fraud patterns. First, multi-account abuse: bad actors hammering sign-ups to harvest free new-user credits. 'The scale of this actually shocked me when I looked at the data. More than one in six signups at AI companies are this kind of abuse.' Second, free trial abuse—having more than doubled on Stripe in six months, mostly from AI businesses. Third, the 'dine and dash' for tokens: users racking up thousands in usage and never paying the end-of-month bill. Unlike SaaS, AI companies already bore the inference cost.",
+              "What happens with stolen tokens? A dark ecosystem has emerged: resale on marketplaces (e.g. selling Cursor or Lovable access for $2 when the thief paid nothing), cloning entire AI companies by wrapping a website around stolen API calls, mass-generating music to upload to Spotify for royalty farming, and domain-specific scam content generation. This isn't petty crime—it's an existential margin problem for AI companies. And Emily's forecast: 'I don't think these three will be the three forever... new ones will pop up.'"
+            ],
+            "original": [
+              "Fraudsters have figured out that in AI, you actually don't really need to steal money or credentials. You can just steal tokens. And the scale of this actually shocked me when I looked at the data. So more than one in six signups at AI companies are this kind of abuse.",
+              "Token theft is one of the most under-discussed topics in AI right now, maybe by a lot. When someone steals your tokens, if your fraud rate is high enough, the economics of your product actually break really fast.",
+              "The dine and dash, but it's for tokens... The company has borne the cost of those tokens. For AI companies, it's like, one of the most existential things for their margins."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Emily Sense 把 Token 盗窃称为「AI 领域目前最被低估的话题，可能严重低估了。」核心洞察：欺诈者发现，在 AI 领域你根本不需要偷钱或凭证。你只需要偷 token——token 有真实价值，因为可以用它来构建产品、在市场转售、或包装成新服务出售而不用支付一毛钱的底层算力成本。",
+              "Stripe 几乎处理所有主要 AI 公司的支付，因此拥有前排视角。Emily 识别出三种活跃的欺诈模式。第一，多账户滥用：坏人反复注册来薅新用户免费额度。「我看到数据时被规模震惊了——AI 公司每六个注册里就有一个是这种滥用。」第二，免费试用滥用——在 Stripe 上过去六个月翻了一倍多，主要来自 AI 业务。第三，Token 版「吃霸王餐」：用户积累数千美元用量，月底不付钱。和 SaaS 不同，AI 公司的推理成本已经花出去了。",
+              "偷来的 token 怎么用？一个地下生态已经形成：在市场上转售（比如以 2 美元出售 Cursor 或 Lovable 的访问权，窃贼成本为零），通过把网站套在偷来的 API 上克隆整家 AI 公司，批量生成音乐上传到 Spotify 赚版税，以及各类特定领域的诈骗内容生成。这不是小打小闹——这是 AI 公司的利润生存问题。Emily 的预测：「我不认为这三种会永远不变……新的会冒出来。」"
+            ],
+            "original": [
+              "欺诈者发现，在 AI 领域你不需要偷钱或凭证，只需要偷 token。每六个 AI 公司注册里就有一个是这种滥用，我看到数据时被震惊了。",
+              "Token 盗窃是 AI 领域目前最被低估的话题。当你的欺诈率高到一定程度，产品的经济模型会迅速崩溃。",
+              "Token 版吃霸王餐……公司已经支付了那些 token 的成本。对 AI 公司来说，这是最关乎利润生存的问题之一。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "AI Economics: Three Principles from Aaron Levie / AI 经济学：Aaron Levie 的三个判断",
+      "desc": "Box CEO 对 AI 经济学的三个判断，每个都在挑战流行叙事。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2078968158006939716",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie dropped three sharp economic observations in a single day, each challenging the default assumptions about AI's trajectory.",
+              "First, the AI Jevons paradox: 'A lot of people make the mistake of thinking that when AI costs drop, that spend on AI drops with it. Usually the opposite happens. When you make AI cheaper, it will get consumed more. You start to write more code. You review more code for bugs and security. You run agents on large data sets you couldn't process before.' His conclusion: anything that lowers the cost of tokens will drive up inference demand. This is also why open source business models work—no one runs these models on-device; they run them in infrastructure.",
+              "Second, open source competitiveness: 'In a world where there are strong open source alternatives that are only just behind the frontier models, you make yourself less secure and competitive by gatekeeping access to frontier model capabilities.' His geopolitical corollary: even if America banned open source models, other ecosystems wouldn't have that ban and would gain an advantage. 'The calculus of what you do about AI regulation simply must change to account for the fact that open weights models are far stronger than many expected.'",
+              "Third, and most structural: AI progress is ultimately rate-limited by interaction with the real world. Coding was adopted fast because 'a single person, from a computer, can just make something work end-to-end differently.' But drug development needs years of testing. Sales requires back-and-forth with prospects. 'Coming up with ideas was never the hard part. The hard part is how fast reality answers them.' His takeaway: this is why the applied AI layer—systems that change underlying workflows and deal with real-world feedback loops—is where the opportunity lives."
+            ],
+            "original": [
+              "A lot of people make the mistake of thinking that when AI costs drop, that spend on AI drops with it. Usually the opposite happens. When you make AI cheaper, it will get consumed more.",
+              "In a world where there are strong open source alternatives that are only just behind the frontier models, you make yourself less secure and competitive by gatekeeping access to frontier model capabilities.",
+              "Progress driven by AI will ultimately be rate limited by its interaction with the real world... Coming up with ideas was never the hard part. The hard part is how fast reality answers them."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 一天内抛出三个尖锐的经济观察，每个都在挑战关于 AI 发展轨迹的默认假设。",
+              "第一条，AI 杰文斯悖论：「很多人错误地认为 AI 成本下降时，AI 支出也会下降。通常恰恰相反。AI 越便宜，消费越多。你开始写更多代码，审查更多代码，在以前处理不了的大数据集上跑 agent。」他的结论：任何降低 token 成本的举措都会推高推理需求。这也解释了为什么开源商业模式能成立——没人真的在设备上跑这些模型，都是在基础设施上跑。",
+              "第二条，开源竞争力：「在一个有强大开源替代品、而且只比前沿模型落后一点的世界里，限制前沿模型能力的访问权限只会让你更不安全、更没有竞争力。」他的地缘推演：就算美国完全禁止开源模型，其他生态也不会禁，反而会获得优势。「AI 监管的计算逻辑必须改变，因为开源权重模型的实力远超很多人的预期。」",
+              "第三条最为结构性：AI 进步最终受限于与真实世界的交互速度。编程为什么被快速采纳？因为「一个人坐在电脑前就能把一件事从头到尾做得不一样。」但药物开发需要数年测试。销售需要和客户来回沟通。「提出想法从来不是最难的部分。最难的是现实世界回答你想法的速度。」他的结论：这就是为什么应用 AI 层——那些改变底层工作流、处理真实世界反馈循环的系统——才是机会所在。"
+            ],
+            "original": [
+              "很多人错误地认为 AI 成本下降意味着 AI 支出下降，通常相反——AI 越便宜消费越多。",
+              "在开源替代品仅落后前沿模型一点的世界里，限制前沿模型访问只会让你更不安全、更没有竞争力。",
+              "AI 进步最终受限于与真实世界的交互速度。提出想法从来不是最难的部分，最难的是现实回答你的速度。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "AI Crosses Practical Thresholds / AI 越过实用临界点",
+      "desc": "三个独立信号指向同一件事：AI 开始在具体工作场景中达到「够用」的水平。",
+      "cards": [
+        {
+          "authorKey": "x:danshipper",
+          "sourceUrl": "https://x.com/danshipper/status/2078920115140358585",
+          "en": {
+            "rewrite": [
+              "Every CEO Dan Shipper reports a threshold crossing that anyone who's been tracking AI progress should pay attention to: his team has been able to automatically do ~70% of the copy edits they'd ordinarily do by hand, for the past week. 'First time that's happened and I've been trying it for years.'",
+              "This is a specific, measured claim from someone who runs a media company and has been actively experimenting with AI editing for years. The key word is 'automatically'—not assisted, not suggested, but done. Copy editing is a nuanced task requiring judgment about voice, flow, and audience. A CEO saying 70% of it is now automated, after years of trying, is a more meaningful benchmark than most benchmark scores."
+            ],
+            "original": [
+              "Yes it just passed some barrier. Have been able to automatically do ~70% of the copy edits we would ordinarily do by hand internally @every for the last week. First time that's happened and I've been trying it for years."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Every CEO Dan Shipper 报告了一个任何关注 AI 进展的人都该注意的临界点突破：他的团队在过去一周里，能自动完成大约 70% 原本需要手工做的文案编辑工作。「这是多年尝试以来第一次发生。」",
+              "这是一个具体、可衡量的声明，来自一个经营媒体公司且多年来一直在积极试验 AI 编辑的人。关键词是「自动」——不是辅助、不是建议，是直接完成。文案编辑是一项需要判断力的精细工作，涉及语气、流畅度、读者感知。一个 CEO 在多年尝试后说 70% 自动化了，这比大多数 benchmark 分数更有说服力。"
+            ],
+            "original": [
+              "是的，它刚刚越过了某个门槛。过去一周能自动完成约 70% 原本手工做的文案编辑工作。这是多年尝试以来第一次。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:_catwu",
+          "sourceUrl": "https://x.com/_catwu/status/2079011428380602526",
+          "en": {
+            "rewrite": [
+              "Anthropic's Cat Wu shares a real production workflow for Claude Cowork: calendar management. Her prompt: manage the calendar for the week, keep meetings under 20 hours, dedupe conflicts, learn from past behavior about which meetings to decline, don't count dinners against the limit, build a skill that refines itself, ask before updating invites.",
+              "350 likes is a strong signal—calendar management is one of those 'AI should be able to do this' tasks that has remained stubbornly difficult in practice. The fact that someone at Anthropic is using Claude Cowork for this daily, and sharing a concrete prompt template that others can adapt, is a better indicator of product maturity than any demo."
+            ],
+            "original": [
+              "I love using Claude Cowork to manage my calendar. Here's my prompt for it: Manage my calendar for the week. Requirements: 1. <20 hours of meetings 2. Dedupe conflicting meetings. Look at past weeks to see what kinds of meetings I decline. Dinners don't count against the 20 hours. Build a skill that you refine. Ask me before updating invites."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic 的 Cat Wu 分享了 Claude Cowork 在生产环境中的一个真实工作流：日历管理。她的 prompt：管理本周日历，会议时间控制在 20 小时以内，去重冲突会议，从过去几周的行为中学习哪些会议会被拒绝，晚餐不计入 20 小时限制，构建一个自我迭代的 skill，更新邀请前征得同意。",
+              "350 个赞是一个强信号——日历管理是那种「AI 应该能做」但在实践中一直很难自动化的任务。Anthropic 自己的员工每天在用 Claude Cowork 做这件事、并且分享了其他人可以直接用的具体 prompt 模板，这比任何产品 demo 都更能说明产品成熟度。"
+            ],
+            "original": [
+              "超爱用 Claude Cowork 管理日历。我的 prompt：管理本周日历，<20h 会议，去重冲突，学习过去拒绝模式，晚餐不计入，构建自迭代 skill，更新邀请前问我。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2078835308905578660",
+          "en": {
+            "rewrite": [
+              "Zara Zhang proposes a mental model shift: 'We need to get used to the idea that code/software can now be disposable.' Her examples: spinning up design playgrounds to fine-tune a look, generating HTML pages just to understand some code, creating throwaway dashboards to inspect something once—all discarded after use.",
+              "This is a design philosophy shift that tracks with what we're seeing across the ecosystem. When the marginal cost of creating software approaches zero, software stops being an asset you maintain and starts being a tool you use and discard. It's the same logic that makes microtransactions viable for agents—when friction disappears, the economics of creation invert entirely."
+            ],
+            "original": [
+              "We need to get used to the idea that code/software can now be disposable. Some examples (all are discarded after usage): 1. Creating design playgrounds/modals for yourself to fine-tune the look and feel of a design. 2. Creating HTML pages to help you understand the code. 3. Spinning up a throwaway dashboard to inspect something once."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zara Zhang 提出了一个心智模型转变：「我们需要习惯一个观念：代码和软件现在可以是消耗品。」她的例子：搭一个设计 playground 来微调视觉效果，生成 HTML 页面来帮助理解代码，搭一个一次性 dashboard 来检查某个东西——全部用完就扔。",
+              "这是一个在设计哲学层面的转变，与整个生态里正在发生的事一致。当软件的边际创建成本趋近于零，软件就不再是需要维护的「资产」，而是用完即弃的「工具」。这跟 agent 让微交易变得可行的逻辑同源——当摩擦消失，创造的经济学完全翻转。"
+            ],
+            "original": [
+              "要习惯代码/软件现在可以是消耗品。例子：搭设计 playground 调视觉、生成 HTML 帮理解代码、搭一次性 dashboard 检查数据——全部用完就扔。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Security & Data: Signals for the Next Stack / 安全与数据：下一个技术栈的信号",
+      "desc": "当 AI 能力快速进化时，安全能力和数据格式的选择反而成了区分优劣的关键维度。",
+      "cards": [
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2078803803659452624",
+          "en": {
+            "rewrite": [
+              "YC CEO Garry Tan makes a case for Markdown files as the universal data format for the AI era: 'Markdown files are universal and will survive millennia. Unsurprisingly they are a fantastic data format when the intelligence stack is in flux at this extreme pace.' With 668 likes, this resonated.",
+              "He also teased 'GSkills' with 621 likes, suggesting YC is working on a skills marketplace or framework—potentially a standardized way to package and distribute agent capabilities. If Markdown is the data layer, GSkills could be the execution layer. Both bets are on open, portable, human-readable formats that outlast any specific AI platform."
+            ],
+            "original": [
+              "Markdown files are universal and will survive millennia. Unsurprisingly they are a fantastic data format when the intelligence stack is in flux at this extreme pace."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "YC CEO Garry Tan 为 Markdown 文件作为 AI 时代的通用数据格式做了论证：「Markdown 文件是普适的，能存活上千年。当智能技术栈以这种极端速度变动时，它自然成了一个绝佳的数据格式。」668 个赞说明这话引起了广泛共鸣。",
+              "他还用 621 个赞预告了「GSkills」，暗示 YC 正在做一个 skills 市场或框架——可能是一种标准化的方式来打包和分发 agent 能力。如果 Markdown 是数据层，GSkills 可能是执行层。两者都押注了开放、可移植、人类可读的格式，这些格式能比任何特定 AI 平台活得更久。"
+            ],
+            "original": [
+              "Markdown 文件是普适的，能存活上千年。在智能技术栈极速变化的时代，它是绝佳的数据格式。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2078912929714356698",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch makes the case that cybersecurity is one of the best benchmarks for superintelligence—the real 'IQ test' of software engineering. His reasoning: finding, patching, reversing, and exploiting vulnerabilities requires 'corner thinking' that transcends specific languages, runtimes, and frameworks. 'Very, very few humans excel at this, let alone in ordinary day-to-day software writing.'",
+              "Rauch contrasts this with the standard AI benchmark of 'one-shotting an XYZ clone'—impressive on X but not a meaningful test of reasoning. The security domain demands genuine reasoning across unfamiliar attack surfaces, not pattern matching on known codebases. Notably, he calls out Kimi K3's strong performance in this area as a positive signal for open models."
+            ],
+            "original": [
+              "Incidentally, I'm very bullish on cybersecurity as one of the best benchmarks for superintelligence. The 'IQ test' of software engineering. The best engineers I've worked with have usually had a deep background or interest in security. It's actually easy for a model to 'one-shot an XYZ clone' and impress people on X. But that's not a good test. Finding, patching, reversing, and exploiting require a cognitive skill that transcends programming languages, runtimes, frameworks. It demands true reasoning power from the model and 'corner thinking'. Very, very few humans excel at this."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 论证了网络安全是衡量超级智能的最佳基准之一——软件工程真正的「智商测试」。他的逻辑：发现漏洞、打补丁、逆向、利用，这些需要超越特定语言、运行时和框架的「角落思维」。「极少数人类擅长这个，更别说在日常写代码的普通工程师里了。」",
+              "Rauch 把这个和标准 AI benchmark 对比——「一句话克隆一个 XYZ」在 X 上很吸睛，但不是有意义的推理测试。安全领域要求在陌生攻击面上做真正推理，而不是对已知代码库做模式匹配。值得注意：他特别提到 Kimi K3 在这个领域表现强劲，认为这对开源模型是个积极信号。"
+            ],
+            "original": [
+              "我非常看好网络安全作为超级智能的基准——软件工程的真正「智商测试」。最好的工程师通常有深厚的安全背景或兴趣。模型「一句话克隆 XYZ」在 X 上很唬人但不是好测试。发现、修补、逆向、利用需要超越语言和框架的认知能力，需要真正的推理力和「角落思维」。极少数人类擅长这个。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
