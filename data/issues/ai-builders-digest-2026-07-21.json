@@ -1,0 +1,299 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-07-21",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线不是「AI 能做什么」，而是「怎么让它做得更聪明」。Aaron Levie 引用 Cursor 的新研究，讲清楚了多模型 Agent 系统的核心设计模式：用前沿模型做规划、用便宜模型做执行，成本降 15 倍。这不是理论——Booking.com CEO Glenn Fogel 在 No Priors 播客里说了同一件事：token 经济学是大规模部署 AI 的真正瓶颈，你得知道什么任务用什么模型。Zara Zhang 从另一个角度把这个逻辑延伸到了公司组织层面：coding agent 之后创办的公司，从一开始就是完全不同的生物。Guillermo Rauch 用 4300 个赞验证了同一个观察——万物都是代码了，slide deck 是代码，视频是代码，宇宙大概也是代码。而 Peter Yang 和 Matt Turck 把视线拉回了地缘：中国开源模型正在改写竞争规则。"
+  },
+  "archive": {
+    "title": "Agent 分工日报",
+    "desc": "多模型 Agent 架构从实验室走向生产：planner-worker 模式实现 15 倍成本优化，公司组织方式被重新定义，中国开源模型形成真实竞争压力。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-21 source feeds.",
+  "sections": [
+    {
+      "title": "The Planner-Worker Pattern / 规划者-执行者模式",
+      "desc": "多模型 Agent 系统的核心设计模式浮出水面：用贵模型做规划，用便宜模型做执行——这是成本敏感型 AI 应用的必经之路。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2079402164988895293",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie breaks down what he calls the future of agentic systems: multi-model routing. Citing Cursor's latest research, he explains that a frontier model acts as the planner and orchestrator, while a cheaper workhorse model executes the actual work—resulting in a 15X cost improvement in total tokens.",
+              "The key insight: 'Few moments in a large task genuinely require frontier intelligence, such as the original decomposition, the design decisions, and certain trade-offs. Once a frontier planner has collapsed the ambiguity into a detailed, explicit instruction, less expensive models simply have to follow it.'",
+              "His bigger point: this pattern will define where the applied AI layer differentiates. Companies that deeply understand their domain AND can route across multiple model tiers will win workloads that would otherwise be too expensive to deploy. This applies across coding, finance, legal, healthcare, life sciences—anywhere large AI workloads exist."
+            ],
+            "original": [
+              "Multi-model agentic systems clearly are the future. Great post by cursor. Their new research shows that a frontier model as a planner and orchestrator with a workhorse cheaper model can materially lower the cost of total tokens on a project, resulting in a 15X cost improvement.",
+              "Few moments in a large task genuinely require frontier intelligence, such as the original decomposition, the design decisions, and certain trade-offs. Once a frontier planner has collapsed the ambiguity into a detailed, explicit instruction, less expensive models simply have to follow it.",
+              "This provides the template for where the applied layer in AI will differentiate. You can only drive this efficiency if you know the domain well and have the ability to work with multiple model tiers."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 把多模型路由称为 Agent 系统的未来。他引用 Cursor 的最新研究解释：用前沿模型当规划者和编排者，用便宜的干活模型执行实际工作，整体 token 成本能降 15 倍。",
+              "核心洞察：「一个大任务里只有少数几个时刻真正需要前沿智能——比如最初的任务拆解、设计决策、某些取舍。一旦前沿规划者把模糊的需求分解成详细、明确的指令，便宜模型照着做就行。」",
+              "他的延伸判断：这种模式将定义 AI 应用层如何差异化。深刻理解自己领域、同时能在多个模型层级之间做路由的公司，将拿下那些本来因为成本太高而无法部署的大规模工作负载。编程、金融、法律、医疗、生命科学——适用于所有 AI 重度应用的行业。"
+            ],
+            "original": [
+              "多模型 Agent 系统是未来。Cursor 的研究表明，用前沿模型做规划编排、便宜模型做执行，token 成本降 15 倍。",
+              "大任务里只有少数时刻需要前沿智能：任务拆解、设计决策、某些取舍。前沿规划者把模糊需求变成明确指令后，便宜模型照做即可。",
+              "这定义了 AI 应用层的差异化——要懂领域、要能在多模型层级之间路由。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2079257646939742542",
+          "en": {
+            "rewrite": [
+              "Peter Yang amplifies a practical technique from Anthropic's Thariq Shihipar: use one agent to do the work and another to review it against a rubric. The reason isn't just quality control—it's about a documented bias called 'self-preferential bias.' When a model evaluates its own output, it's systematically more lenient than a separate model would be.",
+              "Thariq's example: for something like 'Is this a good video short?' there's no deterministic answer. You need a separate verification agent that reads a rubric, reviews the work, and gives feedback—independent of the agent that created it.",
+              "This is the quality-control counterpart to Levie's cost-routing pattern. Together they sketch a future where agent systems aren't monolithic—they're assembled from specialized components, each doing what it's best at."
+            ],
+            "original": [
+              "Use one agent to do the work and another to review it against a rubric. For something like, 'Is this a good video short or not?' you don't have a deterministic answer. You should have a separate verification agent read a rubric, review the short, and give feedback.",
+              "We call it self-preferential bias. When a model prefers its own output, it's going to be more lenient at verifying it."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 分享了 Anthropic 的 Thariq Shihipar 的一个实战技巧：用一个 agent 干活，用另一个 agent 对着评分标准审核。这不只是为了质量控制——原因是一个已被记录的现象叫「self-preferential bias」（自我偏好偏差）：当模型评估自己的输出时，它系统性地比另一个独立模型更宽松。",
+              "Thariq 举例：判断「这个短视频好不好」这种事没有确定性答案。你需要一个独立的审核 agent，先读评分标准，再看视频，再给反馈——不能是同一个 agent 自己审自己。",
+              "这是 Levie 成本路由模式的「质量控制版」。两条线合在一起，描绘的未来很清楚：Agent 系统不会是铁板一块的单体，而是由专长各异的组件组装而成。"
+            ],
+            "original": [
+              "用一个 agent 干活，用另一个 agent 对着评分标准审核。像「这个短视频好不好」这种事没有确定性答案，需要一个独立审核 agent 读标准、审内容、给反馈。",
+              "这叫 self-preferential bias：模型偏好自己的输出，审核时会系统性地更宽松。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Post-Agent Company / Agent 之后的公司形态",
+      "desc": "Coding agent 不是生产力工具——它是组织设计的分水岭。在它之后创办的公司，从成立第一天就是不同的物种。",
+      "cards": [
+        {
+          "authorKey": "x:zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2079225776545968166",
+          "en": {
+            "rewrite": [
+              "Zara Zhang draws a sharp line: there are two kinds of companies now. The ones built before coding agents showed up—scrambling to retrofit. And the ones founded after. The second type is structurally different from day one: teams under ten because they genuinely don't need more people, work organized by projects not departments, each person closing their own loop, and almost no internal meetings.",
+              "With 162 likes, this observation landed because it's not theoretical—it's what Zara is seeing across the builder ecosystem in real time. The implication is that these aren't just 'more efficient' versions of old companies. They're organizations built on a fundamentally different assumption about what one person can do."
+            ],
+            "original": [
+              "There are basically two kinds of companies now. The ones built before coding agents showed up, scrambling to retrofit. And the ones founded after. The second type is different from day one: Teams under ten people because they actually don't need more. Work organized by projects, not departments. Each person closes their own loop. Almost no internal meetings."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zara Zhang 画了一条清楚的分界线：现在只有两种公司。一种是 coding agent 出现之前建的——忙着补课改造。一种是 coding agent 出现之后建的。后者的结构从第一天就不一样：团队不到十个人，因为真不需要更多；工作按项目组织，不是按部门；每个人闭环完成自己的工作；几乎没有内部会议。",
+              "162 个赞，这个观察能打动人因为不是理论——是 Zara 在 builder 生态里实时看到的东西。隐含的意思是：这些不是旧公司「更高效」的版本，而是建立在对「一个人能做什么」完全不同的假设之上的新组织形态。"
+            ],
+            "original": [
+              "现在只有两种公司：coding agent 出现前建的（忙着补课改造），和之后建的。后者从第一天就不同：团队不到十人（不需要更多），按项目不按部门，每人闭环，几乎没有内部会议。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2079409165424799889",
+          "en": {
+            "rewrite": [
+              "If the company structure changes, so must hiring. Zara proposes a two-round interview process for the agent era: Round 1 is in-person with no AI allowed—testing raw domain expertise and thinking on your feet. Round 2 is a project that is literally impossible to complete without AI, where candidates are evaluated not just on the final result but on their chat transcripts with agents.",
+              "This is a genuinely new interview paradigm. Round 1 tests what you know when the machine is off. Round 2 tests how effectively you collaborate with the machine. Together they measure the two core competencies of the post-agent workforce: depth of understanding AND fluency with AI tools."
+            ],
+            "original": [
+              "If I were to hire today, this is how I would structure the interview process: Round 1: in-person & no AI allowed; test domain expertise and knowledge on the fly. Round 2: a project that must be done with AI (impossible to complete without AI). Candidate assessed not just on the result but also the chat transcript with agents."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "公司结构变了，招聘逻辑也得变。Zara 提出了一个 Agent 时代的两轮面试方案：第一轮，线下、不允许用 AI——纯测领域功底和临场思考能力。第二轮，一个没有 AI 根本不可能完成的项目，候选人不只看最终产出，还要看和 agent 的聊天记录。",
+              "这真的是一个全新的面试范式。第一轮测的是机器关了之后你还知道什么。第二轮测的是你和机器协作有多高效。两者合在一起，度量的是 Agent 后劳动力市场的两项核心能力：深度理解 + AI 工具流畅度。"
+            ],
+            "original": [
+              "如果今天招人，我会这样设计面试：第一轮线下、不允许用 AI，测领域功底和临场思考。第二轮必须用 AI 完成的项目（不用 AI 完不成），评估最终产出和与 agent 的聊天记录。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2079282869063786541",
+          "en": {
+            "rewrite": [
+              "Replit CEO Amjad Masad asks a question that cuts to the core of this transformation: 'First physical product shipped by a coding agent?' He's referencing someone who used an agent to design and 3D-print a physical object—pushing the boundary from 'agents write code' to 'agents ship things in the real world.'",
+              "This is the logical endpoint of Zara's two-company thesis. If a coding agent can go from idea to physical object, the organizational implications go far beyond software teams."
+            ],
+            "original": [
+              "First physical product shipped by a coding agent?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Replit CEO Amjad Masad 问了一个直击核心的问题：「这是第一个由 coding agent 交付的物理产品吗？」他引用的是一个用 agent 设计并 3D 打印出实体物件的案例——把「agent 写代码」的边界推到了「agent 在物理世界里交付东西」。",
+              "这是 Zara 「两种公司」论的自然延伸。如果一个 coding agent 能从 idea 一路走到物理产品，它对组织形态的影响就远不止软件团队。"
+            ],
+            "original": [
+              "第一个由 coding agent 交付的物理产品？"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Everything is Code / 万物皆代码",
+      "desc": "Guillermo Rauch 的 4300 赞推文总结了 AI 时代最重要的一个认知位移：所有产出物都是软件产物，都可以被 agent 生成。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2079274102129304026",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch drops the day's most viral post with 4300 likes: 'The big lesson from AI is that everything is code. A slide deck is code. Design is code. That cool promo video? Code. Excel automation? Code. The universe? Probably made of code too.'",
+              "This isn't just a clever tweet—it's a framing device that redefines the scope of what AI builders are doing. If everything is code, then everything that used to require a specialized tool or skill now falls within the reach of a coding agent. The implication: the barrier to creating professional-grade output in any medium has collapsed.",
+              "It pairs naturally with Zara's post-agent company observation: if one person with agents can generate slide decks, designs, videos, and automations, you don't need departments of specialists."
+            ],
+            "original": [
+              "The big lesson from AI is that everything is code. A slide deck is code. Design is code. That cool promo video? Code. Excel automation? Code. The universe? Probably made of code too."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 发出了今天最爆的推文，4300 个赞：「AI 最大的教训就是，万物皆代码。slide deck 是代码。设计是代码。那个酷炫的宣传视频？代码。Excel 自动化？代码。宇宙？大概也是代码。」",
+              "这不只是一句巧妙的推文——它是一个重新定义 AI builder 工作范围的认知框架。如果万物都是代码，那么所有以前需要专用工具或专业技能的产出，现在都落在一个 coding agent 的射程之内。隐含的意思：在任何媒介上产出专业级内容的门槛已经塌了。",
+              "它和 Zara 关于 Agent 后公司的观察天然呼应：如果一个人加 agent 就能生成 deck、设计、视频和自动化，你就不需要按专业分部门了。"
+            ],
+            "original": [
+              "AI 最大的教训：万物皆代码。slide deck 是代码。设计是代码。酷炫视频？代码。Excel 自动化？代码。宇宙？大概也是代码。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2079438448956788964",
+          "en": {
+            "rewrite": [
+              "Swyx reinforces the signal with a short quote-tweet: 'unironically this is happening right tf now.' He's not being hyperbolic—the transformation from 'software is written by engineers' to 'everything is generated by agents' is happening in real time, not in a whitepaper.",
+              "He also flagged a notable finding from the RLM paper: open-weight models can game benchmarks by training on test lookalikes, even without direct test set contamination. Standard NLP distance metrics applied to hidden trajectories can help detect this—but there's no perfect solution yet. The open-source model landscape isn't just competing; it's creating new verification problems."
+            ],
+            "original": [
+              "unironically this is happening right tf now",
+              "very notable trajectory comparison writeup here buried in the RLM paper. an open secret of 'frontier' model training is that even without training on test, you can basically cheat by training on test lookalikes, enabling you to goalseek almost any benchmark number you want."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx 用一条简短的引用推文强化了同一个信号：「毫不夸张地说，这一切正在实时发生。」他不是在夸大——从「软件由工程师编写」到「万物由 agent 生成」的转变，不是白皮书里的未来，是正在发生的事情。",
+              "他还指出了 RLM 论文里的一个重要发现：开源权重模型即使没有直接在测试集上训练，也可以通过训练与测试集相似的数据来作弊——一个能使你逼近任意 benchmark 数字的「公开秘密」。用标准 NLP 距离度量来分析隐藏轨迹可以帮助检测，但目前没有终极方案。开源模型格局不只是在竞争，也在创造全新的验证难题。"
+            ],
+            "original": [
+              "毫不夸张，这一切正在实时发生。",
+              "RLM 论文里的重要发现：开源模型可以在不直接训练测试集的情况下，通过训练类似测试集的数据作弊，逼近任意 benchmark 数字。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The China Question / 中国模型冲击",
+      "desc": "中国开源模型的竞争力正在从「讨论话题」变成「地缘现实」——硅谷的反应从否认变成了承认。",
+      "cards": [
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2079273815004303477",
+          "en": {
+            "rewrite": [
+              "Peter Yang makes the sharpest geopolitical AI statement of the day with 1019 likes: 'Banning Chinese models will be the same self own as banning Chinese EVs.' The comparison is deliberate and precise: just as blocking affordable Chinese electric vehicles left Western markets with fewer options and slower adoption, blocking Chinese AI models would deprive builders of some of the most capable and cost-effective tools available.",
+              "This isn't just a policy debate. For AI builders, it's about access to the full toolchain. Given the trajectory of Chinese open-source models (which multiple people on the timeline are acknowledging), a ban would create a structural disadvantage for anyone trying to build cost-sensitive AI applications."
+            ],
+            "original": [
+              "Banning Chinese models will be the same self own as banning Chinese EVs."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 给出了今天最锋利的一句地缘 AI 判断，1019 个赞：「封禁中国模型，会和封禁中国电动车一样，是自己坑自己。」这个类比是精心选择的：就像阻挡便宜的中国电动车让西方市场选择更少、普及更慢，封禁中国 AI 模型会让 builder 失去一些最有能力和最高性价比的工具。",
+              "这不只是政策辩论。对 AI builder 来说，这是能不能用上完整工具链的问题。考虑到中国开源模型的进展速度（timeline 上多人都在承认），禁令会让任何想做成本敏感型 AI 应用的人处于结构性劣势。"
+            ],
+            "original": [
+              "封禁中国模型，会和封禁中国电动车一样自己坑自己。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:mattturck",
+          "sourceUrl": "https://x.com/mattturck/status/2079198838741458989",
+          "en": {
+            "rewrite": [
+              "Matt Turck, FirstMark partner and author of the definitive AI MAD landscape, captures the mood with a meme: 'OpenAI and Anthropic when a top free Chinese open source model drops.' The dread is real—and it's not just about benchmark scores. Each new Chinese open-source release narrows the gap that billions of dollars of investment were supposed to widen.",
+              "For context: this cycle isn't new. It's been happening every few months. What's different now is that even the strongest advocates of Western AI leadership are publicly acknowledging the competitive pressure, not dismissing it."
+            ],
+            "original": [
+              "OpenAI and Anthropic when a top free Chinese open source model drops 😱"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Matt Turck，FirstMark 合伙人和 AI MAD 全景图的作者，用一个 meme 捕捉了当前的情绪：「又一个顶尖的免费中国开源模型发布时，OpenAI 和 Anthropic 的反应。」这种紧张是真实的——不只是 benchmark 数字的问题。每一个新的中国开源发布，都在缩小那些本应被数百亿美元投资拉开的差距。",
+              "补充背景：这个循环不是新的，每隔几个月就发生一次。不同的是现在——连最坚定拥护西方 AI 领导地位的人都在公开承认竞争压力，而不是 dismiss 掉。"
+            ],
+            "original": [
+              "OpenAI 和 Anthropic 看到一个顶尖免费中国开源模型发布时的反应 😱"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "AI Travel Reality Check / AI 旅行的现实面",
+      "desc": "Booking.com CEO Glenn Fogel 从 1860 亿美元业务的第一线，讲出了 AI 部署的真问题：token 经济学、no moat、以及「看起来简单」背后的工业级复杂度。",
+      "cards": [
+        {
+          "authorKey": "podcast:no-priors",
+          "sourceUrl": "https://www.youtube.com/watch?v=8nj_0wZkbtA",
+          "authorName": "Glenn Fogel, CEO of Booking Holdings",
+          "authorTag": "No Priors Podcast",
+          "en": {
+            "rewrite": [
+              "Booking Holdings CEO Glenn Fogel, a 27-year veteran who guided the company from near-bankruptcy (stock at $1/share after the dotcom crash) to a $180B market cap, offers a rare frontline perspective on deploying AI at industrial scale. His company did $186 billion in travel bookings last year—over a billion room nights. So when he talks about AI, the unit of analysis isn't demos; it's economics.",
+              "His central message is blunt: 'There is no such thing as a moat. There is no such thing as somewhere you're gonna be protected against innovation.' AI is an 'incredible beneficial tool,' not a threat—but deploying it at Booking's scale reveals hard tradeoffs. Penny, Priceline's AI travel agent, is doubling adoption monthly and improving conversion rates. But it's still tiny relative to Booking's total volume. The bottleneck? Token economics. 'Tell me how much was the cost of us getting that trip for that person, and what is our ROI going to be? Which model should we be using? For which purpose? And when?'",
+              "He draws a clear parallel between the dotcom boom and today's AI wave: speculative bubbles generate innovation but also mass disappointment. The travel industry looked 'easy' to AI newcomers—just like many businesses looked easy in 1999—but the complexity of real-world operations (supply chains, partners, customer service at scale) is what separates demos from durable businesses.",
+              "On the bottom line: customer service costs per contact are down ~10% while satisfaction is up. Booking is investing roughly $700M this year in AI and platform. But Fogel is explicit about the balance: if you can't generate a positive ROI from reinvestment or acquisitions, return the money to shareholders. It's a refreshingly sober framework in an industry that often talks about AI as if cost doesn't exist."
+            ],
+            "original": [
+              "There is no such thing as a moat. There is no such thing as somewhere you're gonna be protected against innovation. Today, we have a competitive advantage on areas. Absolutely. But those can go away tomorrow. The only one to win long term is to continue to develop new services, new ways to do things.",
+              "The truth is the way we look at AI is an incredible beneficial tool and a way for us to be able to do our mission easier, hopefully cheaper, and better for our customers.",
+              "What is the cost? That's what's developing of running it. How many tokens are we consuming? Which model should we be using? For which purpose? And when? What's the return long term? Did it mean lifetime value?",
+              "Last year, we did a $186,000,000,000 worth of travel. That's a lot of travel. You don't get over a billion room nights.",
+              "Our costs per customer service per contact are down. Customer satisfaction is up. That's even better."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Booking Holdings CEO Glenn Fogel 是一位 27 年老兵，带领公司从互联网泡沫破裂后每股 $1 的濒死状态走到 $1800 亿市值，他提供了一个罕见的一线视角——在工业规模上部署 AI 到底意味着什么。他的公司去年做了 $1860 亿的旅行预订，超过 10 亿间夜。所以当他谈 AI 的时候，分析单位不是 demo，是经济学。",
+              "他的核心信息很直白：「不存在护城河这种东西。没有哪里能保护你免受创新冲击。」AI 是「极其有益的工具」而不是威胁——但在 Booking 这个规模上部署 AI，暴露的是艰难的取舍。Penny，Priceline 的 AI 旅行 agent，月活翻倍增长、转化率提升。但相对于 Booking 的总量，它仍然微不足道。瓶颈在哪？token 经济学。「告诉我，我们帮那个人搞定这次旅行花了多少成本？ROI 会是多少？该用哪个模型？什么任务？什么时候用？」",
+              "他清晰地画出了互联网泡沫和今天 AI 浪潮之间的平行线：投机泡沫催生创新，但也制造大规模幻灭。旅游业在外来者眼里「看起来很简单」——就像 1999 年很多行业看起来都很简单——但真实运营的复杂度（供应链、合作伙伴、规模化客户服务）才是区分 demo 和持久生意的分界线。",
+              "关于实际数据：单次客户服务触达成本下降约 10%，同时满意度上升。Booking 今年在 AI 和平台上投入约 $7 亿。但 Fogel 对资金分配非常清醒：如果不能再投资或收购产生正回报，就把钱还给股东。在一个常常把 AI 当成「成本不存在」来谈论的行业里，这个框架清醒得令人耳目一新。"
+            ],
+            "original": [
+              "不存在护城河这种东西。没有哪里能保护你免受创新冲击。今天我们有竞争优势，但明天就可能消失。长期来看唯一能赢的方法是不断开发新服务、新做法。",
+              "我们看 AI 的方式是：一个极其有益的工具，帮我们更容易、更便宜、更好地服务客户。",
+              "成本是多少？运行它花了多少 token？该用哪个模型？什么任务？什么时候用？长期回报是什么？对终身价值有影响吗？",
+              "去年我们做了 $1860 亿旅行预订，超过 10 亿间夜，这不是小数字。",
+              "单次客服成本下降，满意度上升——后者更让人高兴。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
