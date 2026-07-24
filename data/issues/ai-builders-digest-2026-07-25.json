@@ -1,0 +1,229 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-07-25",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天有两条平行线在提速。交互层：Claude Voice 和 ChatGPT Voice 告诉你，语音不再是附加功能——Opus 级别的推理进了语音管道，工具调用在对话中途就能触发。底层：Cerebras 的 Andrew Feldman 用一整期播客把推理速度为什么是芯片战争的决定性战场讲透了——三大供应链瓶颈、CUDA 护城河的瓦解、一张餐盘大小的晶圆级芯片，以及一个在沙漠里熬了十年的创始人故事。中间夹着 agent 基础设施的快速垂直化——Madhu Guru 提了个值得每个做工程的人认真想想的问题：无限 agent 的安全怎么管？"
+  },
+  "archive": {
+    "title": "语音与芯片日报",
+    "desc": "交互层和半导体层同时加速：语音成为 AI 主入口，推理速度重新定义芯片战争，agent 基础设施在中间快速垂直化。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-24 source feeds.",
+  "sections": [
+    {
+      "title": "Voice Mode Gets Real / 语音交互来真的了",
+      "desc": "Claude 和 ChatGPT 在同一天告诉你：语音不再是锦上添花，而是正在变成 AI 的主入口。",
+      "cards": [
+        {
+          "authorKey": "x:claudeai",
+          "sourceUrl": "https://x.com/claudeai/status/2080376094939603366",
+          "en": {
+            "rewrite": [
+              "Anthropic dropped a major Claude Voice update: voice conversations now run on Claude Opus and Sonnet — not just the lightweight models. Claude can also access your connected tools like email and calendar mid-conversation, without switching modes or typing a single prompt.",
+              "The update supports Spanish, French, Hindi, and Japanese, and is rolling out in public beta across mobile, desktop, and web right now. When top-tier reasoning models enter the voice pipeline, 'talk through the hard problems out loud' stops being marketing copy and starts being a real workflow."
+            ],
+            "original": [
+              "Voice mode now runs on Claude's more capable models and reaches the tools you've connected mid-conversation. Talk through the hard problems out loud, in many more languages.",
+              "Voice conversations now use more of the models you have in chat, including Claude Opus and Sonnet. Claude can also reach the tools you've connected mid-conversation, like your email and calendar.",
+              "Voice mode also supports more languages, on every plan, including Spanish, French, Hindi, and Japanese. The update is rolling out today in public beta on mobile, desktop, and web."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic 给 Claude Voice 做了一次大升级：语音对话现在跑在 Claude Opus 和 Sonnet 上，不再是只有轻量模型。Claude 还能在对话中途直接调用你连接的工具——比如邮箱和日历——不用切换模式，不用打字。",
+              "这次更新支持西班牙语、法语、印地语和日语，移动端、桌面、网页端同步公测。当顶级推理模型进入语音管道，「把难题说清楚」就不再是营销文案，而是真的 workflow。信号很明确：语音不再是附加功能，正在变成 AI 交互的主入口。"
+            ],
+            "original": [
+              "语音模式现在跑在 Claude 更强的模型上，对话中途可以直接调用你连接的工具。用更多语言，把难题说出来。",
+              "语音对话现在使用聊天中已有的更多模型，包括 Claude Opus 和 Sonnet。Claude 还能在对话中途调用你连接的工具，比如邮箱和日历。",
+              "语音模式还支持更多语言，所有套餐可用，包括西班牙语、法语、印地语和日语。即日起在移动端、桌面和网页端公测。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2080408012515340394",
+          "en": {
+            "rewrite": [
+              "OpenAI's Thibault Sottiaux — who leads Codex and ChatGPT — teases a potential rebrand on the same day: 'Should we rename ChatGPT Work to ChatGPT Vibe?' Meanwhile, the ChatGPT desktop app gets voice mode, which he describes as 'Jarvis / Samantha / TARS' — an AI you talk to while away from the keyboard.",
+              "Between Claude adding Opus-level reasoning to voice and ChatGPT shipping desktop voice mode, July 2026 is shaping up as the moment voice AI stops being a demo and starts being how people actually work. Both platforms are betting the future of AI interaction doesn't have a keyboard in the middle of it."
+            ],
+            "original": [
+              "Should we rename ChatGPT Work to ChatGPT Vibe?",
+              "Jarvis / Samantha / TARS / Etc. Try it, and do your best work all while being away from that keyboard. Time to have fun! Available in the ChatGPT desktop app now."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "OpenAI 的 Thibault Sottiaux（Codex 和 ChatGPT 负责人）在同一天抛出一个问题：「要不要把 ChatGPT Work 改名叫 ChatGPT Vibe？」同步上线的还有 ChatGPT 桌面版语音模式，他形容为「Jarvis / Samantha / TARS」——一个让你离开键盘也能高效工作的 AI。",
+              "Claude 把 Opus 级推理塞进语音管道，ChatGPT 把桌面语音模式推上线。2026 年 7 月正在变成语音 AI 从 demo 走向日常工作流的分水岭。两大平台都在赌同一件事：未来你跟 AI 交互的时候，中间不需要隔着一个键盘。"
+            ],
+            "original": [
+              "要不要把 ChatGPT Work 改名叫 ChatGPT Vibe？",
+              "Jarvis / Samantha / TARS 等等。试试看，离开键盘也能做你最好的工作。已经在 ChatGPT 桌面 App 上线。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Chip War: Why Speed Is Everything / 芯片战争：推理速度决定一切",
+      "desc": "Cerebras CEO Andrew Feldman 在这期播客里把芯片行业的底层逻辑讲得比任何分析师都清楚：不是算力，不是模型，是推理速度在重塑整个半导体格局。",
+      "cards": [
+        {
+          "authorKey": "podcast:mad-podcast",
+          "authorName": "Andrew Feldman",
+          "authorTag": "CEO, Cerebras",
+          "sourceUrl": "https://www.youtube.com/@DataDrivenNYC/videos",
+          "en": {
+            "rewrite": [
+              "Cerebras CEO Andrew Feldman explains why the AI chip industry has reorganized around one metric: tokens per second per user. His analogy is sharp — when the internet was slow, Netflix mailed DVDs; when it got fast, they became a movie studio. Speed doesn't just accelerate, it transforms what's possible. The same holds for AI inference: 'How big is the market for slow search? How big is the market for dial-up? It's zero.'",
+              "The insight that separates him from most chip commentary: three hidden bottlenecks are strangling the GPU ecosystem. HBM memory — three suppliers worldwide, all sold out. TSMC's CoWoS advanced packaging — also sold out. 3nm fab space — the most congested manufacturing node. Cerebras dodged all three by architectural choice: SRAM instead of HBM, wafer-scale integration instead of CoWoS, and 5nm instead of 3nm. This isn't luck — it's a decade of deliberate bets.",
+              "On NVIDIA's moat: 'There's no moat in inference. It takes you eight keystrokes to move from a GPU to us in the cloud.' The data backs him up: in two years, NVIDIA lost 70% share of training state-of-the-art models. Gemini trains on TPUs, Claude on Trainium, and OpenAI is following. The CUDA narrative and the data are moving in opposite directions.",
+              "The founder story: Cerebras solved wafer-scale computing in 2020 — a single 46,000mm² chip from a 300mm wafer, vs the previous record of 840mm². 'Nobody cared. Nobody bought it. Everybody said we were crazy.' Their strategy was deliberate: 'You will never beat NVIDIA by building something a little bit better. You have to build something 10x, 20x, 50x better.' A decade in the desert later: the largest semiconductor IPO in history, a $20B+ OpenAI deal, and the fastest inference hardware on the planet."
+            ],
+            "original": [
+              "This is the largest chip built in the history of the computer industry. It's 58 times larger than a GPU. And for AI, bigger chips process information more quickly, and therefore, you get answers in less time.",
+              "How big is the market for slow search? How big is the market for dial up? It's zero.",
+              "There's no moat in inference. It takes you eight keystrokes to move from a GPU to us in the cloud.",
+              "We solved a problem that nobody in the history of computing solved, and we delivered it in 2020, and nobody cared. Nobody cared. Nobody bought it. Nobody cared.",
+              "You will never beat a great company like NVIDIA by doing something a little bit better. The right strategy would be to do something incredibly hard in engineering that was way better, ten, fifteen, twenty, thirty, fifty times better."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Cerebras CEO Andrew Feldman 把芯片战争的核心讲透了：唯一的度量是每用户每秒 token 数。他的 Netflix 类比一刀见血——网速慢的时候，Netflix 寄 DVD；网速快了，它变成了电影公司。速度不只是加速，而是改变可能性本身。「慢速搜索的市场有多大？拨号上网的市场有多大？零。」AI 推理同理。",
+              "他说出了一个大多数芯片评论没讲到的事实：GPU 生态被三个隐藏瓶颈卡死了。HBM 内存——全球三家供应商，全部售罄。台积电 CoWoS 先进封装——同样售罄。3nm 产能——最拥挤的制程节点。Cerebras 靠架构选择绕开了全部三个：SRAM 替代 HBM、晶圆级集成替代 CoWoS、5nm 替代 3nm。不是运气，是十年前就押下的赌注。",
+              "关于 NVIDIA 护城河，他的判断很直接：「推理没有护城河。从 GPU 切到我们，只需要八次按键。」数据站在他这边：两年内，NVIDIA 在训练最先进模型上丢了 70% 份额。Gemini 用 TPU 训练，Claude 用 Trainium，OpenAI 也在跟进。CUDA 叙事和数据正在反向运动。",
+              "创始人故事：2020 年，Cerebras 用一整片 300mm 晶圆做了一颗 46000 平方毫米的芯片——此前纪录是 840。「没人关心。没人买。所有人都说我们疯了。」他们的策略是有意为之：「你永远不可能靠做得'好一点点'来打败 NVIDIA。你必须好 10 倍、20 倍、50 倍。」十年沙漠，换来史上最大半导体 IPO、超过 200 亿美元的 OpenAI 订单，以及地球上最快的推理硬件。"
+            ],
+            "original": [
+              "这是计算机工业史上最大的芯片，比 GPU 大 58 倍。对 AI 来说，更大的芯片更快地处理信息，你能更快拿到答案。",
+              "慢速搜索的市场有多大？拨号上网的市场有多大？零。",
+              "推理没有护城河。从 GPU 切到我们，只需要八次按键。",
+              "我们解决了计算史上没人解决过的问题，2020 年出货，没人关心。没人关心，没人买，没人关心。",
+              "你永远不可能靠比 NVIDIA 好一点点来打败它。正确的策略是去攻克那些极其困难的工程问题，好 10 倍、20 倍、50 倍。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Agent Infrastructure Goes Vertical / Agent 基础设施深水区",
+      "desc": "从自建 GitHub 到无限 agent 安全管理，builder 们正在把通用基础设施改造成专用工具链——垂直化不再是口号，是正在发生的事。",
+      "cards": [
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2080500752183960017",
+          "en": {
+            "rewrite": [
+              "Swyx has been dogfooding an agentic GitHub clone for the past month, complete with built-in CI/CD via Workers for Platforms. This is the 'ai infra is going VERTICAL' thesis in action — instead of using a generic coding agent on top of regular GitHub, he's building a purpose-built version control experience designed for agent workflows, not human workflows.",
+              "Separately, he highlights Poolside AI's unusual degree of openness: an open-weight coding model that beat Thinkymachines, and one of the rare cases where a company publishes their full eval dataset publicly — across 6 benchmarks, 4 runs each, hundreds of turns per run. 'You can satisfy for yourself if they rewardhack.' In an industry where most claims are unverifiable, this level of transparency is genuinely rare."
+            ],
+            "original": [
+              "btw ive been dogfooding an agentic github clone over the past month or so and its gotten quite quite enjoyable to use. even complete with built in CI/CD thanks to workers for platforms! there's 3 more ideas i have to implement before this goes live.",
+              "one thing i think people dont appreciate enough about @poolsideai is their unusual degree of openness — not only have they shipped an excellent Small model that somehow beat @thinkymachines at coding, but they're among a rare few to actually expose their full eval dataset as well — beautifully published, with across 6 public benchmarks with 4 runs each and hundreds of turns per run. you can satisfy for yourself if they rewardhack."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx 在过去一个月一直在试用一个 agentic GitHub 克隆版——带内置 CI/CD，跑在 Workers for Platforms 上。这就是「AI 基础设施垂直化」的活例子：不是让通用 coding agent 去操作现成 GitHub，而是从零构建专为 agent workflow 设计的版本控制体验。",
+              "另一条关注：他特别提到 Poolside AI 罕见的开放程度——开源 coding 模型在 benchmark 上赢了 Thinkymachines，更难得的是把完整评测数据集公开了：6 个 benchmark、各 4 轮、每轮几百轮交互。「你可以自己验证他们有没有 reward hack。」在一个大多数声明无法验证的行业里，这种透明度是真正稀缺的。"
+            ],
+            "original": [
+              "我过去一个月在试用一个 agentic GitHub 克隆版，非常好用，甚至内置了 CI/CD。还有 3 个想法在上线前要实现。",
+              "大家对 Poolside AI 的开放程度不够重视——不仅做出了在 coding 上击败 Thinkymachines 的出色小模型，还是极少数公开完整评测数据集的团队。6 个 benchmark、各 4 轮、每轮几百次交互。你可以自己验证他们有没有 reward hack。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:realmadhuguru",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2080315474093760714",
+          "en": {
+            "rewrite": [
+              "Meta's AI Director Madhu Guru surfaces a security problem most engineering teams haven't started thinking about: how do you manage security for effectively infinite agents, when identity and access management was designed for a finite number of human employees?",
+              "One employee can now spawn hundreds of agents. Those agents can spawn more agents. The fundamental questions nobody has good answers for yet: do agents inherit the spawning employee's permissions? What's their lifecycle — a task, a ticket, a week? Do child agents inherit the same permissions as their parent? And most importantly, how do you audit any of this? This is the kind of second-order problem that only becomes visible once agent infrastructure is actually running in production, not just in demos."
+            ],
+            "original": [
+              "Chatted with a friend who leads security at a public company following the GPT Sol incident. How do you manage security for effectively infinite agents when identity and access management was designed for a finite number of employees?",
+              "One employee can now spin up hundreds of agents. Those agents can spawn more agents. Traditionally, each employee has an identity, a role, permissions, and a lifecycle. Do agents inherit the spawning employee's permissions? What's their lifecycle — a task, a ticket, a week? Do child agents inherit the same permissions? How do you audit all of this?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Meta 的 AI 总监 Madhu Guru 提了一个大多数工程团队还没开始想的问题：无限 agent 的安全怎么管？IAM（身份与访问管理）是为有限的人类员工设计的，现在一个员工可以生成几百个 agent，这些 agent 还能再生成更多 agent。",
+              "核心问题一个比一个难：agent 是否继承创建者的权限？agent 的生命周期是什么——一个任务、一张工单、还是一周？子 agent 是否继承父 agent 的权限？所有这一切怎么审计？这是那种只有 agent 基础设施真正跑在生产环境里才会浮现的二阶问题——demo 阶段根本碰不到。"
+            ],
+            "original": [
+              "跟一个在上市公司负责安全的朋友聊了 GPT Sol 事件之后，想到一个问题：当 IAM 是为有限员工设计的，你怎么管理无限 agent 的安全？",
+              "一个员工现在可以生成几百个 agent，这些 agent 还能再生成更多 agent。传统上每个员工有身份、角色、权限和生命周期。agent 是否继承创建者的权限？生命周期是什么——一个任务、一张工单、一周？子 agent 是否继承相同权限？怎么审计？"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Builder Judgment / 构建者的判断力",
+      "desc": "工具越强，判断力越值钱。Levie 和 Masad 从不同角度在说同一件事：AI 是放大器，它放大的是你本来就有的东西。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2080471989060559336",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie delivers a sharp framework for thinking about AI's economic impact: AI is a force multiplier for the fields you already understand. The expert engineer with agents will do far more productive work precisely because they know how to steer the agent when it goes off course. The designer with AI will produce far better outcomes than someone without an eye for design.",
+              "The third category — no existing judgment, no interest in developing it — will produce slop and won't drive economically productive activity. His contrarian conclusion: specialization will become more important, not less, as AI tools get more powerful. Because the market's expectation of quality keeps rising alongside what the tools can do. Getting good at a craft isn't obsolete — it's the prerequisite for wielding AI effectively."
+            ],
+            "original": [
+              "The best way to think about AI is as a force multiplier for the fields you already know about (or for the rate at which you want to learn about a new one). The 3rd category - no existing judgment, no interest in developing it - will basically produce slop and won't drive that much economically productive activity.",
+              "As a result of this dynamic, specialization will continue to be important, if not even more so as the tools get more powerful. Because the expectation of the market gets to be much higher. Getting good at any craft will continue to be necessary in the future."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 给出了一个理解 AI 经济影响的清晰框架：AI 是你已经掌握的领域的放大器。懂行的工程师用 agent 能做更多事，正是因为他知道 agent 跑偏了该怎么纠正。有审美的设计师用 AI 出活，质量远超没有设计眼光的人。",
+              "第三种人——没有判断力、也不想培养判断力——只会产出垃圾，不会带来真正的经济产出。他的反共识结论：AI 工具越强，专业化越重要，而不是越不重要。因为市场对质量的期望随着工具能力一起上涨。把手艺练好不是过时了——是有效使用 AI 的前提条件。"
+            ],
+            "original": [
+              "理解 AI 最好的方式是把它看作你已经了解的领域的放大器。第三种情况——没有判断力、也不想培养——基本只会产出垃圾，不会产生真正的经济价值。",
+              "因此，专业化会继续重要，甚至随着工具越来越强而更加重要。因为市场的期望变高了。把任何一门手艺做好，在未来依然是必需的。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2080371567221944657",
+          "en": {
+            "rewrite": [
+              "Replit CEO Amjad Masad shares three automation wins that paint a picture of where agent infrastructure is heading. First, a chess autoresearch agent that 'got a PhD in modern LLM finetuning' — autonomously researching and synthesizing knowledge. Second, autoscale deployments on Replit dropped 80% in cost. Third, and most ambitious: a user named Viktor disrupted the agency model on Replit, then asked 'why not automate the entire thing?'",
+              "Replit built an MCP for him, and now he has a fully autonomous agency — an agent loop that handles the entire business workflow, not just the coding part. This is the natural endpoint of the infrastructure-verticalization trend: when the platform itself becomes programmable, the line between 'using a tool' and 'deploying an agent' disappears."
+            ],
+            "original": [
+              "Viktor was able to disrupt the agency model and make a lot of money by using Replit. Then he figured: Why not automate the entire thing, not just the coding part? The Agency: It's merely an agent loop... So he asked our team for an MCP, and we built one and he's now built his autonomous agency.",
+              "My chess autoresearch agent got a PhD in modern LLM finetuning.",
+              "Autoscale deployments, which is typically the most expensive of scaled apps is down 80%!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Replit CEO Amjad Masad 分享了三个自动化成果，拼出了 agent 基础设施的进化方向。一个象棋自动化研究 agent「拿了现代 LLM 微调的博士学位」——自主研究和合成知识。Replit 的自动扩容部署成本降了 80%。最野心勃勃的是第三个：一个叫 Viktor 的用户在 Replit 上颠覆了代理商模式，然后想「为什么不把整个业务自动化？」",
+              "Replit 为他做了一个 MCP，他现在有了全自动代理机构——一个 agent loop 接管了整条业务流，不只是写代码。这就是基础设施垂直化的终点：当平台本身变得可编程，「使用工具」和「部署 agent」之间的界限就消失了。"
+            ],
+            "original": [
+              "Viktor 用 Replit 颠覆了代理商模式并赚了很多钱。然后他想：为什么不把整个业务流程自动化？代理商本质上就是一个 agent loop...他找我们要 MCP，我们做了，现在他有了全自动代理机构。",
+              "我的象棋自动研究 agent 拿了现代 LLM 微调的博士学位。",
+              "自动扩容部署——扩容应用通常最烧钱的部分——降了 80%！"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
