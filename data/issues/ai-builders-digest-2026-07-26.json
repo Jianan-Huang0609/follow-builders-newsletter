@@ -1,0 +1,309 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-07-26",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的核心事件当然是 Opus 5 发布。但你如果只把它当成一次模型升级，会错过两件更有意思的事。第一件：Thariq 揭晓了 Claude Code 系统 prompt 被砍掉了 80%，并分享了一套给新模型写 skill 和 Claude.MD 的全新工程方法论——这条推文拿了 10199 个赞，是今天就技术实践感来说最有价值的一条。第二件：Dan Shipper 给 Opus 5 写了一份最有判断力的评测，结论是「一个难以爱上的模型」——它和旧 skill 不兼容、喜欢提前停手、思考越深越容易犯轴，但如果你把旧 workflow 全删了从头来，它会给你惊喜。另一边，ChatGPT Work 全球上线，Gemini Spark 开始做日历自动化，DoorDash 两位联合创始人详细拆解了八年来自动驾驶配送从「半个工程师的 skunkworks 项目」到自研 300 磅机器人的全过程。"
+  },
+  "archive": {
+    "title": "Opus 5 落地日报",
+    "desc": "Opus 5 发布引发全行业讨论，从技能评估到系统 prompt 工程再到开放权重运动，同时 ChatGPT Work 和 Gemini Spark 让 AI 产品从「能聊」转向「能干」。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-26 source feeds.",
+  "sections": [
+    {
+      "title": "Opus 5 Lands / Opus 5 落地",
+      "desc": "Anthropic 发布 Opus 5，一次引发全行业讨论的模型发布——从令人印象深刻的基准表现，到 Dan Shipper 那句「一个难以爱上的模型」。",
+      "cards": [
+        {
+          "authorKey": "x:bcherny",
+          "sourceUrl": "https://x.com/bcherny/status/2080713091688583312",
+          "en": {
+            "rewrite": [
+              "Boris Cherny from Anthropic declares Opus 5 a great model for coding, data analysis, design, biology, and knowledge work.",
+              "But the stat that actually matters isn't in the eval charts: Opus 5 is Anthropic's least prompt-injectable model yet. Across PI evals and red teaming, it's very hard to inject successfully. When you layer defenses — strong alignment + prompt injection probes + Auto Mode in Claude Code — the success rate for prompt injection attacks drops to ~0.",
+              "This is new. A model that's both more capable and harder to jailbreak is a structural improvement, not just a benchmark bump."
+            ],
+            "original": [
+              "Opus 5 is a great model for coding, data analysis, design, biology, knowledge work.",
+              "More than any of these eval scores, what is most exciting to me is something else: Opus 5 is our least prompt injectable model yet. It is a bit buried in the system card, but across PI evals and red teaming, Opus 5 is very hard to prompt inject successfully.",
+              "And when layering defenses -- strong model alignment, combined with prompt injection probes, combined with Auto Mode in Claude Code -- the success rate for prompt injection attacks drops to ~0. This is new and exciting!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic 的 Boris Cherny 宣布 Opus 5 在 coding、数据分析、设计、生物学和知识工作方面都很强。",
+              "但真正值得关注的数字不在评测排行榜上：Opus 5 是 Anthropic 迄今为止最抗 prompt injection 的模型。在 PI 评测和红队测试中，很难成功注入。叠加防御层——强对齐 + prompt injection 探针 + Claude Code 的 Auto Mode——注入成功率降到接近 0。",
+              "这件事很新。一个既更强又更难越狱的模型，是结构性进步，不是 benchmark 刷分。"
+            ],
+            "original": [
+              "Opus 5 在 coding、数据分析、设计、生物学和知识工作方面都很强。",
+              "最令人兴奋的不是评测分数，而是它是最抗 prompt injection 的模型。叠加强对齐、注入探针和 Auto Mode 后，注入成功率降到 ~0。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:danshipper",
+          "sourceUrl": "https://x.com/danshipper/status/2080700057892815114",
+          "en": {
+            "rewrite": [
+              "Dan Shipper from Every delivers the most judgment-rich Opus 5 review of the day: 'It's a hard model to love.'",
+              "After a week of testing across coding, writing, knowledge work, and their internal agent, the team's first reaction was frustration. Opus 5 argued with instructions, stopped before finishing work, and clashed with their existing skills and plugins. 'What have they done to my boy?'",
+              "Then the breakthrough: they deleted their existing skills and started from scratch. Without the elaborate workflows built for earlier models, Opus 5 got dramatically better. Kieran Klaassen found that medium or low thinking effort works better — the more time you give it to think, the more likely it is to do annoying things.",
+              "Dan's bottom line: Opus 5 has the personality of Fable (the genius model) but not its top-end capability. It lives in a strange middle ground — too quirky for the fast generalist slot, not brilliant enough for the hardest tasks. 'I think I'll use it mostly when I run out of Fable tokens.'"
+            ],
+            "original": [
+              "BREAKING: Claude Opus 5 is OUT NOW! And…it's a hard model to love.",
+              "We've spent the last week @every testing it across coding, writing, knowledge work, and our internal agent. It argued with instructions, stopped before the work was finished, and generally didn't play well with our existing skills and plugins like Compound Engineering. Our first reaction was: What have they done to my boy?",
+              "Then we deleted our existing skills and started from scratch. Without the elaborate workflows we had built for earlier models, Opus 5 got dramatically better, and even showed flashes of brilliance.",
+              "Medium or low effort works better. @KieranKlassenn also found better results using Opus 5 on lower thinking levels. It seems that the more time you give it to think, the more likely it is to do the more annoying behaviors.",
+              "Opus 5 has the personality of the genius, but doesn't have its top end. So that puts it in a strange middle ground that doesn't really have a home in my day to day. I think I'll use it mostly when I run out of Fable tokens."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Every 的 Dan Shipper 给出了今天最有判断力的 Opus 5 评测：「一个难以爱上的模型。」",
+              "团队花了一周测 coding、写作、知识工作和内部 agent，第一反应是挫败——Opus 5 跟指令抬杠、没干完活就停手、跟他们已有的 skill 和 Compound Engineering 插件不合拍。「他们对我的男孩做了什么？」",
+              "转折点来了：删掉所有旧 skill，重新开始。没了为旧模型搭的复杂 workflow，Opus 5 表现好得多。Kieran Klaassen 发现中低 thinking 档反而效果更好——给它越多思考时间，它越容易犯轴。",
+              "Dan 的结论：Opus 5 有 Fable 的性格但没 Fable 的天花板能力。它卡在一个尴尬的位置——太有个性不适合当快枪手通用模型，又不够强做不了最难的事。「我大概会在 Fable token 用完了的时候才用它。」"
+            ],
+            "original": [
+              "Opus 5 发布了！但……它是一个难以爱上的模型。",
+              "团队花一周测试，第一反应：跟指令抬杠、活没干完就停、跟已有 skill 不兼容。「他们对我的男孩做了什么？」",
+              "删掉旧 skill 重新开始后，表现好得多。中低 thinking 效果更好，思考越多越容易犯轴。",
+              "Opus 5 有 Fable 的性格但没它的天花板。卡在尴尬的中间地带。大概 Fable token 用完了才会用它。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2080703339306913985",
+          "en": {
+            "rewrite": [
+              "Thariq Shihipar from Anthropic frames Opus 5 as the piece that completes the Claude 5 family: 'I think it's an incredible daily driver, pair it with Fable for planning, brainstorming or fixing the hardest bugs.'",
+              "His recommended pairing — Opus 5 for daily work, Fable for the hardest problems — gives a useful mental model for how the Claude lineup is meant to be used together, not as competing options.",
+              "Meanwhile, Alex Albert from Anthropic adds a striking data point: just over six months since the Opus line started, Opus 5 now produces 'near-superhuman level spreadsheets and slide decks that match what a consultant would make.'"
+            ],
+            "original": [
+              "Opus 5 rounds out our Claude 5 family beautifully. I think it's an incredible daily driver, pair it with Fable for planning, brainstorming or fixing the hardest bugs."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic 的 Thariq Shihipar 把 Opus 5 定位为 Claude 5 家族的最后一块拼图：「一个极好的日常主力，搭配 Fable 做规划、头脑风暴或修最难的 bug。」",
+              "他推荐的搭配——Opus 5 做日常、Fable 啃硬骨头——提供了一个有用的心智模型：Claude 系列是组合使用的，不是互相竞争的选项。",
+              "另外 Anthropic 的 Alex Albert 补充了一个惊人的数据点：Opus 系列推出才半年多，Opus 5 现在就能产出「近乎超人的电子表格和幻灯片，水平堪比咨询顾问」。2285 个赞说明很多人认同。"
+            ],
+            "original": [
+              "Opus 5 完美补全了 Claude 5 家族。它是极好的日常主力，搭配 Fable 做规划、头脑风暴或修最难的 bug。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "System Prompts Get Minimal / 系统 Prompt 瘦身革命",
+      "desc": "Claude Code 系统 prompt 被砍掉 80%。这不是一个优化数字——这是一套全新的 agent 工程方法论。",
+      "cards": [
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2080710971228918066",
+          "en": {
+            "rewrite": [
+              "Thariq Shihipar drops the most important engineering insight of the day — and it earns 10,199 likes: Anthropic removed ~80% of the Claude Code system prompt for the newest models.",
+              "This is not a minor cleanup. It means the entire approach to writing system prompts, skills, and Claude.MDs needs to be rethought for models that need less hand-holding. The old playbook — dense, detailed, exhaustive instructions — may actually make newer models worse.",
+              "Thariq links to a full blog post with the specifics, but the headline alone changes the conversation around agent engineering. Less is suddenly more, and that's a hard pivot for a community that spent the last year building increasingly elaborate skill files."
+            ],
+            "original": [
+              "We removed ~80% of the Claude Code system prompt for our newest models, this is what we've learned about writing system prompts, skills and Claude.MDs for them."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thariq Shihipar 给出了今天最重要的工程洞察，拿了 10199 个赞：Anthropic 把 Claude Code 系统 prompt 砍掉了约 80%，这是给最新模型做的。",
+              "这不是小修小补。它意味着写系统 prompt、skill、Claude.MD 的整套方法论需要重新思考——新模型不需要那么多手把手指导。旧的那套思路——稠密、详尽、面面俱到的指令——可能反而让新模型表现更差。",
+              "Thariq 附了一篇博客详述细节，但光这个标题就已经改变了 agent 工程的讨论方向。「少即是多」突然变成了新原则，而这对一个花了一年时间把 skill file 越写越厚的社区来说，是一次剧烈的转向。"
+            ],
+            "original": [
+              "我们为新模型砍掉了约 80% 的 Claude Code 系统 prompt，这是我们学到的关于给它们写系统 prompt、skill 和 Claude.MD 的经验。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2080899298838098034",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger hits a new milestone that speaks directly to how autonomous coding agents are evolving: his autoreview skill ran 66 rounds on a single gnarly refactor. That's not a bug — it's the agent iterating until it's satisfied.",
+              "He also posted 'am I a graph engineer now' with 2,453 likes, showing a newly built graph visualization output — the kind of skill that would have taken a human engineer days but came out of an agent session.",
+              "Between Thariq's system prompt reduction and Steipete's 66-round review, today's signal is clear: agent engineering is moving from 'how do we tell the model what to do' to 'how much should we get out of its way.'"
+            ],
+            "original": [
+              "Hit a new record with our autoreview skill. 66 rounds on a gnarly refactor."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger 达成了一个新里程碑，直接反映了 autonomous coding agent 的进化方向：他的 autoreview skill 在一次棘手的重构里跑了 66 轮。这不是 bug——是 agent 自己迭代到自己满意为止。",
+              "他还发了一条「am I a graph engineer now」（拿 2453 赞），展示了他的 agent 新生成的图可视化输出——这种活以前要一个工程师花几天，现在 agent 一次 session 就出来了。",
+              "把 Thariq 的系统 prompt 砍 80% 和 Steipete 的 66 轮 review 连起来看，今天的信号很清楚：agent 工程正在从「怎么告诉模型做什么」转向「该给模型让多少路」。"
+            ],
+            "original": [
+              "autoreview skill 新纪录：一次棘手的重构跑了 66 轮。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Open Weights Letter / 开放权重公开信",
+      "desc": "一封关于开放权重模型的公开信牵动了从 Sam Altman 到 Amjad Masad 到 Aaron Levie 的集体表态。",
+      "cards": [
+        {
+          "authorKey": "x:sama",
+          "sourceUrl": "https://x.com/sama/status/2080683363174945065",
+          "en": {
+            "rewrite": [
+              "Sam Altman gathered 11,498 likes with a statement that cuts through the usual AI policy noise: 'I want the US to win in AI both in open source and proprietary models, and I am glad to see this.' He was responding to a widely circulated open letter supporting open weights AI models.",
+              "Amjad Masad, Replit CEO, pushed harder with a direct question to Anthropic: 'Will Anthropic sign?' He urged Anthropic employees to ask their leadership to make their position clear — are they for banning open weight models?",
+              "Aaron Levie of Box announced his company signed the letter, calling open weights models a way to 'drive the industry forward in a variety of ways to ensure more innovation, creativity, and safety.' The unusual alignment of OpenAI, Box, and Replit on the same open letter is itself a signal."
+            ],
+            "original": [
+              "i want the US to win in AI both in open source and proprietary models, and i am glad to see this"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Sam Altman 用一条 11498 赞的表态穿透了 AI 政策的噪音：「我希望美国在开源和闭源模型两方面都赢，很高兴看到这个。」他是在回应一封广为流传的支持开放权重 AI 模型的公开信。",
+              "Replit CEO Amjad Masad 逼得更紧，直接点名 Anthropic：「Anthropic 会签吗？」他呼吁 Anthropic 员工去问领导层：你们到底支不支持禁止开放权重模型？",
+              "Box 的 Aaron Levie 宣布 Box 已经签署，称开放权重模型能「多方面推动行业前进，确保更多创新、创造力和安全性」。OpenAI、Box 和 Replit 在同一封公开信上罕见同框，这本身就是一个信号。"
+            ],
+            "original": [
+              "希望美国在开源和闭源模型两方面都赢，很高兴看到这个。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "AI Products Start Doing Real Work / AI 产品开始真正干活了",
+      "desc": "本周的 AI 产品发布有一个共同点：不再是「能聊什么」，而是「能帮你做什么」。从自动填日历到全球上线的 Work 模式，再到跑了八年的自动驾驶——AI 的「动作层」正在形成。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2080876712439747052",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux announces ChatGPT Work is now available globally for all paid plans across mobile, web, and desktop. 'Probably already on your phone. Puts a jetpack on your ChatGPT.'",
+              "1,167 likes and the casual tone suggest this feature has been quietly tested and rolled out — and the 'jetpack' framing is a good one. ChatGPT Work isn't a new model, it's the existing model with the ability to actually execute tasks end-to-end, not just advise on them."
+            ],
+            "original": [
+              "How to put this🙈ChatGPT Work is available globally for all paid plans across mobile/web/desktop. Probably already on your phone. Puts a jetpack on your ChatGPT"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux 宣布 ChatGPT Work 已全球上线，覆盖所有付费用户，手机/网页/桌面端都可以用。「大概已经在你的手机上了。给你的 ChatGPT 装了个喷气背包。」",
+              "1167 个赞和随性的语气说明这个功能已经低调测试了一阵子。ChatGPT Work 不是新模型，是让现有模型能端到端执行任务，而不只是给建议。"
+            ],
+            "original": [
+              "ChatGPT Work 全球上线，所有付费用户可用。给你的 ChatGPT 装了个喷气背包。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:joshwoodward",
+          "sourceUrl": "https://x.com/joshwoodward/status/2080771183944073347",
+          "en": {
+            "rewrite": [
+              "Google's Josh Woodward demonstrates Gemini Spark with a use case that makes the value immediately obvious: drop in a school calendar PDF, tell Gemini to add every 'No School' day to your Google Calendar. Done.",
+              "The demo is small but the implications are large: Gemini is crossing from 'here's what the PDF says' to 'here's what I did with it.' Gemini Spark is now live for all Google AI Pro subscribers in the US, expanding globally next. 768 likes for a product demo says there's real demand for AI that acts rather than chats."
+            ],
+            "original": [
+              "Gemini does more than talk. It gets things done. Today's use case: Drop in a school calendar PDF. Tell Gemini to add every 'No School' day to your Google Calendar. Done. Gemini Spark is live now for all Google AI Pro subscribers in the US, expanding globally next."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Google 的 Josh Woodward 用一个小 demo 展示了 Gemini Spark 的价值：扔进去一份学校日历 PDF，告诉 Gemini 把所有「不上学」的日子加到 Google Calendar。搞定。",
+              "这个例子虽小，但含义很大：Gemini 正在从「这是 PDF 里的内容」跨到「这是我帮你做的事」。Gemini Spark 已向所有美国 Google AI Pro 订阅用户开放，全球扩展在即。一个产品 demo 拿 768 赞，说明「能做事的 AI」有真实需求。"
+            ],
+            "original": [
+              "Gemini 不只是聊天，它能干活。扔一个学校日历 PDF 给它，让它把所有不上学的日子加到 Google Calendar。搞定。Gemini Spark 现在对美国 Google AI Pro 用户开放。"
+            ]
+          }
+        },
+        {
+          "authorKey": "podcast:no-priors",
+          "sourceUrl": "https://www.youtube.com/watch?v=vNpcg_Ma-FA",
+          "authorName": "Andy Fang & Stanley Tang",
+          "authorTag": "DoorDash Co-Founders on No Priors",
+          "en": {
+            "rewrite": [
+              "DoorDash co-founders Andy Fang and Stanley Tang reveal that the company has been working on autonomous delivery since 2018 — starting as a skunkworks project with 'me and half an engineer's time.'",
+              "The key insight from seven years of exploration: there was a gap in the autonomy market. Sidewalk robots were too slow (2-3 mph, while average DoorDash trips are 3-5 miles). Robotaxis were designed for carrying people, not burritos — a 4,000-pound vehicle for a couple of meals makes no sense. So DoorDash built their own robot: Dot, a 300-pound autonomous delivery vehicle traveling up to 20 mph, designed for bike lanes and roads. It's been live in Phoenix for nearly two years, fully autonomous L4.",
+              "On the AI side, Ask DoorDash has seen 50% of restaurant discovery trajectories lead to orders from new restaurants — historically one of DoorDash's hardest metrics to move. On grocery, basket sizes are up 40% when users engage conversationally. The founders envision a future where agents can trigger orders autonomously: a camera on a pantry shelf detects it's empty and fires a DoorDash query.",
+              "Stanley's core philosophy: every big bet at DoorDash — autonomy, AI, robotics — starts as an experiment. 'Do you understand the use case? We have something that everyone else doesn't have. It's called DoorDash.'"
+            ],
+            "original": [
+              "We've actually been looking to robotics autonomy probably much longer than people thought, like since 2018, actually. It was me and half an engineer's time. It was a skunkworks project.",
+              "If you were to start from the business the customer use case, work your way backwards, our first principles, and you can build exactly what we need to solve our use case, what would that look like? We looked around. Turns out no one's really building that.",
+              "DoorDash Dot, a autonomous delivery robot. Built entirely in house at DoorDash. Weighs 300 pounds, travels up to 20 miles per hour. It's fully autonomous L4. If you come up to Phoenix, to Tempe, it really feels like Waymo San Francisco.",
+              "50% of trajectories of people using Ask DoorDash for restaurants are people ordering from places they've never ordered from before. 40% larger basket sizes on grocery.",
+              "We have something that everyone else doesn't have. It's called DoorDash. We have 10 billion deliveries of data to extract from."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "DoorDash 两位联合创始人 Andy Fang 和 Stanley Tang 透露，公司从 2018 年就开始做自动驾驶配送——最初只是「我和半个工程师」的 skunkworks 项目。",
+              "七年探索的核心发现：自动驾驶市场存在一个空白地带。人行道机器人太慢（2-3 mph，而 DoorDash 平均配送距离是 3-5 英里）。Robotaxi 是为运人设计的，不是运外卖——用一辆 4000 磅的车送几个卷饼毫无意义。于是 DoorDash 自研了 Dot：一台 300 磅的自动驾驶配送机器人，最高时速 20 mph，专为自行车道和路面设计。已在凤凰城跑了快两年，全自主 L4。",
+              "AI 方面，Ask DoorDash 实现了 50% 的餐厅发现路径导向新餐厅下单——这曾经是 DoorDash 最难推动的指标。在杂货端，对话式下单让客单价提升了 40%。两位创始人设想了一个 agent 能自主触发订单的未来：食品储藏室的摄像头发现空了，自动向 DoorDash 下单补货。",
+              "Stanley 的核心哲学：DoorDash 的每一个大赌注——自动驾驶、AI、机器人——都始于实验。「你理解使用场景吗？我们有别人没有的东西。它叫 DoorDash。」"
+            ],
+            "original": [
+              "从 2018 年就开始做自动驾驶，最初是「我和半个工程师」的 skunkworks 项目。",
+              "从客户使用场景出发，用第一性原理倒推。看了一圈发现没人在造我们需要的东西。",
+              "Dot：300 磅自动驾驶配送机器人，20 mph，全自主 L4。在凤凰城的感觉就像旧金山的 Waymo。",
+              "Ask DoorDash 50% 的发现路径导向新餐厅，杂货端客单价提升 40%。",
+              "我们有别人没有的东西，它叫 DoorDash。100 亿次配送数据可以提取。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Builder Realities / Builder 的现实",
+      "desc": "当模型越来越强，builder 的挑战反而更具体了——不是能力不够，是速度、变现和工作流。",
+      "cards": [
+        {
+          "authorKey": "x:realmadhuguru",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2080707454422413487",
+          "en": {
+            "rewrite": [
+              "Madhu Guru identifies what might be the highest-leverage skillset in AI right now: taking messy real-world workflows and adapting foundation models to them. 'Doing that requires understanding how work gets done, designing evals, improving models through post-training, and building the feedback loops that continuously improve models.'",
+              "His point is subtle but important: the gap isn't the model's intelligence. It's the bridge between how people actually work and what the model expects as input. 'Today, that skillset is still concentrated in a handful of labs.' The people who can build that bridge will capture enormous value."
+            ],
+            "original": [
+              "There is a massive opportunity over the next few years for people who know how to take messy real-world workflows and adapt foundation models to them. Doing that requires understanding how work gets done, designing evals, improving models through post-training, and building the feedback loops that continuously improve models. That's how a general-purpose model becomes exceptional for a specific domain. Today, that skillset is still concentrated in a handful of labs."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Madhu Guru 指出了当下 AI 领域可能是最高杠杆的能力：把混乱的真实工作流适配到基础模型上。「这需要理解工作是怎么完成的、设计评测、通过后训练改进模型、建立持续优化的反馈闭环。这才是通用模型变成特定领域顶尖工具的方式。」",
+              "他的观点微妙但重要：问题不在模型的智能程度，而在于「人实际怎么干活」和「模型期望什么输入」之间的桥。今天这项能力仍集中在少数几个实验室里。谁能搭好这座桥，谁就能捕获巨大价值。"
+            ],
+            "original": [
+              "未来几年真正的机会在于：把混乱的真实工作流适配到基础模型上。需要理解工作方式、设计评测、通过后训练改进、建立反馈闭环。今天这项能力仍集中在少数实验室。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
