@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Builders Digest · 2026-07-30</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f6f3ed;
+    --accent: #c0392b;
+    --accent-light: #e8d5c4;
+    --border: #d4cdc0;
+    --muted: #7a7265;
+    --tag-bg: #e8e2d6;
+    --en-bg: #ffffff;
+    --cn-bg: #faf7f2;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.7;
+  }
+
+  .masthead, .intro, .section-header, .feed, footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .masthead { padding-top: 48px; }
+  .masthead-rule { border: none; border-top: 3px solid var(--ink); margin: 0 0 12px; }
+  .masthead-inner { display: flex; justify-content: center; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .masthead-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; letter-spacing: -0.4px; }
+  .masthead-subtitle { margin-top: 8px; padding-bottom: 10px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  .edition-strip {
+    position: relative;
+    margin-top: 8px;
+    min-height: 46px;
+    padding: 10px 132px 12px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.34);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+
+  .edition-strip .edition-sep { margin: 0 8px; color: #b8ae9f; }
+  .edition-strip-text { display: block; }
+  .edition-return-link { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; padding: 6px 10px; border: 1px dashed rgba(192, 57, 43, 0.55); border-radius: 999px; color: var(--accent); text-decoration: none; font-size: 12px; line-height: 1; letter-spacing: 0.06em; background: rgba(255, 255, 255, 0.45); transition: background 160ms ease, border-color 160ms ease, transform 160ms ease; }
+  .edition-return-link:hover, .edition-return-link:focus-visible { background: rgba(255, 255, 255, 0.82); border-color: var(--accent); transform: translateY(-50%) translateX(-1px); }
+  .edition-return-link:focus-visible { outline: none; }
+  .intro { padding-top: 22px; }
+  .intro-inner { max-width: 920px; margin: 0 auto; padding: 0 0 0 18px; border-left: 3px solid #d9cdbc; }
+  .intro-kicker { margin: 0 0 8px; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+  .intro p { margin: 0; max-width: none; color: var(--muted); font-size: clamp(15px, 1.6vw, 16px); line-height: 1.9; text-wrap: pretty; font-family: 'Noto Serif SC', serif; overflow-wrap: anywhere; }
+
+  .section-header { margin-top: 40px; }
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 4px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 24px; margin: 0 0 6px; }
+  .section-desc { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+
+  .feed { display: flex; flex-direction: column; gap: 20px; }
+  .card { background: var(--en-bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .card-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid #eee7dd; flex-wrap: wrap; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .avatar-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .avatar.is-fallback img { display: none; }
+  .avatar.is-fallback .avatar-fallback { display: flex; }
+
+  .author-info { flex: 1; min-width: 160px; }
+  .author-name { font-weight: 600; font-size: 15px; }
+  .author-name-row { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .author-handle { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+  .author-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; background: var(--tag-bg); color: var(--muted); padding: 4px 8px; border-radius: 999px; }
+  .author-tag.is-inline { padding: 3px 8px; }
+
+  .card-controls { margin-left: auto; display: inline-flex; gap: 8px; }
+  .view-toggle { border: 1px solid var(--border); background: transparent; color: var(--muted); padding: 6px 10px; border-radius: 999px; font-size: 12px; line-height: 1; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; }
+  .view-toggle.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .card-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .lang-col { padding: 18px 20px 22px; }
+  .lang-col.cn { background: var(--cn-bg); border-right: 1px solid #f0ece4; font-family: 'Noto Serif SC', serif; }
+  .lang-col.en { background: var(--en-bg); }
+  .lang-label { margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+  .content-shell { position: relative; transition: height 220ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .content-variant { position: absolute; inset: 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(4px); transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms; will-change: opacity, transform; }
+  .content-variant.is-active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s; }
+  .content-variant p, .content-variant li { margin: 0 0 12px; font-size: 14px; }
+  .content-variant ol { margin: 0 0 12px 20px; padding: 0; }
+  .inline-code { display: inline-block; font-family: 'IBM Plex Mono', monospace; background: #f4efe7; padding: 3px 6px; border-radius: 6px; margin-bottom: 8px; }
+
+  .card-footer { padding: 12px 20px 16px; border-top: 1px solid #eee7dd; background: #fcfaf6; }
+  .card-footer { display: flex; align-items: center; justify-content: space-between; }
+.card-footer a { color: var(--accent); text-decoration: none; font-size: 14px; }
+.eureka-btn { border: 1px dashed var(--accent); background: transparent; color: var(--accent); padding: 5px 12px; border-radius: 999px; font-size: 12px; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; opacity: 0.55; }
+.eureka-btn:hover { background: var(--accent); color: #fff; opacity: 1; border-style: solid; }
+.eureka-btn:active { transform: scale(0.96); }
+.eureka-toast { position: fixed; bottom: 32px; right: 32px; background: #1a1a1a; color: #fff; padding: 12px 20px; border-radius: 10px; font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 9999; opacity: 0; transform: translateY(12px); transition: opacity 240ms ease, transform 240ms ease; pointer-events: none; }
+.eureka-toast.show { opacity: 1; transform: translateY(0); }
+  footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 680px) {
+    .masthead-inner { align-items: center; }
+    .edition-strip { padding-right: 12px; padding-left: 12px; }
+    .edition-strip-text { padding-right: 0; }
+    .edition-return-link { position: static; transform: none; margin-top: 8px; font-size: 11px; }
+    .card-controls { margin-left: 0; }
+    .card-body { grid-template-columns: 1fr; }
+    .lang-col.cn { border-right: none; border-bottom: 1px solid #f0ece4; }
+    .edition-strip .edition-sep { margin: 0 5px; }
+    .intro-inner { padding-left: 14px; }
+    .intro p { line-height: 1.84; }
+  }
+</style>
+</head>
+<body data-publish-date="2026-07-30" data-issue-number="40" data-edition-name="双语精选版" data-view-label-rewrite="速读" data-view-label-original="原文" data-author-identities-path="/Users/jianan/.follow-builders/assets/author-identities.json" data-avatar-manifest-path="/Users/jianan/.follow-builders/assets/avatar-manifest.json">
+  <header class="masthead">
+    <hr class="masthead-rule">
+    <div class="masthead-inner">
+      <div class="masthead-title">AI Builders Digest</div>
+    </div>
+    <div class="masthead-subtitle">Bilingual edition · 双语对照版</div>
+    <div class="edition-strip">
+      <span class="edition-strip-text" id="edition-strip-text">第 40 期｜2026-07-30｜双语精选版｜10 条精选｜9 位作者｜5 个主题</span>
+      <a class="edition-return-link" href="../index.html">返回目录</a>
+    </div>
+  </header>
+
+  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="今天的主线是「价格、安全与实体世界」。Sam Altman 宣布 GPT-5.6 系列大幅降价，Luna 输入价直接砍掉 80%——这不是一次打折，而是「成本循环」的最新一轮：正如 Aaron Levie 所说，前沿模型越来越强，随后效率提升与竞争把价格打下来，AI 就这样一轮轮扩散进经济。另一边，围绕 agent 逃逸事件的安全争论正在升温，Replit CEO 直言大多数公司的沙箱基本功就没做对；而真正把 AI 大规模部署进实体世界的公司早就存在——Samsara，200 亿美元市值，每天覆盖 99% 的美国道路。模型越便宜，安全与落地就越重要。">
+    <div class="intro-inner">
+      <div class="intro-kicker">编者导语 / Editor&#39;s Note</div>
+      <p class="intro-copy">今天的主线是「价格、安全与实体世界」。Sam Altman 宣布 GPT-5.6 系列大幅降价，Luna 输入价直接砍掉 80%——这不是一次打折，而是「成本循环」的最新一轮：正如 Aaron Levie 所说，前沿模型越来越强，随后效率提升与竞争把价格打下来，AI 就这样一轮轮扩散进经济。另一边，围绕 agent 逃逸事件的安全争论正在升温，Replit CEO 直言大多数公司的沙箱基本功就没做对；而真正把 AI 大规模部署进实体世界的公司早就存在——Samsara，200 亿美元市值，每天覆盖 99% 的美国道路。模型越便宜，安全与落地就越重要。</p>
+    </div>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 01</div>
+    <h2 class="section-title">The Price War / 模型降价潮</h2>
+    <p class="section-desc">OpenAI 用一次 80% 的降价提醒所有人：AI 的成本曲线正在快速下滑，而价格战只是「成本循环」里的一环。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:sama" data-author-name="Sam Altman" data-author-tag="" data-author-handle="@sama" data-author-avatar="../assets/avatars/x-sama.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-sama.jpg" alt="Sam Altman avatar"><span class="avatar-fallback">SA</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Sam Altman</div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle">@sama</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>OpenAI CEO Sam Altman 宣布了今天最重磅的消息：GPT-5.6 系列大幅降价。Luna 输入价格直接砍掉 80%（每百万 token 输入 $0.20、输出 $1.20），Terra 降 20%（$2/$12），Sol 在 API 里新增 Fast 模式：2 倍价格换最高 2.5 倍速度，智能不变。他还补了一句：「我们想在每个价位都提供最好的价格/智能比。」</p>
+              <p>这条推文几小时内冲到 1.58 万赞。潜台词很直接：这不是在打折，而是「价格/智能比」正在成为每一层级的核心竞争指标。推理变便宜，才是 agent 工作负载真正的解锁条件——毕竟 agent 是按小时烧 token 的。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>今天大幅降价：GPT-5.6 Luna 降 80%，每百万输入 token $0.20、每百万输出 $1.20；GPT-5.6 Terra 降 20%，到 $2/$12；GPT-5.6 Sol 在 API 新增 Fast 模式，2 倍价格最高 2.5 倍速度，智能不变。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>OpenAI CEO Sam Altman announces major price cuts across the GPT-5.6 line, framed as part of the company&#39;s aim to offer the best price/intelligence tradeoff at every level: an 80% drop for GPT-5.6 Luna ($0.20 per million input tokens, $1.20 per million output), a 20% drop for GPT-5.6 Terra ($2/$12), and a new Fast mode for GPT-5.6 Sol in the API (up to 2.5x speed for 2x price, same intelligence).</p>
+              <p>The tweet exploded to 15.8k likes within hours. The subtext is blunt: this isn&#39;t discounting, it&#39;s making price/intelligence the core competitive metric at every tier. Cheaper inference is what actually unlocks agentic workloads, which burn tokens by the hour.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>major price cuts today:
+
+              *80% drop for GPT-5.6 Luna, now $0.20 per million input tokens and $1.20 per million output
+              *20% drop for GPT-5.6 Terra, to $2/$12
+              *GPT-5.6 Sol gets Fast mode in the API, up to 2.5x the speed for 2x the price, same intelligence https://t.co/erC6u4VoDR</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/sama/status/2082880720989532597" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="Sam Altman" data-url="https://x.com/sama/status/2082880720989532597" data-author="Sam Altman">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="x:levie" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Box CEO Aaron Levie 给出了 Altman 降价背后的宏观框架：按任务类型归一化后，AI 成本持续下降，这是推动 AI 扩散进经济的最重要力量之一。循环是这样的：前沿模型越来越强，因为能接更复杂的任务而显得很贵；随后效率提升或竞争压力，会把前沿峰值以下的价格全部打下来。</p>
+              <p>他的结论：按同口径比较，每个任务都在变便宜，这种可负担性才是 AI 进入更多应用场景的钥匙。所以别把每次降价看成恐慌性动作，那是这个循环的固有节奏。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>按任务类型归一化后，AI 成本下降是推动 AI 经济扩散的最重要因素之一。预期趋势：前沿模型越来越强、因能接更复杂任务而显得昂贵；之后效率提升或竞争带来更激进的定价，降低非前沿峰值任务的成本。这个循环反复发生，最终让同类任务越来越便宜，AI 因此被更广泛的使用场景采用。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Box CEO Aaron Levie lays out the macro pattern behind Altman&#39;s price cuts: falling AI cost, normalized for task type, is one of the most important forces driving AI diffusion through the economy. The cycle: frontier models get more capable and look expensive because the tasks they take on are more advanced; then efficiency gains or competition push prices down for everything below the frontier peak.</p>
+              <p>His conclusion: on a like-for-like basis, tasks keep getting cheaper, and that affordability is what spreads AI into a wider variety of use cases. Read each price cut not as a panic move but as the expected rhythm of the cycle.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The cost of AI - normalized for the type of task - coming down is one of the most important factors in being able to drive further AI diffusion in the economy.
+
+              The general trend we should expect is that frontier AI models will continue to become more capable, and will look very expensive because the tasks that they can take on are more advanced.
+
+              Then, shortly after, AI models will get more efficient or competition will drive more aggressive pricing dynamics, thus reducing the cost per task for anything other than the peak of the frontier.
+
+              This cycle will continue over and over again, which ultimately leads to tasks becoming cheaper on a like for like basis. And by doing so you will get even more AI adoption because now AI is more affordable for a wider variety of use-cases.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/levie/status/2082911418349920617" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/levie/status/2082911418349920617" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="x:thsottiaux" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>OpenAI Codex 与 ChatGPT 负责人 Thibault Sottiaux 说了一个低调但敏锐的判断：模型真正变好的那天，会有迹象——而且都是运营层面的迹象，不是榜单分数。负载一路上涨、可靠性却在提升；突然出现的效率跃升；事情变快；以及「重置」。</p>
+              <p>在 agent 时代，模型质量就是被当作基础设施质量来体验的：延迟、可靠性、单任务成本，比排行榜上的名次重要得多。4.3k 赞说明，真正在跑系统的人认出了这种感觉。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>我们做出真正好模型的那一天，会有迹象：负载不断上涨但可靠性提升、突然的效率跃升、事情变快、重置。诸如此类。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thibault Sottiaux, who leads Codex and ChatGPT at OpenAI, makes a quiet but sharp point about how you&#39;ll know when models are truly great: the signs are operational, not benchmark scores. Reliability increasing even as load climbs. Sudden efficiency gains. Things getting faster. Resets.</p>
+              <p>In the agentic era, model quality is experienced as infrastructure quality: latency, reliability, and cost per task matter more than a leaderboard position. The 4.3k likes suggest operators recognized the feeling.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The day we develop really good models. There will be signs.
+
+              Reliability increasing despite load going up and up. Sudden efficiency gains. Things getting faster. Resets.
+
+              These kinds of things.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/thsottiaux/status/2083053369351090254" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/thsottiaux/status/2083053369351090254" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 02</div>
+    <h2 class="section-title">Sandbox, Security &amp; the AI Scare / 沙箱、安全与「AI 恐怖故事」</h2>
+    <p class="section-desc">agent 逃逸新闻让很多人兴奋或恐慌，但真正在做安全的人判断出奇一致：问题不在 AI 本身，而在我们的防线太糙。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:amasad" data-author-name="Amjad Masad" data-author-tag="" data-author-handle="@amasad" data-author-avatar="../assets/avatars/x-amasad.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-amasad.jpg" alt="Amjad Masad avatar"><span class="avatar-fallback">AM</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Amjad Masad</div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle">@amasad</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Replit CEO Amjad Masad 对最近「AI 逃逸沙箱」引发的「AI 好可怕」叙事直接泼了盆冷水：大多数 AI 公司和新的「沙箱供应商」，都在犯非常基础的错误。Replit 从 2016 年就开始跑沙箱，被各路黑客和国家行为者盯了个遍，这话他有资格说。</p>
+              <p>他的建议很短、很工程：「假设零日漏洞存在——因为它们确实存在——然后按零信任框架做分层防护。」这个重新框定很重要：这是有已知模式的工程问题，不是 AI 的神秘属性。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>沙箱很难。看到各种「AI 逃逸沙箱」的新闻，很容易觉得「哇 AI 好可怕」，但大多数 AI 公司和新的沙箱供应商在犯非常基础的错误。Replit 从 2016 年就在跑沙箱，被所有黑客和国家行为者盯过，所以学到了一两件事。主要建议：假设零日漏洞存在——它们确实存在——然后用零信任框架做分层防护。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Replit CEO Amjad Masad pushes back hard on the &quot;AI is scary&quot; framing around recent sandbox-escape incidents: most AI companies and the new wave of &quot;sandbox providers&quot; are making very basic mistakes. Replit has run sandboxes since 2016 and been targeted by every hacker and state actor under the sun, so he has earned the right to say it.</p>
+              <p>His advice is short and practical: assume zero-days exist, because they do, and build in layers of protection under a zero-trust framework. The reframe matters: this is an engineering problem with known patterns, not a mysterious property of AI.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Sandboxes are hard.
+
+              With all the “AI escaping  sandbox” it’s easy to think “wow AI so scary,” but most AI companies, and recent “sandbox providers” are making very basic mistakes.
+
+              At Replit we’ve been running sandboxes since 2016 and targeted by every hacker and state actor under the sun. So we learned a thing or two.
+
+              Main advice: Assume zero-days exist — because they do — and think in layers of protection in a zero-trust framework. More here: https://t.co/3XGY0a1p3P</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/amasad/status/2083034412598579403" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="Amjad Masad" data-url="https://x.com/amasad/status/2083034412598579403" data-author="Amjad Masad">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="x:levie" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Box CEO Aaron Levie 从企业侧得出了同样的结论：这次 agent 事件的教训不是「AI 很可怕」，而是「在 agent 时代，把安全做对极其重要」。给一个 agent 足够的算力和一个目标，它会想尽一切办法完成任务——所以任何你以为锁好了、其实没锁好的系统，都会变成风险向量。</p>
+              <p>他给企业的结论是：真正的含义不在于 AI 本身的信任与安全问题，而在于企业要花多少功夫去加固自己的环境。大多数组织在这件事上有大量实打实的活要干。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>这件事的教训不应该是「AI 很可怕」，而是「在 agent 时代把安全做对极其重要」。只要有足够的工具和任务，agent 会不惜一切代价完成任务，前提是算力足够。因此，一个配置错误的系统——或者你以为锁好了其实没有的系统——都会成为风险向量。核心影响不在于 AI 本身的信任与安全，而在于企业需要付出多少努力来加固环境。大多数组织在这件事上还有很多实际工作要做。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Box CEO Aaron Levie draws the same line from the enterprise side: the takeaway from the agent incident should not be that AI is scary, but that getting security right is incredibly important in the era of agents. Give an agent enough compute and a goal, and it will do whatever it takes to get the job done, so anything you thought was locked down but wasn&#39;t becomes a risk vector.</p>
+              <p>His punchline for enterprises: the real implications are less about AI trust and safety and more about the work it will take to harden environments. Most organizations have a lot of real work ahead on this front.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The takeaway from this incident should not be that AI is scary. It should be that getting security right is incredibly important in the era of agents.
+
+              Given the right tools and task, agents will do whatever it takes to get the job done, assuming enough compute. Thus, a misconfigured system - or something you thought was locked down but wasn&#39;t - will become a risk vector.
+
+              The core implications are less about the trust and safety of AI itself, but instead the work it&#39;s going to take from enterprises to make sure they harden their environments. Lots of real work ahead for most organizations on this front.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/levie/status/2082997703458570412" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/levie/status/2082997703458570412" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 03</div>
+    <h2 class="section-title">Physical AI: The Deployment Nobody Talks About / 实体世界：没人谈论的最大部署</h2>
+    <p class="section-desc">当硅谷还在聊 token 和 agent，一家 200 亿美元的公司已经把 AI 铺进了 99% 的美国道路。AI 的下一个战场，在地面、工地和电网上。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="podcast:mad-podcast" data-author-name="Sanjit Biswas (Samsara CEO)" data-author-tag="The MAD Podcast with Matt Turck" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Sanjit Biswas (Samsara CEO) avatar"><span class="avatar-fallback">SB</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Sanjit Biswas (Samsara CEO)</div>
+            <div class="author-tag is-inline">The MAD Podcast with Matt Turck</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>没人谈论的最大 AI 部署，是 Samsara：一家 200 亿美元市值的公司，在运营可能是全球最大的实体世界 AI 部署。它的系统每天跑过 99% 的美国道路、每年吸收 25 万亿个数据点；CEO Sanjit Biswas 说过去一年它帮助避免了约 38 万起车祸。「这些 token 在网上是找不到的，你没法靠爬 Reddit 知道工地上发生了什么。」</p>
+              <p>他对 physical AI 的定义很接地气：把 AI 用在那片从未被数字化的基础设施上——工地、电网、街道底下的一切。过去二十年是「报表」时代，把数据变成好看的表格；最近两三年 AI 能推理了；现在 agent 开始动手——比如 Samsara 的保修 agent，读到故障码就对照 OEM 保修协议，自己开一张工单。</p>
+              <p>难在哪：硬件很难，数据很脏，不像数字世界那样有低垂的果实。但这些行业占了全球 GDP 约 50%，安全上的回报巨大。关于「工作场所监控是不是变成了老大哥」的争论，他的立场值得听：对系统在做什么、不做什么保持彻底透明，才是赢得一线信任的方式。「我们把风险看作机会，而不是挑战。」</p>
+              <p>关于未来：会是人和机器人混编的车队。五年内机器人能接走重复性的野外工作——「平整场地能不能放到凌晨 0 点到 8 点的第三班？」——而人类保留例外处理、判断和交接。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>这些不是你在网上能找到的 token。你没法爬 Reddit 就知道工地上发生了什么。Samsara 的系统，每天跑过 99% 的美国道路，通常一天好几次。</p>
+              <p>过去二十年是报表时代：把数据变成一张漂亮的表格，让你看、让你推理。最近两三年厉害的是，AI 能对这些信息进行推理了。</p>
+              <p>我们相信，过去一年帮助避免了约 38 万起车祸和道路事故。</p>
+              <p>所以我们把风险看作机会，而不是挑战。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>The biggest AI deployment nobody talks about is Samsara: a $20B company running what might be the largest physical-world AI deployment. Its system drives 99% of US roads every day and ingests 25 trillion data points a year; CEO Sanjit Biswas says it helped prevent roughly 380,000 crashes in the last year. &quot;These are not the tokens you&#39;re gonna find online. You can&#39;t crawl Reddit and find out about what happened on a construction site.&quot;</p>
+              <p>His definition of physical AI is grounded: applying AI to infrastructure that was never digitized, from construction sites and the electrical grid to everything under the street. The last two decades were about reporting dashboards; the last two years added reasoning; now agents act, like Samsara&#39;s warranty agent, which reads fault codes against OEM warranty agreements and opens a work order on its own.</p>
+              <p>Why it&#39;s hard: hardware is hard, the data is messy, and it&#39;s not the low-hanging fruit of the digital world. But these industries are roughly 50% of world GDP, and the safety upside is enormous. On the workplace-surveillance debate his stance is worth hearing: radical transparency about what the system does and doesn&#39;t do is how you earn buy-in. &quot;We see that the risk is the opportunity as opposed to the challenge.&quot;</p>
+              <p>On the future: expect mixed human-robot fleets. Within five years, robots can take the repetitive field work, &quot;could grading happen during the third shift between midnight and 8AM?&quot;, while humans keep the exceptions, the judgment, and the handoffs.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>These are not the tokens you&#39;re gonna find online. Like, you can&#39;t crawl Reddit and find out about what happened on a construction site. The Samsara system, in a given day, we&#39;re driving 99% of The US roads, usually multiple times a day.</p>
+              <p>The last, call it, two decades was around reporting. How do we ingest the data and give you a really cool table so you can look at it and reason about it, figure it out? Now what&#39;s awesome really in the last two, three years is the AIs are able to reason about this kind of information.</p>
+              <p>We believe we helped prevent about 380,000 car crashes, road accidents in the last year.</p>
+              <p>So we see that the risk is the opportunity as opposed to the challenge.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://www.youtube.com/watch?v=3FHsGiONOGw" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="Sanjit Biswas (Samsara CEO)" data-url="https://www.youtube.com/watch?v=3FHsGiONOGw" data-author="Sanjit Biswas (Samsara CEO)">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 04</div>
+    <h2 class="section-title">The Infra Arms Race / 基础设施军备竞赛</h2>
+    <p class="section-desc">模型能力之外，真正的竞争正在发生在底座上：训练数据的获取、部署的速度，以及把一切变成可编程的软件工厂。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:swyx" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx 把一个「事后看显而易见」的顿悟讲了出来：如果你对预训练数据质量的要求高到 Common Crawl 都不够用，你就得自己写全网爬虫；要保持数据新鲜，又得做索引；很快你会发现，自己以「预训练的副业」为名义，造了一个私有的、低频版的 Google 克隆——而它还能顺手复用到 agent 侧的推理上。</p>
+              <p>他的判断：自研搜索/索引正在同时成为竞争优势和对抗目标（他称之为「AEO 贝氏拟态」），实验室们不会想分享这套东西。同一天他还给了一条 protip：「如果你能蒸馏模型，那你也能蒸馏 agent harness。」</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>把那个事后看很明显的顿悟说出来：如果你对预训练数据质量的优先级高到 commoncrawl 不够用，你就得自己建全网爬虫；要保持新鲜就得有索引；很快你就发现自己以预训练的副项目为名，建了一个私有的低频 Google 克隆，还能复用到 agent 侧推理。我们知道实验室确实在用第三方搜索服务，但显然这类事情上，发展越多自己的 1P 替代品，既是竞争优势、也是你不想分享的「AEO 贝氏拟态」对抗目标。</p>
+              <p>protip：如果你能蒸馏模型，你也能蒸馏 agent harness。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx articulates one of those retroactively obvious aha moments: if you care enough about pretraining data quality that Common Crawl isn&#39;t good enough, you end up building a whole-web scraper anyway, then an indexer to keep it current, and pretty soon you&#39;ve built a private, low-frequency clone of Google as a side project of pretraining, which you can then also reuse for agent-side inference.</p>
+              <p>His point: first-party search and indexing are becoming both a competitive advantage and an adversarial target for &quot;AEO Batesian mimicry&quot; that labs will not want to share. In the same spirit, his other protip of the day: &quot;if you can distil models, you can also distil agent harnesses.&quot;</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>verbalizing one of those aha moments i had that seems retroactively pretty obvious:
+
+              if you prioritize pretrain data quality enough that commoncrawl isn&#39;t good enough for you, you have to build a Whole Web scraper anyway, and if you wanna keep it current, you have to have indexing, and pretty soon you find yourself having built a total private low-frequency clone of Google as a SIDE PROJECT of pretraining, that you can then also reuse for the agent side inference.</p>
+              <p>protip:  if you can distil models, you can also distil agent harnesses</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/swyx/status/2083016652032188669" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/swyx/status/2083016652032188669" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="x:rauchg" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Vercel CEO Guillermo Rauch 宣布他们把很多应用「CLI → 上线 URL」的端到端部署流程又压缩了最多约 7 秒——然后把它连到一个更大的愿景上：Vercel 的整套基础设施都通过 CLI/MCP/API 开放，任何人都能在上面组装自己的「软件工厂」。他直接说 DMs 开放，欢迎在做「自主构建并部署软件」的 agent 或平台的团队来聊。</p>
+              <p>同一天他还确认：Grok Build 应用（*.grok.me）跑在 Vercel 的托管和 CDN 上——对着 @grok 说一句，点一下 Publish，就能发给 1 个用户或 10 亿用户。Prompt 到部署正在变成一层标准化的商品，真正值得想的是：在这层上面能长出什么。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>我们把很多应用「CLI → Live URL」的端到端部署流程又压缩了最多约 7 秒。考虑到你可以通过 CLI/MCP/API 集成 Vercel 的全部基础设施、在上面搭建自己的定制软件工厂，这就更酷了。如果你在做能自主构建并部署软件的 agent 或平台，我的 DMs 开放。</p>
+              <p>Grok Build 应用（*.grok.me）由 Vercel 托管和 CDN 基础设施支持。现在任何人都可以只靠给 @grok 下指令来构建软件。点 🌐 Publish，就能发布给 1 个用户或 10 亿用户。游戏、网站、内部应用、个人软件……just @grok it。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Vercel CEO Guillermo Rauch announces they&#39;ve shaved up to ~7 seconds off the end-to-end CLI-to-live-URL deploy path for many apps, and connects it to a bigger vision: with Vercel&#39;s infra exposed via CLI/MCP/API, anyone can assemble a custom &quot;software factory&quot; on top. His DMs are open for teams building agents or platforms that build and deploy software autonomously.</p>
+              <p>Same day, he confirmed Grok Build apps (*.grok.me) now run on Vercel&#39;s hosting and CDN: prompt @grok, hit Publish, and ship to 1 user or 1 billion. Prompt-to-deploy is becoming a commodity layer; the interesting question is what gets built on top of it.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>We just shaved off up to ~𝟽𝚜 of the end-to-end CLI → Live URL deploy process for many apps.
+
+              This is specially cool when you consider you can integrate all of Vercel&#39;s infra via CLI/MCP/API and build your own custom software factory on top.
+
+              My DMs are open if you&#39;re building an agent or platform that builds and deploys software autonomously.</p>
+              <p>Grok Build apps (*.𝚐𝚛𝚘𝚔.𝚖𝚎) are backed by @vercel hosting and CDN infrastructure.
+
+              Anyone can now build software by just prompting @grok. Hit 🌐 Publish and ship to 1 user or 1 billion. Games, websites, internal apps, personal software… just @grok it. https://t.co/09mvSHqJWv</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/rauchg/status/2082876367629381719" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/rauchg/status/2082876367629381719" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 05</div>
+    <h2 class="section-title">Two Sides of Adoption / 采用的两面</h2>
+    <p class="section-desc">同一周里，有人教你把 agent 装进团队，也有老牌机构开始对 AI 生成的代码说不。落地的阻力，一半在安装，一半在制度。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:zarazhangrui" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zara Zhang 给「怎么培训非技术团队用 AI」的建议出奇地具体：办一场「安装派对」。每个人带笔记本，当场在他们的机器上装好 agent，然后立刻完成一件有意义的任务。跳过抽象讲解——只要装好了，人们自然会开始跟 agent 对话、互相学习。</p>
+              <p>她的诊断很直接：「安装这个环节占了 80% 的障碍。」大多数 AI 培训失败，不是因为人学不会，而是因为安装和第一次上手的体验才是真正的门槛。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>当经理问我怎么培训非技术团队用 AI 时，我的建议始终是同一个：办一场安装派对。每个人带笔记本，当场在他们的机器上装好 agent，并让他们立刻完成一个有意义的任务。跳过抽象讲解。一旦装好了，人们就会开始和 agent 对话、互相学习。安装占了 80% 的障碍。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zara Zhang&#39;s advice for training non-technical teams on AI is refreshingly concrete: run an &quot;install party.&quot; Everyone brings a laptop, you install the agents right there on their machines, and they complete one meaningful task on the spot. Skip the abstract talk: once it&#39;s installed, people start talking to the agent and learning from each other.</p>
+              <p>Her blunt diagnosis: &quot;the setup is 80% the barrier.&quot; Most AI training fails not because people can&#39;t learn, but because installation and the first-run experience are the real hurdle.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>When managers ask me how to train their nontechnical team on AI, my advice is always the same: run an install party
+
+              Everyone brings a laptop &amp; you install the agents right there on their machines &amp; get them to complete a meaningful task on the spot. Skip the abstract talk. Once it&#39;s installed, people start talking to the agent and learning from each other
+
+              The setup is 80% the barrier</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/zarazhangrui/status/2083084770763002350" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/zarazhangrui/status/2083084770763002350" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="x:steipete" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Steinberger 指出 GCC（GNU 编译器套件）改了政策，开始一刀切地拒绝基于 LLM 的代码贡献——并质疑这要怎么验证：「他们怎么证明？挺傻的。」</p>
+              <p>这是个不大但很有信号意义的动向：当 AI 生成的代码在开源世界变成常态，老牌机构开始划红线了——而这条线既难执行、也难以自圆其说。LLM 代码从例外变成默认的过程中，这种摩擦只会越来越多。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>GCC 改了政策，开始一刀切拒绝基于 LLM 的代码。他们到底怎么证明？挺傻的。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Steinberger flags that GCC (the GNU Compiler Collection) changed its policy to blanket-reject LLM-based code contributions, and questions how they&#39;d even verify it: &quot;How would they even proof that? Silly.&quot;</p>
+              <p>It&#39;s a small but telling signal: as AI-generated code becomes the default in open source, institutions are starting to draw lines, and those lines are both hard to enforce and hard to justify. Expect more of this friction as LLM code goes from exception to norm.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>GCC changed their policy and is blank out rejecting LLM-based code. How would they even proof that? Silly. https://t.co/6KVn3UyFwR</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/steipete/status/2083019629379612728" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/steipete/status/2083019629379612728" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <footer data-source-note="Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-30 source feeds.">Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-30 source feeds.</footer>
+
+  <script>
+    function getTemplateAuthorSources() {
+      const sources = window.AI_BUILDERS_TEMPLATE_SOURCES || {};
+      return { identities: sources.identities || {}, avatars: sources.avatars || {} };
+    }
+
+    function getAuthorInitials(name) {
+      return (name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(function(part) { return part[0]; }).join('').toUpperCase();
+    }
+
+    function hydrateTemplateCopy() {
+      const intro = document.querySelector('.intro');
+      if (intro) {
+        const kicker = intro.querySelector('.intro-kicker');
+        const copy = intro.querySelector('.intro-copy');
+        if (kicker) kicker.textContent = intro.dataset.kicker || '';
+        if (copy) copy.textContent = intro.dataset.text || '';
+      }
+
+      const footer = document.querySelector('footer');
+      if (footer) footer.textContent = footer.dataset.sourceNote || '';
+
+      const rewriteLabel = document.body.dataset.viewLabelRewrite || '速读';
+      const originalLabel = document.body.dataset.viewLabelOriginal || '原文';
+      document.querySelectorAll('.view-toggle').forEach(function(button) {
+        if (button.dataset.viewTarget === 'rewrite') button.textContent = rewriteLabel;
+        if (button.dataset.viewTarget === 'original') button.textContent = originalLabel;
+      });
+    }
+
+    function hydrateAuthorMeta() {
+      const sources = getTemplateAuthorSources();
+      document.querySelectorAll('.card').forEach(function(card) {
+        const authorKey = card.dataset.authorKey || '';
+        const identity = sources.identities[authorKey] || {};
+        const avatarEntry = sources.avatars[authorKey] || {};
+
+        const name = identity.name || card.dataset.authorName || '';
+        const rawHandle = identity.handle || card.dataset.authorHandle || '';
+        const handle = rawHandle && rawHandle.startsWith('@') ? rawHandle : (rawHandle ? '@' + rawHandle : '');
+        const tag = identity.label || card.dataset.authorTag || '';
+        const avatar = avatarEntry.fileUrl || avatarEntry.localPath || card.dataset.authorAvatar || '';
+
+        const nameNode = card.querySelector('.author-name');
+        const tagNode = card.querySelector('.author-tag');
+        const handleNode = card.querySelector('.author-handle');
+        const avatarNode = card.querySelector('.avatar');
+        const avatarImg = card.querySelector('.avatar img');
+        const avatarFallback = card.querySelector('.avatar-fallback');
+
+        if (nameNode) nameNode.textContent = name;
+        if (tagNode) tagNode.textContent = tag;
+        if (handleNode) handleNode.textContent = handle;
+        if (avatarImg) {
+          avatarImg.src = avatar;
+          avatarImg.alt = name ? name + ' avatar' : 'Author avatar';
+        }
+        if (avatarNode) avatarNode.classList.toggle('is-fallback', !avatar);
+        if (avatarFallback) avatarFallback.textContent = getAuthorInitials(name);
+      });
+    }
+
+    function updateEditionStrip() {
+      const publishDate = document.body.dataset.publishDate;
+      const editionName = document.body.dataset.editionName || '双语精选版';
+      const editionStrip = document.getElementById('edition-strip-text');
+      if (!publishDate || !editionStrip) return;
+
+      const issueNumber = document.body.dataset.issueNumber || '';
+      if (!issueNumber) return;
+
+      const selectedCount = document.querySelectorAll('.card').length;
+      const authorCount = new Set([].slice.call(document.querySelectorAll('.author-handle')).map(function(node) { return node.textContent.trim(); }).filter(Boolean)).size;
+      const themeCount = document.querySelectorAll('.section-header').length;
+      const parts = ['第 ' + issueNumber + ' 期', publishDate, editionName, selectedCount + ' 条精选', authorCount + ' 位作者', themeCount + ' 个主题'];
+      editionStrip.innerHTML = parts.map(function(part) { return '<span class="edition-item">' + part + '</span>'; }).join('<span class="edition-sep">|</span>');
+    }
+
+    function measureVariantHeight(variant) {
+      const prevPosition = variant.style.position;
+      const prevInset = variant.style.inset;
+      const prevVisibility = variant.style.visibility;
+      const prevPointerEvents = variant.style.pointerEvents;
+      const prevOpacity = variant.style.opacity;
+      const prevTransform = variant.style.transform;
+      const prevTransition = variant.style.transition;
+      const prevOverflowY = variant.style.overflowY;
+      const prevDisplay = variant.style.display;
+
+      variant.style.position = 'relative';
+      variant.style.inset = 'auto';
+      variant.style.visibility = 'hidden';
+      variant.style.pointerEvents = 'none';
+      variant.style.opacity = '1';
+      variant.style.transform = 'none';
+      variant.style.transition = 'none';
+      variant.style.overflowY = 'visible';
+      variant.style.display = 'block';
+
+      const height = variant.scrollHeight;
+
+      variant.style.position = prevPosition;
+      variant.style.inset = prevInset;
+      variant.style.visibility = prevVisibility;
+      variant.style.pointerEvents = prevPointerEvents;
+      variant.style.opacity = prevOpacity;
+      variant.style.transform = prevTransform;
+      variant.style.transition = prevTransition;
+      variant.style.overflowY = prevOverflowY;
+      variant.style.display = prevDisplay;
+
+      return Math.ceil(height);
+    }
+
+    function getTargetHeight(shell, target) {
+      const variant = shell.querySelector('.content-variant[data-view="' + target + '"]');
+      return measureVariantHeight(variant);
+    }
+
+    function syncShellHeights() {
+      document.querySelectorAll('.content-shell').forEach(function(shell) {
+        const active = shell.querySelector('.content-variant.is-active');
+        const target = active ? active.dataset.view : 'rewrite';
+        shell.style.height = getTargetHeight(shell, target) + 'px';
+      });
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', function() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(syncShellHeights, 120);
+    });
+
+    document.querySelectorAll('.card').forEach(function(card) {
+      const buttons = card.querySelectorAll('.view-toggle');
+      const shells = card.querySelectorAll('.content-shell');
+
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          const target = button.dataset.viewTarget;
+          if (button.classList.contains('is-active')) return;
+
+          buttons.forEach(function(btn) {
+            btn.classList.toggle('is-active', btn === button);
+          });
+
+          shells.forEach(function(shell) {
+            const current = shell.querySelector('.content-variant.is-active');
+            const next = shell.querySelector('.content-variant[data-view="' + target + '"]');
+            if (!current || !next || current === next) return;
+
+            shell.style.height = shell.offsetHeight + 'px';
+            requestAnimationFrame(function() {
+              current.classList.remove('is-active');
+              next.classList.add('is-active');
+              shell.style.height = getTargetHeight(shell, target) + 'px';
+            });
+          });
+        });
+      });
+    });
+
+    hydrateTemplateCopy();
+    hydrateAuthorMeta();
+    updateEditionStrip();
+    syncShellHeights();
+
+    // Eureka save buttons
+    var EUREKA_URL = 'http://127.0.0.1:8087/eureka';
+    function showToast(msg, isError) {
+      var t = document.querySelector('.eureka-toast');
+      if (!t) {
+        t = document.createElement('div');
+        t.className = 'eureka-toast';
+        document.body.appendChild(t);
+      }
+      t.textContent = msg;
+      if (isError) t.style.background = '#c0392b';
+      else t.style.background = '#1a1a1a';
+      t.classList.add('show');
+      setTimeout(function() { t.classList.remove('show'); }, 2200);
+    }
+    document.querySelectorAll('.eureka-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var title = this.dataset.title || '';
+        var url = this.dataset.url || '';
+        var author = this.dataset.author || '';
+        var note = title ? title.slice(0, 80) : '';
+        var origText = this.textContent;
+        this.textContent = '...';
+        this.disabled = true;
+        fetch(EUREKA_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ title: note, url: url, author: author })
+        }).then(function(r) { return r.json(); })
+          .then(function(d) {
+            btn.textContent = d.ok ? '✓ Saved' : '✗ Error';
+            showToast(d.ok ? 'Saved to Eurekas ✓' : 'Save failed: ' + (d.error || 'unknown'), !d.ok);
+            if (d.ok) setTimeout(function() { btn.textContent = origText; btn.disabled = false; }, 1500);
+            else { btn.textContent = origText; btn.disabled = false; }
+          })
+          .catch(function(e) {
+            btn.textContent = origText; btn.disabled = false;
+            showToast('Eureka server not running — start it first', true);
+          });
+      });
+    });
+  </script>
+</body>
+</html>

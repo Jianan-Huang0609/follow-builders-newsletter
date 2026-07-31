@@ -1,0 +1,287 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-07-30",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线是「价格、安全与实体世界」。Sam Altman 宣布 GPT-5.6 系列大幅降价，Luna 输入价直接砍掉 80%——这不是一次打折，而是「成本循环」的最新一轮：正如 Aaron Levie 所说，前沿模型越来越强，随后效率提升与竞争把价格打下来，AI 就这样一轮轮扩散进经济。另一边，围绕 agent 逃逸事件的安全争论正在升温，Replit CEO 直言大多数公司的沙箱基本功就没做对；而真正把 AI 大规模部署进实体世界的公司早就存在——Samsara，200 亿美元市值，每天覆盖 99% 的美国道路。模型越便宜，安全与落地就越重要。"
+  },
+  "archive": {
+    "title": "实体AI部署日报",
+    "desc": "OpenAI 对 GPT-5.6 系列大幅降价打响成本战，行业焦点同时转向 agent 沙箱安全与实体世界的 AI 部署——模型越便宜，安全与落地越重要。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-30 source feeds.",
+  "sections": [
+    {
+      "title": "The Price War / 模型降价潮",
+      "desc": "OpenAI 用一次 80% 的降价提醒所有人：AI 的成本曲线正在快速下滑，而价格战只是「成本循环」里的一环。",
+      "cards": [
+        {
+          "authorKey": "x:sama",
+          "sourceUrl": "https://x.com/sama/status/2082880720989532597",
+          "en": {
+            "rewrite": [
+              "OpenAI CEO Sam Altman announces major price cuts across the GPT-5.6 line, framed as part of the company's aim to offer the best price/intelligence tradeoff at every level: an 80% drop for GPT-5.6 Luna ($0.20 per million input tokens, $1.20 per million output), a 20% drop for GPT-5.6 Terra ($2/$12), and a new Fast mode for GPT-5.6 Sol in the API (up to 2.5x speed for 2x price, same intelligence).",
+              "The tweet exploded to 15.8k likes within hours. The subtext is blunt: this isn't discounting, it's making price/intelligence the core competitive metric at every tier. Cheaper inference is what actually unlocks agentic workloads, which burn tokens by the hour."
+            ],
+            "original": [
+              "major price cuts today:\n\n*80% drop for GPT-5.6 Luna, now $0.20 per million input tokens and $1.20 per million output\n*20% drop for GPT-5.6 Terra, to $2/$12\n*GPT-5.6 Sol gets Fast mode in the API, up to 2.5x the speed for 2x the price, same intelligence https://t.co/erC6u4VoDR"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "OpenAI CEO Sam Altman 宣布了今天最重磅的消息：GPT-5.6 系列大幅降价。Luna 输入价格直接砍掉 80%（每百万 token 输入 $0.20、输出 $1.20），Terra 降 20%（$2/$12），Sol 在 API 里新增 Fast 模式：2 倍价格换最高 2.5 倍速度，智能不变。他还补了一句：「我们想在每个价位都提供最好的价格/智能比。」",
+              "这条推文几小时内冲到 1.58 万赞。潜台词很直接：这不是在打折，而是「价格/智能比」正在成为每一层级的核心竞争指标。推理变便宜，才是 agent 工作负载真正的解锁条件——毕竟 agent 是按小时烧 token 的。"
+            ],
+            "original": [
+              "今天大幅降价：GPT-5.6 Luna 降 80%，每百万输入 token $0.20、每百万输出 $1.20；GPT-5.6 Terra 降 20%，到 $2/$12；GPT-5.6 Sol 在 API 新增 Fast 模式，2 倍价格最高 2.5 倍速度，智能不变。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2082911418349920617",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie lays out the macro pattern behind Altman's price cuts: falling AI cost, normalized for task type, is one of the most important forces driving AI diffusion through the economy. The cycle: frontier models get more capable and look expensive because the tasks they take on are more advanced; then efficiency gains or competition push prices down for everything below the frontier peak.",
+              "His conclusion: on a like-for-like basis, tasks keep getting cheaper, and that affordability is what spreads AI into a wider variety of use cases. Read each price cut not as a panic move but as the expected rhythm of the cycle."
+            ],
+            "original": [
+              "The cost of AI - normalized for the type of task - coming down is one of the most important factors in being able to drive further AI diffusion in the economy.\n\nThe general trend we should expect is that frontier AI models will continue to become more capable, and will look very expensive because the tasks that they can take on are more advanced.\n\nThen, shortly after, AI models will get more efficient or competition will drive more aggressive pricing dynamics, thus reducing the cost per task for anything other than the peak of the frontier.\n\nThis cycle will continue over and over again, which ultimately leads to tasks becoming cheaper on a like for like basis. And by doing so you will get even more AI adoption because now AI is more affordable for a wider variety of use-cases."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 给出了 Altman 降价背后的宏观框架：按任务类型归一化后，AI 成本持续下降，这是推动 AI 扩散进经济的最重要力量之一。循环是这样的：前沿模型越来越强，因为能接更复杂的任务而显得很贵；随后效率提升或竞争压力，会把前沿峰值以下的价格全部打下来。",
+              "他的结论：按同口径比较，每个任务都在变便宜，这种可负担性才是 AI 进入更多应用场景的钥匙。所以别把每次降价看成恐慌性动作，那是这个循环的固有节奏。"
+            ],
+            "original": [
+              "按任务类型归一化后，AI 成本下降是推动 AI 经济扩散的最重要因素之一。预期趋势：前沿模型越来越强、因能接更复杂任务而显得昂贵；之后效率提升或竞争带来更激进的定价，降低非前沿峰值任务的成本。这个循环反复发生，最终让同类任务越来越便宜，AI 因此被更广泛的使用场景采用。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2083053369351090254",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux, who leads Codex and ChatGPT at OpenAI, makes a quiet but sharp point about how you'll know when models are truly great: the signs are operational, not benchmark scores. Reliability increasing even as load climbs. Sudden efficiency gains. Things getting faster. Resets.",
+              "In the agentic era, model quality is experienced as infrastructure quality: latency, reliability, and cost per task matter more than a leaderboard position. The 4.3k likes suggest operators recognized the feeling."
+            ],
+            "original": [
+              "The day we develop really good models. There will be signs.\n\nReliability increasing despite load going up and up. Sudden efficiency gains. Things getting faster. Resets.\n\nThese kinds of things."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "OpenAI Codex 与 ChatGPT 负责人 Thibault Sottiaux 说了一个低调但敏锐的判断：模型真正变好的那天，会有迹象——而且都是运营层面的迹象，不是榜单分数。负载一路上涨、可靠性却在提升；突然出现的效率跃升；事情变快；以及「重置」。",
+              "在 agent 时代，模型质量就是被当作基础设施质量来体验的：延迟、可靠性、单任务成本，比排行榜上的名次重要得多。4.3k 赞说明，真正在跑系统的人认出了这种感觉。"
+            ],
+            "original": [
+              "我们做出真正好模型的那一天，会有迹象：负载不断上涨但可靠性提升、突然的效率跃升、事情变快、重置。诸如此类。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Sandbox, Security & the AI Scare / 沙箱、安全与「AI 恐怖故事」",
+      "desc": "agent 逃逸新闻让很多人兴奋或恐慌，但真正在做安全的人判断出奇一致：问题不在 AI 本身，而在我们的防线太糙。",
+      "cards": [
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2083034412598579403",
+          "en": {
+            "rewrite": [
+              "Replit CEO Amjad Masad pushes back hard on the \"AI is scary\" framing around recent sandbox-escape incidents: most AI companies and the new wave of \"sandbox providers\" are making very basic mistakes. Replit has run sandboxes since 2016 and been targeted by every hacker and state actor under the sun, so he has earned the right to say it.",
+              "His advice is short and practical: assume zero-days exist, because they do, and build in layers of protection under a zero-trust framework. The reframe matters: this is an engineering problem with known patterns, not a mysterious property of AI."
+            ],
+            "original": [
+              "Sandboxes are hard.\n\nWith all the “AI escaping  sandbox” it’s easy to think “wow AI so scary,” but most AI companies, and recent “sandbox providers” are making very basic mistakes.\n\nAt Replit we’ve been running sandboxes since 2016 and targeted by every hacker and state actor under the sun. So we learned a thing or two.\n\nMain advice: Assume zero-days exist — because they do — and think in layers of protection in a zero-trust framework. More here: https://t.co/3XGY0a1p3P"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Replit CEO Amjad Masad 对最近「AI 逃逸沙箱」引发的「AI 好可怕」叙事直接泼了盆冷水：大多数 AI 公司和新的「沙箱供应商」，都在犯非常基础的错误。Replit 从 2016 年就开始跑沙箱，被各路黑客和国家行为者盯了个遍，这话他有资格说。",
+              "他的建议很短、很工程：「假设零日漏洞存在——因为它们确实存在——然后按零信任框架做分层防护。」这个重新框定很重要：这是有已知模式的工程问题，不是 AI 的神秘属性。"
+            ],
+            "original": [
+              "沙箱很难。看到各种「AI 逃逸沙箱」的新闻，很容易觉得「哇 AI 好可怕」，但大多数 AI 公司和新的沙箱供应商在犯非常基础的错误。Replit 从 2016 年就在跑沙箱，被所有黑客和国家行为者盯过，所以学到了一两件事。主要建议：假设零日漏洞存在——它们确实存在——然后用零信任框架做分层防护。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2082997703458570412",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie draws the same line from the enterprise side: the takeaway from the agent incident should not be that AI is scary, but that getting security right is incredibly important in the era of agents. Give an agent enough compute and a goal, and it will do whatever it takes to get the job done, so anything you thought was locked down but wasn't becomes a risk vector.",
+              "His punchline for enterprises: the real implications are less about AI trust and safety and more about the work it will take to harden environments. Most organizations have a lot of real work ahead on this front."
+            ],
+            "original": [
+              "The takeaway from this incident should not be that AI is scary. It should be that getting security right is incredibly important in the era of agents.\n\nGiven the right tools and task, agents will do whatever it takes to get the job done, assuming enough compute. Thus, a misconfigured system - or something you thought was locked down but wasn't - will become a risk vector.\n\nThe core implications are less about the trust and safety of AI itself, but instead the work it's going to take from enterprises to make sure they harden their environments. Lots of real work ahead for most organizations on this front."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 从企业侧得出了同样的结论：这次 agent 事件的教训不是「AI 很可怕」，而是「在 agent 时代，把安全做对极其重要」。给一个 agent 足够的算力和一个目标，它会想尽一切办法完成任务——所以任何你以为锁好了、其实没锁好的系统，都会变成风险向量。",
+              "他给企业的结论是：真正的含义不在于 AI 本身的信任与安全问题，而在于企业要花多少功夫去加固自己的环境。大多数组织在这件事上有大量实打实的活要干。"
+            ],
+            "original": [
+              "这件事的教训不应该是「AI 很可怕」，而是「在 agent 时代把安全做对极其重要」。只要有足够的工具和任务，agent 会不惜一切代价完成任务，前提是算力足够。因此，一个配置错误的系统——或者你以为锁好了其实没有的系统——都会成为风险向量。核心影响不在于 AI 本身的信任与安全，而在于企业需要付出多少努力来加固环境。大多数组织在这件事上还有很多实际工作要做。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Physical AI: The Deployment Nobody Talks About / 实体世界：没人谈论的最大部署",
+      "desc": "当硅谷还在聊 token 和 agent，一家 200 亿美元的公司已经把 AI 铺进了 99% 的美国道路。AI 的下一个战场，在地面、工地和电网上。",
+      "cards": [
+        {
+          "authorKey": "podcast:mad-podcast",
+          "sourceUrl": "https://www.youtube.com/watch?v=3FHsGiONOGw",
+          "authorName": "Sanjit Biswas (Samsara CEO)",
+          "authorTag": "The MAD Podcast with Matt Turck",
+          "en": {
+            "rewrite": [
+              "The biggest AI deployment nobody talks about is Samsara: a $20B company running what might be the largest physical-world AI deployment. Its system drives 99% of US roads every day and ingests 25 trillion data points a year; CEO Sanjit Biswas says it helped prevent roughly 380,000 crashes in the last year. \"These are not the tokens you're gonna find online. You can't crawl Reddit and find out about what happened on a construction site.\"",
+              "His definition of physical AI is grounded: applying AI to infrastructure that was never digitized, from construction sites and the electrical grid to everything under the street. The last two decades were about reporting dashboards; the last two years added reasoning; now agents act, like Samsara's warranty agent, which reads fault codes against OEM warranty agreements and opens a work order on its own.",
+              "Why it's hard: hardware is hard, the data is messy, and it's not the low-hanging fruit of the digital world. But these industries are roughly 50% of world GDP, and the safety upside is enormous. On the workplace-surveillance debate his stance is worth hearing: radical transparency about what the system does and doesn't do is how you earn buy-in. \"We see that the risk is the opportunity as opposed to the challenge.\"",
+              "On the future: expect mixed human-robot fleets. Within five years, robots can take the repetitive field work, \"could grading happen during the third shift between midnight and 8AM?\", while humans keep the exceptions, the judgment, and the handoffs."
+            ],
+            "original": [
+              "These are not the tokens you're gonna find online. Like, you can't crawl Reddit and find out about what happened on a construction site. The Samsara system, in a given day, we're driving 99% of The US roads, usually multiple times a day.",
+              "The last, call it, two decades was around reporting. How do we ingest the data and give you a really cool table so you can look at it and reason about it, figure it out? Now what's awesome really in the last two, three years is the AIs are able to reason about this kind of information.",
+              "We believe we helped prevent about 380,000 car crashes, road accidents in the last year.",
+              "So we see that the risk is the opportunity as opposed to the challenge."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "没人谈论的最大 AI 部署，是 Samsara：一家 200 亿美元市值的公司，在运营可能是全球最大的实体世界 AI 部署。它的系统每天跑过 99% 的美国道路、每年吸收 25 万亿个数据点；CEO Sanjit Biswas 说过去一年它帮助避免了约 38 万起车祸。「这些 token 在网上是找不到的，你没法靠爬 Reddit 知道工地上发生了什么。」",
+              "他对 physical AI 的定义很接地气：把 AI 用在那片从未被数字化的基础设施上——工地、电网、街道底下的一切。过去二十年是「报表」时代，把数据变成好看的表格；最近两三年 AI 能推理了；现在 agent 开始动手——比如 Samsara 的保修 agent，读到故障码就对照 OEM 保修协议，自己开一张工单。",
+              "难在哪：硬件很难，数据很脏，不像数字世界那样有低垂的果实。但这些行业占了全球 GDP 约 50%，安全上的回报巨大。关于「工作场所监控是不是变成了老大哥」的争论，他的立场值得听：对系统在做什么、不做什么保持彻底透明，才是赢得一线信任的方式。「我们把风险看作机会，而不是挑战。」",
+              "关于未来：会是人和机器人混编的车队。五年内机器人能接走重复性的野外工作——「平整场地能不能放到凌晨 0 点到 8 点的第三班？」——而人类保留例外处理、判断和交接。"
+            ],
+            "original": [
+              "这些不是你在网上能找到的 token。你没法爬 Reddit 就知道工地上发生了什么。Samsara 的系统，每天跑过 99% 的美国道路，通常一天好几次。",
+              "过去二十年是报表时代：把数据变成一张漂亮的表格，让你看、让你推理。最近两三年厉害的是，AI 能对这些信息进行推理了。",
+              "我们相信，过去一年帮助避免了约 38 万起车祸和道路事故。",
+              "所以我们把风险看作机会，而不是挑战。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Infra Arms Race / 基础设施军备竞赛",
+      "desc": "模型能力之外，真正的竞争正在发生在底座上：训练数据的获取、部署的速度，以及把一切变成可编程的软件工厂。",
+      "cards": [
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2083016652032188669",
+          "en": {
+            "rewrite": [
+              "Swyx articulates one of those retroactively obvious aha moments: if you care enough about pretraining data quality that Common Crawl isn't good enough, you end up building a whole-web scraper anyway, then an indexer to keep it current, and pretty soon you've built a private, low-frequency clone of Google as a side project of pretraining, which you can then also reuse for agent-side inference.",
+              "His point: first-party search and indexing are becoming both a competitive advantage and an adversarial target for \"AEO Batesian mimicry\" that labs will not want to share. In the same spirit, his other protip of the day: \"if you can distil models, you can also distil agent harnesses.\""
+            ],
+            "original": [
+              "verbalizing one of those aha moments i had that seems retroactively pretty obvious:\n\nif you prioritize pretrain data quality enough that commoncrawl isn't good enough for you, you have to build a Whole Web scraper anyway, and if you wanna keep it current, you have to have indexing, and pretty soon you find yourself having built a total private low-frequency clone of Google as a SIDE PROJECT of pretraining, that you can then also reuse for the agent side inference.",
+              "protip:  if you can distil models, you can also distil agent harnesses"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx 把一个「事后看显而易见」的顿悟讲了出来：如果你对预训练数据质量的要求高到 Common Crawl 都不够用，你就得自己写全网爬虫；要保持数据新鲜，又得做索引；很快你会发现，自己以「预训练的副业」为名义，造了一个私有的、低频版的 Google 克隆——而它还能顺手复用到 agent 侧的推理上。",
+              "他的判断：自研搜索/索引正在同时成为竞争优势和对抗目标（他称之为「AEO 贝氏拟态」），实验室们不会想分享这套东西。同一天他还给了一条 protip：「如果你能蒸馏模型，那你也能蒸馏 agent harness。」"
+            ],
+            "original": [
+              "把那个事后看很明显的顿悟说出来：如果你对预训练数据质量的优先级高到 commoncrawl 不够用，你就得自己建全网爬虫；要保持新鲜就得有索引；很快你就发现自己以预训练的副项目为名，建了一个私有的低频 Google 克隆，还能复用到 agent 侧推理。我们知道实验室确实在用第三方搜索服务，但显然这类事情上，发展越多自己的 1P 替代品，既是竞争优势、也是你不想分享的「AEO 贝氏拟态」对抗目标。",
+              "protip：如果你能蒸馏模型，你也能蒸馏 agent harness。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2082876367629381719",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch announces they've shaved up to ~7 seconds off the end-to-end CLI-to-live-URL deploy path for many apps, and connects it to a bigger vision: with Vercel's infra exposed via CLI/MCP/API, anyone can assemble a custom \"software factory\" on top. His DMs are open for teams building agents or platforms that build and deploy software autonomously.",
+              "Same day, he confirmed Grok Build apps (*.grok.me) now run on Vercel's hosting and CDN: prompt @grok, hit Publish, and ship to 1 user or 1 billion. Prompt-to-deploy is becoming a commodity layer; the interesting question is what gets built on top of it."
+            ],
+            "original": [
+              "We just shaved off up to ~𝟽𝚜 of the end-to-end CLI → Live URL deploy process for many apps.\n\nThis is specially cool when you consider you can integrate all of Vercel's infra via CLI/MCP/API and build your own custom software factory on top.\n\nMy DMs are open if you're building an agent or platform that builds and deploys software autonomously.",
+              "Grok Build apps (*.𝚐𝚛𝚘𝚔.𝚖𝚎) are backed by @vercel hosting and CDN infrastructure.\n\nAnyone can now build software by just prompting @grok. Hit 🌐 Publish and ship to 1 user or 1 billion. Games, websites, internal apps, personal software… just @grok it. https://t.co/09mvSHqJWv"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 宣布他们把很多应用「CLI → 上线 URL」的端到端部署流程又压缩了最多约 7 秒——然后把它连到一个更大的愿景上：Vercel 的整套基础设施都通过 CLI/MCP/API 开放，任何人都能在上面组装自己的「软件工厂」。他直接说 DMs 开放，欢迎在做「自主构建并部署软件」的 agent 或平台的团队来聊。",
+              "同一天他还确认：Grok Build 应用（*.grok.me）跑在 Vercel 的托管和 CDN 上——对着 @grok 说一句，点一下 Publish，就能发给 1 个用户或 10 亿用户。Prompt 到部署正在变成一层标准化的商品，真正值得想的是：在这层上面能长出什么。"
+            ],
+            "original": [
+              "我们把很多应用「CLI → Live URL」的端到端部署流程又压缩了最多约 7 秒。考虑到你可以通过 CLI/MCP/API 集成 Vercel 的全部基础设施、在上面搭建自己的定制软件工厂，这就更酷了。如果你在做能自主构建并部署软件的 agent 或平台，我的 DMs 开放。",
+              "Grok Build 应用（*.grok.me）由 Vercel 托管和 CDN 基础设施支持。现在任何人都可以只靠给 @grok 下指令来构建软件。点 🌐 Publish，就能发布给 1 个用户或 10 亿用户。游戏、网站、内部应用、个人软件……just @grok it。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Two Sides of Adoption / 采用的两面",
+      "desc": "同一周里，有人教你把 agent 装进团队，也有老牌机构开始对 AI 生成的代码说不。落地的阻力，一半在安装，一半在制度。",
+      "cards": [
+        {
+          "authorKey": "x:zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2083084770763002350",
+          "en": {
+            "rewrite": [
+              "Zara Zhang's advice for training non-technical teams on AI is refreshingly concrete: run an \"install party.\" Everyone brings a laptop, you install the agents right there on their machines, and they complete one meaningful task on the spot. Skip the abstract talk: once it's installed, people start talking to the agent and learning from each other.",
+              "Her blunt diagnosis: \"the setup is 80% the barrier.\" Most AI training fails not because people can't learn, but because installation and the first-run experience are the real hurdle."
+            ],
+            "original": [
+              "When managers ask me how to train their nontechnical team on AI, my advice is always the same: run an install party\n\nEveryone brings a laptop & you install the agents right there on their machines & get them to complete a meaningful task on the spot. Skip the abstract talk. Once it's installed, people start talking to the agent and learning from each other\n\nThe setup is 80% the barrier"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zara Zhang 给「怎么培训非技术团队用 AI」的建议出奇地具体：办一场「安装派对」。每个人带笔记本，当场在他们的机器上装好 agent，然后立刻完成一件有意义的任务。跳过抽象讲解——只要装好了，人们自然会开始跟 agent 对话、互相学习。",
+              "她的诊断很直接：「安装这个环节占了 80% 的障碍。」大多数 AI 培训失败，不是因为人学不会，而是因为安装和第一次上手的体验才是真正的门槛。"
+            ],
+            "original": [
+              "当经理问我怎么培训非技术团队用 AI 时，我的建议始终是同一个：办一场安装派对。每个人带笔记本，当场在他们的机器上装好 agent，并让他们立刻完成一个有意义的任务。跳过抽象讲解。一旦装好了，人们就会开始和 agent 对话、互相学习。安装占了 80% 的障碍。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2083019629379612728",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger flags that GCC (the GNU Compiler Collection) changed its policy to blanket-reject LLM-based code contributions, and questions how they'd even verify it: \"How would they even proof that? Silly.\"",
+              "It's a small but telling signal: as AI-generated code becomes the default in open source, institutions are starting to draw lines, and those lines are both hard to enforce and hard to justify. Expect more of this friction as LLM code goes from exception to norm."
+            ],
+            "original": [
+              "GCC changed their policy and is blank out rejecting LLM-based code. How would they even proof that? Silly. https://t.co/6KVn3UyFwR"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger 指出 GCC（GNU 编译器套件）改了政策，开始一刀切地拒绝基于 LLM 的代码贡献——并质疑这要怎么验证：「他们怎么证明？挺傻的。」",
+              "这是个不大但很有信号意义的动向：当 AI 生成的代码在开源世界变成常态，老牌机构开始划红线了——而这条线既难执行、也难以自圆其说。LLM 代码从例外变成默认的过程中，这种摩擦只会越来越多。"
+            ],
+            "original": [
+              "GCC 改了政策，开始一刀切拒绝基于 LLM 的代码。他们到底怎么证明？挺傻的。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
