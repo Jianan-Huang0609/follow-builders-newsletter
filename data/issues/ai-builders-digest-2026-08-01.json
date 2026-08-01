@@ -1,0 +1,321 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-08-01",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天 feed 的主线很清楚：Agent 循环（Issue → Agent → PR → Release）正在成为软件团队的默认工作方式，而真正懂行的人已经把注意力从「模型有多强」移到了「harness 怎么把活拆好、路由好」。Garry Tan 直接把他团队每天在用的 GStack 开源出来，说「你的个人 AI 或公司大脑需要一个干净的 harness」；Aaron Levie 则断言编排层即将成为 AI 技术栈里仅次于模型能力的变量。另一边，Agent 正从终端走进生活——Sam Altman 分享了让 AI 每天给一家人做早间播客的用例，Thibault 干脆重置了用量限制让你周末跑十万个线程。周六早上，泡杯咖啡慢慢看。"
+  },
+  "archive": {
+    "title": "Harness 底座日报",
+    "desc": "Agent 循环成为软件团队默认工作方式，编排层（harness）取代模型能力成为最受关注的投资变量，Agent 从终端走进日常生活。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-08-01 source feeds.",
+  "sections": [
+    {
+      "title": "The Agentic Software Factory / Agent 软件工厂",
+      "desc": "同一条循环正在所有团队里落地：Issue → Agent → PR → Release。谁把这条 loop 设计好，谁就赢了下一个时代的软件开发。",
+      "cards": [
+        {
+          "authorKey": "x:thenanyu",
+          "sourceUrl": "https://x.com/thenanyu/status/2083230295206121807",
+          "en": {
+            "rewrite": [
+              "Nan Yu, head of product at Linear, shares the most revealing stat of the week: roughly 30% of Linear's bugs now travel the full Issue → Agent → PR → Release loop end to end.",
+              "But the winning pattern isn't 'let the agent loose' — it's writing instructions that demand deep root-cause research, wiring Datadog and Sentry MCPs to gather evidence, and only attempting a fix when certainty is high, otherwise you burn tokens. If more evidence would help, the agent should leave a comment asking the reporter for repro steps.",
+              "His closing line is the one to remember: agents need to be told to follow good practices, just like people."
+            ],
+            "original": [
+              "The most common loop written in Linear is some variant this one (Issue > Agent > PR > Release)",
+              "~30% of our bugs make it all the way through this flow.",
+              "But there are some nuances to doing it -- The instructions should ask the agent to extensively research the root cause of the issue and to use Datadog and Sentry MCPs to gather more evidence. It should only attempt to provide a fix if there's high certainty, otherwise you end up burning a lot of tokens. If it thinks that more evidence would help it during its research, like asking the reporter to provide repro steps, etc, it should leave a comment on the issue requesting it.",
+              "Agents need to be told to following good practices, just like people!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Linear 产品负责人 Nan Yu 分享了本周最值得注意的一个数字：大约 30% 的 Linear bug 现在能完整走通 Issue → Agent → PR → Release 这条循环。",
+              "但赢家模式不是「把 agent 放出去随便跑」——而是写好指令，要求它深度研究根因、接上 Datadog 和 Sentry 的 MCP 去收集证据，只有高确定性时才尝试修复，否则就是在烧 token。如果更多证据有帮助，agent 应该留一条评论，向报 bug 的人要复现步骤。",
+              "他最后那句话值得记住：agent 也需要被告诉要遵循良好实践，就像人一样。"
+            ],
+            "original": [
+              "Linear 里最常见的循环就是 Issue > Agent > PR > Release 的变体。",
+              "我们大约 30% 的 bug 能完整走完这条流程。",
+              "但做对它有讲究——指令应该要求 agent 深度研究问题根因，用 Datadog 和 Sentry 的 MCP 收集更多证据。只有高确定性时才尝试修复，否则会烧掉大量 token。如果研究过程中觉得更多证据有帮助（比如让 reporter 提供复现步骤），它应该在 issue 上留言请求。",
+              "Agent 需要被告知要遵循良好实践，就像人一样！"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2083208578526314513",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch says the Issue → Agent → PR → Release loop isn't a niche experiment — it's about to be the norm as software projects become agentic software factories.",
+              "The author's or maintainer's job shifts from writing code to designing the loop that yields the highest quality output and setting the criteria for what gets worked on.",
+              "He's also shipping the plumbing for this world: AI Gateway now adds per-key/team/project budgets, failover, model and provider choice, and realtime observability — the infrastructure companies need to make AI a productive investment instead of a 'token-maxing' fever dream."
+            ],
+            "original": [
+              "This will be the norm as software projects transition to agentic software factories.",
+              "Issue → Agent → PR → Release 🔁",
+              "The job of the author / maintainer is to work on the loop that yields the highest quality product and sets the criteria for what should be worked on.",
+              "AI Gateway gives companies the critical infra to make AI a productive investment: 🆕 Budgets per key/team/project ◾ Failover for maximum uptime ◾ Model and provider choice ◾ Realtime observability. If you're still in a 'token-maxing' fever dream, it's time to wake up 😁"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 说 Issue → Agent → PR → Release 这条循环不是小众实验——随着软件项目转型为 agentic 软件工厂，这即将成为常态。",
+              "作者/维护者的工作从写代码，变成设计能产出最高质量结果的循环、设定「该做什么」的标准。",
+              "他也在为这个世界铺管道：AI Gateway 新增了按 key/团队/项目的预算、故障转移、模型与供应商选择、实时可观测性——这是企业让 AI 成为有回报投资的关键基础设施，而不是一场「token 越多越好」的狂热梦。"
+            ],
+            "original": [
+              "随着软件项目转型为 agentic 软件工厂，这将成为常态。",
+              "Issue → Agent → PR → Release 🔁",
+              "作者/维护者的工作是优化那条能产出最高质量产品的循环，并设定该做什么的标准。",
+              "AI Gateway 为企业提供了让 AI 成为有回报投资的关键基础设施：按 key/团队/项目的预算、最大化可用性的故障转移、模型与供应商选择、实时可观测性。如果你还活在「token 越多越好」的狂热梦里，是时候醒醒了 😁"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Harness Is the New Variable / 编排层成为新变量",
+      "desc": "当任务从几百万 token 涨到几亿，怎么拆活、怎么路由，比模型本身更决定成败。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2083389460679373135",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie makes the case that the harness — the layer that breaks work down and routes it to the right model at the right time — is about to become the most important variable in the AI stack, right next to model capability.",
+              "His reasoning is about scale: the harness barely mattered when tasks consumed hundreds of thousands or millions of tokens, but when tasks run into tens and hundreds of millions of tokens, how you decompose and route work becomes the difference between accuracy and waste.",
+              "And his kicker: we're still incredibly early in this journey. Huge opportunity ahead."
+            ],
+            "original": [
+              "No idea if these specific numbers generalize across tasks, but directionally it's clear that the harness is going to become the most important variable -right next to model capability- in the AI stack.",
+              "The ability for harnesses to break down work in the most efficient way and route to the right model at the right time is going to be a huge variable for maximizing accuracy and reducing costs.",
+              "We're actually still incredibly early in this journey. The harness didn't matter that much when tasks only took hundreds of thousands or millions of tokens. But as we have tasks that take tens of millions and hundreds of millions of tokens, this becomes a major variable. Huge opportunity ahead."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 断言：harness（编排层）——负责分解工作、在正确的时间把任务路由给正确的模型——即将成为 AI 技术栈中仅次于模型能力的最重要变量。",
+              "他的论据是规模：当任务只消耗几十万、几百万 token 时，harness 几乎无关紧要；但当任务跑到几千万、几亿 token 时，你怎么分解工作、怎么路由，就成了准确率与浪费之间的分野。",
+              "他的收尾是：这条路我们才刚刚起步，前方是巨大的机会。"
+            ],
+            "original": [
+              "不知道这些具体数字能否推广到所有任务，但方向是明确的：harness 即将成为 AI 技术栈中仅次于模型能力的最重要变量。",
+              "harness 以最高效的方式分解工作、在正确的时间路由到正确模型的能力，将成为最大化准确率、降低成本的关键变量。",
+              "我们实际上还处在这条路的极早期。当任务只消耗几十万或几百万 token 时，harness 没那么重要。但当任务达到几千万、几亿 token 时，它就变成了主要变量。前方是巨大的机会。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2083353760701833546",
+          "en": {
+            "rewrite": [
+              "YC President Garry Tan pushes his team's own tool into the open: GStack, the harness his team built and uses every day for their personal AIs and company brain — free and open source.",
+              "The message lands right in the middle of this week's debate: your personal AI or company brain needs a clean harness, and it's becoming a build-your-own-layer problem rather than something you rent."
+            ],
+            "original": [
+              "Your personal AI or your company brain needs a clean harness and this is the one our team built and uses every day",
+              "Free and open source https://t.co/OgptxBMpI0"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "YC 总裁 Garry Tan 把团队自用的工具开源了：GStack——他们的个人 AI 和公司大脑每天在用的 harness，免费开源。",
+              "这条推正好落在本周争论的正中央：你的个人 AI 或公司大脑需要一个干净的 harness，而且这正在变成一个「自己搭一层」的问题，而不是花钱租一个现成的。"
+            ],
+            "original": [
+              "你的个人 AI 或公司大脑需要一个干净的 harness，这就是我们团队构建并每天在用的那个。",
+              "免费且开源 https://t.co/OgptxBMpI0"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2083369880599015713",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger on how the working style shifts with a stronger model: the queue was the way before, but with 5.5 the model doesn't get confused anymore — you can just throw stuff at it while it works, and it will diligently process whatever comes in.",
+              "It's a small observation about the end of babysitting: as models stop losing the thread mid-task, the harness's job changes from guarding against confusion to simply feeding the pipeline."
+            ],
+            "original": [
+              "Queue was the way but with 5.5 the model doesn't get confused anymore, you can just throw stuff at it while it works and it will diligently process whatever you throw at it. https://t.co/tGqdxVEjev"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger 观察到工作方式随模型变强而改变：以前得靠队列排队等，但到了 5.5，模型不会再做一半就混乱了——你可以边让它干活边往里扔任务，它会勤勤恳恳地把扔进来的东西处理完。",
+              "这是一个关于「不再需要 babysitting」的小观察：当模型不再中途掉线，harness 的职责就从「防混乱」变成了「只管喂活」。"
+            ],
+            "original": [
+              "以前队列是唯一办法，但 5.5 之后模型不会再混乱了，你可以让它干活的同时往里扔东西，它会勤勤恳恳处理你扔进来的每件事。 https://t.co/tGqdxVEjev"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Agents Meet You Where You Are / Agent 走进日常生活",
+      "desc": "从家庭播客到协作工具，agent 正在离开终端，去用户本来就在的地方。",
+      "cards": [
+        {
+          "authorKey": "x:sama",
+          "sourceUrl": "https://x.com/sama/status/2083221585792762171",
+          "en": {
+            "rewrite": [
+              "OpenAI CEO Sam Altman shares the most charming ChatGPT Work use case he heard: connect your family calendars and describe your kids' interests, then every morning on the drive to school, have it produce a short podcast covering that afternoon's soccer game, an upcoming birthday, and some news.",
+              "It's a small glimpse of where agents are heading — deeply personal, context-aware, and woven into the rhythms of daily life rather than confined to a code editor. 8045 likes say people feel it."
+            ],
+            "original": [
+              "cool use case of chatgpt work i heard last night:",
+              "connect your family calendars and explain your kids' interests.",
+              "every morning for the drive to school, have it make a podcast that talks about one kid's soccer game that afternoon, one kid's upcoming birthday, some news, etc."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "OpenAI CEO Sam Altman 分享了他听到的最有生活气息的 ChatGPT Work 用法：接上家庭日历、描述每个孩子的兴趣，然后每天早上送孩子上学的路上，让它生成一段小播客，讲讲下午的足球赛、谁快过生日了、还有几条新闻。",
+              "这是一个很小的切片，却能看出 agent 的方向——深度个性化、懂上下文、嵌入日常生活节奏，而不是困在代码编辑器里。8045 个赞说明很多人感受到了这一点。"
+            ],
+            "original": [
+              "昨晚听到的一个很酷的 chatgpt work 用例：",
+              "连接家庭日历，解释你孩子们的爱好。",
+              "每天早上送孩子上学的路上，让它生成一段播客，聊聊某个孩子下午的足球赛、某个孩子快到的生日、一些新闻等等。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2083395449814229287",
+          "en": {
+            "rewrite": [
+              "OpenAI's Codex & ChatGPT lead Thibault Sottiaux resets usage limits for Codex and ChatGPT Work for the weekend — enough to run 100,000 Luna threads. In a week where agentic work is exploding, the gesture is part signal, part strategy: let people go big and see what they build.",
+              "His two-word design philosophy posted the same day captures the direction: 'Optimize for curiosity.'"
+            ],
+            "original": [
+              "To celebrate a week of efficiency and let you run 100'000 Luna threads this weekend... that's right... wait for it... I have reset usage limits for Codex and ChatGPT Work.",
+              "Enjoy.",
+              "Optimize for curiosity"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "OpenAI Codex 与 ChatGPT 负责人 Thibault Sottiaux 宣布本周末重置 Codex 和 ChatGPT Work 的用量限制——足够你跑 10 万个 Luna threads。在 agent 化工作爆发的这一周，这个动作一半是表态、一半是策略：放开手让人玩大的，看看能造出什么。",
+              "同一天他发了两句话的设计哲学，正好概括了这个方向：「为好奇心优化」（Optimize for curiosity）。"
+            ],
+            "original": [
+              "为了庆祝高效的一周，让你这个周末能跑 10 万个 Luna threads……没错……准备好了吗……我已经重置了 Codex 和 ChatGPT Work 的用量限制。",
+              "享受吧。",
+              "Optimize for curiosity（为好奇心优化）"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Model Progress & Market Signals / 模型进展与市场信号",
+      "desc": "小模型在特定领域追平大模型，而主流媒体开始给 OpenAI 的逆转叙事盖章。",
+      "cards": [
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2083424608993300824",
+          "en": {
+            "rewrite": [
+              "Replit CEO Amjad Masad shows off an 8B chess model hitting ~1500 Elo — consistently beating frontier models and even Stockfish at level 0.",
+              "The kicker is efficiency: high reasoning with response chaining lets it spend 1–2 seconds per move versus 30 seconds for the big models. A small but vivid sign of how far small, specialized models have come."
+            ],
+            "original": [
+              "~1500 Elo!",
+              "Consistently beats frontier models and Stockfish level 0.",
+              "Fun seeing an 8b model mogging GPT 5.6 with high reasoning and response chaining. Spends 1-2 seconds per move vs 30 seconds."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Replit CEO Amjad Masad 晒了一个 8B 参数的象棋模型，Elo 约 1500——稳定击败前沿大模型，甚至打赢 Stockfish level 0。",
+              "关键在于效率：借助高推理与 response chaining，它每步只花 1-2 秒，而大模型要 30 秒。这是小而专模型进步到什么程度的一个小而鲜活的信号。"
+            ],
+            "original": [
+              "~1500 Elo！",
+              "稳定击败前沿模型和 Stockfish level 0。",
+              "看着一个 8b 模型用高推理和 response chaining 吊打 GPT 5.6 很有趣。每步只花 1-2 秒，对比 30 秒。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:danshipper",
+          "sourceUrl": "https://x.com/danshipper/status/2083380721607921904",
+          "en": {
+            "rewrite": [
+              "Every CEO Dan Shipper got the kicker spot in a WSJ piece on OpenAI vs Anthropic, and he doubles down: the momentum has been shifting toward OpenAI since early spring, and he calls it a fascinating comeback story.",
+              "It's a mainstream-media marker of a narrative flip that builders have been arguing about for months."
+            ],
+            "original": [
+              "pretty cool to have the kicker in this @WSJ piece on OpenAI vs Anthropic!",
+              "i stand behind this…has been pretty clear since early spring that the momentum is shifting to @openai",
+              "it's a fascinating comeback story"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Every 的 CEO Dan Shipper 在 WSJ 一篇 OpenAI vs Anthropic 的报道里拿到了导语位置，他进一步表态：从早春开始，动量一直在转向 OpenAI，这是一个迷人的 comeback 故事。",
+              "这是主流媒体给叙事翻转盖章的信号，而 builder 们已经为此争论了好几个月。"
+            ],
+            "original": [
+              "能在 @WSJ 这篇 OpenAI vs Anthropic 的报道里拿到导语，挺酷的！",
+              "我支持这个判断——从早春开始就很明显，动量正在转向 @openai",
+              "这是一个迷人的 comeback 故事"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Podcast: Igor Babushkin on River AI / 播客：xAI 联创谈模型开发的未来",
+      "desc": "从 DeepMind 到 OpenAI 再到 xAI，这位站在模型开发最前线的人，押注个人 AI 与本地硬件。",
+      "cards": [
+        {
+          "authorKey": "podcast:unsupervised-learning",
+          "sourceUrl": "https://www.youtube.com/@RedpointAI",
+          "authorName": "Igor Babushkin (xAI Co-Founder, now River AI)",
+          "authorTag": "Unsupervised Learning Podcast",
+          "en": {
+            "rewrite": [
+              "Igor Babushkin — who led StarCraft and AlphaCode at DeepMind, worked on early reasoning at OpenAI, and co-founded xAI where he helped build Colossus — unpacks his new company River AI on Unsupervised Learning.",
+              "Three bets: the River API, a reinforcement learning and fine-tuning service; personal AI that breaks the 'train for the average user' assumption and lets agents adapt to each individual; and local hardware, aiming to run frontier inference on a box in your home. His reasoning for the hardware bet is as much about control and privacy as latency.",
+              "His sharpest warning is for closed-source model providers as businesses: if everything that makes your company unique is already on the internet and can be scraped, you're in the most dangerous position.",
+              "And the immediate risk he worries about isn't takeover — it's AI amplifying inequality while people get left behind. 'The most immediate urgent risk.'"
+            ],
+            "original": [
+              "there are really three different projects that we're working on at the moment. One is the River API, which you can think of as a reinforcement learning and fine tuning service. The second one is around personal AI and personalization — what if we break that assumption and allow the model to behave differently for each individual that it's serving. The third big bet is on hardware — can we bring the inference compute locally to the users.",
+              "the worst place you can be in is if all of your knowledge is on the internet. If everything that makes your company unique and special is already out there and can be scraped, that's a very dangerous place to be.",
+              "potentially, AI could amplify inequality in the world... I think that's the most immediate urgent risk."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Igor Babushkin——在 DeepMind 带过 StarCraft 和 AlphaCode 项目、在 OpenAI 参与早期 reasoning 工作、联合创办 xAI 并参与建设 Colossus——在 Unsupervised Learning 播客里讲了他的新公司 River AI 的三个赌注。",
+              "一是 River API，一个强化学习与微调服务；二是 personal AI，打破「为平均用户训练」的假设，让 agent 为每个个体差异化适配；三是本地硬件，目标是让前沿推理跑在你家里的一个小盒子上——动机一半是掌控感和隐私，一半是延迟。",
+              "他对闭源模型厂商作为企业的最尖锐警告是：如果你公司的独特性全部都在互联网上、可以被爬取，你就处在最危险的位置。",
+              "而他最担心的当下风险不是 AI 接管——而是 AI 放大不平等，把人甩在后面。「这是最紧迫的风险。」"
+            ],
+            "original": [
+              "我们目前在做三个不同的项目。一是 River API，可以把它想成一个强化学习和微调服务。二是个人 AI 与个性化——如果我们打破那个假设，允许模型为它所服务的每个个体表现出不同行为会怎样。第三个大赌注是硬件——能不能把推理算力带到用户本地。",
+              "最糟糕的位置是：你所有的知识都在互联网上。如果你公司独特和特别的一切都已经在那里、可以被爬取，那是一个非常危险的位置。",
+              "AI 有可能放大世界上的不平等……我认为这是最紧迫的风险。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
