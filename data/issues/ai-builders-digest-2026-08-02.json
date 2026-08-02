@@ -1,0 +1,325 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-08-02",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天 feed 的主线是「分化与耐力」。Karpathy 给 Opus 5 塞了《指环王》第一段和 100 万 token 预算，两小时后拿回 5500 行代码渲染出的 3D 故事——模型的耐力正在把「没人会做的东西」变成「反正几乎免费」；而 Box CEO Aaron Levie 说得更直白：个人生活里的 AI 已经够用，但数学、科学、法律、代码这些深度领域的能力正要垂直起飞。平台层也在换玩法：Garry Tan 观察到 OpenAI 正往「开放平台」走，把智能当 utility 供给；开源 agentic CRM、给 GitHub issue 质押 token 让 agent 干活的新机制同时冒头。播客那边，Netic 创始人讲了个更接地气的版本：让 HVAC 和屋顶维修这些真实世界的生意，先被 AI 全流程接管。周末的 feed，意外地有料。"
+  },
+  "archive": {
+    "title": "垂直分化日报",
+    "desc": "模型的耐力把「没人会做」变成「几乎免费」，AI 能力在深度领域垂直起飞，平台层转向开放，agent 开始接管真实世界的生意与日常。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-08-02 source feeds.",
+  "sections": [
+    {
+      "title": "The Stamina Dividend / 模型的耐力红利",
+      "desc": "当模型有花不完的耐心和几乎免费的算力，「没人会做的事」正在变成「顺手就做」。",
+      "cards": [
+        {
+          "authorKey": "x:karpathy",
+          "sourceUrl": "https://x.com/karpathy/status/2083749667410727319",
+          "en": {
+            "rewrite": [
+              "Andrej Karpathy, the OpenAI co-founder and former Tesla AI director, argues we're leaving the era of toy LLM tests like \"create an SVG of a pelican on a bicycle.\" His generalization: he gave Opus 5 the first paragraph of The Lord of the Rings, a 1M-token budget (~$10), and asked for a three.js render. The model went off for about two hours and wrote 5,500 lines of code that procedurally rendered the story.",
+              "The deeper point isn't the janky result — it's the economics: no sane person would ever spend the time to build something this custom, but LLMs have all the stamina and patience in the world. We've moved from \"no one would ever do this\" to \"sure, why not, it's ~free.\" He's excited about hyper-custom worlds — an ephemeral \"GTA of X\" you can drop into on demand.",
+              "He also flags a real weakness this exposes: LLMs can't easily audit their own work, because they can't natively watch videos or play games inside them. Opus 5 had to slowly take screenshots to check its render and still produced jank — raw multimodal, in-game capability is still missing."
+            ],
+            "original": [
+              "We're starting to leave the territory where you'd test an LLM by e.g. \"create an svg of pelican on a bicycle\". As one idea to generalize it, I was interested what Opus 5 would do if I gave it the first paragraph of the Lord of the Rings, a 1M token budget (~$10) and asked for three js render of it. Opus went off for ~2 hours and wrote 5500 lines of code that (procedurally) rendered the story. It's kind of janky but fun. But it's a bit mindboggling that the LLM has to place and orchestrate various polygon assets in (x,y,z) coordinates and write code that animates it all, and that it even does anything at all.",
+              "I also like this kind of examples because no one in their right mind would ever spend the time to write something this custom but LLMs have all the stamina and patience in the world, so it's an example where we go from \"no one would ever do this\" to \"sure, why not, it's ~free\". There might be a lot more. But I'm excited about creating hyper custom worlds that you can imagine dropping players into, e.g. here to participate in the LoTR story as a spectator NPC, or one of the characters, or etc. Something like an ephemeral GTA of X on demand.",
+              "Last thought is that the domain of worlds/games exposes a weakness in LLMs: they can't easily audit their work because they aren't able to efficiently and natively perceive videos or play games within them. Here, Opus 5 had to very slowly and painstakingly take screenshots at different points, and it messed up a few times and created a bunch of jank. An example of raw capability (multimodal, gameplay) that I think is still quite lacking."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "OpenAI 联创、前特斯拉 AI 负责人 Andrej Karpathy 说，我们正在离开用「画一只骑自行车的鹈鹕 SVG」这种玩具题来测 LLM 的时代。他的推广实验是：给 Opus 5《指环王》第一段、100 万 token 的预算（约 10 美元），让它用 three.js 渲染出来。模型闷头干了约两小时，写了 5500 行代码，把故事程序化地渲染了出来。",
+              "真正值得琢磨的不是这个有点糙的结果，而是经济学：没有哪个正常人会花时间做这么定制化的东西，但 LLM 有无限的耐力和耐心。我们正在从「没人会做这个」走向「行啊，反正几乎免费」。他兴奋的是超定制化世界——按需生成的「X 版临时 GTA」，随时可以跳进去当旁观者或角色。",
+              "他还点出一个真实短板：LLM 很难审计自己的作品，因为它们没法原生地看视频、在游戏里游玩。Opus 5 只能慢慢截图检查渲染效果，还是做出一堆糙活——多模态、游戏内互动的原始能力依然缺位。"
+            ],
+            "original": [
+              "我们正在离开用「画一只骑自行车的鹈鹕 SVG」这种题来测 LLM 的阶段。作为推广这个思路的一个想法，我好奇：如果把《指环王》第一段给 Opus 5，给它 100 万 token 预算（约 10 美元），让它做一个 three.js 渲染会怎样。Opus 跑了约两小时，写了 5500 行代码，把故事（程序化地）渲染了出来。有点糙但好玩。不过想想也挺震撼：LLM 得在 (x,y,z) 坐标里摆放和编排各种多边形资产，还要写代码让它们动起来——而且它居然真能做出点东西。",
+              "我也喜欢这类例子，因为没有任何一个正常人会花时间写这么定制化的东西，但 LLM 有的是耐力和耐心。所以这是一个从「没人会做」到「行啊，反正几乎免费」的转变。类似的例子可能还有很多。我特别兴奋的是创造超定制化的世界——你可以想象把玩家丢进去，比如作为旁观 NPC 参与《指环王》的故事，或者当其中一个角色。有点像按需生成的临时版「X 的 GTA」。",
+              "最后一点：世界/游戏这个领域暴露了 LLM 的一个弱点——它们很难审计自己的工作，因为它们没法高效地原生感知视频或在游戏里游玩。这里 Opus 5 只能非常缓慢、痛苦地在不同位置截图，还搞砸了几次，做出一堆糙活。这是我认为仍然相当欠缺的原始能力（多模态、游戏内互动）的例子。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2083753582160191988",
+          "en": {
+            "rewrite": [
+              "Swyx, the organizer of the AI Engineer conference, shares a talk he caught on replay (the curse of running your own conference: you never get to attend it live): \"fighting slop with slop\" by @vaibcode of Boundary — well-paced and well-argued.",
+              "His punchline doubles as a philosophy: \"Being slop-tolerant is 100x more valuable than being anti-slop.\" He also welcomes someone finally rethinking an AI-native programming language from first principles — a question Bret Taylor raised on their podcast, and a rare treat for programming-language fans in the agent era."
+            ],
+            "original": [
+              "one of my curses as organizer is i rarely get to attend the conference i run. so i basically 24/7 watch back talks with everyone else after the show",
+              "this one was VERY well paced and argued: fighting slop with slop — @vaibcode, Boundary https://t.co/vRckyyntm6",
+              "@btaylor asked for an ai native programming language on our pod. as a PL fan I'm really glad someone is rethinking how code runs from first principles. Being slop-tolerant is 100x more valuable than being anti- slop"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "AI Engineer 大会组织者 Swyx 自嘲命苦——办会的人往往没空现场听会，只能在会后跟着大家补看回放。他特别推荐了 @vaibcode 在 Boundary 的这场：节奏和论证都很好，主题是「用 slop 打败 slop」。",
+              "他的金句可以当方法论：「容忍 slop 的价值，比反对 slop 高 100 倍」。他还很高兴终于有人在从第一性原理重新思考 AI 原生编程语言——这是 @btaylor 在他们播客上提出的问题，对编程语言爱好者来说是个难得的时刻。"
+            ],
+            "original": [
+              "作为组织者的悲哀之一是：我几乎没法现场参加自己办的会。所以基本是会后跟大家一样 24/7 补看回放。",
+              "这场节奏和论证都非常好：「用 slop 打败 slop」——@vaibcode，Boundary https://t.co/vRckyyntm6",
+              "@btaylor 在我们的播客上提出要一个 AI 原生编程语言。作为 PL 爱好者，我很高兴终于有人在从第一性原理重新思考代码如何运行。「容忍 slop」比「反对 slop」有价值 100 倍。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Deep Domains Go Vertical / 深度领域垂直化",
+      "desc": "消费级 AI 的能力已经够用，但数学、科学、法律、代码这些深度领域正要垂直起飞——而大多数人在日常生活中感受不到。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2083589132660711452",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie predicts a growing divergence between what AI does in our personal lives and daily productivity versus what it can do in deep domains like math, science, legal, and coding.",
+              "Up to some threshold, capability gains felt even everywhere, because models were only mildly useful in general. Now deep-domain work is about to go vertical: most people won't directly notice, but the experts in these fields will. There's no inherent ceiling to needed capability — unlike consumer use cases, which get met relatively straightforwardly.",
+              "His caveat: expect a capability overhang — gains only materialize once applied to real datasets and workflows. But that's exactly how you get breakthroughs in life sciences, real-world automation, and new cyber capabilities."
+            ],
+            "original": [
+              "We're going to see an increasing divergence between what AI does in our personal lives and in daily productivity vs. what it can do in very deep domains like math, science, legal, coding and more.",
+              "Up to some threshold, capability was evenly felt across all domains because the models were just becoming mildly useful in general. Now, the deep domain work is about to go vertical.",
+              "Most people won't actually notice these benefits in their day to day life directly (indirectly they certainly will over time), but the experts in these fields will. And there's no inherent ceiling to what capabilities are needed, unlike in the consumer space where needs can get met relatively straightforwardly.",
+              "This will often lead to a capability overhang, though, as many of these performance gains need to be applied to data sets and workflows in an applied way for that area of work. But this is ultimately how you get breakthroughs in life sciences, real world automation, new cyber capabilities, and more."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 预判：AI 在个人生活和日常生产力里的表现，与它在数学、科学、法律、代码这些深度领域的能力，将出现越来越大的分化。",
+              "在某个阈值之前，能力提升在哪个领域都差不多，因为模型只是「普遍地稍微有用」。现在，深度领域的工作即将垂直起飞：大多数人不会直接感觉到，但这些领域的专家会。而且深度领域的能力需求没有天花板，不像消费场景那样需求相对容易满足。",
+              "他提醒会有「能力过剩」（capability overhang）——很多性能提升必须落到真实数据集和工作流上才能兑现。但突破生命科学、真实世界自动化、新型网络能力，正是这么来的。"
+            ],
+            "original": [
+              "我们将看到 AI 在个人生活和日常生产力中做的事，与它在数学、科学、法律、代码等深度领域能做的事，出现越来越大的分化。",
+              "在某个阈值之前，能力的提升在所有领域都被均匀感知到，因为模型只是普遍地变得略微有用。现在，深度领域的工作即将垂直起飞。",
+              "大多数人不会在日常中直接感受到这些好处（间接地，他们迟早会感受到），但这些领域的专家会。而且所需能力没有内在天花板——不像消费领域，需求相对直接就能被满足。",
+              "不过这常常会导致「能力过剩」：许多性能提升必须以应用的方式落到该领域的数据集和工作流上。但突破生命科学、真实世界自动化、新型网络能力等，归根结底就是这么来的。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2083502573546263002",
+          "en": {
+            "rewrite": [
+              "FPV Ventures partner Nikunj Kothari points at a wild dichotomy: models are solving NP-hard problems while traditional enterprises are still complaining about ROI on token spend.",
+              "His framing for the decade ahead: \"Diffusion of models is all that we'll be doing for the next few decades.\" The frontier keeps racing, and the real work is spreading these capabilities into organizations that are still arguing about whether tokens are worth it."
+            ],
+            "original": [
+              "What a wild dichotomous world we live in..",
+              "Models solving np hard problems while traditional enterprises still complaining about their ROI on token spend.",
+              "Diffusion of models is all that we'll be doing for the next few decades. https://t.co/VsQPqGQ2a4"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "FPV Ventures 合伙人 Nikunj Kothari 指出一个魔幻的分裂：模型都在解 NP-hard 问题了，传统企业还在抱怨 token 花费的 ROI。",
+              "他对未来十年的定义很直接：「接下来几十年我们做的所有事，就是模型的扩散。」前沿继续狂奔，真正的工作是把这些能力扩散进那些还在纠结 token 值不值的企业里。"
+            ],
+            "original": [
+              "我们活在一个多么魔幻的分裂世界里……",
+              "模型在解 NP-hard 问题，传统企业却还在抱怨 token 花费的 ROI。",
+              "接下来几十年我们做的所有事，就是模型的扩散。https://t.co/VsQPqGQ2a4"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Open Platform Shift / 平台走向开放",
+      "desc": "OpenAI 想当开放平台、开源 agentic CRM、给 GitHub issue 质押 token——平台层的玩法正在集体转向「开放」。",
+      "cards": [
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2083684825333105107",
+          "en": {
+            "rewrite": [
+              "Y Combinator CEO Garry Tan calls the most interesting 2026 vibe shift: OpenAI actually positioning itself as the open platform.",
+              "His distinction is sharp: \"intelligence on tap as a utility\" versus signaling that it's optimal to integrate all the way up the full stack. Which one OpenAI picks will define who owns the layers above the model."
+            ],
+            "original": [
+              "Most interesting 2026 vibe shift is OpenAI actually looking to be the open platform",
+              "Note the marked difference: intelligence on tap as a utility vs signaling it is optimal to integrate all the way up full stack https://t.co/EmMKE4NggP"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "YC CEO Garry Tan 认为 2026 年最有趣的氛围转变是：OpenAI 真的在往「开放平台」方向走。",
+              "他点出的差别很关键：「把智能当作随取随用的 utility」vs「暗示你最好全栈都整合进来」。OpenAI 选哪条路，将决定模型之上那一层的归属。"
+            ],
+            "original": [
+              "2026 年最有趣的氛围转变：OpenAI 看起来真的要成为开放平台。",
+              "注意这个明显差异：把智能当作随取随用的 utility，vs 暗示「一路整合到全栈才是最优解」https://t.co/EmMKE4NggP"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2083684679362965605",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch endorses an open-source agentic CRM built on his platform and Next.js: model-agnostic, self-hostable or serverlessly deployed, multi-channel, and headless.",
+              "His verdict — \"This is the way\" — reads as a statement about how enterprise AI software should be built: open, composable, and deployable anywhere, rather than locked into a single vendor's vertical stack."
+            ],
+            "original": [
+              "Open source agentic CRM built on https://t.co/99eEa13mZ3 and @nextjs.",
+              "Model-agnostic, self-hostable or serverlessly-deployed, multi-channel, and headless.",
+              "This is the way. https://t.co/gzM0dftbsV"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 推荐了一个基于自家平台 + Next.js 的开源 agentic CRM：模型无关、可自托管或 serverless 部署、多渠道、headless。",
+              "一句「This is the way」其实是在表态：企业 AI 软件就该这样建——开放、可组合、随处部署，而不是锁死在某个厂商的垂直栈里。"
+            ],
+            "original": [
+              "基于 https://t.co/99eEa13mZ3 和 @nextjs 构建的开源 agentic CRM。",
+              "模型无关，可自托管或 serverless 部署，多渠道，headless。",
+              "就该这样。https://t.co/gzM0dftbsV"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thenanyu",
+          "sourceUrl": "https://x.com/thenanyu/status/2083722999430050281",
+          "en": {
+            "rewrite": [
+              "Linear's head of product Nan Yu floats a provocative mechanism for open source: let people pledge tokens for issues they open. You write a spec with a pledge; if the maintainer accepts, GitHub hands the issue verbatim to a cloud coding agent paid for by the requester.",
+              "The pitch in three words: \"No more slop PRs.\" It's a thought experiment about aligning incentives — the requester pays for quality work, the maintainer keeps control, and agents get paid work with clear specs. It would also test whether GitHub wants to become the payment and dispatch layer for agent labor."
+            ],
+            "original": [
+              "You should be able to pledge tokens for issues that you open and open source repos.",
+              "Write a spec in the issue with a pledge. If the maintainer accepts, GitHub passes the issue verbatim to a cloud coding agent at the requester's expense.",
+              "No more slop PRs"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Linear 产品负责人 Nan Yu 给开源提了一个大胆机制：允许你为自己开的 issue 质押 token。在 issue 里写清楚 spec 并附上质押；维护者接受后，GitHub 把 issue 原样交给一个云端 coding agent，费用由发起人承担。",
+              "一句话总结：「不再有凑数的 PR。」这是个关于激励对齐的思想实验——发起人花钱买质量、维护者保留控制权、agent 拿到有明确 spec 的付费工作。当然，它也在试探 GitHub 愿不愿意当 agent 劳动的支付与调度层。"
+            ],
+            "original": [
+              "你应该可以为你在开源仓库里开的 issue 质押 token。",
+              "在 issue 里写一个带质押的 spec。如果维护者接受，GitHub 就把 issue 原样交给一个云端 coding agent，费用由发起人承担。",
+              "不再有凑数的 PR"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Living With the Frontier / 与前沿模型共处的日常",
+      "desc": "一边是 agent 开始帮你处理真实生活里的琐事，一边是用户开始挑剔模型聊天时的性格——和 AI 相处正在变成一种日常体验。",
+      "cards": [
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2083759812970786997",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger, the developer famous for tinkering with agent hardware, shares the most relatable agent moment of the week: after years of just accepting that Gmail was blinding him, he finally asked his agent — and it simply installed the fix for him.",
+              "The point isn't the extension; it's the shift in reflex. We're so used to tolerating small frictions in software that we forget an agent will just... do it. \"Just ask your agent\" is becoming a default life hack."
+            ],
+            "original": [
+              "After accepting for years that GMail is blinding me I finally asked my agent and it installed https://t.co/H432dtknkf for me."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger 分享了本周最让人有共鸣的 agent 时刻：忍受了 Gmail 亮瞎眼好几年之后，他终于让 agent 去处理——agent 直接就帮他装好了修复方案。",
+              "重点不是装了什么扩展，而是反应模式变了。我们对软件里的小摩擦太习以为常，以至于忘了 agent 可以顺手就……把它解决掉。「问一下你的 agent」正在变成默认的生活技巧。"
+            ],
+            "original": [
+              "忍受了 Gmail 亮瞎我好几年之后，我终于让 agent 去处理，它直接帮我装好了 https://t.co/H432dtknkf。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2083755374994415904",
+          "en": {
+            "rewrite": [
+              "Peter Yang, the AI-content creator known for practical tutorials, gets spicy about model personality: Opus 4.6 was the Opus with the best personality and writing style, and something feels off with Opus 5.",
+              "His complaints are specific and familiar: overly long replies, \"Claude-speak\" filler like \"here's the honest truth,\" and a judgemental tone. \"Opus used to be a joy to talk to like a trusted friend. Not so much anymore.\"",
+              "It's a reminder that as models get more capable, the feel of the conversation is becoming a product differentiator — and users notice when it regresses."
+            ],
+            "original": [
+              "I'm feeling spicy tonight so let me just say it:",
+              "I think Opus 4.6 was the Opus model with the best personality and writing style.",
+              "Something's off with Opus 5 - it tends to give me overly long replies, use Claude-speak way too much (e.g., \"here's the honest truth\"), and is too judgemental.",
+              "Opus used to be a joy to talk to like a trusted friend. Not so much anymore."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "做 AI 实用教程的 Peter Yang 今晚火力全开，直接开评模型性格：Opus 4.6 是性格和文风最好的 Opus，而 Opus 5 总觉得哪里不对。",
+              "他的吐槽很具体、也很眼熟：回复过于冗长、满嘴「Claude 腔」（比如「here's the honest truth」）、还爱说教。「Opus 以前聊起来像一位可信赖的朋友。现在不是了。」",
+              "这提醒我们：模型越强，「聊天的体感」越成为产品差异点——而且用户对它的退步非常敏感。"
+            ],
+            "original": [
+              "今晚我有点上头，就直接说了吧：",
+              "我觉得 Opus 4.6 是性格和文风最好的 Opus 模型。",
+              "Opus 5 有点不对劲——它给我的回复总是过长，Claude 腔用得太频繁（比如「here's the honest truth」），还太爱说教。",
+              "Opus 以前聊起来像一位可信赖的朋友。现在不是了。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Podcast: No Priors × Netic / 播客：让真实世界的生意跑在 AI 上",
+      "desc": "从 Scale AI 到 Netic：把 HVAC、屋顶维修这些「让世界运转」的民生生意，交给 agent 全流程接管。",
+      "cards": [
+        {
+          "authorKey": "podcast:no-priors",
+          "sourceUrl": "https://www.youtube.com/watch?v=wWbX3NL6_Uo",
+          "authorName": "Melisa Tokmak (Founder & CEO, Netic)",
+          "authorTag": "No Priors Podcast",
+          "en": {
+            "rewrite": [
+              "The takeaway: the most unsolved AI problem isn't better models — it's running mission-critical real-world businesses autonomously, and that demands being good at all three layers: models, harnesses, and orchestration.",
+              "Melisa Tokmak, founder and CEO of Netic and a former Scale AI executive who built its government and large-enterprise units, explains her bet on essential services: HVAC, plumbing, roofing, pet care — the billion-dollar businesses that keep the world running. Netic sits between these companies and their customers: agents handle inbound calls, texts, and web inquiries, figure out the real need, match it against the business's operational rules, and dispatch the right technician at the right time. Today over 70% of her customers are \"AI first\" — their customers' first interaction with the company is with a Netic agent.",
+              "On why not a rollup: rollups build products only for the companies you bought; she wants a product that compounds across every real-world business. On robotics: that chapter is decades away — buildings aren't standardized, dexterity is nowhere near enough, and the human element matters when it's the worst day of a customer's life.",
+              "Her sharpest line is about the labs: \"OpenAI builds amazing products really fast, but it also kills them really fast.\" Enterprises in these industries don't want that cadence — they want the last mile: harnesses, orchestration, and software on top of the models. Ten years ago the question was \"can Google do this?\"; now it's \"can the labs do this?\" — and the answer is the same: some things yes, the operational grunt work no.",
+              "She also screens for one quality when hiring: sustained agency. \"What's the hardest thing you've ever done?\" — and she digs into whether people stuck with it, citing Martin Luther: the Christian shoemaker honors God not by putting crosses on the shoes, but by making the best shoes."
+            ],
+            "original": [
+              "How are we using AI in mission critical workflows? What does that look like to have a fully autonomous, like executing actually systems?",
+              "OpenAI builds amazing products really fast, but it also kills them really fast.",
+              "We are building an autonomous enterprise. We want every single thing in these companies to be handled autonomously with Netic except the actual services and the labor itself, that human component.",
+              "The Christian shoemaker doesn't honor God by putting little crosses on the shoes, it does so by building the best shoes."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "一句话结论：AI 最没被解决的问题不是更强的模型，而是让真实世界的关键业务自主运转——这要求你同时在模型、harness、编排三层都做得好。",
+              "Netic 创始人兼 CEO Melisa Tokmak，前 Scale AI 高管（曾一手建立政府和大型企业部门），讲了她为什么押注「让世界运转」的民生服务业：HVAC、水管、屋顶、宠物护理这些十亿美元级的生意。Netic 站在公司和客户之间：agent 接电话、回短信、处理网站咨询，弄清真实需求，匹配运营规则，在正确的时间派出正确的技师。如今超过 70% 的客户是「AI first」——客户与公司的第一次接触，就是一个 Netic agent。",
+              "为什么不做 rollup：rollup 只为你买下的公司造产品，她想要的是一个能在所有真实生意上复利的产品。为什么不做机器人：那章还远在几十年后——建筑没有标准化、灵巧操作差得远，而且客户人生最糟的一天里，人情味依然重要。",
+              "她最锋利的一句留给大厂：「OpenAI 造产品快得惊人，杀产品也快得惊人。」这些行业的企业不想要这种节奏，它们要的是最后一公里：模型之上的 harness、编排和软件。十年前的问题是「Google 能搞定吗」，现在是「大厂能搞定吗」——答案一样：部分能，运营的脏活累活不能。",
+              "招人时她只筛选一种品质：持续的主动性。「你这辈子做过最难的事是什么？」——然后深挖这个人有没有坚持到底。她引用马丁·路德的话：虔诚的鞋匠不是靠往鞋上画十字架荣耀上帝，而是靠做出最好的鞋。"
+            ],
+            "original": [
+              "我们怎么把 AI 用进关键任务工作流？一个真正全自主执行系统应该长什么样？",
+              "OpenAI 造产品非常快，但它杀产品也快得非常。",
+              "我们正在构建一个自主企业。我们想让这些公司里每一件事都由 Netic 自主处理——除了实际的服务和劳动本身，那部分人的成分。",
+              "虔诚的鞋匠不是靠往鞋上画十字架来荣耀上帝，而是做出最好的鞋。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
