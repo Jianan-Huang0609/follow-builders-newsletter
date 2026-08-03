@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Builders Digest · 2026-08-03</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f6f3ed;
+    --accent: #c0392b;
+    --accent-light: #e8d5c4;
+    --border: #d4cdc0;
+    --muted: #7a7265;
+    --tag-bg: #e8e2d6;
+    --en-bg: #ffffff;
+    --cn-bg: #faf7f2;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.7;
+  }
+
+  .masthead, .intro, .section-header, .feed, footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .masthead { padding-top: 48px; }
+  .masthead-rule { border: none; border-top: 3px solid var(--ink); margin: 0 0 12px; }
+  .masthead-inner { display: flex; justify-content: center; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .masthead-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; letter-spacing: -0.4px; }
+  .masthead-subtitle { margin-top: 8px; padding-bottom: 10px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  .edition-strip {
+    position: relative;
+    margin-top: 8px;
+    min-height: 46px;
+    padding: 10px 132px 12px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.34);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+
+  .edition-strip .edition-sep { margin: 0 8px; color: #b8ae9f; }
+  .edition-strip-text { display: block; }
+  .edition-return-link { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; padding: 6px 10px; border: 1px dashed rgba(192, 57, 43, 0.55); border-radius: 999px; color: var(--accent); text-decoration: none; font-size: 12px; line-height: 1; letter-spacing: 0.06em; background: rgba(255, 255, 255, 0.45); transition: background 160ms ease, border-color 160ms ease, transform 160ms ease; }
+  .edition-return-link:hover, .edition-return-link:focus-visible { background: rgba(255, 255, 255, 0.82); border-color: var(--accent); transform: translateY(-50%) translateX(-1px); }
+  .edition-return-link:focus-visible { outline: none; }
+  .intro { padding-top: 22px; }
+  .intro-inner { max-width: 920px; margin: 0 auto; padding: 0 0 0 18px; border-left: 3px solid #d9cdbc; }
+  .intro-kicker { margin: 0 0 8px; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+  .intro p { margin: 0; max-width: none; color: var(--muted); font-size: clamp(15px, 1.6vw, 16px); line-height: 1.9; text-wrap: pretty; font-family: 'Noto Serif SC', serif; overflow-wrap: anywhere; }
+
+  .section-header { margin-top: 40px; }
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 4px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 24px; margin: 0 0 6px; }
+  .section-desc { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+
+  .feed { display: flex; flex-direction: column; gap: 20px; }
+  .card { background: var(--en-bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .card-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid #eee7dd; flex-wrap: wrap; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .avatar-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .avatar.is-fallback img { display: none; }
+  .avatar.is-fallback .avatar-fallback { display: flex; }
+
+  .author-info { flex: 1; min-width: 160px; }
+  .author-name { font-weight: 600; font-size: 15px; }
+  .author-name-row { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .author-handle { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+  .author-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; background: var(--tag-bg); color: var(--muted); padding: 4px 8px; border-radius: 999px; }
+  .author-tag.is-inline { padding: 3px 8px; }
+
+  .card-controls { margin-left: auto; display: inline-flex; gap: 8px; }
+  .view-toggle { border: 1px solid var(--border); background: transparent; color: var(--muted); padding: 6px 10px; border-radius: 999px; font-size: 12px; line-height: 1; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; }
+  .view-toggle.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .card-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .lang-col { padding: 18px 20px 22px; }
+  .lang-col.cn { background: var(--cn-bg); border-right: 1px solid #f0ece4; font-family: 'Noto Serif SC', serif; }
+  .lang-col.en { background: var(--en-bg); }
+  .lang-label { margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+  .content-shell { position: relative; transition: height 220ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .content-variant { position: absolute; inset: 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(4px); transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms; will-change: opacity, transform; }
+  .content-variant.is-active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s; }
+  .content-variant p, .content-variant li { margin: 0 0 12px; font-size: 14px; }
+  .content-variant ol { margin: 0 0 12px 20px; padding: 0; }
+  .inline-code { display: inline-block; font-family: 'IBM Plex Mono', monospace; background: #f4efe7; padding: 3px 6px; border-radius: 6px; margin-bottom: 8px; }
+
+  .card-footer { padding: 12px 20px 16px; border-top: 1px solid #eee7dd; background: #fcfaf6; }
+  .card-footer { display: flex; align-items: center; justify-content: space-between; }
+.card-footer a { color: var(--accent); text-decoration: none; font-size: 14px; }
+.eureka-btn { border: 1px dashed var(--accent); background: transparent; color: var(--accent); padding: 5px 12px; border-radius: 999px; font-size: 12px; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; opacity: 0.55; }
+.eureka-btn:hover { background: var(--accent); color: #fff; opacity: 1; border-style: solid; }
+.eureka-btn:active { transform: scale(0.96); }
+.eureka-toast { position: fixed; bottom: 32px; right: 32px; background: #1a1a1a; color: #fff; padding: 12px 20px; border-radius: 10px; font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 9999; opacity: 0; transform: translateY(12px); transition: opacity 240ms ease, transform 240ms ease; pointer-events: none; }
+.eureka-toast.show { opacity: 1; transform: translateY(0); }
+  footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 680px) {
+    .masthead-inner { align-items: center; }
+    .edition-strip { padding-right: 12px; padding-left: 12px; }
+    .edition-strip-text { padding-right: 0; }
+    .edition-return-link { position: static; transform: none; margin-top: 8px; font-size: 11px; }
+    .card-controls { margin-left: 0; }
+    .card-body { grid-template-columns: 1fr; }
+    .lang-col.cn { border-right: none; border-bottom: 1px solid #f0ece4; }
+    .edition-strip .edition-sep { margin: 0 5px; }
+    .intro-inner { padding-left: 14px; }
+    .intro p { line-height: 1.84; }
+  }
+</style>
+</head>
+<body data-publish-date="2026-08-03" data-issue-number="44" data-edition-name="双语精选版" data-view-label-rewrite="速读" data-view-label-original="原文" data-author-identities-path="/Users/jianan/.follow-builders/assets/author-identities.json" data-avatar-manifest-path="/Users/jianan/.follow-builders/assets/avatar-manifest.json">
+  <header class="masthead">
+    <hr class="masthead-rule">
+    <div class="masthead-inner">
+      <div class="masthead-title">AI Builders Digest</div>
+    </div>
+    <div class="masthead-subtitle">Bilingual edition · 双语对照版</div>
+    <div class="edition-strip">
+      <span class="edition-strip-text" id="edition-strip-text">第 44 期｜2026-08-03｜双语精选版｜10 条精选｜10 位作者｜5 个主题</span>
+      <a class="edition-return-link" href="../index.html">返回目录</a>
+    </div>
+  </header>
+
+  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="今天的主线很硬核也很具体：Agent 正在从「帮你写代码的工具」变成「替你运营公司的主体」。Rauch 说 Vercel 的每一项日常工作都经过内部 agent @v；Swyx 的 Codex 已经能自己跟客服掰扯、还甩出完整证据链。同时，两条关于「接下来会发生什么」的判断值得细读：Levie 用「可验证性」解释了为什么最难的硬工作反而最先被自动化，Dan Shipper 则写下了被取代者要经历的三阶段心理周期。前沿实验室的信号是，Jerry Tworek 和 Rohan Anil 创办 Core Automation，目标直指 Transformer 的继任者；而 Thariq 说数学界正在上演杰文斯悖论，对数学人才的需求反而在上升。">
+    <div class="intro-inner">
+      <div class="intro-kicker">编者导语 / Editor&#39;s Note</div>
+      <p class="intro-copy">今天的主线很硬核也很具体：Agent 正在从「帮你写代码的工具」变成「替你运营公司的主体」。Rauch 说 Vercel 的每一项日常工作都经过内部 agent @v；Swyx 的 Codex 已经能自己跟客服掰扯、还甩出完整证据链。同时，两条关于「接下来会发生什么」的判断值得细读：Levie 用「可验证性」解释了为什么最难的硬工作反而最先被自动化，Dan Shipper 则写下了被取代者要经历的三阶段心理周期。前沿实验室的信号是，Jerry Tworek 和 Rohan Anil 创办 Core Automation，目标直指 Transformer 的继任者；而 Thariq 说数学界正在上演杰文斯悖论，对数学人才的需求反而在上升。</p>
+    </div>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 01</div>
+    <h2 class="section-title">The Company Agent / 公司级 Agent 时代</h2>
+    <p class="section-desc">这周最重磅的信号：agent 不再只是帮你写代码的工具，开始成为公司内部运营的总入口、以及替你去吵架的外交官。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:rauchg" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Vercel CEO Guillermo Rauch 揭开了自家公司内部运营 agent 的面纱，它叫 @v：现在 Vercel 的每一项日常工作都会经过它，交互量和 token 消耗都在指数级增长。它管财务、沟通、文档、营销、工程和商业分析，按用户维护记忆和日程，连 skills.sh 破 100 万 skill 这种消息，都是 Rauch 让它定期检查后提醒自己的。</p>
+              <p>他的预测很直接：「从这里可以外推，总有一天 AI agent 会运营整个公司。」但更有信息量的是他的补充设计笔记：Vercel 的 agent 一度多到「像每个 agent 都有自己的域名」，体验很糟。解法是把 @v 同时做成 agent 和路由器，像一个 monolith，需要时通过网络把活转包给别的 agent。「拿不准的时候，就 @v。」</p>
+              <p>底层主张：如果 agent 会成为现代公司的基础设施，那你就该掌控从源码、运行时、数据到 token 的整条链路。「那不是你的 agent，那是他们的 agent。」</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>我们建了一个驱动公司内部运营的 agent，叫 @v。现在 Vercel 的每一项日常工作都会经过它，交互量和 token 使用都在指数增长。
+
+              从这里可以外推，总有一天 AI agent 会运营整个公司。它是财务、沟通、文档、营销、工程、商业分析方面的专家，由我们给它的 skill 初始化并持续更新，但它自己也在不断改进。
+
+              它已经按用户维护记忆、个性化工作流和日程。比如我知道 skills.sh 达到 100 万 skill，是因为我让 @v 定期检查并提醒我。
+
+              它由 @evedev_ 驱动，也是 evedev 设计的基础。我们做出来了，效果非常好，我们认为每家公司都应该有一个。
+
+              我知道你也可以选一个现成的 BigAI slack 集成。但那是他们的 agent，不是你的 agent。如果 agent 成为现代公司的基础（甚至同义词），那么从源码、运行时、数据到 token 都由你完全掌控，这件事的分量相当大。</p>
+              <p>补充：我们其实早就有一堆 agent 了，准确说是太多了。Vercel 的团队和个人各自构建部署了几十个 agent。
+
+              用网络的类比，那就像每个 agent 都有自己的域名，这不是好的体验。我只想要 ${company}.com！
+
+              @v 帮我们解决了这个问题。它既是 agent 又是路由器，有子 agent、skills，知道怎么把工作委派给其他 agent。
+
+              另一个类比：它有点像 monolith 或 monorepo，但当你需要时，有通过网络把任务 proxy 给其他 agent 的逃生通道。这和互联网路由的规模化演进没什么两样。
+
+              当然也会有人直接使用的专用 agent，类比是 subdomain.company.com。有些 agent 值得有自己的「前门」，但我不认为应该有很多。
+
+              拿不准的时候，就 @v。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Vercel CEO Guillermo Rauch reveals the agent powering his company&#39;s internal operations, called @v: every day-to-day job at Vercel now involves it, and it&#39;s growing exponentially in both interactions and token use. It covers finance, comms, docs, marketing, engineering and business analytics, keeps per-user memories and schedules, and even reminded Rauch when skills.sh crossed 1M skills.</p>
+              <p>His prediction is blunt: &#39;One can extrapolate to the day AI agents run entire companies from here.&#39; But his follow-up is the more useful design note: Vercel had too many agents, &#39;like every agent having its own domain name.&#39; The fix is @v as both an agent and a router, a monolith with an escape hatch to proxy to other agents over the network. &#39;When in doubt, just @v.&#39;</p>
+              <p>The underlying argument: if agents become the foundation of modern companies, you should control everything from source to runtime to data to token. &#39;That&#39;s not your agent, that&#39;s their agent.&#39;</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>We built an agent that powers our company&#39;s internal operations called @𝚟.
+
+              Every day-to-day job at Vercel now involves @𝚟. It&#39;s growing exponentially both in daily interactions and token use.
+
+              One can extrapolate to the day AI agents run entire companies from here. It&#39;s an expert in finance, comms, docs, marketing, engineering, business analytics. It&#39;s seeded by the skills we gave it and we update, but it&#39;s also constantly improving.
+
+              It already keeps memories and personalized workflows and schedules on a per-user basis. For example, I knew skills⁠.sh hit 1M skills and I shared this on these forums because I asked @𝚟 to periodically check and remind me.
+
+              It&#39;s powered by and is also the basis for the design of @evedev_. We built this, it works fantastically well, we think every company should have it.
+
+              Before you @ me, I know you could also do this by picking your &#39;BigAI slack integration&#39; du jour. But that&#39;s not your agent, that&#39;s their agent. If agents become the foundation of (and even synonymous with) modern companies, you being in complete control, from source → runtime → data → token, seems like a pretty big deal to me.</p>
+              <p>PS: we&#39;ve obviously had agents for a while. In fact, we had too many. Teams and individuals at Vercel started building and deploying agents. Dozens of them.
+
+              Using a web analogy, that&#39;d be like every agent having its own domain name. Not a good UX. I just want ${company}⁠.com!
+
+              @𝚟 solved that problem for us. It&#39;s both an agent and a router. It has sub-agents, skills, and it knows how to delegate work to other agents.
+
+              Another analogy is that it&#39;s a bit like a &quot;monolith&quot; or &quot;monorepo&quot;, but you have the escape hatch of &quot;proxying&quot; to another agent over the network when needed. Again, not unlike how routing on the internet evolved at scale.
+
+              And yes, there&#39;s also the occasional purpose-built agent that people address directly. The analogy would be subdomain.⁠company.⁠com. Some agents deserve their own &quot;front doors&quot;, but I don&#39;t think there should be too many.
+
+              And when in doubt, just @𝚟.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/rauchg/status/2084042561690456157" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/rauchg/status/2084042561690456157" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="x:swyx" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx 正在为他的 computer use 播客收集「Codex CUA 高光时刻」，第一个例子很小但很能说明问题：Codex 替他处理客服聊天，主动要求升级工单以求更快解决。</p>
+              <p>「对面那些人完全不知道自己在跟一个机器人说话。客服想甩锅说是我们的问题，机器人直接甩出完整证据链。」一个 agent 用完整证据把人类客服说服了，这种日常的自主时刻，比任何 benchmark 都更能说明时代变了。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>为 computer use 播客做准备，我要维护一个 codex cua 高光时刻清单。
+
+              这是它替我处理客服聊天、要求升级以更快解决。
+
+              对面这些人完全不知道自己在跟机器人说话。
+
+              客服想说是我们的问题，机器人直接甩出完整证据链，笑死。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx is collecting &#39;Codex CUA wow moments&#39; ahead of his computer-use podcast, and the first entry is a small but telling glimpse: Codex handling a support chat for him, pushing for escalation to get a faster resolution.</p>
+              <p>&#39;These humans have no idea they are talking to a bot. Support guy tried to say it&#39;s our fault, bot replied with complete receipts.&#39; An agent out-arguing a human support rep with full evidence is exactly the kind of mundane autonomy that matters more than any benchmark.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>in prep for our computer use pod, gonna store a running list of codex cua wow moments. 
+
+               here it is dealing with support chat for me to escalate for faster resolution
+
+              these humans have no idea they are talking to a bot
+
+              support guy tried to say its our fault, bot replied with complete receipts lmao</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/swyx/status/2084156733027701164" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/swyx/status/2084156733027701164" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 02</div>
+    <h2 class="section-title">The Automation Order / 自动化的先后顺序</h2>
+    <p class="section-desc">Levie 说最先被自动化的是最「可验证」的硬工作；Dan Shipper 则写下被取代者要经历的心理三阶段。两篇合起来，是今天最完整的图景。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:levie" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Box CEO Aaron Levie 给出了一个反直觉的分析框架：世界上最「难」的几类工作，数学、网络安全、写代码，反而会最先被自动化，原因恰恰是可验证。输出能客观检验，意味着训练模型时 reward 信号更清晰，模型跑起来之后也能规模化地验证结果。</p>
+              <p>反面是：客户会接受哪些法律条款、该跑什么营销战役、销售对象想听什么话、业务该定什么财务目标，这些都没有标准答案。它们依赖上下文、依赖决策者的判断和风险偏好，结果往往要等很久才能验证。</p>
+              <p>他的结论：即使模型能力继续指数级上升，应用层依然有大量活要干，甚至很多流程本身要跟着变，才能吃满自动化的红利。我们可能还需要发明全新的能力，像当年测试软件那样去「测试」知识工作。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>我们将面对一个奇怪的动态：世界上一些「最难」的工作，反而会最先被自动化，主要就是因为它们的可验证性。
+
+              数学、网络安全和代码，虽然都是极难且高价值的领域，但有一个好处：可以客观检验它们是否正确。这带来两个直接好处：训练模型时 reward 信号更清晰；模型运行后，你可以规模化地测试结果，确认它是否正常工作。
+
+              相反，其他工作领域几乎没有即时可验证性。客户会接受哪些法律条款、根据变化的情绪该跑什么营销战役、销售对象想听什么话、公司该定什么财务目标和预算，诸如此类。
+
+              这些领域有各种变化的内外因素，没有「唯一正确答案」，依赖操作者的判断和风险偏好，对先拿到正确输入上下文极其敏感，而且很多时候，模型给出结果后很久都无法知道正确答案。
+
+              这个区分的含义是：即使模型能力继续指数级提升，应用层依然有大量事情要做，而不仅仅是模型本身；很多流程本身也需要随时间改变，才能从自动化中拿到全部收益。我们甚至可能需要全新的能力，像当年拥有软件测试那样，去「测试」知识工作。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Box CEO Aaron Levie lays out a contrarian framework: some of the &#39;hardest&#39; work in the world, math, cyber and code, is actually most prone to automation first, precisely because it&#39;s verifiable. Objectively testable output means clearer reward signals when training models, and scalable testing of results once they run.</p>
+              <p>The flip side: which legal clauses your client will accept, which marketing campaign to run, which message a sales prospect wants to hear, what financial targets to set, all have no single right answer. They depend on context, operator risk appetite, and can&#39;t be judged for months.</p>
+              <p>His conclusion: even as model capability keeps rising exponentially, a large applied layer will remain, and we may need to invent whole new capabilities to &#39;test&#39; knowledge work the way we&#39;ve tested software.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>We’re going to be in for a strange dynamic which is that some of the “hardest” work in the world is actually prone to automation first, particularly due to its verifiability. 
+
+              Math, cyber, and code -while being insanely hard and high value fields- have the benefit of being able to be tested that it’s correct objectively. This has two immediate benefits: the training of the models offers clearer reward signals, and then the running of the models allows you to know that it’s working properly because you can test the results in a scalable way.
+
+              Conversely, in other domains of work, there’s much less instant verifiability. Which legal clauses your client will agree to, what marketing campaign to run with based on changing sentiment, which message your sales prospect will want to hear, what financial targets and budget to set for a business, and so on. 
+
+              All of these domains have changing internal and external factors, they don’t have “one right answer”, they rely on the opinions and risk levels of the operators, they’re highly sensitive to getting the right input context first, and in many cases the right answer can’t even be known for quite some time after the model generates the results.
+
+              The implications of this distinction are that -even as model capability continues to increase exponentially- there will be a lot done at the applied AI layer than just the the model itself, and much of the processes themselves will even need to change over time to get the full gains from automation. We may even need all new capabilities to be able to “test” knowledge work over time as we have had with software.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/levie/status/2083965372747882741" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/levie/status/2083965372747882741" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="x:danshipper" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Every 的 CEO Dan Shipper 写了一篇关于「被 AI 取代的感觉」的文章：当模型接管一件曾经每一步都需要你的任务时，那是一次巨大的 agency rupture（能动性断裂）——「你不再被需要了，而且你毫无发言权。这是一种死亡。」</p>
+              <p>他总结了可预测的三阶段：第一阶段你只看见 AI（「AI 解决了某某问题」）；第二阶段你看见人类脚手架（「我的工作就是给 Claude 当保姆」）；第三阶段你重建能动性，改口说「这事是我做的」，AI 变得隐形，成了帮你快进无聊部分的工具。</p>
+              <p>他的判断：能否把这种断裂消化成好奇心和玩心，是判断一个人会不会在新 AI 经济里如鱼得水的领先指标。他还补了一条哲学推论：如果「应当蕴含能够」（ought implies can），而技术重塑了人类能力的边界，那么技术也在重塑我们的道德直觉。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>当你看到一个语言模型在做一件曾经每一步都需要你的任务、而现在不需要了，那是一次巨大的能动性断裂。
+
+              我们习惯把自己等同于任务和产出，这种断裂近似于失去身份和自我感。
+
+              你不再被需要了，而且你毫无发言权。这是一种死亡。
+
+              不过，AI 带来的能动性断裂似乎遵循一个可预测的模式：
+
+              - 最初的断裂。你只看见 AI 在做你以前做的事。在你的感知里 AI 被高亮，而围绕它的人类工作完全隐形。看我们的语言就知道了：「AI 解决了某某 Erdős 问题」，其实就是说我们正处于最初的断裂阶段。
+
+              - 看见人类脚手架。和模型相处一段时间后，我们开始看到模型的边界，开始看见你和另一端的人类为了让模型做好工作所需的脚手架。这时候脚手架感觉像是次要工作，但它确实是工作。我们开始说：「是 AI 在提示我」，或者「我的工作就是给 Claude 当保姆」。
+
+              - 能动性重建。和当前能力水平的模型相处足够久之后，我们重建一种以自己为核心的能动性，模型的贡献基本隐形。它现在是工具，帮你快进无聊或重复的部分，曾经看起来像脚手架的东西，现在看起来才是真正的工作本身，也就是有趣的部分。（随之而来的是你对「高质量工作」的定义变了，地板抬高了，天花板也抬高了。）
+
+              判断你是否走到这一步：你不再说「这是 AI 做的」，而是说「这是我做的」，用没用 AI 是不言自明的。比如我不会去问 @every 的人，产品最新功能是不是 AI 做的。当然是！但我们太习惯这种能力了，它变得隐形，我们重新把自己放回中心。
+
+              我的理论是：能否把能动性断裂消化成玩心和好奇心，是判断一个人是否喜欢并擅长新 AI 经济的领先指标。
+
+              每次能力跃迁，都会给已被 AI 触及的领域带来新的断裂，也会给直到最近还未受影响的群体（比如数学家）带来新的断裂。
+
+              如果你知道这个周期长什么样，就更容易在不崩溃的前提下骑上它。我觉得 @every 的多数人天生就擅长这个。</p>
+              <p>如果「应当蕴含能够」，而技术重塑了人类能力的版图，那么技术就重塑了「应当」。
+
+              我们应该预期，AI 在改变我们能力的同时，也会从根本上改变我们的道德直觉。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Dan Shipper, CEO of Every, writes about what it feels like when a model takes over a task that used to require you at every step: &#39;a gigantic agency rupture... you are no longer required, and you had no say in the matter. It&#39;s a kind of death.&#39;</p>
+              <p>His three-phase pattern: first you see only the AI (&#39;AI solved the problem&#39;); then you see the human scaffolding around it (&#39;my job is just to babysit Claude&#39;); finally you reconstruct agency and say &#39;I did this&#39; while the AI becomes invisible, a tool that fast-forwards the boring parts.</p>
+              <p>His theory: the ability to metabolize these ruptures into playfulness and curiosity is the leading indicator for who thrives in the new AI economy. He adds a philosophical coda: if ought implies can and technology reshapes human abilities, then technology reshapes our moral intuitions too.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>when you experience a language model doing a task that used to require you at every step and now doesn&#39;t, it&#39;s a gigantic agency rupture. 
+
+              we tend to equate ourselves with our tasks, our outputs, and a rupture of this kind is akin to the loss of your identity and sense of self. 
+
+              you are no longer required, and you had no say in the matter. it&#39;s a kind of death.
+
+              however, agency ruptures with AI seem to follow a predictable pattern:
+
+              - Initial agency rupture. Here you see the AI doing what you used to do, and you see only the AI. In your perception of reality the AI is highlighted, and the human work around getting the AI to do the thing, is invisible. you can see this in the way we use language: &quot;AI solved XYZ Erdos Problem&quot; is another way to say we&#39;re in the initial rupture phase.
+
+              - Seeing human scaffolding. After a little bit of experience with the model and its new capibility—programming, writing, math, etc—we start to see the edges of what&#39;s possible with the model. Here, instead of just seeing the AI doing the task, we start to see the scaffolding required by you and other humans on either end to make sure the model does its work. At this stage, the scaffolding can feel like a secondary part of the work, but it is work nonetheless. We begin to say things like, &quot;The AI is prompting me&quot;, or &quot;My job is just to babysit Claude.&quot; 
+
+              - Agency reconstruction. After a long enough time with the model at its current level of capability, we start to reconstruct a new sense of agency that centers our own role in the work being done, and makes the model&#39;s contribution mostly invisible. It is now a tool, it fast-forwards you through the boring or repetitive parts of the work, and what used to seem like scaffolding now seems like the actual work itself—the interesting part. You&#39;ve had enough experience with the scaffolding to see its nuances, and how hard it is to get the model to reliably output high quality work. (As part of this, your conception of what quality work is changes—the floor is raised, and so is the ceiling.)
+
+              You can tell you&#39;re at this point because you stop saying &quot;The AI did this&quot; and just say, &quot;I did this&quot; and the fact that you used AI is implied. For example, it would be weird for me to talk to someone @every and ask them if the AI built the most recent feature of a product. Of course it did! But we&#39;re so used to the capability that it becomes invisible, and we re-center ourselves and our own conception of agency.
+
+              My theory is that the ability to metabolize agency ruptures and turn them into playfulness, and curiosity is a good leading indicator for whether you&#39;re a person who likes and excels in the new AI economy or not.  
+
+              Each time capabilities jump, you get new ruptures for existing fields touched by AI. And you get new ruptures for naive populations (like mathemeticians) who until recently hadn&#39;t been affected.
+
+              if you know what the cycle looks like, it makes it much easier to ride it without freaking out. i think most people @every are naturally good at this</p>
+              <p>if ought implies can, and technology reshapes the field of human abilities—then technology reshapes oughts. 
+
+              we should expect AI to fundamentally change our moral intuitions at the same time as it changes our abilities</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/danshipper/status/2084038453831020916" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/danshipper/status/2084038453831020916" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 03</div>
+    <h2 class="section-title">The Frontier Lab / 寻找 Transformer 继任者</h2>
+    <p class="section-desc">两位站在前沿实验室核心位置的研究者出来创业，第一站就是换掉 Transformer，并且把实验室本身做成自动化机器。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="podcast:training-data" data-author-name="Training Data" data-author-tag="Training Data Podcast" data-author-handle="" data-author-avatar="../assets/avatars/podcast-training-data.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/podcast-training-data.jpg" alt="Training Data avatar"><span class="avatar-fallback">TD</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Training Data</div>
+            <div class="author-tag is-inline">Training Data Podcast</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Jerry Tworek（前 OpenAI VP，主管过 Strawberry 和 reasoning 团队）和 Rohan Anil（Gemini 四大预训练负责人之一，出身 Google Brain，后来去了 Anthropic）共同创办了 Core Automation，旧金山当下最热的 neo lab 之一。他们的出发点刻意反共识：「替换 Transformer 的第一步，是深切体会它把我们带到了多远。」规模化预训练和 RL 都已经被「掌握」，瓶颈现在是架构本身。</p>
+              <p>更深的论证是：模型在实验室里训练、在真实世界里部署，而 benchmark 已经和训练数据同分布，真实任务却混乱得多。Jerry 说他 2024 年曾预测 AGI 在 2025 年到来，但规模化 RL 并没有解决真实世界任务。他的答案是让模型在 test time 学习、在用户数据上学习：in-context learning 太浅（用 Codex 大概 20 分钟就得压缩上下文），fine-tuning 逃不过灾难性遗忘，所以需要一个能在架构层表达「学习本身」的新算法。</p>
+              <p>实验室的运作方式本身也是一个赌注：做「全世界最自动化的实验室」，靠一个小而 agent 密集的团队跑出大实验室跑不动的实验循环。Rohan 的六个月路线图核心是自动化 kernel 生成：他们和 GPU Mode 合办的 QR kernel 竞赛找到了比 cuSOLVER 快 60 倍的 kernel，但那是全球大约三个人、花 10 万美元 coding agent 额度才做到的。Jerry 的 AGI 标准也很严格：「一个能在没有任何人类介入的情况下自我改进的模型」。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>替换 Transformer 的第一步，是深切体会它把我们带到了多远。</p>
+              <p>我们已经非常擅长训练超大规模模型，掌握了两套算法：大规模预训练和大规模强化学习。我经常问自己，机器学习的下一个节点是什么。我认为此刻，通往更好模型和更智能系统的瓶颈，是架构本身。</p>
+              <p>我们用来评估模型的 benchmark，和我们训练模型用的任务本质上是一回事，就像同一枚硬币的两面。但真实世界的分布和任务要混乱得多、模糊得多、差异大得多。</p>
+              <p>我们是，我们是那个，人类与 LLM 的混合体现在非常非常成功，但脱离人类的 LLM，还远远不是那么回事。完全不是。</p>
+              <p>对我来说，AGI 是一个能在没有任何人类介入的情况下自我改进的模型。</p>
+              <p>我们整个团队去度假，看看实验室一周能不能自己产出更好的东西。……然后把假期延长两倍、四倍，直到永久放假。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Jerry Tworek, the former OpenAI VP who ran the Strawberry and reasoning teams, and Rohan Anil, one of Gemini&#39;s four pretraining leads who came from Google Brain and then Anthropic, have co-founded Core Automation, one of SF&#39;s hottest new labs. Their starting premise is deliberately contrarian: &#39;The first step to replacing transformers is appreciating deeply how far they were able to carry us.&#39; Both pretraining and RL at scale have been &#39;mastered&#39;; the bottleneck now is the architecture itself.</p>
+              <p>The deeper argument: models are trained in the lab but deployed in the real world, and benchmarks have converged with training data while real-world tasks stay messier. Jerry, who once predicted AGI by 2025, says scaling RL didn&#39;t solve real-world tasks. The answer, in his view, is models that learn at test time on users&#39; data: in-context learning is too shallow (roughly 20 minutes of Codex usage before compaction), fine-tuning suffers catastrophic forgetting, so you need an architecture that can express learning itself.</p>
+              <p>The lab&#39;s operating bet is as interesting as the research: &#39;the most automated lab in the world,&#39; where a small agent-heavy team runs experiment loops big labs can&#39;t. Rohan&#39;s six-month roadmap centers on automating kernel generation: their QR kernel competition with GPU Mode produced a kernel 60x faster than cuSOLVER, but it took the right human and $100K of coding agents to find. And Jerry&#39;s AGI bar is strict: &#39;a model that can improve itself without human in the loop in any way.&#39;</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The first step to replacing transformers is appreciating deeply how far they were able to carry us.</p>
+              <p>We got really, really good at training really, really big models. We mastered two algorithms. We mastered pre training at a large scale, and we mastered reinforcement learning at a large scale. And I&#39;m asking myself a lot what is next in machine learning. And I think at this moment, what the bottleneck is to better models and to smarter systems is the architecture itself.</p>
+              <p>all the benchmarks that we are evaluating our models, they were essentially the same thing as we were training the models on. Like all the evals and training side tasks are the same sides of the coin, But the real world distribution and real world task is much messier, much murkier, much more much more different.</p>
+              <p>We are we are the the the human LLM hybrid is is really, really successful right now, but LLMs without humans, not so much. Not at all.</p>
+              <p>And for me, AGI is a model that can improve itself without human in the loop in any way.</p>
+              <p>We, like, go on a vacation as a team and see if the lab produces something better for the week. ... Extend extend the vacation two times and four times until we are on permanent vacation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://www.youtube.com/watch?v=2RJiaf0SY8s" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="Training Data" data-url="https://www.youtube.com/watch?v=2RJiaf0SY8s" data-author="Training Data">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 04</div>
+    <h2 class="section-title">Math &amp; Chess / 数学与象棋的杰文斯悖论</h2>
+    <p class="section-desc">AI 能解数学题、能下象棋了，但需求端的故事正好相反：对数学人才的需求在上升，而象棋的历史提示我们结局没那么简单。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:trq212" data-author-name="Thariq" data-author-tag="" data-author-handle="@trq212" data-author-avatar="../assets/avatars/x-trq212.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-trq212.jpg" alt="Thariq avatar"><span class="avatar-fallback">T</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Thariq</div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle">@trq212</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>在 Anthropic 做 Claude Code 的 Thariq 指出，杰文斯悖论（Jevons paradox）已经在数学领域显现：事情变得更多了、更好理解了，数学家也有了更多时间在更高的抽象层面和我们讨论。</p>
+              <p>他的结论和「AI 干掉数学家」的恐慌正好相反：「对会思考、懂数学的人的需求会上升。」他在另一条推文里补充说，这跟当年国际象棋界发生过的事有很多相似之处，而这个参照系其实好坏参半。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>你已经在数学领域看到杰文斯悖论在起作用：
+
+              发生的事更多了，更好理解了，数学家也有更多时间在更高的抽象层面和我们讨论。
+
+              对会思考、懂数学的人的需求会上升。</p>
+              <p>我觉得这跟当年国际象棋发生的事有很多相似之处。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thariq, who works on Claude Code at Anthropic, points out that the Jevons paradox is already visible in mathematics: more is happening, it&#39;s easier to understand, and mathematicians have more time to discuss it with the rest of us at higher abstraction levels.</p>
+              <p>His punchline is the opposite of the &#39;AI kills the mathematician&#39; panic: &#39;demand for people who think and know about math will go up.&#39; In a separate tweet he adds that there are lots of parallels to what happened with chess, a reference point that cuts both ways.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>you can already see Jevons paradox at work in mathematics
+
+              there is more happening, it is easier to understand and mathematicians have more time to discuss it with us at higher abstraction levels
+
+              demand for people who think and know about math will go up</p>
+              <p>i think there are lots of parallels to what happened with chess</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/trq212/status/2083977795290734975" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="Thariq" data-url="https://x.com/trq212/status/2083977795290734975" data-author="Thariq">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="x:amasad" data-author-name="Amjad Masad" data-author-tag="" data-author-handle="@amasad" data-author-avatar="../assets/avatars/x-amasad.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-amasad.jpg" alt="Amjad Masad avatar"><span class="avatar-fallback">AM</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Amjad Masad</div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle">@amasad</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Replit CEO Amjad Masad 的 LLM 国际象棋引擎已经上线 Lichess，正在自动和真人、bot 下真实有积分的对局，目前 1253 Elo，他提到它同一时间能同时下三盘。</p>
+              <p>跟人类顶级棋手比这个分数不高，但重点恰恰在这里：一个 LLM 驱动的 agent 在真实平台上自主地、持续地打有积分的对局，这种基准测试捕捉不到的持久自主行为，正在发生。把它和 Thariq 的象棋类比放在一起读：计算机象棋的历史提示我们，天花板还远得很。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>我的 LLM 国际象棋引擎已经上线 Lichess，自动和真人及 bot 下真实对局。
+
+              1253 Elo：https://t.co/W3qp1Z1i7I https://t.co/WwPOjDggU1</p>
+              <p>你可以在网站上实时观看对局。它现在正同时下三盘。https://t.co/J1a4ij9J07</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Replit CEO Amjad Masad&#39;s LLM chess engine is now live on Lichess, autonomously playing real rated games against humans and bots, currently at 1253 Elo, and he notes it&#39;s playing three concurrent games at once.</p>
+              <p>That rating is nowhere near the best humans, but that&#39;s almost the point: an LLM-driven agent is grinding real rated games against real opponents on its own, the kind of persistent autonomous behavior benchmarks don&#39;t capture. Read next to Thariq&#39;s chess parallels: the history of computer chess says the ceiling is nowhere near.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>My LLM chess engine is now on LiChess autonomously playing real games against people and bots. 
+
+              1253 Elo: https://t.co/W3qp1Z1i7I https://t.co/WwPOjDggU1</p>
+              <p>You can watch the games live on the website. Mf is playing 3 concurrent games rn https://t.co/J1a4ij9J07</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/amasad/status/2083926395403821427" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="Amjad Masad" data-url="https://x.com/amasad/status/2083926395403821427" data-author="Amjad Masad">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 05</div>
+    <h2 class="section-title">Vibes Capital &amp; Craft / 情绪资本与手艺</h2>
+    <p class="section-desc">一级市场的定价越来越像情绪，万亿巨头也按情绪摆动；另一边，builder 们还在聊手艺、slop 与好奇心。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:nikunj" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>FPV Ventures 合伙人 Nikunj Kothari 说，VC 已经「彻底变成了情绪资本（vibes capital）」：早期市场的现实和基本面完全脱钩，有些什么成果都没有的轮次疯抢，有些看起来稳赢的轮次却融不到钱。和大多数等着回调的人不同，他认为这种情况至少还要持续 12 到 18 个月（干火药充足加上 AI 顺风）。VC 圈现在最常见的一句话是「你得下场玩这个游戏」，这个螺旋会继续推高波动和估值。</p>
+              <p>二级市场同样疯狂：meme 股时代小盘股单日波动超过 5% 就够吓人了，现在万亿市值的股票也会因为情绪和模型发布单日波动那么多，Memory 和韩国 KOSPI 指数就是最近的例子，轮动只会越来越快。他的长期判断是基本面最终会赢，但短期内，把钱投进资本市场之前，先搞清楚自己身处什么样的漩涡。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>我们正活在一个疯狂的世界。我最近写了关于 Series A 挤兑的文章。以下是我坐在投资侧看到的其他东西：
+
+              1) VC 已经彻底变成了情绪资本。早期到中期市场的现实与基本面完全脱钩。我甚至没法板着脸预测一家公司融资时会怎样。
+
+              有些轮次什么都没有却疯狂火爆，有些看起来稳赢的轮次却在艰难凑钱。如果你处在「当红赛道」，你就没事。这种情况已经持续一阵子了，现在完全是香蕉镇（banana town）。和大多数认为会有回调的人不同，我认为这至少还会持续 12 到 18 个月（干火药充足，AI 顺风）。VC 圈现在最常见的话是「你得下场玩这个游戏」。这个螺旋会持续维持高波动和高价格。
+
+              2) 二级市场同样疯狂。meme 股时代，你会看到单日超过 5% 的波动。但现在连万亿市值的股票都免不了因为情绪和模型发布而波动这么多。Memory 和 KOSPI 指数是最近的例子，其他板块很快也会这样。轮动越来越快。
+
+              长期看，建造一家掌控自己命运的好公司（盈利、干净的 cap table 等）的基本面最终会胜出。但短期内，在这个资本即武器的超竞争漩涡里，下水资本市场之前，你应该先搞清楚发生了什么。
+
+              无论如何，等我们回望这个时代，会很有意思。有需要随时可以聊！</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>FPV Ventures partner Nikunj Kothari says VC has &#39;effectively fully become vibes capital&#39;: early-stage market reality is completely divorced from fundamentals, some rounds are insanely wild with nothing to show while sure-shot rounds struggle. Unlike most who expect a correction, he thinks this continues for at least 12-18 months (dry powder, AI tailwind). &#39;You gotta play the game on the field.&#39;</p>
+              <p>Public markets are equally bananas: in the meme-stock era you&#39;d see daily swings of more than 5 percent on small caps, but now trillion-dollar stocks swing that much on vibes and model releases, with Memory and the KOSPI index as recent examples. His long-run take: fundamentals still win, but in the short term, understand the vortex before dipping into capital markets.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>What a wild world we’re living through. I wrote about the Series A squeeze recently. Here’s what else I’m seeing from my seat on the investing side..
+
+              1) VC has effectively fully become vibes capital. The market reality at the early-mid stage is completely divorced from fundamentals. I can go longer with even a resemblance of a straight face predict what happens to a company when they go to fund raise. 
+
+              Some rounds are insanely wild with nothing to show, some rounds that seem like a sure shot are struggling to raise the capital they need. If you’re the “in vogue sector”, you’ll be just fine. This has been happening for some while but it’s fully banana town now. And unlike most who think a correction happens I think this continues for 12-18 months (dry powder, AI tailwind) minimum. The most common phrase in VC land right now is “you gotta play the game on the field”. This is a spiral that continues to keep the volatility and prices high. 
+
+              2) Whereas on the public markets it’s also equally bananas. It used to be in the meme stock era that you’d see daily swings of &gt;5% (+\-). But now even trillion dollar stocks are not immune to swinging that much based on vibes and model releases. Memory and the KOSPI index are recent examples and this will happen to other sectors soon. Rotations are getting faster and faster.
+
+              In the long run, the same fundamentals of building a great company with control of your own destiny (profitable, clean cap table etc) will end up just working out fine. But in the short term, in this vortex of hyper competition where capital is needed as a weapon, you should make sure you understand what’s going on before you dip your toes in the capital markets. 
+
+              No matter what it’ll be interesting to see how this shakes out when we look back in this era. Obligatory happy to chat if helpful!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/nikunj/status/2083873335998333227" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/nikunj/status/2083873335998333227" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="x:garrytan" data-author-name="Garry Tan" data-author-tag="" data-author-handle="@garrytan" data-author-avatar="../assets/avatars/x-garrytan.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-garrytan.jpg" alt="Garry Tan avatar"><span class="avatar-fallback">GT</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Garry Tan</div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle">@garrytan</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Y Combinator CEO Garry Tan 今天的三条短推放在一起看，很像这个时代的三个注脚。关于丰裕的悖论：「在奇迹的量级进入抛物线的时刻，对奇迹的感受反而消失了。」</p>
+              <p>关于精英主义与市场：「所有人都把地图当成了领土。精英主义的本义是：领土比地图更重要。在市场上，结果就是领土，你做出人们想要的东西了吗？」</p>
+              <p>第三条正好接上 Nikunj 的市场观察：「增长是好事。AI 将创造难以想象的经济增长，而那是最好的白药丸（white pill）。」</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>增长是好事。
+
+              AI 将创造难以想象的经济增长，而那是最好的白药丸。https://t.co/wdR7nHuWJD https://t.co/30xeF2N8hO</p>
+              <p>在奇迹的量级进入抛物线的时刻，对奇迹的感受反而消失了。https://t.co/p56UMAFiZq</p>
+              <p>所有人都把地图当成了领土。
+
+              精英主义的本义是：领土比地图更重要。
+
+              在市场上，结果就是领土：你做出人们想要的东西了吗？https://t.co/wOTHnKqk7Y</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Y Combinator CEO Garry Tan fires off three aphorisms that capture the current mood. On the paradox of abundance: &#39;The sense of wonder disappeared right at the moment the amount of wonder is going parabolic.&#39;</p>
+              <p>On meritocracy and markets: &#39;Everyone mistakes the map for the territory. Meritocracy is that the territory matters more than the map. And in markets the outcome is the territory: did you make something people want?&#39;</p>
+              <p>And the one that ties directly to Nikunj&#39;s market read: &#39;Growth is good. AI will create unimaginable economic growth and that is the best white pill.&#39;</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Growth is good
+
+              AI will create unimaginable economic growth and that is the best white pill https://t.co/wdR7nHuWJD https://t.co/30xeF2N8hO</p>
+              <p>The sense of wonder disappeared right at the moment the amount of wonder is going parabolic https://t.co/p56UMAFiZq</p>
+              <p>Everyone mistakes the map for the territory
+
+              Meritocracy is that the territory matters more than the map
+
+              And in markets the outcome is the territory: did you make something people want? https://t.co/wOTHnKqk7Y</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/garrytan/status/2083957110711386439" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="Garry Tan" data-url="https://x.com/garrytan/status/2083957110711386439" data-author="Garry Tan">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="x:petergyang" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang 问了 Nous Research 联合创始人 Karan 一个问题：Hermes 在给自己构建 skill 的时候，怎么避免产出 slop（垃圾内容）？答案：Hermes Curator，一个跑在 agent 内部的定时后台任务，定期清理 skill 和记忆，反复问自己：「slop 在哪？哪里还能更高效？」</p>
+              <p>因为 Hermes 是开源的，你可以把自己对 slop 的定义交给它，它就会按你的标准重写自己的清理循环。这是自我改进型 agent 如何保持自律的一个细节；他另一条推文也提醒：「性格很重要，一个聪明但聊天很烦的朋友，算不上好。」</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Hermes 最大的好处之一是它会自己构建 skill 来帮你完成工作。
+
+              但我得问 @karan4d（@NousResearch 联合创始人）：「Hermes 在这样做的时候怎么避免 slop？」
+
+              他的回答：
+
+              「Hermes Curator（一个后台任务）跑在你的 agent 里，定时清理 skill 和记忆，反复问：slop 在哪？哪里还能更高效？
+
+              而且因为它是开源的，你可以把自己对 slop 的定义交给它，它会按你的方式重写自己的清理循环。」
+
+              📌 完整视频在这里：https://t.co/3E7IC0TzNr</p>
+              <p>性格很重要！一个聪明但聊天很烦的朋友，算不上好。https://t.co/QMkhu1mSxl https://t.co/Kswxq1NiYs</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang asks Karan, co-founder of Nous Research, how Hermes avoids &#39;slop&#39; while building its own skills. The answer: Hermes Curator, a background task that runs inside the agent and cleans up skills and memory on a schedule, asking &#39;Where&#39;s the slop, and where can I make it more efficient?&#39;</p>
+              <p>Because Hermes is open source, you can hand it your own definition of slop and it rewrites its own cleanup loop your way. A revealing detail on how self-improving agents keep themselves honest, plus his lighter reminder that &#39;personality matters: a smart friend that&#39;s annoying to talk to is no good.&#39;</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>One of the biggest benefits of Hermes is that it builds its own skills to help you get work done.
+
+              But I had to ask @karan4d, @NousResearch co-founder: &quot;How does Hermes avoid slop while doing this?&quot;
+
+              Here&#39;s his response:
+
+              &quot;Hermes Curator [a background task] runs inside your agent and cleans up your skills and memory on a schedule, asking: Where&#39;s the slop, and where can I make it more efficient?
+
+              And because it&#39;s open source, you can hand it your own definition of slop and it rewrites its own cleanup loop your way.&quot;
+
+              📌 Watch the full episode here: https://t.co/3E7IC0TzNr</p>
+              <p>Personality matters! A smart friend that&#39;s annoying to talk to is no good. https://t.co/QMkhu1mSxl https://t.co/Kswxq1NiYs</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/petergyang/status/2083968605432267139" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/petergyang/status/2083968605432267139" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <footer data-source-note="Source: Follow Builders curated daily digest. Rebuilt from the 2026-08-03 source feeds.">Source: Follow Builders curated daily digest. Rebuilt from the 2026-08-03 source feeds.</footer>
+
+  <script>
+    function getTemplateAuthorSources() {
+      const sources = window.AI_BUILDERS_TEMPLATE_SOURCES || {};
+      return { identities: sources.identities || {}, avatars: sources.avatars || {} };
+    }
+
+    function getAuthorInitials(name) {
+      return (name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(function(part) { return part[0]; }).join('').toUpperCase();
+    }
+
+    function hydrateTemplateCopy() {
+      const intro = document.querySelector('.intro');
+      if (intro) {
+        const kicker = intro.querySelector('.intro-kicker');
+        const copy = intro.querySelector('.intro-copy');
+        if (kicker) kicker.textContent = intro.dataset.kicker || '';
+        if (copy) copy.textContent = intro.dataset.text || '';
+      }
+
+      const footer = document.querySelector('footer');
+      if (footer) footer.textContent = footer.dataset.sourceNote || '';
+
+      const rewriteLabel = document.body.dataset.viewLabelRewrite || '速读';
+      const originalLabel = document.body.dataset.viewLabelOriginal || '原文';
+      document.querySelectorAll('.view-toggle').forEach(function(button) {
+        if (button.dataset.viewTarget === 'rewrite') button.textContent = rewriteLabel;
+        if (button.dataset.viewTarget === 'original') button.textContent = originalLabel;
+      });
+    }
+
+    function hydrateAuthorMeta() {
+      const sources = getTemplateAuthorSources();
+      document.querySelectorAll('.card').forEach(function(card) {
+        const authorKey = card.dataset.authorKey || '';
+        const identity = sources.identities[authorKey] || {};
+        const avatarEntry = sources.avatars[authorKey] || {};
+
+        const name = identity.name || card.dataset.authorName || '';
+        const rawHandle = identity.handle || card.dataset.authorHandle || '';
+        const handle = rawHandle && rawHandle.startsWith('@') ? rawHandle : (rawHandle ? '@' + rawHandle : '');
+        const tag = identity.label || card.dataset.authorTag || '';
+        const avatar = avatarEntry.fileUrl || avatarEntry.localPath || card.dataset.authorAvatar || '';
+
+        const nameNode = card.querySelector('.author-name');
+        const tagNode = card.querySelector('.author-tag');
+        const handleNode = card.querySelector('.author-handle');
+        const avatarNode = card.querySelector('.avatar');
+        const avatarImg = card.querySelector('.avatar img');
+        const avatarFallback = card.querySelector('.avatar-fallback');
+
+        if (nameNode) nameNode.textContent = name;
+        if (tagNode) tagNode.textContent = tag;
+        if (handleNode) handleNode.textContent = handle;
+        if (avatarImg) {
+          avatarImg.src = avatar;
+          avatarImg.alt = name ? name + ' avatar' : 'Author avatar';
+        }
+        if (avatarNode) avatarNode.classList.toggle('is-fallback', !avatar);
+        if (avatarFallback) avatarFallback.textContent = getAuthorInitials(name);
+      });
+    }
+
+    function updateEditionStrip() {
+      const publishDate = document.body.dataset.publishDate;
+      const editionName = document.body.dataset.editionName || '双语精选版';
+      const editionStrip = document.getElementById('edition-strip-text');
+      if (!publishDate || !editionStrip) return;
+
+      const issueNumber = document.body.dataset.issueNumber || '';
+      if (!issueNumber) return;
+
+      const selectedCount = document.querySelectorAll('.card').length;
+      const authorCount = new Set([].slice.call(document.querySelectorAll('.author-handle')).map(function(node) { return node.textContent.trim(); }).filter(Boolean)).size;
+      const themeCount = document.querySelectorAll('.section-header').length;
+      const parts = ['第 ' + issueNumber + ' 期', publishDate, editionName, selectedCount + ' 条精选', authorCount + ' 位作者', themeCount + ' 个主题'];
+      editionStrip.innerHTML = parts.map(function(part) { return '<span class="edition-item">' + part + '</span>'; }).join('<span class="edition-sep">|</span>');
+    }
+
+    function measureVariantHeight(variant) {
+      const prevPosition = variant.style.position;
+      const prevInset = variant.style.inset;
+      const prevVisibility = variant.style.visibility;
+      const prevPointerEvents = variant.style.pointerEvents;
+      const prevOpacity = variant.style.opacity;
+      const prevTransform = variant.style.transform;
+      const prevTransition = variant.style.transition;
+      const prevOverflowY = variant.style.overflowY;
+      const prevDisplay = variant.style.display;
+
+      variant.style.position = 'relative';
+      variant.style.inset = 'auto';
+      variant.style.visibility = 'hidden';
+      variant.style.pointerEvents = 'none';
+      variant.style.opacity = '1';
+      variant.style.transform = 'none';
+      variant.style.transition = 'none';
+      variant.style.overflowY = 'visible';
+      variant.style.display = 'block';
+
+      const height = variant.scrollHeight;
+
+      variant.style.position = prevPosition;
+      variant.style.inset = prevInset;
+      variant.style.visibility = prevVisibility;
+      variant.style.pointerEvents = prevPointerEvents;
+      variant.style.opacity = prevOpacity;
+      variant.style.transform = prevTransform;
+      variant.style.transition = prevTransition;
+      variant.style.overflowY = prevOverflowY;
+      variant.style.display = prevDisplay;
+
+      return Math.ceil(height);
+    }
+
+    function getTargetHeight(shell, target) {
+      const variant = shell.querySelector('.content-variant[data-view="' + target + '"]');
+      return measureVariantHeight(variant);
+    }
+
+    function syncShellHeights() {
+      document.querySelectorAll('.content-shell').forEach(function(shell) {
+        const active = shell.querySelector('.content-variant.is-active');
+        const target = active ? active.dataset.view : 'rewrite';
+        shell.style.height = getTargetHeight(shell, target) + 'px';
+      });
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', function() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(syncShellHeights, 120);
+    });
+
+    document.querySelectorAll('.card').forEach(function(card) {
+      const buttons = card.querySelectorAll('.view-toggle');
+      const shells = card.querySelectorAll('.content-shell');
+
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          const target = button.dataset.viewTarget;
+          if (button.classList.contains('is-active')) return;
+
+          buttons.forEach(function(btn) {
+            btn.classList.toggle('is-active', btn === button);
+          });
+
+          shells.forEach(function(shell) {
+            const current = shell.querySelector('.content-variant.is-active');
+            const next = shell.querySelector('.content-variant[data-view="' + target + '"]');
+            if (!current || !next || current === next) return;
+
+            shell.style.height = shell.offsetHeight + 'px';
+            requestAnimationFrame(function() {
+              current.classList.remove('is-active');
+              next.classList.add('is-active');
+              shell.style.height = getTargetHeight(shell, target) + 'px';
+            });
+          });
+        });
+      });
+    });
+
+    hydrateTemplateCopy();
+    hydrateAuthorMeta();
+    updateEditionStrip();
+    syncShellHeights();
+
+    // Eureka save buttons
+    var EUREKA_URL = 'http://127.0.0.1:8087/eureka';
+    function showToast(msg, isError) {
+      var t = document.querySelector('.eureka-toast');
+      if (!t) {
+        t = document.createElement('div');
+        t.className = 'eureka-toast';
+        document.body.appendChild(t);
+      }
+      t.textContent = msg;
+      if (isError) t.style.background = '#c0392b';
+      else t.style.background = '#1a1a1a';
+      t.classList.add('show');
+      setTimeout(function() { t.classList.remove('show'); }, 2200);
+    }
+    document.querySelectorAll('.eureka-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var title = this.dataset.title || '';
+        var url = this.dataset.url || '';
+        var author = this.dataset.author || '';
+        var note = title ? title.slice(0, 80) : '';
+        var origText = this.textContent;
+        this.textContent = '...';
+        this.disabled = true;
+        fetch(EUREKA_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ title: note, url: url, author: author })
+        }).then(function(r) { return r.json(); })
+          .then(function(d) {
+            btn.textContent = d.ok ? '✓ Saved' : '✗ Error';
+            showToast(d.ok ? 'Saved to Eurekas ✓' : 'Save failed: ' + (d.error || 'unknown'), !d.ok);
+            if (d.ok) setTimeout(function() { btn.textContent = origText; btn.disabled = false; }, 1500);
+            else { btn.textContent = origText; btn.disabled = false; }
+          })
+          .catch(function(e) {
+            btn.textContent = origText; btn.disabled = false;
+            showToast('Eureka server not running — start it first', true);
+          });
+      });
+    });
+  </script>
+</body>
+</html>

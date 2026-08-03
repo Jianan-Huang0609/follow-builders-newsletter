@@ -1,0 +1,307 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-08-03",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线很硬核也很具体：Agent 正在从「帮你写代码的工具」变成「替你运营公司的主体」。Rauch 说 Vercel 的每一项日常工作都经过内部 agent @v；Swyx 的 Codex 已经能自己跟客服掰扯、还甩出完整证据链。同时，两条关于「接下来会发生什么」的判断值得细读：Levie 用「可验证性」解释了为什么最难的硬工作反而最先被自动化，Dan Shipper 则写下了被取代者要经历的三阶段心理周期。前沿实验室的信号是，Jerry Tworek 和 Rohan Anil 创办 Core Automation，目标直指 Transformer 的继任者；而 Thariq 说数学界正在上演杰文斯悖论，对数学人才的需求反而在上升。"
+  },
+  "archive": {
+    "title": "公司级Agent日报",
+    "desc": "Agent 从写代码的工具变成运营公司的主体：Vercel 用单一 agent 接管内部运营，可验证的硬工作最先被自动化，而前沿实验室开始寻找 Transformer 继任者。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-08-03 source feeds.",
+  "sections": [
+    {
+      "title": "The Company Agent / 公司级 Agent 时代",
+      "desc": "这周最重磅的信号：agent 不再只是帮你写代码的工具，开始成为公司内部运营的总入口、以及替你去吵架的外交官。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2084042561690456157",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch reveals the agent powering his company's internal operations, called @v: every day-to-day job at Vercel now involves it, and it's growing exponentially in both interactions and token use. It covers finance, comms, docs, marketing, engineering and business analytics, keeps per-user memories and schedules, and even reminded Rauch when skills.sh crossed 1M skills.",
+              "His prediction is blunt: 'One can extrapolate to the day AI agents run entire companies from here.' But his follow-up is the more useful design note: Vercel had too many agents, 'like every agent having its own domain name.' The fix is @v as both an agent and a router, a monolith with an escape hatch to proxy to other agents over the network. 'When in doubt, just @v.'",
+              "The underlying argument: if agents become the foundation of modern companies, you should control everything from source to runtime to data to token. 'That's not your agent, that's their agent.'"
+            ],
+            "original": [
+              "We built an agent that powers our company's internal operations called @𝚟.\n\nEvery day-to-day job at Vercel now involves @𝚟. It's growing exponentially both in daily interactions and token use.\n\nOne can extrapolate to the day AI agents run entire companies from here. It's an expert in finance, comms, docs, marketing, engineering, business analytics. It's seeded by the skills we gave it and we update, but it's also constantly improving.\n\nIt already keeps memories and personalized workflows and schedules on a per-user basis. For example, I knew skills⁠.sh hit 1M skills and I shared this on these forums because I asked @𝚟 to periodically check and remind me.\n\nIt's powered by and is also the basis for the design of @evedev_. We built this, it works fantastically well, we think every company should have it.\n\nBefore you @ me, I know you could also do this by picking your 'BigAI slack integration' du jour. But that's not your agent, that's their agent. If agents become the foundation of (and even synonymous with) modern companies, you being in complete control, from source → runtime → data → token, seems like a pretty big deal to me.",
+              "PS: we've obviously had agents for a while. In fact, we had too many. Teams and individuals at Vercel started building and deploying agents. Dozens of them.\n\nUsing a web analogy, that'd be like every agent having its own domain name. Not a good UX. I just want ${company}⁠.com!\n\n@𝚟 solved that problem for us. It's both an agent and a router. It has sub-agents, skills, and it knows how to delegate work to other agents.\n\nAnother analogy is that it's a bit like a \"monolith\" or \"monorepo\", but you have the escape hatch of \"proxying\" to another agent over the network when needed. Again, not unlike how routing on the internet evolved at scale.\n\nAnd yes, there's also the occasional purpose-built agent that people address directly. The analogy would be subdomain.⁠company.⁠com. Some agents deserve their own \"front doors\", but I don't think there should be too many.\n\nAnd when in doubt, just @𝚟."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 揭开了自家公司内部运营 agent 的面纱，它叫 @v：现在 Vercel 的每一项日常工作都会经过它，交互量和 token 消耗都在指数级增长。它管财务、沟通、文档、营销、工程和商业分析，按用户维护记忆和日程，连 skills.sh 破 100 万 skill 这种消息，都是 Rauch 让它定期检查后提醒自己的。",
+              "他的预测很直接：「从这里可以外推，总有一天 AI agent 会运营整个公司。」但更有信息量的是他的补充设计笔记：Vercel 的 agent 一度多到「像每个 agent 都有自己的域名」，体验很糟。解法是把 @v 同时做成 agent 和路由器，像一个 monolith，需要时通过网络把活转包给别的 agent。「拿不准的时候，就 @v。」",
+              "底层主张：如果 agent 会成为现代公司的基础设施，那你就该掌控从源码、运行时、数据到 token 的整条链路。「那不是你的 agent，那是他们的 agent。」"
+            ],
+            "original": [
+              "我们建了一个驱动公司内部运营的 agent，叫 @v。现在 Vercel 的每一项日常工作都会经过它，交互量和 token 使用都在指数增长。\n\n从这里可以外推，总有一天 AI agent 会运营整个公司。它是财务、沟通、文档、营销、工程、商业分析方面的专家，由我们给它的 skill 初始化并持续更新，但它自己也在不断改进。\n\n它已经按用户维护记忆、个性化工作流和日程。比如我知道 skills.sh 达到 100 万 skill，是因为我让 @v 定期检查并提醒我。\n\n它由 @evedev_ 驱动，也是 evedev 设计的基础。我们做出来了，效果非常好，我们认为每家公司都应该有一个。\n\n我知道你也可以选一个现成的 BigAI slack 集成。但那是他们的 agent，不是你的 agent。如果 agent 成为现代公司的基础（甚至同义词），那么从源码、运行时、数据到 token 都由你完全掌控，这件事的分量相当大。",
+              "补充：我们其实早就有一堆 agent 了，准确说是太多了。Vercel 的团队和个人各自构建部署了几十个 agent。\n\n用网络的类比，那就像每个 agent 都有自己的域名，这不是好的体验。我只想要 ${company}.com！\n\n@v 帮我们解决了这个问题。它既是 agent 又是路由器，有子 agent、skills，知道怎么把工作委派给其他 agent。\n\n另一个类比：它有点像 monolith 或 monorepo，但当你需要时，有通过网络把任务 proxy 给其他 agent 的逃生通道。这和互联网路由的规模化演进没什么两样。\n\n当然也会有人直接使用的专用 agent，类比是 subdomain.company.com。有些 agent 值得有自己的「前门」，但我不认为应该有很多。\n\n拿不准的时候，就 @v。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2084156733027701164",
+          "en": {
+            "rewrite": [
+              "Swyx is collecting 'Codex CUA wow moments' ahead of his computer-use podcast, and the first entry is a small but telling glimpse: Codex handling a support chat for him, pushing for escalation to get a faster resolution.",
+              "'These humans have no idea they are talking to a bot. Support guy tried to say it's our fault, bot replied with complete receipts.' An agent out-arguing a human support rep with full evidence is exactly the kind of mundane autonomy that matters more than any benchmark."
+            ],
+            "original": [
+              "in prep for our computer use pod, gonna store a running list of codex cua wow moments. \n\n here it is dealing with support chat for me to escalate for faster resolution\n\nthese humans have no idea they are talking to a bot\n\nsupport guy tried to say its our fault, bot replied with complete receipts lmao"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx 正在为他的 computer use 播客收集「Codex CUA 高光时刻」，第一个例子很小但很能说明问题：Codex 替他处理客服聊天，主动要求升级工单以求更快解决。",
+              "「对面那些人完全不知道自己在跟一个机器人说话。客服想甩锅说是我们的问题，机器人直接甩出完整证据链。」一个 agent 用完整证据把人类客服说服了，这种日常的自主时刻，比任何 benchmark 都更能说明时代变了。"
+            ],
+            "original": [
+              "为 computer use 播客做准备，我要维护一个 codex cua 高光时刻清单。\n\n这是它替我处理客服聊天、要求升级以更快解决。\n\n对面这些人完全不知道自己在跟机器人说话。\n\n客服想说是我们的问题，机器人直接甩出完整证据链，笑死。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Automation Order / 自动化的先后顺序",
+      "desc": "Levie 说最先被自动化的是最「可验证」的硬工作；Dan Shipper 则写下被取代者要经历的心理三阶段。两篇合起来，是今天最完整的图景。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2083965372747882741",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie lays out a contrarian framework: some of the 'hardest' work in the world, math, cyber and code, is actually most prone to automation first, precisely because it's verifiable. Objectively testable output means clearer reward signals when training models, and scalable testing of results once they run.",
+              "The flip side: which legal clauses your client will accept, which marketing campaign to run, which message a sales prospect wants to hear, what financial targets to set, all have no single right answer. They depend on context, operator risk appetite, and can't be judged for months.",
+              "His conclusion: even as model capability keeps rising exponentially, a large applied layer will remain, and we may need to invent whole new capabilities to 'test' knowledge work the way we've tested software."
+            ],
+            "original": [
+              "We’re going to be in for a strange dynamic which is that some of the “hardest” work in the world is actually prone to automation first, particularly due to its verifiability. \n\nMath, cyber, and code -while being insanely hard and high value fields- have the benefit of being able to be tested that it’s correct objectively. This has two immediate benefits: the training of the models offers clearer reward signals, and then the running of the models allows you to know that it’s working properly because you can test the results in a scalable way.\n\nConversely, in other domains of work, there’s much less instant verifiability. Which legal clauses your client will agree to, what marketing campaign to run with based on changing sentiment, which message your sales prospect will want to hear, what financial targets and budget to set for a business, and so on. \n\nAll of these domains have changing internal and external factors, they don’t have “one right answer”, they rely on the opinions and risk levels of the operators, they’re highly sensitive to getting the right input context first, and in many cases the right answer can’t even be known for quite some time after the model generates the results.\n\nThe implications of this distinction are that -even as model capability continues to increase exponentially- there will be a lot done at the applied AI layer than just the the model itself, and much of the processes themselves will even need to change over time to get the full gains from automation. We may even need all new capabilities to be able to “test” knowledge work over time as we have had with software."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 给出了一个反直觉的分析框架：世界上最「难」的几类工作，数学、网络安全、写代码，反而会最先被自动化，原因恰恰是可验证。输出能客观检验，意味着训练模型时 reward 信号更清晰，模型跑起来之后也能规模化地验证结果。",
+              "反面是：客户会接受哪些法律条款、该跑什么营销战役、销售对象想听什么话、业务该定什么财务目标，这些都没有标准答案。它们依赖上下文、依赖决策者的判断和风险偏好，结果往往要等很久才能验证。",
+              "他的结论：即使模型能力继续指数级上升，应用层依然有大量活要干，甚至很多流程本身要跟着变，才能吃满自动化的红利。我们可能还需要发明全新的能力，像当年测试软件那样去「测试」知识工作。"
+            ],
+            "original": [
+              "我们将面对一个奇怪的动态：世界上一些「最难」的工作，反而会最先被自动化，主要就是因为它们的可验证性。\n\n数学、网络安全和代码，虽然都是极难且高价值的领域，但有一个好处：可以客观检验它们是否正确。这带来两个直接好处：训练模型时 reward 信号更清晰；模型运行后，你可以规模化地测试结果，确认它是否正常工作。\n\n相反，其他工作领域几乎没有即时可验证性。客户会接受哪些法律条款、根据变化的情绪该跑什么营销战役、销售对象想听什么话、公司该定什么财务目标和预算，诸如此类。\n\n这些领域有各种变化的内外因素，没有「唯一正确答案」，依赖操作者的判断和风险偏好，对先拿到正确输入上下文极其敏感，而且很多时候，模型给出结果后很久都无法知道正确答案。\n\n这个区分的含义是：即使模型能力继续指数级提升，应用层依然有大量事情要做，而不仅仅是模型本身；很多流程本身也需要随时间改变，才能从自动化中拿到全部收益。我们甚至可能需要全新的能力，像当年拥有软件测试那样，去「测试」知识工作。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:danshipper",
+          "sourceUrl": "https://x.com/danshipper/status/2084038453831020916",
+          "en": {
+            "rewrite": [
+              "Dan Shipper, CEO of Every, writes about what it feels like when a model takes over a task that used to require you at every step: 'a gigantic agency rupture... you are no longer required, and you had no say in the matter. It's a kind of death.'",
+              "His three-phase pattern: first you see only the AI ('AI solved the problem'); then you see the human scaffolding around it ('my job is just to babysit Claude'); finally you reconstruct agency and say 'I did this' while the AI becomes invisible, a tool that fast-forwards the boring parts.",
+              "His theory: the ability to metabolize these ruptures into playfulness and curiosity is the leading indicator for who thrives in the new AI economy. He adds a philosophical coda: if ought implies can and technology reshapes human abilities, then technology reshapes our moral intuitions too."
+            ],
+            "original": [
+              "when you experience a language model doing a task that used to require you at every step and now doesn't, it's a gigantic agency rupture. \n\nwe tend to equate ourselves with our tasks, our outputs, and a rupture of this kind is akin to the loss of your identity and sense of self. \n\nyou are no longer required, and you had no say in the matter. it's a kind of death.\n\nhowever, agency ruptures with AI seem to follow a predictable pattern:\n\n- Initial agency rupture. Here you see the AI doing what you used to do, and you see only the AI. In your perception of reality the AI is highlighted, and the human work around getting the AI to do the thing, is invisible. you can see this in the way we use language: \"AI solved XYZ Erdos Problem\" is another way to say we're in the initial rupture phase.\n\n- Seeing human scaffolding. After a little bit of experience with the model and its new capibility—programming, writing, math, etc—we start to see the edges of what's possible with the model. Here, instead of just seeing the AI doing the task, we start to see the scaffolding required by you and other humans on either end to make sure the model does its work. At this stage, the scaffolding can feel like a secondary part of the work, but it is work nonetheless. We begin to say things like, \"The AI is prompting me\", or \"My job is just to babysit Claude.\" \n\n- Agency reconstruction. After a long enough time with the model at its current level of capability, we start to reconstruct a new sense of agency that centers our own role in the work being done, and makes the model's contribution mostly invisible. It is now a tool, it fast-forwards you through the boring or repetitive parts of the work, and what used to seem like scaffolding now seems like the actual work itself—the interesting part. You've had enough experience with the scaffolding to see its nuances, and how hard it is to get the model to reliably output high quality work. (As part of this, your conception of what quality work is changes—the floor is raised, and so is the ceiling.)\n\nYou can tell you're at this point because you stop saying \"The AI did this\" and just say, \"I did this\" and the fact that you used AI is implied. For example, it would be weird for me to talk to someone @every and ask them if the AI built the most recent feature of a product. Of course it did! But we're so used to the capability that it becomes invisible, and we re-center ourselves and our own conception of agency.\n\nMy theory is that the ability to metabolize agency ruptures and turn them into playfulness, and curiosity is a good leading indicator for whether you're a person who likes and excels in the new AI economy or not.  \n\nEach time capabilities jump, you get new ruptures for existing fields touched by AI. And you get new ruptures for naive populations (like mathemeticians) who until recently hadn't been affected.\n\nif you know what the cycle looks like, it makes it much easier to ride it without freaking out. i think most people @every are naturally good at this",
+              "if ought implies can, and technology reshapes the field of human abilities—then technology reshapes oughts. \n\nwe should expect AI to fundamentally change our moral intuitions at the same time as it changes our abilities"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Every 的 CEO Dan Shipper 写了一篇关于「被 AI 取代的感觉」的文章：当模型接管一件曾经每一步都需要你的任务时，那是一次巨大的 agency rupture（能动性断裂）——「你不再被需要了，而且你毫无发言权。这是一种死亡。」",
+              "他总结了可预测的三阶段：第一阶段你只看见 AI（「AI 解决了某某问题」）；第二阶段你看见人类脚手架（「我的工作就是给 Claude 当保姆」）；第三阶段你重建能动性，改口说「这事是我做的」，AI 变得隐形，成了帮你快进无聊部分的工具。",
+              "他的判断：能否把这种断裂消化成好奇心和玩心，是判断一个人会不会在新 AI 经济里如鱼得水的领先指标。他还补了一条哲学推论：如果「应当蕴含能够」（ought implies can），而技术重塑了人类能力的边界，那么技术也在重塑我们的道德直觉。"
+            ],
+            "original": [
+              "当你看到一个语言模型在做一件曾经每一步都需要你的任务、而现在不需要了，那是一次巨大的能动性断裂。\n\n我们习惯把自己等同于任务和产出，这种断裂近似于失去身份和自我感。\n\n你不再被需要了，而且你毫无发言权。这是一种死亡。\n\n不过，AI 带来的能动性断裂似乎遵循一个可预测的模式：\n\n- 最初的断裂。你只看见 AI 在做你以前做的事。在你的感知里 AI 被高亮，而围绕它的人类工作完全隐形。看我们的语言就知道了：「AI 解决了某某 Erdős 问题」，其实就是说我们正处于最初的断裂阶段。\n\n- 看见人类脚手架。和模型相处一段时间后，我们开始看到模型的边界，开始看见你和另一端的人类为了让模型做好工作所需的脚手架。这时候脚手架感觉像是次要工作，但它确实是工作。我们开始说：「是 AI 在提示我」，或者「我的工作就是给 Claude 当保姆」。\n\n- 能动性重建。和当前能力水平的模型相处足够久之后，我们重建一种以自己为核心的能动性，模型的贡献基本隐形。它现在是工具，帮你快进无聊或重复的部分，曾经看起来像脚手架的东西，现在看起来才是真正的工作本身，也就是有趣的部分。（随之而来的是你对「高质量工作」的定义变了，地板抬高了，天花板也抬高了。）\n\n判断你是否走到这一步：你不再说「这是 AI 做的」，而是说「这是我做的」，用没用 AI 是不言自明的。比如我不会去问 @every 的人，产品最新功能是不是 AI 做的。当然是！但我们太习惯这种能力了，它变得隐形，我们重新把自己放回中心。\n\n我的理论是：能否把能动性断裂消化成玩心和好奇心，是判断一个人是否喜欢并擅长新 AI 经济的领先指标。\n\n每次能力跃迁，都会给已被 AI 触及的领域带来新的断裂，也会给直到最近还未受影响的群体（比如数学家）带来新的断裂。\n\n如果你知道这个周期长什么样，就更容易在不崩溃的前提下骑上它。我觉得 @every 的多数人天生就擅长这个。",
+              "如果「应当蕴含能够」，而技术重塑了人类能力的版图，那么技术就重塑了「应当」。\n\n我们应该预期，AI 在改变我们能力的同时，也会从根本上改变我们的道德直觉。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Frontier Lab / 寻找 Transformer 继任者",
+      "desc": "两位站在前沿实验室核心位置的研究者出来创业，第一站就是换掉 Transformer，并且把实验室本身做成自动化机器。",
+      "cards": [
+        {
+          "authorKey": "podcast:training-data",
+          "sourceUrl": "https://www.youtube.com/watch?v=2RJiaf0SY8s",
+          "authorName": "Jerry Tworek & Rohan Anil",
+          "authorTag": "Training Data Podcast",
+          "en": {
+            "rewrite": [
+              "Jerry Tworek, the former OpenAI VP who ran the Strawberry and reasoning teams, and Rohan Anil, one of Gemini's four pretraining leads who came from Google Brain and then Anthropic, have co-founded Core Automation, one of SF's hottest new labs. Their starting premise is deliberately contrarian: 'The first step to replacing transformers is appreciating deeply how far they were able to carry us.' Both pretraining and RL at scale have been 'mastered'; the bottleneck now is the architecture itself.",
+              "The deeper argument: models are trained in the lab but deployed in the real world, and benchmarks have converged with training data while real-world tasks stay messier. Jerry, who once predicted AGI by 2025, says scaling RL didn't solve real-world tasks. The answer, in his view, is models that learn at test time on users' data: in-context learning is too shallow (roughly 20 minutes of Codex usage before compaction), fine-tuning suffers catastrophic forgetting, so you need an architecture that can express learning itself.",
+              "The lab's operating bet is as interesting as the research: 'the most automated lab in the world,' where a small agent-heavy team runs experiment loops big labs can't. Rohan's six-month roadmap centers on automating kernel generation: their QR kernel competition with GPU Mode produced a kernel 60x faster than cuSOLVER, but it took the right human and $100K of coding agents to find. And Jerry's AGI bar is strict: 'a model that can improve itself without human in the loop in any way.'"
+            ],
+            "original": [
+              "The first step to replacing transformers is appreciating deeply how far they were able to carry us.",
+              "We got really, really good at training really, really big models. We mastered two algorithms. We mastered pre training at a large scale, and we mastered reinforcement learning at a large scale. And I'm asking myself a lot what is next in machine learning. And I think at this moment, what the bottleneck is to better models and to smarter systems is the architecture itself.",
+              "all the benchmarks that we are evaluating our models, they were essentially the same thing as we were training the models on. Like all the evals and training side tasks are the same sides of the coin, But the real world distribution and real world task is much messier, much murkier, much more much more different.",
+              "We are we are the the the human LLM hybrid is is really, really successful right now, but LLMs without humans, not so much. Not at all.",
+              "And for me, AGI is a model that can improve itself without human in the loop in any way.",
+              "We, like, go on a vacation as a team and see if the lab produces something better for the week. ... Extend extend the vacation two times and four times until we are on permanent vacation."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Jerry Tworek（前 OpenAI VP，主管过 Strawberry 和 reasoning 团队）和 Rohan Anil（Gemini 四大预训练负责人之一，出身 Google Brain，后来去了 Anthropic）共同创办了 Core Automation，旧金山当下最热的 neo lab 之一。他们的出发点刻意反共识：「替换 Transformer 的第一步，是深切体会它把我们带到了多远。」规模化预训练和 RL 都已经被「掌握」，瓶颈现在是架构本身。",
+              "更深的论证是：模型在实验室里训练、在真实世界里部署，而 benchmark 已经和训练数据同分布，真实任务却混乱得多。Jerry 说他 2024 年曾预测 AGI 在 2025 年到来，但规模化 RL 并没有解决真实世界任务。他的答案是让模型在 test time 学习、在用户数据上学习：in-context learning 太浅（用 Codex 大概 20 分钟就得压缩上下文），fine-tuning 逃不过灾难性遗忘，所以需要一个能在架构层表达「学习本身」的新算法。",
+              "实验室的运作方式本身也是一个赌注：做「全世界最自动化的实验室」，靠一个小而 agent 密集的团队跑出大实验室跑不动的实验循环。Rohan 的六个月路线图核心是自动化 kernel 生成：他们和 GPU Mode 合办的 QR kernel 竞赛找到了比 cuSOLVER 快 60 倍的 kernel，但那是全球大约三个人、花 10 万美元 coding agent 额度才做到的。Jerry 的 AGI 标准也很严格：「一个能在没有任何人类介入的情况下自我改进的模型」。"
+            ],
+            "original": [
+              "替换 Transformer 的第一步，是深切体会它把我们带到了多远。",
+              "我们已经非常擅长训练超大规模模型，掌握了两套算法：大规模预训练和大规模强化学习。我经常问自己，机器学习的下一个节点是什么。我认为此刻，通往更好模型和更智能系统的瓶颈，是架构本身。",
+              "我们用来评估模型的 benchmark，和我们训练模型用的任务本质上是一回事，就像同一枚硬币的两面。但真实世界的分布和任务要混乱得多、模糊得多、差异大得多。",
+              "我们是，我们是那个，人类与 LLM 的混合体现在非常非常成功，但脱离人类的 LLM，还远远不是那么回事。完全不是。",
+              "对我来说，AGI 是一个能在没有任何人类介入的情况下自我改进的模型。",
+              "我们整个团队去度假，看看实验室一周能不能自己产出更好的东西。……然后把假期延长两倍、四倍，直到永久放假。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Math & Chess / 数学与象棋的杰文斯悖论",
+      "desc": "AI 能解数学题、能下象棋了，但需求端的故事正好相反：对数学人才的需求在上升，而象棋的历史提示我们结局没那么简单。",
+      "cards": [
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2083977795290734975",
+          "en": {
+            "rewrite": [
+              "Thariq, who works on Claude Code at Anthropic, points out that the Jevons paradox is already visible in mathematics: more is happening, it's easier to understand, and mathematicians have more time to discuss it with the rest of us at higher abstraction levels.",
+              "His punchline is the opposite of the 'AI kills the mathematician' panic: 'demand for people who think and know about math will go up.' In a separate tweet he adds that there are lots of parallels to what happened with chess, a reference point that cuts both ways."
+            ],
+            "original": [
+              "you can already see Jevons paradox at work in mathematics\n\nthere is more happening, it is easier to understand and mathematicians have more time to discuss it with us at higher abstraction levels\n\ndemand for people who think and know about math will go up",
+              "i think there are lots of parallels to what happened with chess"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "在 Anthropic 做 Claude Code 的 Thariq 指出，杰文斯悖论（Jevons paradox）已经在数学领域显现：事情变得更多了、更好理解了，数学家也有了更多时间在更高的抽象层面和我们讨论。",
+              "他的结论和「AI 干掉数学家」的恐慌正好相反：「对会思考、懂数学的人的需求会上升。」他在另一条推文里补充说，这跟当年国际象棋界发生过的事有很多相似之处，而这个参照系其实好坏参半。"
+            ],
+            "original": [
+              "你已经在数学领域看到杰文斯悖论在起作用：\n\n发生的事更多了，更好理解了，数学家也有更多时间在更高的抽象层面和我们讨论。\n\n对会思考、懂数学的人的需求会上升。",
+              "我觉得这跟当年国际象棋发生的事有很多相似之处。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2083926395403821427",
+          "en": {
+            "rewrite": [
+              "Replit CEO Amjad Masad's LLM chess engine is now live on Lichess, autonomously playing real rated games against humans and bots, currently at 1253 Elo, and he notes it's playing three concurrent games at once.",
+              "That rating is nowhere near the best humans, but that's almost the point: an LLM-driven agent is grinding real rated games against real opponents on its own, the kind of persistent autonomous behavior benchmarks don't capture. Read next to Thariq's chess parallels: the history of computer chess says the ceiling is nowhere near."
+            ],
+            "original": [
+              "My LLM chess engine is now on LiChess autonomously playing real games against people and bots. \n\n1253 Elo: https://t.co/W3qp1Z1i7I https://t.co/WwPOjDggU1",
+              "You can watch the games live on the website. Mf is playing 3 concurrent games rn https://t.co/J1a4ij9J07"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Replit CEO Amjad Masad 的 LLM 国际象棋引擎已经上线 Lichess，正在自动和真人、bot 下真实有积分的对局，目前 1253 Elo，他提到它同一时间能同时下三盘。",
+              "跟人类顶级棋手比这个分数不高，但重点恰恰在这里：一个 LLM 驱动的 agent 在真实平台上自主地、持续地打有积分的对局，这种基准测试捕捉不到的持久自主行为，正在发生。把它和 Thariq 的象棋类比放在一起读：计算机象棋的历史提示我们，天花板还远得很。"
+            ],
+            "original": [
+              "我的 LLM 国际象棋引擎已经上线 Lichess，自动和真人及 bot 下真实对局。\n\n1253 Elo：https://t.co/W3qp1Z1i7I https://t.co/WwPOjDggU1",
+              "你可以在网站上实时观看对局。它现在正同时下三盘。https://t.co/J1a4ij9J07"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Vibes Capital & Craft / 情绪资本与手艺",
+      "desc": "一级市场的定价越来越像情绪，万亿巨头也按情绪摆动；另一边，builder 们还在聊手艺、slop 与好奇心。",
+      "cards": [
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2083873335998333227",
+          "en": {
+            "rewrite": [
+              "FPV Ventures partner Nikunj Kothari says VC has 'effectively fully become vibes capital': early-stage market reality is completely divorced from fundamentals, some rounds are insanely wild with nothing to show while sure-shot rounds struggle. Unlike most who expect a correction, he thinks this continues for at least 12-18 months (dry powder, AI tailwind). 'You gotta play the game on the field.'",
+              "Public markets are equally bananas: in the meme-stock era you'd see daily swings of more than 5 percent on small caps, but now trillion-dollar stocks swing that much on vibes and model releases, with Memory and the KOSPI index as recent examples. His long-run take: fundamentals still win, but in the short term, understand the vortex before dipping into capital markets."
+            ],
+            "original": [
+              "What a wild world we’re living through. I wrote about the Series A squeeze recently. Here’s what else I’m seeing from my seat on the investing side..\n\n1) VC has effectively fully become vibes capital. The market reality at the early-mid stage is completely divorced from fundamentals. I can go longer with even a resemblance of a straight face predict what happens to a company when they go to fund raise. \n\nSome rounds are insanely wild with nothing to show, some rounds that seem like a sure shot are struggling to raise the capital they need. If you’re the “in vogue sector”, you’ll be just fine. This has been happening for some while but it’s fully banana town now. And unlike most who think a correction happens I think this continues for 12-18 months (dry powder, AI tailwind) minimum. The most common phrase in VC land right now is “you gotta play the game on the field”. This is a spiral that continues to keep the volatility and prices high. \n\n2) Whereas on the public markets it’s also equally bananas. It used to be in the meme stock era that you’d see daily swings of >5% (+\\-). But now even trillion dollar stocks are not immune to swinging that much based on vibes and model releases. Memory and the KOSPI index are recent examples and this will happen to other sectors soon. Rotations are getting faster and faster.\n\nIn the long run, the same fundamentals of building a great company with control of your own destiny (profitable, clean cap table etc) will end up just working out fine. But in the short term, in this vortex of hyper competition where capital is needed as a weapon, you should make sure you understand what’s going on before you dip your toes in the capital markets. \n\nNo matter what it’ll be interesting to see how this shakes out when we look back in this era. Obligatory happy to chat if helpful!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "FPV Ventures 合伙人 Nikunj Kothari 说，VC 已经「彻底变成了情绪资本（vibes capital）」：早期市场的现实和基本面完全脱钩，有些什么成果都没有的轮次疯抢，有些看起来稳赢的轮次却融不到钱。和大多数等着回调的人不同，他认为这种情况至少还要持续 12 到 18 个月（干火药充足加上 AI 顺风）。VC 圈现在最常见的一句话是「你得下场玩这个游戏」，这个螺旋会继续推高波动和估值。",
+              "二级市场同样疯狂：meme 股时代小盘股单日波动超过 5% 就够吓人了，现在万亿市值的股票也会因为情绪和模型发布单日波动那么多，Memory 和韩国 KOSPI 指数就是最近的例子，轮动只会越来越快。他的长期判断是基本面最终会赢，但短期内，把钱投进资本市场之前，先搞清楚自己身处什么样的漩涡。"
+            ],
+            "original": [
+              "我们正活在一个疯狂的世界。我最近写了关于 Series A 挤兑的文章。以下是我坐在投资侧看到的其他东西：\n\n1) VC 已经彻底变成了情绪资本。早期到中期市场的现实与基本面完全脱钩。我甚至没法板着脸预测一家公司融资时会怎样。\n\n有些轮次什么都没有却疯狂火爆，有些看起来稳赢的轮次却在艰难凑钱。如果你处在「当红赛道」，你就没事。这种情况已经持续一阵子了，现在完全是香蕉镇（banana town）。和大多数认为会有回调的人不同，我认为这至少还会持续 12 到 18 个月（干火药充足，AI 顺风）。VC 圈现在最常见的话是「你得下场玩这个游戏」。这个螺旋会持续维持高波动和高价格。\n\n2) 二级市场同样疯狂。meme 股时代，你会看到单日超过 5% 的波动。但现在连万亿市值的股票都免不了因为情绪和模型发布而波动这么多。Memory 和 KOSPI 指数是最近的例子，其他板块很快也会这样。轮动越来越快。\n\n长期看，建造一家掌控自己命运的好公司（盈利、干净的 cap table 等）的基本面最终会胜出。但短期内，在这个资本即武器的超竞争漩涡里，下水资本市场之前，你应该先搞清楚发生了什么。\n\n无论如何，等我们回望这个时代，会很有意思。有需要随时可以聊！"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2083957110711386439",
+          "en": {
+            "rewrite": [
+              "Y Combinator CEO Garry Tan fires off three aphorisms that capture the current mood. On the paradox of abundance: 'The sense of wonder disappeared right at the moment the amount of wonder is going parabolic.'",
+              "On meritocracy and markets: 'Everyone mistakes the map for the territory. Meritocracy is that the territory matters more than the map. And in markets the outcome is the territory: did you make something people want?'",
+              "And the one that ties directly to Nikunj's market read: 'Growth is good. AI will create unimaginable economic growth and that is the best white pill.'"
+            ],
+            "original": [
+              "Growth is good\n\nAI will create unimaginable economic growth and that is the best white pill https://t.co/wdR7nHuWJD https://t.co/30xeF2N8hO",
+              "The sense of wonder disappeared right at the moment the amount of wonder is going parabolic https://t.co/p56UMAFiZq",
+              "Everyone mistakes the map for the territory\n\nMeritocracy is that the territory matters more than the map\n\nAnd in markets the outcome is the territory: did you make something people want? https://t.co/wOTHnKqk7Y"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Y Combinator CEO Garry Tan 今天的三条短推放在一起看，很像这个时代的三个注脚。关于丰裕的悖论：「在奇迹的量级进入抛物线的时刻，对奇迹的感受反而消失了。」",
+              "关于精英主义与市场：「所有人都把地图当成了领土。精英主义的本义是：领土比地图更重要。在市场上，结果就是领土，你做出人们想要的东西了吗？」",
+              "第三条正好接上 Nikunj 的市场观察：「增长是好事。AI 将创造难以想象的经济增长，而那是最好的白药丸（white pill）。」"
+            ],
+            "original": [
+              "增长是好事。\n\nAI 将创造难以想象的经济增长，而那是最好的白药丸。https://t.co/wdR7nHuWJD https://t.co/30xeF2N8hO",
+              "在奇迹的量级进入抛物线的时刻，对奇迹的感受反而消失了。https://t.co/p56UMAFiZq",
+              "所有人都把地图当成了领土。\n\n精英主义的本义是：领土比地图更重要。\n\n在市场上，结果就是领土：你做出人们想要的东西了吗？https://t.co/wOTHnKqk7Y"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2083968605432267139",
+          "en": {
+            "rewrite": [
+              "Peter Yang asks Karan, co-founder of Nous Research, how Hermes avoids 'slop' while building its own skills. The answer: Hermes Curator, a background task that runs inside the agent and cleans up skills and memory on a schedule, asking 'Where's the slop, and where can I make it more efficient?'",
+              "Because Hermes is open source, you can hand it your own definition of slop and it rewrites its own cleanup loop your way. A revealing detail on how self-improving agents keep themselves honest, plus his lighter reminder that 'personality matters: a smart friend that's annoying to talk to is no good.'"
+            ],
+            "original": [
+              "One of the biggest benefits of Hermes is that it builds its own skills to help you get work done.\n\nBut I had to ask @karan4d, @NousResearch co-founder: \"How does Hermes avoid slop while doing this?\"\n\nHere's his response:\n\n\"Hermes Curator [a background task] runs inside your agent and cleans up your skills and memory on a schedule, asking: Where's the slop, and where can I make it more efficient?\n\nAnd because it's open source, you can hand it your own definition of slop and it rewrites its own cleanup loop your way.\"\n\n📌 Watch the full episode here: https://t.co/3E7IC0TzNr",
+              "Personality matters! A smart friend that's annoying to talk to is no good. https://t.co/QMkhu1mSxl https://t.co/Kswxq1NiYs"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 问了 Nous Research 联合创始人 Karan 一个问题：Hermes 在给自己构建 skill 的时候，怎么避免产出 slop（垃圾内容）？答案：Hermes Curator，一个跑在 agent 内部的定时后台任务，定期清理 skill 和记忆，反复问自己：「slop 在哪？哪里还能更高效？」",
+              "因为 Hermes 是开源的，你可以把自己对 slop 的定义交给它，它就会按你的标准重写自己的清理循环。这是自我改进型 agent 如何保持自律的一个细节；他另一条推文也提醒：「性格很重要，一个聪明但聊天很烦的朋友，算不上好。」"
+            ],
+            "original": [
+              "Hermes 最大的好处之一是它会自己构建 skill 来帮你完成工作。\n\n但我得问 @karan4d（@NousResearch 联合创始人）：「Hermes 在这样做的时候怎么避免 slop？」\n\n他的回答：\n\n「Hermes Curator（一个后台任务）跑在你的 agent 里，定时清理 skill 和记忆，反复问：slop 在哪？哪里还能更高效？\n\n而且因为它是开源的，你可以把自己对 slop 的定义交给它，它会按你的方式重写自己的清理循环。」\n\n📌 完整视频在这里：https://t.co/3E7IC0TzNr",
+              "性格很重要！一个聪明但聊天很烦的朋友，算不上好。https://t.co/QMkhu1mSxl https://t.co/Kswxq1NiYs"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
