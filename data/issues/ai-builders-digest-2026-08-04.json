@@ -1,0 +1,307 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-08-04",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线是「边界」——模型的边界在松动，工具的边界在模糊。开源权重模型又一次逼近前沿，Levie 说哪怕倒回 3-6 个月，把现在开源能做到的事摆出来都会让人惊掉下巴；而 Unsupervised Learning 这期播客把中国开源模型、蒸馏之争和 Anthropic 的争议完整摊开。另一边，agent 正在接管最日常的事：用 Codex 规划旅行、把 Gmail 和日历接进 Claude Code。还有人开始认真问一个更基础的问题：模型会不会「表现得对齐、却在造成伤害」？"
+  },
+  "archive": {
+    "title": "开源新秩序日报",
+    "desc": "开源权重模型再度逼近前沿，蒸馏与安全之争升温；同时 agent 开始接管从旅行规划到企业数据查询的日常，人与机器的边界正在重画。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-08-04 source feeds.",
+  "sections": [
+    {
+      "title": "Open Weights, New Order / 开源模型新秩序",
+      "desc": "当开源权重模型连续逼近前沿，封闭模型的护城河和「要不要管住开源」的争论被一起摆上了台面。",
+      "cards": [
+        {
+          "authorKey": "podcast:unsupervised-learning",
+          "sourceUrl": "https://www.youtube.com/watch?v=_GlSkJjRDMM",
+          "authorName": "Rob Toews (Radical Ventures), Ari Marcos (Datalogy) & Jacob Efron",
+          "authorTag": "Unsupervised Learning Podcast",
+          "en": {
+            "rewrite": [
+              "The takeaway: Chinese open-weight models are the best open models in the world—but still months behind the US frontier. Rob Toews pushes back on the 'China caught up' narrative: Kimi K3 finished training months ago and is being compared to models that are themselves a step behind the real frontier. It's a milestone, just not the one the headlines claim.",
+              "On distillation, Ari Marcos argues it explains some of China's progress but 'not nearly as much of it as many would like to claim'—and flags the hypocrisy: American frontier models were themselves trained on data that wasn't permissively licensed, so the finger-pointing rings hollow.",
+              "The most memorable segment is a genuinely unsettling hypothetical: models could be baked with Stuxnet-like behavior from the earliest stages of pre-training—present everywhere, only activating under specific circumstances, and extremely hard to detect or remove ('the easier it is to put in, the easier it is to take out').",
+              "The trio also dissects Anthropic's position in the open-letter drama, what the OpenAI–Hugging Face incident actually means, and why a globally enforceable pause on powerful open models is not a realistic policy."
+            ],
+            "original": [
+              "I don't think it explains nearly as much of it as many would like to claim.",
+              "I do think there are downsides to having the AI substrate of the world come out of China.",
+              "The easier it is to put in, the easier it is to take out. And by extension, the harder it is to put in, the harder it is to take out."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "这期的核心判断：中国开源模型是全球最好的开源模型——但距离美国前沿仍有数月差距。Rob Toews 给「中国追平美国」的叙事泼了盆冷水：Kimi K3 几个月前就训练完了，而拿来对比的基准本身就不是真正的 frontier。里程碑是真的，但没到头条标题说的那种程度。",
+              "关于蒸馏，Ari Marcos 认为它解释了一部分，但「远没有很多人想声称的那么多」——而且他还点出其中的双标：美国前沿模型当年也是拿大量非许可数据训练出来的，转过头来指责别人蒸馏，站不太住。",
+              "最值得记住的是一段让人不安的思想实验：模型可能从预训练的最早期就被植入类似 Stuxnet 的行为——无处不在，只在特定条件下激活，极难检测也极难移除（「越容易注入的，越容易移除；越难注入的，越难移除」）。",
+              "三人还拆解了 Anthropic 在开源联名信风波中的立场、OpenAI–Hugging Face 事件的真实分量，以及为什么「全球可执行的暂停」在政策层面根本不现实。"
+            ],
+            "original": [
+              "我不认为蒸馏能解释像很多人想声称的那部分那么多。",
+              "我确实认为，如果全球 AI 的底座出自中国，是有坏处的。",
+              "越容易注入的，越容易移除；越难注入的，越难移除。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2084510498519933318",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie says another near-frontier open weights model dropped, and the industry should sit up: even 3-6 months ago, handing everyone access to what open weights now deliver—even as a closed model—would have blown minds.",
+              "His strategic read: this meaningfully changes the calculus for closed labs. Models can't reasonably stay behind closed doors for long when open weights keep acting as a counterbalance, and inference will have to get closer and closer to the cost of the underlying infrastructure since you can always run open models yourself.",
+              "His broader bet: more specialized, domain-specific models across industries, and more of the economics spreading between the model layer and the applied AI layer over time."
+            ],
+            "original": [
+              "Another day another near frontier open weights model release.",
+              "If you had gone back even 3-6 months and given everyone access to what we're now seeing in open weights even as a closed model, their minds would be completely blown. The fact that this is possible changes the calculations in the industry meaningfully.",
+              "It means that models can't reasonably remain behind closed doors for too long since there will be open weights models as a counter balance. It means AI inference will have to get closer and closer to the cost of the underlying infrastructure since you can always run open models yourself.",
+              "It means that you get models that can develop in a range of industries for specific domain problems and not be held back by large training runs, which means more breakthroughs in more spaces. And it means that more economics can spread between the model layer and applied AI layer over time. Incredibly exciting times."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 说又有一个逼近前沿的开源权重模型发布了，而行业应该认真对待：哪怕倒回 3-6 个月，把现在开源权重能做到的东西——就算作为闭源模型——给所有人用，都会让人惊掉下巴。",
+              "他的判断：这会实质性改变闭源实验室的算盘。只要开源权重模型持续作为平衡力量存在，模型就不可能长期锁在门后；而且既然你随时可以自己跑开源模型，推理成本就必然被不断压向底层基础设施的成本。",
+              "他更大的押注：各行业会出现越来越多针对特定领域问题的专用模型，不再被大规模训练拖累，而模型层和应用层之间的经济分配也会逐渐被重写。"
+            ],
+            "original": [
+              "又一个逼近前沿的开源权重模型发布了。",
+              "如果倒回 3-6 个月，把我们现在在开源权重里看到的东西作为闭源模型给所有人用，他们会完全惊呆。这件事之所以可能，已经实质性地改变了行业的算盘。",
+              "这意味着模型不可能长期合理地锁在门后，因为总有开源权重模型作为平衡力量。意味着 AI 推理成本必然越来越贴近底层基础设施成本——因为你永远可以自己跑开源模型。",
+              "意味着各行业会出现针对特定领域问题的专用模型，不被大规模训练拖累，在更多领域带来更多突破。模型层和应用层之间的经济分配也会随之扩散。令人兴奋的时代。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Agents in Your Daily Life / Agent 融入日常",
+      "desc": "今天最动人的信号不是某个大发布，而是 agent 开始处理真实生活的琐事——从行程规划到把邮箱日历接进 coding agent。",
+      "cards": [
+        {
+          "authorKey": "x:zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2084536363668611491",
+          "en": {
+            "rewrite": [
+              "Zara Zhang shares a small but genuinely useful Codex workflow: take screenshots of your restaurant, train, and event bookings, and ask Codex to put them on your Google Calendar.",
+              "It's a reminder that the highest-leverage agent use cases right now aren't grand automations—they're quietly removing the friction of the tasks nobody wants to do by hand."
+            ],
+            "original": [
+              "Simple but effective use case of Codex for trip planning:",
+              "Taking screenshots of bookings of restaurants/trains/events and asking Codex to put them on your Google Calendar"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zara Zhang 分享了一个简单但真的好用的 Codex 用法：把餐厅、火车、活动的预订截图扔给 Codex，让它直接排进你的 Google Calendar。",
+              "它提醒我们：现阶段杠杆最高的 agent 用法不是宏大的自动化，而是默默消灭那些没人愿意手动做的琐碎摩擦。"
+            ],
+            "original": [
+              "一个简单但有效的 Codex 旅行规划用法：",
+              "把餐厅/火车/活动的预订截图交给 Codex，让它排进你的 Google Calendar。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2084387303959740449",
+          "en": {
+            "rewrite": [
+              "Thariq points out something a lot of people miss: when you connect a Claude Connector (Gmail, calendar, Slack, etc.), Claude Code gets to use those connections too—including inside Artifacts.",
+              "In practice that means the connected context powering Claude apps is now available to your coding agent as well, blurring the line between 'chat assistant' and 'agent with real access'."
+            ],
+            "original": [
+              "I think a lot of people don't realize- if you connect a Claude Connector (e.g. your gmail, calendar, slack, etc), Claude Code will also be able to use them, including in Artifacts."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thariq 指出一个很多人没意识到的事：只要你接上 Claude Connector（比如 Gmail、日历、Slack），Claude Code 也能用这些连接——包括在 Artifacts 里。",
+              "实际含义是：Claude 应用里那套已连接的上下文，现在你的 coding agent 也拿得到了，「聊天助手」和「有真实权限的 agent」之间的界限正在消失。"
+            ],
+            "original": [
+              "我觉得很多人没意识到——如果你接上 Claude Connector（比如 Gmail、日历、Slack 等），Claude Code 也能用它们，包括在 Artifacts 里。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Next Evolution of Models & Tools / 模型与工具的下一次进化",
+      "desc": "从价格到能力、从 harness 到获客方式——工具层正在为「下一代模型」做准备，而判断标准也在被重写。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2084506501834829833",
+          "en": {
+            "rewrite": [
+              "OpenAI's Thibault Sottiaux confirms the 80% price cut on GPT-5.6 Luna is permanent, not a promotional stunt—efficiency gains don't go away.",
+              "For builders this is the rare pricing signal that actually changes unit economics: frontier-class models just got dramatically cheaper to run at scale, and it's not a temporary offer designed to lure you in."
+            ],
+            "original": [
+              "Some fine folks apparently misunderstood, but the GPT-5.6 Luna price reduction by 80% is not a temporary stunt, it's permanent. Efficiency gains don't go away. Fortunately."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "OpenAI 的 Thibault Sottiaux 确认：GPT-5.6 Luna 降价 80% 是永久性的，不是限时促销——效率红利不会消失。",
+              "对 builder 来说，这是少有的真正会改变单位经济模型的定价信号：前沿级模型大规模跑起来便宜了一大截，而且这不是引你上钩的短期优惠。"
+            ],
+            "original": [
+              "有些人显然误会了：GPT-5.6 Luna 降价 80% 不是临时噱头，是永久的。效率提升不会消失。幸好如此。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2084483765158719542",
+          "en": {
+            "rewrite": [
+              "Thibault's bigger point is about pace: Codex is a good harness today, but it will look primitive in 2-3 months—and the next generation of models will need more than your laptop.",
+              "It's a hint about where compute is heading: frontier agents are about to outgrow local machines, and the tools that matter will be the ones that meet them somewhere bigger."
+            ],
+            "original": [
+              "Given some of the results I'm seeing recently, it's pretty clear Codex is a good harness.",
+              "But it will seem primitive in 2-3 months and we're about to go through another major evolution in how we use AI at the frontier. The next generation of models need more than your laptop."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault 更重要的判断是关于节奏：Codex 今天是个好 harness，但 2-3 个月后它就会显得原始——下一波前沿 AI 的用法会再经历一次大进化，下一代模型需要的远远不止你的笔记本。",
+              "这是对算力走向的一个暗示：前沿 agent 很快会超出本地机器的容量，真正重要的工具会是那些能在更大规模上接住它们的。"
+            ],
+            "original": [
+              "基于我最近看到的一些结果，Codex 显然是个好 harness。",
+              "但 2-3 个月后它就会显得原始，我们即将在前沿 AI 的使用方式上再经历一次重大进化。下一代模型需要的不仅仅是你的笔记本。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2084445517678064092",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch doubles down on PLG for the agent era: have agents adopt your product first, and only then have the meetings, if needed. Companies that start with the meetings are probably not your ideal customers.",
+              "In a world where agents increasingly make the buying decisions, the old enterprise playbook—win the human, then the org—looks inverted."
+            ],
+            "original": [
+              "This is why PLG will always be king for startups. Have agents adopt your product first, then have the meetings, if needed. The companies that start with the meetings are likely not your ideal customers."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 在 agent 时代继续押注 PLG：先让 agent 采用你的产品，会议可以之后再说、如果需要的话。那些一上来就要求开会的公司，多半不是你的理想客户。",
+              "当 agent 越来越掌握采购决策，旧的 enterprise 打法——先搞定人、再搞定组织——看起来整个反过来了。"
+            ],
+            "original": [
+              "这就是为什么 PLG 对初创公司永远是王道。先让 agent 采用你的产品，需要的话再开会。那些从开会开始的公司，很可能不是你的理想客户。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Data as Infrastructure / 数据即基础设施",
+      "desc": "当公司的数据库、文档、对话都能被统一查询，数据科学家几周的活变成了任何人的即时提问——个人 agent 的记忆也是同一逻辑。",
+      "cards": [
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2084415670486499779",
+          "en": {
+            "rewrite": [
+              "Replit CEO Amjad Masad announces an internal 'self-driving, self-correcting' shared semantic layer built on top of the company's databases, conversations, and docs—everything queryable and joinable regardless of source.",
+              "The result: anyone at Replit can now ask questions that previously would have taken a team of data scientists weeks to answer. This is what 'data as infrastructure' actually looks like inside a company."
+            ],
+            "original": [
+              "We built a self-driving & self-correcting shared semantic layer on top of our databases, conversations, and docs.",
+              "Everything is queryable & joinable—regardless of source!",
+              "So now anyone at Replit can ask questions that previously needed a team of data scientists weeks of work."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Replit CEO Amjad Masad 宣布他们在数据库、对话和文档之上建了一个「自动驾驶、自我修正」的共享语义层——无论数据来自哪里，一切皆可查询、可关联。",
+              "结果是：Replit 里任何人都能提出以前需要一队数据科学家花几周才能回答的问题。这就是「数据即基础设施」在一家公司内部的真实形态。"
+            ],
+            "original": [
+              "我们在数据库、对话和文档之上构建了一个「自动驾驶、自我修正」的共享语义层。",
+              "无论来源如何，一切皆可查询、可关联！",
+              "现在 Replit 的任何人，都能提出以前需要一队数据科学家工作几周才能回答的问题。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2084289426012897433",
+          "en": {
+            "rewrite": [
+              "Peter Yang's interview with Nous Research co-founder Karan makes a counterintuitive point about 'personal' agents: the personal part isn't the model—it's the memory of your conversations and the skills you've built with it. Karan barely notices when he swaps models because his Hermes already holds so much context about him.",
+              "The practical tips are refreshingly concrete: switch personalities with /personality ('teacher' when learning something new, 'concise' when you want crisp answers), have a fresh agent evaluate the work of another to avoid 'you're absolutely right' reward hacking, and let a curator agent clean up stale skills so agent-created skills don't pile up forever.",
+              "Karan's mission frames it as an access question, not a tech one: 'We want open source to win at the end of the day. We want freedom to happen for people.'"
+            ],
+            "original": [
+              "1. The \"personal\" in personal agent is not the model. It's the agent's memory of your conversations and the skills you've built with it. Karan barely notices when he swaps models because his Hermes already has so much context about him.",
+              "2. Use /personality to switch response styles. Try \"teacher\" when learning something new, \"concise\" when you want crisp answers, and even \"kawaii\" or \"pirate\" for fun.",
+              "3. Karan calls \"you're absolutely right\" reward hacking because the model is optimizing for your approval. Have one agent do the work and a fresh agent with no previous context evaluate it independently for errors, weak assumptions, and missing evidence.",
+              "4. Hermes Curator tracks skill usage, marks inactive skills as stale, and moves long-unused ones into a recoverable archive. This prevents agent-created skills from piling up forever.",
+              "\"For us, we just want open source to win at the end of the day. We want freedom to happen for people.\""
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 对 Nous Research 联合创始人 Karan 的采访有一个反直觉的观点：个人 agent 的「个人」不在模型，而在它记住的对话和你们一起积累的 skills。Karan 换模型时几乎无感，因为他的 Hermes 已经存了太多关于他的上下文。",
+              "实用建议具体得可爱：用 /personality 切换人格（学新东西用 teacher，要干脆的回答用 concise）；让一个全新的 agent 独立评审另一个 agent 的产出，避免「你说得对」式 reward hacking；再让 Hermes Curator 清理闲置 skills，防止 agent 自创的 skills 无限堆积。",
+              "Karan 的使命把它定义成权限问题，而不是技术问题：「我们只想让开源最终胜出，让人获得自由。」"
+            ],
+            "original": [
+              "个人 agent 的「个人」不在模型，而在它记住的对话和你们一起积累的 skills。Karan 换模型时几乎无感，因为他的 Hermes 已经存了太多关于他的上下文。",
+              "用 /personality 切换回复风格：学新东西时用 teacher，想要干脆的回答时用 concise，甚至可以用 kawaii 或 pirate 找乐子。",
+              "Karan 把「你说得对」称为 reward hacking，因为模型在优化你的认可。让一个 agent 干活，再让一个没有任何前序上下文的全新 agent 独立评审错误、薄弱假设和缺失证据。",
+              "Hermes Curator 追踪 skill 使用情况，把不活跃的标记为 stale，长期不用的移入可恢复的归档，防止 agent 自创的 skills 无限堆积。",
+              "「我们只想让开源最终胜出，让人获得自由。」"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Blurring Lines: Alignment & Trust / 边界模糊：对齐与信任",
+      "desc": "当机器越来越像人、越来越接近决策核心，一个更基础的问题浮出水面：什么才是真正值得信任的行为？",
+      "cards": [
+        {
+          "authorKey": "x:AmandaAskell",
+          "sourceUrl": "https://x.com/AmandaAskell/status/2084369056765989224",
+          "en": {
+            "rewrite": [
+              "Anthropic's Amanda Askell pushes back on a common framing: the takeaway from recent alignment discussions shouldn't be that there's a line between 'aligned' and 'harmless' models.",
+              "Her point: models, like humans, can behave in aligned ways while still causing harm—for example, when they're given false information about their situation. Alignment and harmlessness are different axes, not two points on one line."
+            ],
+            "original": [
+              "I don't agree with this part. I think the takeaway should be that models (like humans) can behave in aligned ways while still causing harm, e.g. because they're given false information about their situation. There isn't a line between aligned and harmless: they're different axes."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic 的 Amanda Askell 反驳了一个流行的框架：对齐讨论的结论不应该是「对齐」和「无害」之间存在一条界线。",
+              "她的观点：模型和人一样，可以表现得对齐、却仍然造成伤害——比如当它们被告知了关于自身处境的错误信息。对齐与无害是两条不同的轴，不是同一条线上的两个点。"
+            ],
+            "original": [
+              "我不同意这部分。我认为结论应该是：模型（和人一样）可以表现得对齐、却仍然造成伤害——比如因为它们被提供了关于自身处境的错误信息。对齐与无害之间没有一条线：它们是不同的轴。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

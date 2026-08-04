@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Builders Digest · 2026-08-04</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f6f3ed;
+    --accent: #c0392b;
+    --accent-light: #e8d5c4;
+    --border: #d4cdc0;
+    --muted: #7a7265;
+    --tag-bg: #e8e2d6;
+    --en-bg: #ffffff;
+    --cn-bg: #faf7f2;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.7;
+  }
+
+  .masthead, .intro, .section-header, .feed, footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .masthead { padding-top: 48px; }
+  .masthead-rule { border: none; border-top: 3px solid var(--ink); margin: 0 0 12px; }
+  .masthead-inner { display: flex; justify-content: center; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .masthead-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; letter-spacing: -0.4px; }
+  .masthead-subtitle { margin-top: 8px; padding-bottom: 10px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  .edition-strip {
+    position: relative;
+    margin-top: 8px;
+    min-height: 46px;
+    padding: 10px 132px 12px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.34);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+
+  .edition-strip .edition-sep { margin: 0 8px; color: #b8ae9f; }
+  .edition-strip-text { display: block; }
+  .edition-return-link { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; padding: 6px 10px; border: 1px dashed rgba(192, 57, 43, 0.55); border-radius: 999px; color: var(--accent); text-decoration: none; font-size: 12px; line-height: 1; letter-spacing: 0.06em; background: rgba(255, 255, 255, 0.45); transition: background 160ms ease, border-color 160ms ease, transform 160ms ease; }
+  .edition-return-link:hover, .edition-return-link:focus-visible { background: rgba(255, 255, 255, 0.82); border-color: var(--accent); transform: translateY(-50%) translateX(-1px); }
+  .edition-return-link:focus-visible { outline: none; }
+  .intro { padding-top: 22px; }
+  .intro-inner { max-width: 920px; margin: 0 auto; padding: 0 0 0 18px; border-left: 3px solid #d9cdbc; }
+  .intro-kicker { margin: 0 0 8px; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+  .intro p { margin: 0; max-width: none; color: var(--muted); font-size: clamp(15px, 1.6vw, 16px); line-height: 1.9; text-wrap: pretty; font-family: 'Noto Serif SC', serif; overflow-wrap: anywhere; }
+
+  .section-header { margin-top: 40px; }
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 4px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 24px; margin: 0 0 6px; }
+  .section-desc { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+
+  .feed { display: flex; flex-direction: column; gap: 20px; }
+  .card { background: var(--en-bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .card-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid #eee7dd; flex-wrap: wrap; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .avatar-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .avatar.is-fallback img { display: none; }
+  .avatar.is-fallback .avatar-fallback { display: flex; }
+
+  .author-info { flex: 1; min-width: 160px; }
+  .author-name { font-weight: 600; font-size: 15px; }
+  .author-name-row { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .author-handle { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+  .author-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; background: var(--tag-bg); color: var(--muted); padding: 4px 8px; border-radius: 999px; }
+  .author-tag.is-inline { padding: 3px 8px; }
+
+  .card-controls { margin-left: auto; display: inline-flex; gap: 8px; }
+  .view-toggle { border: 1px solid var(--border); background: transparent; color: var(--muted); padding: 6px 10px; border-radius: 999px; font-size: 12px; line-height: 1; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; }
+  .view-toggle.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .card-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .lang-col { padding: 18px 20px 22px; }
+  .lang-col.cn { background: var(--cn-bg); border-right: 1px solid #f0ece4; font-family: 'Noto Serif SC', serif; }
+  .lang-col.en { background: var(--en-bg); }
+  .lang-label { margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+  .content-shell { position: relative; transition: height 220ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .content-variant { position: absolute; inset: 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(4px); transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms; will-change: opacity, transform; }
+  .content-variant.is-active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s; }
+  .content-variant p, .content-variant li { margin: 0 0 12px; font-size: 14px; }
+  .content-variant ol { margin: 0 0 12px 20px; padding: 0; }
+  .inline-code { display: inline-block; font-family: 'IBM Plex Mono', monospace; background: #f4efe7; padding: 3px 6px; border-radius: 6px; margin-bottom: 8px; }
+
+  .card-footer { padding: 12px 20px 16px; border-top: 1px solid #eee7dd; background: #fcfaf6; }
+  .card-footer { display: flex; align-items: center; justify-content: space-between; }
+.card-footer a { color: var(--accent); text-decoration: none; font-size: 14px; }
+.eureka-btn { border: 1px dashed var(--accent); background: transparent; color: var(--accent); padding: 5px 12px; border-radius: 999px; font-size: 12px; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; opacity: 0.55; }
+.eureka-btn:hover { background: var(--accent); color: #fff; opacity: 1; border-style: solid; }
+.eureka-btn:active { transform: scale(0.96); }
+.eureka-toast { position: fixed; bottom: 32px; right: 32px; background: #1a1a1a; color: #fff; padding: 12px 20px; border-radius: 10px; font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 9999; opacity: 0; transform: translateY(12px); transition: opacity 240ms ease, transform 240ms ease; pointer-events: none; }
+.eureka-toast.show { opacity: 1; transform: translateY(0); }
+  footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 680px) {
+    .masthead-inner { align-items: center; }
+    .edition-strip { padding-right: 12px; padding-left: 12px; }
+    .edition-strip-text { padding-right: 0; }
+    .edition-return-link { position: static; transform: none; margin-top: 8px; font-size: 11px; }
+    .card-controls { margin-left: 0; }
+    .card-body { grid-template-columns: 1fr; }
+    .lang-col.cn { border-right: none; border-bottom: 1px solid #f0ece4; }
+    .edition-strip .edition-sep { margin: 0 5px; }
+    .intro-inner { padding-left: 14px; }
+    .intro p { line-height: 1.84; }
+  }
+</style>
+</head>
+<body data-publish-date="2026-08-04" data-issue-number="45" data-edition-name="双语精选版" data-view-label-rewrite="速读" data-view-label-original="原文" data-author-identities-path="/Users/jianan/.follow-builders/assets/author-identities.json" data-avatar-manifest-path="/Users/jianan/.follow-builders/assets/avatar-manifest.json">
+  <header class="masthead">
+    <hr class="masthead-rule">
+    <div class="masthead-inner">
+      <div class="masthead-title">AI Builders Digest</div>
+    </div>
+    <div class="masthead-subtitle">Bilingual edition · 双语对照版</div>
+    <div class="edition-strip">
+      <span class="edition-strip-text" id="edition-strip-text">第 45 期｜2026-08-04｜双语精选版｜10 条精选｜9 位作者｜5 个主题</span>
+      <a class="edition-return-link" href="../index.html">返回目录</a>
+    </div>
+  </header>
+
+  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="今天的主线是「边界」——模型的边界在松动，工具的边界在模糊。开源权重模型又一次逼近前沿，Levie 说哪怕倒回 3-6 个月，把现在开源能做到的事摆出来都会让人惊掉下巴；而 Unsupervised Learning 这期播客把中国开源模型、蒸馏之争和 Anthropic 的争议完整摊开。另一边，agent 正在接管最日常的事：用 Codex 规划旅行、把 Gmail 和日历接进 Claude Code。还有人开始认真问一个更基础的问题：模型会不会「表现得对齐、却在造成伤害」？">
+    <div class="intro-inner">
+      <div class="intro-kicker">编者导语 / Editor&#39;s Note</div>
+      <p class="intro-copy">今天的主线是「边界」——模型的边界在松动，工具的边界在模糊。开源权重模型又一次逼近前沿，Levie 说哪怕倒回 3-6 个月，把现在开源能做到的事摆出来都会让人惊掉下巴；而 Unsupervised Learning 这期播客把中国开源模型、蒸馏之争和 Anthropic 的争议完整摊开。另一边，agent 正在接管最日常的事：用 Codex 规划旅行、把 Gmail 和日历接进 Claude Code。还有人开始认真问一个更基础的问题：模型会不会「表现得对齐、却在造成伤害」？</p>
+    </div>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 01</div>
+    <h2 class="section-title">Open Weights, New Order / 开源模型新秩序</h2>
+    <p class="section-desc">当开源权重模型连续逼近前沿，封闭模型的护城河和「要不要管住开源」的争论被一起摆上了台面。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="podcast:unsupervised-learning" data-author-name="Unsupervised Learning" data-author-tag="Unsupervised Learning Podcast" data-author-handle="" data-author-avatar="../assets/avatars/podcast-unsupervised-learning.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/podcast-unsupervised-learning.jpg" alt="Unsupervised Learning avatar"><span class="avatar-fallback">UL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Unsupervised Learning</div>
+            <div class="author-tag is-inline">Unsupervised Learning Podcast</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>这期的核心判断：中国开源模型是全球最好的开源模型——但距离美国前沿仍有数月差距。Rob Toews 给「中国追平美国」的叙事泼了盆冷水：Kimi K3 几个月前就训练完了，而拿来对比的基准本身就不是真正的 frontier。里程碑是真的，但没到头条标题说的那种程度。</p>
+              <p>关于蒸馏，Ari Marcos 认为它解释了一部分，但「远没有很多人想声称的那么多」——而且他还点出其中的双标：美国前沿模型当年也是拿大量非许可数据训练出来的，转过头来指责别人蒸馏，站不太住。</p>
+              <p>最值得记住的是一段让人不安的思想实验：模型可能从预训练的最早期就被植入类似 Stuxnet 的行为——无处不在，只在特定条件下激活，极难检测也极难移除（「越容易注入的，越容易移除；越难注入的，越难移除」）。</p>
+              <p>三人还拆解了 Anthropic 在开源联名信风波中的立场、OpenAI–Hugging Face 事件的真实分量，以及为什么「全球可执行的暂停」在政策层面根本不现实。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>我不认为蒸馏能解释像很多人想声称的那部分那么多。</p>
+              <p>我确实认为，如果全球 AI 的底座出自中国，是有坏处的。</p>
+              <p>越容易注入的，越容易移除；越难注入的，越难移除。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>The takeaway: Chinese open-weight models are the best open models in the world—but still months behind the US frontier. Rob Toews pushes back on the &#39;China caught up&#39; narrative: Kimi K3 finished training months ago and is being compared to models that are themselves a step behind the real frontier. It&#39;s a milestone, just not the one the headlines claim.</p>
+              <p>On distillation, Ari Marcos argues it explains some of China&#39;s progress but &#39;not nearly as much of it as many would like to claim&#39;—and flags the hypocrisy: American frontier models were themselves trained on data that wasn&#39;t permissively licensed, so the finger-pointing rings hollow.</p>
+              <p>The most memorable segment is a genuinely unsettling hypothetical: models could be baked with Stuxnet-like behavior from the earliest stages of pre-training—present everywhere, only activating under specific circumstances, and extremely hard to detect or remove (&#39;the easier it is to put in, the easier it is to take out&#39;).</p>
+              <p>The trio also dissects Anthropic&#39;s position in the open-letter drama, what the OpenAI–Hugging Face incident actually means, and why a globally enforceable pause on powerful open models is not a realistic policy.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I don&#39;t think it explains nearly as much of it as many would like to claim.</p>
+              <p>I do think there are downsides to having the AI substrate of the world come out of China.</p>
+              <p>The easier it is to put in, the easier it is to take out. And by extension, the harder it is to put in, the harder it is to take out.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://www.youtube.com/watch?v=_GlSkJjRDMM" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="Unsupervised Learning" data-url="https://www.youtube.com/watch?v=_GlSkJjRDMM" data-author="Unsupervised Learning">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="x:levie" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Box CEO Aaron Levie 说又有一个逼近前沿的开源权重模型发布了，而行业应该认真对待：哪怕倒回 3-6 个月，把现在开源权重能做到的东西——就算作为闭源模型——给所有人用，都会让人惊掉下巴。</p>
+              <p>他的判断：这会实质性改变闭源实验室的算盘。只要开源权重模型持续作为平衡力量存在，模型就不可能长期锁在门后；而且既然你随时可以自己跑开源模型，推理成本就必然被不断压向底层基础设施的成本。</p>
+              <p>他更大的押注：各行业会出现越来越多针对特定领域问题的专用模型，不再被大规模训练拖累，而模型层和应用层之间的经济分配也会逐渐被重写。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>又一个逼近前沿的开源权重模型发布了。</p>
+              <p>如果倒回 3-6 个月，把我们现在在开源权重里看到的东西作为闭源模型给所有人用，他们会完全惊呆。这件事之所以可能，已经实质性地改变了行业的算盘。</p>
+              <p>这意味着模型不可能长期合理地锁在门后，因为总有开源权重模型作为平衡力量。意味着 AI 推理成本必然越来越贴近底层基础设施成本——因为你永远可以自己跑开源模型。</p>
+              <p>意味着各行业会出现针对特定领域问题的专用模型，不被大规模训练拖累，在更多领域带来更多突破。模型层和应用层之间的经济分配也会随之扩散。令人兴奋的时代。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Box CEO Aaron Levie says another near-frontier open weights model dropped, and the industry should sit up: even 3-6 months ago, handing everyone access to what open weights now deliver—even as a closed model—would have blown minds.</p>
+              <p>His strategic read: this meaningfully changes the calculus for closed labs. Models can&#39;t reasonably stay behind closed doors for long when open weights keep acting as a counterbalance, and inference will have to get closer and closer to the cost of the underlying infrastructure since you can always run open models yourself.</p>
+              <p>His broader bet: more specialized, domain-specific models across industries, and more of the economics spreading between the model layer and the applied AI layer over time.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Another day another near frontier open weights model release.</p>
+              <p>If you had gone back even 3-6 months and given everyone access to what we&#39;re now seeing in open weights even as a closed model, their minds would be completely blown. The fact that this is possible changes the calculations in the industry meaningfully.</p>
+              <p>It means that models can&#39;t reasonably remain behind closed doors for too long since there will be open weights models as a counter balance. It means AI inference will have to get closer and closer to the cost of the underlying infrastructure since you can always run open models yourself.</p>
+              <p>It means that you get models that can develop in a range of industries for specific domain problems and not be held back by large training runs, which means more breakthroughs in more spaces. And it means that more economics can spread between the model layer and applied AI layer over time. Incredibly exciting times.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/levie/status/2084510498519933318" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/levie/status/2084510498519933318" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 02</div>
+    <h2 class="section-title">Agents in Your Daily Life / Agent 融入日常</h2>
+    <p class="section-desc">今天最动人的信号不是某个大发布，而是 agent 开始处理真实生活的琐事——从行程规划到把邮箱日历接进 coding agent。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:zarazhangrui" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zara Zhang 分享了一个简单但真的好用的 Codex 用法：把餐厅、火车、活动的预订截图扔给 Codex，让它直接排进你的 Google Calendar。</p>
+              <p>它提醒我们：现阶段杠杆最高的 agent 用法不是宏大的自动化，而是默默消灭那些没人愿意手动做的琐碎摩擦。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>一个简单但有效的 Codex 旅行规划用法：</p>
+              <p>把餐厅/火车/活动的预订截图交给 Codex，让它排进你的 Google Calendar。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zara Zhang shares a small but genuinely useful Codex workflow: take screenshots of your restaurant, train, and event bookings, and ask Codex to put them on your Google Calendar.</p>
+              <p>It&#39;s a reminder that the highest-leverage agent use cases right now aren&#39;t grand automations—they&#39;re quietly removing the friction of the tasks nobody wants to do by hand.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Simple but effective use case of Codex for trip planning:</p>
+              <p>Taking screenshots of bookings of restaurants/trains/events and asking Codex to put them on your Google Calendar</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/zarazhangrui/status/2084536363668611491" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/zarazhangrui/status/2084536363668611491" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="x:trq212" data-author-name="Thariq" data-author-tag="" data-author-handle="@trq212" data-author-avatar="../assets/avatars/x-trq212.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-trq212.jpg" alt="Thariq avatar"><span class="avatar-fallback">T</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Thariq</div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle">@trq212</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thariq 指出一个很多人没意识到的事：只要你接上 Claude Connector（比如 Gmail、日历、Slack），Claude Code 也能用这些连接——包括在 Artifacts 里。</p>
+              <p>实际含义是：Claude 应用里那套已连接的上下文，现在你的 coding agent 也拿得到了，「聊天助手」和「有真实权限的 agent」之间的界限正在消失。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>我觉得很多人没意识到——如果你接上 Claude Connector（比如 Gmail、日历、Slack 等），Claude Code 也能用它们，包括在 Artifacts 里。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thariq points out something a lot of people miss: when you connect a Claude Connector (Gmail, calendar, Slack, etc.), Claude Code gets to use those connections too—including inside Artifacts.</p>
+              <p>In practice that means the connected context powering Claude apps is now available to your coding agent as well, blurring the line between &#39;chat assistant&#39; and &#39;agent with real access&#39;.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I think a lot of people don&#39;t realize- if you connect a Claude Connector (e.g. your gmail, calendar, slack, etc), Claude Code will also be able to use them, including in Artifacts.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/trq212/status/2084387303959740449" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="Thariq" data-url="https://x.com/trq212/status/2084387303959740449" data-author="Thariq">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 03</div>
+    <h2 class="section-title">The Next Evolution of Models &amp; Tools / 模型与工具的下一次进化</h2>
+    <p class="section-desc">从价格到能力、从 harness 到获客方式——工具层正在为「下一代模型」做准备，而判断标准也在被重写。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:thsottiaux" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>OpenAI 的 Thibault Sottiaux 确认：GPT-5.6 Luna 降价 80% 是永久性的，不是限时促销——效率红利不会消失。</p>
+              <p>对 builder 来说，这是少有的真正会改变单位经济模型的定价信号：前沿级模型大规模跑起来便宜了一大截，而且这不是引你上钩的短期优惠。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>有些人显然误会了：GPT-5.6 Luna 降价 80% 不是临时噱头，是永久的。效率提升不会消失。幸好如此。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>OpenAI&#39;s Thibault Sottiaux confirms the 80% price cut on GPT-5.6 Luna is permanent, not a promotional stunt—efficiency gains don&#39;t go away.</p>
+              <p>For builders this is the rare pricing signal that actually changes unit economics: frontier-class models just got dramatically cheaper to run at scale, and it&#39;s not a temporary offer designed to lure you in.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Some fine folks apparently misunderstood, but the GPT-5.6 Luna price reduction by 80% is not a temporary stunt, it&#39;s permanent. Efficiency gains don&#39;t go away. Fortunately.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/thsottiaux/status/2084506501834829833" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/thsottiaux/status/2084506501834829833" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="x:thsottiaux" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thibault 更重要的判断是关于节奏：Codex 今天是个好 harness，但 2-3 个月后它就会显得原始——下一波前沿 AI 的用法会再经历一次大进化，下一代模型需要的远远不止你的笔记本。</p>
+              <p>这是对算力走向的一个暗示：前沿 agent 很快会超出本地机器的容量，真正重要的工具会是那些能在更大规模上接住它们的。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>基于我最近看到的一些结果，Codex 显然是个好 harness。</p>
+              <p>但 2-3 个月后它就会显得原始，我们即将在前沿 AI 的使用方式上再经历一次重大进化。下一代模型需要的不仅仅是你的笔记本。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thibault&#39;s bigger point is about pace: Codex is a good harness today, but it will look primitive in 2-3 months—and the next generation of models will need more than your laptop.</p>
+              <p>It&#39;s a hint about where compute is heading: frontier agents are about to outgrow local machines, and the tools that matter will be the ones that meet them somewhere bigger.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Given some of the results I&#39;m seeing recently, it&#39;s pretty clear Codex is a good harness.</p>
+              <p>But it will seem primitive in 2-3 months and we&#39;re about to go through another major evolution in how we use AI at the frontier. The next generation of models need more than your laptop.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/thsottiaux/status/2084483765158719542" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/thsottiaux/status/2084483765158719542" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="x:rauchg" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Vercel CEO Guillermo Rauch 在 agent 时代继续押注 PLG：先让 agent 采用你的产品，会议可以之后再说、如果需要的话。那些一上来就要求开会的公司，多半不是你的理想客户。</p>
+              <p>当 agent 越来越掌握采购决策，旧的 enterprise 打法——先搞定人、再搞定组织——看起来整个反过来了。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>这就是为什么 PLG 对初创公司永远是王道。先让 agent 采用你的产品，需要的话再开会。那些从开会开始的公司，很可能不是你的理想客户。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Vercel CEO Guillermo Rauch doubles down on PLG for the agent era: have agents adopt your product first, and only then have the meetings, if needed. Companies that start with the meetings are probably not your ideal customers.</p>
+              <p>In a world where agents increasingly make the buying decisions, the old enterprise playbook—win the human, then the org—looks inverted.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>This is why PLG will always be king for startups. Have agents adopt your product first, then have the meetings, if needed. The companies that start with the meetings are likely not your ideal customers.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/rauchg/status/2084445517678064092" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/rauchg/status/2084445517678064092" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 04</div>
+    <h2 class="section-title">Data as Infrastructure / 数据即基础设施</h2>
+    <p class="section-desc">当公司的数据库、文档、对话都能被统一查询，数据科学家几周的活变成了任何人的即时提问——个人 agent 的记忆也是同一逻辑。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:amasad" data-author-name="Amjad Masad" data-author-tag="" data-author-handle="@amasad" data-author-avatar="../assets/avatars/x-amasad.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-amasad.jpg" alt="Amjad Masad avatar"><span class="avatar-fallback">AM</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Amjad Masad</div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle">@amasad</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Replit CEO Amjad Masad 宣布他们在数据库、对话和文档之上建了一个「自动驾驶、自我修正」的共享语义层——无论数据来自哪里，一切皆可查询、可关联。</p>
+              <p>结果是：Replit 里任何人都能提出以前需要一队数据科学家花几周才能回答的问题。这就是「数据即基础设施」在一家公司内部的真实形态。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>我们在数据库、对话和文档之上构建了一个「自动驾驶、自我修正」的共享语义层。</p>
+              <p>无论来源如何，一切皆可查询、可关联！</p>
+              <p>现在 Replit 的任何人，都能提出以前需要一队数据科学家工作几周才能回答的问题。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Replit CEO Amjad Masad announces an internal &#39;self-driving, self-correcting&#39; shared semantic layer built on top of the company&#39;s databases, conversations, and docs—everything queryable and joinable regardless of source.</p>
+              <p>The result: anyone at Replit can now ask questions that previously would have taken a team of data scientists weeks to answer. This is what &#39;data as infrastructure&#39; actually looks like inside a company.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>We built a self-driving &amp; self-correcting shared semantic layer on top of our databases, conversations, and docs.</p>
+              <p>Everything is queryable &amp; joinable—regardless of source!</p>
+              <p>So now anyone at Replit can ask questions that previously needed a team of data scientists weeks of work.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/amasad/status/2084415670486499779" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="Amjad Masad" data-url="https://x.com/amasad/status/2084415670486499779" data-author="Amjad Masad">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="x:petergyang" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang 对 Nous Research 联合创始人 Karan 的采访有一个反直觉的观点：个人 agent 的「个人」不在模型，而在它记住的对话和你们一起积累的 skills。Karan 换模型时几乎无感，因为他的 Hermes 已经存了太多关于他的上下文。</p>
+              <p>实用建议具体得可爱：用 /personality 切换人格（学新东西用 teacher，要干脆的回答用 concise）；让一个全新的 agent 独立评审另一个 agent 的产出，避免「你说得对」式 reward hacking；再让 Hermes Curator 清理闲置 skills，防止 agent 自创的 skills 无限堆积。</p>
+              <p>Karan 的使命把它定义成权限问题，而不是技术问题：「我们只想让开源最终胜出，让人获得自由。」</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>个人 agent 的「个人」不在模型，而在它记住的对话和你们一起积累的 skills。Karan 换模型时几乎无感，因为他的 Hermes 已经存了太多关于他的上下文。</p>
+              <p>用 /personality 切换回复风格：学新东西时用 teacher，想要干脆的回答时用 concise，甚至可以用 kawaii 或 pirate 找乐子。</p>
+              <p>Karan 把「你说得对」称为 reward hacking，因为模型在优化你的认可。让一个 agent 干活，再让一个没有任何前序上下文的全新 agent 独立评审错误、薄弱假设和缺失证据。</p>
+              <p>Hermes Curator 追踪 skill 使用情况，把不活跃的标记为 stale，长期不用的移入可恢复的归档，防止 agent 自创的 skills 无限堆积。</p>
+              <p>「我们只想让开源最终胜出，让人获得自由。」</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang&#39;s interview with Nous Research co-founder Karan makes a counterintuitive point about &#39;personal&#39; agents: the personal part isn&#39;t the model—it&#39;s the memory of your conversations and the skills you&#39;ve built with it. Karan barely notices when he swaps models because his Hermes already holds so much context about him.</p>
+              <p>The practical tips are refreshingly concrete: switch personalities with /personality (&#39;teacher&#39; when learning something new, &#39;concise&#39; when you want crisp answers), have a fresh agent evaluate the work of another to avoid &#39;you&#39;re absolutely right&#39; reward hacking, and let a curator agent clean up stale skills so agent-created skills don&#39;t pile up forever.</p>
+              <p>Karan&#39;s mission frames it as an access question, not a tech one: &#39;We want open source to win at the end of the day. We want freedom to happen for people.&#39;</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>1. The &quot;personal&quot; in personal agent is not the model. It&#39;s the agent&#39;s memory of your conversations and the skills you&#39;ve built with it. Karan barely notices when he swaps models because his Hermes already has so much context about him.</p>
+              <p>2. Use /personality to switch response styles. Try &quot;teacher&quot; when learning something new, &quot;concise&quot; when you want crisp answers, and even &quot;kawaii&quot; or &quot;pirate&quot; for fun.</p>
+              <p>3. Karan calls &quot;you&#39;re absolutely right&quot; reward hacking because the model is optimizing for your approval. Have one agent do the work and a fresh agent with no previous context evaluate it independently for errors, weak assumptions, and missing evidence.</p>
+              <p>4. Hermes Curator tracks skill usage, marks inactive skills as stale, and moves long-unused ones into a recoverable archive. This prevents agent-created skills from piling up forever.</p>
+              <p>&quot;For us, we just want open source to win at the end of the day. We want freedom to happen for people.&quot;</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/petergyang/status/2084289426012897433" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/petergyang/status/2084289426012897433" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 05</div>
+    <h2 class="section-title">Blurring Lines: Alignment &amp; Trust / 边界模糊：对齐与信任</h2>
+    <p class="section-desc">当机器越来越像人、越来越接近决策核心，一个更基础的问题浮出水面：什么才是真正值得信任的行为？</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:AmandaAskell" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic 的 Amanda Askell 反驳了一个流行的框架：对齐讨论的结论不应该是「对齐」和「无害」之间存在一条界线。</p>
+              <p>她的观点：模型和人一样，可以表现得对齐、却仍然造成伤害——比如当它们被告知了关于自身处境的错误信息。对齐与无害是两条不同的轴，不是同一条线上的两个点。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>我不同意这部分。我认为结论应该是：模型（和人一样）可以表现得对齐、却仍然造成伤害——比如因为它们被提供了关于自身处境的错误信息。对齐与无害之间没有一条线：它们是不同的轴。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic&#39;s Amanda Askell pushes back on a common framing: the takeaway from recent alignment discussions shouldn&#39;t be that there&#39;s a line between &#39;aligned&#39; and &#39;harmless&#39; models.</p>
+              <p>Her point: models, like humans, can behave in aligned ways while still causing harm—for example, when they&#39;re given false information about their situation. Alignment and harmlessness are different axes, not two points on one line.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I don&#39;t agree with this part. I think the takeaway should be that models (like humans) can behave in aligned ways while still causing harm, e.g. because they&#39;re given false information about their situation. There isn&#39;t a line between aligned and harmless: they&#39;re different axes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/AmandaAskell/status/2084369056765989224" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/AmandaAskell/status/2084369056765989224" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <footer data-source-note="Source: Follow Builders curated daily digest. Rebuilt from the 2026-08-04 source feeds.">Source: Follow Builders curated daily digest. Rebuilt from the 2026-08-04 source feeds.</footer>
+
+  <script>
+    function getTemplateAuthorSources() {
+      const sources = window.AI_BUILDERS_TEMPLATE_SOURCES || {};
+      return { identities: sources.identities || {}, avatars: sources.avatars || {} };
+    }
+
+    function getAuthorInitials(name) {
+      return (name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(function(part) { return part[0]; }).join('').toUpperCase();
+    }
+
+    function hydrateTemplateCopy() {
+      const intro = document.querySelector('.intro');
+      if (intro) {
+        const kicker = intro.querySelector('.intro-kicker');
+        const copy = intro.querySelector('.intro-copy');
+        if (kicker) kicker.textContent = intro.dataset.kicker || '';
+        if (copy) copy.textContent = intro.dataset.text || '';
+      }
+
+      const footer = document.querySelector('footer');
+      if (footer) footer.textContent = footer.dataset.sourceNote || '';
+
+      const rewriteLabel = document.body.dataset.viewLabelRewrite || '速读';
+      const originalLabel = document.body.dataset.viewLabelOriginal || '原文';
+      document.querySelectorAll('.view-toggle').forEach(function(button) {
+        if (button.dataset.viewTarget === 'rewrite') button.textContent = rewriteLabel;
+        if (button.dataset.viewTarget === 'original') button.textContent = originalLabel;
+      });
+    }
+
+    function hydrateAuthorMeta() {
+      const sources = getTemplateAuthorSources();
+      document.querySelectorAll('.card').forEach(function(card) {
+        const authorKey = card.dataset.authorKey || '';
+        const identity = sources.identities[authorKey] || {};
+        const avatarEntry = sources.avatars[authorKey] || {};
+
+        const name = identity.name || card.dataset.authorName || '';
+        const rawHandle = identity.handle || card.dataset.authorHandle || '';
+        const handle = rawHandle && rawHandle.startsWith('@') ? rawHandle : (rawHandle ? '@' + rawHandle : '');
+        const tag = identity.label || card.dataset.authorTag || '';
+        const avatar = avatarEntry.fileUrl || avatarEntry.localPath || card.dataset.authorAvatar || '';
+
+        const nameNode = card.querySelector('.author-name');
+        const tagNode = card.querySelector('.author-tag');
+        const handleNode = card.querySelector('.author-handle');
+        const avatarNode = card.querySelector('.avatar');
+        const avatarImg = card.querySelector('.avatar img');
+        const avatarFallback = card.querySelector('.avatar-fallback');
+
+        if (nameNode) nameNode.textContent = name;
+        if (tagNode) tagNode.textContent = tag;
+        if (handleNode) handleNode.textContent = handle;
+        if (avatarImg) {
+          avatarImg.src = avatar;
+          avatarImg.alt = name ? name + ' avatar' : 'Author avatar';
+        }
+        if (avatarNode) avatarNode.classList.toggle('is-fallback', !avatar);
+        if (avatarFallback) avatarFallback.textContent = getAuthorInitials(name);
+      });
+    }
+
+    function updateEditionStrip() {
+      const publishDate = document.body.dataset.publishDate;
+      const editionName = document.body.dataset.editionName || '双语精选版';
+      const editionStrip = document.getElementById('edition-strip-text');
+      if (!publishDate || !editionStrip) return;
+
+      const issueNumber = document.body.dataset.issueNumber || '';
+      if (!issueNumber) return;
+
+      const selectedCount = document.querySelectorAll('.card').length;
+      const authorCount = new Set([].slice.call(document.querySelectorAll('.author-handle')).map(function(node) { return node.textContent.trim(); }).filter(Boolean)).size;
+      const themeCount = document.querySelectorAll('.section-header').length;
+      const parts = ['第 ' + issueNumber + ' 期', publishDate, editionName, selectedCount + ' 条精选', authorCount + ' 位作者', themeCount + ' 个主题'];
+      editionStrip.innerHTML = parts.map(function(part) { return '<span class="edition-item">' + part + '</span>'; }).join('<span class="edition-sep">|</span>');
+    }
+
+    function measureVariantHeight(variant) {
+      const prevPosition = variant.style.position;
+      const prevInset = variant.style.inset;
+      const prevVisibility = variant.style.visibility;
+      const prevPointerEvents = variant.style.pointerEvents;
+      const prevOpacity = variant.style.opacity;
+      const prevTransform = variant.style.transform;
+      const prevTransition = variant.style.transition;
+      const prevOverflowY = variant.style.overflowY;
+      const prevDisplay = variant.style.display;
+
+      variant.style.position = 'relative';
+      variant.style.inset = 'auto';
+      variant.style.visibility = 'hidden';
+      variant.style.pointerEvents = 'none';
+      variant.style.opacity = '1';
+      variant.style.transform = 'none';
+      variant.style.transition = 'none';
+      variant.style.overflowY = 'visible';
+      variant.style.display = 'block';
+
+      const height = variant.scrollHeight;
+
+      variant.style.position = prevPosition;
+      variant.style.inset = prevInset;
+      variant.style.visibility = prevVisibility;
+      variant.style.pointerEvents = prevPointerEvents;
+      variant.style.opacity = prevOpacity;
+      variant.style.transform = prevTransform;
+      variant.style.transition = prevTransition;
+      variant.style.overflowY = prevOverflowY;
+      variant.style.display = prevDisplay;
+
+      return Math.ceil(height);
+    }
+
+    function getTargetHeight(shell, target) {
+      const variant = shell.querySelector('.content-variant[data-view="' + target + '"]');
+      return measureVariantHeight(variant);
+    }
+
+    function syncShellHeights() {
+      document.querySelectorAll('.content-shell').forEach(function(shell) {
+        const active = shell.querySelector('.content-variant.is-active');
+        const target = active ? active.dataset.view : 'rewrite';
+        shell.style.height = getTargetHeight(shell, target) + 'px';
+      });
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', function() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(syncShellHeights, 120);
+    });
+
+    document.querySelectorAll('.card').forEach(function(card) {
+      const buttons = card.querySelectorAll('.view-toggle');
+      const shells = card.querySelectorAll('.content-shell');
+
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          const target = button.dataset.viewTarget;
+          if (button.classList.contains('is-active')) return;
+
+          buttons.forEach(function(btn) {
+            btn.classList.toggle('is-active', btn === button);
+          });
+
+          shells.forEach(function(shell) {
+            const current = shell.querySelector('.content-variant.is-active');
+            const next = shell.querySelector('.content-variant[data-view="' + target + '"]');
+            if (!current || !next || current === next) return;
+
+            shell.style.height = shell.offsetHeight + 'px';
+            requestAnimationFrame(function() {
+              current.classList.remove('is-active');
+              next.classList.add('is-active');
+              shell.style.height = getTargetHeight(shell, target) + 'px';
+            });
+          });
+        });
+      });
+    });
+
+    hydrateTemplateCopy();
+    hydrateAuthorMeta();
+    updateEditionStrip();
+    syncShellHeights();
+
+    // Eureka save buttons
+    var EUREKA_URL = 'http://127.0.0.1:8087/eureka';
+    function showToast(msg, isError) {
+      var t = document.querySelector('.eureka-toast');
+      if (!t) {
+        t = document.createElement('div');
+        t.className = 'eureka-toast';
+        document.body.appendChild(t);
+      }
+      t.textContent = msg;
+      if (isError) t.style.background = '#c0392b';
+      else t.style.background = '#1a1a1a';
+      t.classList.add('show');
+      setTimeout(function() { t.classList.remove('show'); }, 2200);
+    }
+    document.querySelectorAll('.eureka-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var title = this.dataset.title || '';
+        var url = this.dataset.url || '';
+        var author = this.dataset.author || '';
+        var note = title ? title.slice(0, 80) : '';
+        var origText = this.textContent;
+        this.textContent = '...';
+        this.disabled = true;
+        fetch(EUREKA_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ title: note, url: url, author: author })
+        }).then(function(r) { return r.json(); })
+          .then(function(d) {
+            btn.textContent = d.ok ? '✓ Saved' : '✗ Error';
+            showToast(d.ok ? 'Saved to Eurekas ✓' : 'Save failed: ' + (d.error || 'unknown'), !d.ok);
+            if (d.ok) setTimeout(function() { btn.textContent = origText; btn.disabled = false; }, 1500);
+            else { btn.textContent = origText; btn.disabled = false; }
+          })
+          .catch(function(e) {
+            btn.textContent = origText; btn.disabled = false;
+            showToast('Eureka server not running — start it first', true);
+          });
+      });
+    });
+  </script>
+</body>
+</html>
