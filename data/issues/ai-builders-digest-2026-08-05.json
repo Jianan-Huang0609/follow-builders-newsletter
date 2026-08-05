@@ -1,0 +1,329 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-08-05",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线一句话：智能正在变得太便宜，便宜到所有玩法都得重写。Meta 的 Madhu Guru 给创业者递了一份标准剧本——先用最好的前沿模型把产品验证出来，等 6-8 周后开源模型追上来，再把生产搬过去；Peter Yang 则听说 GPT 5.6 Luna High 又便宜又几乎不限量，第一反应是「它能搞定复杂的浏览器自动化吗」。另一边，Box CEO Levie 说企业里 AI 的落地方式已经五花八门：问 10 个 IT 负责人 coding agent 策略，能得到至少 5 种答案——「什么都还没定稿」，而这恰恰是机会所在。Swyx 在 Midjourney 聚会上的顿悟也许是今天最好的注脚：知识图谱终于流行，不是因为它变酷了，而是因为「足够好的智能」终于便宜到可以忽略不计。最后，当缩放定律走进分子和金钱这两个容错率极低的真实世界，Chai Discovery 和 SPC 押注的是同一件事：边界用例，才是最难的部分。"
+  },
+  "archive": {
+    "title": "玩法重写日报",
+    "desc": "智能便宜到可以忽略不计之后，模型选型、企业采用、真实世界落地全都在重写——而这场重写才刚刚开始，一切尚未定稿。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-08-05 source feeds.",
+  "sections": [
+    {
+      "title": "The New Model Playbook / 模型选择新玩法",
+      "desc": "最贵的模型是用来验证的，不是用来生产的。先验证体验，再疯狂优化成本——顺序错了，团队就会卡在第一步。",
+      "cards": [
+        {
+          "authorKey": "x:realmadhuguru",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2084667443046502631",
+          "en": {
+            "rewrite": [
+              "Madhu Guru, Senior Director of AI at Meta and the person who previously led Gemini, Veo and Nano Banana at Google, says the best model for early product validation is almost never the best model for production. After talking to a bunch of founders this weekend, he sees a standard playbook emerging.",
+              "Step 1: prototype with the best frontier models. Max quality, ignore cost and latency, and learn what users actually want. Step 2: once the workflow and UX are validated, optimize like crazy for cost and latency - prompt engineering, model routing, harnesses, smaller models, fine-tuning.",
+              "His blunt warning: most teams get stuck in step 1. In a follow-up he sharpens the timeline: prototype with the frontier model, cost be damned; then 6-8 weeks later, when open-weight models catch up, move production workloads there. Don't start with the cheapest model."
+            ],
+            "original": [
+              "The best model for early product validation is almost never the best model for production.",
+              "Talked to a bunch of founders this weekend. There's a standard playbook emerging: 1/ Prototype with the best frontier models. Max quality. Ignore cost and latency. Learn what users actually want and iterate. 2/ Once the workflow and UX is validated, optimize like crazy for cost and latency - prompt eng, model routing, harnesses, smaller models, fine tuning.",
+              "I see most teams get stuck in step 1.",
+              "Ok builders, here's your playbook. Prototype your product with the best frontier model. Cost be damned. Validate the user experience. Then, 6-8 weeks later when open-weight models catch up - move your production workloads there, and to smaller models where possible. In that order. Don't start with the cheapest model."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Madhu Guru，Meta 的 AI 高级总监（之前在 Google 领导过 Gemini、Veo 和 Nano Banana），给出一个判断：早期产品验证阶段最好的模型，几乎从来不是生产阶段最好的模型。他周末跟一批创始人聊完，发现一套标准打法正在成型。",
+              "第一步：用最好的前沿模型做原型，质量拉满，无视成本和延迟，搞清楚用户到底想要什么。第二步：工作流和体验验证完之后，再疯狂优化成本和延迟——prompt 工程、模型路由、harness、更小的模型、fine-tuning。",
+              "他的提醒很直接：大多数团队卡在第一步。在后续一条里他把时间线说得更狠：用前沿模型做原型，别管成本；6-8 周后开源模型追上来，就把生产负载搬过去，能小则小。别一开始就用最便宜的模型。"
+            ],
+            "original": [
+              "早期产品验证最好的模型，几乎从来不是生产阶段最好的模型。",
+              "周末和一批创始人聊了聊，一套标准打法正在成型：1/ 用最好的前沿模型做原型，质量拉满，忽略成本和延迟，搞清楚用户要什么再迭代。2/ 工作流和UX验证完之后，疯狂优化成本和延迟——prompt工程、模型路由、harness、小模型、fine-tuning。",
+              "我看到大多数团队卡在第一步。",
+              "给 builder 们的剧本：用最好的前沿模型做原型，成本别管。验证用户体验。6-8周后开源模型追上来，把生产负载搬过去，能小则小。按这个顺序来，别一开始就用最便宜的模型。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2084849701351035182",
+          "en": {
+            "rewrite": [
+              "Peter Yang, who writes practical AI tutorials for busy people, is running low on Sol credits and hearing that GPT 5.6 Luna High is much cheaper with basically unlimited usage. His first instinct isn't to celebrate - it's to ask whether it can handle complex browser automation, which he says is 50% of his Codex usage.",
+              "That question is the real signal of the day: as frontier models get tiered by price, the metric that matters shifts from 'best model' to 'best model for this task at this price.' The shopping list is getting granular, and cost-per-task is becoming a first-class decision."
+            ],
+            "original": [
+              "Hearing that GPT 5.6 Luna High is much cheaper and basically unlimited usage and I'm running low on Sol :P",
+              "Can it do complex browser automation tasks? That's 50% of my Codex usage."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang，那个专门给忙碌的人写实用 AI 教程的家伙，Sol 额度快用完了，听说 GPT 5.6 Luna High 便宜得多、还几乎不限量。他的第一反应不是庆祝，而是问：它能做复杂的浏览器自动化吗？他说那占了他 Codex 用量的一半。",
+              "这个问题才是今天真正的信号：当前沿模型开始按价格分层，决策指标就从「最好的模型」变成了「这个价格下最适合这个任务的模型」。选购清单越来越细，单位任务成本正在成为一等公民。"
+            ],
+            "original": [
+              "听说 GPT 5.6 Luna High 便宜很多、基本不限量，而我 Sol 快用完了 :P",
+              "它能做复杂的浏览器自动化任务吗？那占我 Codex 用量的一半。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Enterprise AI: Nothing Has Settled Yet / 企业采用：一张未定稿的图",
+      "desc": "问 10 个 IT 负责人能得到 5 种答案。企业 AI 的采用方式远未定型——这意味着未来几年格局还会剧烈变化，也意味着机会遍地。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2084828773808239080",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie says the most fun part of spending so much time with enterprises is seeing the sheer range of AI implementation strategies inside companies right now. Unlike the early innings of cloud - when there were only a couple of deployment patterns and a couple of infra vendors - AI has a much wider spread of approaches.",
+              "Ask 10 IT leaders about their coding agent strategy and you get at least 5 different answers. End-user productivity agents? Some standardized on ChatGPT or Claude, others offer a choice of multiple solutions, and many built their own orchestration layers so employees can use any model. Models? Enterprises are increasingly experimenting with open-source models, or at least intensely curious about them - and vertical models and agents keep showing up for tailored use-cases.",
+              "Access to data is split too: some companies let agents act as the user, others set up agent identities of their own. Some put substantial guardrails on what agents can do, others put responsibility on the user. His read: with this much heterogeneity this early, anyone predicting final market outcomes is probably wrong - nothing has formally settled in yet. Lots of opportunity ahead."
+            ],
+            "original": [
+              "Unlike the early innings of cloud where there were really only a couple deployment patterns available -including being limited by only a couple infra vendors existing- AI actually has a much wider range of approaches in the enterprise.",
+              "If you ask 10 IT leaders what their coding agent strategy looks like, you get at least 5 different answers. If you ask about their end-user productivity agents, some have standardized on ChatGPT or Claude, others offer a choice of multiple solutions, and many have built their own orchestration layers for employees to use any model.",
+              "Given this heterogeneity this early on at the start, it means we're in for years of landscape changes. Anyone who's predicting ultimate market outcomes already probably will be wrong as nothing has formally settled in yet. Lots of opportunity ahead."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 说，跟企业泡久了最好玩的一件事，就是能看到现在公司里 AI 落地方式的千奇百怪。和云时代早期不同——那时只有两种部署模式、两家基础设施厂商——AI 在企业里的打法要多得多。",
+              "问 10 个 IT 负责人他们的 coding agent 策略，能得到至少 5 种答案。终端生产力 agent 呢？有人统一用 ChatGPT 或 Claude，有人提供多个方案让员工选，更多人自己搭了编排层，让员工随便用哪个模型。模型方面，越来越多企业在试开源模型，或者至少对开源极度好奇——垂直模型和垂直 agent 也在不断冒出来，服务各种定制场景。",
+              "数据接入也分两派：有的让 agent 直接扮演用户，有的给 agent 建立自己的身份。有的给 agent 行为加重重护栏，有的把责任放到用户身上。他的判断：开局就这么五花八门，意味着未来几年格局会剧烈变化——现在预测终局市场的人，大概率都是错的，因为什么都还没定稿。机会多得很。"
+            ],
+            "original": [
+              "和云时代早期不同——那时只有两种部署模式、两家基础设施厂商——AI 在企业里的打法要多得多。",
+              "问 10 个 IT 负责人 coding agent 策略，至少 5 种答案。终端生产力 agent：有人统一用 ChatGPT 或 Claude，有人提供多个选择，很多人自建了编排层让员工用任何模型。",
+              "这么早就有这么大的异质性，意味着未来几年格局会剧烈变化。现在预测终局市场的人大概率会错，因为还没有任何东西正式定稿。机会多得很。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:mattturck",
+          "sourceUrl": "https://x.com/mattturck/status/2084759190195536202",
+          "en": {
+            "rewrite": [
+              "Matt Turck, VC at FirstMark and the man behind the MAD landscape, delivers the most relatable take on the Airtable acquisition: everyone on X is saying 'damn, Airtable sold for so low!' - while many SaaS founders secretly think 'damn, I'd take that any day, at least they had an exit.'",
+              "It's a two-second joke with a real point. In a market where vibe-coded micro-SaaS is becoming a funnel into a services business rather than a standalone money-maker, an exit - any exit - increasingly looks like the win."
+            ],
+            "original": [
+              "Everyone on X: \"damn, Airtable sold for so low!\"",
+              "Many SaaS founders, secretly: \"damn, I'd take that any day, at least they had an exit\""
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Matt Turck，FirstMark 的 VC、AI 全景图 MAD 报告的操盘手，贡献了关于 Airtable 收购案最扎心的一条评论：X 上所有人都在说「天哪，Airtable 卖这么便宜！」，而很多 SaaS 创始人心里偷偷想的是「天哪，我求之不得，至少人家退出成功了」。",
+              "这是个两秒钟的玩笑，但点到了真问题。在一个 vibe code 出来的微 SaaS 正在变成服务业务的引流漏斗、而不是独立赚钱机器的市场里，一个退出——哪怕是再低的退出——越来越像胜利。"
+            ],
+            "original": [
+              "X 上所有人：「天哪，Airtable 卖这么便宜！」",
+              "很多 SaaS 创始人，心里偷偷想：「天哪，我求之不得，至少人家退出成功了」"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Built for Thinking, Not Toggling / 产品哲学：为思考而建",
+      "desc": "当 AI 产品扎堆比拼模式开关和效率话术，真正的差异化是回到人的真实行为：少给选项，多解决问题。",
+      "cards": [
+        {
+          "authorKey": "x:joshwoodward",
+          "sourceUrl": "https://x.com/joshwoodward/status/2084746170576892342",
+          "en": {
+            "rewrite": [
+              "Josh Woodward, VP at Google, makes a quiet product statement that's easy to miss: Notebook is built for thinking, not toggling. While other AI tools keep adding modes, Notebook keeps everything in a single, unified prompt bar and just does the things you want.",
+              "The contrast is the point. As AI products pile on feature switches, the team building Notebook is betting the differentiator is subtraction - one bar, no mode decision, and the model figures out what you're trying to do. Ultra and Pro subscribers get it now; everyone else next.",
+              "It echoes a theme running through today's feed: Chai Discovery's founders say the same thing about their 23-submodule model - simplicity is what makes iteration, and therefore scaling, possible."
+            ],
+            "original": [
+              "Notebook is built for thinking, not toggling.",
+              "While others add more modes, Notebook keeps everything in a single, unified prompt bar and just does the things you want.",
+              "Ultra and Pro subscribers can jump in now, rolling out to everyone next."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Google VP Josh Woodward 发了一条很容易被忽略的产品宣言：Notebook 是为思考而建的，不是为切换而建的。别的 AI 工具在不停加模式，Notebook 把所有东西保持在一个统一的 prompt 输入栏里，直接把你想要的事做了。",
+              "对比本身就是重点。当 AI 产品在功能开关上越堆越多，Notebook 团队押注的差异化是减法——一个输入栏，不需要你做模式决策，模型自己判断你想干嘛。Ultra 和 Pro 订阅用户现在就能用，其他人陆续开放。",
+              "这跟今天 feed 里的另一条线悄悄呼应：Chai Discovery 的创始人对他们那个 23 个子模块的模型说了同样的话——简单，才让迭代成为可能，进而让规模化成为可能。"
+            ],
+            "original": [
+              "Notebook 是为思考而建的，不是为切换而建的。",
+              "别人在加模式，Notebook 把所有东西保持在一个统一的 prompt 栏里，直接做你想做的事。",
+              "Ultra 和 Pro 订阅用户现在就能用，接下来向所有人开放。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2084828855404294266",
+          "en": {
+            "rewrite": [
+              "Zara Zhang, a builder who ships her own tools, pushes back on the 'efficiency' pitch: most people don't adopt new technology because it makes them more efficient. They adopt it because someone similar to them adopted it and got positive results - got cooler, richer, more respected - or because everyone around them has it and they're afraid of being left behind.",
+              "Her point: adoption is an emotional decision, not a rational one. So the messaging shouldn't be 'this will make you 10x more efficient!' It should be 'so-and-so, someone you can relate to, adopted this and look how much better their life became; wouldn't it be nice to be like them?' The diffusion of technology is a social process.",
+              "For anyone selling AI products or building an audience, this is the distribution note of the day: stop selling efficiency, start selling belonging."
+            ],
+            "original": [
+              "Contrary to popular perception, most people will not adopt a new technology just because it makes them more efficient.",
+              "Instead, they'll adopt new technology because: Someone they know who's similar to them on some dimension adopted the technology, and got positive results (eg became cooler, richer, more popular/respected), and they wanna become like that person. Or they feel like everyone around them has adopted the technology, and if they don't, they'll be left behind.",
+              "Notice that it's not entirely a rational decision. It's more of an EMOTIONAL decision.",
+              "The diffusion of technology is a SOCIAL process"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zara Zhang，一个自己写工具、自己出货的 builder，对「效率」话术泼了盆冷水：大多数人不会因为新技术让自己更高效就去用。他们采用新技术，是因为某个跟自己很像的人用了之后得到了好结果——变得更酷、更有钱、更受尊重——或者因为身边所有人都在用，不用就会被落下。",
+              "她的核心观点：采用是一个情绪决策，不是理性决策。所以你的文案不该是「这能让你效率提升 10 倍！」，而应该是「你认识的那个谁，一个跟你很像的人，用了这个之后生活肉眼可见地变好了，你想不想变成那样？」技术的扩散，本质上是一个社交过程。",
+              "对卖 AI 产品的人、对在做 audience 的人来说，这就是今天的传播课：别再卖效率，开始卖归属感。"
+            ],
+            "original": [
+              "与普遍认知相反，大多数人不会因为新技术让自己更高效就去采用它。",
+              "他们采用新技术是因为：某个在某方面跟自己相似的人采用了它并得到了好结果（比如变得更酷、更有钱、更受欢迎/受尊重），他们想成为那样的人。或者，他们觉得周围所有人都用了，不用就会被落下。",
+              "注意，这并不完全是理性决策，更像是一个情绪决策。",
+              "技术的扩散是一个社交过程。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Infra and the New Complements / 基础设施与新补品",
+      "desc": "当智能本身变成廉价商品，价值开始向「补品」迁移：知识图谱、后端执行、token 网关——围绕模型的一切都在被重新定价。",
+      "cards": [
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2084832553895444570",
+          "en": {
+            "rewrite": [
+              "Swyx shares a small aha from a Midjourney meetup: ontologies and graph knowledge are finally trending now rather than three years ago, and the reason is simple - 'good enough' intelligence is finally too cheap to meter.",
+              "His argument: the hardest part of knowledge graphs used to be the intelligence layer, and now that intelligence is commoditized, the complements around it are increasing in value. That's why knowledge-graph talks are suddenly on fire. The expensive part got cheap, so everything that was waiting on it gets to move."
+            ],
+            "original": [
+              "smol aha moment at @_chenglou's @midjourney meetup today -",
+              "one reason that ontologies and graph knowledge are finally trending now rather than 3 years ago is that 'good enough' intelligence is finally too cheap to meter",
+              "this is why talks like @coyle_frankp and @emileifrem's are on fire. the hardest part of KGs is cheap now. intelligence is commoditized so complements are increasing in value"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx 在 Midjourney 线下聚会收获了一个小小的顿悟：本体论和知识图谱终于开始流行，而不是三年前，原因很简单——「足够好的」智能终于便宜到可以忽略不计了。",
+              "他的逻辑：知识图谱最难的部分一直是智能层，现在智能被商品化了，围绕它的互补品价值开始上升。这就是为什么知识图谱的演讲突然火了起来。贵的东西变便宜了，所有在等它的东西都能往前走了。"
+            ],
+            "original": [
+              "今天在 @_chenglou 的 Midjourney 聚会上的一个小顿悟——",
+              "本体论和知识图谱终于流行、而不是三年前流行的原因之一是：「足够好的」智能终于便宜到可以忽略不计了。",
+              "这就是为什么 @coyle_frankp 和 @emileifrem 的演讲这么火。知识图谱最难的部分现在变便宜了。智能被商品化，所以互补品的价值在上升。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2084804138169446449",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch drops a one-liner that does a lot of work: Vercel is the Vercel for backends. Factory AI powers its API services with Vercel's Fluid compute, handling billions of requests per month.",
+              "The sentence is self-referential on purpose. As AI companies ship more API products, the compute substrate behind them is becoming a business in its own right - and the backend layer is getting its own Vercel moment, with a platform play that starts from the frontend and eats backwards."
+            ],
+            "original": [
+              "Vercel is the Vercel for backends.",
+              "@FactoryAI powers their API services with Fluid compute, with billions of requests per month."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 发了一句信息量很大的一句话：「Vercel 就是后端的 Vercel。」Factory AI 正在用 Vercel 的 Fluid compute 支撑他们的 API 服务，每月处理数十亿次请求。",
+              "这句自指的话是故意的。当 AI 公司不断推出 API 产品，支撑它们的计算底座本身正在成为一门生意——后端层正在迎来属于它的 Vercel 时刻：一个从前端出发、一路向后端吃掉地盘的平台故事。"
+            ],
+            "original": [
+              "Vercel 就是后端的 Vercel。",
+              "@FactoryAI 用 Fluid compute 支撑他们的 API 服务，每月数十亿次请求。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Edge Cases Are the Hard Part / 边界用例才是最难的部分",
+      "desc": "从分子到金钱，AI 正在进入容错率极低的真实世界。主路已经打通，决定成败的是那些最难啃的边界用例。",
+      "cards": [
+        {
+          "authorKey": "podcast:training-data",
+          "sourceUrl": "https://www.youtube.com/watch?v=wv53mDmY-k0",
+          "authorName": "Josh & Matt, co-founders of Chai Discovery",
+          "authorTag": "Training Data Podcast",
+          "en": {
+            "rewrite": [
+              "The Takeaway: drug design is turning out to be another scaling problem - and the team applying the 'bitter lesson' to biology is Chai Discovery, the AI foundation-model lab for molecules.",
+              "Josh (ex-OpenAI, early GPT-1/2, scaling laws, an original author on ESM) and Matt (a theoretical CS background who came to protein structure prediction) tell the Training Data podcast how they're trying to make drug discovery look more like software engineering: instead of screening millions of molecules and hoping, you specify the dream molecule and the model materializes it.",
+              "The numbers show why this is a scaling story. When Chai started, the state of the art for antibody design was a 0.1% binding rate - 1 in 1000 designed molecules would actually bind in the lab. With their Chai-2 model they hit roughly 15%, which is the difference between getting no signal and getting real statistics. They originally budgeted for 1% and would have called it amazing; it happened faster and better than they dared to plan.",
+              "The philosophy is deliberately unsexy: simplicity (Chai-1 had 23 submodules, and hard-to-iterate means hard-to-scale), belief in scaling data, models and compute, and rigor - 'you can fool yourself so easily in biology,' where wet-lab error bars of plus or minus 5% can make 17% vs 18% mean nothing.",
+              "They're 'bitter lesson pilled' about the business too: they chose to sell infrastructure to pharma (Eli Lilly, Novartis, Argenx, Pfizer) rather than run their own drug pipeline like Isomorphic - because as models get better, the money keeps flowing back into making models better. 'It used to be first in class or best in class. Now you want to be last in class, because you want to be the final answer.'"
+            ],
+            "original": [
+              "What we're trying to do at CHI is to make the drug discovery process look a little bit more like engineering... allow us to industrialize that process a little bit more and try to come up with the tools that we'd need in order to have abstraction layers, the same way we have that encoded in modern engineering.",
+              "When we started the company, the state of the art for antibody design was about a 0.1% binding rate, so one in a thousand of the molecules you design would actually bind in the lab... We got to with our CHI2 model about a fifteen percent success rate.",
+              "We're a very bitter lesson pilled company. So we really believe in scaling data, scaling models, scaling compute.",
+              "It used to be like, you either want to be first in class or best in class. And now it's like, you want to be last in class because you actually just want to be the final answer."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "本期要点：药物设计正在变成又一个缩放问题——而把「苦涩教训」应用到生物领域的，是 Chai Discovery，一个做分子的 AI 基础模型实验室。",
+              "Josh（前 OpenAI 早期成员，做过 GPT-1、GPT-2 和 scaling laws，也是 ESM 的原始作者之一）和 Matt（理论计算机科学背景，后来转向蛋白质结构预测）在 Training Data 播客里讲了他们怎么让药物发现变得更像软件工程：不再是从几百万个分子里大海捞针，而是你描述出理想中的分子，模型把它实现出来。",
+              "数字说明这为什么是个缩放故事。Chai 起步时，抗体设计的业界最先进水平是 0.1% 的结合率——设计一千个分子，只有一个能在实验室里真正结合。他们的 Chai-2 模型把成功率做到了约 15%，这是「拿不到任何信号」和「能拿到真实统计」之间的差别。他们当初的预算是 1%，觉得能到 1% 就谢天谢地了——结果比他们敢计划的更快、更好。",
+              "他们的哲学刻意不性感：简单（Chai-1 有 23 个子模块，难迭代就意味着难规模化）、相信数据/模型/算力的缩放、以及严谨——「在生物领域你太容易自欺欺人了」，湿实验室的误差条动辄 ±5%，17% 和 18% 可能根本无差别。",
+              "他们对商业模式同样「苦涩教训」：选择把基础设施卖给制药公司（Eli Lilly、Novartis、Argenx、Pfizer），而不是像 Isomorphic 那样自己跑药物管线——因为模型越好，钱就越会持续流回模型本身。「以前你要么做同类第一，要么做同类最好。现在你要做同类最后——因为你要成为最终答案。」"
+            ],
+            "original": [
+              "我们在 Chai 想做的事，是让药物发现的过程看起来更像工程……让我们能把那个过程工业化，造出我们需要的工具，让它拥有现代工程里编码的那些抽象层。",
+              "公司刚成立时，抗体设计的业界水平是约 0.1% 的结合率——你设计一千个分子，只有一个能在实验室里真正结合……我们的 CHI2 模型把成功率做到了约 15%。",
+              "我们是一家非常「苦涩教训」的公司。我们真心相信缩放数据、缩放模型、缩放算力。",
+              "以前你要么做同类第一，要么做同类最好。现在你要做同类最后——因为你要成为最终答案。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:adityaag",
+          "sourceUrl": "https://x.com/adityaag/status/2084691244496625793",
+          "en": {
+            "rewrite": [
+              "Aditya Agarwal, general partner at South Park Commons and ex-CTO of Dropbox, announces SPC's investment in TryRivo, which he describes as 'self-driving finance': agents connect to the checking account you already have, learn your cash flow, sweep dollars into Treasury-backed yield, and bring the money back before your bills hit - every dollar earns until the moment you spend it.",
+              "Why it's hard: prediction under asymmetric cost. Money returned a day early costs you a little yield; money returned a day late bounces a bill and destroys trust. Founder Ambrish has shipped this class of system before - he led the L4 autonomy work at Cruise that launched robotaxis.",
+              "Agarwal's framing is the memorable part: self-driving cars took two decades because the last edge cases were the hard ones. Self-driving money is the same problem with a friendlier failure mode - and the founder building it has already solved the harder version once."
+            ],
+            "original": [
+              ".@TryRivo is building self-driving finance. Agents connect to the checking account you already have, learn your cash flow, sweep dollars into Treasury-backed yield, and bring them back before your bills hit. Every dollar earns until the moment you spend it.",
+              "Why is this hard? Prediction under asymmetric cost. Money returned a day early costs you a little yield. Money returned a day late bounces a bill and destroys trust.",
+              "Self-driving cars took two decades because the last edge cases were the hard ones. Self-driving money is the same problem with a friendlier failure mode, and the founder building it has already solved the harder version once."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aditya Agarwal，South Park Commons 的 GP、前 Dropbox CTO，宣布 SPC 投资了 TryRivo——他称之为「自动驾驶的财务」：agent 接上你现有的支票账户，学习你的现金流，把闲钱扫进国债收益里，在账单到期前把钱带回来——每一美元在花出去之前都在赚钱。",
+              "为什么难？因为这是成本不对称的预测问题：早一天还钱，只是少赚一点收益；晚一天还钱，账单跳票、信任崩塌。创始人 Ambrish 之前就交付过这类系统——他领导过 Cruise 的 L4 自动驾驶工作，就是后来上线 robotaxi 的那个团队。",
+              "Agarwal 的框架才是真正让人记住的部分：自动驾驶汽车花了二十年，因为最后的边界用例才是最难的那些。自动驾驶的钱是同一个问题，只是失败模式更友好——而做这件事的创始人，已经解决过一次更难版本了。"
+            ],
+            "original": [
+              ".@TryRivo 正在做自动驾驶的财务。Agent 接上你现有的支票账户，学习你的现金流，把美元扫进国债收益，在账单到期前带回来。每一美元在花出去之前都在赚钱。",
+              "为什么难？成本不对称下的预测。早一天还钱，只是少赚一点收益；晚一天还钱，账单跳票、信任崩塌。",
+              "自动驾驶汽车花了二十年，因为最后的边界用例最难。自动驾驶的钱是同一个问题，只是失败模式更友好——而做这件事的创始人，已经解决过一次更难版本了。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
