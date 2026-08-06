@@ -1,0 +1,277 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-08-06",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线是一句预言加一堆基建。Benchmark 合伙人 Sarah Tavel 用消费科技史推演：下一个爆款 AI 产品不会是又一个单机版文本框，而是一个有社交属性的多人体验——现在的 Custom GPT「criminal」之处，正是缺了信任、关注和地位系统。与此同时，agent 的底座正在肉眼可见地成熟：Rauch 亮出每分钟一万并发的「无限算力」，Steinberger 干脆给了 Codex 一台 KVM 去测真实硬件上的 iMessage。而 Jeff Dean 离开 Google、Nikita 离开 X 的人才地震，配上 Garry Tan 那句「重要的是人能吃上饭」，让今天既像转折点，又像一记提醒：别被实验室黑话和检测焦虑困住。"
+  },
+  "archive": {
+    "title": "社交 AI 日报",
+    "desc": "下一个爆款 AI 产品会是社交化的：从 Sarah Tavel 的多人在线预言、agent 算力与测试基建的成熟，到 Google/X 的人才地震——AI 消费时代正在敲门。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-08-06 source feeds.",
+  "sections": [
+    {
+      "title": "Agent Infrastructure & Compute / Agent 基建与算力",
+      "desc": "当并行算力可以随手拉满、agent 能握着 KVM 去测真实硬件时，瓶颈已经从算力转移到了编排。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2085077900190208080",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch dropped a one-liner that sums up where agent infrastructure is heading: 'Infinite agent compute. 10,000 concurrent + 5,000 CPU cores per minute, and these quotas are raisable.'",
+              "The message: raw parallelism for agents is becoming a commodity you can dial up, not a scarce resource you ration. When a single setup can spin up 10,000 concurrent agent runs, the constraint shifts from compute to orchestration: who can actually keep that many agents coordinated and doing useful work."
+            ],
+            "original": [
+              "Infinite agent compute\n10,000 concurrent + 5,000 CPU cores per minute\nand these quotas are raisable"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 用一句话点出了 agent 基础设施的方向：「无限 agent 算力——每分钟 10,000 并发 + 5,000 个 CPU 核心，而且这些配额还能往上提。」",
+              "潜台词是：agent 的并行能力正在变成可以随手调大的商品，而不是需要精打细算的稀缺资源。当一次部署就能拉起 10,000 个并发 agent 跑，瓶颈就从算力转移到了编排：谁能真正让这么多 agent 协同干活、干出有用的事。"
+            ],
+            "original": [
+              "无限 agent 算力：每分钟 10,000 并发 + 5,000 CPU 核心，配额可继续提升"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2084988316324397312",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger keeps pushing what agents can test: he gave Codex a video-enabled remote KVM so it can automate end-to-end tests of OpenClaw's iMessage integration. Because iMessage is unreliable in VMs, and features like read receipts require SIP to be disabled.",
+              "This is the 'give the agent eyes and hands' pattern taken to its logical extreme: when the software you're testing only works on real hardware, you hand the agent a literal remote control instead of giving up on e2e coverage. The future of QA is a model looking at a screen through KVM."
+            ],
+            "original": [
+              "I gave codex a video-enabled remote KVM so it can automate e2e test the iMessage-integration on OpenClaw. (iMessage is unreliable in VMs, and certain features such as read receipts require SIP to be disabled)"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger 继续拓展 agent 能测试的边界：他给了 Codex 一个带视频的远程 KVM，让它能自动化做 OpenClaw 的 iMessage 集成端到端测试。因为 iMessage 在虚拟机里不可靠，而且像已读回执这类功能必须关掉 SIP 才能用。",
+              "这是「给 agent 眼睛和手」模式的极致版：当被测软件只能在真实硬件上跑时，与其放弃 e2e 覆盖，不如直接塞给 agent 一个物理遥控器。未来的 QA，就是一个模型透过 KVM 看屏幕。"
+            ],
+            "original": [
+              "我给 Codex 配了一个带视频的远程 KVM，用来自动化测试 OpenClaw 的 iMessage 集成端到端测试。（iMessage 在 VM 里不可靠，已读回执等功能需要禁用 SIP）"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Next Hit AI Product Will Be Social / 下一个爆款 AI 产品是社交的",
+      "desc": "消费级 AI 的下一个赢家不会只是更聪明的文本框——它需要信任、关注和地位系统。",
+      "cards": [
+        {
+          "authorKey": "podcast:ai-and-i",
+          "sourceUrl": "https://www.youtube.com/watch?v=dlI-5W7d7uU",
+          "authorName": "Sarah Tavel（Benchmark 合伙人，Pinterest 早期成员）",
+          "authorTag": "AI & I by Every",
+          "en": {
+            "rewrite": [
+              "The Takeaway: the next breakout AI product won't be another single-player text box. It'll be a multiplayer, social experience, and someone is going to build it on top of models that are finally stable enough.",
+              "Benchmark partner Sarah Tavel, who joined Pinterest early, reads the AI wave through consumer tech history: Google was 95% technical infrastructure, then came Facebook, then the Pinterest/Snap/Instagram era where CEOs were product geniuses rather than engineers. ChatGPT and Character AI are still '94% backend,' built by teams that are 'unbelievably capable but isn't social.' She calls the current custom GPTs and gems state 'criminal': you can't see what documents or prompts a creator used, there's no trust, no following, no status system.",
+              "Her sharpest prediction: 'We're all gonna have probably more conversations with an AI than we do with people in our lives.' And the personal-AI space may not be won by ChatGPT at all. People will keep a 'worky' bucket (ChatGPT/Claude) and a 'personal' bucket where they dump blood tests and family info. 'Maybe this actually ends up cannibalizing ChatGPT over time.'",
+              "For builders, the actionable gap is clear: a prompt UGC community where you can follow people who are genuinely good at this, with authority-based search, trust built through transparency, and a status system (Eugene Wei style) to keep it alive."
+            ],
+            "original": [
+              "Custom GPTs and chat GPT feels criminal to me. It's clearly made by a team that is unbelievably capable but isn't social.",
+              "We're all gonna have probably more conversations with an AI than we do with people in our lives.",
+              "Maybe this actually ends up cannibalizing ChatGPT over time."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "一句话结论：下一个爆款 AI 产品不会是又一个单机版文本框，而是一个多人在线、有社交属性的体验，而且会由某个站在终于稳定下来的模型之上的人造出来。",
+              "Benchmark 合伙人 Sarah Tavel（Pinterest 早期成员）用消费科技史来读 AI 浪潮：Google 是 95% 的技术基础设施，然后是 Facebook，再到 Pinterest/Snap/Instagram 时代——CEO 们根本不是工程师，而是产品天才。ChatGPT 和 Character AI 到今天还是「94% 后端」，是「一个能力惊人但不懂社交的团队」做出来的。她说现在的 Custom GPT/Gems 状态「criminal」：你看不到创作者放了什么文档、写了什么 prompt，没有信任、没有关注、没有地位系统。",
+              "她最尖锐的预判是：「我们和 AI 的对话，终将超过和真人的对话。」而且个人向 AI 的战场可能根本不是 ChatGPT 的：人们会把「工作向」（ChatGPT/Claude）和「个人向」分成两个桶，后者用来放血检报告、家庭信息。「也许这最终会反过来蚕食 ChatGPT。」",
+              "对 builder 来说，机会缺口很明确：一个 prompt 的 UGC 社区——能关注真正擅长的人、基于权威的搜索、靠透明建立信任、再用一套地位系统（Eugene Wei 那套）维持活跃。"
+            ],
+            "original": [
+              "Custom GPT 和 ChatGPT 在我看来简直「criminal」——一个能力惊人但不懂社交的团队做出来的东西。",
+              "我们和 AI 的对话，终将超过我们和真人的对话。",
+              "也许这最终会反过来蚕食 ChatGPT。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thenanyu",
+          "sourceUrl": "https://x.com/thenanyu/status/2085126362944229400",
+          "en": {
+            "rewrite": [
+              "Nan Yu, a former Google engineer who worked on Gemini, asks the dumbest and sharpest question of the day: 'How is ChatGPT *not* an agent?'",
+              "It's a category check that lands right after everyone's been drawing careful lines between chatbots and agents. If an agent is a model that does multi-step work on your behalf, ChatGPT with memory, tools and tasks already crosses most of that line. The distinction is mostly vibes and marketing, not substance."
+            ],
+            "original": [
+              "I'm gonna ask the dumbest question here. How is ChatGPT *not* an agent?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "前 Google 工程师、做过 Gemini 的 Nan Yu 问出了今天最「蠢」也最锋利的问题：「ChatGPT 凭啥不算 agent？」",
+              "这个分类学拷问来得正是时候：大家刚费劲在 chatbot 和 agent 之间画完线。如果 agent 的定义是「替你完成多步工作的模型」，那带记忆、带工具、带任务的 ChatGPT 早就跨过了这条线。区别主要来自感觉和营销，而不是实质。"
+            ],
+            "original": [
+              "我问个最蠢的问题：ChatGPT 凭什么不算 agent？"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:realmadhuguru",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2085036386781221257",
+          "en": {
+            "rewrite": [
+              "Madhu Guru, who worked on Gemini, names why AI diffusion has been slower than the hype promised: 'we are asking users to understand our nerdy lab speak.' Users are greeted with a blank window, told to write a prompt, then must pick a model, decide if they need an agent, and somehow know what context windows, reasoning, MCP, memory and skills are.",
+              "'Most people don't care. They need a thing done.' His bet: the breakthrough product that just does the thing arrives within the next 12 months. It's the same signal as the podcast above: the next winner removes the lab-speak layer entirely."
+            ],
+            "original": [
+              "We greet them with a blank window and ask them to write a prompt. Then they have to pick a model, decide whether they need an agent, and somehow know what context windows, reasoning, MCP, memory, and skills are. Most people don't care. They need a thing done. I think we will see that breakthrough product in the next 12 months."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "在 Gemini 工作过的 Madhu Guru 点出了 AI 普及为什么比宣传的慢：「我们一直在让用户理解实验室的黑话。」用户打开一个空白窗口，被要求写 prompt，然后还要选模型、决定要不要用 agent，还得知道 context window、reasoning、MCP、memory、skills 都是什么。",
+              "「大多数人不在乎，他们只是要把一件事做完。」他的判断是：真正把事做完的突破性产品，会在未来 12 个月内出现。这和上面那条播客是同一个信号：下一个赢家会把这层实验室黑话整个去掉。"
+            ],
+            "original": [
+              "我们用空白窗口迎接用户，让他们写 prompt，然后还要选模型、决定要不要 agent，还要懂 context window、reasoning、MCP、memory、skills。大多数人不在乎，他们只是要把事做完。我觉得突破性产品会在未来 12 个月内出现。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "New Human-Agent Workflows / 人与 agent 的新工作流",
+      "desc": "一边是 /goal 式的目标委托，一边是 /human-review 式的人工打磨：agent 工作流正在补上最后那块短板。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2085174625655198156",
+          "en": {
+            "rewrite": [
+              "OpenAI Codex 团队的 Thibault Sottiaux is being flooded with reset requests: 'I asked Codex to pull up some stats and I receive on average one DM or email every 6 or so minutes to ask for a reset.' 4,217 likes of people wanting their Codex usage refreshed.",
+              "More usefully for builders, he recommends exploring '/goal' in Codex, calling it 'a pretty powerful loop with GPT-5.6 Sol.' The pattern, declare a goal and let the model run a long loop toward it, is exactly where coding agents are heading: less micro-managing turns, more delegating outcomes."
+            ],
+            "original": [
+              "I asked Codex to pull up some stats and I receive on average one DM or email every 6 or so minutes to ask for a reset. I occasionally do oblige if it comes with really solid feedback or banter.",
+              "I recommend you explore /goal in Codex, it's a pretty powerful loop with GPT-5.6 Sol."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "OpenAI Codex 团队的 Thibault Sottiaux 正被重置请求淹没：「我用 Codex 拉了一下数据，平均每 6 分钟就收到一条 DM 或邮件，求我重置额度。」4217 个赞，全是想要刷新 Codex 用量的人。",
+              "对 builder 更有用的一条：他建议大家试试 Codex 里的 /goal，称之为「配 GPT-5.6 Sol 非常强的一个循环」。这个模式——声明目标、让模型朝着它跑一个长循环——正是 coding agent 前进的方向：少一点逐轮指挥，多一点交付结果式的委托。"
+            ],
+            "original": [
+              "我用 Codex 拉了数据：平均每 6 分钟收到一条 DM/邮件求重置额度。偶尔遇到带真诚反馈或有趣吐槽的，我也会答应。",
+              "推荐试试 Codex 的 /goal，配 GPT-5.6 Sol 是非常强的循环。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2085055745410945126",
+          "en": {
+            "rewrite": [
+              "Peter Yang shipped a skill for the agent workflow gap nobody was addressing: the human-in-the-loop review. '/human-review' opens a visual editor where you can edit HTML and Markdown directly, format text, resize images, leave comments like a Google Doc, then hit 'Send to agent' and it applies all the updates.",
+              "His framing is the honest version of agent hype: 'I know we all like making our agents work for us, but sometimes a human review is needed for that final 10% of polish.' Use it for PRDs, landing pages, anything where the last 10% is taste, not tokens."
+            ],
+            "original": [
+              "How to use my new /human-review skill to edit HTML and Markdown files directly: 1. Tell Codex or Claude Code: 'Install this: [link]' 2. Type '/human-review (your doc name)' 3. It'll open a visual editor where you can edit and format text directly, resize images, and leave feedback for AI like comments in a Google Doc 4. When you're done, click 'Send to agent' and watch it apply all the updates. Use it to edit PRDs, landing pages, and more. I know we all like making our agents work for us, but sometimes a 'human review' is needed for that final 10% of polish :)"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 发布了一个填补 agent 工作流空白的 skill：人工参与的 review 环节。/human-review 会打开一个可视化编辑器，你可以直接改 HTML 和 Markdown——排版、调整图片尺寸、像 Google Doc 一样留评论——改完点「Send to agent」，它会把所有修改应用回去。",
+              "他的表述是 agent 狂热里难得的老实话：「我知道大家都爱让 agent 替我们干活，但最后那 10% 的打磨，有时就是需要人来 review 一下。」适合改 PRD、落地页——一切最后 10% 靠品味而非 token 的东西。"
+            ],
+            "original": [
+              "我的新 /human-review skill 用法：1. 告诉 Codex 或 Claude Code「安装这个」2. 输入 /human-review（文档名）3. 打开可视化编辑器，直接编辑排版、调图、像 Google Doc 一样给 AI 留反馈 4. 完成后点「Send to agent」，它应用所有修改。适合改 PRD、落地页等。我们都爱让 agent 干活，但最后 10% 的打磨有时需要「人工 review」。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Talent & Direction / 人才与实验室方向",
+      "desc": "Jeff Dean 离开 Google、Nikita 离开 X：实验室的时间轴之争和人才流动，正在改写下一轮竞争的起点。",
+      "cards": [
+        {
+          "authorKey": "x:danshipper",
+          "sourceUrl": "https://x.com/danshipper/status/2085048990899315142",
+          "en": {
+            "rewrite": [
+              "Every CEO Dan Shipper reads the Google leadership news as tea leaves: 'In order to be competitive today Google needs to catch up on frontier coding. Demis believes different fundamental research directions (like world models) are more important to his long term goal even if they're less important competitively today.'",
+              "The tension is the whole industry's tension: short-term coding supremacy versus long-term bets on the next paradigm. Which lab optimizes for the right horizon is now an open question, and the answer decides who wins the next model generation."
+            ],
+            "original": [
+              "Tea leaves: In order to be competitive today Google needs to catch up on frontier coding. Demis believes different fundamental research directions (like world models) are more important to his long term goal even if they're less impt competitively today"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Every 的 CEO Dan Shipper 把 Google 的高层变动当茶叶读：「要在今天保持竞争力，Google 需要在前沿 coding 上追赶。Demis 相信不同的基础研究方向（比如 world model）对他的长期目标更重要，即使它们在今天的竞争里没那么重要。」",
+              "这个张力就是整个行业的张力：短期的 coding 霸权 vs 长期的下一个范式赌注。哪个实验室押对了时间轴，成了开放问题——答案将决定下一代模型的赢家。"
+            ],
+            "original": [
+              "看茶叶：要在今天保持竞争力，Google 需要在前沿 coding 上追赶。Demis 认为不同的基础研究方向（如 world model）对他的长期目标更重要，即便在今天的竞争中没那么重要。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2085112372713369902",
+          "en": {
+            "rewrite": [
+              "VC Nikunj Kothari (South Park Commons) sums up a seismic day for talent in AI: 'Nikita exiting X and Jeff Dean exiting Google.. what a catastrophic day to come back to SF.'",
+              "Two of the most senior engineering figures in the industry leaving the two most important AI companies in the same stretch is a real signal: both for how those companies' research priorities are shifting (see Dan Shipper's tea leaves above), and for where the next generation of ambitious AI startups will come from."
+            ],
+            "original": [
+              "Nikita exiting X and Jeff Dean exiting Google.. what a catastrophic day to come back to SF 😢"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "VC Nikunj Kothari（South Park Commons）一句话概括了 AI 人才圈的震动一天：「Nikita 离开 X，Jeff Dean 离开 Google……回旧金山就赶上这么个灾难日。」",
+              "行业里最资深的两位工程人物，几乎同时离开两家最重要的 AI 公司——这既是两家公司研究方向转向的信号（呼应上面 Dan Shipper 的茶叶解读），也预告了下一代野心勃勃的 AI 创业公司会从哪里来。"
+            ],
+            "original": [
+              "Nikita 离开 X，Jeff Dean 离开 Google……回到旧金山就赶上这么个灾难日。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2085038756906901656",
+          "en": {
+            "rewrite": [
+              "Y Combinator CEO Garry Tan on the AI-detection panic: 'Can't wait for the AI to get so good none of this business about detecting AI matters anymore. Silverware used to be handmade, but nobody complains about their dinner fork is stamped by a machine. The quality of ideas matter. The important thing is people can eat.'",
+              "It's the sharpest reframe of the week: every moral panic about AI-generated content dissolves once the output is simply good enough. The fork doesn't care how it was stamped; readers only care whether the ideas are worth eating."
+            ],
+            "original": [
+              "Can't wait for the AI to get so good none of this business about detecting AI matters anymore. Silverware used to be handmade, but nobody complains about their dinner fork is stamped by a machine. The quality of ideas matter. The important thing is people can eat"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Y Combinator CEO Garry Tan 谈 AI 检测恐慌：「等 AI 好到没人再在乎检测 AI 这件事就好了。银餐具以前是手工打的，但没人抱怨现在的餐叉是机器压出来的。重要的是想法的质量，重要的是人能吃上饭。」",
+              "这是本周最锋利的重新框定：关于 AI 生成内容的所有道德恐慌，都会在产出足够好的那一刻自动消散。叉子不在乎自己是怎么压出来的，读者只在乎想法好不好吃。"
+            ],
+            "original": [
+              "等 AI 好到没人再在乎检测 AI 就好了。银餐具以前手工打，没人抱怨餐叉是机器压的。重要的是想法质量，重要的是人能吃饭。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
