@@ -1,0 +1,303 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-08-16",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的 feed 有一个共同点：讨论正在从「AI 能不能做到」转向「值不值、归谁、怎么用」。OpenAI 的 Thibault 拆了 token 定价的账——同样一段文字，不同模型要付的 token 数能差三分之一，比单价根本说明不了问题；Replit 的 Amjad 则直接反驳「AI 会集中权力」的说法，提醒大家 scaling law 不是物理定律。另一边，Vercel 的 Guillermo 说 React 的成功其实一半归 shadcn——组件是拿来「消化进上下文再混搭」的；Meta 的 Madhu 说 B2B 软件再没借口做烂 UX。最后用 Benchmark 合伙人 Sarah Tavel 的播客收尾：下一个爆款 AI 产品会是社交的。"
+  },
+  "archive": {
+    "title": "模型经济日报",
+    "desc": "AI 讨论从「能不能」转向「值不值」：token 定价的真相、算力终局之争，以及组件、UX 与内容工作流的新构建范式。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-08-16 source feeds.",
+  "sections": [
+    {
+      "title": "Token Economics / 模型经济学",
+      "desc": "同样一段文字，不同模型花的 token 数可以差三分之一。比单价没用，得比「每次成功结果的成本」。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2088866513008873560",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux, who works on Codex & ChatGPT at OpenAI, delivers the most useful pricing explainer of the week: a token is not a standardized unit like a gram or a kilowatt-hour. Different models produce the same text using very different numbers of tokens, so a lower price per token does not necessarily mean a lower bill.",
+              "His comparison is striking: for the same text, the tokenizer used for GPT-5.6 Sol consumed 766 tokens versus an estimated 1,170 for Claude Opus 5 — roughly 34.5% fewer. Same exact output, but on the other side you'd pay for all those extra tokens.",
+              "His punchline: even correcting for tokenizer differences misses the bigger point. What actually matters is price per successful outcome — benchmarks are only a starting point; you have to try it and measure on your own use cases. May the tokens flow."
+            ],
+            "original": [
+              "an OpenAI token != another model's token. We compare AI prices in dollars per million tokens as if a token were a standardized unit, like a gram or a kilowatt-hour. It isn't. Different models use and produce the exact same text using different numbers of tokens, which means a lower price per token does not necessarily mean a lower bill.",
+              "In one small comparison spanning English, technical, multilingual, and numerical text, the tokenizer we use for GPT-5.6 Sol used 766 tokens versus an estimated 1,170 for Claude Opus 5. That's a very significant difference of about 34.5% fewer tokens.",
+              "What actually matters is price per successful outcome, and for that you can use benchmarks as a starting point, but really you have to try it and measure on your own use cases."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "在 OpenAI 做 Codex 和 ChatGPT 的 Thibault Sottiaux 给出了本周最实用的一篇定价科普：token 不是克、不是千瓦时那样的标准化单位。不同模型生成同一段文字，消耗的 token 数可以差很多，所以单价更低不代表账单更低。",
+              "他的对比很扎眼：同一段文字，GPT-5.6 Sol 的 tokenizer 用了 766 个 token，而 Claude Opus 5 估算要 1,170 个——少了大约 34.5%。输出一模一样，但你得为对面多出来的 token 买单。",
+              "他的结论是：就算修正 tokenizer 的差异，也还不是重点。真正该看的是「每次成功结果的成本」——benchmark 只是起点，你得在自己真实用例上试、自己量。May the tokens flow。"
+            ],
+            "original": [
+              "一个 OpenAI 的 token ≠ 另一个模型的 token。我们拿「每百万 token 多少美元」来比价，好像 token 是克、是千瓦时那样的标准化单位。它不是。不同模型用不同数量的 token 产出完全相同的文字，所以单价更低不代表账单更低。",
+              "在一组覆盖英文、技术、多语言和数字文本的小对比里，GPT-5.6 Sol 的 tokenizer 用了 766 个 token，而 Claude Opus 5 估算要 1,170 个，少了大约 34.5%。",
+              "真正重要的其实是「每次成功结果的成本」——benchmark 只能当起点，你得在自己的用例上实测。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2088850995430477882",
+          "en": {
+            "rewrite": [
+              "In a follow-up that pulled 2,600+ likes, Thibault puts the question directly to the market: if your company still uses Claude Opus instead of GPT-5.6 Sol, why? Does price not matter to you? What would convince you to switch?",
+              "It's market research disguised as a tweet — and the engagement shows how live this fight is. Model choice is now a cost conversation as much as a quality one."
+            ],
+            "original": [
+              "If you have a company and still use Opus instead of Sol, why so? Does price not matter to you? What's something that would convince you to switch?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "紧接着一条拿到 2600+ 赞的追问，Thibault 把问题直接甩给市场：如果你们公司还在用 Claude Opus 而不是 GPT-5.6 Sol，为什么？价格对你不重要吗？什么能说服你切换？",
+              "这是伪装成推文的市场调研——从互动量能看出这场仗有多热。模型选择如今已经是一场成本对话，而不只是质量对话。"
+            ],
+            "original": [
+              "如果你们公司还在用 Opus 而不是 Sol，为什么？价格对你无所谓吗？什么东西能说服你切换？"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Compute, Power & the Bubble / 算力、权力与泡沫",
+      "desc": "一边是 Replit CEO 反驳「AI 会集中权力」的算力终局之争，一边是 Swyx 提醒你：科技圈的圈子比你以为的小得多。",
+      "cards": [
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2088867492907327573",
+          "en": {
+            "rewrite": [
+              "Replit CEO Amjad Masad pushes back on a claim from Anthropic CEO Dario Amodei that AI structurally centralizes power. His counter: that argument ignores 125 years of super-exponential growth in compute price-performance. There is no reason to assume AGI-level capabilities will always require a data center to run.",
+              "His sharpest point: scaling laws are not laws of physics — they're empirical relationships observed for particular architectures, objectives and datasets. Change any one of those factors and you get a different scaling curve.",
+              "And the kicker: if the brain is any guide, true AGI will likely be very efficient. 'In fact, current scaling laws might be a bug and not a feature. It shows how inefficient the ML algorithms we discovered so far are.'"
+            ],
+            "original": [
+              "The argument that \u201cAI structurally centralizes power\u201d because it's currently compute hungry ignores 125 years of super exponential growth in compute price-performance.",
+              "Scaling laws are not laws of physics. They're simply empirical relationships observed for particular architectures, objectives, datasets etc. Change any one of those factors and you get a different scaling curve.",
+              "If the brain is any guide, true AGI will likely be very efficient. In fact, current scaling laws might a bug and not a feature. It shows how inefficiency of the ML algorithms we discovered so far."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Replit CEO Amjad Masad 直接反驳 Anthropic CEO Dario Amodei「AI 会结构性集中权力」的说法。他的反方论据：这个论点忽略了 125 年来算力性价比的超级指数增长，没有理由假设 AGI 级能力永远需要数据中心才能跑。",
+              "他最锋利的一句：scaling law 不是物理定律——它们只是针对特定架构、目标、数据集观察到的经验关系。只要改变其中一个因素，曲线就不一样了。",
+              "最妙的是结尾：如果大脑是参照系，真正的 AGI 大概率会非常高效。「事实上，现在的 scaling law 可能是 bug 而不是 feature——它恰恰暴露了我们目前发现的 ML 算法有多低效。」"
+            ],
+            "original": [
+              "「AI 会结构性集中权力」这个论点，因为它现在很吃算力，就忽略了 125 年来算力性价比的超级指数增长。",
+              "Scaling law 不是物理定律，只是针对特定架构、目标、数据集观察到的经验关系。改变其中任何一个因素，就会得到不同的曲线。",
+              "如果大脑是参照系，真正的 AGI 大概率会非常高效。事实上，现在的 scaling law 可能是 bug 而不是 feature——它说明我们目前发现的 ML 算法有多低效。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2088755688361378082",
+          "en": {
+            "rewrite": [
+              "Swyx offers a reality check for anyone living in the tech bubble: top-tier people rarely actually meet or know each other. The secret illuminati group chats he assumed existed are 'very much short-lived exceptions rather than the rule.'",
+              "His interpretation is quietly reassuring: what you see of the major headlines is pretty much what they also see — most effort still goes into doing the work rather than working the narrative or the gossip."
+            ],
+            "original": [
+              "as a general rule i've been surprised by how infrequently top tier folks actually meet/know each other. as an outsider i might have assumed that everyone is in secret illuminati group chats. those exist, but are very much short lived exceptions rather than the rule.",
+              "what you see of the major headlines is pretty much what they also see. i guess one way to interpret this is also simply that most effort is still on doing the work rather than working the narrative or the gossip."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx 给所有活在科技泡沫里的人来了一记现实检查：顶尖人物之间其实很少真的见面、真的认识。他原以为存在的「秘密共济会群聊」，其实「是短命例外，而不是常态」。",
+              "他的解读安静而治愈：你看到的大新闻，基本就是他们看到的大新闻——大多数人的精力还是花在把事情做出来，而不是经营叙事和八卦。"
+            ],
+            "original": [
+              "作为一个局外人，我原本以为大家都待在秘密的共济会群聊里。那些群确实存在，但都是短命例外，不是常态。",
+              "你看到的大新闻，基本就是他们看到的大新闻。一种解读是：大多数精力还是花在把事情做出来，而不是经营叙事和八卦。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Building Software Differently / AI 时代的软件构建",
+      "desc": "组件要能被「消化进上下文再混搭」，B2B 软件再没借口做烂 UX，而真正的护城河是用痛苦堆出来的。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2088757738037989755",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch makes a provocative claim with 1,000+ likes: people don't realize how much of React's success is actually shadcn's. He once called React 'the LEGO brick for adults,' but now says it was really just the geometry of the bricks — the spec.",
+              "His real point is about how code gets consumed in the AI era: shadcn is what people actually wanted from React — reusable, high-quality, tunable components. It's a 'pseudo-library': there's code, but it's meant to be digested into your context window and remixed."
+            ],
+            "original": [
+              "I think people don't realize how much of the success of React is actually @shadcn. I once referred to React as the actual \u201cLEGO brick for adults.\u201d But in reality it was more the description of the geometry of the bricks. The spec.",
+              "Shadcn is what people actually wanted from React. Reusable high quality components that also tunable. It's a pseudo-library. There's code but it's actually meant to be digested into your context window and remixed."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 抛出一个拿到上千赞的挑衅观点：人们没意识到 React 的成功里有多少其实是 shadcn 的。他曾把 React 比作「成年人的乐高积木」，但现在他说那更像是积木的几何形状——也就是规格本身。",
+              "他真正想说的是 AI 时代代码的消费方式：shadcn 才是人们真正想从 React 得到的东西——可复用、高质量、可调参的组件。它是一个「伪库」：有代码，但这些代码是拿来「消化进你的上下文窗口、再混搭」的。"
+            ],
+            "original": [
+              "我觉得人们没意识到 React 的成功里有多少其实是 shadcn 的。我曾把 React 称为「成年人的乐高积木」，但实际上那更像是积木的几何形状——规格本身。",
+              "shadcn 才是人们真正想从 React 得到的：可复用、高质量、还可调参的组件。它是一个伪库：有代码，但代码的用途是被消化进你的上下文窗口、然后混搭。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:realmadhuguru",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2088710566689018103",
+          "en": {
+            "rewrite": [
+              "Madhu Guru — Meta's Senior Director of AI, previously leading Gemini, Veo and Nano Banana at Google — declares the UX excuse dead: 'There is no longer an excuse for B2B software to have such poor UX.'",
+              "His one-liner captures a real shift: thanks to AI, every software product can and should be as easy to use as the best consumer software. The gap between consumer and enterprise polish is now a choice, not a constraint."
+            ],
+            "original": [
+              "There is no longer an excuse for B2B software to have such poor UX. Thanks to AI, every software product can and should be as easy to use as the best consumer software."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Meta AI 高级总监 Madhu Guru（此前在 Google 带过 Gemini、Veo 和 Nano Banana）宣布 UX 的借口已死：「B2B 软件再也没有理由把体验做得这么差了。」",
+              "这一句话抓住了真实的变化：有了 AI，每个软件产品都可以、也应该做到和最好的消费级软件一样好用。消费级和企业级之间的体验差距，如今是选择问题，不是限制条件。"
+            ],
+            "original": [
+              "B2B 软件再也没有理由把体验做得这么差了。感谢 AI，每个软件产品都可以、也应该做到和最好的消费级软件一样好用。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2088716743615352963",
+          "en": {
+            "rewrite": [
+              "FPV Ventures partner Nikunj Kothari shares a story that flips the Bay Area playbook: a stealth portfolio founder in a deeply unsexy space is stuck at the 1-yard line — contracts and partnerships that would bring credibility, revenue and network effects are blocked by pure bureaucracy, with champions and terms lined up and one random clause in the way.",
+              "His reaction was to laugh. The point: anyone else would take just as long to do the same thing — even with the leverage and relationships this founder already has. What feels like painful delay in the short term is a long-term moat.",
+              "The closing line is the keeper: 'Unnecessary and 996 performative pain is not the moat. But building entrenched software and relationships that take a lot of pain is a moat.'"
+            ],
+            "original": [
+              "They're lamenting about how some of the critical contracts and partnerships that would give them credibility (and revenue and network effects) are basically stuck at the 1-yard line. This is a massively fragmented market. And this is btw just straight up pure bureaucracy. The champions, terms and everything is lined up. It's purely a win win situation but summer and one random clause is the issue.",
+              "Unnecessary and 996 performative pain is not the moat. But building entrenched software and relationships that take a lot of pain is a moat :)"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "FPV Ventures 合伙人 Nikunj Kothari 讲了一个让硅谷剧本反转的一线故事：一个 stealth 组合里的创始人，在一个（以湾区标准看）非常不性感的领域，被卡在「一码线」上——本应带来信誉、收入和网络效应的关键合同与合作伙伴关系，被纯粹的官僚流程卡死，一切就绪，只差一个莫名其妙的条款。",
+              "他的反应是笑。重点是：换任何其他人来做同样的事，花的时间只会一样长——哪怕已经有了这位创始人手里的人脉和杠杆。短期里痛苦的拖延，长期看正是护城河。",
+              "最后一句值得收藏：「无谓的、996 式表演性痛苦不是护城河；但用大量痛苦堆出来的、根深蒂固的软件和关系，是。」"
+            ],
+            "original": [
+              "那些本该带来信誉（还有收入和网络效应）的关键合同和合作伙伴关系，基本都卡在最后一码线上。这是个人脉和条款全都就位、纯粹双赢的局面，但夏天来了，一个莫名其妙的条款卡住了它。",
+              "无谓的、996 式表演性痛苦不是护城河。但用大量痛苦堆出来的、根深蒂固的软件和关系，是护城河。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "From Content to Software / 把内容变成产品",
+      "desc": "用 Codex 跑整个内容生意、让一队 agent 把录好的内容变成能跑的软件——内容创作者正在变成 builder。",
+      "cards": [
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2088626815166464507",
+          "en": {
+            "rewrite": [
+              "Peter Yang teases his next episode with Riley Brown on how he runs his entire content business with Codex — and the thumbnail workflow alone is worth the listen: Codex finds 100 top-performing thumbnails in his niche and puts them on a Paper canvas; then Riley mixes and matches them with photos of himself until he's happy with the result.",
+              "It's a concrete glimpse of the content-builder workflow: AI does the research and heavy lifting, the human keeps the taste. 'You have to watch the workflow to see how crazy it is.'"
+            ],
+            "original": [
+              "Tomorrow, I'm really excited to share a new episode with @rileybrown on how he uses Codex to run his entire content business.",
+              "1. He uses Codex to find 100 top-performing thumbnails in his niche and add them to a Paper canvas. 2. He uses Paper to mix and match those thumbnails with photos of himself until he creates something he's happy with. Honestly, you have to watch the workflow to see how crazy it is."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 预告了和 Riley Brown 的新一期节目：用 Codex 跑整个内容生意。光缩略图工作流就值得一听——Codex 在他所在的赛道里找出 100 个表现最好的缩略图，放进 Paper 画布；然后他把这些缩略图和自己的照片混搭，直到满意为止。",
+              "这是一个内容型 builder 工作流的活样本：AI 做调研和苦活，人保留品味。「你得亲眼看一遍这个工作流，才知道它有多疯狂。」"
+            ],
+            "original": [
+              "明天我会分享和 @rileybrown 的新一期节目：他如何用 Codex 运营整个内容生意。",
+              "1. 他用 Codex 在赛道里找出 100 个表现最好的缩略图，放进 Paper 画布。2. 他用 Paper 把这些缩略图和自己的照片混搭，直到做出满意的结果。说真的，你得看看这个工作流，才知道它有多疯狂。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thenanyu",
+          "sourceUrl": "https://x.com/thenanyu/status/2088810666958196988",
+          "en": {
+            "rewrite": [
+              "Linear's head of product Nan Yu shares a vision that could double as a mission statement for the next wave of builder tools: 'I want to sit in a park all day and record content with the homies… and have a fleet of agents turn that content into actions and working software.'",
+              "Short, low-engagement, and exactly the kind of quiet signal that matters: the people shipping the best dev tools are already thinking about the moment when the bottleneck stops being typing code and becomes turning raw thoughts and content into running software."
+            ],
+            "original": [
+              "This is also my dream. I want to sit in a park all day and record content with the homies… and have a fleet of agents turn that content into actions and working software."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Linear 产品负责人 Nan Yu 分享了一个愿景，几乎可以当下一波 builder 工具的使命宣言：「我想一整天坐在公园里，和哥们儿录内容……然后让一整队 agent 把那些内容变成行动、变成能跑的软件。」",
+              "很短、互动不多，但正是那种值得注意的安静信号：做出最好开发工具的人，已经在想那个时刻——瓶颈不再是敲代码，而是把原始想法和内容变成能运行的软件。"
+            ],
+            "original": [
+              "这也是我的梦想。我想一整天坐在公园里，和哥们儿录内容……然后让一整队 agent 把那些内容变成行动、变成能跑的软件。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Podcast: The Next Hit AI Product Will Be Social / 播客：下一个爆款 AI 产品是社交的",
+      "desc": "Benchmark 合伙人 Sarah Tavel 从消费互联网的历史出发，论证 AI 的下一个大赢家会是「多人游戏」式的社交产品。",
+      "cards": [
+        {
+          "authorKey": "podcast:ai-and-i",
+          "sourceUrl": "https://www.youtube.com/watch?v=dlI-5W7d7uU",
+          "authorName": "Sarah Tavel (Benchmark)",
+          "authorTag": "AI & I by Every Podcast",
+          "en": {
+            "rewrite": [
+              "The Takeaway: the next hit AI product will be social. Benchmark partner Sarah Tavel argues that ChatGPT and Character AI are single-player products in the mold of early Google — deeply technical but with no multiplayer network effect — and someone is about to build the AI product with social DNA.",
+              "She maps consumer tech onto a slider: Google was ~95% technical; Facebook was more technical than Friendster but less than Google; by Pinterest, Snap and Instagram, the CEOs weren't technical at all — they were product geniuses. As the underlying infrastructure matures, the winning founder shifts from technical to product-minded. AI is still in the technical phase, and she thinks that's about to change.",
+              "Her harshest judgment is reserved for custom GPTs: 'It's clearly made by a team that is unbelievably capable, but isn't social.' What's missing is status-seeking work — the north star that makes multiplayer products self-reinforcing — and trust: 'There's no visibility under the surface.' She predicts a prompt social network where you follow people who are really good, and where you'd put your blood tests and supplements rather than in ChatGPT.",
+              "She also predicts a personal/work split: 'You're also kind of gonna be the average of the five AIs you spend the most time with.' ChatGPT and Claude own the worky bucket; there's room in the personal bucket — AI friends you actually talk to. Whoever builds that social layer could cannibalize ChatGPT over time."
+            ],
+            "original": [
+              "Custom GPTs and chat GPT feels criminal to me. It's clearly made by a team that is unbelievably capable but isn't social.",
+              "What's the multiplayer network effect type experience? Someone's gonna create a UGC type community where there are people who are really, really good, make it so much easier for the rest of us.",
+              "Well, you're also kind of gonna be the average of the five AIs you spend the most time with in an interesting way."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "本期核心：下一个爆款 AI 产品会是社交的。Benchmark 合伙人 Sarah Tavel 认为，ChatGPT 和 Character AI 都还是早期 Google 式的单机产品——技术极深，但没有多人网络效应——而有人即将做出带社交基因的 AI 产品。",
+              "她把消费科技史拉成一条滑杆：Google 大约 95% 技术驱动；Facebook 比 Friendster 技术强、但不如 Google；到了 Pinterest、Snap、Instagram，CEO 们根本不懂技术——他们是产品天才。随着底层基础设施成熟，赢家从技术型创始人滑向产品型创始人。AI 还处在技术阶段，而她觉得这个阶段快结束了。",
+              "她对 Custom GPTs 的批评最狠：「它显然出自一支能力惊人的团队，但不懂社交。」缺的是地位竞争——让多人产品自我强化的北极星——以及信任：「表面之下没有任何可见性。」她预测会有一个 prompt 社交网络：你关注真正厉害的人，甚至愿意把血检报告和补剂数据放在那里，而不是放在 ChatGPT 里。",
+              "她还预测「个人」和「工作」两个桶会分开：「某种程度上，你会成为你花时间最多的那五个 AI 的平均值。」ChatGPT 和 Claude 占住「工作」桶；「个人」桶还有位置——你真正会聊天的 AI 朋友。谁做出这层社交，长期看甚至可能蚕食掉 ChatGPT。"
+            ],
+            "original": [
+              "Custom GPTs 和 ChatGPT 在我眼里近乎「犯罪」。它显然出自一支能力惊人的团队，但不懂社交。",
+              "多人、有网络效应的体验是什么样的？会有人做出一个 UGC 社区，里面有一群非常非常厉害的人，让其余人轻松得多。",
+              "某种程度上，你也会成为你花时间最多的那五个 AI 的平均值。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
