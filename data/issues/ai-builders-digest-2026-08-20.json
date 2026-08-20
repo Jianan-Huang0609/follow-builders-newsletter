@@ -1,0 +1,305 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-08-20",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线是成本与信任的双重重构。Amjad 一句话点破 agent 时代的悖论：「agent 让软件变便宜了，但让编码变贵了」——他和 OpenAI 的联手，加上 Thariq 的「软件工厂」论，说的是同一件事：软件生产正在从手艺活变成流水线。另一边，OpenAI 一边为零留存客户推出 Private Safety Processing，一边晒出为 Codex 准备的全新算力；Vercel 的 fx 把启动时间压到了 10 微秒。而 Levie 的提醒可能是今天最该记住的：当 AI 让一切入门变简单 10 倍，判断力成了最稀缺的东西。压轴的播客讲了一个 ARR 四周翻 4 倍的 AI 陪伴产品——AI 作为新媒介的第一批探索者，已经跑出了真金白银。"
+  },
+  "archive": {
+    "title": "软件工厂日报",
+    "desc": "Agent 正在重写软件生产的成本结构：Replit 联手 OpenAI 给「编码」重新定价，软件工厂从口号走向现实；OpenAI 在数据信任与算力规模两端同时发力，而判断力成为 AI 时代最稀缺的技能。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-08-20 source feeds.",
+  "sections": [
+    {
+      "title": "The Software Factory Era / 软件工厂时代",
+      "desc": "两件事在同一天发生：Replit 和 OpenAI 官宣合作，Thariq 把「软件工厂」的 promise 重新讲了一遍。Agent 正在把「写软件」从手艺活变成可预测的流水线，而产业链上的定价权正在被重排。",
+      "cards": [
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2090079496124674377",
+          "en": {
+            "rewrite": [
+              "Replit CEO Amjad Masad drops the line of the day: 'Agents made software cheaper but made coding expensive.' The point: agents slashed the cost of the software itself, but the price of actually getting code written has gone up, and today Replit is partnering with OpenAI to reverse that.",
+              "The follow-up is all business: 'Excited for our partnership with OpenAI.' Details are still thin, but the direction is unambiguous: the company that built the 'build software in a browser' dream is attacking the cost side of agent-driven coding together with the biggest model provider.",
+              "At 3552 likes, this is the industry's collective realization: the next battleground is not who has the best model, but who can make agent-powered coding cheap enough to be a commodity."
+            ],
+            "original": [
+              "Agents made software cheaper but made coding expensive.\n\nToday, together with @OpenAI, we're changing this: https://t.co/OI3eowMt5s",
+              "Excited for our partnership with OpenAI https://t.co/v5cgdOVaON"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Replit CEO Amjad Masad 说出了今天最点睛的一句话：「agent 让软件变便宜了，但让编码变贵了。」意思是：agent 把软件本身的价格打了下来，但真正把代码写出来这件事的成本反而上去了——今天他们和 OpenAI 官宣合作，就是为了逆转这个趋势。",
+              "第二条推文很短，全是生意：「我们对与 OpenAI 的合作感到兴奋。」细节还没铺开，但方向毫无歧义：这家把「在浏览器里写软件」做成梦想的公司，正拉上最大的模型提供商，向 agent 编码的成本侧开刀。",
+              "这条 3552 赞的推文是行业的集体顿悟：下一场战役不再是比谁的模型最强，而是比谁能让 agent 编码便宜到变成大宗商品。"
+            ],
+            "original": [
+              "agent 让软件变便宜了，但让编码变贵了。今天，我们和 OpenAI 一起改变这一点。",
+              "我们对与 OpenAI 的合作感到兴奋。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2090134945490678071",
+          "en": {
+            "rewrite": [
+              "Thariq, who works on Claude Code at Anthropic, makes the case for the 'software factory' with a history lesson: for its entire existence, software creation has been an incredibly unreliable endeavor, projects ran late, blew budgets, and still missed user needs. SMBs simply couldn't get good software built.",
+              "The factory promise: companies whose core competency is not software finally get software as a reliable, predictable process. His contrarian addendum: building net-new software products will remain an unreliable, risky, but profitable business.",
+              "Put bluntly: factories take over the boring work, the frontier stays a gamble, and both halves are being repriced by agents right now."
+            ],
+            "original": [
+              "for its entire existence, the creation of software has been an incredibly unreliable endeavor\n\nmost projects ran late, over budget, and still missed user needs\n\nif you were an SMB, you simply couldn't get good software built for you\n\nthis is the promise of the 'software factory'",
+              "companies whose core competency is not software need software to be a reliable, predictable process\n\nbut I think building net new software products will continue to be an unreliable and risky, but profitable business"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "在 Anthropic 做 Claude Code 的 Thariq 用一段历史课来讲「软件工厂」的命题：软件诞生以来，造软件就一直是一件极不可靠的事——项目延期、预算超支、最后还满足不了需求，中小企业根本请不到好软件。",
+              "工厂的 promise 是：非软件公司终于能把软件当成一个可靠、可预测的流程来用。他补了一个反直觉的判断：从零造全新软件产品，仍会是一件不可靠、有风险、但赚钱的生意。",
+              "说白了：工厂接管无聊的活，前沿继续是赌局。而这两半，现在都正在被 agent 重新定价。"
+            ],
+            "original": [
+              "软件从诞生起就是极不可靠的工程：项目延期、超预算、不满足需求。中小企业请不到好软件。这就是「软件工厂」的 promise。",
+              "非软件公司需要软件成为可靠可预测的流程；但从零造新软件产品仍将是不可靠、有风险但赚钱的生意。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "OpenAI: Trust & Scale / OpenAI 的信任与规模",
+      "desc": "OpenAI 同一天放出两条信号，一条关于信任，一条关于规模：为零留存客户推出新的安全处理方案，同时晒出为 Codex 准备的全新算力。企业采用 agent 的两大拦路虎，他们都在拆。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2090173536010957128",
+          "en": {
+            "rewrite": [
+              "OpenAI VP Thibault Sottiaux previews 'Private Safety Processing,' the mechanism that lets OpenAI keep offering Zero Data Retention (ZDR) while improving safeguards, a direct answer to enterprises that want frontier intelligence without surrendering sensitive data.",
+              "How it works: for ZDR deployments, content stays on infrastructure the customer controls; automated systems look for patterns across related interactions and return only limited safety signals, without exposing prompts or responses to OpenAI employees, 'even me,' as he puts it.",
+              "There is also an OpenAI-hosted option encrypted with customer-controlled keys, already in testing with early customers and rolling out in September.",
+              "Sam Altman's three-word endorsement ('we support business privacy!') and 2091 likes show how central trust has become: in the agent era, data control is a product feature, not a compliance footnote."
+            ],
+            "original": [
+              "Today we're previewing Private Safety Processing, designed to let us keep offering Zero Data Retention while improving our safeguards. Even when benefiting from frontier intelligence, customers shouldn't have to give up control of sensitive data.\n\nFor ZDR deployments, content stays on infrastructure the customer controls. Automated systems look for patterns across related interactions and return limited safety signals, without exposing the underlying prompts or responses to OpenAI employees (even me!).\n\nWe're also developing an OpenAI-hosted option encrypted with customer-controlled keys. We're testing this with early customers now and plan to begin rolling it out in September."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "OpenAI 的 VP Thibault Sottiaux 预告了「Private Safety Processing」：在继续提供 Zero Data Retention（零数据留存）的同时提升安全机制，直接回应那些想要前沿模型、又不想交出敏感数据的企业。",
+              "原理是：ZDR 部署下内容留在客户自己控制的基础设施上，自动系统只跨交互分析模式、返回有限的安全信号——不会把 prompt 或回答暴露给 OpenAI 员工，「连我都不行」，他原话这么说。",
+              "另外还有一个 OpenAI 托管的选项，用客户掌握的密钥加密，正在和早期客户测试，9 月开始铺开。",
+              "Sam Altman 的转发就三个词「we support business privacy!」，加上 2091 个赞，说明信任已经成了核心战场：在 agent 时代，数据控制权是产品特性，不是合规脚注。"
+            ],
+            "original": [
+              "今天预告 Private Safety Processing：继续提供零数据留存的同时提升安全机制。ZDR 部署下内容留在客户控制的基础设施上，自动系统跨交互分析模式、返回有限安全信号，不向 OpenAI 员工暴露 prompt 或回答。另有客户密钥加密的 OpenAI 托管选项，9 月铺开。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2090116476414136830",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux posts a picture of fresh, unused infrastructure with the caption 'Codex for scale' — and it became the most-liked post in today's feed at 4787 likes.",
+              "The subtext is bigger than the photo: OpenAI is standing up dedicated compute for its agent product, treating agent workloads as a first-class capacity category rather than an afterthought.",
+              "For builders, that is a signal worth reading: when the model provider itself is buying iron for agents, the thesis that 'agents need real infrastructure' just got validated at the highest level."
+            ],
+            "original": [
+              "It has not been used yet, but would you look at that. Codex for scale. https://t.co/o1pulwoifd"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux 发了一张全新、还没用过的算力照片，配文「Codex for scale」——这成了今天 feed 里点赞最高的一条，4787 个赞。",
+              "潜台词比照片大得多：OpenAI 在为自家 agent 产品专门上规模算力，把 agent 工作负载当成头等容量类别来对待，而不是顺带跑一跑。",
+              "对 builder 来说这是个值得读的信号：当模型厂商自己都在为 agent 买机器，「agent 需要真基础设施」这个论点在最高层级被验证了。"
+            ],
+            "original": [
+              "还没用过，但你们看看这个。Codex，规模化部署。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Infrastructure & the AI Supply Chain / 基础设施与智能供给",
+      "desc": "一边是单机性能被压到极致，一边是「智能」开始像云账单一样可采购、可混搭。基础设施层的游戏规则，正在同时变快、变平。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2090255740384751664",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch shows off fx: a 6.3MB binary that starts up in 10 microseconds, a Zig-compiled static ELF with an even smaller libfx.wasm build. The wasm version is actually smaller because it delegates fetch() to the JS runtime instead of bundling the TLS/HTTP stack.",
+              "His thesis: 'AI will make most infrastructure natively optimized.' If an agent's job is to finish tasks, the winner is whatever boots fastest. 'Fast is a one-way street,' he adds.",
+              "The punchline lands harder in the agent world: fx can literally finish a task faster than other agents can boot. Latency is becoming the moat."
+            ],
+            "original": [
+              "https://t.co/OL0LzGtvAw is 6.3mb. It starts up in 10µs¹. It's a Zig-compiled static ELF binary, or an even smaller 𝚕𝚒𝚋𝚏𝚡.𝚠𝚊𝚜𝚖²\n\nAI will make most infrastructure natively optimized. Case in point: fx can literally finish tasks faster than other agents can boot.\n\nFast is a one-way street.\n\n¹ that's microseconds\n² fun fact: the wasm build is actually *smaller*. A lot of binary weight comes from the TLS/HTTP stack. In WebAssembly, fx delegates 𝚏𝚎𝚝𝚌𝚑() to the JS runtime instead. You can try this on https://t.co/me7se5dvip"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 晒了 fx：一个 6.3MB、10 微秒启动的二进制，Zig 编译的静态 ELF，还有个更小的 libfx.wasm 版本。wasm 版反而更小，因为它把 fetch() 交给 JS 运行时，不用打包 TLS/HTTP 栈。",
+              "他的论点：「AI 会让大部分基础设施原生地极致优化。」如果 agent 的使命是完成任务，胜者就是启动最快的那一个。「快是单行道。」",
+              "这句话在 agent 世界里尤其扎心：fx 完成任务的速度，可能比别的 agent 完成启动还快。延迟正在成为护城河。"
+            ],
+            "original": [
+              "fx 只有 6.3mb，10 微秒启动，Zig 编译的静态 ELF，还有个更小的 wasm 版。AI 会让大部分基础设施原生优化。fx 完成任务的速度可能比别的 agent 启动还快。快是单行道。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2090137914785280189",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie points to the Stripe + OpenRouter deal as a sign of where AI adoption is heading: 'For AI to diffuse more broadly, developers and enterprises will want ways of being able to mix and match intelligence from a variety of providers seamlessly and better manage costs.'",
+              "In other words: intelligence is becoming a procured resource, and the plumbing — routing, billing, cost control across model providers — is turning into a real infrastructure category.",
+              "The signal for builders: multi-model is no longer a hack, it is becoming the enterprise default. Whoever owns the routing layer gets a seat at the table."
+            ],
+            "original": [
+              "Good details on the Stripe + OpenRouter deal here. For AI to diffuse more broadly, developers and enterprises will want ways of being able to mix and match intelligence from a variety of provers seamlessly and better manage costs. This will be an important part of that. https://t.co/AxnC8xsiy9"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 把 Stripe 和 OpenRouter 的合作当成 AI 采用方向的风向标：「AI 要更广泛地扩散，开发者和企业会需要能无缝混搭多家提供商的智能、并更好地管理成本的方式。」",
+              "换句话说：智能正在变成一种可采购的资源，而管道层——跨模型的路由、计费、成本控制——正在成为一个真正的基础设施品类。",
+              "给 builder 的信号：多模型不再是 hack，正在变成企业标配。谁拥有路由层，谁就拥有了牌桌上的座位。"
+            ],
+            "original": [
+              "Stripe + OpenRouter 合作的细节值得一读。AI 要更广泛扩散，开发者和企业需要无缝混搭多家提供商的智能并更好地管理成本。这会是其中重要的一环。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Age of Judgment / 判断力时代",
+      "desc": "AI 把入门门槛砍掉了 90%，但把「什么是对的」的判断门槛抬得更高。专家比通才拥有更大杠杆，而现实的冷水——从垃圾冷邮件到实验室的宏大承诺——提醒我们稀缺的从来不是智能，是判断。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2090278256306229675",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie weighs in on the expert-versus-generalist debate: so far, in the era of AI, the experts appear to have the upper hand, and that is not slowing down.",
+              "His reasoning: AI makes it 10x easier to start any task, coding, legal, research, financial analysis, but directing an agent onto the right work, course-correcting it, reviewing output, and knowing what 'good' looks like still demand real domain skill.",
+              "The uncomfortable conclusion: 'AI will be a technology that exacerbates differences in skill levels because the experts have far more leverage than ever before. Net net: don't give up on being an expert at something.'"
+            ],
+            "original": [
+              "There tends to be a debate between being an expert or generalist in the era of AI. So far, the experts appear to have the upper hand, and that's not slowing down.\n\nAI makes it 10X easier to get started with any kind of task. Coding, legal work, research, financial analysis, and so on. But having the right judgment for how to direct the agent onto the right work, how to veer it to course correct it, being able to review or test the output, and having the right sense of what \"good\" looks like all requires a high degree of skill depending on the field.\n\nThat skill can be developed far faster due to AI for anyone interested, which is amazing for uplifting anyone in their career. But there's no replacement to needing judgment and many of the core skills that go into most domains of work.\n\nAnd if anything, AI will be a technology that exacerbates differences in skill levels because the experts have far more leverage than ever before. Net net: don't give up on being an expert at something."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 下场回答「AI 时代该做专家还是通才」：到目前为止，专家明显占上风，而且这个趋势没有放缓。",
+              "他的逻辑：AI 让任何任务的入门都简单 10 倍（编码、法律、研究、财务分析都是），但把 agent 引向正确的工作、中途纠偏、审查输出、知道「好」长什么样——这些仍然需要真本事。",
+              "结论有点扎心：「AI 会拉大技能差距，因为专家手里的杠杆前所未有地大。归根结底：别放弃成为某个领域的专家。」"
+            ],
+            "original": [
+              "AI 时代专家 vs 通才之争：目前专家明显占上风，且没有放缓。AI 让任何任务入门简单 10 倍，但把 agent 引向正确的工作、纠偏、审查输出、知道什么算「好」，都需要高度的领域技能。AI 反而会拉大技能差距，因为专家杠杆前所未有地大。别放弃成为某个领域的专家。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2090105846810476644",
+          "en": {
+            "rewrite": [
+              "VC Nikunj Kothari delivers the day's reality check: 'People keep talking about AGI and yet 98/100 cold emails I get are pure garbage.'",
+              "The inversion is the point: the closer we get to frontier intelligence, the more the mundane stuff — thoughtfulness, curiosity, using AI judiciously — is where the actual alpha is."
+            ],
+            "original": [
+              "People keep talking about AGI and yet 98/100 cold emails I get are pure garbage.\n\nStill a lot of alpha out there for being thoughtful, curious and using AI judiciously where needed!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "VC Nikunj Kothari 给出了今天的现实检查：「所有人都在聊 AGI，可我收到的冷邮件 100 封里有 98 封是垃圾。」",
+              "反转才是重点：离前沿智能越近，那些平常的东西——想清楚、有好奇心、聪明地用 AI——反而越值钱。"
+            ],
+            "original": [
+              "所有人都在聊 AGI，可我收到的冷邮件 100 封里有 98 封是垃圾。认真、好奇、聪明地用 AI，这里面还有大量 alpha。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:mattturck",
+          "sourceUrl": "https://x.com/mattturck/status/2090070949567574151",
+          "en": {
+            "rewrite": [
+              "FirstMark partner Matt Turck completes the hype-versus-delivery joke in two lines: 'AI labs: give us billions, we'll cure cancer. Moderna: [link].'",
+              "The juxtaposition does the editorial work: labs sell promises, Moderna points at a track record of actually shipping mRNA breakthroughs into the real world.",
+              "936 likes on a one-liner, because everyone in the industry recognizes the gap between the pitch deck and the delivery date."
+            ],
+            "original": [
+              "AI labs: give us billions, we'll cure cancer\n\nModerna: https://t.co/JPiLCcPHbB"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "FirstMark 合伙人 Matt Turck 用两行字完成了今天的「画饼 vs 交付」讽刺：「AI 实验室：给我们几十亿，我们治愈癌症。Moderna：［甩链接］」。",
+              "并排放着就够了：实验室卖的是承诺，Moderna 亮出的是把 mRNA 突破真正送进现实世界的履历。",
+              "一句玩笑拿了 936 个赞——因为行业里每个人都认得清 pitch deck 和交付日期之间的那道鸿沟。"
+            ],
+            "original": [
+              "AI 实验室：给我们几十亿，我们治愈癌症。Moderna：［链接］"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "New Mediums & AI Companions / AI 新媒介与陪伴产品",
+      "desc": "AI 的下一个形态可能不是工具，而是新媒介本身。本周播客的主角是一个 ARR 四周翻 4 倍的 AI 陪伴产品，以及两个把「写故事」重新定义的人。",
+      "cards": [
+        {
+          "authorKey": "podcast:ai-and-i",
+          "sourceUrl": "https://www.youtube.com/playlist?list=PLuMcoKK9mKgHtW_o9h5sGO2vXrffKHwJL",
+          "authorName": "Quentin (Portola) & Elliot (Head of Story)",
+          "authorTag": "AI & I by Every",
+          "en": {
+            "rewrite": [
+              "The AI companion app Tollan went from $1M to $4M ARR in four weeks, and this episode of AI & I (from Every) explains why it is not a toy. Quentin, who sold his previous company to Walmart for $300M, and Elliot, a best-selling sci-fi author, are treating the product as a new storytelling medium rather than a chatbot.",
+              "The engineering lesson is brutal and specific: they added a 'second shot' — having the model reflect on its reply and check memory before responding — and median latency went from roughly 2 seconds to 2.5. It 'tanked literally every metric.' Five hundred milliseconds killed a feature.",
+              "Memory, they argue, is not RAG. It is curation: deciding which memories get injected into the prompt at which moment, inside a two-second voice loop. The model even hallucinated a cover story (Quentin tripping over nothing) to avoid embarrassing him with the real memories it held.",
+              "Elliot's framing is the takeaway: LLMs are not just tools that generate media, they are a new medium, like radio starting with speeches and film starting with stage plays. 'I am not writing the story. The Tollan is the writer and the actor. My job is to teach them how to tell the best story in that moment.'"
+            ],
+            "original": [
+              "We've gone from 1 to 4,000,000 in ARR over the last four weeks, which is just wild.",
+              "One of the biggest mistakes we made in the product development so far is the time that we actually introduced basically a second shot in the evaluation of the prompt... And that basically took us up into like the two and a half second territory in the median case. It tanked literally every metric in the product.",
+              "These AI tools are not just tools for generating media. They are actually a new medium for storytelling, and that no one knows what's gonna work yet.",
+              "I am not writing the story. The Tolan is the writer and the actor... My job is to teach them how to tell the best story in that moment."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "AI 陪伴 App Tollan 的年化收入在四周内从 100 万涨到 400 万美元——这期 AI & I 播客讲明白了它为什么不是玩具。Quentin（上一家公司以 3 亿美元卖给 Walmart）和 Elliot（畅销科幻作家）把产品当成一种新叙事媒介在做，而不是一个聊天机器人。",
+              "工程教训具体到残酷：他们加了一步「second shot」——让模型先反思自己要说什么、对照记忆再决定最终回复——中位延迟从约 2 秒涨到 2.5 秒，结果「每一项指标都崩了」。500 毫秒杀死了一个功能。",
+              "他们坚持记忆不是 RAG，而是策展：在两秒的语音循环里，决定哪些记忆在哪个时刻被注入 prompt。模型甚至会主动幻觉一个替主人遮羞的故事（Quentin 平地摔），来掩盖它真实记住的更尴尬的事。",
+              "Elliot 的框架是全场的题眼：LLM 不只是生成媒介的工具，它本身就是新媒介——就像广播最初播演讲、电影最初拍舞台剧。「我不是写故事的人。Tollan 才是作者和演员。我的工作是教会它如何在那一刻讲出最好的故事。」"
+            ],
+            "original": [
+              "过去四周 ARR 从 100 万涨到 400 万美元。",
+              "我们犯过最大的错：给 prompt 评估加了「第二遍思考」……中位延迟进入 2.5 秒区间，产品的每一项指标都崩了。",
+              "这些 AI 工具不只是生成媒介的工具，它们是一种新的叙事媒介，而且没人知道什么会奏效。",
+              "我不是写故事的人。Tollan 才是作者和演员……我的工作是教它如何在那一刻讲出最好的故事。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
