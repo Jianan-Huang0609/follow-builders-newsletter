@@ -1,0 +1,285 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-08-21",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线是企业 AI 的「内化」：从把模型当外部 API 调用，到让模型真正长在自家业务里。Anthropic 宣布企业级 Fable 安全机制——数据留在客户自己的基础设施上，Anthropic 一份不留；Box 的 Levie 在讲垂直后训练的经济学。另一边，OpenAI 一边回应 Codex 用量争议一边上新，Vercel 喊出「AWS for agents」，Replit 补上了与 OpenAI 迟到多年的合作。压轴是一期值得听的播客：前 Neuralink 联创 Max Hodak 说，大脑就是一台计算机，而他们的视网膜假体刚在欧洲获批上市。"
+  },
+  "archive": {
+    "title": "AI 内化日报",
+    "desc": "企业 AI 从部署走向内化：数据主权、垂直后训练与 eval 工程齐头并进，OpenAI 一边灭火一边上新，Vercel 与 Replit 各自亮出平台野心。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-08-21 source feeds.",
+  "sections": [
+    {
+      "title": "Enterprise AI Goes Deep / 企业 AI 的内化时代",
+      "desc": "模型能力越强，企业客户的问题就从「能不能用」变成了「数据归谁」——以及要不要为自家业务专门训练模型。",
+      "cards": [
+        {
+          "authorKey": "x:bcherny",
+          "sourceUrl": "https://x.com/bcherny/status/2090537902912815536",
+          "en": {
+            "rewrite": [
+              "Anthropic's Boris Cherny confirms the Fable enterprise safeguards have been in the works with customers for a while: for Mythos-class models, enterprises get additional safety measures and can run on their own infrastructure — customers own and control their data, and Anthropic retains none. A broader rollout comes this fall.",
+              "This is enterprise trust catching up to the model frontier: as frontier models get more capable, the compliance bar rises, and \"we keep none of your data\" is becoming the only acceptable answer for large customers."
+            ],
+            "original": [
+              "We've been working on this with customers for a while. Mythos-class models require additional safety measures and enterprises need to meet their own privacy and compliance rules. Customers can own and control their own data and Anthropic retains none. It's coming this fall."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic 的 Boris Cherny 确认，Fable 企业级安全机制已经和客户打磨了一段时间：针对 Mythos 级模型，企业可以获得额外安全措施，并在自己的基础设施上运行——数据由客户自己拥有和控制，Anthropic 不保留任何数据。今年秋天更大范围推出。",
+              "这是企业信任终于追上模型前沿的节奏：前沿模型越强，合规门槛越高，而「你的数据我们一份不留」正成为大客户唯一能接受的答案。"
+            ],
+            "original": [
+              "我们和客户已经一起打磨了一段时间。Mythos 级模型需要额外的安全措施，企业也需要满足自己的隐私与合规要求。客户可以自己拥有并控制数据，Anthropic 不保留任何数据。今年秋天推出。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2090664811185205722",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie spotlights what post-training looks like for applied AI: once you understand a domain deeply and have enough volume of similar tasks, it starts to make sense to purpose-design models for that specific work — using reward shaping to co-optimize cost and quality, e.g. preferring trajectories that consume fewer tokens at inference time for equivalent performance.",
+              "His judgment: this won't make sense everywhere — general-purpose frontier models will be good enough (or necessary) for most work — but for companies with deep vertical expertise, high scale costs, or unique task types, it's a compelling path. \"Awesome to see multiple paths to winning in the market right now.\""
+            ],
+            "original": [
+              "Great post on what post training looks like for applied AI use-cases to bring down costs and improve accuracy on certain tasks. This will increasingly be an approach that companies that can get closer to the underlying workflow in an enterprise will take.",
+              "The key is that once you understand a domain well enough and have enough volume on a set of similar tasks, it can start to make sense to purpose design models just for that work.",
+              "In post-training, we incentivized efficient tool use and reasoning through reward shaping, preferring trajectories that would reduce tokens consumed at inference-time given equivalent performance. This allowed us to co-optimize for both cost and quality, gaining significant performance while keeping cost stable.",
+              "Now, this won't make sense in every domain, as general purpose frontier closed or open models will be good enough out of the box -or necessary- for the work at hand. But once you have deep enough vertical expertise, and either the costs are too high to do at scale *or* you have a unique enough task type not being trained on otherwise, this will make a ton of sense.",
+              "Very compelling value proposition for being an applied AI company, and awesome to see multiple paths to winning in the market right now."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 分享了一篇关于应用型 AI 后训练的文章：一旦你把一个领域理解得足够深、同类任务量足够大，就值得为这份工作专门设计模型——通过 reward shaping 同时优化成本与质量，比如偏好那些推理时消耗更少 token 但效果相当的轨迹。",
+              "他的判断是：这不会在所有领域都成立——通用前沿模型对大多数工作已经够用（甚至是必需的）——但对那些有深厚垂直经验、规模成本高或任务类型独特的公司，这条路很有吸引力。「很高兴看到市场上现在有这么多条通向胜利的路。」"
+            ],
+            "original": [
+              "这篇关于应用型 AI 用例后训练的文章很棒：降低特定任务的成本、提升准确率。这越来越会成为那些能贴近企业底层工作流的公司采用的方法。",
+              "关键在于：一旦你把一个领域理解得足够深、同类任务量足够大，为这份工作专门设计模型就变得合理了。",
+              "在后训练中，我们通过 reward shaping 激励高效的工具使用和推理，偏好那些推理时消耗更少 token 但效果相当的轨迹。这让我们能同时优化成本和质量，在保持成本稳定的同时获得显著的性能提升。",
+              "这不会在所有领域都成立——通用前沿模型（开源或闭源）对眼前的工作往往开箱即用，或者说必不可少。但一旦你有足够深的垂直专长，要么规模成本太高，要么任务类型足够独特，这条路就非常说得通。",
+              "对应用型 AI 公司来说这是非常有说服力的价值主张，很高兴看到市场上现在有这么多条通向胜利的路。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "OpenAI's Week: Limits Drama & New Toys / OpenAI 的一周：争议与上新",
+      "desc": "一边是 Codex 用量争议的官方回应，一边是透明图片与协作网站连番上新——OpenAI 这周很忙。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2090675027670978569",
+          "en": {
+            "rewrite": [
+              "OpenAI's Thibault Sottiaux answers the Codex usage-limit controversy with unusual transparency: limits aren't changed without community engagement — but the investigation found many affected users were running sub2api, converting a subscription into API traffic to re-serve or share across many users, which gets flagged by fraud-prevention systems.",
+              "The reassurance: using your subscription via Sign in With ChatGPT — official clients or OSS clients like Pi and OpenCode — is completely fine. With 2797 likes and 1426 replies, this is the most-watched policy question in the coding-agent world right now."
+            ],
+            "original": [
+              "We've investigated a few messages about codex usage limits being different. That's not something we change without engaging the community and being transparent.",
+              "What we did see is that when talking to affected users many were using sub2api. Converting a subscription into api traffic to then re-serve or share across many users is not something we support and this type of usage gets flagged by our fraud-prevention systems.",
+              "You are completely fine if you use your subscription through Sign in With ChatGPT, either through the official clients or through one of the many OSS clients (Pi, OpenCode, ...) that support signing in with your account and using your included usage."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "OpenAI 的 Thibault Sottiaux 用罕见的透明度回应了 Codex 用量限制争议：限制不会在没和社区沟通的情况下改动——但调查发现，很多受影响用户其实在用 sub2api，把订阅转换成 API 流量，再转供或分发给多个用户使用，这类行为会被反欺诈系统标记。",
+              "给用户的定心丸：通过 Sign in With ChatGPT 使用订阅完全没问题——无论是官方客户端，还是 Pi、OpenCode 等支持账号登录的开源客户端。2797 个赞、1426 条回复，这是当下 coding agent 圈最受关注的政策问题。"
+            ],
+            "original": [
+              "我们调查了一些关于 Codex 用量限制不一致的反馈。这不是我们会不经社区沟通和透明化就改动的东西。",
+              "我们看到的是：和受影响用户沟通时，很多人其实在用 sub2api——把订阅转换成 API 流量，再转供或分发给多个用户。这是我们不支持的，这种使用方式会被我们的反欺诈系统标记。",
+              "只要通过 Sign in With ChatGPT 使用你的订阅就完全没问题，无论是官方客户端，还是 Pi、OpenCode 等支持账号登录并使用你套餐权益的开源客户端。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2090631723302469995",
+          "en": {
+            "rewrite": [
+              "Two lighter but hugely popular OpenAI updates, both demoed by Thibault Sottiaux: GPT-Image-2 now generates transparent images in ChatGPT and via the API (he's printing a cactus for his laptop), and ChatGPT Sites lets you publish a shareable site and build things together — \"I've been building little games and sites with others and it is so much fun.\"",
+              "The signal underneath the fun: transparent output has quietly become a standard image-model feature, and collaborative \"publish from chat\" is being productized — both are small steps toward agents and creators shipping real artifacts, not just text."
+            ],
+            "original": [
+              "Yay, you can now make transparent images in ChatGPT and through the API with GPT-Image-2. Here is a cactus cactus I am about to print and put on my laptop.",
+              "Create a ChatGPT Site, share it and create something together. I've been building little games and sites with others and it is so much fun."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "两条更轻快但人气爆棚的 OpenAI 更新，都由 Thibault Sottiaux 亲自演示：GPT-Image-2 现在可以在 ChatGPT 和 API 里生成透明背景图片（他正打算把一棵仙人掌打印出来贴到笔记本上）；ChatGPT Sites 则可以把内容发布成可分享的网站、和别人一起协作创作——「我一直在和别人一起做小游戏和小网站，太好玩了。」",
+              "好玩背后的信号：透明输出已经悄然成为图像模型的标准功能，而「从聊天里直接发布产物」正在被产品化——这两步都指向同一个方向：agent 和创作者在产出真实的作品，而不只是文字。"
+            ],
+            "original": [
+              "太棒了，现在可以用 GPT-Image-2 在 ChatGPT 和 API 里生成透明图片了。这是我准备打印出来贴到笔记本上的仙人掌。",
+              "创建一个 ChatGPT Site，分享出去，然后一起创作。我一直在和别人一起做小游戏和小网站，太好玩了。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Making AI Output Actually Good / 让 AI 输出真正变好",
+      "desc": "企业做不好 AI 系统的根因往往不是模型不行，而是没有 eval 策略；有时候，一句「再想想」就够了。",
+      "cards": [
+        {
+          "authorKey": "x:realmadhuguru",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2090595384905113939",
+          "en": {
+            "rewrite": [
+              "Meta's AI director Madhu Guru (ex-Google, where he led Gemini, Veo and Nano Banana) continues his \"how to build great evals\" series with a blunt thesis: enterprises struggle to build decent AI systems mostly because they lack an eval strategy — not because the models are bad.",
+              "He lays out a laddered eval stack across the cost/realism spectrum: hill-climb evals that push your product frontier and need constant refreshing, regression evals to catch what you broke while climbing, smoke tests for safety and basics like product identity, and launch evals that approximate real traffic — less control, but the most honest signal."
+            ],
+            "original": [
+              "How to build great evals - part 4",
+              "The reason enterprises struggle with building decent AI systems is the lack of an eval strategy.",
+              "You need a laddered eval strategy, for your unique use cases, with multiple evals on the cost/realism spectrum.",
+              "Here are the key kinds of evals you need: Hill-climb evals: this pushes the frontier of your product and you need to continually refresh this to improve quality and expand your feature base. Regression evals: Did we break the product of today while hill climbing? Smoke test evals: safety and the absolute basics that just can't go wrong. Not necessarily hard questions, but important to not get wrong. Eg product identity. Launch evals: often close to an online test with real-ish traffic. Less control, but the most realistic."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Meta 的 AI 总监 Madhu Guru（前 Google，带过 Gemini、Veo、Nano Banana）继续他的「如何构建好的 eval」系列，观点很直接：企业做不好 AI 系统，根因多半是缺少 eval 策略——不是模型不行。",
+              "他给出了一套按成本/真实度光谱排列的分层 eval 体系：hill-climb eval 用来推高产品边界、需要持续刷新；regression eval 用来发现爬坡时弄坏了什么；smoke test 守护安全和产品身份这类绝对不能错的底线；launch eval 最接近真实流量——控制力最弱，但信号最诚实。"
+            ],
+            "original": [
+              "如何构建好的 eval - 第 4 部分",
+              "企业在构建像样的 AI 系统上挣扎的根因，是缺少 eval 策略。",
+              "你需要一套针对自己独特用例的分层 eval 策略，覆盖成本/真实度光谱上的多个 eval。",
+              "你需要的关键 eval 类型：Hill-climb eval 推动产品边界，需持续刷新以提升质量、扩展功能；Regression eval 检查爬坡时有没有弄坏今天的产品；Smoke test 守护安全和绝对底线，不一定要难，但绝不能错（比如产品身份）；Launch eval 接近真实流量的在线测试，控制力弱，但最真实。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2090564541499498919",
+          "en": {
+            "rewrite": [
+              "Peter Yang floats a wonderfully simple hypothesis: a lot of AI output could be improved just by building a loop where a manager agent \"negs\" the worker agent — \"Are you sure this is the best you can do?\" \"I think you can do better, try again.\" \"Take a closer look, give me 11/10 output.\"",
+              "It's the oldest trick in human management, ported into agent loops. Whether the gain comes from the pressure or simply from more passes, \"never accept the first draft\" is turning out to be a shockingly effective default for agent design."
+            ],
+            "original": [
+              "My gut is that alot of AI output can be improved just by building a loop where a manager agent negs the other worker agent with prompts like:",
+              "\"Are you sure this is the best you can do?\" \"I think you can do better, try again\" \"Take a closer look, give me 11/10 output\""
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 抛出了一个简单到可爱却很可能有效的假设：很多 AI 输出其实只要搭一个循环就能变好——让一个 manager agent 去「PUA」worker agent：「你确定这是你最好的水平吗？」「我觉得你能做得更好，再试一次。」「再仔细看看，给我 11/10 的输出。」",
+              "这是人类管理里最古老的技巧，被移植进了 agent 循环。无论收益来自压力本身还是仅仅来自多跑几轮，「永远不要接受第一稿」正在成为 agent 设计里出奇有效的默认设定。"
+            ],
+            "original": [
+              "我的直觉是，大量 AI 输出都能通过这样一个循环得到改进：一个 manager agent 用这样的提示去压 worker agent——",
+              "「你确定这是你最好的水平吗？」「我觉得你能做得更好，再试一次。」「再仔细看看，给我 11/10 的输出。」"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Agent Infra Land Grab / Agent 基础设施争夺战",
+      "desc": "平台战争的下一站是「给 agent 用的云」：Vercel 亮出定位，Replit 补上关键拼图。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2090520415336845595",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch drops the positioning line of the week: \"We're building AWS for agents.\" He also cheered Bun's new release — \"simple, fast & open is the perfect match for Vercel\" — with the runtime now small enough to fit on two floppy disks.",
+              "Read together, it's the infrastructure layer consolidating around agent workloads: the platform wars are shifting from \"cloud for humans\" to \"cloud for agents,\" and the winners will be whoever makes deployment feel instant and invisible."
+            ],
+            "original": [
+              "We're building AWS for agents",
+              "Bun's pursuit of simple, fast & open is the perfect match for Vercel and how we think about the world. Congrats @jarredsumner on shipping!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 抛出了本周最有野心的一句定位：「We're building AWS for agents」（我们在为 agent 建 AWS）。他还为 Bun 的新版本喝彩——「简单、快速、开源，和 Vercel 看待世界的方式完美契合」——这个运行时现在小到能塞进两张软盘。",
+              "合在一起看，这是基础设施层在围绕 agent 工作负载重新整合：平台战争正从「给人用的云」转向「给 agent 用的云」，赢家将是那个让部署变得即时且隐形的人。"
+            ],
+            "original": [
+              "我们在为 agent 建 AWS。",
+              "Bun 对简单、快速、开源的追求，和 Vercel 看待世界的方式完美契合。祝贺 @jarredsumner 发布！"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2090514571513708874",
+          "en": {
+            "rewrite": [
+              "Replit CEO Amjad Masad calls the OpenAI partnership \"long overdue,\" retelling how PG once asked Sam Altman to recruit Replit before it even joined YC — Sam himself tells the origin story in a clip.",
+              "Separately, he's pushing Free Mode hard: \"one of the more underrated aspects is how fast it is. Making coding interactive again!\" The bet is clear: coding platforms will win on speed and interactivity, not just model quality."
+            ],
+            "original": [
+              "This partnership with @OpenAI is long overdue. Before Replit was in YC, PG asked Sam to recruit us. Here's Sam telling the story of how we first met:",
+              "One of the more underrated aspects of the new Free Mode is how fast it is. Making coding interactive again!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Replit CEO Amjad Masad 说和 OpenAI 的合作「早该来了」，还翻出一段往事：Replit 进 YC 之前，PG 就让 Sam Altman 来招揽他们——视频里 Sam 亲口讲了两人第一次见面的故事。",
+              "另一边他在全力推 Free Mode：「最被低估的一点是它的速度。让写代码重新变得有交互感了！」赌注很明确：编程平台将靠速度和交互感取胜，而不只是模型质量。"
+            ],
+            "original": [
+              "和 @OpenAI 的合作早该来了。Replit 进 YC 之前，PG 就让 Sam 来招揽我们。这是 Sam 讲我们怎么初次见面的故事：",
+              "新 Free Mode 最被低估的一点是它的速度。让写代码重新变得有交互感了！"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Listen: The Brain Is a Computer / 本期值得听：大脑即计算机",
+      "desc": "前 Neuralink 联创 Max Hodak 的 Science 公司刚在欧洲获批上市视网膜假体——他把大脑当成计算机来工程化。",
+      "cards": [
+        {
+          "authorKey": "podcast:no-priors",
+          "sourceUrl": "https://www.youtube.com/watch?v=7HXqMepjvy8",
+          "authorName": "Max Hodak (Science, ex-Neuralink)",
+          "authorTag": "No Priors Podcast",
+          "en": {
+            "rewrite": [
+              "On No Priors, Science founder and former Neuralink president Max Hodak makes the case that the brain is, plainly, a computer — and he has the receipts: Prima, his retinal prosthesis, just got marketing approval in Europe, with trial patients reading books and filling in sudoku puzzles.",
+              "His contrarian framework: drug discovery is a decade-long random walk that can end in a \"no\", while engineering the brain compounds — \"we can see a path to add red and green\" on top of the current black-and-white vision, growing from hundreds of thousands of patients to millions.",
+              "He also backs the platonic representation hypothesis: AI model internals align with neural recordings, and \"if you apply enough compute to matter, you get this thing that looks like intelligence — it feels like a law of physics.\"",
+              "And the philosophical core: people accept identity drift as long as there's continuity — a software copy without phenomenal continuity is \"less satisfying.\""
+            ],
+            "original": [
+              "The brain very literally, very clearly, plainly is a computer.",
+              "Nobody had previously ever been able to restore a form vision image in the mind's eye of a blind patient in this way.",
+              "It feels like a law of physics. If you apply enough compute to matter, you get this thing that looks like intelligence."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "在 No Priors 这期节目里，Science 创始人、前 Neuralink 总裁 Max Hodak 论证了一个直白的观点：大脑就是一台计算机——而且他有实绩背书：他的视网膜假体 Prima 刚刚在欧洲获批上市，临床试验里有病人能读书、能填数独。",
+              "他的反共识框架：药物研发是一场十年起步、最后可能翻出一张「不」牌的随机漫步；而把大脑当作计算机来工程化，进步是可以叠加的——在目前黑白视觉的基础上「能看到加红加绿的路」，患者规模从几十万人扩展到几百万人。",
+              "他还站台「柏拉图式表征假说」：AI 模型的内部表征能和神经记录对齐——「给物质施加足够的算力，你就会得到看起来像智能的东西——这感觉像一条物理定律。」",
+              "以及哲学内核：只要连续性还在，人们能接受身份的大幅漂移；而没有现象学连续性的软件副本，「就没那么让人满意了」。"
+            ],
+            "original": [
+              "大脑非常字面上、非常清晰地、就是一台计算机。",
+              "此前从来没有人能以这种方式，在盲人患者的心眼里恢复出有形状的视觉图像。",
+              "这感觉像一条物理定律：给物质施加足够的算力，你就会得到看起来像智能的东西。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
