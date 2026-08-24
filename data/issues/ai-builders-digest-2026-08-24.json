@@ -1,0 +1,251 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-08-24",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线是「成熟」两个字。评测正在从玄学变成工程——Madhu Guru 讲「金发姑娘原则」，Peter Yang 转述 Shreya Shankar 的自上而下/自下而上之分，都在说同一件事：好的评测必须自己从真实输出里搭出来。另一边，Vercel 的 Rauch 和 OpenAI 的 Sottiaux 同时指向效率经济学——智能在变便宜，gateway 变得必然，模型的可靠性和效率正在成为关键基础设施。Garry Tan 的预测给这一切收了口：系统记录要么变成 AI 缰绳，要么被 agent 取代。"
+  },
+  "archive": {
+    "title": "效率拐点日报",
+    "desc": "智能变便宜、评测变工程化：模型效率与可靠性成为关键基础设施，评测要靠自己从真实输出里搭出来，系统记录则面临被 agent 取代的岔路口。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-08-24 source feeds.",
+  "sections": [
+    {
+      "title": "The Evals Goldilocks Zone / 评测的「金发姑娘」区间",
+      "desc": "评测正在从玄学变成工程：好的评测要分层、要自己从真实输出里搭出来，而不是只盯着最终答案。",
+      "cards": [
+        {
+          "authorKey": "x:realmadhuguru",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2091684812012875981",
+          "en": {
+            "rewrite": [
+              "Meta's Sr Director of AI Madhu Guru continues his 'How to build great evals' series with part 7, laying out a Goldilocks principle for eval construction: your evals should measure at the level of each job to be done, not just the final answer.",
+              "His example is a financial analysis agent. Most teams just create a golden set of right answers and check whether the agent recommended the 'right' stock. But that misses all the meaningful intermediate jobs — understanding the client, gathering evidence, analyzing data, then making the recommendation. Each stage should have its own eval, so a wrong final answer tells you exactly where to dig: client understanding 92%, evidence extraction 92%, data analysis 70%, recommendation 75%.",
+              "His rule of thumb: 'Not too granular. Not too coarse. Just right.' Make your eval set as granular as you need to diagnose and act."
+            ],
+            "original": [
+              "How to build great evals - part 7. The Goldilocks principle for eval construction. Your evals should measure at the level of the various jobs to be done, not just the final answer.",
+              "The most common mistake I see is teams create a golden set of right answers and check if the agent recommended the \"right\" stock.",
+              "If the final recommendation is wrong, a well designed eval set would tell you: Client understanding : 92%, Evidence extraction : 92%, Data analysis: 70%, Recommendation: 75%. Now you know where to go dig.",
+              "Not too granular. Not too coarse. Just right. Make your eval set as granular as you need to diagnose and act."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Meta 的 AI 高级总监 Madhu Guru 继续他的「如何构建好的评测」系列，第 7 部分提出了评测构建的金发姑娘原则：你的评测应该在各个「待完成的工作」层面去衡量，而不只是看最终答案。",
+              "他拿金融分析 agent 举例：大多数团队只会造一套标准答案，检查 agent 有没有推荐「正确」的股票。但这漏掉了所有有意义的中间环节——理解客户、收集证据、分析数据、然后才给出推荐。每个阶段都应该有自己的评测，这样当最终答案错了，你能立刻知道该去哪里排查：客户理解 92%、证据提取 92%、数据分析 70%、推荐 75%。",
+              "他的经验法则：「不能太粗，也不能太细，刚刚好。」把评测粒度做到你能诊断问题、采取行动的程度。"
+            ],
+            "original": [
+              "如何构建好的评测 - 第 7 部分。评测构建的金发姑娘原则：评测应该在各个待完成工作的层面去衡量，而不只是最终答案。",
+              "最常见的错误是团队造一套标准答案，检查 agent 有没有推荐「正确」的股票。",
+              "如果最终推荐错了，设计良好的评测集会告诉你：客户理解 92%、证据提取 92%、数据分析 70%、推荐 75%。现在你知道该去哪挖了。",
+              "不能太粗，也不能太细，刚刚好。把评测粒度做到你能诊断并行动的程度。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2091586298779955512",
+          "en": {
+            "rewrite": [
+              "Peter Yang surfaces a useful mental model from evals expert Shreya Shankar: there are two kinds of AI evals — top-down and bottom-up.",
+              "Top-down means, given just a task description in a vacuum, what would you come up with? Claude is very good at helping with these. Bottom-up is the other half: looking at lots and lots of sample outputs and externalizing your gut feedback into evals. That part, Shankar says, is all you — Claude is 'very, very bad' at coming up with bottom-up evals.",
+              "It pairs neatly with Madhu Guru's post from the same day: the hardest, most valuable evals are the ones you have to build yourself from real outputs."
+            ],
+            "original": [
+              "There are two types of AI evals - tops down and bottoms up.",
+              "Think of top-down as: If you're in a vacuum, just given the task description, what would you come up with? Claude does a very good job of helping you with these top-down evals.",
+              "Bottom-up evals are the other half. When you look at lots and lots of sample outputs, what is your gut feedback that you want externalized into evals? Claude is very, very bad at coming up with bottom-up evals. That's all you."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 转述了评测专家 Shreya Shankar 的一个实用心智模型：AI 评测分两种——自上而下和自下而上。",
+              "自上而下是：把你放在真空里，只给你任务描述，你会想出什么？Claude 非常擅长帮你做这种自上而下的评测。自下而上是另一半：当你看了大量样本输出，你想把什么样的直觉反馈外化成评测？这部分，Shankar 说，全靠你自己——Claude 在生成自下而上的评测上「非常非常差」。",
+              "这跟 Madhu Guru 当天发的帖子正好呼应：最难、最有价值的评测，恰恰是那些你必须从真实输出里自己搭出来的。"
+            ],
+            "original": [
+              "AI 评测有两种：自上而下和自下而上。",
+              "自上而下：在真空里只给任务描述，你会想到什么？Claude 很擅长这种自上而下的评测。",
+              "自下而上是另一半：看大量样本输出时，你想把什么直觉反馈外化成评测？Claude 做自下而上评测非常非常差，那全得靠你。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Efficiency & Reliability Era / 效率与可靠性时代",
+      "desc": "智能在变便宜，模型的效率与可靠性正在成为关键基础设施——企业到底优化什么，正在起变化。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2091581575108653374",
+          "en": {
+            "rewrite": [
+              "OpenAI's Thibault Sottiaux, who works on Codex & ChatGPT, makes a prediction that racked up 5442 likes: 2026 is the year companies start seriously caring about model efficiency and reliability, because AI is becoming critical infrastructure.",
+              "The timing is telling — it lands right alongside Rauch's point about price elasticity. When models are cheap enough to be everywhere, what companies actually optimize for shifts from raw capability to the unglamorous stuff: uptime, latency, and cost-per-token."
+            ],
+            "original": [
+              "2026 is the year companies start seriously caring about model efficiency and reliability as it becomes critical infrastructure"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "OpenAI 负责 Codex & ChatGPT 的 Thibault Sottiaux 抛出一条 5442 赞的判断：2026 年是企业开始真正在意模型效率和可靠性的年份，因为 AI 正在变成关键基础设施。",
+              "这个时机很说明问题——它正好和 Rauch 关于价格弹性的观点撞在一起。当模型便宜到无处不在，企业真正优化的重点就会从「能力有多强」转向那些不性感的东西：可用性、延迟、每 token 成本。"
+            ],
+            "original": [
+              "2026 年是公司开始真正在意模型效率和可靠性的年份，因为它正在成为关键基础设施。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2091671326897713424",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch shares a concrete data point on the 'intelligence is getting cheaper' narrative: OpenAI Sol's price reductions and discounts on Vercel AI Gateway have made Sol their fastest-growing frontier model.",
+              "He draws two conclusions. First, demand for intelligence is highly elastic — as inference costs fall, usage grows rapidly. Second, if you're not routing through a gateway, you're missing out on the price volatility that lowers your operating costs and increases your margins.",
+              "His closing line is a bet on the whole category: 'It's no wonder the router space has heated up… gateways are inevitable.'"
+            ],
+            "original": [
+              "Intelligence is getting cheaper. @OpenAI Sol's price reductions & discounts on Vercel AI Gateway have made Sol our fastest-growing frontier model.",
+              "This shows ① that the demand for intelligence is highly elastic: as inference costs fall, usage grows rapidly.",
+              "② If you're not using a gateway, you're missing out on this incredible price volatility, which lowers your operating costs and increases your margins.",
+              "It's no wonder the router space has heated up… gateways are inevitable."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 给「智能越来越便宜」这个说法加了一个具体数据点：OpenAI Sol 的降价加上 Vercel AI Gateway 的折扣，让 Sol 成了他们增长最快的前沿模型。",
+              "他得出两个结论。第一，对智能的需求弹性极高——推理成本一降，用量就迅速上升。第二，如果你不走 gateway 路由，就会错过这种巨大的价格波动，而它正是压低运营成本、抬高利润的关键。",
+              "他的收尾是对整个品类的下注：「难怪 router 这个赛道热起来了……gateway 是必然的。」"
+            ],
+            "original": [
+              "智能在变便宜。OpenAI Sol 的降价 + Vercel AI Gateway 的折扣，让 Sol 成了我们增长最快的前沿模型。",
+              "① 智能需求弹性极高：推理成本下降，用量迅速增长。",
+              "② 不用 gateway 就会错过价格波动——它压低运营成本、抬高利润。",
+              "难怪 router 赛道热起来了……gateway 是必然的。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2091688655828246890",
+          "en": {
+            "rewrite": [
+              "OpenAI's Thibault Sottiaux posts a Sunday update on Codex/ChatGPT reliability: a reset has been propagated to accounts, and they landed fixes for the usage issues reported yesterday. 'You should feel a positive difference,' he writes, with more to come tomorrow.",
+              "With 7425 likes and over a thousand replies, this small ops note hit a big nerve — proof of his own point from earlier in the week that AI reliability is now critical infrastructure, where even a usage-metering bug is worth a public status update."
+            ],
+            "original": [
+              "Good Sunday. Reset has been propagated to accounts and we landed some fixes to usage for things mentioned yesterday as issues we found. You should feel a positive difference. More to come tomorrow and will keep communicating."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "OpenAI 的 Thibault Sottiaux 发了一条周日更新，讲 Codex/ChatGPT 的可靠性：reset 已经推送到账户，昨天提到的用量问题也已经修复。他写道：「你应该能感觉到明显改善」，明天还会有更多。",
+              "7425 个赞、上千条回复——一条小小的运维通告戳中了巨大的共鸣，这正好印证了他自己这周早前说的那句话：AI 可靠性已经成了关键基础设施，连用量计费的 bug 都值得公开状态更新。"
+            ],
+            "original": [
+              "周日好。Reset 已推送到账户，我们修复了昨天提到的用量问题。你应该能感觉到明显改善。明天还有更多，会持续沟通。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Open Protocols, Not Walled Gardens / 开放协议而非围墙花园",
+      "desc": "agent 工具世界正在向可组合、协议驱动的小块收敛，而不是封闭的围墙花园。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2091583525661384813",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch lays out his philosophy on extending 𝚏𝚡 (his agent framework): open protocols over closed platforms. Three of them — MCP, Skills, and Plugins — plus, as he puts it, 'the best one, Unix.'",
+              "His Unix argument is worth quoting: small programs that do one thing well and compose by calling other programs, plus libfx that enables embeddability into more complex programs. The upshot: you should be able to build your own CLI, background agent, or software factory — local or cloud.",
+              "With 703 likes, it's a clear signal of where agent tooling is consolidating: composable, protocol-driven pieces rather than walled gardens."
+            ],
+            "original": [
+              "Our philosophy on extending 𝚏𝚡: open protocols. ∙ MCP (modelcontextprotocol.io) ∙ Skills (agentskills.io) ∙ Plugins (agent-plugins.org). And the best one, Unix:",
+              "① Small programs that do one thing well and compose by calling other programs.",
+              "② 𝚕𝚒𝚋𝚏𝚡 that enables embeddability into more complex programs. You should be able to build your own CLI, background agent, software factory. Local or cloud."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 阐述了他扩展 𝚏𝚡（他的 agent 框架）的哲学：开放协议优先于封闭平台。他列了三个——MCP、Skills、Plugins——再加上他口中「最好的那个，Unix」。",
+              "他的 Unix 论点值得引用：小程序各司其职、通过互相调用组合起来，再加上能嵌入更复杂程序的 libfx。结论是：你应该能构建自己的 CLI、后台 agent、软件工厂——本地也好，云端也好。",
+              "703 个赞，这是一个清晰信号：agent 工具世界正在向「可组合、协议驱动的小块」收敛，而不是围墙花园。"
+            ],
+            "original": [
+              "我们扩展 𝚏𝚡 的哲学：开放协议。MCP、Skills、Plugins。最好的那个是 Unix：",
+              "① 小程序做好一件事，通过互相调用来组合。",
+              "② libfx 让你能嵌入更复杂的程序。你能构建自己的 CLI、后台 agent、软件工厂，本地或云端。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2091650136506327253",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger, the 'ClawFather' behind OpenClaw, makes a short point about where agent tooling is heading: the CLI is nice, but having UI visualizations and your team where you work is nicer.",
+              "The same energy shows up in his other post — he added a rotation USB protocol and told his claw to 'look around,' and now it's playing with a 360 webcam. It's the same thesis as Rauch's open-protocols post from a different angle: agents become more useful when they can plug into more surfaces, whether that's a UI or a webcam."
+            ],
+            "original": [
+              "cli is nice, having UI visualizations and your team where you work is nicer.",
+              "I added the rotation USB protocol to https://t.co/kyF8ap5Pq6 and told my claw to look around- now it's having fun with my 360 webcam."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "OpenClaw 背后的「ClawFather」Peter Steinberger 简短点出了 agent 工具的走向：CLI 是不错，但能一边看 UI 可视化、一边和你的团队在同一个地方工作，更好。",
+              "同样的劲头也出现在他另一条帖子里——他给机器爪子加了一个 USB 旋转协议，让它「四处看看」，现在它正玩着 360 摄像头。这其实是用另一个角度印证了 Rauch 的开放协议论点：当 agent 能接进更多界面——不管是 UI 还是摄像头——它就更有用。"
+            ],
+            "original": [
+              "CLI 不错，但能看 UI 可视化、和团队在同一个地方工作更好。",
+              "我给爪子加了 USB 旋转协议，让它四处看看——现在它正玩着我的 360 摄像头。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Systems of Record at the Crossroads / 系统记录的岔路口",
+      "desc": "系统记录（systems of record）要么学会驾驭 AI，要么被架在它上面的 agent 取代。",
+      "cards": [
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2091742825042030681",
+          "en": {
+            "rewrite": [
+              "Y Combinator CEO Garry Tan makes a sharp prediction with 567 likes: systems of record will need to become AI harnesses, or face replacement by agents.",
+              "It's a concise way to name the collision everyone is watching: the enterprise software that owns your data (CRM, ERP, and the rest) is either going to learn how to drive AI agents itself, or get bypassed by agents that sit on top of it. The 'system of record' moat is only as durable as the harness layer you build around it."
+            ],
+            "original": [
+              "Prediction: systems of record will need to become AI harnesses or face replacement by agents"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Y Combinator CEO Garry Tan 抛出一条 567 赞的犀利预测：系统记录（systems of record）必须变成 AI 缰绳（AI harnesses），否则就会被 agent 取代。",
+              "这句话精炼地点出了一个所有人都在观望的碰撞：那些掌握你数据的企服软件（CRM、ERP 之类），要么学会自己驾驭 AI agent，要么被架在它们上面的 agent 绕过去。所谓「系统记录」的护城河，其耐用程度取决于你在它周围搭的那层 harness。"
+            ],
+            "original": [
+              "预测：系统记录必须变成 AI 缰绳，否则就会被 agent 取代。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

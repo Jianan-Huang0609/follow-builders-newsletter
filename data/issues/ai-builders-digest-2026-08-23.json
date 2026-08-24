@@ -5,11 +5,11 @@
   "editionName": "双语精选版",
   "intro": {
     "kicker": "编者导语 / Editor's Note",
-    "text": "今天这批内容的共同点是：AI 正在从「模型能力」转向「落地工程」。Kevin Scott 把今年的主线叫 agentic web——一个 agent 能真正替你动手的生态；Levie 和 Madhu Guru 则从两个角度戳中同一个瓶颈——没有好的 eval，就谈不上自动化。另一边，Thibault 把 Codex 的 rate limit 排查过程摊开给我们看，Peter Yang 用 agent 清理 Google 授权、还做了一个帮癌症患者的 skill，Zara 给人才流失配上了数字。技术已经不再是最难的部分，难的是工程、度量，以及组织能不能跟上。"
+    "text": "今天这批内容有两条并行的主线。一条关于「怎么做对」：Madhu Guru 和 Peter Yang 在同一天把 AI 评测讲透了——评测真正的功夫不在测最终答案，而在把你对每一步的判断编码进去。另一条关于「基础设施」：Rauchg 说智能正在变便宜、gateway 是必然，Thibault 说 2026 是企业开始认真对待模型效率的一年。而 Garry Tan 的一句话预测则点出了所有旧系统的命运：系统记录要么变成 AI 的驾驭装置，要么被 agent 取代。"
   },
   "archive": {
-    "title": "落地工程日报",
-    "desc": "主线从模型能力转向落地工程：Kevin Scott 讲 agentic web，Levie 和 Madhu Guru 把 eval 点名为新瓶颈，而 Codex 的用量排查与 Peter Yang 的个人 agent 实操，说明真正卡住进展的是工程、度量与组织。"
+    "title": "评测与基础设施日报",
+    "desc": "今天的焦点在「怎么做对」：评测从玄学变成可诊断的工程，智能变便宜让 gateway 成为必答题，而旧系统面临被 agent 取代的压力。"
   },
   "viewLabels": {
     "rewrite": "速读",
@@ -18,248 +18,236 @@
   "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-08-23 source feeds.",
   "sections": [
     {
-      "title": "Evals: AI's New Bottleneck / Eval：AI 落地的新瓶颈",
-      "desc": "两个来自不同角度的人指向同一个结论：没有好的评估，自动化就无从谈起。",
+      "title": "Making Evals a Craft / 把评测做成一门手艺",
+      "desc": "评测正在从玄学变成可诊断的工程：不是测最终答案，而是把你对每一步的判断编码进去。",
       "cards": [
         {
-          "authorKey": "x:levie",
-          "sourceUrl": "https://x.com/levie/status/2091359223368315050",
+          "authorKey": "x:realmadhuguru",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2091684812012875981",
           "en": {
             "rewrite": [
-              "Box CEO Aaron Levie lands on the most underrated bottleneck in AI adoption: evals. His argument—AI diffusion is far more rate-limited by having good evals than most people realize.",
-              "The evals we see with every model release are useful, but they only show general progress and relative capability. The bigger opportunity over time is evals on all the major workflows enterprises actually run, down to the specifics of a single company.",
-              "His punchline: 'You can't automate what you can't assess the progress on.' Enterprises won't be able to run on vibes—they'll need real measurement before they can hand work to agents."
+              "Meta's Senior Director of AI Madhu Guru continues his series on building great evals with the 'Goldilocks principle': your evals should measure at the level of each intermediate job-to-be-done, not just the final answer.",
+              "His example: a financial analysis agent that outputs a stock recommendation. If you only check whether the agent picked the 'right' stock, you learn nothing when it's wrong. But if you score each stage separately — understanding the client (92%), gathering evidence (92%), analyzing data (70%), making the recommendation (75%) — you immediately know the data-analysis step is where to dig.",
+              "The rule: not too granular, not too coarse — just granular enough to diagnose and act. It's the most actionable eval-framing advice in the feed today."
             ],
             "original": [
-              "AI diffusion is far more rate limited by having good evals than most realize. The kind of evals that you see for every model release are incredibly helpful, but only tell you the shape of general AI progress and the relative capability level of models.",
-              "The far bigger space over time are evals on all the major workflows that enterprises do, down to the specifics of an individual company.",
-              "This will be a huge space over time because you can't automate what you can't assess the progress on. Enterprises will not be able to go just on vibes."
+              "How to build great evals - part 7. The Goldilocks principle for eval construction. Your evals should measure at the level of the various jobs to be done, not just the final answer.",
+              "If the final recommendation is wrong, a well designed eval set would tell you: Client understanding: 92%, Evidence extraction: 92%, Data analysis: 70%, Recommendation: 75%",
+              "Not too granular. Not too coarse. Just right. Make your eval set as granular as you need to diagnose and act."
             ]
           },
           "cn": {
             "rewrite": [
-              "Box CEO Aaron Levie 点中了 AI 落地里最被低估的瓶颈：eval。他的核心判断是——AI 的扩散速度，受「有没有好的 eval」的限制，远超大多数人意识到的程度。",
-              "每次模型发布时大家看到的那些 eval 很有用，但它们只告诉你通用进展和模型的相对水平。真正的大机会在别处：针对企业实际跑的那些工作流的 eval，细化到具体某一家公司的场景。",
-              "他收尾那句很锋利：「你没法自动化一个连进展都无法评估的东西。」企业不能只凭感觉（vibes）就把活交给 agent，得有真实的度量。"
+              "Meta 的 AI 高级总监 Madhu Guru 继续他的「如何做好评测」系列，这次讲的是「金发姑娘原则」：评测应该测量每个中间环节的 job-to-be-done，而不是只看最终答案。",
+              "他举的例子是一个做股票推荐的金融分析 agent。如果你只检查它有没有选中「正确」的股票，那它错的时候你什么都学不到。但如果分开给每个阶段打分——理解客户 92%、收集证据 92%、数据分析 70%、给出推荐 75%——你立刻就知道该去深挖数据分析这一步。",
+              "规则是：不要太细，也不要太粗，细到刚好能诊断并采取行动就行。这是今天 feed 里关于评测最可落地的一条。"
             ],
             "original": [
-              "AI 的扩散受限于好的 eval，远超大多数人意识。每次模型发布那些 eval 很有用，但只告诉你通用进展和模型的相对水平。",
-              "更大的空间是企业工作流的 eval，细化到具体公司。",
-              "这会是巨大的空间，因为你没法自动化一个连进展都无法评估的东西。企业不能只靠感觉。"
+              "如何做好评测第 7 篇：评测构建的「金发姑娘原则」。评测应该在各个 job-to-be-done 的层级去测，而不只是最终答案。",
+              "如果最终推荐错了，设计良好的评测集会告诉你：客户理解 92%、证据提取 92%、数据分析 70%、推荐 75%。",
+              "不要太细，不要太粗，刚刚好。让评测集细到足以诊断和行动。"
             ]
           }
         },
         {
-          "authorKey": "x:realmadhuguru",
-          "sourceUrl": "https://x.com/realmadhuguru/status/2091278653435072523",
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2091586298779955512",
           "en": {
             "rewrite": [
-              "Madhu Guru, a senior AI director at Meta who previously led Gemini and Veo at Google, publishes part 6 of his 'How to build great evals' series—and it's a practical framework, not theory.",
-              "His core idea: 'hill climbing' on evals just means picking a dimension that matters and optimizing for it—whether that's the quality of a feature, expanding to adjacent use cases, or lowering cost and latency.",
-              "The work itself boils down to better harnesses and model selection: prompt engineering, context engineering, memory, post-training, and plain old deterministic code. His example cuts through the noise—if tool-calling failures are your biggest problem, maybe it's because you stuff 20 tools in context when each task only needs 3-5.",
-              "The north star: have evals that tell you whether you're actually moving in the right direction."
+              "Peter Yang relays a clean mental model for AI evals from Shreya Shankar (co-author, with Hamel Husain, of the industry-standard AI evals course): there are two types — top-down and bottom-up.",
+              "Top-down evals ask: given only a task description in a vacuum, what would you come up with? Claude is great at helping you brainstorm these. Bottom-up evals are the harder half: looking at many real sample outputs and externalizing your gut feedback into a checkable rule. Shreya's blunt verdict — 'Claude is very, very bad at coming up with bottom-up evals. That's all you.'",
+              "It pairs neatly with Madhu Guru's point the same day: the real work of evals isn't testing the final answer, it's encoding your judgment about each step."
             ],
             "original": [
-              "Hill climbing on evals is just a fancy way of saying: pick a dimension that matters and optimize for it.",
-              "The actual work boils down to better harnesses and model selection through methods like prompt eng, context eng, memory, post training, deterministic old school code etc.",
-              "maybe tool calling failures are your most common problem. You dig in and notice you stuff 20 tools in context, when each task really only needs 3-5.",
-              "The important thing is to have evals that tell you whether you are actually moving in the right direction."
+              "There are two types of AI evals - tops down and bottoms up. From @sh_reya:",
+              "Think of top-down as: If you're in a vacuum, just given the task description, what would you come up with? Claude does a very good job of helping you with these top-down evals.",
+              "Bottom-up evals are the other half. When you look at lots and lots of sample outputs, what is your gut feedback that you want externalized into evals? Claude is very, very bad at coming up with bottom-up evals. That's all you."
             ]
           },
           "cn": {
             "rewrite": [
-              "Madhu Guru，Meta 的 AI 高级总监，之前在 Google 负责过 Gemini、Veo 和 Nano Banana，发布了「怎么构建好的 eval」系列第 6 篇——这是实战框架，不是理论。",
-              "核心观点：eval 上的 hill climbing（爬山），说白了就是「挑一个重要的维度，然后往死里优化它」——可以是某个功能的质量、向相邻场景扩展，或者降成本、降延迟。",
-              "真正的活儿归结为更好的 harness 和模型选型：prompt 工程、context 工程、记忆、post-training，还有老派的确定性代码。他举的例子很戳人：如果 tool-calling 失败是你最常遇到的问题，也许是因为你在 context 里塞了 20 个工具，而每个任务其实只需要 3-5 个。",
-              "北极星就一句话：要有能告诉你「你到底有没有在往正确的方向走」的 eval。"
+              "Peter Yang 转述了 Shreya Shankar（和 Hamel Husain 合著业内标杆 AI evals 课程）给的一个清晰模型：AI 评测有两种——自上而下和自下而上。",
+              "自上而下评测问的是：如果把你放在真空里，只给任务描述，你会想出什么？Claude 很擅长帮你头脑风暴这类评测。自下而上评测是更难的另一半：看大量真实样本输出，把你内心的直觉反馈外化成可检查的规则。Shreya 的判断很直接——「Claude 在做自下而上评测这件事上非常非常差，这全靠你自己。」",
+              "这和同一天 Madhu Guru 的观点正好呼应：评测真正的功夫不在测最终答案，而在于把你对每一步的判断编码进去。"
             ],
             "original": [
-              "eval 上的 hill climbing 就是说：挑一个重要的维度去优化它。",
-              "实际工作是更好的 harness 和模型选型：prompt 工程、context 工程、记忆、post-training、确定性代码等。",
-              "也许 tool-calling 失败是你最常遇到的问题——你在 context 里塞了 20 个工具，其实每个任务只需要 3-5 个。",
-              "重要的是要有能告诉你是否在往正确方向走的 eval。"
+              "AI 评测有两种：自上而下和自下而上。引自 @sh_reya。",
+              "自上而下：在真空里只给任务描述，你会想出什么？Claude 很擅长帮你做这类评测。",
+              "自下而上是另一半：看大量样本输出，把你内心的直觉反馈外化成评测。Claude 非常非常不擅长做自下而上的评测，这全靠你。"
             ]
           }
         }
       ]
     },
     {
-      "title": "The Agent-Native Web Takes Shape / Agent 原生互联网成形中",
-      "desc": "从 Kevin Scott 的愿景到 Codex 的用量排查，agent 生态正在补上最不性感但最关键的地基。",
+      "title": "Cheaper Intelligence, Critical Infrastructure / 更便宜的智能，关键的基础设施",
+      "desc": "推理成本下降让用量暴涨，模型效率与可靠性变成企业的核心关切，gateway 成了必答题。",
       "cards": [
         {
-          "authorKey": "podcast:ai-and-i",
-          "sourceUrl": "https://www.youtube.com/playlist?list=PLuMcoKK9mKgHtW_o9h5sGO2vXrffKHwJL",
-          "authorName": "Kevin Scott",
-          "authorTag": "Microsoft CTO · AI & I by Every",
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2091671326897713424",
           "en": {
             "rewrite": [
-              "The takeaway: Microsoft CTO Kevin Scott's big story this year isn't bigger models—it's the 'agentic web': building an ecosystem where agents can actually take action on your behalf, with open protocols like MCP playing the role HTTP played for the internet.",
-              "Scott names a problem most people haven't: the 'capability overhang.' Model reasoning has gotten ahead of what we actually ship in products, and the whole industry has work to do closing that gap.",
-              "Two things have to get sorted out for agents to be useful: better memory (today's agents are 'transactional'—you start from scratch every session), and a real security model. His pitch: agents need identities and entitlement systems so they can ask, 'I want to do this, what permission do I need?'",
-              "He's also refreshingly non-dogmatic about the future of coding: he still writes code in vi, waited too long to learn 3D printers, and advises 'be curious, try stuff—if it works for you, use it; if it doesn't, don't.' No 'one agent to rule them all.'"
+              "Vercel CEO Guillermo Rauch points to a concrete data point for a trend everyone senses but few quantify: OpenAI Sol's price reductions and discounts on Vercel AI Gateway have made Sol Vercel's fastest-growing frontier model.",
+              "His two takeaways: first, demand for intelligence is highly elastic — as inference costs fall, usage grows fast. Second, if you're not routing through a gateway, you're missing the price volatility that lowers operating costs and increases margins.",
+              "His conclusion: the router/gateway space heating up was inevitable. As model prices swing, the people who win are the ones with infrastructure to shop around."
             ],
             "original": [
-              "if agents are gonna be useful, they have to take action on your behalf... you need an ecosystem that looks a lot like the Internet.",
-              "you've seen the first glimmers of real progress with super awesome, simple open protocols like MCP that are serving the same purpose in this agentic web as HTTP does on the internet.",
-              "I've been talking a lot lately about this thing called the capability overhang.",
-              "we need agents to have identities, so that you can build entitlement systems.",
-              "be curious, try stuff, and if it works for you, use it. And if it doesn't, don't."
+              "Intelligence is getting cheaper. @OpenAI Sol's price reductions & discounts on Vercel AI Gateway have made Sol our fastest-growing frontier model.",
+              "This shows ① that the demand for intelligence is highly elastic: as inference costs fall, usage grows rapidly.",
+              "② If you're not using a gateway, you're missing out on this incredible price volatility, which lowers your operating costs and increases your margins. It's no wonder the router space has heated up… gateways are inevitable."
             ]
           },
           "cn": {
             "rewrite": [
-              "一句话 takeaways：微软 CTO Kevin Scott 今年真正的主线不是更大的模型，而是「agentic web」——建一个 agent 能真正替你动手的生态，让 MCP 这样的开放协议扮演当年 HTTP 之于互联网的角色。",
-              "他点名了一个大多数人还没意识到的问题：capability overhang（能力过剩）。模型的推理能力已经跑在了产品实际交付的前面，整个行业都得想办法把这个缺口补上。",
-              "要让 agent 真正有用，有两件事必须先解决：更好的记忆（今天的 agent 是「事务性的」，每次会话都从零开始），以及一套真正的安全模型。他的主张是：agent 需要身份和权限系统，能主动问一句「我想做这件事，需要哪些权限？」",
-              "他对 coding 未来的态度也难得地不教条：他现在还在用 vi 写代码，后悔当初拖了太久才学 3D 打印，给的建议就一句「保持好奇，多试试——好用就用，不好用就算了」。没有「一个 agent 一统天下」这回事。"
+              "Vercel CEO Guillermo Rauch 给一个大家都感受到却很少有人量化的趋势提供了具体数据：OpenAI Sol 的降价加上 Vercel AI Gateway 上的折扣，让 Sol 成了 Vercel 上增长最快的前沿模型。",
+              "他的两个结论：第一，对智能的需求弹性很高——推理成本一降，用量就快速涨。第二，如果你不通过 gateway 来路由，就会错过这种剧烈的价格波动，而它恰恰能降低运营成本、提高毛利。",
+              "他的收尾：路由/gateway 赛道升温是必然的。当模型价格大幅波动时，赢家是那些有基础设施可以货比三家的人。"
             ],
             "original": [
-              "如果 agent 要有用，它们必须能替你采取行动……你需要一个很像互联网的生态。",
-              "MCP 这种简单开放的协议，在 agentic web 里扮演的角色，就像 HTTP 之于互联网。",
-              "我最近一直在谈这个叫 capability overhang 的东西。",
-              "我们需要 agent 有身份，这样才能建权限系统。",
-              "保持好奇，多试试，好用就用，不好用就算了。"
+              "智能正在变便宜。OpenAI Sol 的降价和 Vercel AI Gateway 上的折扣，让 Sol 成为我们增长最快的前沿模型。",
+              "① 智能需求弹性很高：推理成本下降，用量快速增长。",
+              "② 不用 gateway 就会错过价格波动，它降低运营成本、提高毛利。router 赛道升温不奇怪，gateway 是必然。"
             ]
           }
         },
         {
           "authorKey": "x:thsottiaux",
-          "sourceUrl": "https://x.com/thsottiaux/status/2091407991736332689",
+          "sourceUrl": "https://x.com/thsottiaux/status/2091581575108653374",
           "en": {
             "rewrite": [
-              "Thibault Sottiaux, who works on Codex at OpenAI, gives a rare transparent look at the plumbing behind an agent product. Codex found three culprits behind its rate limits: inefficiencies with images in long sessions with multiple compactions, high p95+ usage for 'Computer History,' and a conversation-title feature quietly draining more usage than intended.",
-              "The response is concrete: a tiger team is combing through everything and shipping fixes the next day, plus a full usage reset for all paid subscribers. They also found an unrelated approach to drive efficiency 'significantly'—coming next week.",
-              "Why it matters: as agents go mainstream, the frontier labs are learning that the hard part isn't the model—it's the mundane infrastructure of tokens, context, and usage accounting. Kevin Scott's 'agentic web' vision runs on exactly this kind of unglamorous plumbing."
+              "OpenAI's Thibault Sottiaux (who works on Codex) makes a prediction that reads like a mission statement: 2026 is the year companies start seriously caring about model efficiency and reliability, because AI has become critical infrastructure.",
+              "The same weekend, he announced a Codex usage reset had been propagated to accounts along with fixes for the usage issues flagged the day before — a small, concrete example of reliability work happening in real time, with more promised for tomorrow.",
+              "The thread: reliability is no longer a nice-to-have when the model is part of your production stack."
             ],
             "original": [
-              "We've found (a) some inefficiencies when using images in long sessions with multiple compactions (b) high p95+ usage for Computer History (c) a feature that was meant to generate conversation titles that was draining a bit more usage than intended. And we have a tiger team combing through everything and shipping fixes tomorrow.",
-              "As part of some of the fixes tomorrow, we will also do a full reset of the usage for all paid subscriptions."
+              "2026 is the year companies start seriously caring about model efficiency and reliability as it becomes critical infrastructure",
+              "Good Sunday. Reset has been propagated to accounts and we landed some fixes to usage for things mentioned yesterday as issues we found. You should feel a positive difference. More to come tomorrow and will keep communicating."
             ]
           },
           "cn": {
             "rewrite": [
-              "在 OpenAI 负责 Codex 的 Thibault Sottiaux，难得地给了我们一次 agent 产品背后的「管道」透明视角。Codex 找出了 rate limit 的三个元凶：长时间多 compaction 会话里图片处理的低效、Computer History 功能的高 p95+ 用量，还有一个本该生成对话标题的功能在悄悄多耗用量。",
-              "回应很具体：一支 tiger team 正在逐项排查，第二天就上线修复，并且会给所有付费订阅做一次完整的用量重置。他们还找到了一个和这些完全无关、能显著提升效率的新思路——下周开工。",
-              "为什么重要：当 agent 走向主流，前沿实验室正在学到——难点不在模型，而在 token、context、用量统计这些不起眼的基础设施。Kevin Scott 讲的「agentic web」愿景，正是跑在这类不性感但关键的管道上。"
+              "OpenAI 负责 Codex 的 Thibault Sottiaux 给出了一个读起来像使命宣言的预测：2026 年是企业开始真正重视模型效率和可靠性的一年，因为 AI 正在变成关键基础设施。",
+              "同个周末，他宣布 Codex 的用量重置已经推送到账户，并落地了针对前一天发现的用量问题的一些修复——这是可靠性工作在实时进行的一个小而具体的例子，还预告了明天会有更多。",
+              "主线很清晰：当模型成了你生产栈的一部分，可靠性就不再是加分项了。"
             ],
             "original": [
-              "我们发现：(a) 长会话多次 compaction 时用图片的低效 (b) Computer History 的高 p95+ 用量 (c) 一个生成对话标题的功能多耗了用量。有 tiger team 在逐项排查，明天上线修复。",
-              "作为明天部分修复的一部分，我们会对所有付费订阅做一次完整的用量重置。"
+              "2026 是企业开始真正重视模型效率和可靠性的一年，因为它正在成为关键基础设施。",
+              "周日好。重置已推送到账户，我们落地了针对昨天提到的用量问题的一些修复。你应该能感受到正向的变化。明天还有更多，会持续沟通。"
             ]
           }
         }
       ]
     },
     {
-      "title": "Using AI on Yourself / 把 AI 用回自己身上",
-      "desc": "agent 不只是在写代码——它开始替你清理隐私数据、陪伴艰难的人生时刻。",
+      "title": "The Open, Visual Agent Stack / 开放且可视的 Agent 技术栈",
+      "desc": "agent 栈的走向是开放协议加可视化界面——Unix 式的组合，而不是围墙花园。",
       "cards": [
         {
-          "authorKey": "x:petergyang",
-          "sourceUrl": "https://x.com/petergyang/status/2091331251211059468",
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2091583525661384813",
           "en": {
             "rewrite": [
-              "Peter Yang turns the agent into a privacy tool. His three-step recipe: go to Google's 'Apps with access to your account' page in Chrome, run a prompt in Codex or Claude Code telling it there's an open tab, then let the AI disconnect the apps you no longer want holding your data.",
-              "The result: he disconnected half the apps that 'should no longer have my Google info.' It's a concrete example of the everyday agent use case Kevin Scott describes—an agent taking action on your behalf in your own accounts.",
-              "It also pairs with his earlier note crediting the Instinct team for shipping a data-privacy feature fast: privacy cleanup is becoming a repeatable, personal-agent workflow, not a manual chore."
+              "In a second post, Guillermo Rauch lays out Vercel's philosophy for extending fx (the agent framework): open protocols over proprietary lock-in.",
+              "The stack: MCP for model-context connections, Skills (agentskills.io) and Plugins (agent-plugins.org) for capability packaging, and — his favorite — Unix itself: small programs that do one thing well and compose by calling each other.",
+              "The goal is embeddability: a libfx you can build your own CLI, background agent, or software factory on, local or in the cloud. It's a bet that the agent stack will look like the web did — standards and composition, not walled gardens."
             ],
             "original": [
-              "If you care about your privacy:\n1. Go to https://t.co/yICN6WAe9R in Chrome\n2. Run this prompt in Codex or Claude Code and tell it there's an open tab in your browser\n3. Then pick the ones you want to remove and tell AI to do it",
-              "Just disconnected half the apps that should no longer have my Google info."
+              "Our philosophy on extending fx: open protocols. MCP (modelcontextprotocol.io), Skills (agentskills.io), Plugins (agent-plugins.org).",
+              "And the best one, Unix: ① Small programs that do one thing well and compose by calling other programs. ② libfx that enables embeddability into more complex programs. You should be able to build your own CLI, background agent, software factory. Local or cloud."
             ]
           },
           "cn": {
             "rewrite": [
-              "Peter Yang 把 agent 变成了一件隐私工具。三步配方：在 Chrome 里打开 Google 的「有权访问你账户的应用」页面，在 Codex 或 Claude Code 里跑一条 prompt 并告诉它浏览器里有个打开的标签页，然后让 AI 帮你断开那些不再该持有你数据的应用。",
-              "结果：他断掉了一半「早就不该有我的 Google 信息」的应用。这正是 Kevin Scott 描述的那种日常 agent 场景——agent 在你自己的账户里替你动手。",
-              "这也和他早前称赞 Instinct 团队快速上线数据隐私删除功能相互呼应：隐私清理正在变成一套可重复的个人 agent 工作流，而不是一件手动苦差。"
+              "第二条帖子里，Guillermo Rauch 阐述了 Vercel 扩展 fx（agent 框架）的哲学：用开放协议，而不是专有锁定。",
+              "这套栈是：MCP 负责模型-上下文连接，Skills（agentskills.io）和 Plugins（agent-plugins.org）负责能力的打包，以及他最喜欢的 Unix 本身——小程序做好一件事，通过调用其他程序来组合。",
+              "目标是可嵌入性：一个 libfx，让你能在上面构建自己的 CLI、后台 agent、软件工厂，本地或云端都行。这是一次对 agent 栈会像当年的 web 一样走向「标准和组合」而非「围墙花园」的下注。"
             ],
             "original": [
-              "如果你在乎隐私：1) Chrome 里打开 Google 账户安全页 2) 在 Codex/Claude Code 里跑 prompt 并告诉它浏览器有打开的标签 3) 挑出想移除的应用，让 AI 去做。",
-              "刚刚断掉了一半早就不该有我的 Google 信息的应用。"
+              "我们扩展 fx 的哲学：开放协议。MCP（modelcontextprotocol.io）、Skills（agentskills.io）、Plugins（agent-plugins.org）。",
+              "最好的是 Unix：① 小程序做好一件事，通过调用其他程序来组合。② libfx 实现可嵌入性。你应该能构建自己的 CLI、后台 agent、软件工厂。本地或云端。"
             ]
           }
         },
         {
-          "authorKey": "x:petergyang",
-          "sourceUrl": "https://x.com/petergyang/status/2091239339204415969",
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2091650136506327253",
           "en": {
             "rewrite": [
-              "Peter Yang is building a new AI skill with a blunt name and a serious purpose: /fuck-cancer, designed to help cancer patients and their families navigate the whole process and stay informed.",
-              "He's crowdsourcing what to include—a rare glimpse of a skill being designed in public. In a week heavy on infrastructure and evals, this is a reminder that the most meaningful agents are aimed at real, hard human problems, not just developer workflows.",
-              "It also shows how 'building' has changed: a healthcare companion shipped as a shareable skill file, not a funded startup."
+              "Peter Steinberger (OpenClaw + OpenAI) makes the case for moving agent interaction beyond the terminal: 'cli is nice, having UI visualizations and your team where you work is nicer.'",
+              "He's been dogfooding it literally — he added the rotation USB protocol to OpenClaw, told his claw to 'look around', and watched it have fun with a 360° webcam. The agent stopped being a text stream and became something that perceives and moves.",
+              "The signal: the agent interface is shifting from chat window to a visual, embodied workspace — and it's happening on consumer webcams, not just research rigs."
             ],
             "original": [
-              "I'm working on a new AI skill. It's called /fuck-cancer. Goal is to help patients and their family navigate this whole process and stay informed. What should I include in it?"
+              "cli is nice, having UI visualizations and your team where you work is nicer. https://t.co/OFmkkkq6l5",
+              "I added the rotation USB protocol to https://t.co/kyF8ap5Pq6 and told my claw to look around- now it's having fun with my 360 webcam."
             ]
           },
           "cn": {
             "rewrite": [
-              "Peter Yang 正在做一个名字很硬、用意很重的新 AI skill：/fuck-cancer，目标是帮癌症患者和家属走完整个治疗过程、保持知情。",
-              "他在公开征集「应该包含什么」——这让我们难得看到一个 skill 在发布前被公开设计的样子。在一周充满基础设施和 eval 的内容里，这条提醒我们：最有意义的 agent，往往是冲着真实、艰难的人类问题去的，而不只是开发者工作流。",
-              "它也展示了「做东西」这件事变了：一个医疗陪伴工具，可以直接以一个可分享的 skill file 的形式发布，而不必是一家拿了融资的创业公司。"
+              "Peter Steinberger（OpenClaw + OpenAI）为把 agent 交互带出终端给出了理由：「cli 很好，但在你工作的地方有 UI 可视化和你的团队更好。」",
+              "他自己在字面意义上做了实验——给 OpenClaw 加了旋转 USB 协议，让他的 claw「四处看看」，然后看着它跟一个 360° 摄像头玩得很开心。agent 不再只是文本流，而变成了能感知、能转动的东西。",
+              "信号是：agent 的界面正在从聊天窗口转向可视化、具身的工作空间——而且这事发生在消费级摄像头上，不只是研究设备上。"
             ],
             "original": [
-              "我在做一个新的 AI skill，叫 /fuck-cancer，目标是帮患者和家属走完整个过程、保持知情。应该包含什么？"
+              "cli 很好，但在你工作的地方有 UI 可视化和你的团队更好。",
+              "我给 OpenClaw 加了旋转 USB 协议，让 claw 四处看看——现在它正跟我的 360° 摄像头玩得开心。"
             ]
           }
         }
       ]
     },
     {
-      "title": "Talent & the AI Era / 人才与 AI 时代",
-      "desc": "当单干的上限被 AI 拉高，组织和创业生态正在承受人才与文化的双重张力。",
+      "title": "The Stakes: Systems, Agents & Operators / 赌注：系统、Agent 与操作者",
+      "desc": "旧系统面临被 agent 取代的压力，而会指挥 agent 的人类正在变成一种新职业。",
       "cards": [
         {
-          "authorKey": "x:zarazhangrui",
-          "sourceUrl": "https://x.com/zarazhangrui/status/2091379220257603593",
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2091742825042030681",
           "en": {
             "rewrite": [
-              "Zara Zhang puts a number on a trend we're all feeling: a talented person can achieve 10x their potential with AI when working on their own thing, but drop that same person into a large organization and they might gain 20% at most—sometimes less.",
-              "Her conclusion is blunt: that's why more and more talented people are leaving big companies, with top AI labs like OpenAI and Anthropic as the main exception.",
-              "It connects to a second observation she posted the same day: 'Everyone who's ahead in using AI thinks they're behind.' The gap between what's possible solo and what organizations can absorb is becoming a real retention problem—and it's not about the tech, it's about the org."
+              "Y Combinator CEO Garry Tan drops a one-line prediction with big implications for enterprise software: 'systems of record will need to become AI harnesses or face replacement by agents.'",
+              "The thesis: the databases of truth that businesses run on (CRM, ERP, ticketing) were built for humans to read and update. If they don't become the substrate that agents act through — reading state, taking action, writing back — a new generation of agent-native tools will route around them.",
+              "It's the sharpest articulation yet of the 'adapt or be replaced' pressure now facing the incumbent SaaS giants."
             ],
             "original": [
-              "There's a phenomenon where talented individuals can achieve 10x their potential thanks to AI when working on their own thing. But when the same individual is put into a large organization, they at most increase their potential by 20% (and sometimes it's even decreased). This is why I'm seeing more and more talented people leave large companies. (The only exceptions are probably top AI labs like OpenAI/Anthropic)",
-              "Everyone who's ahead in using AI thinks they're behind"
+              "Prediction: systems of record will need to become AI harnesses or face replacement by agents"
             ]
           },
           "cn": {
             "rewrite": [
-              "Zara Zhang 给一个大家都隐隐感觉到的趋势配上了数字：一个有才华的人，在自己做项目时，靠 AI 能把潜力放大 10 倍；但把同一个人放进大组织，最多只能放大 20%，有时候甚至更低。",
-              "她的结论很直接：这就是为什么她看到越来越多有才华的人离开大公司——唯一的例外大概就是 OpenAI、Anthropic 这种顶级 AI lab。",
-              "这也和她同一天发的另一条观察呼应：「每个在 AI 上领先的人，都觉得自己落后了。」一个人单干能达到的上限，和组织能吸收的上限之间的差距，正在变成一个真实的留人问题——而且关键不在技术，在组织。"
+              "Y Combinator CEO Garry Tan 抛出了一条对企业软件影响深远的一句话预测：「系统记录（systems of record）要么变成 AI 驾驭装置（AI harnesses），要么被 agent 取代。」",
+              "这个论点的逻辑是：企业赖以运转的「事实数据库」（CRM、ERP、工单系统）本来是为人类读取和更新而建的。如果它们不能变成 agent 借以行动的基础——读取状态、执行动作、写回结果——那么新一代 agent 原生的工具就会绕过它们。",
+              "这是到目前为止对现有 SaaS 巨头所面临的「要么进化、要么被取代」压力最尖锐的表达。"
             ],
             "original": [
-              "有才华的人在 AI 帮助下做自己的事能把潜力放大 10 倍，放进大组织最多放大 20%（有时更低）。这就是为什么越来越多人离开大公司（例外是 OpenAI/Anthropic 这种顶级 AI lab）。",
-              "每个在 AI 上领先的人都觉得自己落后了。"
+              "预测：系统记录要么变成 AI 驾驭装置，要么被 agent 取代。"
             ]
           }
         },
         {
-          "authorKey": "x:nikunj",
-          "sourceUrl": "https://x.com/nikunj/status/2091381756012511244",
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2091631590799737306",
           "en": {
             "rewrite": [
-              "Nikunj Kothari, a partner at FPV Ventures, calls out a weird new founder behavior he's seeing: 'ragebaiting' investors and then sending them SAFE docs expecting money. His blunt verdict: 'That is NOT how investing works.'",
-              "The deeper signal, from a follow-up post: he worries about 'many talented young people who actually have substance' wasting themselves on performative games instead of finding good people to learn from.",
-              "It's a culture warning, not a technology one: as AI makes solo building dramatically easier, some of the startup scene's worst incentives are leaking into how young founders approach fundraising."
+              "Peter Yang shares a concrete glimpse of the emerging 'AI-fluent operator' role: his human assistant Char has spent six months using Claude Code and Codex to run podcast post-production, draft show notes, and make clips — and has built up customized copies of Peter's AI skills for his own workflows.",
+              "The thesis: the best assistants today aren't the ones who type fastest, but the ones who know how to direct AI agents. Human judgment plus agent leverage is becoming its own job category.",
+              "(Note: the post is a paid promotion for the talent marketplace Oceans, but the workflow detail is what matters.)"
             ],
             "original": [
-              "Kids, I don't know what advice you are getting, but ragebaiting investors and then sending them SAFE docs to just wire you money is NOT how investing works.",
-              "I can't stress enough how important it is to find the right people to take advice from. It boils my blood to see many talented young people who actually have substance play these stupid games."
+              "I've been working with Char, my (human!) assistant from @oceanstalent for 6 months. I think the best assistants today need to know how to work with AI agents.",
+              "Char uses Claude Code and Codex to help me run podcast post-production, draft show notes, and make clips. He's made copies of my AI skills and tailored them for his own workflows over time."
             ]
           },
           "cn": {
             "rewrite": [
-              "FPV Ventures 合伙人 Nikunj Kothari 点名了一种他正在看到的、奇怪的新创始人行为：先「ragebait」投资人（故意激怒博流量），再甩过去 SAFE 文件指望对方打钱。他的评价很直接：「这不是投资的运作方式。」",
-              "更深层的信号在他另一条帖子里：他担心很多「其实有真东西」的年轻人才，正在把精力浪费在表演性的把戏上，而不是去找对的人学习。",
-              "这是一条文化预警，不是技术预警：当 AI 让单干变得空前容易，创业圈一些最糟糕的激励，正在渗透进年轻创始人做融资的方式里。"
+              "Peter Yang 让我们瞥见了正在出现的「懂 AI 的操作者」这一新角色：他的人类助理 Char 花了六个月，用 Claude Code 和 Codex 帮他做播客后期、起草 show notes、剪 clip——还逐渐把自己复制的 Peter 的 AI skills 调成了自己的专属工作流。",
+              "论点是：如今最好的助理不是打字最快的，而是最会指挥 AI agent 的。人类判断力叠加 agent 杠杆，正在变成一种独立的职业类型。",
+              "（注：这条是给人才市场 Oceans 的付费推广，但真正有价值的是里面那条工作流细节。）"
             ],
             "original": [
-              "孩子们，我不知道你们听的是谁的建议，但 ragebait 投资人然后发 SAFE 文件让人打钱，不是投资的运作方式。",
-              "我再怎么强调都不为过：找到对的人去请教有多重要。看到很多有真东西的年轻人才玩这些愚蠢的把戏，我火很大。"
+              "我和我的（人类！）助理 Char 合作了 6 个月。我认为如今最好的助理需要懂得如何与 AI agent 协作。",
+              "Char 用 Claude Code 和 Codex 帮我做播客后期、起草 show notes、剪 clip。他复制了我的 AI skills 并逐渐调成自己的工作流。"
             ]
           }
         }
