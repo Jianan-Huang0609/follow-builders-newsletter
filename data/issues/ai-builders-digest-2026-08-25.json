@@ -1,0 +1,271 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-08-25",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线是「分化与成熟」：OpenAI 一边给 Plus 用户加回 5 小时限额、一边预告「史上最好」的 DevDay；builder 的共识则在成形——不能被 prompt 改写的软件正在过时。Steinberger 一句话把这股情绪说透（2423 赞），Replit 的 Amjad 已经用自家 Agent 顶掉了 Claude CoWork，Vercel 的 Rauch 干脆把 1979 年的终端老 bug 用 Zig 重写。Levie 补上另一块拼图：agent 越多，系统记录越值钱；而真正拉开差距的，是 evals 和「不带自欺」这类判断纪律。"
+  },
+  "archive": {
+    "title": "可改写软件日报",
+    "desc": "OpenAI 给 Plus 加回 5 小时限额并预告 DevDay；builder 共识成形——不能被 prompt 改写的软件正在过时，而 agent 越多，系统记录越值钱。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-08-25 source feeds.",
+  "sections": [
+    {
+      "title": "OpenAI: Limits & Teaser / OpenAI 收紧与预告",
+      "desc": "同一天两条相反的消息：消费级额度收紧，开发者盛典预热——OpenAI 正在重新平衡普通用户与专业 builder。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2092058556707344708",
+          "en": {
+            "rewrite": [
+              "OpenAI's Thibault Sottiaux announces a real policy shift: the 5-hour daily limit is coming back for Plus accounts across ChatGPT Work and Codex. The stated reasons are candid — the limit lets OpenAI smooth compute load while keeping the plan generous on a weekly basis, and it protects casual users from accidentally burning through their entire week's usage in one sitting.",
+              "Notably, the limit is explicitly not being applied to the Pro $100 and Pro $200 tiers — a clear signal that OpenAI is drawing a harder line between casual users and professionals who pay for sustained access."
+            ],
+            "original": [
+              "Tomorrow we will bring back the 5h limit for Plus accounts across ChatGPT Work and Codex. I had mentioned this a while ago, but then postponed it. This is necessary as (a) the 5h limit allows us to smoothen the load on our compute, allowing to keep the plan generous in terms of weekly usage and (b) users on the Plus plan are relatively casual and new users, but then also just accidentally eat through their whole weeks usage and then are confused. We are for the upcoming months keeping the 5h limit not enabled for Pro $100 and Pro $200 subscriptions."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "OpenAI 的 Thibault Sottiaux 宣布了一个真实的政策变化：ChatGPT Work 和 Codex 的 Plus 账户将重新加回每天 5 小时的使用限额。给出的理由很坦诚——限额能让 OpenAI 平滑计算负载、在周度用量上保持慷慨，同时防止轻度用户一口气把整周额度用完。",
+              "值得注意：这个限额明确不适用于 Pro $100 和 Pro $200 档。信号很清楚——OpenAI 正在普通用户和愿意付费持续使用的专业用户之间划一条更硬的线。"
+            ],
+            "original": [
+              "明天起 Plus 账户将在 ChatGPT Work 和 Codex 加回 5 小时限额。之前提过又推迟了。这有必要，因为 (a) 5 小时限额能平滑计算负载、保持周度用量慷慨，(b) Plus 用户相对轻度，容易一口气用完。未来几个月 Pro $100 和 $200 订阅不启用限额。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2092117461646856505",
+          "en": {
+            "rewrite": [
+              "Same author, opposite energy: Thibault Sottiaux teases that OpenAI DevDay 2026 'will be our best DevDay in the history of the company. It will not be close.'",
+              "Placed next to the 5h limit news, the contrast is the story: OpenAI is tightening casual access on one end while preparing to court developers on the other. The bet is clear — the professional builder is the customer they're most focused on winning."
+            ],
+            "original": [
+              "OpenAI DevDay 2026 will be our best DevDay in the history of the company. It will not be close."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "同一个人，相反的能量：Thibault Sottiaux 预告 OpenAI DevDay 2026「将会是公司历史上最好的一届 DevDay，而且遥遥领先」。",
+              "把这条和 5 小时限额放在一起看，对比本身就是故事：OpenAI 一边收紧普通用户的使用，一边准备大张旗鼓地讨好开发者。赌注很清楚——专业 builder 才是他们最想赢下的客户。"
+            ],
+            "original": [
+              "OpenAI DevDay 2026 会是公司史上最好的一届 DevDay，而且不是接近，是遥遥领先。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Software You Can Change With a Prompt / 可被 prompt 改写的软件",
+      "desc": "一个正在成形的 builder 共识：软件的价值，取决于你能否用一句话改掉它。",
+      "cards": [
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2091923535513928015",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger (OpenClaw + OpenAI) puts the bluntest version of the week's central thesis into a single line: 'We need to get away from software that we can't change with a prompt.' With 2423 likes, it clearly struck a chord.",
+              "The implication is bigger than it sounds: if a tool can't be reshaped by natural language, it's locked into whatever the vendor shipped — and in an agent-native workflow, that's a liability. Software is becoming a starting point you edit, not a fixed product you adopt."
+            ],
+            "original": [
+              "We need to get away from software that we can't change with a prompt."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger（OpenClaw + OpenAI）把本周核心论点最直白地浓缩成了一句话：「我们必须远离那些无法用 prompt 改写的软件。」2423 个赞，显然戳中了很多人。",
+              "言外之意比字面更大：如果一个工具不能被自然语言重塑，它就被锁死在厂商交付的样子里——而在 agent 原生的工作流里，这是一种负担。软件正在从「你采用的固定产品」变成「你可以编辑的起点」。"
+            ],
+            "original": [
+              "我们必须远离那些无法用 prompt 改写的软件。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2091962601907638352",
+          "en": {
+            "rewrite": [
+              "Replit CEO Amjad Masad makes a concrete claim from daily use: Replit Agent has 'completely replaced Claude CoWork' in his day-to-day work. His reasoning: it's 'much more persistent and fastidious,' and uses code/software more effectively to get tasks done.",
+              "This is exactly the kind of migration the prompt-editable thesis predicts — when two agent tools compete on persistence and thoroughness rather than raw model quality, the one built to actually ship code wins."
+            ],
+            "original": [
+              "True. Replit Agent completely replaced Claude CoWork in my day-to-day work. It's much more persistent and fastidious, and it uses code/software more effectively to complete tasks."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Replit CEO Amjad Masad 给出了一个来自日常使用的具体判断：Replit Agent 已经「彻底取代了 Claude CoWork」在他日常工作里的位置。理由是它「更持久、更一丝不苟」，而且能更有效地用代码和软件把任务做完。",
+              "这正是「可被 prompt 改写」论调所预言的迁移——当两个 agent 工具比拼的不是原始模型能力，而是持久性和细致度时，那个生来就是为了真正交付代码的工具会赢。"
+            ],
+            "original": [
+              "真的。Replit Agent 在我日常工作中彻底取代了 Claude CoWork。它更持久、更一丝不苟，能更有效地用代码/软件完成任务。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2091957823945216474",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch turns a tiny debugging session into a story about how much of our stack is ancient: the reset command felt oddly slow, so he dug in and found that 1979's 3BSD tset has a sleep(1) — a one-second pause originally added to let mechanical printer-and-ink terminals 'settle down.'",
+              "He had fx write a faster Zig alternative that takes 1ms instead of 1s, then wrote up a fun explainer. His conclusion is the point: good system design endures, but it also accumulates 'spider webs' — and once you start noticing slowness, you'll see it everywhere."
+            ],
+            "original": [
+              "If your terminal ever gets into a 'bad state', like garbled outputs, you run reset. I noticed it was… oddly slow. Turns out in 1979 3BSD's tset had a sleep(1) to let mechanical printer-and-ink terminals 'settle down'. I asked fx to write me a faster alternative in Zig. It takes 1ms instead of 1s. It's legit fascinating how far back our technology stack goes, and how enduring good system design is."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 把一次小小的调试变成了一则关于「技术栈有多古老」的故事：reset 命令感觉莫名地慢，于是他刨根问底，发现 1979 年 3BSD 的 tset 里有个 sleep(1)——当初加这一秒，是为了让机械打印机终端「稳住」。",
+              "他让 fx 用 Zig 写了个更快的替代品，1ms 替代 1s，还写了篇有趣的说明。他的结论才是重点：好的系统设计经久耐用，但也会累积「蜘蛛网」——一旦你开始留意那些慢，你会发现到处都是。"
+            ],
+            "original": [
+              "终端进入坏状态时跑 reset，我发现它莫名地慢。原来 1979 年 3BSD 的 tset 有个 sleep(1)，是为了让机械打印终端稳住。我让 fx 用 Zig 写了个更快的替代品，1ms 替代 1s。我们的技术栈能追溯多远，真的很迷人。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Systems of Record in the Agent Era / Agent 时代的系统记录",
+      "desc": "当 agent 开始大规模执行任务，谁来负责数据、权限和合规？Levie 的答案是：系统记录比任何时候都重要。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2092087679240569126",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie argues that systems of record have never mattered more, precisely because AI agents will do '100X more work on these platforms than people ever did.' Agents will query the data, process tasks, execute workflows, and collaborate alongside humans.",
+              "His kicker: the OpenAI–Hugging Face incident is 'just a small peek into what the future will look like with agents running around trying to execute on their goals.' Governance, access controls, and business logic aren't going away — they're becoming the moat. But this only works for systems that respond with the right APIs and product experiences to support agents on and off the platform."
+            ],
+            "original": [
+              "Systems of record have never been more important than in a world where you have AI agents that will do 100X more work on these platforms than people ever did. Agents will be querying the data in these systems, processing tasks, executing workflows, collaborating with human and agent users, and more. Thus, the governance, reliability, security, access controls, and business logic remain critical more than ever — the OpenAI Hugging Face incident is just a small peek into what the future will look like with agents running around trying to execute on their goals."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 的观点是：系统记录（systems of record）从来没有像现在这么重要，正因为 AI agent 会在这些平台上做出「比人类以往多 100 倍的工作」。agent 会查询数据、处理任务、执行工作流，和人类并肩协作。",
+              "他的点睛之笔：OpenAI 和 Hugging Face 的那次事件，「只是未来 agent 到处乱跑、试图执行自己目标的一个小预览」。治理、访问控制、业务逻辑不会消失——它们正在变成护城河。但这只对那种能提供正确 API 和产品体验、支持 agent 在平台内外执行的系统才成立。"
+            ],
+            "original": [
+              "在一个 agent 会在平台上做 100 倍于人类工作的世界里，系统记录比任何时候都重要。治理、可靠性、安全、访问控制、业务逻辑仍然关键——OpenAI Hugging Face 事件只是未来 agent 到处执行目标的一个小预览。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2091909170308296950",
+          "en": {
+            "rewrite": [
+              "Levie's second point is more technical and more contrarian: ZDR (zero data retention) is 'responsible for a substantial amount of the growth of AI,' because it dramatically simplified the compliance process for companies handling data with subprocessors. Without ZDR, he argues, 'AI diffusion grinds to a halt.'",
+              "The mechanism: applied AI vendors sign agreements to only offer ZDR models so customers don't have to inspect every model they turn on; enterprises have internal rules that only allow ZDR models because they can't cleanly separate PII from their context windows. It's a reminder that AI adoption isn't just about capability — it's bottlenecked by governance, and ZDR quietly removed one of the biggest frictions."
+            ],
+            "original": [
+              "It's not fully appreciated that ZDR is responsible for a substantial amount of the growth of AI, because it dramatically simplified the compliance process most companies deal with in handling data with subprocessors. The alternative path would have been a far slower adoption rate. Without ZDR, AI diffusion grinds to a halt."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Levie 的第二点更技术、也更反直觉：ZDR（零数据留存）「为 AI 的增长贡献了相当大的份额」，因为它极大简化了企业在处理子处理器数据时的合规流程。他断言，没有 ZDR，「AI 的扩散会戛然而止」。",
+              "机制是这样的：应用型 AI 厂商会和客户签协议，只提供 ZDR 模型，这样客户就不必逐一审查他们开启的每个模型；企业内部有规定只能用 ZDR 模型，因为他们没法在 context window 里干净地分离 PII。这提醒我们：AI 的采用不只看能力——它被治理卡着脖子，而 ZDR 悄悄搬走了一块最大的摩擦。"
+            ],
+            "original": [
+              "人们没充分意识到 ZDR 为 AI 增长贡献了相当大的份额，因为它极大简化了处理子处理器数据时的合规流程。没有 ZDR，AI 扩散会戛然而止。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Discipline: Evals & Judgment / 判断纪律",
+      "desc": "模型再强，也得有办法衡量它、有办法迭代自己的判断——这两条讲的是 builder 的内功。",
+      "cards": [
+        {
+          "authorKey": "x:realmadhuguru",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2092058332735693264",
+          "en": {
+            "rewrite": [
+              "Meta AI's Madhu Guru (previously Google, where he led Gemini, Veo, and Nano Banana) adds part 8 to his evals series with a sharp concept: the 'discriminatory property' of evals. An eval is only useful if it can separate AI systems that are meaningfully different.",
+              "His example: run five systems and get 94, 93, 95, 94, 92 — but you already know A and C are substantially better than D and E. The eval has low discriminatory power; it's like giving fifth-graders a test where PhDs all ace it. The sweet spot, he says, is 'realistic + difficult + sensitive to differences in capability' — and over time good evals saturate as models improve, which is the problem he leaves open for the comments."
+            ],
+            "original": [
+              "The discriminatory property of evals. A hill-climbing eval is useful when it can separate AI systems that are meaningfully different. Imagine you run an eval on five AI systems: A: 94 B: 93 C: 95 D: 94 E: 92. Now suppose you already know A and C are substantially better systems than D and E. The eval is bad cos it doesn't tell you that. It has low discriminatory power. The sweet spot for an eval is: Realistic + difficult + sensitive to differences in capability."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Meta AI 的 Madhu Guru（此前在 Google 主导 Gemini、Veo、Nano Banana）给他的 evals 系列加上了第 8 篇，核心是一个犀利的概念：evals 的「区分力」。一个 eval 只有在能区分出真正不同的 AI 系统时才有用。",
+              "他的例子：跑五个系统，得分 94、93、95、94、92，但你其实知道 A 和 C 明显强于 D 和 E——这个 eval 区分力很低，就像拿五年级数学卷去考一群 PhD，人人都满分。他说最佳区间是「真实 + 有难度 + 对能力差异敏感」；而随着模型变强，好 eval 会逐渐饱和——这正是他留给评论区的问题。"
+            ],
+            "original": [
+              "evals 的区分力：爬山式 eval 只有在能区分真正不同的系统时才有用。跑五个系统 94/93/95/94/92，但已知 A、C 远强于 D、E，这个 eval 区分力太低。就像给 PhD 发五年级卷子，人人满分。最佳区间：真实+有难度+对能力差异敏感。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2092059517446156640",
+          "en": {
+            "rewrite": [
+              "Y Combinator CEO Garry Tan distills his operating loop into five verbs: 'Form a view. Turn it into an artifact or experiment. Put it in contact with reality. Read the result without self-deception. Revise and run again.' With 421 likes, it reads as a compression of everything YC tells founders.",
+              "The hardest clause is 'without self-deception' — it's the part most founders (and most people) skip. Combined with his same-day claim that datacenters 'create jobs and prosperity, actually,' Tan is pushing a consistent stance: optimism plus a disciplined, reality-tested loop, not vibes."
+            ],
+            "original": [
+              "Form a view. Turn it into an artifact or experiment. Put it in contact with reality. Read the result without self-deception. Revise and run again."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Y Combinator CEO Garry Tan 把他的做事循环压缩成了五个动词：「形成一个观点 → 把它变成一件产出物或实验 → 让它接触现实 → 不带自欺地读结果 → 修正，再跑一遍。」421 个赞，读起来像是 YC 教给创始人所有东西的浓缩。",
+              "最难的是「不带自欺」这一条——也是大多数创始人（和大多数人）会跳过的那条。结合他同一天「数据中心其实创造就业和繁荣」的论断，Tan 在推的是一套一致的态度：乐观，加上一套有纪律、经现实检验的循环，而不是靠感觉。"
+            ],
+            "original": [
+              "形成一个观点。把它变成产出物或实验。让它接触现实。不带自欺地读结果。修正，再跑一遍。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Platform Risk / 平台风险",
+      "desc": "当内容、账号和数据都依赖大平台时，一次无预警的封禁就能让一切归零。",
+      "cards": [
+        {
+          "authorKey": "x:danshipper",
+          "sourceUrl": "https://x.com/danshipper/status/2092026065644335446",
+          "en": {
+            "rewrite": [
+              "Every CEO Dan Shipper goes public with a nightmare scenario for any content business: Google disabled the company's YouTube account 'with 0 notice and no reason given,' and he's asking the community for help getting it back.",
+              "It's a live reminder of platform risk for AI-native media — a company that publishes daily can have its distribution channel cut off overnight with no explanation and no clear appeals path. For builders who treat a platform as their distribution, the question isn't whether you own your content, but whether you own your audience's attention."
+            ],
+            "original": [
+              "so it looks @google disabled the @youtube account for @every with 0 notice and no reason given... anyone have any experience with this or know how to help us get it back?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Every 的 CEO Dan Shipper 公开了一个所有内容生意都怕的噩梦场景：Google 在「零通知、无理由」的情况下禁用了公司的 YouTube 账号，他正在向社区求助把账号找回来。",
+              "这是 AI 原生媒体平台风险的一次现场演示——一家天天发布内容的公司，分发渠道可以一夜之间被掐断，没有解释，也没有清晰的申诉路径。对把某个平台当分发渠道的 builder 来说，问题不是你拥有内容，而是你是否拥有受众的注意力。"
+            ],
+            "original": [
+              "看起来 Google 在零通知、无理由的情况下禁用了 Every 的 YouTube 账号……有人遇到过这种情况吗？知道怎么帮我们拿回来吗？"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
