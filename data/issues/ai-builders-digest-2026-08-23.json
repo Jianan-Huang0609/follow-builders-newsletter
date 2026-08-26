@@ -5,11 +5,11 @@
   "editionName": "双语精选版",
   "intro": {
     "kicker": "编者导语 / Editor's Note",
-    "text": "今天的主线可以概括为「平台政策」与「工具栈之争」两条。OpenAI 那边动作密集——Sottiaux 宣布 Plus 恢复 5 小时限额，又放话 DevDay 2026 将是史上最好，这些信号都指向 AI 产品正在从「无限慷慨」走向「可持续运营」。另一边，agent 原生工具在抢地盘：Replit 的 Masad 说 Agent 已取代 Claude CoWork，Steinberger 喊出「要摆脱不能用 prompt 改动的软件」。底层的手艺也没停——Madhu Guru 讲评测的「鉴别力」，Garry Tan 给出一套反自欺的实验循环，Levie 则把「系统记录」推到了 agent 时代的聚光灯下。"
+    "text": "今天的主线是「基础设施的下半场」与「记忆的竞争」。Anthropic 把 Claude 的记忆统一到了 Chat 和 Cowork 之间，Garry Tan 一句「cross-harness memory maxxing」点破了竞争的本质——记忆要跨工具、跨 harness 才算数。OpenAI 这边同时放出两枚信号：Sam Altman 轻描淡写一句「我们做了颗芯片」，Sottiaux 预告面向团队、没有 5 小时限额的新方案，而 Swyx 的 PSA 提醒你 Codex 的「locked use」还踩在 macOS 的不稳定特性上。底层手艺也没停：Madhu Guru 讲到评测要跟着用量一起演化，Rauch 把 agent 基建从笨重沙箱推进到安全原语，Levie 则把「应用层 AI」的机会讲透了。而今天的播客是一记重锤：前 Twitter CEO Parag Agrawal 赌下一个网络会为 agent 从头重建——他说，人类的点击数据是个 bug。"
   },
   "archive": {
-    "title": "平台政策与工具栈之争日报",
-    "desc": "OpenAI 收紧 Plus 限额、预告 DevDay 2026；agent 原生工具在抢地盘；评测的「鉴别力」与「系统记录」成为 agent 时代的新焦点。"
+    "title": "记忆与 agent 基建日报",
+    "desc": "Claude 统一记忆，Garry Tan 点破「跨 harness 记忆」的竞争本质；OpenAI 自研芯片与面向团队的新方案现身；前 Twitter CEO 赌下一个网络为 agent 重建，agent 基建从沙箱走向安全原语。"
   },
   "viewLabels": {
     "rewrite": "速读",
@@ -18,260 +18,300 @@
   "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-08-23 source feeds.",
   "sections": [
     {
-      "title": "OpenAI 的政策与产品信号 / OpenAI: Policy & Product Signals",
-      "desc": "OpenAI 从「无限慷慨」转向「可持续运营」——Plus 恢复 5 小时限额，同时高调预告 DevDay 2026。",
+      "title": "Unified Memory / 记忆统一",
+      "desc": "Anthropic 把 Claude 的记忆统一到 Chat 与 Cowork 之间，而真正的战场在「跨 harness」——记忆必须跟着 builder 走遍每一个工具。",
       "cards": [
         {
-          "authorKey": "x:thsottiaux",
-          "sourceUrl": "https://x.com/thsottiaux/status/2092058556707344708",
+          "authorKey": "x:claudeai",
+          "sourceUrl": "https://x.com/claudeai/status/2092299704864284888",
           "en": {
             "rewrite": [
-              "OpenAI's Thibault Sottiaux (Codex & ChatGPT) announces a policy shift that will hit millions of Plus users: the 5-hour daily usage limit is coming back tomorrow, across ChatGPT Work and Codex.",
-              "He gives two reasons. On the company side, the cap 'smoothens the load on compute' so the plan can stay generous on weekly usage. On the user side, casual Plus users often 'accidentally eat through their whole week's usage' and end up confused — a bad experience.",
-              "Notably, Pro ($100) and Pro ($200) plans keep unlimited hours for now. With 9223 likes, it's the feed's most-engaged post, and a clear signal that OpenAI is shifting from infinite generosity toward sustainable operations."
+              "Anthropic ships a real UX change for Claude: one memory that follows you across Chat and Claude Cowork, and you control what goes into it. Hand Cowork a task and it starts from what Claude already knows from your chats — the project you talked through, your manager's preferences, or the client from last quarter.",
+              "Memory is on by default for Free, Pro and Max plans, and what gets stored is transparent: everything is saved as a list of topics in Settings, where you can read, edit or delete each item, and it updates on its own as you chat. You can also say \"remember this\" to pin something specific.",
+              "Sensitive topics are excluded by default: subjects like health or religious beliefs stay out of memory unless you explicitly turn them on in Settings."
             ],
             "original": [
-              "Tomorrow we will bring back the 5h limit for Plus accounts across ChatGPT Work and Codex. I had mentioned this a while ago, but then postponed it. This is necessary as (a) the 5h limit allows us to smoothen the load on our compute, allowing to keep the plan generous in terms of weekly usage and (b) users on the Plus plan are relatively casual and new users, but then also just accidentally eat through their whole weeks usage and then are confused, making it not a great experience. We are for the upcoming months keeping the 5h limit not enabled for Pro $100 and Pro $200 subscriptions."
+              "Claude now has one memory across chat and Claude Cowork, and you decide what's in it.",
+              "Hand Cowork a task and it starts from what Claude already knows from your chats: the project you talked through, your manager's preferences, or the client from last quarter.",
+              "Memory is on by default on Free, Pro, and Max plans. Review yours anytime in Settings > Memory.",
+              "Topics some consider sensitive, like health or religious beliefs, stay out of memory unless you turn them on in Settings.",
+              "Everything Claude remembers is saved as a list of topics in Settings, where you can read, edit, or delete each one."
             ]
           },
           "cn": {
             "rewrite": [
-              "OpenAI 负责 Codex & ChatGPT 的 Thibault Sottiaux 宣布了一项将影响数百万 Plus 用户的政策调整：明天起，ChatGPT Work 和 Codex 恢复 5 小时的每日使用上限。",
-              "他给了两个理由。对公司来说，上限能「平滑计算负载」，让套餐在周使用量上保持慷慨；对用户来说，Plus 用户多是轻度或新用户，往往「不小心就把一周的额度烧光」然后陷入困惑——体验并不好。",
-              "值得注意的是，Pro（$100）和 Pro（$200）套餐暂时不限时。9223 个赞让它成为今天 feed 里互动最高的一条，也是一个清晰信号：OpenAI 正在从「无限慷慨」转向「可持续运营」。"
+              "Anthropic 给 Claude 上了一个真正的产品改动：一套跨 Chat 和 Claude Cowork 的统一记忆，而且由你决定里面放什么。把任务交给 Cowork 时，它会从 Claude 在你聊天里已经知道的信息出发——你们讨论过的项目、你老板的偏好，或者上个季度的那个客户。",
+              "记忆在 Free、Pro 和 Max 计划上默认开启，而且存储内容是透明的：所有记忆都以主题列表的形式存在 Settings 里，你可以逐条阅读、编辑或删除；它还会在你聊天时自动更新。你也可以说一句「remember this」来固定某个具体信息。",
+              "敏感话题默认被排除在外：像健康或宗教信仰这类内容，除非你在 Settings 里主动打开，否则不会进入记忆。"
             ],
             "original": [
-              "明天我们将在 ChatGPT Work 和 Codex 上为 Plus 账户恢复 5 小时限额。这件事我之前提过，但后来推迟了。这是必要的，因为 (a) 5 小时限额能让我们平滑计算负载，从而让套餐在周使用量上保持慷慨；(b) Plus 用户大多是轻度用户和新用户，但也会不小心把一周的额度烧光，然后感到困惑，体验并不好。接下来的几个月里，Pro $100 和 Pro $200 订阅不会启用 5 小时限额。"
-            ]
-          }
-        },
-        {
-          "authorKey": "x:thsottiaux",
-          "sourceUrl": "https://x.com/thsottiaux/status/2092117461646856505",
-          "en": {
-            "rewrite": [
-              "The same day, Sottiaux sets expectations high for OpenAI's developer conference: 'OpenAI DevDay 2026 will be our best DevDay in the history of the company. It will not be close.'",
-              "It's a bold, unhedged claim from someone on the inside — the kind of signal that usually precedes a big product or research reveal. With 1869 likes, developers are clearly leaning in."
-            ],
-            "original": [
-              "OpenAI DevDay 2026 will be our best DevDay in the history of the company. It will not be close."
-            ]
-          },
-          "cn": {
-            "rewrite": [
-              "同一天，Sottiaux 又把开发者大会的预期拉满：「OpenAI DevDay 2026 将是公司历史上最好的一届 DevDay。而且不是险胜。」",
-              "这是内部人士抛出的、毫不保留的大话——这种信号通常预示着一场重磅产品或研究的发布。1869 个赞，开发者显然都竖起了耳朵。"
-            ],
-            "original": [
-              "OpenAI DevDay 2026 将是公司历史上最好的一届 DevDay。而且不是险胜。"
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "title": "Agent 原生工具栈之争 / The Agent-Native Stack Wars",
-      "desc": "agent 原生工具在抢地盘——Replit 的 Masad 说 Agent 已取代 Claude CoWork，Steinberger 喊出要摆脱不能用 prompt 改动的软件。",
-      "cards": [
-        {
-          "authorKey": "x:amasad",
-          "sourceUrl": "https://x.com/amasad/status/2091962601907638352",
-          "en": {
-            "rewrite": [
-              "Replit CEO Amjad Masad makes a concrete competitive claim: 'Replit Agent completely replaced Claude CoWork in my day-to-day work.'",
-              "His reasoning is specific — Replit Agent is 'much more persistent and fastidious,' and 'uses code/software more effectively to complete tasks.' In other words, the differentiator isn't raw model capability, but how well the agent persists through long, multi-step work and actually writes and runs code.",
-              "It's a notable signal in the coding-agent race: the winning edge is shifting from the underlying model toward the agent harness around it."
-            ],
-            "original": [
-              "True. Replit Agent completely replaced Claude CoWork in my day-to-day work. It's much more persistent and fastidious, and it uses code/software more effectively to complete tasks."
-            ]
-          },
-          "cn": {
-            "rewrite": [
-              "Replit CEO Amjad Masad 抛出一个具体的竞争性说法：「Replit Agent 已经完全取代了我日常工作中的 Claude CoWork。」",
-              "他的理由很具体——Replit Agent「更持久、更一丝不苟」，而且「能更有效地用代码/软件来完成任务」。换句话说，差异化不在模型本身的原始能力，而在 agent 能否在漫长的多步工作中保持状态、并且真正去写代码、跑代码。",
-              "这是 coding agent 赛道上一个值得注意的信号：制胜点正在从底层模型，转向它外面那层 agent 框架。"
-            ],
-            "original": [
-              "没错。Replit Agent 已经完全取代了我日常工作中的 Claude CoWork。它更持久、更一丝不苟，而且能更有效地用代码/软件来完成任务。"
-            ]
-          }
-        },
-        {
-          "authorKey": "x:steipete",
-          "sourceUrl": "https://x.com/steipete/status/2091923535513928015",
-          "en": {
-            "rewrite": [
-              "OpenClaw's Peter Steinberger distills a growing sentiment into one line: 'We need to get away from software that we can't change with a prompt.'",
-              "It's a thesis about the next phase of software — tools that behave more like malleable agents you can steer with instructions, rather than rigid products with fixed UIs. 2423 likes makes it one of the most-resonant posts in the feed, suggesting the idea has crossed from niche to mainstream."
-            ],
-            "original": [
-              "We need to get away from software that we can't change with a prompt."
-            ]
-          },
-          "cn": {
-            "rewrite": [
-              "OpenClaw 的 Peter Steinberger 把一种正在升温的情绪浓缩成一句话：「我们需要摆脱那些不能用 prompt 来改动的软件。」",
-              "这是一个关于软件下一阶段的论点——工具应该更像可塑的 agent，能用指令来驾驭，而不是界面固定的僵硬产品。2423 个赞让它成为 feed 里共鸣最高的帖子之一，说明这个想法已经从边缘走向主流。"
-            ],
-            "original": [
-              "我们需要摆脱那些不能用 prompt 来改动的软件。"
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "title": "评测与建造的手艺 / The Craft of Evals & Building",
-      "desc": "底层的手艺没停——评测的「鉴别力」、以及一套反自欺的实验循环，成为今天最可落地的方法论。",
-      "cards": [
-        {
-          "authorKey": "x:realmadhuguru",
-          "sourceUrl": "https://x.com/realmadhuguru/status/2092058332735693264",
-          "en": {
-            "rewrite": [
-              "Meta's Sr Director of AI Madhu Guru continues his 'How to build great evals' series with part 8, on the discriminatory property of evals: a good eval is only useful when it can separate AI systems that are meaningfully different.",
-              "His example is blunt — five systems scoring 94, 93, 95, 94, 92, when you already know two are substantially better. 'The eval is bad cos it doesn't tell you that.' It's like giving a fifth-grade math test to PhDs: everyone aces it and you've learned nothing about who's smartest.",
-              "The fix isn't to make evals arbitrarily hard — then everyone fails and you're not measuring what your systems are meant for. The sweet spot is realistic + difficult + sensitive to differences in capability. And he ends with a warning: over time, good evals saturate as your harness and models improve."
-            ],
-            "original": [
-              "How to build great evals - part 8. The discriminatory property of evals. A hill-climbing eval is useful when it can separate AI systems that are meaningfully different. It's like giving a fifth-grade math test to a group of PhDs - everyone aces it and you've learned nothing about who is the smartest. That doesn't mean making evals arbitrarily hard. Then everyone fails and you're not measuring what your systems are meant for. The sweet spot for an eval is: Realistic + difficult + sensitive to differences in capability. Over time, your good evals will saturate as your harness and underlying models improve."
-            ]
-          },
-          "cn": {
-            "rewrite": [
-              "Meta 的 AI 高级总监 Madhu Guru 继续他的「如何构建好的评测」系列，第 8 部分讲评测的「鉴别力」：一个评测只有在能区分「真正有差异的 AI 系统」时才有用。",
-              "他的例子很直白——五个系统分别得 94、93、95、94、92 分，而你已经知道其中两个明显更强。「这个评测是烂的，因为它没告诉你这一点。」就像给一群博士发五年级数学卷子：人人都满分，你对谁最聪明一无所知。",
-              "解法不是把评测做得无限难——那样人人都挂，你也没测到系统本来的用途。评测的甜点区是：真实 + 有难度 + 对能力差异敏感。他还留下一个提醒：随着你的框架和底层模型进步，好评测会逐渐饱和。"
-            ],
-            "original": [
-              "如何构建好的评测 - 第 8 部分。评测的鉴别力属性。一个爬山式评测只有在能区分「真正有差异的 AI 系统」时才有用。就像给一群博士发五年级数学卷子——人人都满分，你对谁最聪明一无所知。这并不意味着把评测做得无限难。那样人人都挂，你也没测到系统本来的用途。评测的甜点区是：真实 + 有难度 + 对能力差异敏感。随着你的框架和底层模型进步，好评测会逐渐饱和。"
+              "Claude 现在有一套跨聊天和 Claude Cowork 的统一记忆，而且由你决定里面放什么。",
+              "把任务交给 Cowork，它会从 Claude 在聊天里已经知道的信息出发：你们讨论过的项目、你老板的偏好，或者上个季度的客户。",
+              "Memory 在 Free、Pro 和 Max 计划上默认开启，随时可以在 Settings > Memory 里查看。",
+              "像健康或宗教信仰这类被一些人视为敏感的话题，除非你在 Settings 里打开，否则不会进入记忆。",
+              "Claude 记住的每一条内容都会以主题列表的形式存在 Settings 里，你可以逐条阅读、编辑或删除。"
             ]
           }
         },
         {
           "authorKey": "x:garrytan",
-          "sourceUrl": "https://x.com/garrytan/status/2092059517446156640",
+          "sourceUrl": "https://x.com/garrytan/status/2092277912053657722",
           "en": {
             "rewrite": [
-              "Y Combinator CEO Garry Tan posts a five-step loop for building in the age of AI: form a view, turn it into an artifact or experiment, put it in contact with reality, read the result without self-deception, revise and run again.",
-              "It's a compact distillation of the scientific method for founders — and notably, 'read the result without self-deception' is the step most people skip. With 421 likes, it clearly landed as one of the day's most-shared pieces of builder advice."
+              "Y Combinator CEO Garry Tan's one-line reaction to the memory news doubles as a founder thesis: the edge is not memory inside one product, but memory that travels across every tool a builder uses. His phrase — \"cross-harness memory maxxing\" — names the strategy of keeping context shared across Claude Code, Codex and every other AI harness you touch."
             ],
             "original": [
-              "Form a view. Turn it into an artifact or experiment. Put it in contact with reality. Read the result without self-deception. Revise and run again."
+              "You need to be cross-harness memory maxxing"
             ]
           },
           "cn": {
             "rewrite": [
-              "Y Combinator CEO Garry Tan 发了一条 AI 时代的五步建造循环：形成观点，把它变成一个产物或实验，让它接触现实，不自我欺骗地读取结果，修正后再跑一次。",
-              "这是科学方法给创始人的精炼版——而且值得注意的是，「不自我欺骗地读取结果」恰恰是大多数人会跳过的那一步。421 个赞，它显然成了今天被转发最多的建造者建议之一。"
+              "Y Combinator CEO Garry Tan 对这次记忆发布的一句评论，本身就是一句创业者方法论：真正的护城河不是某个产品内部的记忆，而是能穿越你使用的每一个工具的记忆。他造的词「cross-harness memory maxxing」（跨 harness 记忆拉满），点明了把上下文在 Claude Code、Codex 以及你碰过的每个 AI harness 之间共享的策略。"
             ],
             "original": [
-              "形成观点。把它变成产物或实验。让它接触现实。不自我欺骗地读取结果。修正后再跑一次。"
+              "你需要做 cross-harness memory maxxing。"
             ]
           }
         }
       ]
     },
     {
-      "title": "系统记录与企业 AI / Systems of Record & Enterprise AI",
-      "desc": "Box CEO Levie 把「系统记录」推到 agent 时代的聚光灯下——治理与合规反而更重要，ZDR 则是 AI 扩散的隐形推手。",
+      "title": "OpenAI: Chip & Team Plan / OpenAI 的芯片与新方案",
+      "desc": "Sam Altman 一句四字预告自研芯片，Sottiaux 预告面向团队、无 5 小时限额的新方案，而 Swyx 提醒你桌面端 Codex 的地基还没稳。",
       "cards": [
         {
-          "authorKey": "x:levie",
-          "sourceUrl": "https://x.com/levie/status/2092087679240569126",
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2092345330272780499",
           "en": {
             "rewrite": [
-              "Box CEO Aaron Levie makes the case that systems of record (CRM, ERP, and the rest) have never mattered more than in a world where AI agents do 100X more work on these platforms than people ever did.",
-              "Agents will query the data, process tasks, execute workflows, and collaborate with human and agent users — which means governance, reliability, security, access controls, and business logic become more critical than ever. He points to the 'OpenAI Hugging Face incident' as 'a small peek' at what happens when agents run around trying to execute goals.",
-              "But the opportunity only flows to systems of record that ship the right product experiences, APIs, and business models for agents. His verdict: 'Huge moment of opportunity and disruption right now in all of software.'"
+              "OpenAI's Thibault Sottiaux (Codex & ChatGPT) previews a new Business plan aimed at teams and small companies. It works like the Pro $100 plan but adds everything a company needs: all ChatGPT, ChatGPT Work and Codex features, connectors into Google Workspace, Slack, GitHub and Microsoft 365, SAML/SSO/MFA, centralized billing and administration, usage analytics with spend controls, and no 5-hour limits.",
+              "His separate one-liner — \"Good products take time. At least 34 days.\" — reads as a nod to the gap between announcement and shipping, a reminder that OpenAI's consumer roadmap is being paced deliberately."
             ],
             "original": [
-              "Systems of record have never been more important than in a world where you have AI agents that will do 100X more work on these platforms than people ever did. Agents will be querying the data in these systems, processing tasks, executing workflows, collaborating with human and agent users, and more. Thus, the governance, reliability, security, access controls, and business logic remain critical more than ever — the OpenAI Hugging Face incident is just a small peek into what the future will look like with agents running around trying to execute on their goals. But this only works for the systems of record that respond with the right product experiences, APIs, and business models to support agents on and off their platform executing in these systems. Huge moment of opportunity and disruption right now in all of software."
+              "So much demand for this one. Works similar to the Pro $100 plan but designed for teams and small companies.",
+              "✅ All ChatGPT, ChatGPT Work, and Codex features ✅ Connect to Google Workspace, Slack, GitHub, Microsoft 365, and more ✅ Secure workspace with SAML, SSO, and MFA ✅ Centralized billing and administration ✅ Usage analytics and spend controls ✅ No 5h limits",
+              "Good products take time. At least 34 days."
             ]
           },
           "cn": {
             "rewrite": [
-              "Box CEO Aaron Levie 提出一个观点：在一个 AI agent 会在这些平台上做「比人类多 100 倍」工作的世界里，系统记录（system of record，如 CRM、ERP 等）比以往任何时候都更重要。",
-              "agent 会查询这些系统里的数据、处理任务、执行工作流、与人类和 agent 用户协作——这意味着治理、可靠性、安全、访问控制和业务逻辑比以往更加关键。他拿「OpenAI Hugging Face 事件」举例，说这只是 agent 四处跑着执行目标时未来会是什么样子的「冰山一角」。",
-              "但机会只会流向那些能提供正确产品体验、API 和商业模式来支持 agent 的系统记录。他的结论是：「当下整个软件行业正处于一个巨大的机会与颠覆时刻。」"
+              "OpenAI 的 Thibault Sottiaux（Codex & ChatGPT）预告了一款面向团队和小公司的新 Business 方案。它的运作方式类似 Pro 100 美元方案，但加上了公司所需的一切：全部 ChatGPT、ChatGPT Work 和 Codex 功能，接入 Google Workspace、Slack、GitHub、Microsoft 365 等，SAML/SSO/MFA 安全工作区，集中计费与管理，用量分析和支出控制，而且没有 5 小时限额。",
+              "他另一句单独的话——「好产品需要时间。至少 34 天。」——像是在回应从预告到上线的间隔，提醒大家 OpenAI 的消费级路线图在刻意控制节奏。"
             ],
             "original": [
-              "在一个 AI agent 会在这些平台上做比人类多 100 倍工作的世界里，系统记录比以往任何时候都更重要。agent 会查询这些系统里的数据、处理任务、执行工作流、与人类和 agent 用户协作等等。因此，治理、可靠性、安全、访问控制和业务逻辑比以往更加关键——OpenAI Hugging Face 事件只是 agent 四处跑着执行目标时未来会是什么样子的冰山一角。但这只适用于那些能提供正确的产品体验、API 和商业模式来支持 agent 在其平台内外执行任务的系统记录。当下整个软件行业正处于一个巨大的机会与颠覆时刻。"
+              "这个的需求量很大。运作方式类似 Pro 100 美元方案，但面向团队和小公司设计。",
+              "✅ 全部 ChatGPT、ChatGPT Work 和 Codex 功能 ✅ 接入 Google Workspace、Slack、GitHub、Microsoft 365 等 ✅ 带 SAML、SSO、MFA 的安全工作区 ✅ 集中计费与管理 ✅ 用量分析和支出控制 ✅ 没有 5 小时限制",
+              "好产品需要时间。至少 34 天。"
             ]
           }
         },
         {
-          "authorKey": "x:levie",
-          "sourceUrl": "https://x.com/levie/status/2091909170308296950",
+          "authorKey": "x:sama",
+          "sourceUrl": "https://x.com/sama/status/2092339694210040187",
           "en": {
             "rewrite": [
-              "In a second post, Levie argues that zero data retention (ZDR) is 'responsible for a substantial amount of the growth of AI,' because it dramatically simplified the compliance burden companies face when handling data with subprocessors.",
-              "His logic: applied-AI vendors generally offer only ZDR models, so customers don't have to inspect each model they enable — anything else is a slow exception process. And inside enterprises, governance rules often mandate ZDR because they can't cleanly separate PII from the context window.",
-              "The stakes are stark: 'Without ZDR, AI diffusion grinds to a halt.' It's a reminder that adoption is often gated by unglamorous compliance mechanics, not just model capability."
+              "Sam Altman posts a four-word tease — \"we made a chip and it is fast\" — and it immediately becomes one of the most-engaged posts of the day, with tens of thousands of likes and over a thousand retweets. There is no spec sheet, no benchmark, no roadmap. Just a signal that OpenAI is now building its own silicon, which would rewrite the cost and compute equation that the entire agent economy runs on."
             ],
             "original": [
-              "It's not fully appreciated that ZDR is responsible for a substantial amount of the growth of AI, because it dramatically simplified the compliance process most companies deal with in handling data with subprocessors. The alternative path would have been a far slower adoption rate. ... most companies have internal governance requirements that say they can only use ZDR models because they have no way of explicitly separating PII and other sensitive or confidential data they put in the context window across their enterprise. ... Without ZDR, AI diffusion grinds to a halt."
+              "we made a chip and it is fast"
             ]
           },
           "cn": {
             "rewrite": [
-              "第二条帖子里，Levie 提出零数据保留（ZDR）「是 AI 增长的重要推手」，因为它大幅简化了大多数公司在处理子处理器数据时要面对的合规流程。",
-              "他的逻辑是：应用型 AI 供应商通常只提供 ZDR 模型，这样客户就不必逐一审查自己启用的每个模型——其它任何方案都是缓慢的例外流程。而企业内部，治理规则往往强制要求 ZDR，因为它们无法清晰地分离放进上下文窗口里的 PII 和其它敏感/机密数据。",
-              "他的结论很尖锐：「没有 ZDR，AI 的扩散就会陷入停滞。」这是个提醒：采用率常常被那些不性感的合规机制卡住，而不只是被模型能力卡住。"
+              "Sam Altman 发了一句四个词的预告——「we made a chip and it is fast」（我们做了颗芯片，它很快）——立刻成为当天互动量最高的帖子之一，数万点赞、上千转发。没有规格表、没有跑分、没有路线图，只有一个信号：OpenAI 现在在自研芯片，而这件事会重写整个 agent 经济赖以运转的成本与算力方程。"
             ],
             "original": [
-              "人们还没有充分意识到，ZDR 是 AI 增长的重要推手，因为它大幅简化了大多数公司在处理子处理器数据时要面对的合规流程。另一条路本会是慢得多的采用率。……企业内部大多有治理要求，只能使用 ZDR 模型，因为它们无法清晰分离放进上下文窗口里的 PII 和其它敏感/机密数据。……没有 ZDR，AI 的扩散就会陷入停滞。"
+              "we made a chip and it is fast"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2092492963435946494",
+          "en": {
+            "rewrite": [
+              "Swyx (smol.ai founder, Latent Space) posts a public service announcement for anyone using Codex's \"locked use\" capabilities: avoid them for now. The feature currently relies on unstable macOS features and has locked him out of his macOS keychain twice in a single week, with Apple's developer forums acknowledging it as a \"known bug\".",
+              "The point is not to dunk on Codex — he notes it would be nice to do everything in the cloud, but cloud isn't there yet. It is a practical reminder that bleeding-edge agent features on the desktop still sit on shaky OS foundations."
+            ],
+            "original": [
+              "PSA: do not use codex \"locked use\" capabilities right now. it is currently relying on unstable mac features and has completely locked me out of my macos keychain twice this week.",
+              "thx @_chenglou for linking to apple developer forums acknowledging this is a \"known bug\". just avoid. ofc, would be nice to do everything in cloud, but cloud isn't there yet."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx（smol.ai 创始人、Latent Space 主播）发了一条给所有在用 Codex「locked use」能力的人的警告：现在先别用。这个功能目前依赖不稳定的 macOS 特性，一周内已经两次把他锁死在 macOS 钥匙串之外，而 Apple 开发者论坛也承认这是「已知 bug」。",
+              "他的重点不是黑 Codex——他也说能全部在云端完成当然好，只是云端还没到那一步。这是一个务实的提醒：桌面端最前沿的 agent 功能，仍然站在不稳的操作系统地基上。"
+            ],
+            "original": [
+              "PSA：现在别用 Codex 的「locked use」能力。它目前依赖不稳定的 macOS 特性，一周内已经两次把我完全锁死在 macOS 钥匙串之外。",
+              "感谢 @_chenglou 分享了 Apple 开发者论坛里承认这是「已知 bug」的链接。避开就对了。当然，能全部在云端完成是最好，只是云端还没到那一步。"
             ]
           }
         }
       ]
     },
     {
-      "title": "反共识与创始人视角 / Contrarian Takes & Founder Notes",
-      "desc": "两条反共识声音——hackathon 是过时的活动形式，以及创始人该如何找到自己的 VC champion。",
+      "title": "Rebuilding the Web for Agents / 为 agent 重建网络",
+      "desc": "前 Twitter CEO Parag Agrawal 的 Parallel 把搜索重新定义为「给 agent 用的东西」：人类点击数据是 bug，排序模型才是答案。",
       "cards": [
         {
-          "authorKey": "x:zarazhangrui",
-          "sourceUrl": "https://x.com/zarazhangrui/status/2092079390301556883",
+          "authorKey": "podcast:training-data",
+          "sourceUrl": "https://www.youtube.com/playlist?list=PLOhHNjZItNnMm5tdW61JpnyxeYH5NDDx8",
+          "authorName": "Parag Agrawal (Parallel)",
+          "authorTag": "Training Data",
           "en": {
             "rewrite": [
-              "Builder Zara Zhang opens with a self-aware contrarian take: 'Unpopular opinion: hackathons are an outdated event format (at least the way they're traditionally held).'",
-              "She doesn't elaborate in the tweet itself, but the framing invites the follow-up: if the traditional sprint format is stale, what replaces it for actually shipping something real? With 85 likes and 27 replies, it's clearly stirring debate."
+              "The takeaway: web search was built for lazy humans, and Parag Agrawal is betting the next web gets rebuilt from scratch for AI agents. Agrawal — the former Twitter CEO who sold the company to Elon Musk — now runs Parallel, a company building \"agentic search\" on one core conviction: \"human click data is a bug,\" and agent search should learn from agent feedback instead.",
+              "His thesis is blunt. Agents will search the web a thousand times more than humans ever did, so the technology and the business model both need reinvention. Rather than raise billions to crawl the whole web up front, Parallel started with a \"search agent\" — a product that crawls after a query arrives — then built its index incrementally from real customer use cases like insurance underwriting and sales data enrichment.",
+              "He frames search as a billion-to-billion matching problem: every query is essentially \"give me a thousand tokens from a trillion web pages, and make sure they're the right thousand tokens.\" Parallel's answer is to compress information into tiny ranking models that pick those tokens within tight latency budgets, now down to 200 milliseconds.",
+              "The practical payoff: he claims agents using Parallel search use under half the tokens, become more accurate, and finish faster. He also resists the \"NeoLab\" label — his output is not a model but a complement to one: whenever someone ships a better model, that unlocks more use cases for Parallel, not more competition."
             ],
             "original": [
-              "Unpopular opinion: hackathons are an outdated event format (at least the way they're traditionally held)"
+              "Our view at Parallel is that human click data is a bug, and agent doing work with search should rely on agent feedback, not human feedback.",
+              "We started Parallel with the bet that agents would do it a thousand x more than humans ever have.",
+              "You have hundreds of billions of pages and hundreds of billions of queries over time, and you need to figure out how to matchmake across these two.",
+              "Every query is essentially, give me a thousand tokens from a trillion web pages on the web and make sure they're the right thousand tokens.",
+              "If you use parallel search, you will, for the most part, use under half the tokens in your agent. It will become more accurate and faster.",
+              "Somebody ships a better model, they have now unlocked four more use cases where we can be valuable."
             ]
           },
           "cn": {
             "rewrite": [
-              "Builder 出身的 Zara Zhang 抛出一个自嘲式的反共识观点：「不讨喜的看法：hackathon 是一种过时的活动形式（至少按它们传统的办法是）。」",
-              "她在帖子里没有展开，但这个框架本身就抛出了追问：如果传统那种冲刺形式已经过时，那真正能做出东西的替代形式是什么？85 个赞、27 条回复，显然正在挑起争论。"
+              "一句话 Takeaway：网络搜索是为「懒人」设计的，而 Parag Agrawal 赌的是——下一个网络会为 AI agent 从头重建。Agrawal 是把 Twitter 卖给 Elon Musk 的前 CEO，如今经营 Parallel，一家基于一个核心信念做「agentic search」的公司：人类点击数据是 bug，agent 搜索应该从 agent 反馈里学习，而不是人类反馈。",
+              "他的论点很直白：agent 上网搜索的次数将是人类的一千倍，所以技术和商业模式都需要重新发明。Parallel 没有一上来就砸几十亿去爬全网，而是先做了一款「search agent」——查询到达后才去爬取——然后从保险核保、销售数据补全这类真实客户场景里逐步建起自己的索引。",
+              "他把搜索描述成一个「十亿对十亿」的匹配问题：每一次查询本质上就是「从万亿网页里给我一千个 token，而且要保证是对的那一千个」。Parallel 的答案是，把信息压缩进极小的排序模型，在极紧的延迟预算里挑出这些 token，现在已经做到 200 毫秒。",
+              "实际的收益：他声称用 Parallel 搜索的 agent，token 用量能降到一半以下，更准也更快。他还拒绝「NeoLab」这个标签——他的产出不是模型，而是模型的补充：每当有人发布更好的模型，对 Parallel 来说不是竞争加剧，而是解锁了更多它能发挥价值的场景。"
             ],
             "original": [
-              "不讨喜的看法：hackathon 是一种过时的活动形式（至少按它们传统的办法是）。"
+              "我们在 Parallel 的看法是，人类点击数据是 bug，用搜索干活的 agent 应该依赖 agent 反馈，而不是人类反馈。",
+              "我们创立 Parallel 时的赌注是：agent 使用搜索的次数会是人类的一千倍。",
+              "你有上千亿页面、上千亿次查询，你得想办法在两者之间做匹配。",
+              "每一次查询本质上就是：从网上的万亿网页里给我一千个 token，并保证它们是对的那一千个。",
+              "如果你用 Parallel 搜索，多数情况下你的 agent 只用到一半以下的 token，而且更准、更快。",
+              "有人发布更好的模型，反而为我们解锁了四个更多能发挥价值的场景。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Evals & Agent Infrastructure / 评测与 agent 基建",
+      "desc": "Madhu Guru 说评测要跟着用量一起演化；Vercel 把 agent 基建从笨重沙箱推进到安全、专用的原语。",
+      "cards": [
+        {
+          "authorKey": "x:realmadhuguru",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2092426017118028266",
+          "en": {
+            "rewrite": [
+              "Madhu Guru, Sr. Director of AI at Meta (previously Google, where he led Gemini, Veo and Nano Banana), continues his eval series with Part 9: the Eval Roadmap Problem. His argument: most evals fail because teams treat them as static artifacts while user expectations and behavior keep evolving.",
+              "He walks through a financial research agent: early users ask to summarize a 5-page earnings report; three weeks later they want the growth story across five reports; two months later they want an investment thesis from 15 filings and transcripts; eventually they want a portfolio monitor that alerts them when something materially changes the thesis.",
+              "The prescription: map the dimensions along which usage will evolve (turns, document size, tool use, autonomy), mine production traces for shifts, and build P0 evals for the next stage before you need them. \"If your evals are stuck in week 1 while users are in week 3, it will show in your product and churn metrics.\""
+            ],
+            "original": [
+              "Most evals fail because teams treat them as static artifacts while their users expectations and behaviors have evolved.",
+              "Early user: Summarize this 5-page earnings report. 3 weeks later: review the last 5 earnings reports and explain their growth story. 2 months later: Here are 15 filings, earnings transcripts and research reports. Build an investment thesis. Eventually: Monitor my stock portfolio and tell send me alerts when something materially changes my thesis.",
+              "Your evals should change with usage patterns: short-context -> long-context, single-turn QA -> multi-turn, passage citations -> doc and line citations, Simple QA -> complex synthesis, reactive chat -> proactive agent.",
+              "If your evals are stuck in week 1 while users are in week 3, it will show in your product and churn metrics."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Madhu Guru，Meta 的 AI 高级总监（此前在 Google 主导 Gemini、Veo 和 Nano Banana），继续他的评测系列，写到第九篇：评测路线图问题。核心论点：大多数评测之所以失败，是因为团队把它们当成静态工件，而用户的预期和行为一直在演化。",
+              "他用一个金融研究 agent 举例：早期用户要求「总结这份 5 页财报」；三周后变成「回顾最近 5 份财报，讲清增长故事」；两个月后变成「这里有 15 份文件、财报电话会和研报，构建投资论点」；最终变成「监控我的股票组合，当某件事实质性改变我的论点时提醒我」。",
+              "他给的药方：先画出用量会沿哪些维度演化（轮数、文档规模、工具使用、自主性），从生产 trace 里挖掘变化，然后提前为下一阶段构建 P0 评测。「如果你的评测还停在第 1 周、而用户已经走到第 3 周，这会在你的产品和流失率上显现出来。」"
+            ],
+            "original": [
+              "大多数评测失败，是因为团队把它们当成静态工件，而用户的预期和行为已经演化。",
+              "早期用户：总结这份 5 页财报。三周后：回顾最近 5 份财报并讲清增长故事。两个月后：这里有 15 份文件、财报电话会和研报，构建一个投资论点。最终：监控我的股票组合，当某件事实质性改变我的论点时提醒我。",
+              "你的评测应该随用量模式改变：短上下文 → 长上下文，单轮 QA → 多轮，段落引用 → 文档与行级引用，简单 QA → 复杂综合，被动聊天 → 主动 agent。",
+              "如果你的评测还停在第 1 周、而用户已经在第 3 周，这会在你的产品和流失率上显现出来。"
             ]
           }
         },
         {
-          "authorKey": "x:nikunj",
-          "sourceUrl": "https://x.com/nikunj/status/2092079149028716877",
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2092352411839193234",
           "en": {
             "rewrite": [
-              "FPV Ventures partner Nikunj Kothari offers founders a blunt piece of fundraising advice: every unconventional deal 'dies a 100 times' in venture, and it usually takes one champion sticking their neck out to steer it to the finish line.",
-              "His actionable tip: figure out who your real champion is — and arm them with whatever info they need to make your case. He adds that associates and non-voting partners are 'extraordinarily useful' here, since they're incentivized to help you and it's a good test of how they'd partner with you on your cap table."
+              "Vercel CEO Guillermo Rauch names what he calls the hardest problem in building agents: secure connectivity to services and data. Vercel Connect is now GA — one command (\"vercel connect create notion\") gives you an MCP client you can query on behalf of an authenticated user, without hand-rolling OAuth for every integration.",
+              "Alongside it he ships Run SDK, a lighter-weight alternative to full sandboxes: when agents write code, you can run it in a secure QuickJS context instead of spinning up a whole sandbox — faster and more cost-efficient. The through-line: agent infrastructure is moving from heavy, general-purpose sandboxes toward secure, purpose-built primitives."
             ],
             "original": [
-              "Every (unconventional) deal that's officially wired dies a 100 times in venture.. It usually takes one champion sticking their neck out for the founder - and quietly steering it to the completion line. Founders it's in your benefit to figure out who your real champion is to help steer the fund dynamics and arm them with whatever info you can to make your case. This is where associates and non-voting partners are extraordinarily useful as they are incentivized to help you - and it's a good test of how they'd partner with you as they come on your cap table!"
+              "The hardest problem in building agents is secure connectivity to services and data.",
+              "Excited for Vercel Connect to be GA. Run e.g: vercel connect create notion, then get an MCP client you can query on behalf of the authenticated user.",
+              "We're introducing Run SDK: secure eval for dynamic Code Mode execution. When agents write code, you don't always need a full sandbox. You can run their code in a lightweight QuickJS secure context. Faster and more cost-efficient."
             ]
           },
           "cn": {
             "rewrite": [
-              "FPV Ventures 的合伙人 Nikunj Kothari 给创始人一句直白的融资建议：每一笔正式推进的（非传统）deal 在风投里「都要死上一百次」，通常需要有一个 champion 为创始人挺身而出，悄悄把它推过终点线。",
-              "他的可操作建议是：搞清楚谁是你真正的 champion，然后把能帮你站台的所有信息都交给他们。他还补充，associate 和非投票合伙人在这里「特别有用」，因为他们有动力帮你，而且这也是一个测试——看他们上了你的 cap table 之后会怎么跟你合作。"
+              "Vercel CEO Guillermo Rauch 点名了他认为构建 agent 最难的难题：安全地连接到服务和数据。Vercel Connect 现已 GA——一条命令（vercel connect create notion）就能拿到一个 MCP client，可以代表已认证用户去查询，而不必为每一个集成手搓 OAuth。",
+              "同时他还发布了 Run SDK，作为完整沙箱之外更轻量的替代：当 agent 写代码时，你不必每次都起一整个沙箱，可以在轻量的 QuickJS 安全上下文里直接运行，更快也更省钱。贯穿其中的主线是：agent 基础设施正在从笨重的通用沙箱，转向安全、专用的原语。"
             ],
             "original": [
-              "每一笔正式推进的（非传统）deal 在风投里都要死上一百次。通常需要一个 champion 为创始人挺身而出，悄悄把它推向终点线。创始人，搞清楚谁是你真正的 champion 对你有好处，能帮你驾驭基金内部的博弈，并把所有能帮你站台的信息交给他们。这正是 associate 和非投票合伙人特别有用的地方，因为他们有动力帮你——而且这也是一个测试，看他们上了你的 cap table 之后会怎么跟你合作。"
+              "构建 agent 最难的难题，是安全地连接到服务和数据。",
+              "很高兴 Vercel Connect 正式 GA。比如运行 vercel connect create notion，就能拿到一个可以代表已认证用户查询的 MCP client。",
+              "我们推出 Run SDK：用于动态 Code Mode 执行的安全 eval。当 agent 写代码时，你不一定需要完整的沙箱，可以在轻量的 QuickJS 安全上下文里运行，更快、更省钱。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Applied AI / 落地与应用",
+      "desc": "Levie 把「应用层 AI」的机会讲透，Peter Yang 则把一个真实的开源 skill 放到了台上。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2092466424694649066",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie highlights a post on what applied AI strategy looks like at scale. His read: there is a wide gap between AI models and the actual workflows of an enterprise, and that gap is where the biggest opportunity sits for applied AI companies.",
+              "The quote he amplifies frames it sharply: the world doesn't just want raw models and agents — it wants problems resolved and outcomes achieved. The premium will go to companies that can diffuse intelligence through every aspect of a business, converting raw tokens into real-world outcomes.",
+              "Doing that well, he argues, means owning context, driving change management, routing across models, connecting to the critical systems in a vertical, and solving the UX of connecting users to agents — a ton of value that sits beyond the model itself."
+            ],
+            "original": [
+              "It's clear that there's a wide gap between the AI models and the underlying workflows of an enterprise, which leaves a ton of opportunity for applied AI companies.",
+              "The world doesn't just want raw models and agents; it wants problems resolved and outcomes achieved. The premium will sit with the companies that can diffuse this intelligence through every aspect of civilization, converting raw tokens into real world outcomes.",
+              "That's a ton of value that goes beyond just the model intelligence itself. And there's a window of opportunity right now to build the defining companies that can bring intelligence to the critical domains in an enterprise."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 转发并点评了一篇关于「规模化应用 AI 战略」的文章。他的判断：AI 模型与企业真实工作流之间存在巨大鸿沟，而这道鸿沟正是应用层 AI 公司最大的机会。",
+              "他引用的那段话把这件事说得非常锋利：世界要的不只是裸模型和 agent，而是问题被解决、结果被达成。溢价会流向那些能把智能扩散进业务每个角落、把裸 token 转化为真实世界成果的公司。",
+              "要做好这件事，他认为意味着：理解业务上下文、推动变革管理、在多个模型之间路由、接入垂直领域的关键系统、解决「如何把用户和 agent 正确连接」的 UX 难题——这些价值远在模型智能本身之外。"
+            ],
+            "original": [
+              "AI 模型与企业真实工作流之间存在巨大鸿沟，这给应用层 AI 公司留下了大量机会。",
+              "世界要的不只是裸模型和 agent；它要的是问题被解决、结果被达成。溢价会流向那些能把智能扩散进文明每一个角落、把裸 token 转化为真实世界成果的公司。",
+              "这是远超模型智能本身的价值。而且现在正有一个窗口期，去打造那些能把智能带入企业关键领域的定义性公司。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2092249012913258946",
+          "en": {
+            "rewrite": [
+              "Peter Yang open-sources /fuck-cancer, an AI skill that helps patients and caregivers navigate a cancer diagnosis and advocate for themselves. Built from his own family's experience, it creates and updates a single source-of-truth brief with five sections: patient and care-team info, three next actions, confirmed facts vs. unknowns, medical terms in plain English, and a care log.",
+              "It builds the brief from documents and context you provide, pulls from trusted sources like the National Cancer Institute and ClinicalTrials.gov when research is needed, and works with ChatGPT/Codex and Claude Code. It can save the brief as a local Markdown file or update a shareable Google Doc so the whole family works from the same information."
+            ],
+            "original": [
+              "Today, I'm open-sourcing /fuck-cancer, an AI skill that helps patients and caregivers navigate cancer diagnosis and treatment and advocate for themselves and their loved ones.",
+              "The volume of doctors, documents, and insurance paperwork can quickly become overwhelming.",
+              "It creates and updates a practical brief with five sections: patient and care-team information, what to do next limited to three specific actions, what we know, medical terms explained in plain English, and a care log with recent updates and decisions."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 开源了 /fuck-cancer，一个帮助患者和照护者应对癌症诊疗、为自己和家人发声的 AI skill。这个 skill 源自他家的真实经历，会创建并持续更新一份「单一事实来源」简报，分五块：患者与照护团队信息、接下来要做的三件具体行动、已知事实与未知之分、用大白话解释的医学术语、以及带更新和决策记录的照护日志。",
+              "它从你提供的文档和上下文里构建简报，需要研究时调用国家癌症研究所（NCI）和 ClinicalTrials.gov 等可信来源，并兼容 ChatGPT/Codex 和 Claude Code。简报可以存成本地 Markdown 文件，也可以更新到一个可分享的 Google Doc，让全家人基于同一份信息协作。"
+            ],
+            "original": [
+              "今天，我开源了 /fuck-cancer，一个帮助患者和照护者应对癌症诊疗、为自己和所爱之人发声的 AI skill。",
+              "医生、文档和保险文件的数量很快就会让人喘不过气。",
+              "它会创建并持续更新一份实用的简报，分五块：患者与照护团队信息、接下来要做的三件具体行动、已知事实、用大白话解释的医学术语、以及带最近更新和决策的照护日志。"
             ]
           }
         }
