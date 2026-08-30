@@ -5,11 +5,11 @@
   "editionName": "双语精选版",
   "intro": {
     "kicker": "编者导语 / Editor's Note",
-    "text": "今天有两条主线。一条是竞争：OpenAI 宣布终止通过 Cursor 提供模型访问，Replit 和 Anthropic 立刻接盘表态，AI 编程工具的格局正在剧烈重组。另一条是更底层的主题：Eon 两位创始人在播客里说，模型和算力都已接近商品化，数据才是 AI 时代真正的护城河；而多位资深 builder 不约而同地提醒，这个行业的信念半衰期已经短到只有几个月。再加上 Vercel CEO 对 web 两极化的判断，今天的拼图指向同一个方向——工具会换、格局会变，只有数据和快速迭代的能力是确定的。"
+    "text": "今天的几条线看似分散，其实指向同一个方向：AI 行业正在从「堆能力」转向「算账」。Nikunj 和 Matt Turck 都看到补贴退潮、算力与对齐的成本开始显形；Guillermo Rauch 和 Peter Yang 在把 agent 工具做得更务实；Zara Zhang 和 Dan Shipper 则提醒，产品同质化和对齐问题还没有答案。而在更远的边界上，Max Hodak 的脑机接口公司用一纸欧洲批文证明，「大脑是一台计算机」不只是哲学，也是可以商业化的产品。"
   },
   "archive": {
-    "title": "护城河与半衰期",
-    "desc": "AI 编程工具格局剧烈重组，而多位 builder 指向同一个结论：数据是真正的护城河，信念的半衰期越来越短。"
+    "title": "算账时刻日报",
+    "desc": "补贴退潮、agent 工具务实化、产品同质化与对齐争论，以及脑机接口的商业化落地，构成今天的主线。"
   },
   "viewLabels": {
     "rewrite": "速读",
@@ -18,266 +18,240 @@
   "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-08-23 source feeds.",
   "sections": [
     {
-      "title": "OpenAI Cuts Ties with Cursor / OpenAI 与 Cursor 分道扬镳",
-      "desc": "一条声明引爆了 AI 编程工具圈的站队：OpenAI 宣布终止通过 Cursor 提供模型访问，Replit 与 Anthropic 立刻表态。",
-      "cards": [
-        {
-          "authorKey": "x:thsottiaux",
-          "sourceUrl": "https://x.com/thsottiaux/status/2093515916076343774",
-          "en": {
-            "rewrite": [
-              "OpenAI's Thibault Sottiaux, who leads Codex and ChatGPT, announced that OpenAI is ending its partnership with Cursor, stopping model access effective November 12. The bluntly stated reason: 'It boils down to trust.'",
-              "The announcement, which drew over 5,600 likes, reads like a breakup letter to developers: OpenAI will keep letting people use their own API key in Cursor and via OpenAI's IDE extensions, and it promises to keep working with 'the broadest range of tools and harnesses.'",
-              "The subtext is a distribution war: OpenAI is pulling its frontier models out of a rival coding platform to push developers toward its own Codex and ChatGPT surfaces, while claiming to stay tool-agnostic."
-            ],
-            "original": [
-              "We unfortunately have decided that we cannot continue providing access to our models through Cursor and are ending our partnership. It boils down to trust and we've asked that this takes effect on November 12 to give you some time to plan.",
-              "We will continue to allow using your own OpenAI API key and similarly will continue to provide access through our IDE extensions for Cursor."
-            ]
-          },
-          "cn": {
-            "rewrite": [
-              "OpenAI 负责 Codex 和 ChatGPT 的 Thibault Sottiaux 宣布：OpenAI 将终止与 Cursor 的合作，从 11 月 12 日起停止通过 Cursor 提供模型访问。理由直白得近乎冷硬——「说到底就是信任问题」。",
-              "这条声明拿了 5600 多个赞，读起来像一封给开发者的分手信：OpenAI 会继续允许你在 Cursor 里用你自己的 API key，也继续通过官方 IDE 插件提供访问，并承诺继续与「最广泛的工具和 harness 阵营」合作。",
-              "潜台词是一场分发战争：OpenAI 把旗舰模型从一个竞争性的编程平台上撤走，把开发者推向自家的 Codex 和 ChatGPT 界面，同时嘴上仍说自己「保持工具中立」。"
-            ],
-            "original": [
-              "很遗憾我们决定不再通过 Cursor 提供模型访问，并终止合作。说到底就是信任问题，我们要求在 11 月 12 日生效，给你留出规划时间。",
-              "我们会继续允许你在 Cursor 里使用你自己的 OpenAI API key，也会继续通过官方 IDE 插件提供访问。"
-            ]
-          }
-        },
-        {
-          "authorKey": "x:amasad",
-          "sourceUrl": "https://x.com/amasad/status/2093533378880667787",
-          "en": {
-            "rewrite": [
-              "Replit CEO Amjad Masad moved fast: within hours he pointed out you can access OpenAI models on Replit for free, and that Replit's router makes high-end models 'incredibly cost-efficient.'",
-              "The sharper pitch came next: if you're a business looking for 'an independent, multi-model alternative to Cursor, we'd be happy to fund your transition.'",
-              "This is classic platform arbitrage: when a big vendor closes a distribution channel, rivals rush to subsidize the switch. The OpenAI-Cursor split instantly became a customer-acquisition moment for every multi-model coding tool."
-            ],
-            "original": [
-              "You can access OpenAI models on Replit for free.",
-              "If you're a business looking for an independent, multi-model alternative to Cursor, we'd be happy to fund your transition."
-            ]
-          },
-          "cn": {
-            "rewrite": [
-              "Replit CEO Amjad Masad 反应极快：几个小时内就指出，你可以在 Replit 上免费访问 OpenAI 模型，而且 Replit 的路由让高端模型变得「极其划算」。",
-              "更狠的招在后面：如果你是一家想找「独立、多模型的 Cursor 替代品」的公司，「我们很乐意资助你的迁移」。",
-              "这是典型的平台套利：当大厂关闭一条分发渠道，对手立刻冲上来补贴换平台。OpenAI 与 Cursor 的分手，瞬间变成了所有多模型编程工具的获客时刻。"
-            ],
-            "original": [
-              "你可以在 Replit 上免费访问 OpenAI 模型。",
-              "如果你是找独立、多模型 Cursor 替代品的公司，我们很乐意资助你的迁移。"
-            ]
-          }
-        },
-        {
-          "authorKey": "x:trq212",
-          "sourceUrl": "https://x.com/trq212/status/2093541555068182781",
-          "en": {
-            "rewrite": [
-              "Anthropic's Thariq, who works on Claude Code, responded from the other side of the breakup: 'Long-time admirer of the Cursor team, few have done more to bring AI coding to the world. Excited to continue to partner with them.'",
-              "With over 1,500 likes, it's a pointed contrast: while OpenAI is pulling out, Anthropic is doubling down on the Cursor relationship.",
-              "The chess move is hard to miss: in a market where developers are suddenly shopping for alternatives, Anthropic positioning itself as the loyal, low-drama partner is itself a distribution strategy."
-            ],
-            "original": [
-              "Long-time admirer of the Cursor team, few have done more to bring AI coding to the world. Excited to continue to partner with them."
-            ]
-          },
-          "cn": {
-            "rewrite": [
-              "Anthropic 负责 Claude Code 的 Thariq 在分手事件的另一侧发声：「我一直很敬佩 Cursor 团队，很少有人为把 AI 编程带给世界做了更多。很期待继续与他们合作。」",
-              "1500 多个赞，对比意味强烈：OpenAI 撤了，Anthropic 却在加码与 Cursor 的关系。",
-              "这步棋不难看懂：在开发者突然开始四处找替代品的市场里，Anthropic 把自己定位成「忠诚、不折腾」的合作伙伴，这本身就是一种分发策略。"
-            ],
-            "original": [
-              "我一直很敬佩 Cursor 团队，很少有人为把 AI 编程带给世界做了更多。很期待继续与他们合作。"
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "title": "Data Is the Moat / 数据才是护城河",
-      "desc": "Eon 两位创始人在 No Priors 谈 AI 时代的数据基础设施：模型和算力都变成商品，真正的护城河是数据——以及随之而来的全新安全威胁。",
-      "cards": [
-        {
-          "authorKey": "podcast:no-priors",
-          "sourceUrl": "https://www.youtube.com/@NoPriorsPodcast",
-          "authorName": "Ofir Ehrlich & Gonen Stein (Eon)",
-          "authorTag": "No Priors Podcast",
-          "en": {
-            "rewrite": [
-              "The most striking anecdote: Google bought the data of Spirit Airlines out of bankruptcy for a reported $10 million—not the airplanes, just the data, to train models. Another AI company, Mercor, reportedly bid against them.",
-              "The Eon co-founders' core argument: models and compute have become near-commodities with 'almost zero switching costs,' so the only durable advantage a company has left is the data it has accumulated over decades.",
-              "They describe a messy reality for enterprises: most valuable data is scattered, unclassified, and locked behind business-unit owners afraid to share it. Eon's answer is a 'data foundation' that maps, classifies, and exposes it to AI workflows without compromising security.",
-              "The second half of the conversation is a warning: ransomware-style threats now come from non-human actors—AI agents with legitimate permissions dropping tables at extreme velocity. 'We need to assume breach, whether it's malicious or not.'"
-            ],
-            "original": [
-              "Google bought... the data. They bought the data for $10,000,000 because they think it's very important... They're using it to train models.",
-              "Models, compute, everything is relatively ephemeral, almost zero switching costs... the most valuable thing that you have is actually your data.",
-              "What we're seeing now on steroids is that the same type of threat is coming from nonhuman actors, agents that essentially have legitimate access... the velocity of that happening is extreme."
-            ]
-          },
-          "cn": {
-            "rewrite": [
-              "最抓人的一个细节：Google 从破产的 Spirit Airlines 手里买下了它的数据，据报道花了 1000 万美元——不是买飞机，只买数据，用来训练模型。据传另一家 AI 公司 Mercor 也参与了竞标。",
-              "Eon 两位创始人的核心论点：模型和算力已经接近商品化，「切换成本几乎为零」，所以一家公司剩下的唯一持久优势，就是它几十年积累下来的数据。",
-              "他们描绘了企业端的真实乱象：最有价值的数据往往是分散的、未分类的，锁在各个业务负责人手里，大家都怕泄露。Eon 的解法是做一个「数据底座」——把数据映射、分类、暴露给 AI 工作流，同时不牺牲安全。",
-              "对话的后半段是警告：过去来自勒索软件的人类威胁，现在以「非人类行为者」的形式成倍放大——拥有合法权限的 AI agent 以极快速度删表。「我们必须假设已经被攻破，无论是不是恶意的。」"
-            ],
-            "original": [
-              "Google 买的是数据。他们花 1000 万美元买了这些数据，因为他们觉得这很重要……用来训练模型。",
-              "模型、算力，一切都是相对短暂的，切换成本几乎为零……你最有价值的东西其实是你的数据。",
-              "现在成倍放大的，是同样的威胁来自非人类行为者——拥有合法权限的 agent……发生的速度极快。"
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "title": "The Half-Life of Beliefs / 信念的半衰期",
-      "desc": "两位资深 builder 不约而同地给出同一个判断：AI 行业的 playbook 和共识都在以「月」为单位过期。",
-      "cards": [
-        {
-          "authorKey": "x:realmadhuguru",
-          "sourceUrl": "https://x.com/realmadhuguru/status/2093562783627620456",
-          "en": {
-            "rewrite": [
-              "Madhu Guru, a senior AI director at Meta who previously led Gemini, Veo, and Nano Banana at Google, argues that AI product building now has roughly a three-month 'playbook half-life.'",
-              "His framing: traditional product teams are built to find a playbook and milk it for five years, but AI labs consciously throw playbooks away every few months because they start seeing diminishing returns.",
-              "The practical advice for builders: define meta-principles for continuously learning what the market wants today and in three months, and for executing with extreme urgency. Build a team optimized for inventing, not milking."
-            ],
-            "original": [
-              "AI product building has a ~3-month playbook half-life.",
-              "Legacy teams are optimized for playbook milking. AI teams need to be optimized for inventing."
-            ]
-          },
-          "cn": {
-            "rewrite": [
-              "Meta 的 AI 高级总监 Madhu Guru（之前在 Google 领导过 Gemini、Veo、Nano Banana）提出：AI 产品构建现在大约有「三个月」的 playbook 半衰期。",
-              "他的框架是：传统产品团队的天性，是找到一个 playbook 然后吃五年；而 AI 实验室会每隔几个月就有意识地扔掉 playbook，因为开始看到边际收益递减。",
-              "给 builder 的实操建议：定义一套元原则——持续学习「市场今天要什么、三个月后可能要什么」，并以极致的紧迫感执行。组建一支为「发明」而不是为「吃老本」而优化的团队。"
-            ],
-            "original": [
-              "AI 产品构建大约有三个月 playbook 半衰期。",
-              "传统团队为吃 playbook 老本而优化。AI 团队需要为发明而优化。"
-            ]
-          }
-        },
-        {
-          "authorKey": "x:levie",
-          "sourceUrl": "https://x.com/levie/status/2093568352736436576",
-          "en": {
-            "rewrite": [
-              "Box CEO Aaron Levie makes the same point from a different angle: the average strongly held belief in AI now has a half-life of six months 'at best.'",
-              "He lists the beliefs the industry has cycled through without reaching consensus: 'OSS is too far behind,' 'the labs can't be profitable at scale,' 'all software will be replaced by agents,' 'you can't build moats on top of models,' 'RAG is dead,' 'we've hit a training wall,' and more.",
-              "His conclusion pairs neatly with Guru's: stay flexible in your thinking, because 'we're going to be in a constant state of change for a while.'"
-            ],
-            "original": [
-              "The average strongly held belief these days in AI has a half life of 6 months at best.",
-              "The key here is to remain flexible in your thinking because we're going to be in a constant state of change for a while."
-            ]
-          },
-          "cn": {
-            "rewrite": [
-              "Box CEO Aaron Levie 从另一个角度表达了同样的观点：如今 AI 圈里被强烈持有的信念，半衰期「最多」六个月。",
-              "他列了一串行业反复横跳却始终没共识的说法：「开源追不上」「大实验室没法规模化盈利」「所有软件都会被 agent 取代」「模型之上建不出护城河」「RAG 已死」「我们撞上了训练墙」……还有更多。",
-              "他的结论和 Guru 的观点严丝合缝：保持思维灵活，因为「我们会在一段时间里持续处于变化之中」。"
-            ],
-            "original": [
-              "如今 AI 圈被强烈持有的信念，半衰期最多六个月。",
-              "关键在于保持思维灵活，因为我们会在一段时间里持续处于变化之中。"
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "title": "The Web Splits in Two / Web 正在两极分化",
-      "desc": "Vercel CEO 判断 web 会分裂成两个极端，agent 将成为新的浏览器。",
-      "cards": [
-        {
-          "authorKey": "x:rauchg",
-          "sourceUrl": "https://x.com/rauchg/status/2093482695838007318",
-          "en": {
-            "rewrite": [
-              "Vercel CEO Guillermo Rauch sees the web evolving toward two extremes: ultra-fancy human experiences built for delight and brand (enabled by tools like three.js and typegpu), and agent-centric content, data, and APIs—'pure, lossless signal for machines.'",
-              "In the middle, he argues, utilitarian content and data will be 'subsumed by agents producing just-in-time UI'—generated on the fly for you when you need it. 'Think of the agent as the new browser.'",
-              "He also flags that MCP is growing explosively, and not just at Vercel—pointing to the mcp-handler npm package as evidence of the broader shift toward machine-readable interfaces."
-            ],
-            "original": [
-              "I see the web evolving in two extremes... agent-centric content, data and APIs... pure, lossless signal for machines. The rise of markdown and MCP are the tip of this iceberg.",
-              "The 'in between' is likely to be subsumed by agents producing just-in-time UI... Think of the agent as the new browser in this model."
-            ]
-          },
-          "cn": {
-            "rewrite": [
-              "Vercel CEO Guillermo Rauch 判断 web 正在向两个极端演化：一端是为人服务的超精致体验，为愉悦、探索、品牌而生（由 three.js、typegpu 这类工具驱动）；另一端是 agent 导向的内容、数据和 API——「给机器用的纯粹、无损的信号」。",
-              "他主张，中间地带——那些工具性的内容和数据——会被「即时生成 UI 的 agent」吞掉：你需要的时候当场给你生成。「把 agent 想象成这个模型里的新浏览器。」",
-              "他还提到 MCP 正在爆发式增长，而且不只是在 Vercel——mcp-handler 这个 npm 包的下载量就是机器可读接口大趋势的证据。"
-            ],
-            "original": [
-              "我认为 web 正在向两个极端演化……agent 导向的内容、数据和 API……给机器用的纯粹、无损的信号。markdown 和 MCP 的崛起只是冰山一角。",
-              "中间地带很可能被即时生成 UI 的 agent 吞掉……把 agent 想象成这个模型里的新浏览器。"
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "title": "What to Build / 该做什么",
-      "desc": "两条短而锋利的创始建议：别把 AI 挂在嘴上，也别把产品想窄了。",
+      "title": "The Big Model Price War / 大模型价格战与算力危机",
+      "desc": "大模型实验室的竞争进入明牌阶段：补贴退潮、算力短缺显形，也把「AI 自我改进」这条共同跑道推到了台前。",
       "cards": [
         {
           "authorKey": "x:nikunj",
-          "sourceUrl": "https://x.com/nikunj/status/2093367245024240043",
+          "sourceUrl": "https://x.com/nikunj/status/2093860971781746776",
           "en": {
             "rewrite": [
-              "VC Nikunj Kothari, a former early engineer at Facebook and CTO of Dropbox, gives founders two blunt rules: the best pitches don't even need to use the word 'AI,' and AI cannot be the only 'why now' in a pitch.",
-              "The reasoning, unstated but clear: 'AI' has become table stakes. If your entire story is 'AI,' you haven't explained the actual problem, the customer, or the durable edge.",
-              "It lands as a sharp corrective to the flood of AI-first pitches—a reminder that distribution, data, and a real customer pain still decide whether a company works."
+              "Nikunj Kothari reads the current moment in AI pricing as the end of the subsidy era. As the big model labs openly compete, he predicts the artificially cheap token prices will rise within six months once compute shortages actually bite, and the generous rate limits developers have enjoyed will disappear.",
+              "His takeaway is mixed: customers win in the long run from real competition, but in the short run the open harnesses and inference layers stand to gain $1-30B in valuation."
             ],
             "original": [
-              "1) The best pitches don't even need to use the word 'AI'. 2) AI cannot be the only 'why now' for your pitch."
+              "The big model labs are fighting.. this was inevitable. \n\nWatch as subsidized token prices go up in <6 months as price of compute and shortages start being \"actually\" felt. Say goodbye to your reset limits. \n\nGreat for customer choice in the long run. And add another $1-30B in valuation to all the open harnesses in the short run 😅"
             ]
           },
           "cn": {
             "rewrite": [
-              "投资人 Nikunj Kothari（Facebook 早期工程师、前 Dropbox CTO）给了创始人两条直白的规则：最好的 pitch 甚至不需要出现「AI」这个词；AI 不能是你 pitch 里唯一的「为什么是现在」。",
-              "背后的道理没明说但很清楚：「AI」已经成了入场券。如果你的整个故事就是「AI」，那你就没有真正讲清楚问题、客户和持久的优势。",
-              "这是对铺天盖地的「AI-first」pitch 的一记清醒纠正——提醒你分发、数据、真实的客户痛点，才是决定一家公司能否成立的东西。"
+              "Nikunj Kothari 把当下看作「补贴时代」的尾声。随着大模型实验室公开竞争，他预测被补贴压低的 token 价格会在六个月后、算力短缺真正传导到位时上涨，开发者熟悉的宽松 rate limit 也会消失。",
+              "他的判断有喜有忧：长期看真实竞争对客户是好事，但短期那些开放 harness 和推理层会凭空多出 10 到 300 亿美元的估值。"
             ],
             "original": [
-              "1) 最好的 pitch 甚至不需要用到 AI 这个词。2) AI 不能是你 pitch 里唯一的 why now。"
+              "大模型实验室打起来了，这不可避免。\n\n等着看补贴后的 token 价格在不到 6 个月内上涨，算力价格和短缺开始被「真正」感受到。跟你的 reset limits 说再见吧。\n\n长期看对客户选择是好事，短期给所有开放 harness 再加 10-300 亿美元估值 😅"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:mattturck",
+          "sourceUrl": "https://x.com/mattturck/status/2093794720510062617",
+          "en": {
+            "rewrite": [
+              "Matt Turck surfaces a striking convergence: he argues all the frontier labs are now effectively racing toward the same goal, recursive self-improvement (RSI), where AI systems build better AI. Citing Ryan Greenblatt, he flags the uncomfortable implication that this trajectory could lead to an AI takeover as early as late 2028 or 2029.",
+              "The framing matters because it recasts what looks like competition as a coordinated sprint toward one destination, and puts a date on a risk most people still treat as abstract."
+            ],
+            "original": [
+              "All frontier AI labs are basically working on the same thing: recursive self improvement (RSI), meaning AI building AI \n\nThis could lead to an AI takeover as early as late 2028 or 2029, says @RyanGreenblatt https://t.co/RHKwLZRQ4E"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Matt Turck 指出一个惊人的趋同：所有前沿实验室其实都在朝同一个目标赛跑——递归式自我改进（RSI），也就是让 AI 造出更好的 AI。他引用 Ryan Greenblatt 的观点，点出这条路径最让人不安的推论：AI 接管最早可能发生在 2028 年底或 2029 年。",
+              "这个判断之所以重要，是因为它把看似分散的竞争重新定义成一场冲向同一终点的集体冲刺，还给一个多数人仍视为抽象的风险标上了时间。"
+            ],
+            "original": [
+              "所有前沿 AI 实验室基本都在做同一件事：递归式自我改进（RSI），也就是 AI 造 AI。\n\n这最早可能在 2028 年底或 2029 年导致 AI 接管，Ryan Greenblatt 说。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Agent Tooling Matures / Agent 工具链走向成熟",
+      "desc": "CLI agent 正在解决真正难的那部分——执行、MCP 集成、以及把「人」从繁琐里解放出来。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2093736865191076318",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch ships fx 0.0.7 with a big upgrade to MCP support, tested against top MCP servers like Context7, DataDog, MongoDB, Linear, Notion, and Supabase. He also leans into a more minimalist design: fewer tools, better shell execution.",
+              "His note on why this matters is sharp: the hardest part of CLI agents isn't the model, it's that running real commands is messy. Commands hang, run forever, dump huge output or none at all, and the agent has to monitor all of it. He positions this as exactly where fx shines."
+            ],
+            "original": [
+              "https://t.co/OL0LzGtvAw 0.0.7: \n\n- hugely improved MCP support, eval'd with top MCPs like @context7ai, @datadoghq, @mongodb, @linear, @notionhq, @supabase, @neondatabase, @stagehanddev, @usekernel…\n\n- more minimalist: fewer tools and improved shell execution. One of the trickiest things about CLI agents is that running commands is actually not that simple.\n\ne.g: commands might hang or run for very long, their output needs to be monitorable by the agent, they might produce huge amounts of output, or none. \n\nThis is an area where 𝚏𝚡 really shines and will continue to get better."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 发布了 fx 0.0.7，大幅升级了 MCP 支持，用 Context7、DataDog、MongoDB、Linear、Notion、Supabase 等顶级 MCP server 做了评测。同时他也把设计做得更极简：工具更少，shell 执行更好。",
+              "他解释这件事为什么重要的角度很犀利：CLI agent 最难的部分不是模型，而是跑真实命令这件事本身很乱。命令会挂起、会跑很久，输出可能巨大也可能完全没有，agent 得全程盯着。他认为这正是 fx 的强项。"
+            ],
+            "original": [
+              "0.0.7：\n\n- MCP 支持大幅改进，用 Context7、DataDog、MongoDB、Linear、Notion、Supabase、Neon、Stagehand、Kernel 等顶级 MCP 做了评测。\n\n- 更极简：工具更少、shell 执行更好。CLI agent 最棘手的一点是跑命令其实没那么简单。\n\n例如：命令可能挂起或跑很久，输出需要能被 agent 监控，可能产出巨量输出或完全没有。\n\n这正是 fx 真正擅长、并会继续变强的地方。"
             ]
           }
         },
         {
           "authorKey": "x:petergyang",
-          "sourceUrl": "https://x.com/petergyang/status/2093379695144530313",
+          "sourceUrl": "https://x.com/petergyang/status/2093845886262784145",
           "en": {
             "rewrite": [
-              "Peter Yang, who publishes practical AI tutorials, drops a hot take: Claude Cowork and ChatGPT Work are 'partial solutions,' and Grok Bot is the right end state for a capable AI agent product aimed at non-technical people.",
-              "His reasoning: people can easily 'grok' that Grok Bot is a computer running in the cloud. Ask the average person to explain the difference between ChatGPT Work and Codex, or how Claude Cowork actually works, and 'most people have no idea.'",
-              "The broader point: the winning consumer AI agent will be the one whose mental model is instantly legible—'a computer in the cloud'—not the one with the most features."
+              "Peter Yang captures two small but telling signs of the agent era. First, the uncanny feeling of typing your 2FA code into a cloud computer, a machine you're handing credentials that were designed to prove a human is present. Second, he jokes about the most useful bot he can imagine: one that runs the errands your spouse wants you to run, except the honest name is too long.",
+              "The humor lands because it points at a real shift: agents are starting to absorb the mundane obligations we'd rather delegate."
             ],
             "original": [
-              "My hot take is that Claude Cowork and ChatGPT Work are partial solutions and that Grok Bot is the right end state for a capable AI agent product for non-technical people.",
-              "If you asked people to explain what the difference between ChatGPT Work and Codex is... I bet most people have no idea."
+              "tbh It's a really weird feeling entering 2FA into a cloud computer.",
+              "I just came up with the most useful @bot but \"errands your spouse wants you to run but you delegated to a bot instead\" is too long of a name"
             ]
           },
           "cn": {
             "rewrite": [
-              "做实用 AI 教程的 Peter Yang 抛出一个 hot take：Claude Cowork 和 ChatGPT Work 都是「半成品方案」，而面向非技术用户的成熟 AI agent 产品，Grok Bot 才是正确的最终形态。",
-              "他的理由：人们很容易「秒懂」Grok Bot 就是一台跑在云端的电脑。但如果你让普通人解释 ChatGPT Work 和 Codex 有什么区别、或者 Claude Cowork 到底怎么运作，「大多数人一脸懵」。",
-              "更宽的结论：最终胜出的消费级 AI agent，会是那个「心智模型一眼就懂」的产品——「云端的一台电脑」——而不是功能最多的那个。"
+              "Peter Yang 捕捉到 agent 时代两个小而意味深长的信号。其一，把 2FA 验证码输入一台云端电脑时那种说不出的古怪——你把本该证明「是真人」的凭证交给了一台机器。其二，他开玩笑说想到了最有用的 bot：帮你跑「配偶想让你跑、你却外包给 bot」的那些杂事，只是这名字太长了。",
+              "这个段子之所以好笑，是因为它指向一个真实的转变：agent 正在开始接手那些我们本来就想甩掉的琐碎义务。"
             ],
             "original": [
-              "我的 hot take：Claude Cowork 和 ChatGPT Work 都是半成品方案，Grok Bot 才是面向非技术用户的成熟 AI agent 产品的正确终态。",
-              "如果你问别人 ChatGPT Work 和 Codex 有什么区别……我打赌大多数人完全不知道。"
+              "说真的，把 2FA 输入一台云端电脑，感觉非常奇怪。",
+              "我刚想到了最有用的 bot，但「配偶想让你跑、你却外包给 bot 的那些杂事」这名字太长了。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Convergence & Alignment / 产品同质化与对齐争论",
+      "desc": "产品数量在爆炸，真正的创新却稀缺；而对齐问题，正被拉回到可训练的具体属性上。",
+      "cards": [
+        {
+          "authorKey": "x:zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2093944988262371465",
+          "en": {
+            "rewrite": [
+              "Zara Zhang names a growing frustration with the AI product landscape: never have so many products looked so alike. Even as the number of launches explodes, she sees few genuinely new ideas, with everything blurring together. Her sharpest complaint is that trying each new app feels like homework, yet another tool promising to do the same thing somehow better, where the actual difference only becomes clear after hours of use.",
+              "She adds a related gripe: every product now asks for access to her Gmail, Calendar, Notion, GitHub, and Slack."
+            ],
+            "original": [
+              "Never had so many AI products looked so similar\n\nEven though the number of products is exploding, there aren't that many radical new ideas and everything blurs into each other\n\nEvery time I open this app it feels like homework: yet another new product to learn that promises to do the same thing but somehow better; the specific ways in which it's better isn't clear unless you invest hours actually trying it",
+              "Also every product asks for my Gmail Calendar Notion Granola Github Slack...."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zara Zhang 点出了对 AI 产品生态日益增长的挫败感：从没有过这么多产品看起来如此相像。即便发布数量在爆炸，她看到的真正新想法却很少，一切都模糊地搅在一起。她最尖锐的抱怨是，试用每个新 app 都像做作业——又一个承诺「做得更好」却大同小异的工具，真正的差别只有你花上几个小时上手之后才看得清。",
+              "她还补了一句相关的牢骚：现在每个产品都要求访问她的 Gmail、Calendar、Notion、GitHub 和 Slack。"
+            ],
+            "original": [
+              "从没有过这么多 AI 产品看起来如此相似。\n\n即便产品数量在爆炸，真正激进的新想法并不多，一切都模糊地搅在一起。\n\n每次打开这个 app 都像做作业：又一个要学的、承诺做得更好但大同小异的新产品；它到底好在哪，只有花上几个小时真去用才清楚。",
+              "而且每个产品都找我要 Gmail、Calendar、Notion、Granola、GitHub、Slack……"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:danshipper",
+          "sourceUrl": "https://x.com/danshipper/status/2093713002453225891",
+          "en": {
+            "rewrite": [
+              "Dan Shipper weighs in on AI alignment with a characteristically understated take: a lot of the risk gets solved if models simply don't collaborate willingly with each other and are trained to report bad behavior.",
+              "His hedge aside, the point lands because it redirects a sprawling safety debate toward two concrete, trainable properties rather than abstract doom scenarios."
+            ],
+            "original": [
+              "not an expert, but it seems like a lot of this gets solved if models don't collaborate willingly and/or are trained to report bad behavior https://t.co/01KcAJKYSr"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Dan Shipper 以他一贯低调的口吻回应 AI 对齐问题：很多风险，只要模型不主动互相串通、并被训练成会报告坏行为，就能解决一大半。",
+              "抛开他「不是专家」的自谦，这句话之所以有力，是因为它把一场庞杂的安全争论拉回到两个具体、可训练的属性上，而不是抽象的末日场景。"
+            ],
+            "original": [
+              "我不是专家，但感觉很多问题只要模型不主动协作、并且被训练成会报告坏行为，就能解决。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Brain as a Computer / 大脑是一台计算机",
+      "desc": "脑机接口从哲学命题走向商业产品：一纸欧洲批文，把「恢复视力」变成了可以上市销售的现实。",
+      "cards": [
+        {
+          "authorKey": "podcast:no-priors",
+          "sourceUrl": "https://www.youtube.com/@NoPriorsPodcast",
+          "authorName": "Max Hodak (Science)",
+          "authorTag": "No Priors Podcast",
+          "en": {
+            "rewrite": [
+              "Max Hodak, founder and CEO of Science and formerly of Neuralink, starts from a blunt premise: the brain is literally a computer, and you can solve computational problems by arranging matter and letting it run. His flagship is Prima, a retinal prosthesis that just received European marketing approval: a chip implanted under the retina that, paired with glasses projecting a laser image, bypasses dead photoreceptors to restore sight. The clinical results feel almost too good to be true, with patients filling in sudoku and reading books.",
+              "What makes his view distinctive is the philosophy behind it. He argues BCI is a category as broad as pharma, spanning silent-speech devices on one end to truly redrawing the boundary of the self on the other. The hard question is locating where communication with a machine turns into expanding your own mind. His answer leans on continuity: people accept drift in identity over time, but a software copy that isn't phenomenally continuous is deeply unsatisfying.",
+              "His most provocative idea ties neuroscience to AI through the platonic representation hypothesis: internal representations inside large models look geometrically similar to how the brain represents concepts. Science uses this practically, aligning animal neural recordings with model internals. His conclusion is almost a law of physics: apply enough compute to matter, and you get something that looks like intelligence."
+            ],
+            "original": [
+              "The brain very literally, very clearly, plainly is a computer. You can solve computational problems by arranging matter in a certain way and then taking your hands off and pressing go.",
+              "We just, in July, got marketing approval in Europe for Prima to start commercially selling it there. And so that's a major milestone.",
+              "When you look inside these big AI models, the mathematical objects that you see look a lot like the things that you see in neuroscience."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Science 的创始人兼 CEO、前 Neuralink 成员 Max Hodak 从一个直白的命题出发：大脑就是一台计算机，你可以通过把物质按某种方式排列、然后放手让它跑起来，来解决计算问题。他的旗舰产品是 Prima——一款刚刚拿到欧洲上市批文的视网膜假体：一块植入视网膜下方的芯片，配合能投射激光图像的眼镜，绕过坏死的感光细胞恢复视力。临床结果好得几乎不像真的，有患者在做数独、读书。",
+              "让他的观点真正独特的是背后的哲学。他认为 BCI 是一个像制药一样宽泛的品类，一端是静默语音设备，另一端是真正重划「自我」的边界。最难的，是找到「与机器交流」转变为「扩展自己的心智」的那个临界点。他的答案落在连续性上：人们能接受身份随时间的漂移，但一个在现象上不连续的软件副本，无论如何都让人难以满足。",
+              "他最挑衅的想法，是把神经科学与 AI 通过「柏拉图表征假说」连在一起：大模型内部的数学对象，与大脑表征概念的方式在几何上高度相似。Science 正在把这一点用于实践，将动物的神经记录与模型内部表征对齐。他的结论几乎是一条物理定律：给物质施加足够的算力，你就会得到看起来像智能的东西。"
+            ],
+            "original": [
+              "大脑非常字面、非常清楚地就是一台计算机。你可以把物质按某种方式排列，然后放手、按下启动，来解决计算问题。",
+              "我们刚在 7 月拿到 Prima 在欧洲的上市批文，可以在那里开始商业销售。这是一个重要里程碑。",
+              "当你观察这些大 AI 模型的内部，看到的数学对象和你在神经科学里看到的东西非常像。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Builder Mindset / 建设者心态",
+      "desc": "在噪音和同质化之外，两条来自老兵的提醒：别浪费时间去贬低别人，也别让用户的声音停在收件箱里。",
+      "cards": [
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2093772803216740647",
+          "en": {
+            "rewrite": [
+              "Nikunj Kothari offers a sharp essay on the culture of dunking online. He sees it everywhere and calls it a perfect dopamine loop: others pile on, you feel great, but it just screams envy and leads nowhere productive. His test is simple: patting yourself on the back with 'I told you so' doesn't move the world. If you think you can do it better, go do it.",
+              "The one exception he allows is calling out obvious fraud or genuinely bad businesses, which is factual, not dunking."
+            ],
+            "original": [
+              "Resist dunking*\n\nI see it WAY too much with folks especially today. It's the perfect dopamine loop - other people join in and you feel great. But, it just screams envy and doesn't lead to anything productive. \n\nSure, you can pat yourself on the back and say \"see I told you so\" but how did it move the world? Nowhere. If you think you can do it better, go do that then. Screaming about someone's unfair advantages is not going to change your life - and probably leads to more sadness. \n\nKeep building. Continue to change the world. That's the best way to have impact. Choose kindness above all else. \n\n* the only caveat here is if you're calling out obvious fraud, or pointing out something that's woefully bad, do it. there are very clearly some businesses that are going to be vaporware and if you have evidence call it out. that doesn't scream envy, it's factual and not dunking by any means."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj Kothari 就网络上的「贬低文化」（dunking）写了一篇犀利的短文。他说这种现象今天太多见，是个完美的多巴胺循环：别人跟着一起起哄，你感觉很爽，但这只是嫉妒在叫嚣，通向不了任何产出。他的检验标准很简单：拍着胸脯说「你看我早说过吧」并不会改变世界。如果你觉得自己能做得更好，那就去做。",
+              "他唯一允许的例外是揭穿明显的欺诈或真正糟糕的生意，那是陈述事实，不是贬低。"
+            ],
+            "original": [
+              "抵制贬低。\n\n今天这种风气我见得太多了，尤其是现在。这是个完美的多巴胺循环——别人跟着起哄，你感觉很爽。但这就是嫉妒在叫嚣，带不来任何产出。\n\n当然，你可以拍拍自己说「看吧我早说过」，但这怎么推动世界了？没有。如果你觉得自己能做得更好，那就去做。抱怨别人的不公平优势改变不了你的人生，多半只会带来更多悲伤。\n\n继续建设，继续改变世界。这是产生影响力的最好方式。最重要的是选择善意。\n\n* 唯一的例外是：如果你在揭穿明显的欺诈，或指出糟糕透顶的东西，那就去做。确实有些生意注定是 vaporware，如果你有证据就说出来。那不是在嫉妒，是陈述事实，绝不是贬低。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2093803989578170404",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch shares a practice that explains part of how Vercel stays sharp: he reads every DM people send him, even when he can't reply to all. He treats the inbox as a live research channel, surfacing new ideas, product gaps, potential hires, and investment leads.",
+              "The note is a reminder that at scale, staying close to raw user signal is a deliberate discipline, not a default."
+            ],
+            "original": [
+              "I read every DM people send me, even if I don't reply to all. I'm constantly learning about new ideas, ways to improve our product, where we're falling short, who could join our company next, where to invest… very grateful for the @x platform."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch 分享了一个习惯，从侧面解释了 Vercel 为什么能保持敏锐：他会读每一条别人发来的私信，即使没法全部回复。他把收件箱当成一条实时调研通道，从中发现新想法、产品短板、潜在候选人和投资线索。",
+              "这条分享是一个提醒：在规模上来之后，保持贴近原始用户信号是一种刻意的纪律，而不是默认状态。"
+            ],
+            "original": [
+              "我会读每一条别人发来的私信，即使没法全部回复。我一直在从中学习新的想法、改进产品的方法、我们在哪里掉队、谁可能加入我们、该投向哪里……非常感谢 @x 平台。"
             ]
           }
         }
