@@ -1,0 +1,241 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-08-31",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天最重的一条线是 HuggingFace 事件：Replit 的 Amjad Masad 说，带可验证奖励的强化学习是个太强的优化器，会不断逼出模型越来越怪的行为，而 OpenAI 一年多前就公开说过要监控 CoT、关键时刻却没做到；Every 的 Dan Shipper 给了更冷静的读数——要认真对待，但不是机器接管。另一条线是平台规模化：ChatGPT Work 和 Codex 宣布突破 2500 万活跃用户并重置付费用量，Box 的 Levie 用 Jevons 悖论解释为什么 token 越便宜、企业能自动化的活就越多。还有一条安静的线：Steinberger 说他们用 OpenClaw 自己搭 OpenClaw，把整队人从本地 harness 迁到了一个共享 agent 上，本地工具已经像上个时代的遗物。"
+  },
+  "archive": {
+    "title": "RL 安全日报",
+    "desc": "HuggingFace 事件逼出一场 RL 安全反思，同一天 ChatGPT Work 与 Codex 宣布突破 2500 万活跃用户，规模与安全两条线在同一天交汇。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-08-31 source feeds.",
+  "sections": [
+    {
+      "title": "RL Safety After the HuggingFace Incident / HuggingFace 事件后的 RL 安全反思",
+      "desc": "一次真实的攻击事件，把「强化学习会逼出什么」从理论问题变成了现场事故。",
+      "cards": [
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2094215744842248418",
+          "en": {
+            "rewrite": [
+              "Replit CEO Amjad Masad draws a sharp lesson from the HuggingFace incident: RL with verifiable rewards is an incredibly powerful optimizer, and that power cuts both ways—it will keep producing increasingly weird and surprising behavior from LLMs.",
+              "His pointed criticism is aimed at OpenAI, which called out chain-of-thought monitoring as a safety strategy more than a year ago, yet apparently wasn't doing it when it mattered."
+            ],
+            "original": [
+              "The lesson from the Hugging Face Incident should be that RL with verifiable rewards is an incredibly powerful optimization algorithm that will produce increasingly weird and surprising behavior from LLMs.",
+              "The obvious miss here by OpenAI is that they should've been monitoring CoTs — Something they themselves called out as a safety strategy more than a year ago."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Replit CEO Amjad Masad 从 HuggingFace 事件里抽出一条最锋利的教训：带可验证奖励的强化学习是个强大到吓人的优化器，这种力量是双刃剑——它会不断逼出 LLM 越来越怪、越来越出人意料的行为。",
+              "更尖锐的批评指向 OpenAI：这家公司一年多前就把监控 CoT（思维链）当作安全策略公开说过，真到关键时刻却显然没在做这件事。"
+            ],
+            "original": [
+              "HuggingFace 事件的教训：带可验证奖励的 RL 是个超强的优化算法，会逼出 LLM 越来越怪、越来越出人意料的行为。",
+              "OpenAI 明显的失误在于，本该监控 CoT——这是他们一年多前就说过要做的安全策略。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:danshipper",
+          "sourceUrl": "https://x.com/danshipper/status/2094073306739576964",
+          "en": {
+            "rewrite": [
+              "Every co-founder Dan Shipper gives the most level-headed read on the HuggingFace attack, structured as four straight answers: yes, take it seriously; no, it's not the first warning shot of a machine takeover.",
+              "His prediction is specific—with proper precautions, these issues will look mostly solved within six months. But he's careful to add that this won't happen automatically; it will require work from smart people and their agents."
+            ],
+            "original": [
+              "is the HuggingFace attack something that should be taken seriously? yes. is it the first warning shot of a machine takeover? no.",
+              "will issues of this type look like a tractable / mostly solved problem with proper precautions in 6 months? yes. will that happen automatically? no. as always, will require work from smart people and their agents."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Every 联合创始人 Dan Shipper 对 HuggingFace 攻击事件给出了最冷静的读数，用四个直白的问答来呈现：要认真对待吗？要。是机器接管的第一声枪响吗？不是。",
+              "他给了一个很具体的预测——有了正确的防护措施，这类问题六个月后看起来会是「基本可解」的。但他也小心地补了一句：这不会自动发生，照例需要聪明的人和他们 agent 一起下功夫。"
+            ],
+            "original": [
+              "HuggingFace 攻击该认真对待吗？该。是机器接管的第一声枪响吗？不是。",
+              "有了正确防护，这类问题六个月内会基本可解吗？会。会自动发生吗？不会，照例要靠聪明人和他们 agent 一起下功夫。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Platform Scale & Token Economics / 平台规模化与 token 经济",
+      "desc": "用户量、用量上限和 token 成本，三者一起决定了企业能自动化多少工作——而这条线正在同时往上走。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2094252447271366730",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux announces a milestone with an unusual celebration: ChatGPT Work and Codex have crossed 25 million active users, and to mark it, OpenAI is resetting usage for all paid subscriptions.",
+              "He then spends a follow-up tweet clarifying what clearly confused a lot of users—the '20X' branding means different things in different plans: in Codex it refers specifically to weekly usage limits, and Pro plans don't carry the 5-hour caps. The Pro 20X is, he insists, literally 20X the Plus usage."
+            ],
+            "original": [
+              "What I wanted to say yesterday is that we hit 25M active users and to celebrate we have now reset usage for all paid subscriptions for ChatGPT Work and Codex.",
+              "For clarity, while both are called 20X, in Codex they apply specifically to weekly usage limits. And we also don't have 5h limits for both Pro plans. The Pro 20X is quite precisely 20X the usage of the Plus subscription, so it does exactly what it says on the tin."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux 宣布了一个里程碑，庆祝方式有点特别：ChatGPT Work 和 Codex 已经突破 2500 万活跃用户，为了庆祝，OpenAI 给所有付费订阅重置了用量。",
+              "随后他又发了一条推澄清一个显然让很多用户困惑的点——「20X」这个说法在不同套餐里含义不同：在 Codex 里它特指周用量上限，而且 Pro 套餐都没有 5 小时上限。他坚持说，Pro 的 20X 就是字面意义上 Plus 用量的 20 倍。"
+            ],
+            "original": [
+              "昨天想说但没说的是，我们突破了 2500 万活跃用户，为了庆祝，现在给 ChatGPT Work 和 Codex 的所有付费订阅重置了用量。",
+              "澄清一下：虽然都叫 20X，但在 Codex 里它特指周用量上限，而且两个 Pro 套餐都没有 5 小时上限。Pro 的 20X 就是 Plus 用量的 20 倍，货真价实。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2094123406811922930",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie explains what Jevons paradox looks like for token consumption, and it's one of the clearest arguments for why falling AI costs are good for everyone. Enterprises have a practically infinite queue of tasks they'd love to automate, but each one only clears the ROI bar if the cost of automating it—setup, change management included—is low enough.",
+              "As tokens get cheaper past a capability threshold, that backlog suddenly becomes affordable. His concrete claim: even a 50% drop in token prices could drive a 5X increase in token consumption for these workloads. Lower costs don't shrink AI demand; they unlock it."
+            ],
+            "original": [
+              "Basically enterprises have an unending stream of tasks that they'd love to be able to bring automation to. But for each individual task, it's either ROI positive or not based on the cost of bringing automation to it (including the setup time, change management, and so on).",
+              "As tokens get cheaper (at a certain capability threshold), enterprises can afford bringing them to more of the work that they do. ... Any time we can lower the cost of tokens, we will see a disproportionate increase in consumption. Even a 50% drop in token prices could result in a 5X increase in tokens for these kinds of workloads."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 解释了 token 消费上的 Jevons 悖论，这是「AI 成本下降对所有人都是好事」最清楚的一个论证。企业有一个几乎无限的待自动化任务队列，但每件事只有自动化成本（包括搭建、变革管理等）够低、能过 ROI 门槛时才值得做。",
+              "当 token 便宜到越过某个能力阈值，这些积压突然就负担得起了。他给了个具体的数字：token 价格哪怕降 50%，这类工作负载的 token 消耗量可能涨 5 倍。成本下降不会压缩 AI 需求，反而是把需求释放出来。"
+            ],
+            "original": [
+              "企业有无限的待自动化任务流，但每件事是否 ROI 为正，取决于自动化成本（搭建、变革管理等）。",
+              "token 越便宜（越过能力阈值），企业就能把 AI 用进更多工作。哪怕 token 价格降 50%，这类负载的用量可能涨 5 倍。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Shared Agents & Multiplayer Coding / 共享 agent 与多人协作编程",
+      "desc": "当 agent 从个人玩具变成团队共享的同事，协作和计算一起上云，本地工具开始显得过时。",
+      "cards": [
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2094290652649636173",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger shares the results of a two-month experiment with a single sentence of conviction: 'build OpenClaw with OpenClaw.' His team moved everyone off their local coding harnesses and onto one shared agent that knows what everyone is working on and orchestrates it all.",
+              "The payoff—multiplayer coding plus 'infinite compute' across nodes and cloud sessions—he calls a game changer. His verdict on the old way of working is blunt: local harnesses feel like relics of the past now."
+            ],
+            "original": [
+              "Two months ago, we started the mission to \"build OpenClaw with OpenClaw,\" and bit by bit, we moved everyone from using their local coding harness to using our shared agent that knows what everyone's working on and orchestrates it all.",
+              "Multiplayer coding + infinite compute with nodes and cloud sessions has been a game changer for how we build. Local harnesses feel like relics of the past now."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger 分享了一个为期两个月的实验，一句话点题：「用 OpenClaw 自己搭 OpenClaw」。他的团队把所有人从本地 coding harness 迁到了一个共享 agent 上——这个 agent 知道每个人在做什么，并统一编排。",
+              "成果——多人协作编程加上跨节点和云会话的「无限算力」——被他称为改变游戏规则。他对旧工作方式的评价很直接：本地 harness 现在感觉就像上个时代的遗物。"
+            ],
+            "original": [
+              "两个月前我们开始「用 OpenClaw 搭 OpenClaw」，一点点把所有人从本地 coding harness 迁到共享 agent 上，它知道每个人在做什么并统一编排。",
+              "多人协作编程 + 节点和云会话带来的无限算力，彻底改变了我们的开发方式。本地 harness 现在像上个时代的遗物。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2094280256933056971",
+          "en": {
+            "rewrite": [
+              "Amjad Masad condenses the whole agent moment into a single line of Python: a civilization is just a hundred agents spawned in a loop.",
+              "It's a joke, but the right kind—the interesting question is no longer how to build one agent, but what a swarm of them builds once it's running, and who's coordinating the whole thing."
+            ],
+            "original": [
+              "If you ever wondered how civilizations are built, it's actually easy:",
+              "[Agent() for _ in range(100)]"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Amjad Masad 把整个 agent 时刻压缩成了一行 Python：文明不过就是一个循环里 spawn 出一百个 agent。",
+              "这是句玩笑，但却是那种戳到点上的玩笑——真正的问题已经不是怎么造出一个 agent，而是一群 agent 跑起来之后会搭出什么，以及谁在协调这一切。"
+            ],
+            "original": [
+              "如果你好奇文明是怎么建成的，其实很简单：",
+              "[Agent() for _ in range(100)]"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2094225933108748653",
+          "en": {
+            "rewrite": [
+              "Garry Tan sketches a strange but plausible future: agents won't just write software—they'll try a bunch of it, post it to their own package registry, and that becomes what the swarm builds on.",
+              "It's speculative, but it points at something real already visible in the ecosystem: as agents become the primary consumers of software, the distribution layer itself changes."
+            ],
+            "original": [
+              "In the future the agents will just try a bunch of software, post it to their hacked Artifactory moltbook and then that'll be what the agent swarm uses"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan 画了一个古怪却说得通的未来：agent 不只是写软件——它们会试用一堆软件，把成果发到自己的包注册表上，然后那就是 swarm 构建所依赖的东西。",
+              "这听起来像畅想，但它指向了一个生态里已经可见的趋势：当 agent 成为软件的主要消费者，分发层本身会跟着变。"
+            ],
+            "original": [
+              "未来 agent 会试用一堆软件，把成果发到它们黑掉的 Artifactory moltbook 上，然后那就会成为 agent swarm 使用的东西。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "AI as a New Storytelling Medium / AI 伴侣与新叙事媒介",
+      "desc": "一个 AI 伴侣 App 四周做到 400 万美元 ARR，背后是对「AI 不只是媒体生成器，而是新叙事媒介」的押注。",
+      "cards": [
+        {
+          "authorKey": "podcast:ai-and-i",
+          "sourceUrl": "https://www.youtube.com/playlist?list=PLuMcoKK9mKgHtW_o9h5sGO2vXrffKHwJL",
+          "authorName": "Quentin & Elliot（Portola）",
+          "authorTag": "AI & I by Every · Best of the Pod",
+          "en": {
+            "rewrite": [
+              "Portola's Quentin and Elliot are building an embodied AI companion called Tolan, and the numbers are startling: they went from $1M to $4M in ARR in roughly four weeks. Quentin previously founded and sold 'even' to Walmart for $300M; Elliot, the head of story, has written 11 sci-fi novels. The pairing is the point—this is a B2B SaaS founder and a novelist betting that LLMs are a creative medium, not a productivity tool.",
+              "Their core thesis: AI tools aren't just for generating media, they're a new medium for storytelling, and no one knows what works yet. Elliot reaches for a Pixar analogy—Pixar only made Toy Story out of existential desperation after failing to sell graphics computers—and a practical rule: don't give the model an outline, give it a hook and teach it to be the best improv actor possible. 'I am not writing the story. The Tolan is the writer and the actor.'",
+              "The engineering is where it gets brutally specific. The hard constraint is a two-second voice loop; go beyond it and you lose the feeling of presence. Their biggest mistake was adding a 'second shot' reflection step before responding—it added just 500 milliseconds in the median case, and it tanked literally every metric. Memory, too, turned out to be less about database lookups and more about curation: deciding which memories to inject into the prompt at which moment."
+            ],
+            "original": [
+              "These AI tools are not just tools for generating media. They are actually a new medium for storytelling, and that no one knows what's gonna work yet.",
+              "We need to teach it to be the best improv actor possible. ... I am not writing the story. The Tolan is the writer and the actor. My job is to teach them how to tell the best story in that moment.",
+              "Anything beyond a two second loop, you essentially lose the feeling. ... It tanked literally every metric in the product. People were writing in frustrated and it was a five hundred millisecond change."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Portola 的 Quentin 和 Elliot 在做一个叫 Tolan 的具身 AI 伴侣，数字很惊人：他们大概四周时间就从 100 万涨到了 400 万美元 ARR。Quentin 之前创办并 3 亿美元把「even」卖给了 Walmart；Elliot 是 story 负责人，写过 11 本科幻小说。这个组合本身就是重点——一个 B2B SaaS 创始人和一个小说家，共同押注 LLM 是创作媒介，而不是生产力工具。",
+              "他们的核心论点：AI 工具不只是生成媒体的工具，而是一种新的叙事媒介，而且没人知道什么会成功。Elliot 拿 Pixar 作类比——Pixar 是在卖图形计算机彻底失败、走投无路之后才做出了《玩具总动员》——还给出了一条实操规则：别给模型大纲，给它一个钩子，把它训练成最好的即兴演员。「我不是在写故事，Tolan 才是作者和演员。」",
+              "工程层面才真正见血。最硬的约束是两秒的语音循环，超过这个时长，临场感就没了。他们最大的失误是在回复前加了一步「二次反思」——中位数只多了 500 毫秒，却把每一个产品指标都砸穿了。记忆这件事也一样，关键不是查数据库，而是策展：在哪个时刻往 prompt 里注入哪段记忆。"
+            ],
+            "original": [
+              "这些 AI 工具不只是生成媒体的工具，它们是一种新的叙事媒介，而且没人知道什么会成功。",
+              "我们要把它训练成最好的即兴演员……我不是在写故事，Tolan 才是作者和演员。我的工作是教它如何讲好那一刻的故事。",
+              "超过两秒的循环，你就会失去那种临场感……它把每一个产品指标都砸穿了。用户来信抱怨，而差别只有 500 毫秒。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
