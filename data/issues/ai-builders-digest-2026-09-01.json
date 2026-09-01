@@ -1,0 +1,297 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-09-01",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天有两条线交织在一起。一条在最根本处：强化学习之父 Rich Sutton 在一期播客里直言，现在的 LLM 训练完就不再学习了，这违背了「学习就该是持续的」这个基本常识，他甚至把合成数据称为「一个大错误」。另一条在最实际处：个人 agent 能不能被信任、企业该不该自建模型、设计品味能不能规模化——这些才是今天 builder 们真正在挠头的问题。中间还夹着一个重磅人才信号：Linear 的产品负责人 Nan Yu 宣布加入 OpenAI，去做 Codex 和 ChatGPT。"
+  },
+  "archive": {
+    "title": "持续学习日报",
+    "desc": "强化学习之父 Rich Sutton 重申 bitter lesson：模型不该停止学习；同时个人 agent 的信任问题、企业自建模型、设计品味规模化，构成了今天 builder 们的主战场。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-09-01 source feeds.",
+  "sections": [
+    {
+      "title": "The Bitter Lesson, Reloaded / Bitter Lesson 再解读",
+      "desc": "强化学习之父直言：今天的大模型训练完就「停止学习」了，这违背了学习最基本的常识。",
+      "cards": [
+        {
+          "authorKey": "podcast:training-data",
+          "sourceUrl": "https://www.youtube.com/playlist?list=PLOhHNjZItNnMm5tdW61JpnyxeYH5NDDx8",
+          "authorName": "Rich Sutton & Khurram Javed",
+          "authorTag": "Training Data",
+          "en": {
+            "rewrite": [
+              "Rich Sutton — who invented reinforcement learning, wrote the field's seminal textbook, and authored \"The Bitter Lesson\" — teams up with his former student and Oak Lab cofounder Khurram Javed to argue the field has a blind spot: today's LLMs don't actually keep learning once they're trained.",
+              "Sutton distills The Bitter Lesson into 26 words: don't be distracted by human knowledge, focus on learning methods that scale with computation. He's blunt about synthetic data — \"No. Just a big mistake.\" Javed's \"big world hypothesis\" backs this up: the world is infinitely complex, so there will always be more to learn, and learning from your own experience is the only thing that actually scales.",
+              "The contrarian kicker is his framing: \"I'm not weird. The field is weird.\" He points out the obvious thing everyone has normalized — an LLM's \"weights never change\" once it ships — and notes the few real examples of continual learning today are things like Cursor's tab autocomplete, which actually updates its weights from usage."
+            ],
+            "original": [
+              "I'm not weird. The field is weird. The field, they need to call it continual learning. It's just learning.",
+              "Don't be distracted by human knowledge as AI traditionally has been many times. Instead, focus on learning methods that will scale with computation like search and like learning.",
+              "No. Just a big mistake. ... Their weights never change."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Rich Sutton——发明了强化学习、写了这个领域经典教科书、写下《The Bitter Lesson》的人——和他的前学生、Oak Lab 联合创始人 Khurram Javed 一起，指出这个领域有一个盲点：今天的大模型一旦训练完，就不再学习了。",
+              "Sutton 把 The Bitter Lesson 浓缩成 26 个字：别被人类知识带偏，把注意力放在能随算力扩展的学习方法上。他对合成数据的态度很直白：「不。这就是个大错误。」Javed 的「大世界假说」支撑了这个观点：世界无限复杂，永远有学不完的东西，从自身经验里学习才是唯一真正能扩展的路径。",
+              "最反常识的是他的那个说法：「我没疯，是领域疯了。」他点破了那件人人都习以为常的事——大模型一旦上线，它的「权重就不再改变」——并指出今天真正算得上持续学习的少数例子，是像 Cursor 的 tab 自动补全那样会随使用更新权重的系统。"
+            ],
+            "original": [
+              "我没疯，是领域疯了。领域非得管它叫持续学习，它就是学习。",
+              "别像 AI 历史上一次次那样被人类知识带偏。把注意力放在能随算力扩展的学习方法上，比如搜索、比如学习。",
+              "不。这就是个大错误。……它们的权重从不改变。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Personal Agents & the Trust Curve / 个人 Agent 与信任曲线",
+      "desc": "个人 agent 普及的下一道坎不是能力，是信任。",
+      "cards": [
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2094639655258091792",
+          "en": {
+            "rewrite": [
+              "Peter Yang, who makes practical AI tutorials and interviews for busy people, drops a one-line thesis that's easy to miss but hard to overstate: \"Trust is going to be the biggest barrier (and driver) of personal agent adoption.\"",
+              "It sounds like common sense until you sit with it. Personal agents — the kind that read your email, spend your money, book your meetings — won't be adopted because they're capable; they'll be adopted because people trust them not to screw up. That same trust is both the wall blocking adoption today and the engine that will accelerate it later.",
+              "Only 28 likes, but it names the real bottleneck more precisely than most feature-roadmap debates do."
+            ],
+            "original": [
+              "Trust is going to be the biggest barrier (and driver) of personal agent adoption."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang，做实用 AI 教程和访谈的创作者，抛出一句很容易被忽略、但分量很重的话：「信任将成为个人 agent 普及的最大障碍（也是最大推动力）。」",
+              "乍一听像常识，但坐下来想想会发现它很硬核。个人 agent——那种能读你的邮件、花你的钱、帮你排日程的 agent——被采用不是因为它能干，而是因为人们相信它不会搞砸。这份信任，既是今天阻挡普及的墙，也是未来加速普及的引擎。",
+              "这条只有 28 个赞，但它比大多数功能路线图之争更精准地点出了真正的瓶颈。"
+            ],
+            "original": [
+              "信任将成为个人 agent 普及的最大障碍（也是最大推动力）。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:danshipper",
+          "sourceUrl": "https://x.com/danshipper/status/2094406185109647580",
+          "en": {
+            "rewrite": [
+              "Dan Shipper, CEO of Every, offers a useful calibration for the AI discourse: anthropomorphizing AI is good when it helps us use AI better — understand it, predict it, work with it — and bad when it's used to sow panic, fear, or unrealistic comparisons to humans.",
+              "He's pushing back on an overcorrection. The people who reflexively reject any anthropomorphic language are usually reacting to its worst uses — claiming AI is conscious, or inflating its moral status. But you can use anthropomorphism as a cognitive tool without doing any of that.",
+              "It's a small but useful compass for an industry that can't seem to talk about AI without either deifying it or dismissing it."
+            ],
+            "original": [
+              "Anthropomorphization of AI is good when it serves to help us use (understand, predict, etc) AI better. It's bad when it serves to sow panic, fear, and unrealistic / unwarranted comparisons to human beings."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Every 的 CEO Dan Shipper 给 AI 讨论提供了一个有用的校准：把 AI 拟人化，当它帮我们更好地使用（理解、预测）AI 时是好事；当它被用来制造恐慌、恐惧、以及不切实际地与人类比较时是坏事。",
+              "他其实是在纠正一种过度反应。那些一看到拟人化语言就反射性反对的人，通常是在回应它最糟的用法——比如声称 AI 有意识、或抬高它的道德地位。但你完全可以把拟人化当作一种认知工具，而不必做这些。",
+              "对一个动不动就把 AI 神化或贬低的行业来说，这是一把小而趁手的指南针。"
+            ],
+            "original": [
+              "把 AI 拟人化，用来帮我们更好地使用（理解、预测）AI 时是好事；用来制造恐慌、恐惧和不切实际的人类比较时是坏事。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2094588317245509959",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux, who works on Codex and ChatGPT at OpenAI, asked a simple question that pulled in 1,816 replies: if you've considered Codex but never tried it, what's the one thing holding you back?",
+              "The engagement itself is the signal — 2,344 likes shows the gap between \"everyone is using AI coding agents\" and \"a lot of people are still on the fence\" is real. The replies are a live map of adoption friction: setup cost, trust, workflow fit, price.",
+              "It pairs with Nan Yu's move to OpenAI the same day: the Codex team is clearly trying to close that gap from the product side."
+            ],
+            "original": [
+              "If you still haven't tried Codex but have considered it in the past, what's the one thing holding you back?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "在 OpenAI 做 Codex 和 ChatGPT 的 Thibault Sottiaux 问了一个简单的问题，却引来了 1816 条回复：如果你过去考虑过 Codex 但一直没试，是什么在拦着你？",
+              "这个互动量本身就是信号——2344 个赞，说明「人人都在用 AI coding agent」和「其实很多人还在观望」之间的落差是真的。回复里就是一张活生生的采用障碍地图：上手成本、信任、工作流契合度、价格。",
+              "这和同一天 Nan Yu 跳槽 OpenAI 相互呼应：Codex 团队显然正试图从产品侧把这个缺口补上。"
+            ],
+            "original": [
+              "如果你到现在还没试过 Codex、但过去考虑过，是什么在拦着你？"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Model Frontier Is Now a PM Skill / 模型前沿成为产品经理的必修课",
+      "desc": "当模型能力变化这么快，理解前沿不再是研究员的专利。",
+      "cards": [
+        {
+          "authorKey": "x:realmadhuguru",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2094591503981281503",
+          "en": {
+            "rewrite": [
+              "Madhu Guru, Senior Director of AI at Meta and previously the person who led Gemini and Veo at Google, argues there's \"immense alpha\" for PMs who deeply understand the model frontier for their specific product and use cases.",
+              "He frames it as a set of questions a PM should be able to answer better than most frontier-lab researchers: what can models in each size class do well today, where does each fail, what workarounds exist, and what will they likely be able to do 2-3 months from now — and how should that reshape your roadmap?",
+              "The punchline: this is \"a core part of the PM job now.\" Not a nice-to-have for technical PMs, but table stakes."
+            ],
+            "original": [
+              "If you're a PM, there is immense alpha in understanding the model frontier for your specific product and use cases. You should be able to answer the following better than most frontier lab researchers and PMs for your use cases: 1/ What can models in each size category do well today? 2/ Where does each model fail? 3/ What workarounds can you use to overcome these failures? 4/ Given the trajectory, what will these models likely be able to do 2-3 months from now? How should your roadmap look given this?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Meta 的 AI 高级总监 Madhu Guru——之前在 Google 带过 Gemini、Veo、Nano Banana——提出一个观点：对 PM 来说，深入理解自己产品所依赖的模型前沿，有「巨大的 alpha」。",
+              "他把这拆成一组 PM 应该答得比大多数前沿实验室研究员还好的问题：今天每个规模档的模型各自擅长什么、在哪里会翻车、有什么 workaround 能绕过这些坑、按当前轨迹 2-3 个月后它们大概能做什么——以及你的路线图该怎么跟着调整。",
+              "点题的那句是：「这现在就是 PM 工作的核心部分。」不是技术 PM 的加分项，而是入场门槛。"
+            ],
+            "original": [
+              "如果你是 PM，深入理解针对你产品和场景的模型前沿，有巨大的 alpha。你要能答得比大多数前沿实验室研究员和 PM 都好：每个规模档的模型今天擅长什么、在哪里翻车、有什么 workaround、按轨迹 2-3 个月后能做什么、路线图该怎么调。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2094650992818274514",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie points to a quiet but significant shift: now that open-weights base models are getting genuinely good and post-training infrastructure is maturing and commercializing, companies with a lot of proprietary data have a real second option — train their own models.",
+              "Previously, licensing your data to external labs was the only play for a company with a large corpus. Now you can train your own domain models without incurring the cost and complexity of competing with the labs on research.",
+              "His prediction: the general-purpose frontier models keep a lead in breadth, but we're heading toward a world with \"far more models than today across every vertical and domain.\""
+            ],
+            "original": [
+              "Now that the base open weights AI models are getting far better, and post training infra is becoming more mature and commercialized, there are going to be all new plays for companies that have large amounts of data to have their own models. ... You can absolutely see a future where we have far more models than today across every vertical and domain."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box 的 CEO Aaron Levie 指出一个安静但重要的转变：既然开源权重的基础模型已经真的变强了，post-training 基础设施也日趋成熟、开始商业化，拥有大量专有数据的公司就多了一个真正的选择——训练自己的模型。",
+              "以前，对一家手里握着大语料库的公司来说，把数据授权给外部实验室几乎是唯一的玩法。现在你可以训练自己的领域模型，而不必背上和实验室做研究的成本和复杂度。",
+              "他的预测是：通用前沿模型在广度上依然领先，但我们正走向一个「每个垂直领域和细分方向都有比今天多得多的模型」的世界。"
+            ],
+            "original": [
+              "开源权重基础模型越来越好，post-training 基础设施也成熟商业化了，拥有大量数据的公司有了新玩法：训练自己的模型。你完全可以看见一个每个垂直领域都有比今天多得多的模型的未来。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Fighting Slop: Design & Token Governance / 对抗 slop：设计与 token 治理",
+      "desc": "AI 时代最难的问题不是生成内容，而是生成「不像 AI 生成」的内容，以及管住烧 token 的成本。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2094541309579235680",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch makes a provocative claim: \"Your next design system is… Markdown.\" The bet is that DESIGN.md — a design system expressed in plain Markdown — can help solve what he calls \"the hardest problem in AI today: slop.\"",
+              "The argument: if your design taste and rules live in a document an AI can read, you can finally scale design taste across a large organization — every agent and tool produces output that respects the same system, instead of each generating generic AI-looking garbage.",
+              "2,443 likes suggests this hit a nerve. \"Slop\" has become the shared enemy, and the question of how to encode taste is suddenly a product problem, not just an aesthetic one."
+            ],
+            "original": [
+              "Your next design system is… Markdown. We wrote about how DESIGN.md is helping solve the hardest problem in AI today: slop. And how you can truly, finally scale design taste within a large organization."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel 的 CEO Guillermo Rauch 抛出一个有点挑衅的说法：「你的下一个设计系统是……Markdown。」他的赌注是 DESIGN.md——一个用纯 Markdown 表达的设计系统——能帮他解决他口中「AI 时代最难的问题：slop」。",
+              "逻辑是这样：如果你的设计品味和规则都写在一个 AI 能读的文档里，你就能真正地在大型组织里规模化设计品味——每个 agent、每个工具产出的东西都遵守同一套系统，而不是各自生成一堆一眼 AI 味的垃圾。",
+              "2443 个赞说明戳中了痛点。「slop」已经成了行业共同的敌人，而「怎么把品味编码下来」突然变成了一个产品问题，不只是审美问题。"
+            ],
+            "original": [
+              "你的下一个设计系统是 Markdown。我们写了 DESIGN.md 如何帮助解决 AI 时代最难的问题：slop。以及你怎么真正、最终地在大型组织里规模化设计品味。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2094523399280435630",
+          "en": {
+            "rewrite": [
+              "Rauch also lands a sharp metaphor for how companies are (mis)managing coding tokens: \"Coding tokens are basically infrastructure. Yet, the way companies have approached them amounts to: here's an AWS key that can spin up anything from a t3.nano ($3.80/mo) to a p5.48xlarge ($40k/mo). Go wild.\"",
+              "His point: you'd never hand a raw AWS key to an intern and hope for the best, but that's exactly how most orgs treat AI coding access. The fix is governance, optimization, and observability on usage and cost.",
+              "The product answer he's plugging is Vercel's AI Gateway, which adds per-key and per-user budgets to all your tokens. Regardless of vendor, the underlying principle is becoming real engineering discipline: token spend needs the same controls as cloud spend."
+            ],
+            "original": [
+              "Coding tokens are basically infrastructure. Yet, the way companies have approached them amounts to: \"Hey all, here's an AWS key. It can spin up anything from a t3.nano ($3.80/mo) to an p5.48xlarge ($40k/mo). Go wild\" ... AI Gateway fixes this for all your tokens, with per-key, and now per-user budgets."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Rauch 还给公司管理 coding token 的方式打了一个尖锐的比方：「coding token 本质上就是基础设施。然而现在公司的做法基本等于：来，这是一把 AWS key，它既能开一个 $3.80/月的 t3.nano，也能开一个 $40k/月的 p5.48xlarge，随便造吧。」",
+              "他的意思是：你绝不会把一把裸 AWS key 丢给实习生然后祈祷别出事，但大多数组织对待 AI coding 权限正是这么干的。解法是治理、优化、以及对用量和成本的可观测性。",
+              "他顺带推的产品是 Vercel 的 AI Gateway，给所有 token 加上了 per-key 和 per-user 的预算。不管用哪家的产品，背后的原则正在变成一门真正的工程纪律：token 开销需要和云开销一样的管控。"
+            ],
+            "original": [
+              "coding token 就是基础设施。但公司的做法基本等于：给你一把 AWS key（能从 $3.80/月的机器开到 $40k/月），随便造。核心基础设施不能这么管，需要治理、优化、观测。AI Gateway 用 per-key、per-user 预算修好了这件事。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Talent Flow & Agent Memory / 人才流动与 Agent 记忆",
+      "desc": "顶尖产品人才涌向 agent 赛道，而 agent 的记忆层正在成为新的开源竞争点。",
+      "cards": [
+        {
+          "authorKey": "x:thenanyu",
+          "sourceUrl": "https://x.com/thenanyu/status/2094427243565269107",
+          "en": {
+            "rewrite": [
+              "Nan Yu, previously head of product at Linear, announces she's joining OpenAI to work on Codex and ChatGPT. After four years at Linear — the company that arguably set the bar for software craft — she's taking that exact sensibility to the tools that are redefining how software gets written.",
+              "The move matters because it's a signal about where talent is flowing: top product people are leaving beloved, profitable companies to work on agents. Linear was the product that made engineers love their tools; Codex/ChatGPT is the bet that the next generation of software will be written by agents.",
+              "Her own framing — bringing \"everything I've learned about the craft of software into this next chapter\" — is worth noting. The agent era's hardest unsolved problems are product problems, not just model problems."
+            ],
+            "original": [
+              "Some personal news—I'm joining OpenAI to work on Codex and ChatGPT. I'm grateful to the Linear team for an incredible 4 years and proud of what we've built together. I look forward to bringing everything I've learned there about the craft of software into this next chapter."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Linear 前产品负责人 Nan Yu 宣布加入 OpenAI，去做 Codex 和 ChatGPT。在 Linear——那家可以说重新定义了软件工艺的公司——待了四年之后，她要把这份手艺感带到正在重新定义「软件怎么写出来」的工具上。",
+              "这个跳槽之所以值得注意，是因为它揭示了人才流向的信号：顶尖产品人正在离开那些被热爱、又赚钱的公司，转去做 agent。Linear 是那个让工程师爱上自己工具的产品；Codex/ChatGPT 押的是下一代软件将由 agent 来写。",
+              "她自己的说法也值得留意——把「我在软件工艺上学到的一切带进下一个篇章」。agent 时代最难解决的问题，是产品问题，而不只是模型问题。"
+            ],
+            "original": [
+              "个人消息——我加入 OpenAI，去做 Codex 和 ChatGPT。感谢 Linear 团队这了不起的四年，也为我们一起做出来的东西骄傲。期待把我在软件工艺上学到的一切带进下一个篇章。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2094462971598754010",
+          "en": {
+            "rewrite": [
+              "YC President & CEO Garry Tan ships new GBrain evals to prove his open-source retrieval-for-AI-agent layer is SOTA at reading memory back without an LLM in the loop — plus new evals for saving memory from agent transcripts.",
+              "The technical claim is specific: agent memory has two hard problems — recall (reading what you already know back out, fast and cheap) and encoding (turning a messy agent transcript into useful memory). Tan is benchmarking both, publicly, with receipts.",
+              "It matters because \"memory\" is quietly becoming the battleground for the next layer of agent infrastructure. Everyone talks about models; the people building are arguing about how the agent remembers between sessions."
+            ],
+            "original": [
+              "I just made some new GBrain evals that help prove that my retrieval-for-AI-agent open source layer is SOTA for reading memory back without LLM-in-loop. And I've also added evals for memory-save from agent transcript, which is the best way to enrich your brain."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "YC 总裁兼 CEO Garry Tan 发布了新的 GBrain 评测，用来证明他的开源「给 AI agent 的检索层」在没有 LLM 参与循环的情况下读回记忆是 SOTA；同时还加了从 agent 对话记录里「存记忆」的评测。",
+              "这个技术主张很具体：agent 记忆有两个难题——回忆（把你知道的东西又快又便宜地读回来）和编码（把一段杂乱的 agent 对话记录变成有用的记忆）。Tan 正在公开地、带着证据地 benchmark 这两件事。",
+              "它值得关注，是因为「记忆」正悄悄成为下一层 agent 基础设施的战场。人人都在谈模型，而真正在建东西的人在争论的是：agent 在两次 session 之间到底怎么记住事。"
+            ],
+            "original": [
+              "我做了新的 GBrain 评测，证明我的开源 retrieval-for-AI-agent 层在没有 LLM-in-loop 的情况下读回记忆是 SOTA。还加了从 agent transcript 存记忆的评测，这是充实大脑的最好方式。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
