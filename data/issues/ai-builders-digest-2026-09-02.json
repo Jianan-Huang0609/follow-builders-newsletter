@@ -1,0 +1,90 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-09-02",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线不是又一个模型发布，而是模型开始真正进入工作流：更少的误报、更低的成本、更长的任务，以及企业愿意把它接进自己的数据和产品系统。另一边，builder 们也在重新整理 skill、设计 agent 的说话方式，并把安全和可观察性当成产品本身的一部分。"
+  },
+  "archive": {
+    "title": "Agent 进入工作流日报",
+    "desc": "模型能力正在从单次回答走向长任务、企业系统和可持续改进的完整工作流。"
+  },
+  "viewLabels": { "rewrite": "速读", "original": "原文" },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-09-02 source feeds.",
+  "sections": [
+    {
+      "title": "Models Become More Usable / 模型开始真正可用",
+      "desc": "这次进步不只在 benchmark 上，而在成本、语气、误报和长任务这些每天都会遇到的摩擦点上。",
+      "cards": [
+        {
+          "authorKey": "x:bcherny",
+          "sourceUrl": "https://x.com/bcherny/status/2094864062186426373",
+          "en": { "rewrite": ["Boris Cherny, who works on Claude Code at Anthropic, says Fable 5.1 cache reads now cost $0.25 per million tokens, down from $1, making a typical Claude Code session up to 38% cheaper. The important change is operational: lower inference friction makes it easier to let agents run longer and more often."], "original": ["We have also reduced prices for Enterprise, API, and SDK customers. Cache reads on Fable 5.1 are now $0.25 per million tokens (previously: $1). Up to 38% cheaper for a typical Claude Code session."] },
+          "cn": { "rewrite": ["Anthropic Claude Code 团队的 Boris Cherny 表示，Fable 5.1 的 cache read 已从每百万 token 1 美元降到 0.25 美元，典型 Claude Code session 最多便宜 38%。真正重要的不是价格表本身，而是运行 agent 的摩擦变小了，长任务和高频使用会更容易成立。"], "original": ["Enterprise、API 和 SDK 客户的价格也降低了。Fable 5.1 的 cache read 现在是每百万 token 0.25 美元（之前是 1 美元）。典型 Claude Code session 最多便宜 38%。"] }
+        },
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2094945951865520458",
+          "en": { "rewrite": ["Thariq from Claude Code recommends using Fable 5.1 at lower effort for tasks with fewer edge cases or less need for verification. Switching effort levels no longer breaks the prompt cache, turning model effort into a practical control knob rather than a workflow reset."], "original": ["it’s a very good model, I spent a lot of time diving into it- longer write up coming\n\nbut try it on lower effort for tasks that need less verification or have fewer edge cases, switching effort no longer breaks prompt cache as well"] },
+          "cn": { "rewrite": ["Claude Code 的 Thariq 建议：对不需要太多验证、边界情况较少的任务，可以把 Fable 5.1 调到较低 effort。现在切换 effort 不会再打断 prompt cache，这让模型强度变成一个真正可调的工作流旋钮，而不是一次重新开始。"], "original": ["这是一个很好的模型，我花了很多时间研究它，之后会写更长的文章。对于不需要太多验证或边界情况较少的任务，试试较低 effort；现在切换 effort 也不会再破坏 prompt cache。"] }
+        },
+        {
+          "authorKey": "x:alexalbert__",
+          "sourceUrl": "https://x.com/alexalbert__/status/2094860187743986169",
+          "en": { "rewrite": ["Anthropic researcher Alex Albert shows a more concrete kind of capability jump: Fable 5.1 takes a photo of a property lot, designs a house, renders it, and produces a cinematic walkthrough, with Blender running headlessly. The point is not the demo's spectacle; it is that a model can now coordinate multiple tools into a finished artifact."], "original": ["Fable 5.1 is a beast at many things but one thing in particular I have been having a ton of fun with is generating videos through code.\n\nFor this one I gave it a picture of a property lot. It designed a house for the lot, rendered it, and produced a cinematic walkthrough. https://t.co/eBIaCmaav8"] },
+          "cn": { "rewrite": ["Anthropic 研究员 Alex Albert 展示了一个更具体的能力跃迁：给 Fable 5.1 一张地块照片，它设计房子、完成渲染，再生成电影感的漫游视频，背后还用到了 headless Blender。重点不只是 demo 好看，而是模型已经能把多个工具串起来，交付一个完整产物。"], "original": ["Fable 5.1 很多方面都很强，但我特别喜欢它用代码生成视频。这次我给它一张地块照片，它为地块设计房子、完成渲染，并生成电影感的漫游视频。"] }
+        }
+      ]
+    },
+    {
+      "title": "Skills Need Maintenance / Skill 也需要维护",
+      "desc": "当 agent 变强，旧规则会变成噪音；真正成熟的 skill 不是越长越全，而是持续被清理和校准。",
+      "cards": [
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2094987791566622971",
+          "en": { "rewrite": ["Peter Yang recommends running `/claude-api prompt-audit` on your skills when trying Fable 5.1. It finds redundant rules and instructions that newer models no longer need, a useful reminder that prompt maintenance is now closer to dependency maintenance than document writing."], "original": ["If you're trying out Fable 5.1 I highly recommend running:\n\n/claude-api prompt-audit\n\non your skills. It finds a bunch of redundancies and rules to remove for the latest models.\n\nRunning it for all my skills now."] },
+          "cn": { "rewrite": ["Peter Yang 建议，试用 Fable 5.1 时，可以在 skills 上运行 `/claude-api prompt-audit`，找出新模型已经不需要的重复规则。这个动作说明，prompt 维护正在变得更像依赖维护：模型升级后，旧说明也要定期清理。"], "original": ["如果你正在试用 Fable 5.1，我强烈建议在 skills 上运行 `/claude-api prompt-audit`。它会找出针对最新模型可以删除的冗余内容和规则。我现在正对所有 skills 运行。"] }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2094995775952740795",
+          "en": { "rewrite": ["Peter Yang points out a subtle failure mode in self-improving skills: after manually fixing one thread, asking an agent to update the skill can overfit it to that single example and cause drift. The missing piece is a stable evaluation set, not another round of clever instructions."], "original": ["The problem is AI often overfits on this one thread and over time the skill drifts. Any good solutions here?"] },
+          "cn": { "rewrite": ["Peter Yang 指出 skill 自我改进的一个隐蔽问题：人工修好某一次任务后，让 agent 据此更新 skill，可能会过拟合这一条路径，久而久之发生漂移。缺的不是更多聪明规则，而是一套稳定的评测样本。"], "original": ["问题是，AI 经常会对这一个 thread 过拟合，随着时间推移 skill 就会漂移。有什么好的解决办法吗？"] }
+        }
+      ]
+    },
+    {
+      "title": "Agents Need Product Systems / Agent 要接入产品系统",
+      "desc": "企业级 agent 的核心不是一个聊天框，而是指标、知识、工具和反馈回路组成的可观察系统。",
+      "cards": [
+        {
+          "authorKey": "x:realmadhuguru",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2094817857821704659",
+          "en": { "rewrite": ["Madhu Guru argues that every company should be building self-improving products. The stack includes crisp primary, secondary, and guardrail metrics; a record of product decisions; connections to dashboards, APIs, MCPs, and tools; and a harness that understands the end-to-end product process. This is the difference between adding an agent and creating a learning product loop."], "original": ["Self-improving products is a meta idea every company should be implementing.\n\nSome of the core pieces you will need:\n\n1/ a crisp definition of the various metrics you care about : primary, secondary, guardrail\n\n2/ an articulation of your strategy, roadmap and metrics you care about moving the most\n\n3/ knowledge base of past product decisions and principles so the agent knows how decisions get made\n\n4/ connections to your to your internal product systems: dashboards, APIs, MCPs, and tools your agent needs to observe and act on your product.\n\n5/ a harness built with knowledge of your end to end product development flow."] },
+          "cn": { "rewrite": ["Madhu Guru 认为，每家公司都应该开始构建 self-improving products。基础设施包括清晰的 primary、secondary 和 guardrail 指标，记录过去产品决策的知识库，连接 dashboards、API、MCP 和内部工具，以及理解端到端研发流程的 harness。区别在于：这不只是加一个 agent，而是在做一个会学习的产品反馈回路。"], "original": ["Self-improving products 是每家公司都应该实施的元想法。核心组成包括：清晰定义 primary、secondary、guardrail 指标；说明战略、路线图和最重要的指标；保存过去的产品决策和原则；连接 dashboards、API、MCP 和 agent 需要观察、操作产品的工具；以及了解端到端产品开发流程的 harness。"] }
+        },
+        {
+          "authorKey": "x:alexalbert__",
+          "sourceUrl": "https://x.com/alexalbert__/status/2094889286990446769",
+          "en": { "rewrite": ["Alex Albert describes Enterprise Frontier Safeguards as an observability layer for agents: customer data stays in the company's own cloud while automated monitoring flags risky patterns across sessions. As agents gain access to internal systems, privacy alone is not enough; enterprises also need a way to see how those systems are being used."], "original": ["EFS is ZDR++. It's ZDR built for a world with agents. A company's data stays in its own cloud, and an automated monitoring layer we built flags risky patterns to its team."] },
+          "cn": { "rewrite": ["Alex Albert 把 Enterprise Frontier Safeguards 描述成 agent 的 observability 层：数据留在企业自己的 cloud 里，同时由自动监控跨 session 标记风险模式。随着 agent 获得更多内部系统权限，只有隐私承诺还不够，企业还需要看见这些系统究竟被怎样使用。"], "original": ["EFS 是 ZDR++，是为 agent 时代构建的 ZDR。公司的数据留在自己的 cloud 中，我们构建的自动监控层会向团队标记风险模式。"] }
+        }
+      ]
+    },
+    {
+      "title": "The Web Is Becoming an Agent Surface / Web 正在变成 Agent 界面",
+      "desc": "新的 web 形态不只是给人点击，也要给 agent 原生调用、组合和生成自己的视图。",
+      "cards": [
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2094922789128196314",
+          "en": { "rewrite": ["Nikunj Kothari says people are still underestimating WebMCP: websites can expose native tool calls for agents, including UI and interactive elements. His demo lets agents explore an El Nino tracker, create their own views, preserve human edits, and share a link with other agents or people. The web starts to look less like a page and more like a collaborative tool surface."], "original": ["People are still sleeping on WebMCP..\n\nYou can now give agents tool calls to interact with your website natively. Including full UI/UX support and interactive elements to build their own views.\n\nSharing a demo below that I submitted for the WebMCP challenge - see how agents can interact with the El Nino situation tracker. It creates it's own views, preserves human edits, and creates a shareable link to share with other agents (or humans)\n\nVideo and code by Codex @ChatGPT & @Railway\n\nLive at elneenyo dot com to try out today!"] },
+          "cn": { "rewrite": ["Nikunj Kothari 认为，大家仍然低估了 WebMCP：网站可以原生向 agent 暴露 tool calls，还能支持完整 UI、交互元素和 agent 自己生成的视图。他的 El Nino tracker demo 里，agent 能探索数据、生成视图、保留人的修改，再把结果分享给其他 agent 或人。Web 开始不只是页面，而更像一个协作工具界面。"], "original": ["大家仍然低估 WebMCP。现在可以让 agent 原生调用工具来交互网站，包括完整的 UI/UX 支持和交互元素，让它们构建自己的视图。我的 WebMCP challenge demo 展示了 agent 如何与 El Nino situation tracker 交互：生成自己的视图、保留人的修改，并创建可分享给其他 agent 或人的链接。视频和代码由 Codex @ChatGPT 与 @Railway 提供。"] }
+        }
+      ]
+    }
+  ]
+}
