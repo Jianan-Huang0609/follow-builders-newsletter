@@ -1,0 +1,90 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-09-04",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线不是又一个模型发布，而是模型发布之后，工作方式开始重新排队：Claude Code 正在变得更可改，AI Gateway 把多种 coding agent 接到同一层，Astra 则把复杂企业任务的上限往前推了一截。更值得留意的是，builder 们已经不满足于试用工具，而是在用 agent 重写创作、反馈和个人助理的工作流。"
+  },
+  "archive": {
+    "title": "Agent 工作流日报",
+    "desc": "从 Claude Code 的可扩展性到 GPT-6 Astra 的企业能力，今天的 builder 正在把 agent 从工具升级成新的工作基础设施。"
+  },
+  "viewLabels": { "rewrite": "速读", "original": "原文" },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-09-04 source feeds.",
+  "sections": [
+    {
+      "title": "Astra Raises the Bar / Astra 抬高能力上限",
+      "desc": "今天最集中的信号是 GPT-6 Astra：它不只是榜单上的新名字，而是开始在企业复杂任务和 agent harness 里接受检验。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2095598710311067716",
+          "en": { "rewrite": ["Box CEO Aaron Levie reports that GPT-6 Astra scored 77% on Box's hardest enterprise-work eval, versus 74% for GPT-5.6 Sol. The interesting part is not the three-point headline gap: Astra was better at spotting missing metrics, citing the policy behind a legal judgment, separating bad measurements from missing data, and grading medical-report severity. That is the kind of reliability difference that can change whether an agent is trusted with real workflow orchestration."], "original": ["GPT-6 Astra is out. We've been testing the model in early preview on our enterprise complex work eval at Box. It is now the best model we've ever tested on our expanded and hardest test set.\n\nOverall, GPT-6 Astra offers a breakthrough level of capability in coding, analytics, logic, and domain specific knowledge for dealing with complex enterprise knowledge work. In our eval, we use the GPT-6 Astra model in the Box Agent and give it a set of difficult tasks that represent real-world work in various industries. These tasks often will take people hours to execute properly and require deep domain expertise.\n\nGPT-6 Astra scored 77% overall vs. 74% with GPT-5.6 Sol, representing frontier performance. But the story is in some of the bigger gains on individual task types that are incredibly complex across.\n\nAstra clearly is going to offer a meaningful jump in powering and orchestrating enterprise workflows. We'll be making GPT-6 Astra as an option in the Box AI Studio for customers to build agents with shortly as it continues to roll out."] },
+          "cn": { "rewrite": ["Box CEO Aaron Levie 表示，GPT-6 Astra 在 Box 最难的企业复杂工作评测中拿到 77%，高于 GPT-5.6 Sol 的 74%。真正重要的不是标题上的 3 个百分点，而是它更会发现指标缺口、为法律判断引用依据、区分测量异常和数据缺失，也更能判断医疗报告错误的严重程度。对真实工作流来说，这类可靠性差异，才决定 agent 能不能被交给业务。"], "original": ["GPT-6 Astra 已经发布。我们在 Box 的企业复杂工作评测中提前测试了它，它现在是我们在扩展后的最难测试集上测过的最佳模型。\n\nGPT-6 Astra 在 Box 评测中总分 77%，GPT-5.6 Sol 为 74%。但重点在一些极复杂任务上的明显提升。\n\nAstra 显然会给企业工作流的驱动和编排带来有意义的跃升。随着它继续 rollout，我们很快会把 GPT-6 Astra 加入 Box AI Studio，供客户构建 agent。"] }
+        },
+        {
+          "authorKey": "x:mattturck",
+          "sourceUrl": "https://x.com/mattturck/status/2095653093148885274",
+          "en": { "rewrite": ["Matt Turck highlights a sharp benchmark reversal: ARC-AGI-3 launched as a harder test where frontier AI scored just 0.5%, and Astra has now saturated it with its native harness. The caveat is right there in the claim: the harness matters. For agents, model capability is increasingly inseparable from the environment and tools used to elicit it."], "original": ["This is wild.  ARC-AGI was built to resist the LLM scaling paradigm \n\no1 despite early reasoning struggled mightily in 2024 with 18%\n\nThen ARC-AGI-3, an even harder test, launched in 2026. Frontier AI was at 0.5%\n\nAnd now Astra just completely saturated it (w/ its native harness) https://t.co/sLHquW2rNT"] },
+          "cn": { "rewrite": ["Matt Turck 提醒了一个很戏剧性的 benchmark 反转：ARC-AGI-3 在 2026 年发布时更难，frontier AI 只有 0.5%；现在 Astra 配合自己的 native harness 已经把它跑满。这里最值得注意的限定词是 harness：对 agent 来说，模型能力越来越不能脱离它所处的环境和工具来谈。"], "original": ["这太疯狂了。ARC-AGI 的设计就是为了抵抗 LLM scaling 范式。\n\no1 在 2024 年早期 reasoning 阶段只有 18%。\n\n然后更难的 ARC-AGI-3 在 2026 年发布，frontier AI 只有 0.5%。\n\n现在 Astra 配合它的 native harness 直接把它跑满了。"] }
+        }
+      ]
+    },
+    {
+      "title": "Coding Agents Become Platforms / Coding Agent 变成平台",
+      "desc": "工具的竞争点从‘能不能写代码’转向可扩展性、可观测性和是否能融入一整套开发系统。",
+      "cards": [
+        {
+          "authorKey": "x:bcherny",
+          "sourceUrl": "https://x.com/bcherny/status/2095590515765060076",
+          "en": { "rewrite": ["Boris Cherny, who works on Claude Code at Anthropic, is asking users to react to an early design for making Claude Code much more extensible. The wording—'a little crazy, and very exciting'—signals a shift from a finished CLI toward a platform that developers can reshape around their own workflows. Thariq is making the same direction explicit: Claude Code should become more hackable."], "original": ["Your input needed: would you use this?\n\nThis is an early look at how we're thinking about making Claude Code way more extensible. It's a little crazy, and very exciting.\n\nMore details here: https://t.co/X2SbdZYxvi https://t.co/nqWcTliaXL"] },
+          "cn": { "rewrite": ["Anthropic Claude Code 负责人 Boris Cherny 正邀请用户反馈一个早期设计：如何让 Claude Code 更具可扩展性。‘有点疯狂，也很令人兴奋’这句话背后，是 Claude Code 正从一个完成度较高的 CLI，走向可以被开发者按自己工作流改造的平台。Thariq 的另一条推文也把方向说得很直白：Claude Code 要变得更 hackable。"], "original": ["需要你的意见：你会用这个吗？\n\n这是我们思考如何让 Claude Code 更具可扩展性的早期版本。有点疯狂，也很令人兴奋。\n\n更多细节： https://t.co/X2SbdZYxvi https://t.co/nqWcTliaXL"] }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2095534442198839758",
+          "en": { "rewrite": ["Vercel CEO Guillermo Rauch shares a one-line setup that points coding agents to AI Gateway, promising uptime, observability, budgets, and easy model switching. The broader idea is important: once teams run several agents, routing and governance become infrastructure rather than a developer-by-developer configuration problem."], "original": ["Run \n▲ ~/ vercel ai-gateway coding-agents setup\n\nPoints all coding agents to AI Gateway, getting you 100% uptime, observability, budgets, and ease of switching. https://t.co/XSq0OHvTh4"] },
+          "cn": { "rewrite": ["Vercel CEO Guillermo Rauch 分享了一条命令：把 coding agents 统一指向 AI Gateway，获得 uptime、可观测性、预算控制和模型切换能力。更大的变化是，一旦团队同时运行多个 agent，路由和治理就不再是每个开发者各自配置的问题，而会变成一层基础设施。"], "original": ["运行\n▲ ~/ vercel ai-gateway coding-agents setup\n\n把所有 coding agent 指向 AI Gateway，获得 100% uptime、可观测性、预算控制和轻松切换。 https://t.co/XSq0OHvTh4"] }
+        }
+      ]
+    },
+    {
+      "title": "From Tool Use to New Workflows / 从试用工具到重写工作流",
+      "desc": "真正有意思的案例，都在说明 agent 已经开始改变人如何创作、反馈和分配注意力。",
+      "cards": [
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2095640247392759871",
+          "en": { "rewrite": ["Nikunj Kothari documents a mostly autonomous creative workflow: a voice memo became a spec, Codex ran for hours, and scene-by-scene feedback produced the final draft. His active time was under 20 minutes; the listed spend was about $17 on Reactor and $4 on Nano Banana, with Codex using 14% of weekly usage. The useful lesson is not that every project costs this little, but that the human role is moving toward direction and critique."], "original": ["A little behind the scenes of how I made this - it was mostly autonomous, with me spending <20 minutes of active time:\n\n1) On my drive this morning, I voice memo-ed to Claude this idea and asked it to generate a spec (image 1). I made some visual changes, but the spec was pretty good in one shot. \n\n2) I gave that spec Codex /goal with 5.6 Sol High and two API keys (reactor and gemini - and yes I rotated them)\n\n3) It mostly ran autonomously for a few hours and created a pretty good first draft (image 2)\n\n4) I gave it detailed scene by scene feedback with another /goal and it was able to get it to the place that you see above (image 3)\n\nTotal cost:\n- Reactor: ~$17\n- Nano Banana: $4\n- Codex: on the sub, and used only 14% of weekly usage"] },
+          "cn": { "rewrite": ["Nikunj Kothari 记录了一次几乎自动运行的创作流程：开车时用语音备忘录说出想法，让 Claude 生成 spec，再交给 Codex 跑几个小时，最后通过逐场景反馈完成成片。他实际投入不到 20 分钟，Reactor 约 $17、Nano Banana $4，Codex 只用了每周额度的 14%。重点不在于每个项目都能这么便宜，而在于人的角色正在转向定方向和做 critique。"], "original": ["分享一下我是怎么做出这个东西的：基本是自动完成的，我主动投入的时间不到 20 分钟：\n\n1）早上开车时，我把想法用语音备忘录告诉 Claude，让它生成 spec。\n2）我把 spec 交给 Codex /goal，使用 5.6 Sol High 和两个 API key。\n3）它基本自动运行了几个小时，生成了一个不错的初稿。\n4）我又通过一次 /goal 给了详细的逐场景反馈，最后做到了你看到的效果。\n\n总成本：Reactor 约 $17；Nano Banana $4；Codex 使用每周额度的 14%。"] }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2095512091293872337",
+          "en": { "rewrite": ["Nikunj Kothari draws a hard boundary around today's chief-of-staff products: without access to the knowledge trapped on your phone, episodic memory, training about what matters, and proactive action, they are still polished GSuite and Slack wrappers. The criticism is useful because it defines the product gap precisely: convenience is not the same as context, memory, or agency."], "original": ["None of these chief of staff products work for busy people because they are missing more than half the knowledge that is currently stored in a walled garden (aka your phone)..  \n\nOnly when you are able to combine it, get folks to train it to teach what’s important, give it episodic memory and push actual proactive things - you can claim to be a *real* chief of staff. \n\nTill then you’re just a sparkling GSuite & Slack wrapper. Useful, will save you time but definitely not a chief of staff 🙈"] },
+          "cn": { "rewrite": ["Nikunj Kothari 给今天的 chief of staff 产品划了一条很硬的线：如果拿不到手机里那一大半知识，没有 episodic memory，不能被训练去理解什么重要，也不能主动推进事情，那本质上只是包装得更漂亮的 GSuite 和 Slack。这个批评有价值，因为它把产品缺口说清楚了：省时间不等于拥有上下文、记忆和行动能力。"], "original": ["这些 chief of staff 产品对忙碌的人都不太奏效，因为它们缺少目前存储在‘围墙花园’里的超过一半知识（也就是你的手机）。\n\n只有当它能把这些信息结合起来，让人训练它去理解什么重要，给它 episodic memory，并真正主动推进事情时，才能称为一个真正的 chief of staff。\n\n在那之前，你只是一个闪闪发光的 GSuite 和 Slack wrapper。有用，会帮你节省时间，但绝对不是 chief of staff。🙈"] }
+        }
+      ]
+    },
+    {
+      "title": "Speed, Feedback, and Scale / 速度、反馈与规模",
+      "desc": "agent 普及后的瓶颈，不只在模型聪不聪明，也在反馈循环够不够快、产品能不能持续吸收真实使用。",
+      "cards": [
+        {
+          "authorKey": "x:adityaag",
+          "sourceUrl": "https://x.com/adityaag/status/2095557713405292702",
+          "en": { "rewrite": ["SPC partner and Bevel Health cofounder Aditya Agarwal argues that speed is the single biggest problem with agents today. If agents were 10–100x faster, he says, both the interaction pattern and the depth of usage would change dramatically. That frames latency as a product-design constraint, not merely an infrastructure metric."], "original": ["The single biggest issue with using agents today is speed.\n\nImagine if the speed were 10-100x faster -- the interaction pattern and depth of usage would be vastly different."] },
+          "cn": { "rewrite": ["SPC 合伙人、Bevel Health 联创 Aditya Agarwal 认为，今天使用 agent 最大的问题就是速度。如果 agent 能快 10 到 100 倍，交互模式和使用深度都会彻底变化。换句话说，延迟不只是基础设施指标，而是产品设计本身的约束。"], "original": ["现在使用 agent 最大的问题就是速度。\n\n想象一下，如果速度快 10 到 100 倍，交互模式和使用深度会完全不同。"] }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2095720463397753000",
+          "en": { "rewrite": ["Guillermo Rauch updates an old product mantra for the agent era: feedback is now literally a prompt you can give your agents. User criticism, emails, and forwarded transcripts become training material for improving the product. The loop is simple, but it changes the economics of product feedback when agents can process it continuously."], "original": ["“Feedback is a gift” has always been a favorite mantra of mine and a strongly-held belief.\n\nNow it’s fact. Each piece of feedback is someone gifting you a prompt for you to give your agents to improve your product ☺️\n\nThankful for everyone who takes time (or tokens) to critique our products, write to us or forward your agents’ transcripts."] },
+          "cn": { "rewrite": ["Guillermo Rauch 把一句老产品格言改写成了 agent 时代的版本：feedback 现在真的可以直接变成给 agent 的 prompt。用户的批评、邮件和转发过来的 agent transcript，都能成为持续改进产品的素材。逻辑很简单，但当 agent 可以不断处理这些反馈时，产品迭代的反馈回路也会变得更密。"], "original": ["‘Feedback is a gift’ 一直是我最喜欢、也最坚定相信的一句格言。\n\n现在它成为事实了。每一条反馈都是别人送给你的一个 prompt，你可以把它交给 agent 来改进产品。☺️\n\n感谢每一个愿意花时间（或 token）批评我们的产品、写信给我们，或转发 agent transcript 的人。"] }
+        }
+      ]
+    }
+  ]
+}
