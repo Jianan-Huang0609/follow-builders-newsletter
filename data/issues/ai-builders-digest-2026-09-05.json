@@ -1,0 +1,141 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-09-05",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线不是又一个模型发布，而是 Astra 正在把人们的工作节奏往前推：有人因此把计划提前了半年，有人开始把它接进真实工作流，也有人已经在想，下一步是不是连手机都可以不用带。与此同时，WebMCP 和 AI harness 让 agent 更接近真实世界，Madhu Guru 则提醒我们，理解 AI 产品最有效的方式仍然是亲手把一条熟悉的流程自动化。"
+  },
+  "archive": {
+    "title": "Astra 加速日报",
+    "desc": "新模型的价值开始体现在工作流提前交付、工具接入真实世界，以及 builder 重新设计日常工作方式上。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-09-05 source feeds.",
+  "sections": [
+    {
+      "title": "Astra Changes the Schedule / Astra 正在改写排期",
+      "desc": "模型升级最有说服力的证据，不是 benchmark，而是团队开始把原本明年的事情提前到现在。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2096101429832552872",
+          "en": {
+            "rewrite": ["Thibault Sottiaux says Astra was probably OpenAI's biggest competitive advantage before general availability. The team's productivity jumped enough that plans moved six months forward, with work originally targeted for mid-next year now slated for DevDay. The useful signal is not the launch announcement itself, but the calendar compression it caused inside a real team."],
+            "original": ["Astra was probably our biggest competitive advantage while it wasn’t generally available.\n\nSince we’ve had it our productivity jumped so much that we shifted some of our plans 6 months ahead and will ship them at DevDay instead of mid next year."]
+          },
+          "cn": {
+            "rewrite": ["Thibault Sottiaux 说，在 Astra 还没全面开放时，它可能就是 OpenAI 最大的竞争优势。团队的生产力提升之大，让他们把计划整体提前了半年，原本明年年中才做的东西，现在准备在 DevDay 发布。真正值得看的不是发布本身，而是一个真实团队的排期被压缩了多少。"],
+            "original": ["Astra 在还没有全面开放时，可能是我们最大的竞争优势。\n\n自从拥有 Astra 后，我们的生产力提升非常大，所以把一些计划提前了 6 个月，原定明年年中发布的东西会在 DevDay 发布。"]
+          }
+        },
+        {
+          "authorKey": "x:sama",
+          "sourceUrl": "https://x.com/sama/status/2095973658867171733",
+          "en": {
+            "rewrite": ["Sam Altman announced GPT-6 Astra's rollout to Pro, Enterprise, and Business Premium users in Work/Codex, with API availability, followed by Plus and Business. For builders, the important part is that the model is arriving where work happens: the coding surface and the API, not just a demo page."],
+            "original": ["GPT-6 Astra is now available to all Pro, Enterprise, and Business Premium users in Work/Codex, and is available in the API.\n\nWe will start rollout to Plus and Business users next.\n\nThank you for the patience."]
+          },
+          "cn": {
+            "rewrite": ["Sam Altman 宣布 GPT-6 Astra 已向 Work/Codex 里的 Pro、Enterprise 和 Business Premium 用户开放，同时提供 API，之后会继续推送给 Plus 和 Business。对 builder 来说，关键不只是模型更强，而是它直接进入了工作的入口：coding 界面和 API，而不是停留在演示页。"],
+            "original": ["GPT-6 Astra 现已向 Work/Codex 中的所有 Pro、Enterprise 和 Business Premium 用户开放，并已在 API 中提供。\n\n接下来会向 Plus 和 Business 用户推送。\n\n感谢大家的耐心等待。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Agents Meet the Existing Web / Agent 接入真实 Web",
+      "desc": "下一层 agent 基础设施不一定是另起一套世界，而可能是让现有网页直接暴露可用的工具和上下文。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2096065378598441431",
+          "en": {
+            "rewrite": ["Guillermo Rauch is bullish on WebMCP because agents need to ride the web infrastructure that already exists. His concrete example is more interesting than the slogan: a Next.js dev page could expose debugging tools directly to the agent in the tab being tested, with page-specific context, instead of forcing developers to search logs and configure a separate MCP server. The browser becomes both the product surface and the debugging interface."],
+            "original": ["Super bullish on WebMCP. Much like Tesla FSD meets the world where it is (streets, stoplights, potholes and all), agents *need* to ride the existing WWW infrastructure… WebMCP makes it more efficient.\n\nSome pretty unique wins too. e.g: Next.js dev pages could expose debugging tools directly to agents in the specific tab they’re testing, with page-specific context, instead of sifting through server logs. No separate MCP server to find and configure because the page directly exposes its own 'agent tools'.\n\ne.g: in this world 𝚏𝚡 + 𝚊𝚐𝚎𝚗𝚝-𝚋𝚛𝚘𝚠𝚜𝚎𝚛 is a complete web dev stack with zero loss in debugging depth"]
+          },
+          "cn": {
+            "rewrite": ["Guillermo Rauch 很看好 WebMCP，因为 agent 需要借助已经存在的 Web 基础设施，而不是重新造一个封闭世界。他举的例子比口号更有意思：Next.js 的开发页面可以直接把调试工具暴露给正在测试该页面的 agent，并带上页面级上下文，不必再翻 server logs，也不用额外找和配置 MCP server。浏览器因此同时变成产品界面和调试界面。"],
+            "original": ["非常看好 WebMCP。就像 Tesla FSD 要适应真实世界一样，agent 也需要使用现有的 WWW 基础设施，WebMCP 会让这一点更高效。\n\n一个很特别的例子：Next.js 开发页面可以把调试工具直接暴露给正在测试具体 tab 的 agent，并提供页面级上下文，不必翻 server logs，也不需要单独寻找和配置 MCP server。页面直接暴露自己的 agent tools。\n\n在这个世界里，𝚏𝚡 + 𝚊𝚐𝚎𝚗𝚝-𝚋𝚛𝚘𝚠𝚜𝚎𝚛 会成为完整的 Web 开发栈，而且调试深度没有损失。"]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2095971990645755941",
+          "en": {
+            "rewrite": ["Garry Tan compares two agent setups through a very practical test: configuring OpenClaw with Slack took two hours, while Aside's harness, with integrations, browser access, and smart access-control defaults, took under three minutes. The lesson is that the winning agent product may be the one that handles credentials and context safely, not merely the one with the smartest model."],
+            "original": ["Absolutely insane experience using @AsideAI as an AI harness - trying to setup OpenClaw with Slack was a 2 hour experience. Aside's harness with full integrations AND browser integration did it in less than 3 minutes, and it's fully featured with smart access control defaults"]
+          },
+          "cn": {
+            "rewrite": ["Garry Tan 用一个非常实际的测试比较了两种 agent setup：给 OpenClaw 接 Slack 花了两小时，而 Aside 的 harness 加上完整 integrations、browser integration 和默认的智能访问控制，不到三分钟就完成了。这里的启示是，agent 产品的胜负手可能在于能否安全处理 credentials 和上下文，而不只是模型有多聪明。"],
+            "original": ["用 @AsideAI 做 AI harness 的体验非常疯狂：给 OpenClaw 配置 Slack 花了 2 小时。Aside 的 harness 有完整 integrations 和 browser integration，不到 3 分钟就完成了，而且功能完整，默认带智能访问控制。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Build the Workflow, Then Learn / 先自动化，再理解 AI",
+      "desc": "关于 AI product building，最可靠的学习路径不是继续读更多方法论，而是拿一条自己熟悉的流程做完整实验。",
+      "cards": [
+        {
+          "authorKey": "x:realmadhuguru",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2095907570540335174",
+          "en": {
+            "rewrite": ["Madhu Guru offers a weekend exercise for learning AI product building: choose a workflow you know well and automate the whole thing. The exercise forces you to confront the real product questions—what the end-to-end experience should be, where MCPs and tools belong, where humans stay in the loop, and how to evaluate the result. One complete build teaches more than a month of reading because it exposes the seams."],
+            "original": ["Here’s one practical thing you can do this weekend to get better at building AI products.\n\nPick a workflow you know well - from your personal life or your work.\n\nAutomate the whole thing with AI.\n\nUse the AI product you’re comfortable with - you’ll probably have to experiment with a few.\n\nThis exercise will force you to think about\n\n1/ What does a great end-to-end experience look like?\n2/ How should you use MCPs and tools?\n3/ Where should humans stay in the loop?\n4/ How do you evaluate it?\n\nThen keep expanding the ambition.\n\nYou’ll learn more by doing this once than by reading about AI product building for a month.\n\nThe only way to learn is to build."]
+          },
+          "cn": {
+            "rewrite": ["Madhu Guru 给了一个周末就能做的 AI product building 练习：挑一条自己熟悉的工作或生活流程，把它完整地自动化。这个练习会逼你面对真正的产品问题：端到端体验应该是什么样，MCP 和 tools 放在哪里，人应该保留在哪些环节，以及如何评估结果。做完一次，往往比读一个月方法论学得更多，因为流程里的断点会自己暴露出来。"],
+            "original": ["这个周末可以做一件实用的事来提升 AI 产品构建能力：选一条你熟悉的工作或生活流程，用 AI 把它完整自动化。\n\n这个练习会迫使你思考：1/ 什么是好的端到端体验？2/ 应该如何使用 MCP 和 tools？3/ 人应该留在 loop 的哪里？4/ 如何评估？\n\n然后继续提高目标。亲手做一次，比读一个月 AI 产品构建内容学得更多。唯一的学习方式就是构建。"]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2096086845159563476",
+          "en": {
+            "rewrite": ["Peter Yang imagines a small but telling next step for coding agents: an Apple Watch app where he could dictate to Codex threads and receive spoken replies, without carrying a phone. Whether or not that is the rumored OpenAI device, the direction is clear: once agents can work asynchronously, the interface starts moving away from the screen."],
+            "original": ["OpenAI should ship an app for Apple Watch where I can just voice dictate to my Codex threads and it'll reply back with voice too.\n\nThen I won't have to carry my phone around and have screen addiction.\n\nOr maybe this is what the rumored OpenAI device does."]
+          },
+          "cn": {
+            "rewrite": ["Peter Yang 想象了 coding agent 的一个小但重要的下一步：做一个 Apple Watch app，让他可以直接对 Codex threads 语音口述，再收到语音回复，不必随身带手机。无论这是不是传闻中的 OpenAI device，方向都很清楚：当 agent 可以异步工作，界面就会开始离开屏幕。"],
+            "original": ["OpenAI 应该做一个 Apple Watch app，让我可以直接对 Codex threads 语音口述，它也用语音回复。\n\n这样我就不用随身带手机，也不会沉迷屏幕。\n\n或者这就是传闻中的 OpenAI device 要做的事。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Weirdness Is Still the Point / 模型的神奇感仍然存在",
+      "desc": "当 builder 已经熟悉 RL、inference-time scaling 和 verification loops，模型的能力仍然会让人感到不可思议。",
+      "cards": [
+        {
+          "authorKey": "x:adityaag",
+          "sourceUrl": "https://x.com/adityaag/status/2095910036652577028",
+          "en": {
+            "rewrite": ["Aditya Agarwal captures the current AI builder paradox in two sentences: you can understand RL, inference-time scaling, and modern data-verification loops, and still feel that the models are doing sorcery. Technical understanding has improved, but it has not made the capability feel ordinary. That gap is part of what keeps the field moving."],
+            "original": ["Me: I totally understand how RL, inference time scaling, modern data-verification loops work.\n\nAlso Me: These models are total sorcery. There is no way that they should be able to do what they do."]
+          },
+          "cn": {
+            "rewrite": ["Aditya Agarwal 用两句话抓住了当下 AI builder 的矛盾：你可以理解 RL、inference-time scaling 和现代 data-verification loops，却依然觉得模型像在施法。我们对机制的理解变深了，但这并没有让能力本身变得普通。这种理解与惊讶之间的落差，恰恰还是这个领域继续前进的原因之一。"],
+            "original": ["我：我完全理解 RL、inference time scaling、现代 data-verification loops 是怎么工作的。\n\n还是我：这些模型简直是魔法。我不明白它们怎么可能做到这些。"]
+          }
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2096082116828406233",
+          "en": {
+            "rewrite": ["Zara Zhang offers a compact warning: most people overestimate how good AI is at writing. The implication for builders is straightforward: fluent output is not the same as reliable judgment, and products that hide that distinction will make users over-trust the model."],
+            "original": ["Most people perceive AI to be a better writer than it actually is"]
+          },
+          "cn": {
+            "rewrite": ["Zara Zhang 提醒了一件容易被忽略的事：大多数人高估了 AI 的写作能力。对 builder 来说，含义很直接：语言流畅不等于判断可靠，如果产品把这两件事混在一起，用户就会过度信任模型。"],
+            "original": ["大多数人认为 AI 的写作能力比实际更强。"]
+          }
+        }
+      ]
+    }
+  ]
+}
