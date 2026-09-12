@@ -1,0 +1,104 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-09-12",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的 feed 有一条很清晰的暗线：AI 正从“会不会生成”转向“能不能可靠地做事”。从 plugin evals、真实工作 benchmark，到 agent sandbox 的文件权限，再到 AI 自己拥有账户，真正的竞争开始落在验证、基础设施和责任边界上。"
+  },
+  "archive": {
+    "title": "Agent 落地日报",
+    "desc": "当 agent 开始写代码、读文件、跑工作流甚至处理金钱，验证与基础设施正成为比模型演示更关键的底座。"
+  },
+  "viewLabels": { "rewrite": "速读", "original": "原文" },
+  "footerNote": "Source: Follow Builders curated daily digest.",
+  "sections": [
+    {
+      "title": "The Reliability Layer / 可靠性底座",
+      "desc": "模型发布越快，单看 benchmark 分数越不够。builder 们开始把评测拉回真实工作和真实插件。",
+      "cards": [
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2098531560643539440",
+          "en": { "rewrite": ["Thariq introduces plugin evals for a very practical problem: a skill that worked yesterday may quietly break after a new model release. The proposed workflow is simple, local, and repeatable: initialize an eval in the plugin folder and test the skill against model changes instead of trusting memory."], "original": ["we heard feedback that it's hard to know if your skills are still working with new model releases\n\nplugin evals are here to help\n\nrun `claude plugin eval init` in your plugin folder https://t.co/Q0I1ZnugDs"] },
+          "cn": { "rewrite": ["Thariq 给出了一个很实用的工程答案：模型一升级，原本好用的 skill 可能悄悄失效。plugin evals 把问题变成可重复的检查：在插件目录初始化 eval，随着模型变化持续测试，而不是凭感觉判断。"], "original": ["有人反馈，很难知道自己的 skills 在新模型发布后是否仍然有效。\n\nplugin evals 可以帮忙。\n\n在插件目录运行 `claude plugin eval init`。https://t.co/Q0I1ZnugDs"] }
+        },
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2098490139798655427",
+          "en": { "rewrite": ["Thariq also warns that pass/fail numbers are becoming a dangerously thin summary of agent quality. Some benchmark failures come from hidden tests that are stricter than the task itself, so evaluation needs judgment about whether the answer is useful, not just whether it matches an expected string."], "original": ["it's basically impossible to interpret evals by looking at just at the pass/fail scores these days\n\nmany of the failures I see in benchmarks are due to overly strict hidden tests, in some cases the model's answer makes more sense than the expected eval result"] },
+          "cn": { "rewrite": ["Thariq 还提醒，今天的 eval 已经不能只看 pass/fail。很多 benchmark 失败来自过严的 hidden test，有时模型答案其实比标准答案更合理。评测要回答的是“对真实任务有没有用”，而不只是“有没有猜中预设字符串”。"], "original": ["现在基本不可能只看 pass/fail 分数来解读 eval。\n\n我看到的很多 benchmark 失败，其实是因为 hidden test 过于严格；有时模型的答案比评测预期更合理。"] }
+        },
+        {
+          "authorKey": "x:danshipper",
+          "sourceUrl": "https://x.com/danshipper/status/2098481799047647715",
+          "en": { "rewrite": ["Dan Shipper is moving Every's model reviews from vibes toward personal benchmarks built around actual day-to-day work. The important shift is not more leaderboard numbers; it is measuring the tasks each person really cares about, then using those checks when new models arrive."], "original": ["better benchmark scores don't tell you much about how well a model does on your real work \n\nthat's why for the last 3 years @every we've done vibe checks on new models: long-form reviews based on hands-on testing on each model for our real work\n\nnow we're doubling down, and getting more quantitative\n\n@hammer_mt and @nityeshaga built an internal platform for all of us to make personal benchmarks based on our real day-to-day work\n\nour vibe checks on new models used to be vibes only\n\nnow we're starting to get more quantitative with checks\n\nvery psyched about this :)"] },
+          "cn": { "rewrite": ["Dan Shipper 正在把 Every 的模型评测从“体感”推进到个人真实工作 benchmark。关键不是再增加一张排行榜，而是用每个人每天真正要做的任务来测试模型，并在新模型出现时持续复测。"], "original": ["更高的 benchmark 分数，并不能说明模型在你的真实工作中表现得多好。\n\n所以过去 3 年，@every 一直对新模型做 vibe checks：基于亲自用模型完成真实工作的长篇评测。\n\n现在我们要加码，让它更量化。\n\n@hammer_mt 和 @nityeshaga 做了一个内部平台，让大家基于自己的日常工作创建个人 benchmark。\n\n以前我们的 vibe checks 只有体感，现在开始用检查把它量化。\n\n非常期待。:)"] }
+        }
+      ]
+    },
+    {
+      "title": "Agents Need Infrastructure / Agent 需要基础设施",
+      "desc": "agent 一旦进入企业工作流，文件、沙箱、路由和权限就不再是外围功能，而是产品本身。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2098478938003841123",
+          "en": { "rewrite": ["Aaron Levie points to a mundane but foundational capability: mounting Box into agent sandboxes so agents can read and write files on the computer. As agents take on consequential enterprise workflows, they need the same dependable file primitives people already rely on."], "original": ["This one is very cool. Now you can mount Box to agent sandboxes to make it far easier for an agent to read and write files on the agent's computer. As AI agents execute critical workflows in the enterprise, they're going to need the same primitives that people have had. https://t.co/h1BW92pMtH"] },
+          "cn": { "rewrite": ["Aaron Levie 分享了一个看似普通、其实很关键的能力：把 Box 挂载进 agent sandbox，让 agent 更容易在电脑上读写文件。agent 一旦处理企业里的关键流程，文件这种人类早已习惯的基础能力就必须同样可靠。"], "original": ["这个很酷。现在可以把 Box 挂载到 agent sandbox，让 agent 更容易在自己的电脑上读写文件。随着 AI agent 执行企业关键工作流，它们需要拥有和人一样的基础能力。https://t.co/h1BW92pMtH"] }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2098531157230969062",
+          "en": { "rewrite": ["Guillermo Rauch frames model routing as infrastructure: Tailscale uses Vercel AI Gateway underneath its model router. His analogy is pointed: AI gateways may become the new CDNs, because going direct to a model origin is brittle and building the routing layer yourself is expensive."], "original": ["Tailscale’s model router is powered by Vercel AI Gateway as its underlying infrastructure.\n\nAI Gateways are the new CDNs. You could go “direct to origin”, but it’s brittle. You could DIY, but it’s painful and costly.\n\nProud to serve Tailscale, the 🐐 networking technology company https://t.co/ERS5GKJx6D"] },
+          "cn": { "rewrite": ["Guillermo Rauch 把 model routing 放回基础设施层：Tailscale 的 model router 底层使用 Vercel AI Gateway。他的类比很直接：AI Gateway 可能会成为新的 CDN，因为直连模型 origin 不稳定，自己搭路由又痛苦且昂贵。"], "original": ["Tailscale 的 model router 底层由 Vercel AI Gateway 提供支持。\n\nAI Gateway 就是新的 CDN。你可以“直接连 origin”，但这很脆弱；也可以自己 DIY，但痛苦又昂贵。\n\n很自豪能服务 Tailscale，这家网络技术公司太牛了。https://t.co/ERS5GKJx6D"] }
+        },
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2098527519213604889",
+          "en": { "rewrite": ["Peter Steinberger shows the agent stack in a more tangible form: Astra running in a cloud session, playing Doom through CUA. It is not an AGI claim, but it is a useful reminder that computer-use agents are becoming testable in real environments, with all the reliability questions that implies."], "original": ["Astra on OC in a cloud session playing Doom with CUA.\nNot quite AGI yet, but probably beats fly brain. https://t.co/SrJlaey3MB"] },
+          "cn": { "rewrite": ["Peter Steinberger 展示了更具体的 agent stack：Astra 在云端 session 里通过 CUA 玩 Doom。这当然不是 AGI 宣言，但说明 computer-use agent 已经可以在真实环境里被测试，也把可靠性问题直接摆上了桌面。"], "original": ["Astra 在云端 session 里用 CUA 玩 Doom。\n还不算 AGI，但大概比苍蝇聪明。https://t.co/SrJlaey3MB"] }
+        }
+      ]
+    },
+    {
+      "title": "The Human-in-the-Loop Question / 人类仍在回路中",
+      "desc": "真正的自动化不是把人从流程里抹掉，而是重新定义需求、检查和组织责任由谁承担。",
+      "cards": [
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2098565668241334366",
+          "en": { "rewrite": ["Peter Yang is skeptical of software factories that claim to build products end-to-end without a human defining requirements or checking the work. His practical objection is the compounding cost of one wrong assumption: an overnight run can spend a pile of tokens producing something nobody wanted."], "original": ["I am skeptical of \"software factories.\"\n\nOther than for verification & testing, I don't think AI is at a point where it can self-improve a product or build a new feature end-to-end without human in the loop.\n\nWhenever I loop something overnight to build something new = if it makes one wrong assumption the whole thing becomes a waste of tokens. \n\nWhat products or features have been built end-to-end with a software factory and no human defining the requirements or checking the work?"] },
+          "cn": { "rewrite": ["Peter Yang 对“software factory”保持怀疑：除验证和测试外，AI 还不能在没有人定义需求、检查结果的情况下端到端做出产品或功能。他的反对理由很实际：只要开头有一个错误假设，跑一夜花掉的 token 可能全都白费。"], "original": ["我对“software factory”持怀疑态度。\n\n除了验证和测试，我不认为 AI 已经能在没有人参与的情况下，自我改进产品或端到端构建新功能。\n\n每当我让它通宵构建新东西，只要它做了一个错误假设，整晚的 token 就全浪费了。\n\n有哪些产品或功能，是由 software factory 在没有人定义需求或检查工作的情况下端到端构建出来的？"] }
+        },
+        {
+          "authorKey": "x:realmadhuguru",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2098448235048378456",
+          "en": { "rewrite": ["Madhu Guru argues that enterprise AI fails when companies reuse old organizational playbooks: a central team builds a platform from the outside and asks functions to adopt it. The better pattern is to embed strong AI builders inside finance, sales, or support, make evals a first-class discipline, and build with the people whose work is changing."], "original": ["Why most enterprise AI efforts fail.\n\n1/ Using old-school playbooks for AI\nThe CEO picks a trusted lieutenant to lead a central AI team. That leader pulls in a group of trusted people from across the company.\n\nThe problem here is the skill gap.\n\nThe team structure, product patterns, how you launch and learn that got you here do not work with AI. Much of product development over the last 15 yrs has been incremental improvements.\n\nAI requires experimentation and invention.\n\n2/ Under-investing in evals\n\nMost enterprises don't quite understand the importance of this and what good looks like here. (I have a whole evals series in the comments - check it out)\n\n3/ Building AI for the company from the outside\nThe central AI team declares itself a platform team and builds tools that everyone is supposed to adopt.\n\nThese products are often disconnected from the actual workflows, context and judgment of the people doing the work.\n\nBegrudging adoption follows. But not meaningful productivity gains.\n\nWhat you should do:\n\n1/ Hire leaders who have done successfully built AI products. You need technical/product depth plus the ability to earn trust with the people whose jobs they’re helping reinvent.\n\n2/ Make evals a first class citizen in your AI efforts\n\n3/ Embed your best AI builders inside the functions you want to transform. Build * with * finance , build * with * sales, build * with * support."] },
+          "cn": { "rewrite": ["Madhu Guru 认为，企业 AI 失败，常常是因为沿用了旧的组织剧本：中央团队从外部造一个平台，再要求各部门采用。更有效的方式是把强 AI builder 嵌入 finance、sales、support 等真实职能，把 evals 当成一等公民，和正在被改变工作的人一起造。"], "original": ["为什么大多数企业 AI 项目会失败。\n\n1/ 给 AI 用旧式剧本\nCEO 选一个信任的人负责中央 AI 团队，再从公司各处拉来一批信任的人。\n\n问题在于技能差距。\n\n过去 15 年让公司走到今天的团队结构、产品模式、发布和学习方式，并不适用于 AI。产品开发大多是渐进式改进。\n\nAI 需要实验和发明。\n\n2/ 在 evals 上投入不足\n\n大多数企业还不理解它的重要性，也不知道好的 evals 应该是什么样。\n\n3/ 从外部为公司构建 AI\n中央 AI 团队自称 platform team，做出要求所有人采用的工具。\n\n这些产品往往和实际工作流、上下文以及一线工作人员的判断脱节。\n\n结果是勉强采用，而不是生产力真正提升。\n\n应该怎么做：\n\n1/ 招聘真正成功做过 AI 产品的领导者。既要有技术/产品深度，也要能赢得那些工作正在被重塑的人的信任。\n\n2/ 把 evals 提升为 AI 工作中的一等公民。\n\n3/ 把最好的 AI builder 嵌入想要改变的职能。和 finance 一起做，和 sales 一起做，和 support 一起做。"] }
+        },
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2098548464452054437",
+          "en": { "rewrite": ["Amjad Masad says Replit has acquired a business built entirely on Replit, and expects it to be the first of many. The signal is bigger than one acquisition: AI-assisted building may start producing not only prototypes, but businesses that are valuable enough to buy."], "original": ["Replit acquires a business entirely built on Replit. I expect first of many to come. https://t.co/hL516eAAu2"] },
+          "cn": { "rewrite": ["Amjad Masad 宣布，Replit 收购了一家完全在 Replit 上构建出来的企业，并预计这只是第一批中的一个。信号不只在于这笔收购本身：AI 辅助开发开始可能产出的不只是 prototype，而是足以被收购的真实业务。"], "original": ["Replit 收购了一家完全在 Replit 上构建的企业。我预计未来还会有很多这样的案例。https://t.co/hL516eAAu2"] }
+        }
+      ]
+    },
+    {
+      "title": "The Agentic Economy / Agentic Economy",
+      "desc": "当 agent 不只是替人操作，而是拥有自己的账户和支付需求，软件边界会延伸到金融基础设施。",
+      "cards": [
+        {
+          "authorKey": "podcast:no-priors",
+          "authorName": "Brian Armstrong",
+          "authorTag": "Coinbase cofounder and CEO",
+          "sourceUrl": "https://www.youtube.com/watch?v=uLDK4l_-gUE",
+          "en": { "rewrite": ["The Takeaway: if agents are going to transact independently, they need financial primitives designed for tiny, frequent payments. Coinbase CEO Brian Armstrong points out that card economics break down below a dollar, while roughly 76% of the agent ecommerce transactions they saw were under 30 cents.\n\nHis proposed direction is agentic finance: give agents their own financial accounts and simple tools they can activate with a prompt. The interesting part is not the prediction that there may be more agents than humans; it is the infrastructure question underneath it. An agent that can act but cannot pay, hold money, or move value is still dependent on a human at every meaningful boundary.\n\n\"We don't want the AIs to be unbanked.\""], "original": ["The minimum fee typically on a debit or credit card transaction is about 30¢ fee flat plus the additional percentage. Arguably, it doesn't really work well for anything under a dollar. Certainly, it doesn't make sense to pay 30¢ to send a 1¢ payment. And I believe the stats we last saw on this are that about, like, 76% of the agent ecommerce transactions we're seeing are under 30¢. We don't want the AIs to be unbanked.\n\nThe AI agents themselves are gonna have to have their own accounts."] },
+          "cn": { "rewrite": ["核心结论：如果 agent 要独立完成交易，就需要为小额、高频支付设计的金融基础设施。Coinbase CEO Brian Armstrong 指出，银行卡费用在 1 美元以下就不划算，而他们看到的 agent 电商交易约 76% 低于 30 美分。\n\n他的方向是 agentic finance：让 agent 拥有自己的金融账户，并通过一条 prompt 激活简单工具。真正值得关注的不是“agent 会不会比人多”，而是背后的基础设施问题：一个能行动却不能付款、持有资金或转移价值的 agent，在关键边界上仍然离不开人。\n\n“我们不希望 AI 处于未银行化状态。”"], "original": ["借记卡或信用卡交易通常至少有 30 美分固定费用，外加额外比例费用。对 1 美元以下的交易来说，这显然不太行；给 1 美分付款却要付 30 美分也没有意义。我们上次看到的统计是，agent 电商交易大约 76% 低于 30 美分。我们不希望 AI 处于未银行化状态。\n\nAI agent 自己将需要拥有账户。"] }
+        }
+      ]
+    }
+  ]
+}
