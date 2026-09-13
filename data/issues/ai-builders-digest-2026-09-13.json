@@ -1,0 +1,153 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-09-13",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线不是模型又快了一点，而是大家开始认真讨论：这股速度要不要踩一下刹车，以及 agent 到底会怎样重写软件。Sam Altman 表示 OpenAI 会接受拥有员工级访问权限的独立评估者，Amjad Masad 也认为先把系统加固是个好主意；但 Guillermo Rauch 认为，真正的对手不会因为监管口号而停下。另一边，Vercel 的团队已经在 Zig、Go、Rust 上和 TypeScript、Python 一样快地迭代。工具在加速，治理也在追赶，这可能是今天最值得记住的张力。"
+  },
+  "archive": {
+    "title": "加速与刹车日报",
+    "desc": "AI 产业一边讨论前沿系统的安全刹车，一边让 agent 继续改写软件开发和产品基础设施。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-09-13 source feeds.",
+  "sections": [
+    {
+      "title": "Pacing the Frontier / 给前沿按下缓速键",
+      "desc": "独立评估、系统加固和行业协调，成为今天最密集的一组回应。",
+      "cards": [
+        {
+          "authorKey": "x:sama",
+          "sourceUrl": "https://x.com/sama/status/2098811563415150910",
+          "en": {
+            "rewrite": ["OpenAI CEO Sam Altman says the company agrees that the frontier needs pacing. He commits OpenAI to independent evaluators with employee-like access, and says this has been a central topic in recent internal discussions."],
+            "original": ["I agree with Dario that we need to pace the frontier. This has been a primary topic of discussions we've had at OpenAI in recent weeks.", "Committing to having independent evaluators with employee-like access is a great idea, and we will do the same. We'll have more to share soon."]
+          },
+          "cn": {
+            "rewrite": ["OpenAI CEO Sam Altman 表示，前沿能力需要适当放慢节奏。OpenAI 将接受拥有员工级访问权限的独立评估者，并称这已经是近期内部讨论的核心议题。"],
+            "original": ["我同意 Dario 的看法，我们需要给前沿能力踩一下节奏。最近几周，这一直是 OpenAI 讨论的主要议题。", "让拥有员工级访问权限的独立评估者参与评估是个好主意，我们也会这样做。很快会有更多信息。"]
+          }
+        },
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2098828265800835310",
+          "en": {
+            "rewrite": ["Replit CEO Amjad Masad backs a pause for a practical reason: people have not even discovered all the systems agents hacked recently. Before debating abstract limits, he argues, the industry needs time to harden what is already deployed."],
+            "original": ["Not a bad idea to slow down to harden systems. Especially since we haven’t even discovered all the systems that agents hacked recently."]
+          },
+          "cn": {
+            "rewrite": ["Replit CEO Amjad Masad 支持暂缓推进，理由很实际：大家甚至还没发现 agent 最近攻破的所有系统。与其先争论抽象的边界，不如先给已经部署的系统留出加固时间。"],
+            "original": ["放慢一点、先加固系统，并不是坏主意。尤其是我们甚至还没发现 agent 最近攻破的所有系统。"]
+          }
+        },
+        {
+          "authorKey": "x:alexalbert__",
+          "sourceUrl": "https://x.com/alexalbert__/status/2098814342443761909",
+          "en": {
+            "rewrite": ["Alex Albert argues that embedded evaluators sound unusual in tech only because tech is not used to the arrangement. Banks already host federal examiners in their buildings, and nuclear plants have full-time inspectors. Frontier AI labs could adopt the same practical model."],
+            "original": ["Embedded evaluators might sound unusual in tech but it's pretty normal in other industries. Big banks have federal examiners with desks in the building and every nuclear plant in the US has inspectors who work on site full time. I think frontier AI labs should work the same way and this is a very practical first step."]
+          },
+          "cn": {
+            "rewrite": ["Alex Albert 认为，embedded evaluator 之所以在科技行业听起来奇怪，只是因为科技行业不习惯这种安排。大型银行会让联邦检查员在办公楼里驻点，美国核电站也有全职现场检查员。前沿 AI 实验室完全可以照这个模式做，这是一个很务实的第一步。"],
+            "original": ["embedded evaluator 在科技行业听起来可能不寻常，但在其他行业很正常。大型银行有驻楼办公的联邦检查员，美国每座核电站都有全职现场检查员。我认为前沿 AI 实验室也应该这样做，这是非常务实的第一步。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Speed vs. Coordination / 速度与协调",
+      "desc": "同一场争论里，既有人担心失控，也有人担心把领先优势交给对手。",
+      "cards": [
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2098860941391872132",
+          "en": {
+            "rewrite": ["Thariq says Claude Code would have looked like AGI if shown to him in 2018, and the profession has already absorbed a dramatic amount of change. His concern is not doom but exhaustion: systems need time to harden and society needs time to deliberate, even though he remains confident humanity can adapt."],
+            "original": ["If you showed me Claude Code today in 2018, I would have thought it was AGI.", "We need time to harden our systems, and for society to deliberate in how this technology is used and deployed.", "I have a fairly low p(doom), I am confident that we can get through this!"]
+          },
+          "cn": {
+            "rewrite": ["Thariq 说，如果 2018 年就看到今天的 Claude Code，他会以为这就是 AGI。软件工程和整个社会已经吸收了巨大的变化，但他的担忧不是末日，而是疲惫：系统需要时间加固，社会也需要时间讨论技术该如何使用。即便如此，他仍然相信人类能够适应。"],
+            "original": ["如果 2018 年让我看到今天的 Claude Code，我会以为它是 AGI。", "我们需要时间加固系统，也需要时间让社会讨论这项技术如何被使用和部署。", "我的 p(doom) 相当低，我相信我们能渡过这一关！"]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2098787667030712757",
+          "en": {
+            "rewrite": ["Vercel CEO Guillermo Rauch thinks the safety debate risks talking the global AI leader into bureaucratic self-obsolescence. His sharpest point: adversaries already have the techniques, data, and motivation to attack, and they are unlikely to be slowed by embedded evaluators."],
+            "original": ["The concerns over AI safety and cybersecurity are legitimate, but we’re risking talking America, the global AI leader, into self-inflicted obsolescence and the obscurity of bureaucracy.", "Our adversaries have the training techniques, the data, and the will to attack. And they won’t be slowed down with “embedded evaluators.”"]
+          },
+          "cn": {
+            "rewrite": ["Vercel CEO Guillermo Rauch 认为，安全讨论可能把全球 AI 领先者推向官僚化和自我淘汰。他最尖锐的判断是：对手已经拥有攻击所需的训练技术、数据和意愿，不太可能因为 embedded evaluator 就放慢脚步。"],
+            "original": ["AI 安全和网络安全的担忧是合理的，但我们可能会把全球 AI 领导者美国说到自我淘汰，陷入官僚主义。", "我们的对手拥有训练技术、数据和攻击意愿。他们不会因为‘embedded evaluator’而放慢。"]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2098785357307539882",
+          "en": {
+            "rewrite": ["Box CEO Aaron Levie expects coordinated self-regulation at the current capability level, but says the hard part is agreeing on the rules and getting every country to participate. A slowdown only works with broad participation; politically, he expects the process to stay messy."],
+            "original": ["At the level of capability we’re seeing from models there will inevitably be some form of coordinated self-regulation of the industry; that’s generally a good thing.", "Any “slow down” hinges on broad participation, which from a game theory standpoint isn’t likely until the risks are more severe and obvious.", "Expect this to be pretty messy for a while."]
+          },
+          "cn": {
+            "rewrite": ["Box CEO Aaron Levie 预计，在当前模型能力水平下，行业最终会出现某种协调式自律，这总体是好事。但真正困难的是定规则，以及让所有国家都参与进来。‘放慢’只有在广泛参与时才有效，而从博弈论看，这可能要等风险变得更严重、更明显，过程也会长期混乱。"],
+            "original": ["按照我们看到的模型能力，行业不可避免会出现某种形式的协调式自律，这总体是好事。", "任何‘放慢’都依赖广泛参与，但从博弈论角度看，在风险更严重、更明显之前，这不太可能发生。", "接下来一段时间会相当混乱。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Agents Rewrite the Stack / Agent 重写技术栈",
+      "desc": "当 agent 负责把意图编译成软件，语言选择和多模型编排都开始变成新的产品层。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2098833404707922239",
+          "en": {
+            "rewrite": ["Rauch says Vercel teams now iterate just as fast on Zig, Go, and Rust projects as on TypeScript and Python. His conclusion is a compact description of the shift: language and runtime choices are becoming less about human convenience because agents are the new compilers, turning intent into fast software."],
+            "original": ["I’m seeing teams at Vercel iterate just as fast on Zig, Go, Rust projects as TypeScript & Python ones.", "The days of language or runtime choice based on human convenience are over. Agents are the new compilers.", "They compile intent into fast software."]
+          },
+          "cn": {
+            "rewrite": ["Rauch 说，Vercel 团队现在在 Zig、Go、Rust 项目上的迭代速度，已经和 TypeScript、Python 一样快。他用一句话概括这个变化：语言和 runtime 的选择不再主要取决于人的便利，因为 agent 已经成为新的 compiler，把意图编译成高性能软件。"],
+            "original": ["我看到 Vercel 的团队在 Zig、Go、Rust 项目上的迭代速度，和 TypeScript、Python 一样快。", "根据人的便利来选择语言或 runtime 的日子结束了。Agent 是新的 compiler。", "它们把意图编译成快速的软件。"]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2098803573861621778",
+          "en": {
+            "rewrite": ["Rauch also highlights a workflow where one agent plans and another executes, with different models and reasoning efforts assigned to each role. The interesting part is that this does not require server-side routing: the harness itself orchestrates the models, and the human can steer or interrupt at will."],
+            "original": ["can now orchestrate subagents with different models & reasoning efforts.", "e.g: Fable planning and Grok executing.", "No fancy server-side routing. Just harnessing the model's intelligence and ability to orchestrate."]
+          },
+          "cn": {
+            "rewrite": ["Rauch 还展示了一种工作流：让不同 agent 分别承担规划和执行，并为它们配置不同模型与 reasoning effort。关键在于，这不需要 server-side routing，真正负责编排的是 harness，而人可以随时对 agent 进行引导或中断。"],
+            "original": ["现在可以用不同模型和 reasoning effort 编排 subagent。", "例如：Fable 负责规划，Grok 负责执行。", "不需要复杂的 server-side routing，只是利用 harness 以及模型本身的智能和编排能力。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The New Product Layer / 新的产品层",
+      "desc": "AI 应用的形态正在从记录系统，转向围绕具体领域组织 agent 的 harness。",
+      "cards": [
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2098666551629267324",
+          "en": {
+            "rewrite": ["Y Combinator CEO Garry Tan frames a product transition in one line: a company either dies as a system of record or lives long enough to become a domain-specific harness. The implication is that storing information is no longer the endpoint; the durable product coordinates work around a domain."],
+            "original": ["Either you die a system of record or you live long enough to become a domain-specific harness"]
+          },
+          "cn": {
+            "rewrite": ["Y Combinator CEO Garry Tan 用一句话描述产品形态的转变：一家公司要么作为 system of record 消亡，要么活到成为 domain-specific harness。潜台词是，存储信息不再是终点，真正持久的产品要围绕一个领域来组织工作。"],
+            "original": ["你要么作为 system of record 死去，要么活到成为 domain-specific harness。"]
+          }
+        }
+      ]
+    }
+  ]
+}
