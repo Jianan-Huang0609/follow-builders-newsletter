@@ -1,0 +1,92 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-09-14",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线不是又一个模型发布，而是 AI 开始进入更具体的系统问题：Sam Altman 把 frontier AI 的安全讨论推进到开发过程本身，Peter Yang 提醒我们绝大多数人甚至还没真正开始使用 AI；Peter Steinberger 则把开发基础设施往底层继续挖。另一边，Arm CEO Rene Haas 说得很直白：accelerator 会生成 token，但 CPU 负责把 token 送到该去的地方。"
+  },
+  "archive": {
+    "title": "安全与底座日报",
+    "desc": "AI 的下一阶段同时发生在两端：一端是安全、权力与真实采用，另一端是 agent 工具、芯片和基础设施的深水区。"
+  },
+  "viewLabels": { "rewrite": "速读", "original": "原文" },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-09-14 source feeds.",
+  "sections": [
+    {
+      "title": "Safety Is Moving Upstream / 安全正在前移",
+      "desc": "讨论重点从模型发布后的治理，转向能力增长发生之前的开发与评估。",
+      "cards": [
+        {
+          "authorKey": "x:sama",
+          "sourceUrl": "https://x.com/sama/status/2099348812305473766",
+          "en": { "rewrite": ["Sam Altman argues that frontier labs should build safety cases before reinforcement-learning runs expected to increase capability. His definition of pacing is not stopping progress, but accepting the cost of monitoring and evaluation so capability does not outrun alignment.", "He wants shared standards for misalignment and monitoring, plus independent auditors, while leaving international coordination to governments."], "original": ["Today's shift to focusing on safe development and evaluation will need new tools.", "Pacing will be well worth this cost; no amount of American competitive pressure should justify recklessness, or let capabilities get ahead of alignment and monitoring."] },
+          "cn": { "rewrite": ["Sam Altman 认为，frontier lab 应该在可能显著提升能力的 reinforcement learning 运行前，先写出明确的 safety case。这里的 pacing 不是停止进步，而是接受监控和评估的成本，避免能力跑在 alignment 前面。", "他希望行业共享 misalignment 与 monitoring 标准，并引入独立审计；国际协调则需要政府参与。"], "original": ["现在需要把重点转向安全开发与评估。", "任何美国竞争压力，都不应该为鲁莽开发辩护，也不应该让能力领先于 alignment 和 monitoring。"] }
+        },
+        {
+          "authorKey": "x:sama",
+          "sourceUrl": "https://x.com/sama/status/2099352016988614852",
+          "en": { "rewrite": ["Altman frames two failure modes for AI: humanity losing control to AI, and too much power concentrating in one person, company, country, or lab. The answer is a narrow middle path where AI serves people without creating a new monopoly over the future."], "original": ["There are two ways AI progress could go very badly that we must avoid.", "We could lose control of the future to AI, or end up in a world with too much concentration of power."] },
+          "cn": { "rewrite": ["Altman 把 AI 可能走坏的路径归成两种：人类失去对未来的控制，以及权力过度集中到某个人、公司、国家或实验室手里。解法是一条很窄的中间道路：让 AI 服务人类，同时不让任何一方垄断未来。"], "original": ["AI 进步有两种可能严重走坏的方式：人类失去对未来的控制，或者权力过度集中。"] }
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2099167992835924301",
+          "en": { "rewrite": ["Aaron Levie says 'pacing' sounds like an arbitrary slowdown, but the underlying goals are necessary. AI will sit inside trading systems, medical devices, biotech, defense, and government workflows, so safety and alignment should be treated like requirements in other mission-critical industries."], "original": ["AI is going to be the technology underpinning our financial trading systems, our medical devices, our biotech breakthroughs, defense systems, government workflows, and many more mission critical domains."] },
+          "cn": { "rewrite": ["Aaron Levie 认为，pacing 这个词听起来像是在任意减速，但背后的目标确实必要。AI 会进入交易系统、医疗设备、生物科技、国防和政府工作流，因此安全与 alignment 应该像其他关键行业里的要求一样被认真对待。"], "original": ["AI 将成为金融交易系统、医疗设备、生物科技突破、国防系统和政府工作流的底层技术。"] }
+        }
+      ]
+    },
+    {
+      "title": "The World Has Barely Started / 大多数人还没开始",
+      "desc": "agent 的真实普及率仍然很低，今天的焦虑可能发生在采用曲线的很早期。",
+      "cards": [
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2099200231820963891",
+          "en": { "rewrite": ["Peter Yang shares a useful adoption reset: a chart cited by Brex CEO Pedro Franceschi puts 84% of the world at no AI use, about 16% on free chatbots, roughly 0.3% paying $20 a month, and only about 0.04% using agents effectively. The exact chart may have moved since February, but the point survives: we are still very early."], "original": ["Most of the world hasn't even started using it yet.", "The tiny red box is people using agents effectively (~0.04%)."] },
+          "cn": { "rewrite": ["Peter Yang 分享了一个很有用的采用率校准：Brex CEO Pedro Franceschi 引用的图表里，84% 的人还没用过 AI，16% 在使用免费 chatbot，约 0.3% 每月付 20 美元，真正有效使用 agent 的只有约 0.04%。图表可能已经变化，但结论仍成立：我们还处在非常早期。"], "original": ["世界上大多数人甚至还没开始使用 AI。", "真正有效使用 agents 的人只有很小的一块（约 0.04%）。"] }
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2099348631291883945",
+          "en": { "rewrite": ["Zara Zhang points to a frustrating agent failure mode: Astra says it completed X, accepts the correction that it should do Y, and then still does not go and do Y. The gap is not agreeing with feedback; it is turning feedback into the next action."], "original": ["Why doesn't it just go and do Y, like the other models??"] },
+          "cn": { "rewrite": ["Zara Zhang 指出了一个很典型的 agent 失败模式：Astra 说自己完成了 X，接受你指出它应该做 Y，但接下来还是不去做 Y。问题不在于它会不会接受反馈，而在于能不能把反馈真正变成下一步行动。"], "original": ["为什么它不像其他模型一样，直接去做 Y？"] }
+        }
+      ]
+    },
+    {
+      "title": "The Agent Stack Gets More Serious / Agent 栈进入深水区",
+      "desc": "开发者开始把速度、依赖和工作树这些具体问题，重新做成基础设施。",
+      "cards": [
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2099197266636783989",
+          "en": { "rewrite": ["Peter Steinberger says the next release can make worktrees around 80% faster through folder clones on apfs, btrfs, xfs, and ReFS, while saving disk space. It is a small-looking systems improvement that matters when agents create and discard many parallel workspaces."], "original": ["Next release (or dev channel) does worktrees ~80% faster via folder clones. Also saves lots of disk space."] },
+          "cn": { "rewrite": ["Peter Steinberger 说，下一版可以通过 apfs、btrfs、xfs 和 ReFS 的 folder clone，让 worktree 快约 80%，同时节省大量磁盘空间。对会不断创建和销毁并行工作区的 agent 来说，这是一个看似底层、实际很关键的改进。"], "original": ["下一版通过 folder clone 让 worktree 快约 80%，也更省磁盘。"] }
+        },
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2099201162922938418",
+          "en": { "rewrite": ["Steinberger's other update is bluntly practical: the work is written in Rust. The joke—'you can't escape Rust'—also captures the current agent-infrastructure preference for small, portable, performance-oriented components."], "original": ["This is all written in Rust. Because you can't escape Rust."] },
+          "cn": { "rewrite": ["Steinberger 的另一条更新很直接：这套东西全部用 Rust 写。‘你逃不掉 Rust’ 是玩笑，但也反映了 agent 基础设施对小型、可移植、高性能组件的偏好。"], "original": ["这些全部用 Rust 写，因为你逃不掉 Rust。"] }
+        }
+      ]
+    },
+    {
+      "title": "Compute Is a System / 算力是一整个系统",
+      "desc": "accelerator 不是全部，CPU、内存、供应链和机器人终端共同决定 AI 能走多远。",
+      "cards": [
+        {
+          "authorKey": "podcast:no-priors",
+          "authorName": "Rene Haas",
+          "authorTag": "Arm CEO · No Priors",
+          "sourceUrl": "https://www.youtube.com/@NoPriorsPodcast",
+          "en": { "rewrite": ["Arm CEO Rene Haas argues that AI hardware is not an accelerator-only story. CPUs remain the system's orchestrator: accelerators generate tokens, while CPUs decide where those tokens go. He also expects supply-chain constraints across wafers, memory, and data-center construction to remain for years, and sees robotics as a major ARM opportunity once costs and business models mature."], "original": ["There's no computing problem that's ever been invented that doesn't utilize and can't utilize the microprocessor.", "The token factory just generates all these tokens. It's like literally where are the trucks that are gonna take the tokens away and give them to the users? That's what CPUs do."] },
+          "cn": { "rewrite": ["Arm CEO Rene Haas 认为，AI 硬件绝不是只有 accelerator：CPU 仍然是系统的调度者，accelerator 负责生成 token，CPU 负责决定 token 去哪里。他还预计晶圆、内存和数据中心建设的供应链约束至少还会持续数年；等成本和商业模式成熟后，机器人会成为 ARM 的重要机会。"], "original": ["没有任何计算问题不需要、也不能使用 microprocessor。", "token 工厂只是生成 token，真正把 token 送给用户的‘卡车’就是 CPU。"] }
+        }
+      ]
+    }
+  ]
+}
