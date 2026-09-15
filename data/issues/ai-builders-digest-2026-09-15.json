@@ -1,0 +1,189 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-09-15",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的 feed 里，最值得注意的不是某个孤立的新功能，而是 agent 正在从工具变成工作环境：它需要新的 compute、新的安全边界，也需要新的验证机制。另一条暗线是工作流本身正在被重写，从 Claude Mods、桌面化的 coding agent，到能在后台持续工作的企业 agent，builder 们已经开始为一个“比我们想象中忙 100 倍”的软件世界搭底座。"
+  },
+  "archive": {
+    "title": "Agent 底座日报",
+    "desc": "Agent 正从单次对话工具走向持续运行的工作系统，compute、验证、安全和产品形态都在同步重构。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-09-15 source feeds.",
+  "sections": [
+    {
+      "title": "The Agent Workbench Is Changing / Agent 工作台正在换代",
+      "desc": "今天几条最具体的更新，都指向同一个变化：agent 不再只是终端里的一次性助手，而开始拥有自己的模块、桌面入口和持续运行的工作流。",
+      "cards": [
+        {
+          "authorKey": "x:bcherny",
+          "sourceUrl": "https://x.com/bcherny/status/2099551291601248485",
+          "en": {
+            "rewrite": [
+              "Claude Code engineer Boris Cherny says Claude Mods are now landing, and the community has already built a Tetris-in-Claude mod. The interesting signal is not the demo itself: a coding assistant is becoming a surface that other people can extend with small, focused experiences.",
+              "That makes the model less like a chatbot you visit and more like a programmable workbench. The quality of the ecosystem around the agent may soon matter as much as the model behind it."
+            ],
+            "original": ["Claude Mods are landing now. Someone already built a Tetris-in-Claude mod 🤯\n\nSee issue for the latest community update, technical details, and more cool demos\n\nhttps://t.co/A15qGUZ6nx https://t.co/EbE2s7FZqK"]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude Code 工程师 Boris Cherny 说，Claude Mods 已经开始上线，社区甚至已经做出了一个在 Claude 里玩的 Tetris。真正值得看的不只是这个 demo，而是 coding assistant 正在变成一个别人可以继续扩展的工作台。",
+              "这让 agent 更像可编程的工作环境，而不只是一个需要你主动打开的聊天机器人。接下来，围绕 agent 的生态质量，可能会和背后的模型本身一样重要。"
+            ],
+            "original": ["Claude Mods 现在开始上线了。已经有人在 Claude 里做了一个 Tetris mod 🤯\n\n去 issue 看最新的社区更新、技术细节和更多酷 demo\n\nhttps://t.co/A15qGUZ6nx https://t.co/EbE2s7FZqK"]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2099653035685445760",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch highlights a small but revealing detail in fx: it auto-upgrades, while ctrl+g restarts and resumes a chat. Version 0.0.10 is also much faster for longer sessions.",
+              "These are not flashy model capabilities. They are the reliability details that make an agent safe to leave running and easy to pick back up. Long-lived sessions need software ergonomics, not just better prompts."
+            ],
+            "original": ["One of the coolest things about 𝚏𝚡 is that it auto-upgrades, and 𝚌𝚝𝚛𝚕+𝚐 restarts + resumes the chat. \n\nAlso, that 0.0.10 is much, much faster for longer sessions 😊 https://t.co/vsf8v0KT3C https://t.co/mnEBbvz529"]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 提到 fx 里一个很小、但很关键的细节：它会自动升级，按 ctrl+g 可以重启并恢复聊天，而且 0.0.10 对长 session 快了很多。",
+              "这些不是醒目的模型能力，却是 agent 真正能长时间运行、随时接着干活所需要的可靠性细节。长 session 需要的是软件工程和交互设计，不只是更好的 prompt。"
+            ],
+            "original": ["fx 最酷的事情之一是它会自动升级，ctrl+g 可以重启并恢复聊天。\n\n另外，0.0.10 对长 session 快了非常多 😊 https://t.co/vsf8v0KT3C https://t.co/mnEBbvz529"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Proof Before Autonomy / 先验证，再放权",
+      "desc": "agent 做得越多，系统越不能只靠“相信它”；proof-checker、linters 和细粒度的数据权限会成为生产力的一部分。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2099540886409695346",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch puts the new bottleneck plainly: agents are only as good as the proof-checkers, compilers, type systems, and linters around them. His example, shadcn/lint, helps agents stay within the rules of a design system.",
+              "The broader point is that verifiers and skills are becoming the new frameworks. When the agent can generate more output than a human can inspect, the surrounding system has to make wrong output harder to produce."
+            ],
+            "original": ["Agents are only as good as the proof-checkers, compilers, type systems, and linters you give them.\n\n𝚜𝚑𝚊𝚍𝚌𝚗/𝚕𝚒𝚗𝚝 helps agents stay on track with the rules of your design system.\n\nMeta: verifiers + skills are the new 'frameworks'! https://t.co/eHygdAWFrg"]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch 把新的瓶颈说得很直白：agent 的能力上限，取决于你给它配了什么 proof-checker、compiler、type system 和 linter。他举的例子是 shadcn/lint，帮助 agent 遵守设计系统的规则。",
+              "更大的判断是：verifier 和 skill 正在变成新的 framework。当 agent 生成的内容多到人根本看不完时，系统必须让错误输出更难产生。"
+            ],
+            "original": ["Agent 的好坏只取决于你给它的 proof-checker、compiler、type system 和 linter。\n\nshadcn/lint 帮助 agent 遵守设计系统的规则。\n\nMeta：verifier + skill 就是新的 framework！https://t.co/eHygdAWFrg"]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2099550035239424465",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie argues that enterprise security is entering a new balancing act: agents may use company systems 100 times more than people did, but giving them unrestricted access makes data impossible to control. Lock everything down, and the productivity gains disappear.",
+              "Box's response is granular control based on document classification, plus detection and blocking for unusual agent access. The important shift is from a binary permission model to governance that understands what an agent is doing with information."
+            ],
+            "original": ["Protecting enterprise data in a world where agents are using our systems 100X more than people ever did is going to be one of the more complex security and governance challenges of the 21st century.\n\nImportantly, security and productivity gains are inexorably linked in the world of AI. If you give an agent too much unfettered information access, it will be difficult to truly control and protect your data; and conversely, if you lock everything down completely, you won’t get any real productivity gains from AI.\n\nWe need all new ways to protect our systems, environments, and structured and unstructured dada in the enterprise in an intelligent way by modernizing our approach to security and governance.\n\nAt Box, as one example, we’re building new intelligent ways to protect enterprise data and agentic use of that information. A recent update in Box Shield is to provide granular controls on what content agents can and can’t work with based on document classification level. We’re also working on other features that can automatically detect and alert (or block) when data is being accessed or used in unusual or anomalous ways by agents.\n\nAnd this is just the start. There’s a ton more innovation coming across the entire industry - from the labs like OpenAI or Anthropic; security platforms like Palo Alto Networks, Cisco, CrowdStrike, Okta; or startups like Enclave, Method, Alterion, Runlayer, and many many others - to rethink how we protect information in the world of AI agents. Exciting and wild times ahead."]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 认为，企业安全正在进入一个新的平衡期：agent 对公司系统的使用量可能是人的 100 倍，但如果给它无限权限，数据就很难真正控制；如果全部锁死，AI 的生产力收益又出不来。",
+              "Box 的做法是基于文档分类做细粒度控制，再识别并拦截异常的 agent 访问。重要变化在于，权限管理不再只是“允许/拒绝”，而要理解 agent 正在怎样使用信息。"
+            ],
+            "original": ["在 agent 对企业系统的使用量达到过去人类 100 倍的世界里，保护企业数据会成为 21 世纪最复杂的安全和治理挑战之一。\n\n在 AI 世界里，安全收益和生产力收益密不可分。给 agent 太多不受限制的信息访问权，很难真正控制和保护数据；反过来，如果把一切都锁死，也不会得到真正的 AI 生产力收益。\n\n我们需要用更智能的新方式保护企业里的系统、环境，以及结构化和非结构化数据，更新安全和治理方法。\n\n以 Box 为例，我们正在构建保护企业数据和 agent 使用这些信息的新方法。Box Shield 最近的一项更新，是根据文档分类等级，细粒度控制 agent 可以和不可以处理哪些内容。我们也在开发其他功能，在 agent 以异常方式访问或使用数据时自动检测、提醒或拦截。\n\n而这只是开始。整个行业还会出现更多创新，重新思考 AI agent 世界里的信息保护。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Compute for Agents / 给 Agent 重新造 Compute",
+      "desc": "当 agent 从一次调用变成后台工作者，基础设施的单位也会变化：不是给人提供一个页面，而是给一群持续工作的 agent 提供新的运行原语。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2099514906366328902",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch describes Vercel's new compute direction around agents: Fluid is expanding across Functions, Containers, Sandbox, and Builds, led by Steren, the creator of Google Cloud Run. His framing is that serverless was the last chapter of cloud, while agents need new compute primitives designed for them.",
+              "That is a useful distinction. Agents do not just need a place to serve a request; they need environments that can build, run, pause, resume, and isolate work as it unfolds."
+            ],
+            "original": ["Welcoming Steren, creator of Google Cloud Run, to Vercel.\n\nHe will lead the Fluid family of compute products (Functions, Containers, Sandbox, Builds).\n\nServerless was the last chapter of the cloud, and Steren helped define the paradigm at Google.\n\nAgents are the next frontier, and they require new compute primitives designed for them. Excited for Steren to lead this transition once again."]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch 介绍了 Vercel 面向 agent 的新 compute 方向：Fluid 家族覆盖 Functions、Containers、Sandbox 和 Builds，由 Google Cloud Run 的创建者 Steren 负责。他的判断是，serverless 是云计算的上一章，而 agent 需要专门为自己设计的新 compute 原语。",
+              "这个区分很有用。agent 不只是需要一个处理请求的地方，还需要能随着任务展开去 build、运行、暂停、恢复并隔离工作的环境。"
+            ],
+            "original": ["欢迎 Google Cloud Run 的创建者 Steren 加入 Vercel。\n\n他将负责 Fluid 计算产品家族（Functions、Containers、Sandbox、Builds）。\n\nServerless 是云计算的上一章，Steren 曾在 Google 帮助定义这一范式。\n\nAgent 是下一个前沿，它们需要专门为 agent 设计的新 compute 原语。很高兴由 Steren 再次领导这次转型。"]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2099739019517235618",
+          "en": {
+            "rewrite": [
+              "Aaron Levie says we should update our mental model of agentic workloads. Agent swarms, better computer use, new APIs and MCPs, vertical agents, and background workflows will push agents into far more professional and personal tasks than a single chat session suggests.",
+              "His most concrete forecast is about volume: agents may search, recruit, analyze conversations, review code, and test systems continuously in the background. We are probably only 1% into figuring out where these agents live, how they are managed, and how they are budgeted."
+            ],
+            "original": ["We probably need to all update our sense of what’s coming in terms of agentic workloads with the combination of agent swarms, better computer use, the next wave of APIs and MCPs coming online, and new form factors like Muse or Instinct, vertical enterprise agents, background workflow agents, and other products that are emerging right now. \n\nWe’re going to have agents go out and surgically recruit talent for you 24/7, look for every signal in your customer’s business for when to pitch them, process every single transcript and conversation for product insights, review every line of code written for security issues and bugs, brute force test your systems for issues, and 100s of other tasks.\n\nWe’re probably 1% of the way into the shape of what all these agents look like, where they get deployed from, how they get managed, how we budget for them, and so on. But it’s inevitably going to happen at a scale that wouldn’t have been fathomable before."]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie 认为，我们需要重新估计 agentic workload 的规模。Agent swarm、更好的 computer use、新一波 API 和 MCP、垂直企业 agent，以及后台 workflow agent，会把 agent 推进远超单次聊天能想象的专业和个人任务。",
+              "他给出的最具体判断是“量”：agent 会持续在后台招人、寻找客户信号、处理每段对话、审查每行代码、暴力测试系统。至于这些 agent 住在哪里、怎么管理、怎么预算，我们大概才走了 1%。"
+            ],
+            "original": ["结合 agent swarm、更好的 computer use、即将上线的下一波 API 和 MCP，以及 Muse 或 Instinct 这类新形态、垂直企业 agent、后台 workflow agent 等产品，我们可能都需要更新对 agentic workload 的理解。\n\n我们会让 agent 24/7 地精准招聘人才，寻找客户业务中的每个销售时机信号，处理每一份 transcript 和对话来提取产品洞察，检查写出的每一行代码里的安全问题和 bug，暴力测试系统，等等。\n\n我们大概只走到了理解这些 agent 形态、部署位置、管理方式、预算方式的 1%。但它最终一定会以过去难以想象的规模发生。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The New Personal Workflow / 个人工作流的下一步",
+      "desc": "不是所有重要变化都发生在基础设施层；有些变化首先表现为人开始用完全不同的方式工作。",
+      "cards": [
+        {
+          "authorKey": "x:joshwoodward",
+          "sourceUrl": "https://x.com/joshwoodward/status/2099558443078365287",
+          "en": {
+            "rewrite": [
+              "Google and Gemini executive Josh Woodward says a new cohort is getting early access to the next Daily Brief and Personal Intelligence features, after a power-user group tested more than 20 features over two months. The useful signal is the product loop: early access is being shaped by repeated feedback from people who use the system every day.",
+              "For personal AI, that kind of ongoing feedback may matter more than a one-off launch. The product has to learn which small interventions are actually worth adding to a person's daily context."
+            ],
+            "original": ["2 months ago, we launched a Gemini power user group to test early features in the app. 20+ features tested later, your feedback has been incredible. Thank you!\n\nA new cohort is now getting early access to what’s next for Daily Brief & Personal Intelligence, and we’ll keep onboarding people.\n\nJoin our community: https://t.co/uXdeIrtxhj"]
+          },
+          "cn": {
+            "rewrite": [
+              "Google 和 Gemini 高管 Josh Woodward 说，Gemini power user group 在两个月里测试了 20 多项 app 早期功能，现在新一批用户开始获得 Daily Brief 和 Personal Intelligence 的早期体验。这里值得注意的是产品循环：它不是一次发布，而是在持续使用和反馈中被塑造。",
+              "对个人 AI 来说，这种长期反馈可能比一次声势浩大的发布更重要。产品最终要学会的，是哪些小小的介入真的值得进入一个人的日常上下文。"
+            ],
+            "original": ["两个月前，我们推出了 Gemini power user group，在 app 中测试早期功能。后来测试了 20 多项功能，你们的反馈太棒了，谢谢！\n\n现在新一批用户可以提前体验 Daily Brief 和 Personal Intelligence 的下一步功能，我们会继续邀请更多人加入。\n\n加入我们的社区：https://t.co/uXdeIrtxhj"]
+          }
+        },
+        {
+          "authorKey": "x:mattturck",
+          "sourceUrl": "https://x.com/mattturck/status/2099589199104033031",
+          "en": {
+            "rewrite": [
+              "FirstMark partner Matt Turck offers a useful reality check: AI progress is not going to slow down because there are too many players, too many economic incentives, and too much strategic pressure around it.",
+              "It is a short post, but it explains the pace behind today's product churn. Even when a particular demo fades, the system pushing the industry forward has not gone away."
+            ],
+            "original": ["Ok, this was a fun weekend, but we all understand AI progress is not going to slow down, right? Too many players, too many economic incentives and too much prisoner's dilemma, both domestically and globally."]
+          },
+          "cn": {
+            "rewrite": [
+              "FirstMark 合伙人 Matt Turck 提醒大家做一个现实检查：AI 的进展不会因为某个周末的热闹过去就放慢，因为参与者太多、经济激励太强，而且国内和全球都有太多“囚徒困境”。",
+              "这是一条很短的 post，却解释了今天产品为什么不断涌现。某个 demo 的热度会消退，但推动整个行业加速的结构并没有消失。"
+            ],
+            "original": ["好吧，这个周末很有趣，但我们都明白 AI 的进展不会放慢，对吧？参与者太多、经济激励太多，而且无论国内还是全球，都有太多囚徒困境。"]
+          }
+        }
+      ]
+    }
+  ]
+}
