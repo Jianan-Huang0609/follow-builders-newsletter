@@ -1,0 +1,117 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-09-17",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天最明显的变化，不是某个模型又多会答题，而是 AI 正在把“工具选择”这一步也吃掉：Claude 把 chat、Cowork、Docs、Slides 和 Design 合到一个入口，agent 开始自己决定该回答、该执行，还是该产出文件。另一条线则更底层：可靠的 agent 需要更合适的工具接口、更小的运行时、更严格的安全设计，以及真正属于自己的上下文。"
+  },
+  "archive": {
+    "title": "入口合并日报",
+    "desc": "AI 产品正在从一组分散工具变成能理解任务、选择路径并交付文件的统一工作入口。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-09-17 source feeds.",
+  "sections": [
+    {
+      "title": "One Claude, Many Outputs / 一个 Claude，多种产出",
+      "desc": "产品边界正在从“你该打开哪个 App”转向“你想完成什么任务”。这会把路由复杂度从用户手里移到 agent 身上。",
+      "cards": [
+        {
+          "authorKey": "x:bcherny",
+          "sourceUrl": "https://x.com/bcherny/status/2100259951398789487",
+          "en": {
+            "rewrite": ["Claude Code proved that AI could take a feature brief and return shipped code. Boris Cherny says Cowork extended that idea to knowledge work, and the next step is merging both into one Claude that carries context across the things you are working on.", "The important product decision is not the merger itself, but removing the routing burden from the user. One prompt can now lead to a quick answer, deeper agentic work, or a finished file, while the user can still stop or redirect the process."],
+            "original": ["Claude Code showed that AI could do real work, not just answer questions. Developers hand Claude a feature, come back to shipped code. That's where much of the industry's serious engineering runs now.\n\nCowork proved knowledge workers could do the same: hand Claude the brief, come back to finished files.\n\nToday, chat and Cowork start merging into one Claude. The direction: one Claude that carries context across everything you're working on, wherever you are. Simple enough for everyone to access Claude's full capabilities."]
+          },
+          "cn": {
+            "rewrite": ["Claude Code 证明了 AI 不只是会回答问题，也能接过一个功能 brief，最后交付可用的代码。Boris Cherny 说，Cowork 把同样的模式带到了知识工作，而下一步是把两者合并成一个能跨任务保留上下文的 Claude。", "真正重要的不是产品合并本身，而是把“我该用哪个入口”这个负担从用户手里拿走。用户只需描述目标，Claude 再判断该快速回答、深度执行，还是直接交付文件，同时用户仍能随时停止或改道。"],
+            "original": ["Claude Code 证明了 AI 可以做真实工作，而不只是回答问题。开发者把一个功能交给 Claude，回来时代码已经交付。\n\nCowork 证明知识工作者也可以这样做：把 brief 交给 Claude，回来时文件已经完成。\n\n今天，chat 和 Cowork 开始合并成一个 Claude。方向是：无论你在哪里工作，都由一个 Claude 跨越你正在处理的一切并携带上下文。"]
+          }
+        },
+        {
+          "authorKey": "x:_catwu",
+          "sourceUrl": "https://x.com/_catwu/status/2100260655312089562",
+          "en": {
+            "rewrite": ["Cat Wu describes the same shift from the product side: Claude can make a Slide, Design, or Doc directly in chat, and the model decides whether a request needs a quick answer or deeper agentic work. The user does not have to pick the Claude product first.", "That is a quiet but consequential UX change. Capability is becoming a routing problem that the system handles for you, while control remains available when the automatic choice is wrong."],
+            "original": ["Today, we are merging Claude Cowork and chat to simplify how you use Claude!\n\nWe are also integrating Claude Design so that you can ask Claude to make a Slide, Design, or Doc without needing to switch tabs or apps.\n\nMany of you shared that you didn't want to choose which Claude product to use for any task. As Claude models have become more capable, we've found that Claude can handle the routing for you."]
+          },
+          "cn": {
+            "rewrite": ["Cat Wu 从产品侧描述了同一个变化：你可以直接在 chat 里让 Claude 做 Slide、Design 或 Doc，模型会判断任务只需要快速回答，还是需要更深的 agentic work。用户不必先决定该打开哪一个 Claude 产品。", "这是一个看似安静、实际影响很大的 UX 改变：能力正在变成由系统代替用户处理的路由问题，而当自动选择不对时，用户仍然可以接管。"],
+            "original": ["今天，我们正在合并 Claude Cowork 和 chat，让 Claude 更容易使用！我们也在整合 Claude Design，这样你可以直接让 Claude 制作 Slide、Design 或 Doc，而不需要切换标签页或 App。很多人说不想为每个任务选择该用哪个 Claude 产品。随着 Claude 模型能力增强，我们发现可以由 Claude 来处理路由。"]
+          }
+        },
+        {
+          "authorKey": "x:claudeai",
+          "sourceUrl": "https://x.com/claudeai/status/2100258492590207079",
+          "en": {
+            "rewrite": ["Claude's own example makes the new workflow concrete: draft a one-pager in Docs, turn it into a deck with Slides, then make a matching visual in Design, all from one conversation. The output is not trapped in the assistant either: users can edit, present, export, or share it."],
+            "original": ["You can also now make decks, docs, and designs in your conversation.\n\nDraft the one-pager in Claude Docs, turn it into a deck with Claude Slides, and mock up a matching visual in Claude Design, all from one place."]
+          },
+          "cn": {
+            "rewrite": ["Claude 给出的例子很具体：在 Docs 里写一页 brief，用 Slides 把它变成 deck，再在 Design 里做一套匹配的视觉稿，全程都在同一段对话里完成。产物也不会困在 assistant 里，用户可以继续编辑、演示、导出或分享。"],
+            "original": ["现在你也可以直接在对话里制作 deck、doc 和 design。在 Claude Docs 里起草一页 brief，用 Claude Slides 把它变成 deck，再用 Claude Design 做一套匹配的视觉稿，全都在一个地方完成。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Tools That Fit the Agent / 给 agent 合适的工具",
+      "desc": "agent 的可靠性不只取决于模型聪不聪明，也取决于你给它的工具是否贴近真实任务。",
+      "cards": [
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2100315537251463523",
+          "en": {"rewrite": ["Thariq argues that tool design is moving past the old habit of exposing everything as bash. If an agent needs to store data, an API shaped like a database may be more reliable than asking it to manipulate a filesystem; sandboxes and bash still make sense when the task is code generation and execution.", "The useful distinction is not 'bash versus no bash'. It is matching the interface to the job instead of forcing the model through an indirect layer."], "original": ["I think increasingly you can just give Claude tools shaped in the way you want vs tricking it with a layer of indirection\n\ne.g. for data storage do you really want a file system or do you want an API to a database\n\nthis is again, an update to me from last year"]},
+          "cn": {"rewrite": ["Thariq 认为，工具设计正在走出“什么都暴露成 bash”的旧习惯。如果 agent 要存数据，给它一个像 database 一样的 API，可能比让它操作 filesystem 更可靠；但涉及代码生成和执行时，sandbox 加 bash 依然很合适。", "关键不是简单站队“要不要 bash”，而是让接口匹配任务本身，不要逼模型绕一层间接层。"], "original": ["我觉得越来越多时候，你可以直接给 Claude 提供形状符合你需求的工具，而不是用一层间接层去欺骗它。比如做数据存储时，你真的想要 filesystem，还是想要一个 database API？这也是我相比去年更新后的看法。"]}
+        },
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2100315538472009897",
+          "en": {"rewrite": ["Thariq says Managed Agents strikes a practical balance: the sandbox is optional and can be created independently from the rest of the agent loop. He ported an older bash-tool-calling project to it and found the transition worked well, suggesting agent infrastructure is becoming modular rather than one giant runtime."], "original": ["I think Claude Managed Agents strikes the right balance here, the sandbox is optional and can be spun up independently of the rest of the agent loop.\n\nI recently ported an old project that was focused on bash tool calling to CMA and it worked well!"]},
+          "cn": {"rewrite": ["Thariq 认为 Managed Agents 找到了一个实用的平衡点：sandbox 是可选的，也可以独立于 agent loop 创建。他最近把一个原本围绕 bash tool calling 的旧项目迁移过去，效果不错。这说明 agent 基础设施正在变得模块化，而不是一整个不可拆的 runtime。"], "original": ["我觉得 Claude Managed Agents 在这里找到了合适的平衡：sandbox 是可选的，可以独立于 agent loop 启动。我最近把一个原本专注于 bash tool calling 的旧项目迁移到 CMA，效果很好！"]}
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2100307962262872105",
+          "en": {"rewrite": ["Guillermo Rauch says Vercel's command-line workflow is using an automatic safety reviewer on every command. The reviewer currently runs on GPT Luna, while Jev is reported to be up to 18x faster at p95 and more accurate, with a likely path into Vercel AI Gateway as the new default.", "The pattern matters more than the product names: fast models can sit in front of powerful actions as a continuous safety and routing layer."], "original": ["We're seeing extraordinary results from @typesafeai. Default mode in 𝚏𝚡 is auto, with a safety reviewer analyzing every command.\n\nThat reviewer runs on GPT Luna today. Jev is up to 18x faster (p95) *and* more accurate. It's coming to @vercel AI Gateway and likely new default."]},
+          "cn": {"rewrite": ["Guillermo Rauch 说，Vercel 的命令行工作流已经在每条命令前加入自动 safety reviewer。目前 reviewer 跑在 GPT Luna 上，而 Jev 据称在 p95 延迟上最高快 18 倍，同时更准确，未来很可能进入 Vercel AI Gateway 并成为默认方案。", "比产品名更值得注意的是这个模式：快速模型可以放在强大操作之前，持续充当安全检查和路由层。"], "original": ["我们从 @typesafeai 看到了惊人的结果。𝚏𝚡 的默认模式是 auto，由 safety reviewer 分析每一条命令。这个 reviewer 目前运行在 GPT Luna 上。Jev 的 p95 速度最高快 18 倍，而且更准确。它将进入 @vercel AI Gateway，并且很可能成为新的默认方案。"]}
+        }
+      ]
+    },
+    {
+      "title": "Context, Safety & Ownership / 上下文、安全与归属",
+      "desc": "当 agent 开始进入真实工作流，谁能读取什么、如何限制风险、上下文归谁所有，都会变成产品核心。",
+      "cards": [
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2100212813625196917",
+          "en": {"rewrite": ["Nikunj Kothari has been building a household agent for months, and the interesting part is its granularity: a shared bot for two people that can read only selected emails, turn inline attachments into structured data, and work through logged-in browser sessions. He says this level of control is hard to reproduce with a generic bot.", "The lesson is that personal agents become useful through boundaries and accumulated context, not just a bigger model."], "original": ["Been tinkering with a “Home” @NousResearch agent for a few months and it’s finally gotten really good..\n\nIt’s also our first “group” bot where my wife and I interact with it on a daily basis - which has been fun learning especially when it fails 😅.\n\nI have tried to recreate with Grok Bot and similar and you can’t get this level of granularity and control (eg only read certain emails, convert in line attachments to structured data or logged in browser sessions)"]},
+          "cn": {"rewrite": ["Nikunj Kothari 花了几个月做一个家庭 agent，真正有意思的是它的颗粒度：这是一个两个人共同使用的 bot，但可以只读取指定邮件、把邮件内附件转成结构化数据，还能在登录状态的浏览器 session 里工作。他说，通用 bot 很难复现这种控制力。", "这里的启发是：personal agent 的价值来自边界和长期积累的上下文，不只是更大的模型。"], "original": ["我花了几个月折腾 @NousResearch 的“Home” agent，它终于变得很好用了。它也是我们第一个“群组” bot，我和妻子每天都会和它互动，尤其是它失败的时候，学习过程很有意思。😅 我试过用 Grok Bot 之类的重做，但做不到这么细的颗粒度和控制力，比如只读取某些邮件、把行内附件转成结构化数据，或使用登录状态的浏览器 session。"]}
+        },
+        {
+          "authorKey": "x:realmadhuguru",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2100312717739667963",
+          "en": {"rewrite": ["Madhu Guru makes a compact product principle explicit: safety and security should be features of an AI product and model, not guardrails imposed from outside. That framing puts reliability into the product design itself rather than treating it as a compliance layer added after capability."], "original": ["Safety and security are * features * of your AI product and model - not guardrails that need to be imposed on you from the outside."]},
+          "cn": {"rewrite": ["Madhu Guru 把一条产品原则说得很简洁：safety 和 security 应该是 AI 产品与模型本身的 feature，而不是从外部强行套上的 guardrail。这个视角意味着，可靠性要从产品设计里长出来，而不是等能力做完后再补一层合规。"], "original": ["Safety 和 security 是你的 AI 产品与模型的 feature，而不是需要从外部强加给你的 guardrail。"]}
+        }
+      ]
+    },
+    {
+      "title": "The New Interface Is Taste / 新接口仍然需要判断力",
+      "desc": "入口越统一，输出越自动，人的判断力就越重要：决定做什么、接受什么，以及什么时候不该让 agent 替你决定。",
+      "cards": [
+        {
+          "authorKey": "x:zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2100278750776824115",
+          "en": {"rewrite": ["Zara Zhang's criticism is a useful counterweight to the product excitement: she finds herself using Claude less because its voice feels like it is constantly performing intelligence instead of communicating a point. As AI becomes a default interface, tone is no longer decoration; it directly affects whether people want to keep using the system."], "original": ["I find myself using Claude less these days because the way it speaks has just become insufferable \n\nLike it’s constantly trying to showcase how smart/sophisticated it is, rather than actually communicating a point across"]},
+          "cn": {"rewrite": ["Zara Zhang 的批评给今天的产品兴奋感加了一块重要的反例：她最近反而更少用 Claude，因为它的说话方式像是在不断展示自己聪明、复杂，而不是把事情讲明白。AI 越来越像默认入口，语气就越不是装饰，它会直接决定用户愿不愿意继续用。"], "original": ["我发现自己最近越来越少用 Claude 了，因为它说话的方式已经让人受不了。它总是在展示自己多聪明、多复杂，而不是把一个观点真正讲清楚。"]}
+        }
+      ]
+    }
+  ]
+}
