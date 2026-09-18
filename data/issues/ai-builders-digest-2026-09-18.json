@@ -1,0 +1,138 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-09-18",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线不是又一个模型发布，而是 agent 开始接管长期工作：Claude Projects 把一堆 session 变成有共享记忆的项目，Vercel 把部署压到 1 秒，Nikunj 则展示了一个每天自己更新内容、检查 SEO、寻找外链的站点。另一边，Aaron Levie 预判未来绝大多数 inference 都会由后台 agent 消耗，Google Labs 甚至把这种协调能力带进了家庭日程。工具正在从一次性对话，变成持续运行的工作系统。"
+  },
+  "archive": {
+    "title": "长期 Agent 日报",
+    "desc": "AI agent 正从聊天工具变成有记忆、会调度、能持续执行的工作系统。"
+  },
+  "viewLabels": { "rewrite": "速读", "original": "原文" },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-09-18 source feeds.",
+  "sections": [
+    {
+      "title": "Projects, Not Sessions / 从会话到项目",
+      "desc": "Claude 的新 Projects 体验，把上下文、线程和子 agent 收进一个长期工作的容器里。",
+      "cards": [
+        {
+          "authorKey": "x:bcherny",
+          "sourceUrl": "https://x.com/bcherny/status/2100669598995816511",
+          "en": {
+            "rewrite": ["Boris Cherny, who works on Claude Code at Anthropic, says Projects changed how he codes: he no longer manages sessions manually, but sends thoughts as they arrive and lets Claude split them into threads. The project remembers how he works, turning a pile of conversations into a persistent coding workspace."],
+            "original": ["Projects have changed not only how I interact with Claude but how I code. I stopped managing sessions. I just send thoughts as they come, Claude splits them into threads, and the project remembers how I work."]
+          },
+          "cn": {
+            "rewrite": ["Anthropic Claude Code 团队的 Boris Cherny 说，Projects 改变的不只是他和 Claude 的互动方式，也改变了他写代码的方式：不再手动管理一堆 session，而是想到什么就发什么，让 Claude 自动拆成 threads。项目会记住他的工作方式，聊天记录因此变成了一个持续存在的 coding workspace。"],
+            "original": ["Projects 改变的不只是我和 Claude 的互动方式，也改变了我写代码的方式。我不再管理 session，只是想到什么就发什么，Claude 会把它拆成 threads，而项目会记住我的工作方式。"]
+          }
+        },
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2100638355872706571",
+          "en": {
+            "rewrite": ["Thariq explains the architecture behind Claude Code Projects: one agent manages memory for each project and spins off subagents for tasks. It can also be asked to act proactively or on a schedule. The important shift is from opening more sessions to giving one project an ongoing operating role."],
+            "original": ["Projects brings the architecture of Claude Tag to Claude Code. It has one agent per project that manages memory and spins off subagents for tasks. You can ask it to be proactive, to do things on a schedule."]
+          },
+          "cn": {
+            "rewrite": ["Thariq 解释了 Claude Code Projects 背后的架构：每个项目有一个负责管理记忆的 agent，再为具体任务派生 subagent；你还可以要求它主动行动，或按计划执行。关键变化是，不再不断打开新的 session，而是让一个项目承担持续运行的角色。"],
+            "original": ["Projects 把 Claude Tag 的架构带到了 Claude Code：每个项目有一个管理记忆的 agent，并为任务派生 subagent。你可以让它主动行动，也可以让它按计划做事。"]
+          }
+        },
+        {
+          "authorKey": "x:_catwu",
+          "sourceUrl": "https://x.com/_catwu/status/2100641163120423057",
+          "en": {
+            "rewrite": ["Cat Wu describes the practical payoff: she can fire off a batch of tasks, move on, and later ask Claude for an aggregated status update. The project keeps context across the work and maintains long-lived memory that evolves with use."],
+            "original": ["I fire off a batch of tasks and move on. Claude has context on everything I'm working on and can give me an aggregated status update whenever I ask. It also has long-lived memory that evolves as I use it."]
+          },
+          "cn": {
+            "rewrite": ["Cat Wu 说，实际收益是：她可以一次性丢出一批任务，然后去做别的事，之后再让 Claude 汇总进度。项目会保留所有工作的上下文，并在使用过程中不断演化出长期记忆。"],
+            "original": ["我可以一次丢出一批任务然后继续做别的事。Claude 了解我正在做的所有事情，需要时可以给我汇总状态，也有会随着使用演化的长期记忆。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Agent Infrastructure / Agent 基础设施",
+      "desc": "当 agent 变成持续运行的执行层，review、部署和推理基础设施都在被重新设计。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2100698591417499972",
+          "en": {
+            "rewrite": ["Vercel CEO Guillermo Rauch sees software production exploding: tiny personal artifacts, reports and calculators will sit alongside sophisticated apps, agents and platforms. Vercel says it has reduced deployment, upload, domain assignment and global propagation to one second, while keeping CDN, firewall, observability and rollbacks in the path."],
+            "original": ["It's likely that more software will be produced next year than in all of the history of computing. Some of this will be tiny, personal and even disposable software. We've brought down the time to deploy, upload, assign a domain and globally propagate an artifact to 1 second."]
+          },
+          "cn": {
+            "rewrite": ["Vercel CEO Guillermo Rauch 认为，明年产生的软件可能比计算机史上此前的总量还多：个人小工具、报告、计算器会和复杂的 app、agent、平台并存。Vercel 称，部署、上传、分配域名并完成全球传播已经被压到 1 秒，同时仍保留 CDN、防火墙、可观测性和回滚能力。"],
+            "original": ["明年产生的软件可能比整个计算机史上的总量还多。其中一些会是微小的、个人的、甚至一次性的软件。我们已把部署、上传、分配域名和全球传播 artifact 的时间降到了 1 秒。"]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2100799668573946191",
+          "en": {
+            "rewrite": ["Box CEO Aaron Levie predicts that agents already make up most inference and will move toward nearly all inference over the next year or two. He expects them to run continuously in the background: reading code changes, processing workflow data, researching candidates and prospects, reviewing logs, and handling personal tasks."],
+            "original": ["Agents already make up the majority of inference. This will quickly trend toward nearly all inference over the next year or two. The vast majority of tokens used in the world will be agents that are executing unbelievable amounts of tasks for us in the background 24/7."]
+          },
+          "cn": {
+            "rewrite": ["Box CEO Aaron Levie 预测，agent 已经占据 inference 的大多数，未来一两年会快速接近全部 inference。他想象的不是偶尔调用的助手，而是 24/7 在后台运行：读取代码变更、处理工作流数据、做招聘和获客研究、检查日志，并替我们处理个人事务。"],
+            "original": ["Agent 已经占 inference 的大多数，未来一两年会快速接近全部 inference。世界上绝大多数 token 都会被后台 24/7 替我们执行大量任务的 agent 消耗。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Always-On Builders / 自动运转的 Builder",
+      "desc": "最有意思的产品形态，正在从一次性交付变成每天自己维护、自己增长的系统。",
+      "cards": [
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2100714665571737885",
+          "en": {
+            "rewrite": ["Nikunj Kothari built nosugarforkids, a catalog of healthier snacks with chat-based recommendations and a nutrition tier list. The autonomous Claude agent wakes up daily to check new products, prune dead ones, find content ideas, monitor SEO and Search Console, write and edit useful pieces, and now even reach out to publications for backlinks. He says the site reached about 6,000 impressions and 60 clicks a day with no backlinks or social presence."],
+            "original": ["On the autonomous side, I have a Claude agent that wakes up once a day to check catalog for new additions, prunes any products that may be dead, finds new content ideas, checks dataforSEO and Google Search Console for performance, writes and edits new pieces, and tries to not introduce slop. Even with ZERO backlinks today and no social presence whatsoever, site has organically grown to ~6k impressions a day and 60 clicks."]
+          },
+          "cn": {
+            "rewrite": ["Nikunj Kothari 做了 nosugarforkids：一个健康零食目录，支持聊天推荐，还有按营养和实际适合程度划分的 tier list。它背后的 Claude agent 每天自动醒来，检查新品、清理失效产品、寻找内容选题、查看 SEO 和 Search Console 数据、写和改文章，现在还会主动联系媒体争取外链。即使没有任何外链和社交账号，网站也自然增长到每天约 6000 次曝光和 60 次点击。"],
+            "original": ["我有一个 Claude agent 每天醒来一次：检查目录新品、清理可能失效的产品、寻找内容想法、检查 dataforSEO 和 Google Search Console 表现、写和编辑内容，并努力不引入 slop。即使现在零外链、完全没有社交存在，网站也自然增长到每天约 6000 次曝光和 60 次点击。"]
+          }
+        },
+        {
+          "authorKey": "x:GoogleLabs",
+          "sourceUrl": "https://x.com/GoogleLabs/status/2100653821907366366",
+          "en": {
+            "rewrite": ["Google Labs announced CC, an AI agent designed for families. Up to five members can share a daily brief, synced calendars and to-dos, Google Chat coordination, delegated paperwork, and memories that distinguish household-wide details from one person's preferences or constraints."],
+            "original": ["Today, we're announcing the new CC – an AI agent built for families to spend less time on logistics and more time together. You can now add up to 5 members, autosync schedules & to-dos, coordinate in Google Chat, delegate paperwork, and keep tabs on details that apply to everyone versus one person."]
+          },
+          "cn": {
+            "rewrite": ["Google Labs 发布了 CC，一个为家庭设计的 AI agent。最多 5 位成员可以共享每日简报、同步日历和待办，在 Google Chat 里协调任务、委托处理表格，并让 agent 区分全家通用的信息与某个成员自己的偏好或限制。"],
+            "original": ["今天我们发布新的 CC，这是一个为家庭打造的 AI agent，让大家少花时间处理琐事，多花时间在一起。现在可以添加最多 5 位成员、自动同步日程和待办、在 Google Chat 里协调、委托处理文件，并区分适用于所有人的细节和只适用于一个人的细节。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Memory Beyond More Tokens / 记忆不只是加 Token",
+      "desc": "当长期上下文变成 agent 的核心能力，记忆的存储方式也开始从堆 token 转向更专门的结构。",
+      "cards": [
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2100668489178456268",
+          "en": {
+            "rewrite": ["Y Combinator President and CEO Garry Tan highlights Memorable's approach to memory: using embeddings instead of simply adding more tokens. His short observation points to a different scaling path for agent memory, where retrieval and representation matter as much as context-window size."],
+            "original": ["Memorable found a way to optimize memory with embeddings instead of more tokens which is a powerful new way to do memory."]
+          },
+          "cn": {
+            "rewrite": ["Y Combinator 总裁兼 CEO Garry Tan 提到 Memorable 的一种 memory 方案：用 embeddings 优化记忆，而不是简单增加更多 token。这句话指向了 agent memory 的另一条扩展路径：除了 context window 的大小，检索和表示方式同样重要。"],
+            "original": ["Memorable 找到了一种用 embeddings 而不是更多 token 来优化 memory 的方法，这是实现 memory 的一种强大新方式。"]
+          }
+        }
+      ]
+    }
+  ]
+}
