@@ -1,0 +1,104 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-09-19",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线是：AI 正在从“能不能做”转向“能不能快、便宜、稳定地做”。Inception 押注 diffusion LLM 的并行推理，Vercel 看到 open models 吃下了大部分 token volume；Jev 则把 agent 的低成本判断带进企业工作流。另一边，Claude Code 开始支持 AGENTS.md，OpenClaw builder 们把 session、会议上下文和 CUA 继续往真实工作里推进。"
+  },
+  "archive": {
+    "title": "推理效率日报",
+    "desc": "从 diffusion LLM、open models 到 agent 工作流，今天的 builder 都在回答同一个问题：如何让 AI 更快、更便宜地进入真实世界。"
+  },
+  "viewLabels": { "rewrite": "速读", "original": "原文" },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-09-19 source feeds.",
+  "sections": [
+    {
+      "title": "Inference Is the New Battleground / 推理成为新战场",
+      "desc": "模型架构的竞争，正在从训练规模延伸到每一次真实调用的速度和成本。",
+      "cards": [
+        {
+          "authorKey": "podcast:no-priors",
+          "authorName": "Stefano Ermon, Inception Co-Founder and CEO",
+          "authorTag": "No Priors Podcast",
+          "sourceUrl": "https://www.youtube.com/@NoPriorsPodcast",
+          "en": {
+            "rewrite": ["Stefano Ermon, the Stanford professor who helped pioneer diffusion models, is betting that diffusion will eventually win AI inference. His argument is practical: autoregressive models still generate one token at a time, while diffusion can process many tokens in parallel, mapping much better to GPUs and to the economics of inference-time scaling.", "Inception says its diffusion-based Mercury models are already comparable in quality to speed-optimized frontier models while being significantly faster. The company is building its own serving engine because the standard LLM stack was designed around autoregressive generation. The bet is not that diffusion is already proven for every task, but that the more parallel solution may win as intelligence per watt and per dollar become decisive."],
+            "original": ["The bitter lesson is that the more parallel solution is the one that is eventually going to win.", "Inference is a key bottleneck for RL post-training, because you have to generate rollouts, score trajectories, and improve the model."]
+          },
+          "cn": {
+            "rewrite": ["曾参与 diffusion 模型早期研究的 Stanford 教授、Inception 联合创始人兼 CEO Stefano Ermon，正在押注 diffusion 最终会赢下 AI inference。理由很实际：autoregressive 模型仍然一次生成一个 token，而 diffusion 可以并行处理多个 token，更适合 GPU，也更适合推理时扩展的经济学。", "Inception 表示，其 diffusion-based Mercury 模型质量已能和面向速度优化的 frontier model 相比，同时明显更快。公司甚至需要自建 serving engine，因为标准 LLM 技术栈原本就是围绕 autoregressive generation 设计的。这不是说 diffusion 已经在所有任务上获胜，而是当每瓦、每美元能产出多少 intelligence 变得关键时，并行方案可能更占优。"],
+            "original": ["最终会赢的是更并行的方案。", "Inference 是 RL post-training 的关键瓶颈，因为要生成 rollout、给 trajectory 打分，再改进模型。"]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2101186741042663579",
+          "en": { "rewrite": ["Vercel CEO Guillermo Rauch reports that open models reached 78.4% of token volume on Vercel AI Gateway, versus 21.6% for closed models. Spend tells a different story, but the usage signal is clear: open weights are increasingly becoming the default layer for inference, even if the economics are still uneven."], "original": ["Open 78.4% / Closed 21.6%. Note: that's spend for inference across providers, not revenue going directly to the open weight labs."] },
+          "cn": { "rewrite": ["Vercel CEO Guillermo Rauch 观察到，Vercel AI Gateway 上 open models 已占 token volume 的 78.4%，closed models 为 21.6%。支出占比仍是另一回事，但使用侧的信号很清楚：open weights 正越来越像 inference 的默认底座，哪怕收益分配还不均衡。"], "original": ["Open 78.4% / Closed 21.6%。注意：这里是跨 provider 的 inference 支出，不是直接流向 open-weight 实验室的收入。"] }
+        }
+      ]
+    },
+    {
+      "title": "Agents Enter the Workflow / Agent 进入工作流",
+      "desc": "真正有价值的 agent，不只是聊天，而是替人做判断、分类和下一步动作。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2101007708044574906",
+          "en": { "rewrite": ["Box CEO Aaron Levie shows a concrete enterprise use case for Jev: an agent reads an incident report, decides whether it is customer-facing and how severe it is, routes it to escalate, monitor, or review, and applies the right metadata. The whole workflow happens nearly instantly and at almost no cost, pointing to a new class of small but frequent judgment calls for agents."], "original": ["Jev will be super helpful for agents to make split second decisions in workflows, data classification, judgment calls, and hundreds of other use-cases in the enterprise."] },
+          "cn": { "rewrite": ["Box CEO Aaron Levie 展示了 Jev 在企业里的一个具体用法：agent 读取 incident report，判断是否面向客户、严重程度如何，再把文件分到 escalate、monitor 或 review，并写入对应 metadata。整个流程几乎瞬间完成，成本也接近于零，说明 agent 的价值可能首先来自大量细小但高频的判断。"], "original": ["Jev 很适合让 agent 在企业工作流里做瞬时决策、数据分类和判断。"] }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2101006585481073093",
+          "en": { "rewrite": ["Nikunj Kothari shares a vivid Jev benchmark: scoring 3,000 children's snacks across multiple criteria in 28 seconds for $0.11. The interesting part is not the demo itself; it is the emerging price point for high-volume, structured judgment that used to be too expensive to automate."], "original": ["Jev scoring 3000 kid snacks with multiple criteria in 28 seconds for $0.11."] },
+          "cn": { "rewrite": ["Nikunj Kothari 分享了一个很直观的 Jev benchmark：用多个标准给 3000 款儿童零食打分，只要 28 秒、0.11 美元。重点不只是 demo，而是这种高频、结构化判断正在出现一个过去难以自动化的成本区间。"], "original": ["Jev 用多个标准给 3000 款儿童零食打分，28 秒，0.11 美元。"] }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2101033599319613533",
+          "en": { "rewrite": ["Peter Yang calls Meta's Muse the best personal agent he has tried so far, citing more than $800 a year saved on cable and phone bills. His examples include a personalized morning news feed, habit tracking, and calling customer support to negotiate bills, a useful reminder that consumer agents become tangible when they can complete an annoying task end to end."], "original": ["Meta's Muse is the best personal agent I've tried to date. It actually saved me $800+ a year on my cable and phone bills."] },
+          "cn": { "rewrite": ["Peter Yang 认为 Meta 的 Muse 是他目前试过最好的 personal agent，光是帮他处理有线电视和手机账单，就一年省下了 800 多美元。他还用它做个性化晨间新闻、习惯追踪和打电话协商账单。消费级 agent 什么时候变得有感？通常就是它能把一件烦人的事从头到尾办完。"], "original": ["Meta 的 Muse 是我目前试过最好的 personal agent，帮我一年省了 800 多美元的有线电视和手机账单。"] }
+        }
+      ]
+    },
+    {
+      "title": "The Harness Becomes the Product / Harness 正在成为产品",
+      "desc": "Agent 的能力不只来自模型本身，也来自它如何读取项目、管理上下文和接入真实环境。",
+      "cards": [
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2101009392611278961",
+          "en": { "rewrite": ["Claude Code is adding AGENTS.md support in version 2.1.277. If a folder has no CLAUDE.md, Claude Code will check for AGENTS.md instead, and the behavior can be toggled in /config. Thariq says the support is built on Claude Code mods, with custom versions of the harness coming next."], "original": ["Starting today in version 2.1.277, if there is no CLAUDE.md in a folder, Claude will check for and use AGENTS.md. You can toggle this behavior in /config."] },
+          "cn": { "rewrite": ["Claude Code 2.1.277 开始支持 AGENTS.md：如果文件夹里没有 CLAUDE.md，Claude Code 会改为查找 AGENTS.md，也可以在 /config 里切换。Thariq 表示，这项能力建立在 Claude Code mods 之上，之后用户也能自己构建定制版 harness。"], "original": ["从 2.1.277 开始，如果文件夹里没有 CLAUDE.md，Claude 会查找并使用 AGENTS.md，可在 /config 切换。"] }
+        },
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2101141707375227372",
+          "en": { "rewrite": ["Peter Steinberger describes roboclaw running a team server, living in Discord, talking to gpt-live, and tracking all the sessions it is juggling. The useful leap is contextual: during meetings, the team can ask about current and past sessions without manually reconstructing what happened."], "original": ["roboclaw runs our team server, is live on Discord, talks with gpt-live and knows about all the sessions it's juggling."] },
+          "cn": { "rewrite": ["Peter Steinberger 描述了 roboclaw 如何运行团队服务器、接入 Discord、和 gpt-live 对话，并掌握它正在处理的所有 session。真正有用的跃迁在上下文：开会时，团队可以直接问当前和过去的 session 发生了什么，不必手工拼回历史。"], "original": ["roboclaw 运行我们的团队服务器，在线 Discord，和 gpt-live 对话，并知道自己正在处理的所有 session。"] }
+        }
+      ]
+    },
+    {
+      "title": "Build for the New Economics / 为新经济学造产品",
+      "desc": "AI 产品的竞争，不只是把模型接进来，而是找到速度、成本和分发的新组合。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2101079472732848510",
+          "en": { "rewrite": ["Guillermo Rauch says Jev's adoption reflects a broader mood: AI still feels too expensive and too slow, so people are eager to optimize and put it in more places. The lesson is less about one product than about demand: every reduction in latency or cost expands the set of workflows people are willing to automate."], "original": ["People are eager to optimize and put AI in even more places because AI is too expensive/slow."] },
+          "cn": { "rewrite": ["Guillermo Rauch 认为 Jev 的快速采用，背后是一个更大的情绪：AI 仍然太贵、太慢，所以大家急着优化，并把 AI 放到更多地方。启发不只属于某个产品：每一次延迟或成本下降，都会扩大人们愿意自动化的工作范围。"], "original": ["因为 AI 太贵、太慢，人们迫切想优化，并把 AI 放进更多地方。"] }
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2101123389528457596",
+          "en": { "rewrite": ["Zara Zhang puts the content problem in one line: it is hard not to create slop when most of what you consume is slop. Her prescription is equally direct: fix the input before trying to fix the output."], "original": ["It's hard not to create slop when most things you consume are slop. To fix output, first fix input."] },
+          "cn": { "rewrite": ["Zara Zhang 用一句话概括了内容问题：当你消费的大多数东西都是 slop，就很难不产出 slop。她给出的解法也很直接：想修正 output，先修正 input。"], "original": ["当你消费的大多数东西都是 slop，就很难不产出 slop。想修正 output，先修正 input。"] }
+        }
+      ]
+    }
+  ]
+}
