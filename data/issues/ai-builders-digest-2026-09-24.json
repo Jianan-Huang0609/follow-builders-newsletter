@@ -1,0 +1,255 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-09-24",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线不是又多了几个模型，而是模型能力开始真正改变工作方式：价格下降让 agent 可以进入更多任务，formal verification 开始变成 coding workflow 的一部分，3D 生成也提醒 builder 先把产品的核心循环想清楚。与此同时，Claude Opus 5.5 和 GPT-6 Sol/Luna 把竞争推到了一个更现实的维度：谁能以更低的 token 成本，把复杂工作稳定交付出来。"
+  },
+  "archive": {
+    "title": "模型降价日报",
+    "desc": "前沿模型同时变强又变便宜，agent 开始进入验证、企业分析和创作工作流，但产品判断仍然比功能数量更重要。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-09-24 source feeds.",
+  "sections": [
+    {
+      "title": "Frontier Models, Lower Cost / 前沿模型，成本下探",
+      "desc": "模型发布的看点不只在榜单，真正的变化是复杂任务的单位成本正在下降。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2102463847714247142",
+          "en": {
+            "rewrite": [
+              "OpenAI's Thibault Sottiaux announced GPT-6 Sol and Luna, describing them as a significant improvement across the board, including writing and the hard-to-measure quality you notice when you actually use a model.",
+              "The practical headline is price: API pricing is being cut by 50%, making the models viable for a much wider set of use cases. Plus, Pro and Business users get a banked reset, so the launch is also about making existing usage go further."
+            ],
+            "original": [
+              "GPT-6 Sol and Luna are out. Not only are they a very significant improvement across the board, but also in writing and general \"you know when you try it\" quality.",
+              "We are also permanently reducing the API price by 50% making both of them viable for a ton of new usecases and making your usage go further too, even on the subscriptions."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "OpenAI 的 Thibault Sottiaux 宣布 GPT-6 Sol 和 Luna 上线，称它们在整体能力、写作，以及那种「真正用起来才知道」的综合质感上都有明显提升。",
+              "更实际的重点是价格：API 价格永久下调 50%，让更多场景具备经济可行性。Pro 和 Business 用户还会获得一次 banked reset，这次发布本质上也是让现有额度更耐用。"
+            ],
+            "original": [
+              "GPT-6 Sol 和 Luna 上线了。它们不只是在各方面有很大提升，写作和整体的‘用起来才知道’的质量也提升了。",
+              "API 价格永久下调 50%，让它们适用于更多新场景，也让订阅用户的使用量更耐用。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:bcherny",
+          "sourceUrl": "https://x.com/bcherny/status/2102439069053747549",
+          "en": {
+            "rewrite": [
+              "Claude Code engineer Boris Cherny says Opus 5.5 has been his daily driver. In a head-to-head port of HAProxy from C to Rust, Opus 5.5 finished in 9.5 hours versus Fable 5.1's 12 hours, while costing 51% less; both passed nearly all of HAProxy's tests.",
+              "That is a more useful model comparison than a leaderboard position: time, cost, and test results on a real engineering task."
+            ],
+            "original": [
+              "We had Opus 5.5 and Fable 5.1 each port HAProxy from C to Rust. Both passed nearly all of HAProxy's tests, but Opus 5.5 finished in 9.5 hours compared to Fable 5.1's 12 hours, and for 51% less cost."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude Code 工程师 Boris Cherny 说，Opus 5.5 已经是他日常使用的主力模型。在一次把 HAProxy 从 C 移植到 Rust 的对比中，Opus 5.5 用时 9.5 小时，Fable 5.1 用时 12 小时，前者成本还低 51%；两者都通过了 HAProxy 几乎全部测试。",
+              "这比单看 leaderboard 更有参考价值：同一个真实工程任务，比较时间、成本和测试结果。"
+            ],
+            "original": [
+              "Opus 5.5 和 Fable 5.1 都把 HAProxy 从 C 移植到了 Rust。两者都通过了几乎全部测试，但 Opus 5.5 用时 9.5 小时，Fable 5.1 用时 12 小时，成本低 51%。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2102477253070430322",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie frames the price cuts as an agent version of Jevons paradox: when tokens get cheaper, demand for them expands and entirely new use cases become affordable.",
+              "His examples are concrete—agents processing company data, scanning code for security issues, reading logs to make decisions, and coordinating swarms in workflows. The cost per token is becoming a direct constraint on what businesses can automate."
+            ],
+            "original": [
+              "The rate at which the cost per task drops in AI is unlike any other type of technology in history.",
+              "Every time the cost of AI drops, the use-cases you can deploy agents against dramatically increase."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 把这轮降价解释成 agent 时代的 Jevons paradox：token 越便宜，对它的需求反而会扩张，原本负担不起的用例会变得可行。",
+              "他的例子很具体：让 agent 处理企业数据、扫描代码找安全问题、阅读日志做决策，以及在 workflow 里运行 agent swarm。token 成本正在直接决定企业到底能自动化什么。"
+            ],
+            "original": [
+              "AI 每项任务的成本下降速度，是历史上任何其他技术都无法相比的。",
+              "每当 AI 成本下降，可以部署 agent 的用例就会大幅增加。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Coding Agents Learn to Check Themselves / Coding agent 开始自证",
+      "desc": "agent 不只是在写代码，也开始验证代码、寻找并发问题，并把形式化方法带进日常开发。",
+      "cards": [
+        {
+          "authorKey": "x:bcherny",
+          "sourceUrl": "https://x.com/bcherny/status/2102543349102338309",
+          "en": {
+            "rewrite": [
+              "Boris Cherny used Opus 5.5 to formally verify the Claude Agent SDK with Lean. A couple of short prompts produced 16 PRs that fixed bugs and race conditions, and he also combines Lean with TLA+ to examine data flow, concurrency, and state management.",
+              "The striking part is not that a model can write formal-methods code. It is that formal verification is becoming a practical bug-finding loop for a builder who says he does not know either language well."
+            ],
+            "original": [
+              "I used Opus 5.5 to formally verify the Claude Agent SDK using Lean. A couple short prompts = 16 PRs fixing various bugs and race conditions.",
+              "TLA+ also works well. I sometimes combine Lean and TLA+ to look for issues around data flow, concurrency, and state mgmt."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Boris Cherny 用 Opus 5.5 和 Lean 对 Claude Agent SDK 做形式化验证。几个简短 prompt 产出了 16 个 PR，修复了各种 bug 和 race condition；他还会把 Lean 与 TLA+ 结合起来检查数据流、并发和状态管理。",
+              "真正值得注意的不是模型会写形式化方法代码，而是形式化验证开始变成一个实用的找 bug loop，即使 builder 自己也说并不熟悉这两门语言。"
+            ],
+            "original": [
+              "我用 Opus 5.5 和 Lean 对 Claude Agent SDK 做了形式化验证。几个简短 prompt 就产生了 16 个 PR，修复了各种 bug 和 race condition。",
+              "TLA+ 也很好用。我有时会把 Lean 和 TLA+ 结合起来，寻找数据流、并发和状态管理方面的问题。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2102501642176528743",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger says Astra found a roughly 14-year-old bug in libuv after ChatGPT started crashing for him following a macOS 27 update.",
+              "It is a small but telling example of where agents are useful: not just generating new code, but digging through mature infrastructure and finding defects that have survived for years."
+            ],
+            "original": [
+              "Had ChatGPT sometimes crashing on me after updating to macOS 27 and... Astra found a ~14 year old bug in libuv."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger 说，macOS 27 更新后 ChatGPT 偶尔崩溃，最后是 Astra 找到了 libuv 里一个大约存在了 14 年的 bug。",
+              "这是 agent 价值的一个小而典型的例子：它不只是生成新代码，也能钻进成熟基础设施里，找到已经潜伏多年的缺陷。"
+            ],
+            "original": [
+              "更新 macOS 27 后 ChatGPT 有时会崩溃，然后 Astra 找到了 libuv 里一个大约 14 年历史的 bug。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Build the Loop Before the Feature / 先做对循环",
+      "desc": "能力越强，越容易被功能数量带偏；真正的产品判断仍然从用户和核心使用循环开始。",
+      "cards": [
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2102548686303854790",
+          "en": {
+            "rewrite": [
+              "Thariq's advice for builders using powerful models is deliberately counterintuitive: do not ship 10x more features to production. Spend the extra capacity understanding users, running experiments, building prototypes, and learning what you do not understand.",
+              "The point is simple: model capability should buy better product decisions, not just a longer roadmap."
+            ],
+            "original": [
+              "The right way to use model capabilities is not to ship 10x more features to prod.",
+              "It's to spend more time understanding your users, trying experiments, building prototypes, learning about things you don't understand so that you can ship things that actually work."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thariq 给使用强模型的 builder 提了一个反直觉建议：不要把能力全部换成 10 倍多的线上功能，而是把省下来的时间用来理解用户、做实验、搭 prototype，搞懂那些自己还不了解的东西。",
+              "核心意思很简单：模型能力应该换来更好的产品判断，而不只是更长的 roadmap。"
+            ],
+            "original": [
+              "正确使用模型能力的方式，不是把 10 倍多的功能发布到生产环境。",
+              "而是花更多时间理解用户、尝试实验、构建 prototype，学习不了解的东西，从而发布真正能工作的产品。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2102549030303867257",
+          "en": {
+            "rewrite": [
+              "On 3D generation and games, Thariq gives himself the same reminder: generative 3D can help you imagine a game coming to life, but you still need to figure out a good, satisfying game loop first.",
+              "More generation makes the blank canvas smaller. It does not decide whether the thing is fun."
+            ],
+            "original": [
+              "If you want to make games, 3d generation is a great capability to help you imagine your game come to life.",
+              "But you should figure out how to make a good, satisfying game loop first."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "谈到 3D generation 和游戏，Thariq 也给自己提了同样的醒：生成式 3D 很适合帮助你想象游戏变成现实，但你仍然得先想清楚一个好玩、令人满足的 game loop。",
+              "生成能力让空白画布变小了，但它不会替你决定这东西是否有趣。"
+            ],
+            "original": [
+              "如果你想做游戏，3D generation 是帮助你想象游戏成真的好能力。",
+              "但你应该先想清楚怎么做出一个好的、令人满足的 game loop。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "A More Capable Creative Stack / 更强的创作栈",
+      "desc": "从历史街景到可部署的软件，模型开始把复杂创作任务变成可执行的工作流。",
+      "cards": [
+        {
+          "authorKey": "x:alexalbert__",
+          "sourceUrl": "https://x.com/alexalbert__/status/2102466523164274839",
+          "en": {
+            "rewrite": [
+              "Anthropic researcher Alex Albert has been using Opus 5.5 with Blender to build a historically accurate version of San Francisco's Market Street as it stood in 1906, before the earthquake.",
+              "The experiment is more than one-shot image generation: the prompt asks for source-backed buildings, reusable procedural generators, and a 10-second video. Better 3D modeling and vision turn a single prompt into the starting point for a whole world-building workflow."
+            ],
+            "original": [
+              "I've been on a Blender kick with Opus 5.5. Its better 3D modeling and vision mean you can build an entire world from a single prompt.",
+              "Historically accurate San Francisco Market street in 1906, pre-earthquake"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic 研究员 Alex Albert 最近一直在用 Opus 5.5 配合 Blender，重建 1906 年地震前、具有历史准确性的旧金山 Market Street。",
+              "这个实验不只是一次性生成图片：prompt 要求为建筑建立有来源的资料、编写可复用的程序化生成器，并输出 10 秒视频。更强的 3D modeling 和 vision，正在把一个 prompt 变成完整世界构建 workflow 的起点。"
+            ],
+            "original": [
+              "我最近一直在用 Opus 5.5 玩 Blender。它更好的 3D modeling 和 vision 意味着你可以用一个 prompt 构建整个世界。",
+              "具有历史准确性的 1906 年旧金山 Market Street，地震前。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2102594015669756323",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch imagines software becoming durable in a new way: if you loved Google Reader, you could generate and deploy your own version, and keep it forever.",
+              "The underlying shift is from consuming a fixed product to owning a generated one. A service can disappear, but the small tool you made for yourself can remain yours."
+            ],
+            "original": [
+              "Software will never die again. You liked Google Reader? Cool, you can generate and deploy your own. Yours, forever."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 想象了一种新的软件持久性：如果你喜欢 Google Reader，就自己生成并部署一个版本，而且永久保留。",
+              "底层变化是，人们不再只是消费一个固定产品，而是拥有一个为自己生成的产品。服务可以消失，但你做给自己的小工具可以一直在。"
+            ],
+            "original": [
+              "软件再也不会消失了。你喜欢 Google Reader？那就生成并部署一个自己的版本。永远属于你。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
