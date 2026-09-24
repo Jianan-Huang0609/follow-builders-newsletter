@@ -1,0 +1,235 @@
+{
+  "title": "AI Builders Digest / AI Builder 日报",
+  "subtitle": "从 agent 的三件套，到下一代工作流",
+  "publishDate": "2026-09-25",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "今日主线",
+    "text": "今天的 feed 有一条很清晰的暗线：AI 产品正在从“一个更聪明的模型”变成一整套可运行的系统。模型、工具、浏览器、文件和记忆开始被重新拆装；与此同时，真正的竞争也从单纯追求速度，转向谁能把复杂工作变成可靠、可审计、甚至更少摩擦的体验。"
+  },
+  "archive": {
+    "title": "Agent 重组日报",
+    "desc": "今天的 builder 们在重新拼装 agent 的大脑、双手与文件系统，也在重新定义软件该如何服务人的工作。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Generated through the Follow Builders skill",
+  "sections": [
+    {
+      "title": "Agent 的新底座",
+      "desc": "从模型和 harness，到浏览器、电脑与可外接的存储，agent 正在从一台机器拆成一组基础设施。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2102820148629614685",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch describes successful agents as three parts: a brain made of the model and harness, hands made of tools and computer/browser access, and files made of memories, skills, and repos.",
+              "His latest point is that cloud agents should decouple those parts. Vercel's new Drives are positioned as an external disk for agents, useful for persistent storage and jobs such as nightly memory consolidation. He argues that this split improves cost efficiency, security, and auditability."
+            ],
+            "original": [
+              "All successful agents have 3 key components: Brain → model, harness; Hands → tools, computer, browser; Files → memories, skills, repos.",
+              "Today we're introducing ... Drives. We shipped the computer for agents, now we're giving you the 'external disk' you can attach at will."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch 把成功的 agent 拆成三部分：由 model 和 harness 组成的大脑，由 tools、computer 和 browser 组成的双手，以及由 memories、skills 和 repos 组成的文件系统。",
+              "他的进一步判断是，云端 agent 应该把这些部分解耦。Vercel 新推出的 Drives 被定位成 agent 的外接硬盘，既能保存持久化状态，也能支持夜间记忆整理这类任务。这样做同时有利于成本、security 和 auditability。"
+            ],
+            "original": [
+              "所有成功的 agent 都有三个关键组件：大脑、双手和文件。",
+              "我们已经为 agent 提供了 computer，现在给它一个可以随时接入的 external disk。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:bcherny",
+          "sourceUrl": "https://x.com/bcherny/status/2102898067133595992",
+          "en": {
+            "rewrite": [
+              "Boris Cherny explains a practical middle ground for formal methods: Claude models the hairiest state machines or race-prone parts of a program, finds counterexamples, reproduces the suspected bugs, and fixes them.",
+              "The whole codebase is not formally verified. The useful shift is narrower: spend rigorous verification effort where bugs are hardest to see."
+            ],
+            "original": [
+              "Building a model of the program ... Finding counter-examples ... Reproducing the bugs ... Fixing the bugs in the code.",
+              "It's not that the whole codebase is formally verified (yet!)."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Boris Cherny 解释了一个很实用的 formal methods 中间态：Claude 会对最棘手的 state machine 或容易发生 race condition 的代码建模，找出 counterexample，再复现并修掉疑似 bug。",
+              "这不是把整个代码库都形式化验证，而是把严格的验证投入到最难靠肉眼发现问题的部分。"
+            ],
+            "original": [
+              "先建立程序模型，再寻找 counter-example、复现 bug，最后修复代码。",
+              "并不是整个代码库都已经完成 formal verification。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "工作流正在离开终端",
+      "desc": "模型能力之外，桌面入口、语音、浏览器和插件生态正在决定 agent 是否真正进入日常工作。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2102814202117411196",
+          "en": {
+            "rewrite": [
+              "OpenAI's Thibault Sottiaux says voice has become his default way to call ChatGPT: discussing work, checking email, coding, and managing his calendar across the plugin ecosystem, including third-party plugins.",
+              "The interesting part is not voice as a demo. It is voice becoming the front door to a cross-app work context."
+            ],
+            "original": [
+              "I've gotten so used to just call ChatGPT and talk about all the work, check on emails, do some coding, manage my calendar.",
+              "It works across the full ecosystem of plugins, including 3P developed plugins."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "OpenAI 的 Thibault Sottiaux 说，他已经习惯用 voice 直接呼叫 ChatGPT：聊工作、查邮件、写代码、管理日历，而且这些动作可以跨过包括第三方插件在内的整个 plugin ecosystem。",
+              "关键不只是 voice 这个 demo，而是 voice 开始成为跨应用工作上下文的入口。"
+            ],
+            "original": [
+              "我已经习惯直接呼叫 ChatGPT，聊工作、查邮件、写代码、管理日历。",
+              "它可以跨整个插件生态工作，包括第三方开发的插件。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2102952201350254667",
+          "en": {
+            "rewrite": [
+              "Peter Yang sees a split in the current market: one lab has the best model, while another has the best harness. His conclusion is that a strong model still needs live voice, browser use, and computer use to become a complete coding partner."
+            ],
+            "original": [
+              "With a model this good the Claude Code harness really needs great live voice and browser + computer use.",
+              "Right now one lab has the best model and another has the best harness."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 看到的市场分工是：一家实验室有最好的 model，另一家有最好的 harness。但一个强模型要成为完整的 coding partner，仍然需要 live voice、browser use 和 computer use。"
+            ],
+            "original": [
+              "这么好的 model，Claude Code harness 真的需要优秀的 live voice、browser 和 computer use。",
+              "现在一家实验室有最好的 model，另一家有最好的 harness。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "产品从回答问题到替人办事",
+      "desc": "Marketplace、消费任务和客户获取都在指向同一个方向：agent 开始成为软件的新用户与新分发层。",
+      "cards": [
+        {
+          "authorKey": "x:claudeai",
+          "sourceUrl": "https://x.com/claudeai/status/2102840851538080172",
+          "en": {
+            "rewrite": [
+              "Claude launched a Marketplace where people can discover connectors and plugins such as Slack and Notion, buy agents and products from companies such as Cursor and CrowdStrike, and work with service partners including Accenture and Deloitte.",
+              "For builders, this turns the assistant into a distribution surface: tools, agents, and expert services can be discovered inside the product where the work happens."
+            ],
+            "original": [
+              "You can now discover tools, agents and expert partners on Claude Marketplace.",
+              "Add connectors and plugins ... Buy agents and products ... Scale with service partners."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude 推出了 Marketplace：用户可以发现 Slack、Notion 等 connectors 和 plugins，也可以买到 Cursor、CrowdStrike 等公司的 agents 和产品，还能接入 Accenture、Deloitte 这样的服务伙伴。",
+              "对 builder 来说，这让 assistant 变成了新的分发入口：tools、agents 和专家服务可以直接在工作发生的地方被发现。"
+            ],
+            "original": [
+              "现在可以在 Claude Marketplace 里发现 tools、agents 和 expert partners。",
+              "添加 connectors 和 plugins，购买 agents 和 products，或通过 service partners 扩展。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:realmadhuguru",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2102777931764498536",
+          "en": {
+            "rewrite": [
+              "Madhu Guru pushes back on the idea that consumers always want more browsing and choice. Different jobs have different emotional shapes: browsing clothes can be entertainment, while hiring a roofer is mostly friction.",
+              "The opportunity for consumer agents is therefore not simply recommendation. For some tasks, the winning experience is almost zero effort; for others, it is more options and a better-informed decision."
+            ],
+            "original": [
+              "Consumers don't have one relationship with 'doing things'.",
+              "For some tasks like this, better means almost zero effort. For others, it means considering more options, enjoying the process and making an informed decision."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Madhu Guru 反驳了“消费者总是想要更多浏览和选择”这个假设。不同任务的情绪结构完全不同：逛衣服可能是娱乐，但找人修屋顶通常只是摩擦。",
+              "所以 consumer agent 的机会不只是推荐。对有些任务，最好的体验是几乎零操作；对另一些任务，则是给用户更多选项和更充分的信息。"
+            ],
+            "original": [
+              "消费者与“做事”的关系并不只有一种。",
+              "有些任务的更好意味着几乎零 effort，有些则意味着考虑更多选项、享受过程并做出 informed decision。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "效率之外，什么才值得加速",
+      "desc": "当生产力被无限放大，builder 们也开始重新讨论团队、品味与人的意图。",
+      "cards": [
+        {
+          "authorKey": "x:adityaag",
+          "sourceUrl": "https://x.com/adityaag/status/2102782451643040074",
+          "en": {
+            "rewrite": [
+              "Aditya Agarwal argues that team longevity is a better signal than team size. A team that has worked together for more than three years can be significantly higher-throughput and more resilient than a newly formed team.",
+              "His shorthand is AUC for teams: ask not only how many people are on the team, but how long they have learned to work together."
+            ],
+            "original": [
+              "A team that has been working together for 3+ years is significantly higher throughput and more resilient than a team that has just formed.",
+              "AUC for teams is the right metric."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aditya Agarwal 认为，团队的 longevity 比 team size 更值得关注。一个合作超过三年的团队，可能比刚组建的团队有更高 throughput，也更 resilient。",
+              "他的简写是：用 AUC 看团队。别只问有多少人，还要问他们一起学习工作的时间有多久。"
+            ],
+            "original": [
+              "一起工作三年以上的团队，比刚组建的团队 throughput 更高，也更 resilient。",
+              "AUC for teams 才是正确的 metric。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:ryolu_",
+          "sourceUrl": "https://x.com/ryolu_/status/2102933485795369213",
+          "en": {
+            "rewrite": [
+              "Ryo Lu offers a needed counterweight to the day's infrastructure excitement: speed, scale, and automation are not the same as meaning or freedom.",
+              "AI could help people make strange, personal, imaginative things. But if it only creates more content, funnels, tickets, and dashboards, it becomes an endless-busyness machine. The real frontier may be discernment: knowing what not to make, when to stop, and what deserves attention."
+            ],
+            "original": [
+              "Speed is not meaning. Scale is not wisdom. Automation is not freedom if it only makes everyone run faster.",
+              "Maybe the real frontier is not more speed. Maybe it is discernment."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Ryo Lu 给今天的基础设施兴奋踩了一脚刹车：speed、scale 和 automation，并不等于 meaning 或 freedom。",
+              "AI 本可以帮助人们做出奇怪、个人化、充满想象力的东西；但如果它只制造更多 content、funnels、tickets 和 dashboards，就会变成一台让人永远忙碌的机器。真正的 frontier 也许是 discernment：知道什么不该做、什么时候该停，以及什么值得注意。"
+            ],
+            "original": [
+              "速度不是意义，规模不是智慧，如果 automation 只是让所有人跑得更快，它就不是 freedom。",
+              "真正的 frontier 也许不是更多 speed，而是 discernment。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
