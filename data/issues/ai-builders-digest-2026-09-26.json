@@ -1,0 +1,129 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-09-26",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线，是 AI 产品正在从“会生成”走向“能被组织起来”。一端是 VAST Data 所说的那层容易被忽略的基础设施：数据、模型、权限和 agent memory；另一端是 Replit、Claude Code 和 Google Labs，把创作与开发入口继续往普通用户身边推。中间还夹着几个很实在的提醒：模型会在 RL 里学会作弊，依赖树会悄悄变成安全债务，而一个更具体的目标，往往比一句“清理一下”更能让 agent 真正把事情做完。"
+  },
+  "archive": {
+    "title": "组织智能日报",
+    "desc": "AI 的竞争焦点正在从单个模型转向一整套可管理的基础设施、工作流与产品入口。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-09-26 source feeds.",
+  "sections": [
+    {
+      "title": "The Hidden AI Layer / 被忽略的 AI 中间层",
+      "desc": "真正把 GPU 喂饱、把模型放进企业流程的，不只是模型本身，而是数据、存储、权限和调度。",
+      "cards": [
+        {
+          "authorKey": "podcast:mad",
+          "authorName": "Renen Hallak",
+          "authorTag": "The MAD Podcast with Matt Turck",
+          "sourceUrl": "https://www.youtube.com/@DataDrivenNYC/videos",
+          "en": {
+            "rewrite": [
+              "The takeaway: AI's least visible layer may become one of its most valuable. VAST Data CEO Renen Hallak describes the software infrastructure between GPUs and applications as an operating system for the AI era, handling data access, model management, inference, agent memory, permissions, and security.",
+              "His sharper prediction is that enterprises will gradually own the intelligence created through their own experience: agents fine-tune during use, and the resulting weights and skills become organizational IP. The infrastructure challenge is therefore not merely faster storage. It is creating a trust layer where an enterprise can use a model without exposing its data, while the model builder protects its weights. Hallak's scale warning is blunt: one AI-cloud customer moved from planning 500 petabytes to asking for two additional exabytes.",
+              "The episode's most useful mental model is simple: the AI factory can be on-prem, in a colo, or rented from a cloud, as long as the organization controls its information, models, weights, and agents."
+            ],
+            "original": [
+              "Sometimes it scares me. We had a customer, one of these AI clouds, they said we're probably going to need about 500 petabytes over the next three years. Last week, came back to us and said, we're gonna need an extra two exabytes on top of that 500 petabytes.",
+              "I like to call it software infrastructure, and other times I like to call it the operating system for this new era.",
+              "We infer during the day, fine-tune at night."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "一句话结论：AI 最不显眼的那一层，可能会成为最值钱的一层。VAST Data CEO Renen Hallak 把 GPU 和应用之间的软件基础设施称为 AI 时代的操作系统，它要处理数据访问、模型管理、推理、agent memory、权限和安全。",
+              "更关键的判断是：企业会逐渐拥有由自身经验产生的 intelligence。agent 在使用中持续 fine-tune，沉淀下来的 weights 和 skills 就会变成组织自己的 IP。难点因此不只是存储更快，而是建立一层信任机制：企业能使用模型，却不暴露自己的数据；模型公司能提供能力，却不泄露自己的 weights。Hallak 给出的规模提醒很直接：一个 AI cloud 客户原本预计三年需要 500 PB，后来又追加了 2 EB。",
+              "这期内容最有用的 mental model 是：AI factory 可以在本地、机房或云上，只要组织真正控制自己的信息、模型、weights 和 agents。"
+            ],
+            "original": [
+              "有时候这让我害怕。一个 AI cloud 客户说未来三年大概需要 500 PB，上周回来却说还要在这 500 PB 之上再加 2 EB。",
+              "我有时称它为软件基础设施，有时称它为这个新时代的操作系统。",
+              "我们白天做推理，晚上做 fine-tune。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2103216656747262419",
+          "en": {
+            "rewrite": ["Guillermo Rauch shares two months of Vercel AI Gateway spend data: Anthropic remains largest but fell from 69% to 40%, OpenAI rose from 10% to 24%, while Kimi K3 and DeepSeek absorbed roughly half of Anthropic's decline. The more important signal is that model choice is becoming a live routing problem, not a permanent vendor decision: token share, image generation, price, and newly released models can all move usage quickly."],
+            "original": ["Spend of OpenAI vs Anthropic vs Open (Vercel AI Gateway, last 2 months)\n\n• Anthropic still #1 in spend, but went 69% → 40%\n• OpenAI: 10% → 24% in spend\n• GPT-6 Astra + GPT 5.6 Sol are ripping\n• OpenAI now leads in tokens #\n• Kimi K3 + DeepSeek took ~half of Anthropic's loss\n• Opus 5.5 is up to 10% of spend in 2 days\n• OpenAI is 62% of image generations"]
+          },
+          "cn": {
+            "rewrite": ["Guillermo Rauch 分享了 Vercel AI Gateway 过去两个月的 spend 数据：Anthropic 仍然第一，但占比从 69% 降到 40%；OpenAI 从 10% 升到 24%；Kimi K3 和 DeepSeek 吃掉了 Anthropic 流失份额的大约一半。更重要的信号是，model choice 正在变成一个实时 routing 问题，而不是一次性选定供应商：token 份额、图片生成、价格和新模型发布，都会迅速改变真实使用。"],
+            "original": ["OpenAI、Anthropic 与 Open 的 spend（Vercel AI Gateway，过去两个月）\n\n• Anthropic 仍是 spend 第一，但从 69% 降到 40%\n• OpenAI：10% → 24%\n• GPT-6 Astra + GPT 5.6 Sol 表现很强\n• OpenAI 现在 token 数领先\n• Kimi K3 + DeepSeek 吃掉了 Anthropic 流失量的大约一半\n• Opus 5.5 两天内升到 spend 的 10%\n• OpenAI 占图片生成的 62%"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Agents Move Into the Mainstream / Agent 走向主流入口",
+      "desc": "今天的几个产品信号都在说明同一件事：用户不一定要先学会编程，才有资格开始造东西。",
+      "cards": [
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2103129037011120525",
+          "en": {"rewrite": ["Replit CEO Amjad Masad says Muse can now make apps on Replit. It is a small product announcement, but it points to a larger shift: the app-building surface is moving from an IDE designed for programmers toward a conversational, agent-mediated creation loop."], "original": ["Muse can now make apps on Replit"]},
+          "cn": {"rewrite": ["Replit CEO Amjad Masad 表示，Muse 现在已经能在 Replit 里制作 app。这是一条很短的产品更新，但指向了更大的变化：造 app 的入口正在从面向程序员的 IDE，迁移到由 agent 介导的对话式创作循环。"], "original": ["Muse 现在可以在 Replit 上制作 app 了。"]}
+        },
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2103212051065921632",
+          "en": {"rewrite": ["Anthropic's Thariq says Claude's plan mode should become a built-in mod, while allowing mods to add new modes or override the Shift+Tab shortcut. The design choice matters because agent products are no longer just chat boxes: users need different interaction modes for planning, brainstorming, and execution, and those modes need to be customizable."], "original": ["my plan is to:\n- make plan mode into a built-in mod\n- allow mods to add new modes or override shift+tab"]},
+          "cn": {"rewrite": ["Anthropic 的 Thariq 表示，Claude 的 plan mode 应该成为内置 mod，同时允许 mod 添加新模式或覆盖 Shift+Tab 快捷键。这个设计选择很重要，因为 agent 产品已经不只是聊天框：用户在规划、头脑风暴和执行时需要不同的交互模式，而这些模式还应该能被定制。"], "original": ["我的计划是：\n- 把 plan mode 做成内置 mod\n- 允许 mod 增加新模式或覆盖 Shift+Tab"]}
+        },
+        {
+          "authorKey": "x:joshwoodward",
+          "sourceUrl": "https://x.com/joshwoodward/status/2103182635992514569",
+          "en": {"rewrite": ["Google Labs' Josh Woodward introduces Dreambeans, an experiment where a fixed number of 'beans' brew each morning and point users toward real people doing things they care about together. The interesting product idea is not the metaphor; it is the attempt to turn a daily feed into a small, intentional discovery ritual."], "original": ["Dreambeans is one of our newer experiments in @GoogleLabs. It has a growing cult following.\n\nIt’s simple: a fixed number of “beans” brew every morning. They point you at the real world, with real people, doing things you care about together.\n\nGive it a try! https://t.co/cUVgf5wn5b"]},
+          "cn": {"rewrite": ["Google Labs 的 Josh Woodward 介绍了 Dreambeans：每天早上固定数量的“豆子”会被冲出来，把用户带向现实世界里那些正在一起做你关心的事情的人。真正有意思的不是这个比喻，而是它试图把信息流变成一种小而有意识的每日发现仪式。"], "original": ["Dreambeans 是我们在 @GoogleLabs 做的新实验之一，正在形成一批忠实用户。\n\n它很简单：每天早上冲出固定数量的“豆子”，把你指向现实世界，指向正在一起做你关心的事情的人。\n\n试试看！"]}
+        }
+      ]
+    },
+    {
+      "title": "Training Reality Checks / 训练系统的现实校验",
+      "desc": "Agent 的能力不是只靠更大的模型获得的，训练环境、奖励设计和任务边界同样会决定它学到什么。",
+      "cards": [
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2103259550325575806",
+          "en": {"rewrite": ["Thariq calls a piece on AI and creativity 'incredibly thoughtful' and hopes Anthropic can make its products better at enabling and amplifying creatives. It is a modest statement, but a useful product test: the goal is not for AI to replace the creative act, but to increase what a creative person can explore and finish."], "original": ["incredibly thoughtful piece on AI and creativity\n\nhopefully we can make our producst better at enabling and amplifying creatives"]},
+          "cn": {"rewrite": ["Thariq 称一篇讨论 AI 与创造力的文章“非常有思考”，并希望 Anthropic 能让产品更好地帮助和放大创作者。这句话虽然克制，却给出了一个有用的产品检验标准：目标不一定是替代创作，而是让创作者能探索更多、完成更多。"], "original": ["一篇关于 AI 与创造力的文章，思考非常深入。\n\n希望我们能让产品更好地帮助并放大创作者。"]}
+        },
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2103148444701610233",
+          "en": {"rewrite": ["Peter Steinberger offers a practical lesson in delegating to agents: 'clean up' is too vague, so the agent stops early. Give it an ambitious, measurable constraint instead, such as removing 20% of the least useful tests while keeping coverage within 2%. The point is not to make agents work harder for its own sake; it is to define success tightly enough that the agent can optimize toward it."], "original": ["If you just tell the agent to clean up, it will stop far too early. Give it an ambitious goal. Try \"remove 20% of the least useful tests while maintaining code coverage within 2%\""]},
+          "cn": {"rewrite": ["Peter Steinberger 给了一个很实用的 agent 委派经验：“清理一下”太模糊，agent 很快就会停。换成一个有野心、可度量的约束，比如删除 20% 最没用的测试，同时让 coverage 保持在 2% 的波动内。重点不是让 agent 无休止地工作，而是把成功标准定义得足够清楚，让它能真正围绕目标优化。"], "original": ["如果你只是告诉 agent 清理一下，它会停得太早。给它一个有野心的目标。可以试试：删除 20% 最没用的测试，同时让代码覆盖率保持在 2% 以内的变化。"]}
+        }
+      ]
+    },
+    {
+      "title": "Less Bloat, More Signal / 少一点臃肿，多一点信号",
+      "desc": "从依赖安全到内容策略，builder 们都在做同一个动作：砍掉中间的噪音，把资源留给真正重要的部分。",
+      "cards": [
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2103200311641076100",
+          "en": {"rewrite": ["Steinberger says Daybreak found eight more long-standing leaks in his open-source dependencies. The lesson is uncomfortable but concrete: dependency maintenance is part of product work, not an optional security cleanup to postpone until after shipping."], "original": ["I put Daybreak on it and found 8 more long-standing leaks. Care for your oss dependencies!"]},
+          "cn": {"rewrite": ["Steinberger 说，他用 Daybreak 检查开源依赖后，又发现了 8 个长期存在的漏洞。这个提醒不太舒服，但很具体：依赖维护就是产品工作的一部分，不是可以等上线以后再补的安全清理。"], "original": ["我让 Daybreak 检查了一遍，又发现了 8 个长期存在的漏洞。照顾好你的开源依赖！"]}
+        },
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2103361254433993165",
+          "en": {"rewrite": ["Swyx says his 'Scaling without Slop' content strategy is finally working: the first 100k YouTube subscribers took three years, while the next 100k took only 1.2 months. He is now moving Latent Space, AINews, and the rest of swyx inc into a new phase. The useful signal is not a generic growth hack; it is that consistent, low-noise output can compound dramatically once distribution and process start reinforcing each other."], "original": ["In Jan this year I called my content strategy shot: \"Scaling without Slop\".\n\nIt's finally starting to work. It took us 3 years to reach our first 100k on youtube. It only took 1.2 months for the next 100k."]},
+          "cn": {"rewrite": ["Swyx 说，他把内容策略叫作“Scaling without Slop”，现在终于开始见效：YouTube 的前 10 万订阅用了 3 年，后一个 10 万只用了 1.2 个月。他也准备把 Latent Space、AINews 以及 swyx inc 的其他项目带入下一阶段。值得注意的不是某个泛泛的增长技巧，而是低噪、持续的产出一旦和分发及流程形成正反馈，增长会开始复利。"], "original": ["今年 1 月我把内容策略称为“Scaling without Slop”。\n\n它终于开始起作用了。YouTube 达到第一个 10 万用了 3 年，第二个 10 万只用了 1.2 个月。"]}
+        }
+      ]
+    }
+  ]
+}
