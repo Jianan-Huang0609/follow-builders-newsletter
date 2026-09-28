@@ -1,0 +1,173 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-09-29",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的共同主题，是 AI 正从一个会回答问题的工具，变成真正参与工作流的系统：它要接触文件、理解业务、自己决定跑哪些测试，也会逼着创业者重新思考产品和定价。更有意思的是，变化并不只发生在模型层，真正难的部分正在转移到部署、验证和让软件进入真实组织。"
+  },
+  "archive": {
+    "title": "工作流重构日报",
+    "desc": "AI agent 正从聊天窗口进入代码、企业流程和消费决策，新的瓶颈变成了上下文、验证与落地。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-09-29 source feeds.",
+  "sections": [
+    {
+      "title": "Agents Enter the Workflow / Agent 进入工作流",
+      "desc": "今天几条最值得看的信号，都在说明 agent 的价值不再只是生成文本，而是替人完成一段可验证的工作。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2104108167806550046",
+          "en": {
+            "rewrite": [
+              "OpenAI's Codex and ChatGPT builder Thibault Sottiaux argues that the old pre-release code freeze is disappearing. If software can be generated on demand under explicit constraints, shipping becomes less about protecting a fixed code snapshot and more about defining the constraints that keep each generated change safe.",
+              "That is a small sentence with a large implication: the unit of software delivery may shift from a prebuilt release to a continuously generated result."
+            ],
+            "original": ["Code freeze isn’t really a thing anymore before releases and in the future the code might even be generated online per request according to some constraints."]
+          },
+          "cn": {
+            "rewrite": [
+              "OpenAI Codex 和 ChatGPT 的开发者 Thibault Sottiaux 认为，发布前的传统 code freeze 正在消失。如果软件可以根据明确约束按需生成，那么发布的重点就不再是保护一份固定代码快照，而是定义能让每次生成都保持安全的约束。",
+              "这句话的含义不小：软件交付的基本单位，可能会从预先构建好的版本，转向持续生成、持续验证的结果。"
+            ],
+            "original": ["发布前的 code freeze 已经不太是回事了，未来代码甚至可能会根据约束、按请求在线生成。"]
+          }
+        },
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2104305554760114488",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger's plan for CI is a useful glimpse of what agent-native maintenance looks like: let Codex decide which tests actually need to run, cut back on always-on CI, and run the broader suite hourly instead. The point is not simply to run fewer tests, but to let an agent spend verification budget where it is most useful.",
+              "It turns testing from a rigid ritual into a workload-management problem."
+            ],
+            "original": ["Same. @useblacksmith has been an amazing sponsor but we need to distribute the load.\n\nMy plan is to let codex decide which tests actually need to run and drastically nix CI and run tests hourly. https://t.co/Yo4PYOT2cI"]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger 对 CI 的规划，很像 agent 原生维护工作的一个缩影：让 Codex 判断哪些测试真的需要跑，减少持续运行的 CI，把更完整的测试套件改成每小时运行。重点不是简单地少跑测试，而是让 agent 把验证预算花在最有价值的地方。",
+              "测试因此从一种僵硬的仪式，变成了一个需要管理工作负载的问题。"
+            ],
+            "original": ["@useblacksmith 一直是很棒的赞助商，但我们需要分摊负载。我的计划是让 codex 决定哪些测试真的需要跑，大幅减少 CI，改成每小时跑测试。"]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2104428800134013205",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch rebuilt his Mini browser in Rust and Swift instead of Electron, then embedded an agent through ACP while letting a local CLI manage the browser through MCP. His argument is practical rather than ideological: native code brought faster boots, tighter Mac integration, and finer control over focus and input.",
+              "The interesting part is the combination: native software does not mean giving up agents. The agent can sit behind a smaller, more direct interface."
+            ],
+            "original": ["I¹ ported my Mini web browser to Rust & Swift. It's faster, more secure, and shockingly, nicer to iterate on than Electron + Bun.\n\n𝚏𝚡 𝚊𝚌𝚙 lets me embed an agent without bloating the app. It talks to my local fx CLI over ACP. fx can then manage the browser via an MCP server²."]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 用 Rust 和 Swift 重写了 Mini 浏览器，放弃 Electron，同时通过 ACP 嵌入 agent，再让本地 CLI 通过 MCP 管理浏览器。他的理由很务实：原生代码带来了更快的启动、更紧密的 Mac 集成，以及更细的焦点和输入控制。",
+              "有意思的是，这并不意味着原生软件要放弃 agent。agent 可以藏在一个更小、更直接的接口后面。"
+            ],
+            "original": ["我把 Mini web browser 移植到了 Rust 和 Swift。它更快、更安全，而且迭代起来意外地比 Electron + Bun 更舒服。fx acp 让我可以在不让应用变臃肿的情况下嵌入 agent，它通过 ACP 调用本地 fx CLI，fx 再通过 MCP server 管理浏览器。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Application Layer Wins / 应用层重新变重要",
+      "desc": "模型能力越强，真正把它接进企业数据和业务流程的工作越显得具体、昂贵，也越有机会形成产品。",
+      "cards": [
+        {
+          "authorKey": "podcast:training-data",
+          "sourceUrl": "https://www.youtube.com/playlist?list=PLOhHNjZItNnMm5tdW61JpnyxeYH5NDDx8",
+          "authorName": "Aaron Levie",
+          "authorTag": "Training Data Podcast",
+          "en": {
+            "rewrite": [
+              "The takeaway: the biggest AI opportunity may sit in the bridge between a model and a company's actual workflow. Box CEO Aaron Levie argues that enterprises still need systems that connect models to data, legacy software, human approvals, and change management. That bridge is not a thin wrapper; it is where domain expertise turns intelligence into something a business can use.",
+              "Levie's bet is that application companies will keep creating value even as models become cheaper and more capable. A law firm, bank, or pharma company does not just need a chatbot. It needs an agent that knows when to act, what internal data it can touch, and how to fit the organization's process. As he puts it, there is a huge gap between model capability and workflow, and the companies that close it will own the diffusion layer."
+            ],
+            "original": ["what you need is some bridge from the model's capability to the actual workflow that the enterprise has", "the models will be insanely valuable, but the application of bringing those models into real workflows in banking and life sciences and health care and government, that's just going to be a lot of software."]
+          },
+          "cn": {
+            "rewrite": [
+              "核心结论是：AI 最大的机会，可能就在模型和真实业务工作流之间的那座桥上。Box CEO Aaron Levie 认为，企业仍然需要系统把模型接到数据、遗留软件、人工审批和组织变革上。这不是一层薄薄的 wrapper，而是把 intelligence 变成业务可用能力的地方。",
+              "Levie 判断，即使模型越来越便宜、越来越强，应用公司仍会持续创造价值。律所、银行或药企需要的不是一个 chatbot，而是一个知道何时行动、能访问哪些内部数据、又能嵌入组织流程的 agent。"
+            ],
+            "original": ["你需要的是一座把模型能力连接到企业真实工作流的桥", "模型会极其有价值，但把这些模型带进银行、生命科学、医疗和政府真实工作流的应用，会是一大堆软件。"]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2104350592290406849",
+          "en": {
+            "rewrite": [
+              "Aaron Levie extends the application-layer argument to consumer behavior: when agents make choices for people, switching costs fall in markets where friction mainly protects incumbents. But the same reduction in friction can create demand in healthcare, travel, local services, and other markets people previously avoided because buying was too difficult.",
+              "The result is not simply more automation. It is a different map of where competition increases and where new economic activity becomes possible."
+            ],
+            "original": ["Interesting to think about all the implications in a world where agents begin to make the best or most efficient choice for their users.\n\nOn one hand, there is some subset of the economy that benefits from the friction customers traditionally have changing something about their habits. In those parts of the market, switching costs will come down and competition is going to increase dramatically until some equilibrium is reached between the disruptive alternatives and the incumbents.\n\nOn the other hand, there are lots of markets that are hurt by a significant amount of friction, where agents will begin to unlock all kinds of economic activity by making it far easier to buy products or services that were too frictionful before. Healthcare, travel, local services, certain information services, and other entirely new markets probably are net beneficiaries of agents as a result."]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie 把应用层的判断延伸到了消费行为：当 agent 替人做选择时，那些靠用户懒得换、懒得比较来保护既有公司的市场，切换成本会下降，竞争会明显加剧。但同样的降摩擦，也会让医疗、旅行、本地服务等原本因为购买太麻烦而被放弃的需求真正发生。",
+              "这不只是自动化更多了，而是竞争会加剧在哪里、全新的经济活动会从哪里冒出来，地图都要重画。"
+            ],
+            "original": ["当 agent 开始替用户做出最好或最高效的选择时，很多市场会发生变化：切换成本下降，竞争加剧；而在医疗、旅行、本地服务等摩擦过高的市场，agent 会解锁新的经济活动。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Productivity Needs a Human Check / 生产力需要现实校验",
+      "desc": "agent 能提高产出，也可能让人把效率收益吃掉；真正的挑战是看清技术哪里有效，哪里只是让人更快地做错事。",
+      "cards": [
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2104273243599405395",
+          "en": {
+            "rewrite": ["Claude Code builder Thariq points to an under-discussed failure mode: the productivity gains from agents may be consumed by people simply becoming lazier. The warning is not anti-agent; it is a reminder that saved effort only becomes progress when teams use the extra capacity deliberately."],
+            "original": ["I am most afraid of us eating the productivity gains of agents by just becoming lazier."]
+          },
+          "cn": {
+            "rewrite": ["Claude Code 开发者 Thariq 指出了一个常被忽略的失败模式：agent 带来的生产力提升，可能被人单纯变懒给吃掉。这不是反对 agent，而是在提醒我们，省下来的力气只有被有意识地重新投入，才会真的变成进步。"],
+            "original": ["我最担心的是，我们只是变得更懒，最后把 agent 带来的生产力收益吃掉。"]
+          }
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2104112917264126195",
+          "en": {
+            "rewrite": ["Builder Zara Zhang offers the necessary counterweight to AI hype: dazzling technology can hide the ways it is failing, and the speed of the field can make users assume the problem is their own fault. The practical lesson is simple: fast-moving tools still need ordinary evaluation against the job they are supposed to do."],
+            "original": ["New technology can be so dazzling and flashy that it blinds us to the ways in which it’s not working \n\n(and sometimes makes you feel that if something is not working, it’s probably your fault not the technology’s fault, because the world is moving so fast and everyone seems ahead of you)"]
+          },
+          "cn": {
+            "rewrite": ["Builder Zara Zhang 给 AI 热潮加了一层必要的校验：炫目的新技术会遮住它实际上没做好的地方，而行业变化太快，又会让人误以为问题出在自己身上。实用的结论很简单：工具再快，也要回到它本来要完成的工作上，用普通的标准去评估。"],
+            "original": ["新技术可能如此炫目、花哨，以至于让我们看不见它没起作用的地方。它有时还会让你觉得，如果某件事没做好，可能是你的问题而不是技术的问题，因为世界变化太快，好像每个人都领先于你。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Moats Are Moving / 护城河正在迁移",
+      "desc": "当模型和 agent 让生产变快，产品本身不再足够成为壁垒，数据、分发和真实任务的完成能力开始接管竞争。",
+      "cards": [
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2104444216017637575",
+          "en": {
+            "rewrite": ["Nikunj Kothari's short reaction to Astra is a useful product criterion: give an agent a reasonably hard, end-to-end task with the right tools, then watch whether it can actually fly. The emphasis is on verifiable completion, not a polished demo or a clever answer."],
+            "original": ["Astra is absurd.. \n\nGive it decently hard verifiable end to end tasks with the right tools and watch it just fly 😅 https://t.co/SGOlvOxoNP"]
+          },
+          "cn": {
+            "rewrite": ["Nikunj Kothari 对 Astra 的一句短评，给出了一个很实用的产品标准：给 agent 一个难度适中、端到端且可验证的任务，再看它能不能真的飞起来。重点是完成可验证的工作，而不是 demo 看起来多漂亮，或者答案多机灵。"],
+            "original": ["Astra 太离谱了。给它一些难度不低、可验证的端到端任务和合适的工具，看着它直接起飞。"]
+          }
+        }
+      ]
+    }
+  ]
+}
