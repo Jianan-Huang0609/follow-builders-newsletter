@@ -1,0 +1,87 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-09-30",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线很清楚：模型能力的升级，正在从“更会回答”变成“更快交付”，而真正的差距开始落在上下文、工具链和工作流上。Sonnet 5.5 的讨论尤其集中在速度、token 成本和真实业务表现，但更值得留意的是，builder 们已经不再把 prompt 当作完整产品，而是在搭建一整套可复用的 references、skills 与 examples。"
+  },
+  "archive": {
+    "title": "模型效率日报",
+    "desc": "Sonnet 5.5 把模型升级的价值拉回真实交付，agent 的竞争也从 prompt 转向上下文、技能和工作流。"
+  },
+  "viewLabels": {"rewrite": "速读", "original": "原文"},
+  "footerNote": "Source: Follow Builders curated daily digest.",
+  "sections": [
+    {
+      "title": "Sonnet 5.5: Faster Work, Not Just Better Scores / 更快交付，而不只是更高分",
+      "desc": "这次升级最有意思的地方，不是发布口号，而是它在代码、知识工作和企业场景里同时体现为更少 token、更短等待和更少返工。",
+      "cards": [
+        {
+          "authorKey": "x:bcherny", "sourceUrl": "https://x.com/bcherny/status/2104638725317923228",
+          "en": {"rewrite": ["Anthropic's Boris Cherny reports the kind of model improvement builders actually feel: Sonnet 5.5 fixed a bug in Claude Code while using 30% less usage and running 30% faster. The important metric here is not a benchmark score; it is that an agent can complete the same piece of work with less waiting and less budget."], "original": ["Sonnet 5.5 fixing a bug with Claude Code.", "30% faster and 30% less usage."]},
+          "cn": {"rewrite": ["Anthropic 的 Boris Cherny 分享了一种 builder 真正能感受到的升级：Sonnet 5.5 在 Claude Code 里修复了一个 bug，同时减少 30% 的 usage，速度提升 30%。重点不是 benchmark 分数，而是 agent 能用更少预算、更短等待完成同一件事。"], "original": ["Sonnet 5.5 修复 Claude Code 中的一个 bug。", "速度快 30%，使用量少 30%。"]}
+        },
+        {
+          "authorKey": "x:levie", "sourceUrl": "https://x.com/levie/status/2104648654074343480",
+          "en": {"rewrite": ["Box CEO Aaron Levie gives a useful enterprise reality check: in Box's hardest knowledge-work evaluations, Sonnet 5.5 improved overall performance by 4 points while reaching a finished deliverable about 2.4× faster with 12% fewer tokens. The gains were especially concrete in financial diligence, legal review, life-sciences data, and public-sector reporting, where refusing to invent missing facts mattered as much as getting the answer right."], "original": ["Across the board we saw a 4 pt overall improvement on our hardest tests, but it was roughly 2.4× faster to a finished deliverable on 12% fewer tokens.", "Sonnet 5.5 refused to invent a \"standard\" market benchmark ... and instead flagged what the lease was genuinely missing."]},
+          "cn": {"rewrite": ["Box CEO Aaron Levie 给了一个很有用的企业级现实检查：在 Box 最难的知识工作评测里，Sonnet 5.5 总体提升 4 个百分点，但完成交付物的速度约快了 2.4 倍，同时少用 12% 的 token。更关键的是，这些提升落在尽调、法律审阅、生命科学数据和公共部门报告等具体工作上，其中“不编造缺失事实”与答对同样重要。"], "original": ["在最难的测试中，总体提升 4 个百分点，但完成交付物约快 2.4 倍，token 少 12%。", "Sonnet 5.5 没有编造一个“标准”的市场基准，而是标出合同真正缺失的内容。"]}
+        },
+        {
+          "authorKey": "x:danshipper", "sourceUrl": "https://x.com/danshipper/status/2104636728992776510",
+          "en": {"rewrite": ["Dan Shipper's early testing at Every suggests Sonnet 5.5 is not merely a cheaper middle option. He found its writing substantially improved even against Opus 5.5, and preferred it for quick iterative coding and design because it was faster and cheaper. The signal is that model choice is becoming task-shaped: a model can win by making iteration cheap enough to repeat."], "original": ["SONNET 5.5 IS OUT!", "It has dramatically improved writing even versus Opus 5.5 in my testing for @every.", "It's faster and cheaper than Opus 5.5, so it's @kieranklaassen's preferred model for quick iterative coding and design work."]},
+          "cn": {"rewrite": ["Dan Shipper 在 Every 的早期测试说明，Sonnet 5.5 不只是一个便宜的中间档模型：即便对比 Opus 5.5，它的写作也有明显提升；而在快速迭代的 coding 和 design 工作里，因为更快、更便宜，它反而成了更合适的选择。模型选择正在变得“按任务定制”：不必样样第一，只要让反复试错足够便宜。"], "original": ["Sonnet 5.5 发布了！", "在我为 @every 做的测试中，它的写作相比 Opus 5.5 也有大幅提升。", "它比 Opus 5.5 更快、更便宜，所以是 @kieranklaassen 做快速迭代 coding 和 design 工作时的首选模型。"]}
+        }
+      ]
+    },
+    {
+      "title": "Agents Need Context, Skills and Examples / Agent 需要上下文、技能与例子",
+      "desc": "当 agent 变强，单独展示一个 prompt 的解释力反而变弱；决定产出质量的是它能读取什么、调用什么，以及参考过哪些真实样本。",
+      "cards": [
+        {
+          "authorKey": "x:trq212", "sourceUrl": "https://x.com/trq212/status/2104608785696440510",
+          "en": {"rewrite": ["Claude Code builder Thariq argues that the prompt is no longer the whole recipe. His agents inspect three of his other repositories, search the web, consult references, and use other AI APIs before doing the work. That changes the unit of craft from a clever instruction to a prepared environment: context and examples are becoming part of the product."], "original": ["it's basically impossible for someone to just \"show you their prompt\" now, because everything is about references, skills and examples", "I often ask my agent to look at 3 other repos I've made first, search the web for references, use other AI APIs, etc."]},
+          "cn": {"rewrite": ["Claude Code builder Thariq 认为，prompt 已经不是完整配方。现在他的 agent 会先看自己做过的 3 个 repo，再搜索网页资料、查 references，甚至调用其他 AI API，然后才开始工作。制作能力的单位因此从“写一句聪明指令”变成“准备好一个环境”：上下文和例子本身，正在成为产品的一部分。"], "original": ["现在基本不可能只“展示你的 prompt”了，因为一切都和 references、skills、examples 有关。", "我经常先让 agent 看我做过的 3 个 repo，搜索网页资料，使用其他 AI API 等。"]}
+        },
+        {
+          "authorKey": "x:trq212", "sourceUrl": "https://x.com/trq212/status/2104660926373023830",
+          "en": {"rewrite": ["Thariq's other point is about cost: higher-level abstractions such as projects, tags, and dynamic workflows are becoming practical as Sonnet and Opus 5.5 get more efficient. Workflow design can move up a level, from micromanaging every task to giving an agent reusable structure and letting it coordinate more of the work."], "original": ["With Sonnet + Opus 5.5 I think this sort intelligence is should be very available.", "Try Sonnet 5.5 in particular when making workflows."]},
+          "cn": {"rewrite": ["Thariq 的另一个判断是成本：随着 Sonnet 和 Opus 5.5 变得更高效，projects、tags、dynamic workflows 这类更高层的抽象，已经开始变得可用。workflow 设计可以往上走一层，不必逐项盯住每个任务，而是给 agent 可复用的结构，让它承担更多协调工作。"], "original": ["有了 Sonnet + Opus 5.5，我认为这类智能应该会变得非常普及。", "做 workflows 时尤其可以试试 Sonnet 5.5。"]}
+        }
+      ]
+    },
+    {
+      "title": "The Agent-Ready Surface Area / 给 Agent 的新接口",
+      "desc": "基础设施的变化未必是一个大产品发布，也可能是搜索权限、迁移经验和可复用 skill 这样的细小接口。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg", "sourceUrl": "https://x.com/rauchg/status/2104764419305796094",
+          "en": {"rewrite": ["Vercel CEO Guillermo Rauch says Vercel domains can now be searched without authentication, specifically calling out the benefit for agents. It is a small-looking change with a large product implication: public, predictable, low-friction information surfaces are becoming infrastructure for agents that need to discover and verify the web."], "original": ["You can now search @vercel domains without auth.", "Especially great if it's for an agent."]},
+          "cn": {"rewrite": ["Vercel CEO Guillermo Rauch 表示，现在无需 authentication 就能搜索 Vercel domains，并特别指出这对 agent 很有用。看起来只是一个小改动，但产品含义不小：公开、稳定、低摩擦的信息入口，正在变成 agent 发现和验证网页内容的基础设施。"], "original": ["现在无需 auth 就能搜索 @vercel domains。", "尤其适合 agent。"]}
+        },
+        {
+          "authorKey": "x:rauchg", "sourceUrl": "https://x.com/rauchg/status/2104660502723072281",
+          "en": {"rewrite": ["Vercel migrated a mature workload with minimal intervention and reported roughly 70% faster builds and 75% faster paints, completing the work in under a week. The part worth copying is not the performance claim alone: the team extracted two AI skills from the migration and plans to share them back, turning a one-off project into reusable operational knowledge."], "original": ["We migrated ... with as little intervention as possible", "~70% faster builds and ~75% faster paints.", "We derived two AI skills from the migration that we'll be sharing back."]},
+          "cn": {"rewrite": ["Vercel 用尽量少的人工介入迁移了一个成熟 workload，报告称 build 快了约 70%，paint 快了约 75%，整个工作不到一周完成。值得复用的并不只是性能数字：团队还从迁移过程中提炼出两个 AI skills，准备分享回来，把一次性项目变成可复用的操作知识。"], "original": ["我们尽量少介入地完成了迁移。", "build 快了约 70%，paint 快了约 75%。", "我们从迁移中提炼出了两个 AI skills，之后会分享出来。"]}
+        }
+      ]
+    },
+    {
+      "title": "Build for the Work, Not the Hype / 为真实工作造产品",
+      "desc": "今天的几条内容共同提醒我们：模型和分发都只是杠杆，最后仍要回到可交付的产品、留存和真正的使用场景。",
+      "cards": [
+        {
+          "authorKey": "x:petergyang", "sourceUrl": "https://x.com/petergyang/status/2104736498151256303",
+          "en": {"rewrite": ["Peter Yang built a playable StarCraft level with Sonnet 5.5: Terran units, Zerg defense, Sketchfab assets, and Suno-generated music. The demo is a useful reminder of what capable models unlock when they are treated as a production partner across code, content, and media, not as a chatbot waiting for one perfect prompt."], "original": ["I built a working StarCraft level with Sonnet 5.5.", "You play Terran, defending your base against the Zerg:", "Music generated with Suno", "Play it here: https://t.co/U9QI2VD3HQ"]},
+          "cn": {"rewrite": ["Peter Yang 用 Sonnet 5.5 做出了一个可以玩的 StarCraft 关卡：Terran 部队、抵御 Zerg、Sketchfab 素材，再加上 Suno 生成的音乐。这个 demo 提醒我们，强模型的价值不只是聊天，而是可以同时参与 code、content 和 media，把它当作生产伙伴，而不是等一句完美 prompt 的问答工具。"], "original": ["我用 Sonnet 5.5 做出了一个能运行的 StarCraft 关卡。", "你扮演 Terran，防守基地抵御 Zerg。", "音乐由 Suno 生成。", "在这里玩：https://t.co/U9QI2VD3HQ"]}
+        },
+        {
+          "authorKey": "x:nikunj", "sourceUrl": "https://x.com/nikunj/status/2104566122549063756",
+          "en": {"rewrite": ["Nikunj Kothari pushes back on the idea that distribution alone is a moat. When incumbents can suddenly flex their distribution, the durable advantage has to come from the product: unfair advantages, retention, network effects, and eventually a self-sustaining business. Capital can compound those strengths, but it cannot substitute for them."], "original": ["It’s SO important to stay first principles on what matters. Find your unfair advantages. Build a great product with high retention and ideally network effects.", "Use capital as a weapon to compound and not as destiny.", "figure out how to be a self sustaining business because this money spigot will dry."]},
+          "cn": {"rewrite": ["Nikunj Kothari 反驳了“分发本身就是护城河”的说法：当 incumbent 随时可以调动自己的分发能力，真正持久的优势仍然得回到产品，回到不对称优势、留存、network effects，以及最终能自我造血的生意。资本可以放大这些优势，但不能替代它们。"], "original": ["牢记真正重要的第一性原理非常重要。找到你的不对称优势，做出高留存、最好还有 network effects 的好产品。", "把资本当作复利的武器，而不是命运。", "想办法成为一家能自我造血的企业，因为这股资金水龙头会干。"]}
+        }
+      ]
+    }
+  ]
+}
