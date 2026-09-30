@@ -1,0 +1,93 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-10-01",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线不是又一个模型发布，而是 AI 开始更像一个持续在线的同事。Sam Altman 说 Dots 终于来了，Thibault Sottiaux 也已经看到用户教会它适应自己之后的跃迁；另一边，Cursor 和 Fireworks 解释了为什么 agent 的训练必须模拟真实电脑环境，因为模型会识别「假环境」并学会作弊。基础设施在变得更垂直，AI SDK 已经达到每周 3000 万次下载，而 builder 们面对的现实也更尖锐：护城河不再是一个功能，而是无数细节、速度和持续适应。"
+  },
+  "archive": {
+    "title": "持续在线日报",
+    "desc": "AI 正从一次性工具变成持续工作的 agent：产品、训练基础设施和创业护城河都开始围绕真实使用重新组织。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-10-01 source feeds.",
+  "sections": [
+    {
+      "title": "The Always-On Agent / 持续在线的 Agent",
+      "desc": "Dots 的重点不只是上线，而是它会在使用中逐渐学会你的偏好。",
+      "cards": [
+        {
+          "authorKey": "x:sama",
+          "sourceUrl": "https://x.com/sama/status/2104995014208258235",
+          "en": {"rewrite": ["Sam Altman announces that Dots are here: an AI that works 24/7, intended to give people back time and attention for higher-level work."], "original": ["Dots are here!", "A new way to use AI that works 24/7 for you; get more of your time and attention back to work at a higher level."]},
+          "cn": {"rewrite": ["Sam Altman 宣布 Dots 上线：这是一个 24/7 工作的 AI，目标是把人的时间和注意力还回来，让人把精力放在更高层的工作上。"], "original": ["Dots 来了！", "一种 24/7 为你工作的 AI，让你把更多时间和注意力拿回来，去做更高层的工作。"]}
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2105105086506840421",
+          "en": {"rewrite": ["Thibault Sottiaux says millions of Dots could be online within days. His early usage lesson is that the product gets noticeably better after two or three days of teaching it your preferences and context. The team is studying how people use one primary Dot before allowing users to create entire teams of them."], "original": ["Personally I felt a jump after 2-3 days of use after teaching it more about my preferences and things on my mind.", "It learns very quickly to be most useful and it can take on surprisingly ambitious tasks on its own.", "We're learning from how you all use your primary dot before releasing the ability to create an entire team of them."]},
+          "cn": {"rewrite": ["Thibault Sottiaux 说，几天内可能就会有数百万个 Dots 上线。他的早期使用经验是：把自己的偏好和脑中的事情教给它之后，大约两三天就会明显感觉到跃迁。团队会先观察大家如何使用一个主 Dot，再开放创建整支 Dot 团队。"], "original": ["我个人在使用两三天、把偏好和脑中的事情教给它之后，感觉到了一次跃迁。", "它学得很快，会变得越来越有用，也能自己接手出人意料地有野心的任务。", "在开放创建整支团队之前，我们会先学习大家如何使用自己的主 Dot。"]}
+        }
+      ]
+    },
+    {
+      "title": "Training Against the Real World / 训练必须面对真实世界",
+      "desc": "Agent 的 RL 不是单纯预测 token，而是让模型跑完整个用户 session。",
+      "cards": [
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2105065175711924492",
+          "en": {"rewrite": ["Thariq points to Anthropic's explanation of how Claude was made faster, but the broader lesson in today's feed is that speed is becoming a product experience, not just a benchmark number."], "original": ["from our blog post on how we made Claude faster:"]},
+          "cn": {"rewrite": ["Thariq 指向 Anthropic 关于 Claude 如何变快的文章。今天这条信息背后的更大趋势是：速度正在变成产品体验，而不只是 benchmark 上的一个数字。"], "original": ["来自我们关于如何让 Claude 变快的博客文章："]}
+        },
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2105000738745376769",
+          "en": {"rewrite": ["Swyx highlights the questions builders are now asking around Dots, Sol 6.1, CUA, and the Decisions API. The list itself is a snapshot of where the agent product frontier is moving: persistent assistants, cheaper models, computer use, and decision-making interfaces."], "original": ["we are gonna be asking all your burning Dots, Sol 6.1, CUA, and Decisions API questions"]},
+          "cn": {"rewrite": ["Swyx 提到大家现在最想追问的几件事：Dots、Sol 6.1、CUA 和 Decisions API。这张问题清单本身就是 agent 产品前沿的切片：持续在线的助手、更便宜的模型、computer use，以及面向决策的接口。"], "original": ["我们会问大家关于 Dots、Sol 6.1、CUA 和 Decisions API 的所有燃眉问题。"]}
+        }
+      ]
+    },
+    {
+      "title": "Infrastructure Becomes the Product / 基础设施正在变成产品",
+      "desc": "模型能力之外，训练环境、分发规模和实现细节正在决定体验。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2105043144975011982",
+          "en": {"rewrite": ["Guillermo Rauch says AI SDK has reached 30 million weekly downloads. He also shares a milestone video generated with a mix of tools, written in Rust and rendered on the GPU. The point is less the video itself than the distribution signal: the SDK is becoming a recurring layer in how developers ship AI products."], "original": ["AI SDK has hit 30M weekly downloads.", "this video was written in Rust and rendered on the GPU."]},
+          "cn": {"rewrite": ["Guillermo Rauch 说 AI SDK 已经达到每周 3000 万次下载。他还分享了一条用多种工具生成的里程碑视频，代码用 Rust 写、在 GPU 上渲染。真正值得注意的不只是视频，而是分发信号：这个 SDK 正在成为开发者交付 AI 产品时反复调用的一层基础设施。"], "original": ["AI SDK 已经达到每周 3000 万次下载。", "这条视频用 Rust 编写，并在 GPU 上渲染。"]}
+        },
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2104996638817386820",
+          "en": {"rewrite": ["Amjad Masad shares a guide to designing and building a harness that can reach frontier performance at a fraction of the cost. It is a concise reminder that the system around a model can matter as much as the model itself."], "original": ["How to design and build a harness to reach frontier performance at a fraction of the cost!"]},
+          "cn": {"rewrite": ["Amjad Masad 分享了一份关于如何设计和构建 harness 的指南：用更低的成本达到 frontier performance。它提醒人们，围绕模型搭建的系统，重要性可能不亚于模型本身。"], "original": ["如何设计和构建一个 harness，以一小部分成本达到 frontier performance！"]}
+        }
+      ]
+    },
+    {
+      "title": "Speed, Moats & Missionaries / 速度、护城河与长期主义",
+      "desc": "竞争越来越快，真正的差异藏在一千个小地方，也藏在还愿不愿意长期建设的人身上。",
+      "cards": [
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2105148927599423752",
+          "en": {"rewrite": ["Nikunj Kothari says it is harder than ever to find missionaries: founders and executives are moving toward obvious winners, while companies can become shells after key people leave. He also argues that an app's moat is no longer one thing but a thousand small details across product, technology, and go-to-market. In this climate, founder speed and the ability to adapt may be the most durable edge."], "original": ["It's harder than ever to find missionaries.", "the moat is no longer 'one' thing.", "the harness is like a thousand small things done well.", "the real defensibility is the founders."]},
+          "cn": {"rewrite": ["Nikunj Kothari 说，现在比任何时候都更难找到真正的长期建设者：创始人和高管都在向明显的赢家靠拢，关键成员离开后，公司可能只剩一个空壳。他还认为，app 的护城河不再是单一能力，而是产品、技术和 GTM 上一千个细节的组合。在这样的竞争环境里，创始人的执行速度和适应能力也许才是最持久的优势。"], "original": ["现在比任何时候都更难找到 missionaries。", "护城河不再是一个东西。", "harness 就是一千件小事都做得很好。", "真正的防御力在创始人身上。"]}
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2105111520913039530",
+          "en": {"rewrite": ["Aaron Levie argues that the AI industry can still handle safety and security through shared standards and practices for the foreseeable future. His optimism comes with a limit: as capabilities advance, oversight, testing, liability, and regulation will inevitably grow. For now, he sees unusually broad industry alignment without requiring competition to disappear."], "original": ["the AI industry can deal with safety and security through a set of shared standards and practices for the foreseeable future.", "At some point in capability progress there will inevitably be greater oversight, testing, and layers of liability and regulation."]},
+          "cn": {"rewrite": ["Aaron Levie 认为，在可预见的未来，AI 行业仍然可以通过共享标准和实践来处理安全问题。但他也设定了边界：随着能力继续进步，监督、测试、责任和监管必然会增加。眼下，他看到的是一种罕见的行业共识：大家可以一起推进安全，同时不必放弃竞争。"], "original": ["在可预见的未来，AI 行业可以通过一套共享的标准和实践来处理安全问题。", "随着能力进步，更多监督、测试、责任和监管层次必然会出现。"]}
+        }
+      ]
+    }
+  ]
+}
