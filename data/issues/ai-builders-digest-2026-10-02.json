@@ -1,0 +1,255 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-10-02",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的共同主题不是模型又快了多少，而是 AI 开始接管工作流之后，什么仍然需要人来判断。Sam Altman 讲的是 agent 如何把注意力还给人，Aaron Levie 讲的是企业要为真正的工作产出重做系统，而 builders 们已经在处理更具体的麻烦：权限、协作、部署、评估，以及如何把一个容易做出来的产品做成值得存在的公司。"
+  },
+  "archive": {
+    "title": "工作流重构日报",
+    "desc": "AI 正从一个更快的工具变成持续运行的工作层，真正的难题转向连接、部署、协作和产品判断。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-10-02 source feeds.",
+  "sections": [
+    {
+      "title": "Personal Agents Take the First Shift / 个人 Agent 接管第一班",
+      "desc": "Agent 最先改变的，可能不是宏大的自动化，而是人每天打开手机、翻消息、找信息的方式。",
+      "cards": [
+        {
+          "authorKey": "podcast:ai-and-i",
+          "authorName": "Sam Altman",
+          "authorTag": "Every Podcast",
+          "sourceUrl": "https://www.youtube.com/playlist?list=PLuMcoKK9mKgHtW_o9h5sGO2vXrffKHwJL",
+          "en": {
+            "rewrite": [
+              "Sam Altman's most concrete case for persistent agents is surprisingly modest: a Dot that protects his mornings. It watches the context he normally cannot keep up with, surfaces only what needs his judgment, and handles the rest, giving him back the deep-work window that constant notifications had eroded.",
+              "The larger point is that AI is not simply removing jobs. It is raising the amount people expect to get done while keeping humans at the center of taste, relationships, and decisions. Altman sees the next phase as a renaissance of small teams and one-person companies, provided agents help people spend their time on what they actually want to make."
+            ],
+            "original": [
+              "The Dots, the new thing we launched today, is the first thing that has given me back control of my mornings and my mental space in the mornings.",
+              "What I am hopeful for is that this is just a huge new wave of scientific discovery, art, company formation, like everybody that wants to start a new thing."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Sam Altman 为 persistent agent 提供的最具体案例，意外地很日常：一个帮他守住早晨的 Dot。它读取那些人很难持续跟踪的上下文，只把真正需要他判断的事情递过来，其余事务自己处理，把被通知打碎的深度工作时间还了回来。",
+              "更大的判断是，AI 不只是减少工作，它也在抬高人们对产出的期待，同时把品味、关系和决策继续留在人手里。Altman 认为下一阶段会出现更多小团队和一人公司，前提是 agent 能让人把时间花在真正想创造的事情上。"
+            ],
+            "original": [
+              "Dots 是我们今天发布的新东西，它是第一个让我重新掌控早晨和早晨精神空间的东西。",
+              "我所希望的是，这会成为一波科学发现、艺术和公司创立的巨大新浪潮，让每一个想开始新事业的人都有机会。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2105395200248156556",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux shows the more personal side of the same shift: he asked his Dot to paint him, then asked it to improve the result by finding a recent photo online. The interesting part is not the portrait itself; it is the agent's ability to use a computer, retrieve context, and iterate after a vague request.",
+              "That is a different interaction model from filling in a prompt box. You give the agent a goal, inspect what it did, and steer the next attempt."
+            ],
+            "original": [
+              "Asked my dot to paint me. After sending me something cartoonish, I asked it to try a bit harder and to find a recent picture of me on the internet. It did better."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux 展示了同一趋势更个人化的一面：他让自己的 Dot 画一幅肖像，觉得太卡通后，又让它去网上找最近的照片再试一次。重点不在画像本身，而在于 agent 能操作电脑、补上下文，并根据模糊反馈继续迭代。",
+              "这已经不是在输入框里把 prompt 写得更漂亮，而是给 agent 一个目标，看它做了什么，再把下一步方向交还给它。"
+            ],
+            "original": [
+              "我让 Dot 画我。它先给了我一张卡通风格的图，我让它再认真一点，并去网上找一张我最近的照片。它画得更好了。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Agent Stack Gets Serious / Agent 基础设施开始变硬",
+      "desc": "当 agent 真正进入生产环境，聊天窗口只是表面，权限、数据流、协作可见性和训练环境才是底层工程。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2105390544096841942",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch argues that once code becomes cheap, connecting agents to real systems becomes the final boss. His Connect product is aimed at replacing the pile of static credentials developers currently hand to every agent or app with a more secure integration layer.",
+              "The useful distinction here is between making an agent intelligent and making it deployable. The latter requires identity, permissions, and a way to let agents reach services without turning every integration into a security liability."
+            ],
+            "original": [
+              "With code now being 'free', the final boss of building is connecting to stuff. Connect is both easier and more secure for agents and for apps.",
+              "The world of building agents is plagued with static credentials. You're supposed to give a bunch of keys to each agent or app you build. It's DX hell, but it's also a massive liability. Connect fixes this."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch 认为，当写代码变得便宜之后，把 agent 接到真实系统上就成了最后的大 boss。Connect 想解决的，是开发者现在不得不把一堆静态密钥交给每个 agent 或应用的问题，用更安全的连接层替代它。",
+              "这里最值得注意的区分是：让 agent 变聪明，和让 agent 真正可部署，是两回事。后者需要身份、权限，以及一种不把每次集成都变成安全风险的服务访问方式。"
+            ],
+            "original": [
+              "现在代码已经‘免费’了，构建的最终 boss 是连接各种东西。Connect 对 agent 和应用来说都更简单、更安全。",
+              "构建 agent 的世界被静态凭证困扰。你得把一堆密钥交给每个 agent 或应用。这是 DX 地狱，也是一项巨大的安全负担。Connect 解决了它。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2105362785534361996",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger is already editing the agent experience itself. He finds raw inter-agent communication in the chat stream increasingly irritating, so his harness now collapses it to a single expandable line.",
+              "That small UI decision points to a real product problem: as more agents work in parallel, showing every internal exchange is not transparency, it is noise. The interface has to expose coordination when useful and get out of the way when it is not."
+            ],
+            "original": [
+              "I'm finding inter-agent communication in the chat stream increasingly irritating. Changed the visibility in the OC harness to just a single line that can be expanded."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger 已经开始直接改造 agent 的使用体验。他觉得把 agent 之间的所有通信原样塞进聊天流越来越烦，于是把它们在自己的 harness 里折叠成一行，需要时再展开。",
+              "这个小小的 UI 决定其实指向一个真实的产品问题：当多个 agent 并行工作时，展示每一条内部交流不等于透明，很多时候只是噪音。界面需要在有用时呈现协作，在没用时自动退到后台。"
+            ],
+            "original": [
+              "我发现聊天流里的 agent 间通信越来越让人烦。我把 OC harness 里的可见性改成只显示一行，需要时可以展开。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2105449821645480046",
+          "en": {
+            "rewrite": [
+              "Garry Tan highlights a different coordination pattern in Capy: instead of a top-down manager assigning work to child agents, the agents talk to one another as peers and explore the problem together.",
+              "The appeal is not just speed. Peer coordination can discover paths that were never specified in advance, which is closer to how a small engineering team explores an uncertain problem than how a fixed workflow executes a checklist."
+            ],
+            "original": [
+              "Other code editors let you top down coordinate child agents. I've never really seen this where agent swarms speak to one another as peers and self coordinate allowing you to organically explore the space instead of pre-arrange it, have you? Capy is special"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan 关注了 Capy 里的另一种协作模式：不是由上级 agent 自上而下给子 agent 分工，而是让一群 agent 以平级身份互相交流，一起探索问题。",
+              "它吸引人的地方不只是速度。平级协作有机会发现事先没有写进计划的路径，更像一个小型工程团队面对不确定问题时的探索，而不是照着清单执行固定流程。"
+            ],
+            "original": [
+              "其他代码编辑器让你自上而下协调子 agent。我还真没见过 agent swarm 像平级同事一样互相交流、自我协调，让你自然地探索问题空间，而不是预先安排好。Capy 很特别。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "AI Becomes an Implementation Business / AI 进入落地生意",
+      "desc": "企业采用 AI 的难点不在于买一个软件，而在于把工作本身改造成机器和人可以共同完成的流程。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2105354449795621179",
+          "en": {
+            "rewrite": [
+              "Aaron Levie sees a major opportunity in becoming the deployment layer for AI. Enterprise adoption means moving legacy systems, reorganizing data access, connecting software to agents, redesigning workflows, building human-in-the-loop controls, maintaining evals, and updating the whole system as models change.",
+              "That is not ordinary software implementation. You are deploying work output inside a process, not just handing over a tool. Expect a new generation of focused services firms and implementation partners to emerge around industries, company sizes, and specific operational problems."
+            ],
+            "original": [
+              "AI is not the same as just deploying software. ... With AI agents, you're delivering actual work augmentation to the organization, which has a completely different set of complexities associated with it.",
+              "Great time to be an FDE or FDE firm."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie 认为，AI 现在有一个巨大的机会：成为企业把 AI 部署进真实经济的那一层。企业采用 AI，意味着迁移旧系统、重组数据访问、把软件接到 agent、重做工作流、设计 human-in-the-loop 控制、维护 eval，并随着模型变化持续更新整套系统。",
+              "这不是普通的软件实施，因为交付的不只是一个工具，而是嵌入流程里的工作产出。接下来很可能会出现一批按行业、公司规模和具体问题切分的新型服务公司与实施伙伴。"
+            ],
+            "original": [
+              "AI 和单纯部署软件不是一回事。使用 AI agent 时，你是在组织里交付真正的工作增强，这带来完全不同的一组复杂性。",
+              "现在是成为 FDE 或 FDE 公司的好时候。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2105395957357588561",
+          "en": {
+            "rewrite": [
+              "Garry Tan's air-traffic-control example is a useful reality check. The system described does not replace controllers; it predicts conflicts and helps them spread flights across a runway's real capacity. The technology can be relatively 'dumb' while still producing meaningful operational gains.",
+              "The bottleneck is willingness to replace paper charts and manual habits with software. Much of AI's near-term value may look exactly like this: less autonomy theater, more practical augmentation in systems that already work badly."
+            ],
+            "original": [
+              "The tool is SMART, from Air Space Intelligence, a small company he says competed with the biggest companies and won. It predicts. His stage example: a 2.5 hour ground stop might only need 45 minutes.",
+              "None of this needs a breakthrough. It needs the will of the people to know they need to use software and be ok with AI augmentation instead of insisting on a paper chart and copper wire."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan 讲的空管案例，是一个很好的现实检查。这个系统不是替代管制员，而是预测冲突，帮助他们按照跑道的真实容量重新安排航班。技术可以相对‘笨’，但依然能带来很实际的运营收益。",
+              "真正的瓶颈是人们是否愿意用软件替换纸质图表和手工习惯。AI 近期的大量价值，可能就长这样：少一点自主智能的表演，多一点对低效现有系统的务实增强。"
+            ],
+            "original": [
+              "这个工具叫 SMART，来自 Air Space Intelligence，一家据他说击败了最大公司的小公司。它负责预测。他在台上的例子是：一次 2.5 小时的地面停飞可能只需要 45 分钟。",
+              "这些都不需要突破。需要的是人们意识到应该使用软件，并接受 AI 增强，而不是坚持使用纸质图表和铜线。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Bar Rises With the Leverage / 杠杆越大，门槛越高",
+      "desc": "AI 让产品更容易做出来，却没有让好公司的标准变低；相反，产品定位、护城河和人的判断变得更重要。",
+      "cards": [
+        {
+          "authorKey": "x:adityaag",
+          "sourceUrl": "https://x.com/adityaag/status/2105339569139056776",
+          "en": {
+            "rewrite": [
+              "Aditya Agarwal frames the startup paradox of AI clearly: building is easier, but the floor for what counts as a great startup has moved dramatically upward. His question for founders is not 'can this be built?' but 'what is the maximalist version of this company, and how could it change the future?' ",
+              "When the cost of making a prototype collapses, audacity becomes part of the differentiation. Starting small may be operationally sensible, but a small ambition is harder to fund, hire for, and turn into a durable company."
+            ],
+            "original": [
+              "The question I keep on asking everyone @spc is \"What is the maximalist version of this company?\"",
+              "This is the paradox of AI. It makes building easier but dramatically raises the floor on what it means to be a great startup."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aditya Agarwal 把 AI 时代的创业悖论说得很清楚：做东西更容易了，但一家优秀创业公司的及格线也大幅上移。他问创始人的不是‘能不能做出来’，而是‘这家公司最彻底、最有野心的版本是什么，它能怎样改变未来？’",
+              "当做原型的成本塌下来，野心本身就成了差异化的一部分。小步启动在执行上当然合理，但目标太小，会更难融资、招到好人，也更难长成一家有生命力的公司。"
+            ],
+            "original": [
+              "我一直问 SPC 的每个人：‘这家公司最极致的版本是什么？’",
+              "这就是 AI 的悖论：它让构建变容易了，却大幅提高了成为一家优秀创业公司的门槛。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2105532229866942772",
+          "en": {
+            "rewrite": [
+              "Nikunj Kothari offers a grounded counterpoint to the automation story: he has automated most of his investing job, but still keeps sourcing and writing outbound emails, meeting founders, and writing pass notes by hand. The remaining work is exactly where trust, context, and personal judgment compound.",
+              "That is a useful boundary for builders. Automating the visible workflow is not the same as automating the part that makes the work valuable."
+            ],
+            "original": [
+              "I have automated most of my job away except the following.. a) sourcing and writing outbound emails ... b) meeting founders (primarily in person, zoom sucks) c) writing pass notes/calls (still write every single one by hand & frankly the hardest part of the job)"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj Kothari 给自动化叙事补了一个很实在的反例：他已经把投资工作的大部分自动化了，但仍然亲自做募源和写外联邮件、见创始人、手写 pass note。留下来的，恰恰是信任、上下文和个人判断会不断积累的工作。",
+              "这对 builders 是个有用的边界提醒：把看得见的工作流自动化，不等于把真正创造价值的部分也自动化。"
+            ],
+            "original": [
+              "我已经把自己的大部分工作自动化了，只剩下这些：a）寻找项目并写外联邮件；b）见创始人（主要是线下，Zoom 太差）；c）写 pass note/通话记录（仍然每一份都自己写，说实话这是最难的部分）。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
