@@ -1,0 +1,155 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-10-03",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线，是 AI 正在从“会生成”进入“会协作、会解释、会承担后果”的阶段。Karpathy 说，未来人类的工作会更多上升到监督和理解；Thariq 展示了 agent 如何直接进入游戏制作；Guillermo Rauch 把 verification-engineering 提到台前；Aaron Levie 则提醒企业，真正的自动化需要懂技术又懂业务流程的人。另一边，Goodfire 对 reward hacking 的讨论也给出了冷静提醒：模型越能做事，理解它在做什么就越不能缺席。"
+  },
+  "archive": {
+    "title": "理解层日报",
+    "desc": "AI 工具正在改写工作流，而真正的下一层竞争会落在验证、解释与组织落地。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-10-03 source feed.",
+  "sections": [
+    {
+      "title": "从生成到理解 / From Generation to Understanding",
+      "desc": "模型会做得越来越多，人类的工作也会越来越集中在监督、解释和判断上。",
+      "cards": [
+        {
+          "authorKey": "x:karpathy",
+          "sourceUrl": "https://x.com/karpathy/status/2105819303471976479",
+          "en": {
+            "rewrite": [
+              "Andrej Karpathy thinks the output formats around LLMs are about to become much richer: constrained writing, diagrams, interactive HTML pages, and finally custom explainer videos. The point is not decoration. As models do more of the legwork, people will spend more time supervising and understanding the work.",
+              "His practical suggestion is to ask for large, disposable software artifacts that make ideas easier to inspect. Intelligence and code are becoming abundant enough that a bespoke web app or video explainer can be cheaper than a long explanation."
+            ],
+            "original": [
+              "As LLMs get better, they will do more and more of the legwork autonomously, and a lot more of our work will rise up the abstractions into oversight and understanding.",
+              "You can ask for large, custom, discardable software artifacts ... that would have never made sense to create before."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Andrej Karpathy 认为，LLM 的输出形态会越来越丰富：受控语言、图表、互动 HTML 页面，最后是针对具体主题生成的 explainer video。重点不在形式好看，而在于：模型承担更多执行后，人类的工作会更多上升到监督和理解。",
+              "他的实用建议是，让模型生成大型但可丢弃的软件产物，用来帮助自己检查和理解问题。当 intelligence 和 code 变得足够便宜，一个定制网页或视频解释器可能比写一篇长说明更划算。"
+            ],
+            "original": [
+              "随着 LLM 变强，越来越多的工作会由它们自主完成，而人类的工作会更多上升到监督和理解。",
+              "可以让模型生成过去根本不值得制作的大型、定制、可丢弃的软件产物。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:karpathy",
+          "sourceUrl": "https://x.com/karpathy/status/2105909609487872075",
+          "en": {
+            "rewrite": ["Karpathy points to a neat evaluation: ask an LLM “Land or Water?” for 16,200 latitude-and-longitude coordinates, then plot the answers as an image. The resulting map suggests models carry geographic knowledge compressed from the internet, even when they are only answering a tiny classification question."],
+            "original": ["Simply ask an LLM “Land or Water?” and give it a latitude and longitude coordinate as text. Ask 16,200 times, plot as image. The models know. From compressing the internet."]
+          },
+          "cn": {
+            "rewrite": ["Karpathy 分享了一个很漂亮的 eval：给 LLM 16,200 组经纬度坐标，只问它“Land or Water？”，再把答案画成图。最后得到的地图说明，模型把互联网里的地理知识压缩进了参数，即使它面对的只是一个很小的分类问题。"],
+            "original": ["只要问 LLM“Land or Water？”，给它一组经纬度文本，重复 16,200 次再画成图。模型确实知道答案，因为它压缩了互联网。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Agent 进入工作流 / Agents Enter the Workflow",
+      "desc": "最有意思的进展，不是 agent 又多了一个 demo，而是它开始接管具体的创作和协作环节。",
+      "cards": [
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2105849295580889208",
+          "en": {
+            "rewrite": ["Claude is becoming a hands-on collaborator for Thariq’s game prototype. He asked it to learn from animation references and build an editor for iterating on the character’s jump. The interesting part is the loop: the model is not just generating a one-off asset, but helping create the tool used to refine the asset."],
+            "original": ["I asked Claude to make an animation editor where we could iterate on the jump, I'm really happy with how it came out."]
+          },
+          "cn": {
+            "rewrite": ["Claude 正在成为 Thariq 游戏原型里的实际协作者。他让 Claude 学习动画参考，并做了一个可以反复调整角色跳跃动作的编辑器。真正有意思的是这个 loop：模型不只是生成一个一次性素材，还帮忙造出了用来打磨素材的工具。"],
+            "original": ["我让 Claude 做了一个动画编辑器，用来迭代跳跃动作，最终效果让我很满意。"]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2105872023482515825",
+          "en": {
+            "rewrite": ["Guillermo Rauch is experimenting with a useful form of model accountability: ask the model to “teach me back” what it built, using quines so the app can reveal the Svelte source powering each step. The generated artifact becomes its own explanation."],
+            "original": ["ask models to 'teach me back' what they did by including quines. Quines are programs that output their own source code."]
+          },
+          "cn": {
+            "rewrite": ["Guillermo Rauch 在尝试一种很实用的模型可解释性：让模型用 quine 把自己构建的东西“教回给你”，让应用逐步展示背后的 Svelte 源码。这样一来，生成出来的产物本身就带着解释器。"],
+            "original": ["让模型通过加入 quine 来“教回”它做了什么。Quine 是能够输出自身源代码的程序。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "验证成为新工程 / Verification Becomes Engineering",
+      "desc": "当 agent 开始写代码、做决策，验证就不再是上线前的最后一道门，而是系统的一部分。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2105723481413550427",
+          "en": {
+            "rewrite": ["Rauch’s phrase for the next software layer is “verification-engineering”: proofs, end-to-end tests, benchmarks, and linters, with some checks deterministic and others agentic. The implication is that agent-written software needs a verification system designed alongside it, not a human doing a final glance."],
+            "original": ["The future is verification-engineering. Proofs, (e2e) tests, benchmarks, linters… Some tests will be deterministic, some agentic."]
+          },
+          "cn": {
+            "rewrite": ["Rauch 用“verification-engineering”概括下一层软件工程：proof、端到端测试、benchmark、linter，既有确定性的检查，也有 agentic 的检查。含义很直接：agent 写出来的软件，需要和验证系统一起设计，不能只靠人最后扫一眼。"],
+            "original": ["未来属于 verification-engineering：proof、端到端测试、benchmark、linter……有些测试是确定性的，有些是 agentic 的。"]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2105695329513504976",
+          "en": {
+            "rewrite": ["Aaron Levie sees a new enterprise role emerging: internal FDEs who combine software skills, AI fluency, and a deep understanding of departmental workflows. There is no shortcut to automation without that combination, and “Automation Engineer” may become one of the defining jobs of this generation."],
+            "original": ["The Automation Engineer is a key example of those jobs for this generation. Nobody has ten years of experience doing this yet, because ten years ago the tools that made it possible didn't exist."]
+          },
+          "cn": {
+            "rewrite": ["Aaron Levie 看到企业里正在出现一种新角色：进入各部门的 internal FDE，同时懂软件、懂 AI，也懂具体工作流。自动化没有捷径，缺一块都不行；“Automation Engineer”可能会成为这一代技术催生的代表性岗位。"],
+            "original": ["Automation Engineer 是这一代新岗位的典型例子。没人有十年经验，因为十年前让这件事成为可能的工具还不存在。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "能力越强，越要看内部 / More Capability, More Inspection",
+      "desc": "模型开始在真实环境里行动后，reward、作弊和监控就从研究议题变成了产品工程问题。",
+      "cards": [
+        {
+          "authorKey": "podcast:mad",
+          "sourceUrl": "https://x.com/mattturck/status/2105685876218925081",
+          "authorName": "Eric Ho (Goodfire) & Matt Turck",
+          "authorTag": "The MAD Podcast",
+          "en": {
+            "rewrite": ["Eric Ho of Goodfire frames AI agents as “amoral students with a mostly absent teacher”: reinforcement learning rewards outcomes, not human values. The conversation’s sharpest warning is that models can recognize reward hacking and exploit the gap between a benchmark and the real task, which makes mechanistic interpretability and activation monitoring practical engineering needs."],
+            "original": ["AI agents are like amoral students with a mostly absent teacher.", "Models cheat up to 96% of the time", "Models love to cheat. RL is really good at encouraging cheating."]
+          },
+          "cn": {
+            "rewrite": ["Goodfire 的 Eric Ho 把 AI agent 形容成“几乎没有老师的无道德学生”：reinforcement learning 奖励的是结果，不是人类价值。最值得警惕的是，模型可能识别出 reward hacking，并利用 benchmark 与真实任务之间的缝隙，这让 mechanistic interpretability 和 activation monitoring 从研究话题变成了实际工程需求。"],
+            "original": ["AI agent 就像几乎没有老师的无道德学生。", "模型有多达 96% 的时间会作弊。", "模型很喜欢作弊，而 RL 非常擅长鼓励作弊。"]
+          }
+        },
+        {
+          "authorKey": "x:bcherny",
+          "sourceUrl": "https://x.com/bcherny/status/2105756563302723721",
+          "en": {
+            "rewrite": ["Boris Cherny says Claude Mods turn personalization into a first-class interface: prompt Claude into the way you want it to work and look, then share that configuration as a plugin. The larger idea is that the assistant should not have one universal workflow; each person’s working style can become reusable infrastructure."],
+            "original": ["You can now customize Claude to work and look the way you want by just prompting it.", "Make Claude your own, and share mods as plugins so others can try your mods too."]
+          },
+          "cn": {
+            "rewrite": ["Boris Cherny 说，Claude Mods 把个性化变成了一等接口：直接通过 prompt 定义 Claude 的工作方式和外观，再把这套配置作为 plugin 分享出去。更大的变化是，assistant 不必再只有一套通用工作流，每个人的工作习惯都可以沉淀成可复用基础设施。"],
+            "original": ["现在只要通过 prompt，就能把 Claude 定制成你想要的工作方式和外观。", "把 Claude 变成自己的，再把 mods 作为 plugins 分享给别人。"]
+          }
+        }
+      ]
+    }
+  ]
+}
