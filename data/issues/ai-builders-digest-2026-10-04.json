@@ -1,0 +1,211 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-10-04",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的线索都指向同一个变化：AI 正从一个会回答问题的工具，变成嵌进工作流、基础设施和家庭设备里的长期协作者。Sam Altman 说 dot 正在学习人的工作方式，Garry Tan 看到 agent 已经开始跨 session 协作，而 Fractile 的 Walter Goodwin 则提醒我们，真正的竞争还会下沉到芯片和 memory bandwidth。"
+  },
+  "archive": {
+    "title": "工作流下沉日报",
+    "desc": "AI agent 正从聊天窗口下沉到个人工作流、跨 session 协作、家庭设备和为推理而生的芯片底座。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-10-04 source feeds.",
+  "sections": [
+    {
+      "title": "From Chat to Workflow / 从聊天到工作流",
+      "desc": "最值得看的不是模型又多了一个功能，而是它开始记住人的工作方式，并主动处理那些一直拖着不想做的事。",
+      "cards": [
+        {
+          "authorKey": "x:sama",
+          "sourceUrl": "https://x.com/sama/status/2106085986606403684",
+          "en": {
+            "rewrite": [
+              "OpenAI CEO Sam Altman says dot is his favorite OpenAI product so far because it gets noticeably better as it learns his workflow and style. The important signal is not the product ranking; it is the shift from a chatbot that waits for prompts to an assistant that quietly absorbs context and clears the tasks that have become a \"gravity well of dread.\""
+            ],
+            "original": [
+              "dot is my favorite openai product so far!\n\nit is amazing to me that each day it feels noticably better as it learns more of my workflow and style.\n\nhaving it do the stuff i don't like doing--and usually just builds up as a gravity well of dread--has me very happy."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "OpenAI CEO Sam Altman 说，dot 是他目前最喜欢的 OpenAI 产品，因为它会逐渐学会他的工作流和风格，而且每天都在明显变好。真正重要的不是这句产品排名，而是入口正在变化：助手不再只是等你提问，而是默默吸收上下文，替你清掉那些不断堆积、最后变成「恐惧引力井」的琐事。"
+            ],
+            "original": [
+              "dot 是我目前最喜欢的 OpenAI 产品！\n\n它每天都在明显变好，因为它学会了更多我的工作流和风格，这让我觉得很神奇。\n\n让它去做那些我不喜欢做、通常会不断堆积成一口恐惧引力井的事情，我真的很开心。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2106092289173213444",
+          "en": {
+            "rewrite": [
+              "Y Combinator CEO Garry Tan highlights a surprising behavior in Capy: his GBrain collaborator can start a fix wave in one thread while steering around work already happening across his other threads. The notable part is that the coordination is cross-session and model-agnostic, which makes an agent feel less like a single chat window and more like an always-on project layer."
+            ],
+            "original": [
+              "Surprising cool @capydotai cross-session coordination I wasn't expecting: My GBrain collaborator Sina started a fix wave that is even steering around all of the things I'm already working on across multiple Capy threads. All model agnostic."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Y Combinator CEO Garry Tan 分享了 Capy 里一个出乎意料的能力：他的 GBrain 协作者能在一个 thread 里发起修复行动，同时绕开其他多个 thread 中已经在进行的工作。关键不只是「能协作」，而是它能跨 session、与具体模型无关地协调任务，这让 agent 更像一个常驻的项目层，而不只是单个聊天窗口。"
+            ],
+            "original": [
+              "出乎意料的酷：@capydotai 的跨 session 协作。我的 GBrain 协作者 Sina 发起了一轮修复，甚至会避开我在多个 Capy thread 里已经做的所有事情。与模型无关。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Agents Meet the Real World / Agent 接上现实世界",
+      "desc": "agent 的下一步不是再多一个 demo，而是能发现真实环境里的设备、数据和可用连接，并把它们组织起来。",
+      "cards": [
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2106072546206773574",
+          "en": {
+            "rewrite": [
+              "Nikunj Kothari suggests a revealing home-automation experiment: let Claude Code or Codex sniff the home's network traffic, inventory the devices it finds, and research how each one could connect to an agent. The interesting idea is that agent capability may be constrained less by a missing model feature than by how much of the user's physical and digital context is still disconnected."
+            ],
+            "original": [
+              "If you are a home automation nerd, this is a fun prompt to try on Claude Code / Codex (edit based on your own setup):\n\n\"Can you sniff network packets in our house and see what else can we automate? For context: We have a Hermes agent that runs a lot of things like the personal Gmail, thermostat, Doordash, Amazon etc. \n\nTrying to see what else we can connect to. We have an Apple TV that we can talk to if we need for HomeKit related stuff but no other bridge that runs home assistant.\n\nGive me a full list of devices that you find and research how they can be connected to an agent.\""
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj Kothari 提了一个很能说明问题的家庭自动化实验：让 Claude Code 或 Codex 观察家里的网络数据包，列出发现的设备，再研究每个设备怎样接入 agent。这个想法的价值在于，它指出 agent 的能力边界未必由模型决定，更多时候是用户的物理世界和数字世界还没有被连接起来。"
+            ],
+            "original": [
+              "如果你是家庭自动化爱好者，可以试试把这段 prompt 发给 Claude Code / Codex（按自己的配置修改）：\n\n“你能不能嗅探家里的网络数据包，看看还有什么可以自动化？背景是：我们有一个 Hermes agent，已经能处理个人 Gmail、恒温器、DoorDash、Amazon 等很多事情。\n\n我想看看还能连接什么。我们有一台 Apple TV，必要时可以和它对话来做 HomeKit 相关的事情，但没有运行 Home Assistant 的其他 bridge。\n\n请完整列出你发现的设备，并研究它们如何连接到 agent。”"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2106072698564874410",
+          "en": {
+            "rewrite": [
+              "Peter Yang was paying nearly $300 a year for a YouTube research tool, then asked Claude to build the core feature set he actually needed. It took five minutes. The lesson is not that every SaaS product is obsolete; it is that bloated products are increasingly vulnerable when an AI can rebuild the small, personal slice of functionality a user really values."
+            ],
+            "original": [
+              "I was paying almost $300/year for a YouTube research tool that shall go unnamed. \n\nThe product was getting too complicated so I decided to check if Claude can build the core feature set that I actually needed. \n\nClaude built it in 5 min. 🥹"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 之前每年花将近 300 美元订阅一个 YouTube 研究工具，后来发现产品越来越复杂，于是让 Claude 只重做自己真正需要的核心功能。五分钟就完成了。重点不是所有 SaaS 都会消失，而是当 AI 能快速重建一个人真正看重的那一小块功能时，臃肿的产品会变得更脆弱。"
+            ],
+            "original": [
+              "我之前每年差不多花 300 美元订阅一个不点名的 YouTube 研究工具。\n\n产品越来越复杂，所以我决定看看 Claude 能不能把我真正需要的核心功能做出来。\n\nClaude 5 分钟就做完了。🥹"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Inference Stack Gets Serious / 推理底座进入硬仗",
+      "desc": "模型能力往下落地之后，速度、memory bandwidth 和 full-stack 芯片设计会成为产品体验的一部分。",
+      "cards": [
+        {
+          "authorKey": "podcast:no-priors",
+          "authorName": "Walter Goodwin",
+          "authorTag": "Founder & CEO, Fractile · No Priors",
+          "sourceUrl": "https://www.youtube.com/@NoPriorsPodcast",
+          "en": {
+            "rewrite": [
+              "The takeaway: frontier AI may need a frontier chip stack, not just a faster version of today's GPU. Fractile founder and CEO Walter Goodwin argues that inference chips should be designed around huge models and long contexts, with memory bandwidth as a central constraint. His contrarian point is that the chip market looks more diverse than it really is: many accelerators still share HBM, tensor cores, advanced packaging, and the same small set of manufacturing partners.",
+              "The harder opportunity is full-stack ownership, from workload-aware architecture and front-end design down to physical design and foundry interaction. Goodwin's framing is refreshingly concrete: a small structural lead in chips can translate into winning deployments for the next three to six months."
+            ],
+            "original": [
+              "Fractile is a chip company. We build very, very fast inference chips for the world's largest models.",
+              "The frontier model for the chip space is if you can just find a way to structurally carve out a three to six months advantage, you will be winning all of those deployments."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "一句话结论：frontier AI 需要的可能不是今天 GPU 的更快版本，而是一整套为 frontier 模型设计的芯片栈。Fractile 创始人兼 CEO Walter Goodwin 认为，inference chip 应该围绕超大模型和超长 context 来设计，而 memory bandwidth 会是核心瓶颈。他的一个反直觉判断是：芯片市场看起来选择很多，实际上高度同质化，很多 accelerator 仍然共享 HBM、tensor core、先进封装和那几家制造伙伴。",
+              "真正难、也真正有机会的地方，是从理解 workload 的架构设计、front-end design，一直做到 physical design 和与晶圆厂的协作。Goodwin 的判断很具体：如果能在芯片结构上领先三到六个月，就可能赢下这段时间里的所有部署。"
+            ],
+            "original": [
+              "Fractile 是一家芯片公司。我们为世界上最大的模型打造非常非常快的 inference chip。",
+              "芯片领域的 frontier model 是：如果你能找到办法在结构上领先三到六个月，你就会赢下所有这些部署。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:sama",
+          "sourceUrl": "https://x.com/sama/status/2106147184693620924",
+          "en": {
+            "rewrite": [
+              "Sam Altman addressed speculation around OpenAI's partnership with Cerebras in one sentence: Cerebras is a close partner, and OpenAI is pushing on the frontiers of speed with it. The post is brief, but it reinforces the direction of travel: as agent workloads become more continuous, inference latency is becoming a first-order product constraint."
+            ],
+            "original": [
+              "There is some speculation about our partnership with Cerebras.\n\nCerebras is a close partner, and we have a deep engagement pushing on the frontiers of speed."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Sam Altman 用一句话回应了外界对 OpenAI 与 Cerebras 合作的猜测：Cerebras 是亲密伙伴，双方正在一起推动速度的 frontier。信息很短，但方向很清楚：当 agent 变成持续运行的工作负载，inference latency 不再只是基础设施指标，而会直接变成产品体验的硬约束。"
+            ],
+            "original": [
+              "外界对我们与 Cerebras 的合作有一些猜测。\n\nCerebras 是亲密的合作伙伴，我们正在深度合作，推动速度的 frontier。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Building the AI Security Layer / 补上 AI 安全层",
+      "desc": "agent 越多、连接越深，安全就越不能停留在附加功能的位置，而要成为 AI 产品的基础设计。",
+      "cards": [
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2106042773510177256",
+          "en": {
+            "rewrite": [
+              "Swyx argues that Security x AI has moved from a conference theme to an urgent operating problem. He points to more rogue agents, more breaches, and more AI-driven attacks, and says security needs to sit at the center of the AI conversation because the risks are no longer theoretical."
+            ],
+            "original": [
+              "It's time to get serious about Security x AI.\n\nOne of the joys of doing AIE is helping others start their own high quality conferences in their countries and domains. Every single 2025 partner has come back — and the 2nd AI Security Summit is now way more important than before. Proud to be back as a founding partner with @snyksec!\n\nJoin the event: https://t.co/2IeM4a3MGO\n\nThe landscape has completely transformed since we started this a year ago. An exploding number of rogue agents, more breaches, more AI-driven attacks. now more than ever, security must be at the center of the AI conversation. With so much more hacks and vulnerabilities, this stuff is no longer theoretical..."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx 认为，Security x AI 已经从一个会议主题变成了迫切的运营问题：rogue agent 在增加，breach 在增加，AI-driven attack 也在增加。安全不能再是 AI 产品上线后的补丁，而必须回到讨论中心，因为这些风险已经不是理论推演。"
+            ],
+            "original": [
+              "是时候认真对待 Security x AI 了。\n\n做 AIE 的乐趣之一，是帮助其他人在各自国家和领域举办高质量会议。2025 年的每一位合作伙伴都回来了，第二届 AI Security Summit 现在比以前重要得多。很自豪能和 @snyksec 一起作为 founding partner 回归！\n\n参加活动：https://t.co/2IeM4a3MGO\n\n从我们一年前开始做这件事以来，环境已经彻底变了。rogue agent 数量爆炸，breach 更多，AI-driven attack 更多。现在比任何时候都更需要把安全放在 AI 讨论的中心。黑客攻击和漏洞这么多，这些事情已经不再是理论了……"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2106119299484221762",
+          "en": {
+            "rewrite": [
+              "Thariq points to You Should Know as a practical way to keep up with what Claude can do, and as an example of how mods can reshape an AI tool around a user's needs. The broader lesson is that the agent's value increasingly depends on the layer of personal conventions, prompts, and extensions built around it."
+            ],
+            "original": [
+              "\"You should know\" is a great way of staying on top of what's possible with Claude and also a great example of the kind of things mods enable.\n\nYou can really make Claude Code yours. https://t.co/En0OhotxQL"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thariq 推荐用 You Should Know 来跟上 Claude 的能力边界，同时也把它当作 mods 能把 AI 工具改造成个人版本的一个例子。更大的启发是：agent 的价值越来越取决于围绕它搭起来的个人约定、prompt 和扩展层，而不只是底层模型本身。"
+            ],
+            "original": [
+              "“You should know” 是了解 Claude 能做什么的好方法，也是 mods 能实现什么的一 个很好的例子。\n\n你真的可以把 Claude Code 变成属于自己的工具。https://t.co/En0OhotxQL"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
