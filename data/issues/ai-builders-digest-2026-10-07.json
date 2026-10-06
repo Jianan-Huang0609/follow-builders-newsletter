@@ -1,0 +1,189 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-10-07",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的共同主题，不是模型又多会一点，而是 builder 们正在把 AI 变成更可靠的工作系统：先把 eval 写成产品规格，再把 agent 放进接近真实工作的环境里测试。另一条线也很清楚，代码和产品都在向更强的约束靠拢，从 TypeScript 的编译期权限证明，到用结构化 planning 节省 token。AI 产品的竞争，正在从“能不能生成”转向“能不能稳定地做对”。"
+  },
+  "archive": {
+    "title": "可靠 Agent 日报",
+    "desc": "今天的 builders 把注意力从模型炫技移向 eval、真实环境、强约束和更高效的工作流。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-10-07 source feeds.",
+  "sections": [
+    {
+      "title": "Evals Are the Product / Evals 就是产品规格",
+      "desc": "当 agent 要进入真实工作流，评测不再是上线前的 QA，而是决定产品该做成什么样的规格。",
+      "cards": [
+        {
+          "authorKey": "x:realmadhuguru",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2107292113214091355",
+          "en": {
+            "rewrite": [
+              "Meta AI director Madhu Guru names the most common mistake teams make with agents: treating evals as a QA step after the product is built. His sharper framing is that AI products are different at the foundation, so the eval suite should define what the product is supposed to do in the first place.",
+              "That is a useful change in sequence: write the evidence of success before polishing the demo."
+            ],
+            "original": ["The most common mistake teams make is to treat evals as an additional QA step once the agent is built.\n\nAI products are fundamentally different.\n\nYour evals are your product spec."]
+          },
+          "cn": {
+            "rewrite": [
+              "Meta AI Director Madhu Guru 指出团队做 agent 时最常见的错误：等产品做完，才把 eval 当成额外的 QA 步骤。他更锋利的判断是，AI 产品从根上就不同，所以 eval 套件应该一开始就定义产品到底要做到什么。",
+              "顺序应该反过来：先写清楚成功的证据，再去打磨 demo。"
+            ],
+            "original": ["团队最常见的错误，是等 agent 做完后才把 eval 当作额外的 QA。\n\nAI 产品从根本上不同。\n\n你的 eval 就是产品规格。"]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2107283615247999257",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie points to a less glamorous bottleneck in enterprise agent adoption: testing agents against real files, CRM systems, email, and other work environments. Teams need to know not only whether an agent passes today's evals, but how it will behave after a model change or workflow upgrade.",
+              "His prediction is practical: every enterprise will need people, infrastructure, and simulated environments dedicated to running and managing evals."
+            ],
+            "original": ["A decent amount of agent adoption and deployment is bottlenecked by being able to test, tune, and optimize agents on “real” work environments. The files agents need to access, the CRM environments, email, and more.\n\nIt’s impossible to know how agents are performing if you don’t understand how well they’re executing on your evals and how they’ll perform in the future with a model change or workflow upgrade. Every enterprise has to do this 1 by 1 right now, which is obviously slow and tedious.\n\nEvery enterprise is going to have someone managing evals, infrastructure for building and running evals and simulated environments, and more. Huge space."]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 指出企业部署 agent 时一个不够性感、但更真实的瓶颈：你得在真实文件、CRM、邮件和工作环境里测试它。团队不只要知道 agent 今天能不能通过 eval，还要知道模型或 workflow 升级之后会不会仍然表现稳定。",
+              "他的判断很务实：企业最终都会需要专门的人、基础设施和模拟环境来管理和运行 eval。"
+            ],
+            "original": ["相当一部分 agent 的采用和部署，都卡在如何用“真实”的工作环境测试、调优和优化 agent。包括 agent 需要访问的文件、CRM 环境、邮件等。\n\n如果你不了解 agent 在 eval 上执行得有多好，也不知道模型变化或 workflow 升级后它会怎样表现，就不可能知道它实际表现如何。现在每家企业都得一个个手动做，显然又慢又麻烦。\n\n每家企业都会需要有人管理 eval、构建和运行 eval 及模拟环境的基础设施等等。这是一个巨大的空间。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Hard Constraints for Agents / 给 Agent 加硬约束",
+      "desc": "当代码主要由 agent 生成时，编译器、类型系统和结构化规划会变成新的协作边界。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2107119811444748555",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch introduces gdp-ts, a TypeScript library, linter, and AI skill built around compile-time authorization proofs. Sensitive functions require evidence that the caller has already passed the right role and entitlement checks, and the typechecker verifies that contract before code ships.",
+              "The larger idea is that agents benefit from constraints humans often find tedious. As agents write more code than teams can review, correctness needs to move into the tooling itself."
+            ],
+            "original": ["Introducing gdp-ts: Ghosts of Departed Proofs for TypeScript.\n\ngdp-ts is a library, linter and AI skill for safer API design. Under this contract, sensitive functions require 'proofs' that the caller performed an authorization check.\n\nThe typechecker verifies these proofs at compile time, preventing your team and agents from shipping catastrophic security (and other kinds of) bugs.\n\nWhile these patterns have existed for quite some time, especially in ecosystems like Haskell, ① human code review and ② cognitive and syntactic overhead made these solutions niche.\n\nThe situation is now inverted. Agents are writing more code than we can review, and they *thrive* in tight loops with hard constraints that would frustrate us. We see this with the rise of Rust, borrow checker, code aesthetics debate and all.\n\nThe README and examples model a real-world Vercel API product constraint: changing the password on a Project requires a proof of a certain role + a certain entitlement. Thanks to Matt Noonan and Ollie Charles for their research in this space.\n\nhttps://t.co/eRWdiMvQ2V"]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 发布了 gdp-ts：一个围绕编译期 authorization proof 设计的 TypeScript library、linter 和 AI skill。敏感函数要求调用方已经完成正确的 role 与 entitlement 检查，typechecker 会在代码发布前验证这份契约。",
+              "更大的想法是，agent 反而很适合人类觉得麻烦的硬约束。既然 agent 写出的代码已经多到团队审不完，正确性就需要直接进入工具链。"
+            ],
+            "original": ["介绍 gdp-ts：Ghosts of Departed Proofs for TypeScript。\n\ngdp-ts 是一个用于更安全 API 设计的 library、linter 和 AI skill。在这个契约下，敏感函数要求调用方提供已经完成 authorization check 的“proof”。\n\ntypechecker 会在编译期验证这些 proof，防止团队和 agent 发布灾难性的安全漏洞以及其他 bug。\n\n这些模式其实存在很久了，尤其在 Haskell 等生态里，但人工 code review 以及认知和语法负担让它们一直很小众。\n\n现在情况反过来了。Agent 写出的代码比我们能审查的更多，而它们特别适合在会让人类烦躁的严格约束循环里工作。Rust、borrow checker 以及代码美学争论的兴起都说明了这一点。\n\nREADME 和示例模拟了一个真实的 Vercel API 约束：修改 Project 密码，需要特定 role 和 entitlement 的 proof。感谢 Matt Noonan 和 Ollie Charles 在这一领域的研究。\n\nhttps://t.co/eRWdiMvQ2V"]
+          }
+        },
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2107294499282293017",
+          "en": {
+            "rewrite": [
+              "Claude Code engineer Thariq explains why planning can beat raw HTML for agent-built interfaces. If common components such as state machines, diagrams, and code snippets are represented in a structured plan, the model does not have to recreate their logic every time.",
+              "The payoff is both token efficiency and more consistent output: the agent spends its context on the new work instead of re-describing the machinery underneath."
+            ],
+            "original": ["a big advantage of doing planning like this is that it’s a lot more token efficient compared to raw HTML-\n\nthe model doesn’t need to remake the components or logic to do common things like state machines, diagrams, code snippets, etc. https://t.co/z2LsVJ9D3W"]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude Code 工程师 Thariq 解释了为什么对 agent 做结构化 planning，可能比直接生成 raw HTML 更好。把 state machine、diagram、code snippet 这类常见组件和逻辑表示成结构化计划后，模型就不用每次都重新发明一遍。",
+              "收益既是 token 更省，也是输出更稳定：context 用来处理新问题，而不是反复描述底层 machinery。"
+            ],
+            "original": ["这样做 planning 的一个大优势，是相比 raw HTML，它在 token 上高效得多。\n\n模型不需要重新制作组件或逻辑，就能处理 state machine、diagram、code snippet 等常见内容。https://t.co/z2LsVJ9D3W"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Local Hands, Real Work / 让 Agent 触碰真实工作",
+      "desc": "真正有用的 agent 不只是在云端回答问题，还要能带着上下文进入本地文件和真实任务。",
+      "cards": [
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2107229483015258493",
+          "en": {
+            "rewrite": [
+              "Thariq gives a memorable name to a useful architecture pattern: “local hands.” Claude runs in the cloud, but it can reach into local files, and the same approach is coming to Cowork.",
+              "The phrase captures the product shift neatly: cloud intelligence is only half the system; the other half is permissioned access to the user's actual context and work surface."
+            ],
+            "original": ["my favorite name for this pattern is \"local hands\", Claude runs in the cloud but can access your files locally- also coming to cowork https://t.co/fLX963TUxY"]
+          },
+          "cn": {
+            "rewrite": [
+              "Thariq 给一个很实用的架构模式起了个好记的名字：“local hands”。Claude 在云端运行，但可以访问本地文件，同样的方式也会进入 Cowork。",
+              "这个说法准确抓住了产品变化：云端 intelligence 只是系统的一半，另一半是经过授权、能触达用户真实 context 和工作面的能力。"
+            ],
+            "original": ["我最喜欢把这个模式叫作“local hands”，Claude 在云端运行，但可以访问你的本地文件，也会进入 Cowork。https://t.co/fLX963TUxY"]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2107108755699900459",
+          "en": {
+            "rewrite": [
+              "Peter Yang shares a concrete build recipe for an AI language-learning app: use a spec skill for the core design, Gemini Live APIs for voice calls, and Nano Banana for the diorama art. The result is an app that can teach 100 phrases in any language before a trip.",
+              "What matters is the composition: a small product can combine a design workflow, live multimodal API, and generated assets into one focused experience."
+            ],
+            "original": ["I built an AI language learning app that teaches me Japanese via live voice calls.\n\nHere's my new tutorial that shows you exactly how I built this, including:\n\n→ Using my spec skill to create key designs\n→ Setting up Gemini Live APIs for voice\n→ Creating diorama art with Nano Banana\n\nYou can follow along to build your own app to learn 100 phrases for any language before a trip.\n\n📌 Watch now: https://t.co/A0awOYADST"]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 分享了一个具体的 AI 语言学习 app 搭建配方：用 spec skill 处理核心设计，用 Gemini Live API 做实时语音通话，再用 Nano Banana 生成 diorama art。最终产品可以在旅行前，帮助用户学会任意语言的 100 句表达。",
+              "值得看的是这种组合方式：一个小产品也可以把 design workflow、live multimodal API 和生成式素材拼成一个聚焦的体验。"
+            ],
+            "original": ["我做了一个 AI 语言学习 app，通过实时语音通话教我日语。\n\n我的新教程会准确展示我是怎么做的，包括：\n\n→ 用 spec skill 创建关键设计\n→ 设置 Gemini Live API 做语音\n→ 用 Nano Banana 创建 diorama art\n\n你可以跟着做一个自己的 app，在旅行前学习任意语言的 100 句表达。\n\n📌 现在观看：https://t.co/A0awOYADST"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The New Builder Stack / 新 Builder 技术栈",
+      "desc": "从 agent harness 到依赖和运行时，真正的差异化正在沉到工作流与基础设施里。",
+      "cards": [
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2107129959550685660",
+          "en": {
+            "rewrite": [
+              "Y Combinator CEO Garry Tan argues that lab-built harnesses have an incentive to burn tokens, leaving room for startup-built harnesses with a different goal: turn model usage into deterministic, tested, repeatable code. He uses Grep as an example of a system that can observe agent use and convert token burn into reusable output.",
+              "The point is not simply cheaper inference. It is capturing the useful part of an agent's work so the next run becomes more reliable."
+            ],
+            "original": ["Harnesses from labs have an incentive to burn tokens, which means harnesses from startups have a real utility, like how Grep can automatically swap token burn into deterministic tested code that is repeatable just by observing agent use https://t.co/a17UIpSAAW"]
+          },
+          "cn": {
+            "rewrite": [
+              "Y Combinator CEO Garry Tan 认为，实验室做的 harness 天生有消耗 token 的激励，这给 startup harness 留出了真正的价值空间：把模型使用转化为确定、经过测试、可重复的代码。他用 Grep 举例，它可以观察 agent 的使用过程，把 token 消耗自动换成可复用的产物。",
+              "重点不只是让 inference 更便宜，而是把 agent 这次做对的部分沉淀下来，让下一次运行更可靠。"
+            ],
+            "original": ["实验室做的 harness 有消耗 token 的激励，这意味着 startup 做的 harness 有真正的用途。比如 Grep 可以通过观察 agent 的使用，自动把 token 消耗转换成确定、经过测试、可重复的代码。https://t.co/a17UIpSAAW"]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2107119811444748555",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch's gdp-ts is also an infrastructure story: when agents generate more code than humans can inspect, a tiny, enforceable contract can matter more than another round of review. Its authorization proofs move security checks from team memory into the compiler.",
+              "That is the kind of boring-looking layer that becomes valuable precisely when software production speeds up."
+            ],
+            "original": ["Introducing gdp-ts: Ghosts of Departed Proofs for TypeScript.\n\ngdp-ts is a library, linter and AI skill for safer API design. Under this contract, sensitive functions require 'proofs' that the caller performed an authorization check.\n\nThe typechecker verifies these proofs at compile time, preventing your team and agents from shipping catastrophic security (and other kinds of) bugs.\n\nhttps://t.co/eRWdiMvQ2V"]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch 的 gdp-ts 也是一个基础设施故事：当 agent 生成的代码多到人类看不完时，一个小而可执行的 contract，可能比再来一轮人工 review 更有价值。它把 authorization check 从团队记忆里搬进了 compiler。",
+              "这类看起来有点无聊的底层，恰恰会在软件生产提速之后变得重要。"
+            ],
+            "original": ["介绍 gdp-ts：Ghosts of Departed Proofs for TypeScript。\n\ngdp-ts 是一个用于更安全 API 设计的 library、linter 和 AI skill。敏感函数要求调用方提供完成 authorization check 的“proof”。\n\ntypechecker 在编译期验证这些 proof，防止团队和 agent 发布灾难性的安全漏洞以及其他 bug。\n\nhttps://t.co/eRWdiMvQ2V"]
+          }
+        }
+      ]
+    }
+  ]
+}
