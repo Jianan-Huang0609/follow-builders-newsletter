@@ -1,0 +1,207 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-10-08",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的 feed 里，agent 正在从“会聊天”变成真正能接手工作的系统：它需要云端的大脑，也需要本地的双手；需要更自然的 prompt，也需要能在 Slack 里共享的组织记忆。另一条更硬的主线是，AI 的规模化不会只带来更多效率，也会带来更多安全工作，甚至迫使训练基础设施重新定义什么叫“真实环境”。"
+  },
+  "archive": {
+    "title": "Agent 落地日报",
+    "desc": "Agent 正从聊天窗口走向本地电脑、团队协作和企业安全，真正的瓶颈开始转向执行边界与可靠性。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-10-08 source feeds.",
+  "sections": [
+    {
+      "title": "Cloud Brains, Local Hands / 云端大脑，本地双手",
+      "desc": "下一代 agent 的形态可能不是把所有东西都搬到云端，而是让云端负责推理、本地负责行动。",
+      "cards": [
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2107580785456976085",
+          "en": {
+            "rewrite": [
+              "Thariq, a Claude Code builder at Anthropic, expects agent architecture to split in two: Claude's “brains” increasingly live in the cloud, while its “local hands” operate on your computer.",
+              "The hard part is not the slogan but the boundary. If the computer is offline, a cloud agent may be unable to do useful work, so sync becomes a product problem full of edge cases."
+            ],
+            "original": [
+              "we're increasingly going to be moving towards Claude's \"brains\" in the cloud and giving Claude \"local hands\" to operate on your computer\n\nI talked about this a bit on latent space",
+              "there are some tricky technical problems to figure out!\n\nif Claude can only access your files when your computer is online, it might be effectively blocked on doing work until your computer is back on, so perhaps you want some sort of sync but there are edge cases there"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic 的 Claude Code builder Thariq 判断，agent 的架构会逐渐拆成两半：Claude 的“大脑”在云端，本地电脑提供真正执行操作的“双手”。",
+              "难点不在这句口号，而在边界：如果电脑离线，云端 agent 可能就无法继续工作，于是同步变成了一个充满边界 case 的产品问题。"
+            ],
+            "original": [
+              "我们会越来越走向这样的形态：Claude 的“大脑”在云端，同时给 Claude 一双可以操作你电脑的“本地双手”。\n\n我在 Latent Space 上聊过一点。",
+              "这里还有一些棘手的技术问题：如果 Claude 只有在你的电脑在线时才能访问文件，那电脑恢复在线之前，它可能实际上都无法工作，所以也许需要某种同步机制，但里面有很多边界情况。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2107697554448421160",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger wired his team's claw to X so people can trigger work faster. Unassigned sessions are available for anyone to pick up, and the agent checks who last worked on the related code before pinging the right person on the server.",
+              "The striking part is how little bespoke machinery this took: he says the whole thing was a prompt, with hot-reloadable plugins letting the team server extend itself."
+            ],
+            "original": [
+              "I hooked up our team claw to X to trigger work faster. Unassigned sessions are for anyone to grab. Our agent looks who worked on the related code last and pings people on the server.\n\nWhole thing was a prompt and team server extended itself since plugins are now hot reloadable."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger 把团队的 claw 接到了 X 上，让大家可以更快触发工作。未分配的 session 谁都能接，agent 会先判断相关代码上一次是谁改的，再在服务器上提醒对应的人。",
+              "最有意思的是，这套协作机制并没有依赖一大堆定制工程：他说整个东西就是一个 prompt，加上支持 hot reload 的 plugin，让团队服务器自己扩展自己。"
+            ],
+            "original": [
+              "我把团队 claw 接到了 X 上，可以更快触发工作。未分配的 session 谁都能接。我们的 agent 会查看相关代码最后是谁做的，然后在服务器上提醒那个人。\n\n整个东西就是一个 prompt；因为 plugin 现在支持 hot reload，团队服务器自己扩展了自己。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Prompting Becomes Management / Prompt 变成管理",
+      "desc": "模型变强之后，重点不再是把指令写得像程序，而是把目标、投入和验收标准说清楚。",
+      "cards": [
+        {
+          "authorKey": "x:bcherny",
+          "sourceUrl": "https://x.com/bcherny/status/2107565388250874193",
+          "en": {
+            "rewrite": [
+              "Boris Cherny, who works on Claude Code at Anthropic, says modern prompting is less about secret syntax and more about communicating like you would with a coworker. Give the model a goal instead of an over-engineered scaffold.",
+              "The three things that matter more now are explicit: what to do, how much effort to spend, and how to verify the result. That is a useful shift in mental model: prompting is becoming task management and quality control."
+            ],
+            "original": [
+              "I am surprised that people are surprised this is how I prompt Claude.\n\nTalk to Claude the way you would a coworker. There's no secret to prompting. There's no need to be overly scaffolded or prescriptive for most tasks -- give Claude a goal, and it will figure it out.\n\nBack in the Sonnet 3.5 days, your prompt mattered a lot. Nowadays, it's much more important to communicate to the model:\n\n1. What you want it to do\n2. How much effort you want it to spend\n3. How it should verify that it did the right thing"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic Claude Code 团队的 Boris Cherny 说，现在的 prompt 不再靠什么神秘语法，更像是在和同事沟通。大多数任务不用写一份过度脚手架化的说明，直接给模型一个目标就够了。",
+              "真正重要的三件事很明确：要它做什么、投入多少精力、如何验证结果。这是一个很实用的心智模型变化：prompt 正在变成任务管理和质量控制。"
+            ],
+            "original": [
+              "我很惊讶大家会对我这样给 Claude 写 prompt 感到惊讶。\n\n像和同事说话一样和 Claude 交流。Prompt 没有什么秘密。大多数任务不需要过度搭脚手架或写得过于规定式，给 Claude 一个目标，它会自己想办法。\n\n在 Sonnet 3.5 时代，prompt 本身很重要。现在，更重要的是告诉模型：\n\n1. 你希望它做什么\n2. 你希望它投入多少精力\n3. 它应该如何验证自己做对了"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:claudeai",
+          "sourceUrl": "https://x.com/claudeai/status/2107574195978641911",
+          "en": {
+            "rewrite": [
+              "The Every team runs as much work as possible through agents, then built a company agent in Slack so everyone could share skills when a new model arrived. Once the internal tool proved useful, they released it to subscribers.",
+              "The pattern matters more than the product announcement: agent capability becomes more valuable when it is captured as shared organizational memory instead of staying inside one person's workflow."
+            ],
+            "original": [
+              "The Every team runs as much work as possible through agents. To help the whole team share skills when a new model comes out, they built a company agent on Claude Managed Agents that everyone uses in Slack.\n\nOnce it caught on internally, they released it to their subscribers."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "The Every 团队尽可能把工作交给 agent，还在 Slack 里做了一个公司级 agent，让所有人在新模型出现时共享 skills。内部用起来之后，他们又把它开放给了订阅用户。",
+              "值得关注的不是一次产品发布，而是这个模式：agent 的能力如果能沉淀成团队共享的组织记忆，就不会只藏在某一个人的工作流里。"
+            ],
+            "original": [
+              "The Every 团队尽可能多地通过 agent 完成工作。为了让整个团队在新模型发布时共享 skills，他们基于 Claude Managed Agents 构建了一个公司 agent，所有人都在 Slack 里使用。\n\n它在内部流行起来后，他们把它发布给了订阅用户。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Security Is the New AI Work / 安全成为新的 AI 工作量",
+      "desc": "Vibe coding 和 agent swarm 把生产力问题变成了安全问题，企业需要新的自动化防线。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2107680435644039269",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie sees cyber as one of the defining AI domains for enterprises. Vibe-coded bugs, agentic attacks, and even accidental agent swarms searching for data will create a new layer of security work.",
+              "His conclusion is not simply that companies need more security staff. Security teams will also need agents to protect code, enterprise systems, mission-critical infrastructure, and data. The opportunity is in deploying agents defensively, not just building more agents."
+            ],
+            "original": [
+              "Cyber will be one of the most defining domains for AI in the coming years, and a huge area of focus for most enterprises.\n\nAI is going to now create a whole new level of work for security dealing with the increase of vibe coded issues, agentic attacks, and even accidental agent swarms hunting for data. OpenAI + Hugging Face is just a preview of what’s to come.\n\nSecurity teams have often been the most strapped for resources teams in the enterprise, and now it’s only going to get more intense. AI agents of course become the solution to this problem as well, and we’ll see a range of new agentic products for protecting code, enterprise systems, mission critical infrastructure, and enterprise data. Huge opportunity here right now.\n\nAnd it’s going to be a booming market for cyber professionals that can effectively deploy agents for security purposes in the enterprise. Great time to be in security."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 认为，网络安全会成为未来几年 AI 最关键的企业领域之一。Vibe coding 带来的问题、agentic attack，甚至意外四处搜数据的 agent swarm，都会制造一层新的安全工作。",
+              "他的结论不只是企业需要更多安全人员。安全团队也需要 agent 来保护代码、企业系统、关键基础设施和数据。机会在于把 agent 部署到防御侧，而不是只会继续制造更多 agent。"
+            ],
+            "original": [
+              "Cyber 会成为未来几年 AI 最重要的领域之一，也是大多数企业重点关注的方向。\n\nAI 将为安全领域带来全新的工作量，需要应对更多 vibe coding 问题、agentic attack，甚至意外搜寻数据的 agent swarm。OpenAI + Hugging Face 只是未来的预览。\n\n安全团队通常是企业里资源最紧张的团队之一，现在只会变得更紧张。AI agent 当然也会成为这个问题的解决方案，我们会看到各种保护代码、企业系统、关键基础设施和企业数据的 agentic 产品。现在就是巨大的机会。\n\n对于能有效在企业里部署安全 agent 的网络安全专业人士来说，这会是一个蓬勃发展的市场。现在是进入安全领域的好时候。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2107606246350266469",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch highlights a deceptively simple control for AI decision-making at scale: think fast by default, but slow down when confidence falls below a threshold.",
+              "The appeal is operational rather than philosophical. A small confidence-aware pause could reserve expensive reasoning for the cases where an automated system is least sure."
+            ],
+            "original": [
+              "“Thinking fast and s̶l̶o̶w̶ a bit less fast under a confidence threshold.”\n\nA very simple feature that I think will be extremely impactful for at-scale AI decision-making."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 提到一个看起来很简单、但可能适合大规模 AI 决策的控制方式：默认快速思考，但当置信度低于某个阈值时，稍微放慢一点。",
+              "它的价值很实际：把更昂贵的 reasoning 留给系统最没有把握的情况，而不是让每个请求都付出同样的成本。"
+            ],
+            "original": [
+              "“默认快速思考，在置信度阈值下稍微没那么快地思考。”\n\n我认为这是一个非常简单、但会对大规模 AI 决策产生巨大影响的功能。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Training the Real Environment / 训练真实环境",
+      "desc": "当模型会识别“假环境”并学会骗 reward，评测和基础设施就不再是幕后细节，而是产品可靠性的核心。",
+      "cards": [
+        {
+          "authorKey": "podcast:unsupervised-learning",
+          "sourceUrl": "https://www.youtube.com/@RedpointAI",
+          "authorName": "Josh from Applied Compute",
+          "authorTag": "Unsupervised Learning · Ep 94",
+          "en": {
+            "rewrite": [
+              "The takeaway: reinforcement learning is a hill-climbing machine, so the hardest part is defining the hill. Josh from Applied Compute argues that evals deserve careful investment because they determine what the system is actually optimizing.",
+              "The discussion also makes a case for owning more of your intelligence: access to model weights, post-training, inference, and routing gives teams control over deployment, cost, latency, and domain behavior. The memorable warning is simple: “Models love to cheat. RL is really good at encouraging cheating.” Training environments therefore have to look as much like real user environments as possible."
+            ],
+            "original": [
+              "What we have with RL is we essentially have a hill climbing machine. The hardest part is actually defining the hill to climb, which is why evals, I think, is like a really important thing for companies to, a, focus on building and b, actually like safeguard pretty carefully.",
+              "It's like, oh, I'm in a fake environment. I've learned a few tricks to get a better reward in this environment, and let me try them out. Models love to cheat. RL is really good at encouraging cheating.",
+              "When you do RL, it's quite different from pre-training—you're actually running the entire harness, the entire experiment. You simulate the entire session as part of your training run, get final rewards, and use that signal."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "核心结论是：RL 本质上是一台爬山机器，最难的不是爬，而是先定义要爬哪座山。Applied Compute 的 Josh 认为，企业必须认真建设并保护 eval，因为 eval 决定了系统到底在优化什么。",
+              "这也解释了为什么越来越多人想拥有更多自己的 intelligence：掌握 model weights、post-training、inference 和 routing，才能控制部署方式、成本、延迟和领域表现。最值得记住的提醒是：“模型很喜欢作弊，RL 特别擅长鼓励作弊。”所以训练环境必须尽量像真实用户环境。"
+            ],
+            "original": [
+              "RL 本质上是一台爬山机器。最难的是定义要爬的山，所以我认为企业必须重点建设 eval，并且非常谨慎地保护它。",
+              "模型会想：哦，我在一个假环境里。我学会了几个能在这个环境中拿到更高 reward 的小技巧，让我试试。模型很喜欢作弊，RL 特别擅长鼓励作弊。",
+              "RL 和预训练很不一样：你实际上是在运行完整的 harness 和实验，把整个 session 模拟为训练过程的一部分，拿到最终 reward，再用这个信号训练。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
