@@ -1,0 +1,155 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-10-10",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线，是 agent 正在从一个功能变成一整套新的计算入口。Madhu Guru 把机会说得很直白：如果主要用户变成了 agent，操作系统、云、身份权限和界面都要重做。Box 已经开始让 agent sandbox 直接挂载文件系统，Claude 则把 Docs、Slides 和 Design 推向所有套餐。另一边，Google AI 基础设施负责人 Amin Vahdat 提醒我们，前沿 AI 的瓶颈不只是芯片速度，而是大规模系统在真实 workload 下能交付多少 goodput。"
+  },
+  "archive": {
+    "title": "Agent 入口日报",
+    "desc": "Agent 正从软件功能进入操作系统、文件系统和基础设施，新的产品机会也随之向整层计算栈扩散。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-10-10 source feeds.",
+  "sections": [
+    {
+      "title": "Agent Becomes the User / Agent 成为新的用户",
+      "desc": "当 agent 不再只是调用 API，而是直接操作文件、应用和系统，产品的默认用户就变了。",
+      "cards": [
+        {
+          "authorKey": "x:realmadhuguru",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2108236391641706813",
+          "en": {
+            "rewrite": ["Madhu Guru argues that the biggest startup opportunities are hiding in the layers of the computing stack that agents will force us to rebuild. Enterprise software has spent years adding APIs, connectors, and MCPs; now personal agents are bringing the same pressure to consumer products, starting with e-commerce.", "The more interesting list is still ahead: operating systems where agents are first-class users, clouds built for direct agent operation, identity and permissions for thousands of agents, and interfaces designed for humans and agents together. His practical question for founders is simple: what has to change when the primary user is an agent?"],
+            "original": ["Every layer of the computing stack will need to be rebuilt for agents.", "Desktop and mobile OSes where agents are first-class users; cloud infra built for agents; identity, permissions and security designed for thousands of agents acting on our behalf."]
+          },
+          "cn": {
+            "rewrite": ["Madhu Guru 认为，最大的创业机会藏在那些必须为 agent 重做的计算栈层级里。企业软件过去几年一直在补 API、connector 和 MCP；现在 personal agent 正把同样的压力带到消费产品，电商只是早期例子。", "更大的清单还在后面：把 agent 当成一等用户的操作系统、让 agent 直接运行的云、服务数千个 agent 的身份与权限系统，以及让人和 agent 协同工作的界面。他给创业者的问题很实用：当主要用户变成 agent，什么必须改变？"],
+            "original": ["计算栈的每一层都需要为 agent 重做。", "把 agent 当成一等用户的桌面和移动 OS；为 agent 直接运行而设计的云基础设施；为数千个 agent 设计的身份、权限和安全系统。"]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2108279490510193078",
+          "en": {
+            "rewrite": ["Box CEO Aaron Levie announced Box Mount, which lets developers mount Box as a file system directly inside any agent sandbox. The premise is that as agents handle more complex work, they need to access files and data in the same basic way people do.", "It is a small-looking product change with a large implication: the future of software may be headless, with the agent operating the file system instead of clicking through a human UI."],
+            "original": ["We built Box Mount to allow developers to mount Box as a file system directly in any agent sandbox.", "The future is headless."]
+          },
+          "cn": {
+            "rewrite": ["Box CEO Aaron Levie 发布了 Box Mount：开发者可以把 Box 直接挂载成 agent sandbox 里的文件系统。逻辑很简单，agent 要做更复杂的工作，就需要像人一样直接处理文件和数据。", "看起来只是一个产品变化，背后的含义却很大：软件的未来可能是 headless 的，让 agent 操作文件系统，而不是让人一层层点击 UI。"],
+            "original": ["我们做了 Box Mount，让开发者可以把 Box 直接挂载成任何 agent sandbox 里的文件系统。", "未来是 headless 的。"]
+          }
+        },
+        {
+          "authorKey": "x:claudeai",
+          "sourceUrl": "https://x.com/claudeai/status/2108271559928389679",
+          "en": {
+            "rewrite": ["Claude Docs, Slides, and Design are now out of beta and available on every plan, including Free. The important part is not just the pricing move: teams and Claude can edit the same document, deck, or design together, making the model a collaborator inside the artifact rather than a separate chat window."],
+            "original": ["Claude Docs, Slides, and Design are out of beta and available on every plan including Free.", "Your team and Claude can edit the same doc, deck, or design together."]
+          },
+          "cn": {
+            "rewrite": ["Claude Docs、Slides 和 Design 正式结束 beta，所有套餐都能使用，包括 Free。关键不只是免费开放，而是团队和 Claude 可以共同编辑同一份文档、deck 或设计稿：模型不再只是旁边的聊天窗口，而是直接进入产物内部协作。"],
+            "original": ["Claude Docs、Slides 和 Design 已结束 beta，所有套餐包括 Free 都可使用。", "你的团队和 Claude 可以一起编辑同一份文档、deck 或设计。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Steering the Model / 实时驾驭模型",
+      "desc": "新一代模型体验的竞争点，正在从一次性生成转向即时纠偏和持续协作。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2108275041276420573",
+          "en": {
+            "rewrite": ["Thibault Sottiaux says the latest improvement is not simply a smarter model but instant steering: the model reacts much faster to adjustments, so users can course-correct in real time instead of letting it waste effort in the wrong direction. OpenAI is pairing that with GPT-6.1 Sol ultrafast."],
+            "original": ["We have improved steering to be instant, leading to the model now reacting much faster to adjustments you make, allowing you to course-correct direction in realtime and not have the model waste effort.", "Also releasing GPT-6.1 Sol ultrafast."]
+          },
+          "cn": {
+            "rewrite": ["Thibault Sottiaux 说，最新改进不只是模型更聪明，而是 steering 变得即时：模型能更快响应用户调整，让人实时纠偏，不必眼看着它在错误方向上继续浪费算力。与此同时，GPT-6.1 Sol ultrafast 也发布了。"],
+            "original": ["我们把 steering 改进到了即时响应，模型现在能更快回应你的调整，让你实时修正方向，而不是让模型继续浪费精力。", "同时发布 GPT-6.1 Sol ultrafast。"]
+          }
+        },
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2108312534222778407",
+          "en": {
+            "rewrite": ["Thariq made a Chrome extension he uses every day public after realizing he had accidentally shared the announcement before the repo was ready. The useful signal is less the launch theater than the workflow: a personal tool became worth releasing because it had already become part of his daily routine."],
+            "original": ["it's a chrome extension I use every day now"]
+          },
+          "cn": {
+            "rewrite": ["Thariq 把自己每天都在用的 Chrome extension 开源了。他先是不小心在 repo 还没公开时发了公告，随后补上了公开版本。真正值得注意的不是发布动作，而是一个个人工具先进入日常工作流，再因为足够实用而变成可分享的产品。"],
+            "original": ["这是一个我现在每天都在用的 Chrome extension。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Cost of Scale / 规模化的真实成本",
+      "desc": "前沿 AI 的关键指标正在从纸面性能转向真实 workload、可靠性和恢复能力。",
+      "cards": [
+        {
+          "authorKey": "podcast:training-data",
+          "authorName": "Amin Vahdat",
+          "authorTag": "Google AI Infrastructure",
+          "sourceUrl": "https://www.youtube.com/playlist?list=PLOhHNjZItNnMm5tdW61JpnyxeYH5NDDx8",
+          "en": {
+            "rewrite": ["Google AI infrastructure chief Amin Vahdat explains why AI data centers are becoming purpose-built systems rather than generic buildings. Hardware, power distribution, cooling, and networking are being co-designed around specific workloads, because a rack that reaches hundreds of kilowatts cannot be treated like ordinary storage infrastructure.", "At 100,000-accelerator scale, the useful metric is not theoretical FLOPS but delivered goodput: how much real work reaches an answer after failures, recovery, and coordination overhead. In his framing, a system that keeps computing but repeatedly restarts is doing throughput, not goodput."],
+            "original": ["An AI data center likely is gonna be much more purpose built, co-designed with the hardware, even to the point of cooling and power distribution.", "What we really care about in the end is what's the performance delivered by workload.", "It's delivered goodput, not theoretical benchmark throughput."]
+          },
+          "cn": {
+            "rewrite": ["Google AI 基础设施负责人 Amin Vahdat 解释了为什么 AI data center 正在变成 purpose-built 系统，而不是通用建筑。硬件、供电、散热和网络都要围绕具体 workload 协同设计，因为功耗达到数百千瓦的 AI rack，不能再按普通存储基础设施来规划。", "当规模来到 10 万个 accelerator，真正有用的指标不是理论 FLOPS，而是 delivered goodput：经历故障、恢复和协调开销后，系统最终交付了多少真实工作。如果系统不断计算又不断重启，那是 throughput，不是 goodput。"],
+            "original": ["AI data center 很可能会更专用，与硬件共同设计，甚至包括散热和供电分配。", "我们最终真正关心的是 workload 交付出来的性能。", "看的是 delivered goodput，而不是理论 benchmark throughput。"]
+          }
+        },
+        {
+          "authorKey": "x:mattturck",
+          "sourceUrl": "https://x.com/mattturck/status/2108223135673696504",
+          "en": {
+            "rewrite": ["Matt Turck's conversation with Andy Pavlo frames databases as an early stress test for agent-scale software. Billions of agents mean far more queries, new memory patterns, MCP and text-to-SQL, and a renewed question of whether files or databases should hold agent context.", "The sharpest practical rule is also the least glamorous: trust an agent the way you would trust a junior developer. Guardrails and database design are not optional once agents can change production systems."],
+            "original": ["what happens to databases when billions of AI agents hit them", "Trust an agent the way you'd trust a junior developer"]
+          },
+          "cn": {
+            "rewrite": ["Matt Turck 和 Andy Pavlo 的对话把数据库当成 agent-scale 软件的早期压力测试：当数十亿个 agent 到来，查询量会放大，memory 模式会变化，MCP 和 text-to-SQL 会变得重要，甚至连 agent 上下文应该放在文件还是数据库里都要重新讨论。", "最实用的规则也最不花哨：像信任一个 junior developer 一样信任 agent。只要 agent 能改生产系统，guardrail 和数据库设计就不是可选项。"],
+            "original": ["当数十亿个 AI agent 访问数据库时会发生什么", "像信任一个 junior developer 那样信任 agent。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Building in a Harder Market / 更难的创业环境",
+      "desc": "能力快速变化，创业者面对的不只是产品问题，还有 runway、时机与退出选择。",
+      "cards": [
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2108410378233549106",
+          "en": {
+            "rewrite": ["Nikunj Kothari describes the uncomfortable reality for seed-stage founders whose products are growing but whose runway is shrinking. His three options are blunt: become a cockroach and reach default profitability, pivot toward an adjacent area with stronger pull from current model capabilities, or sell/get acquihired and return to founding later.", "The broader warning is that the seed-to-Series-A bar is getting harder every month, while old-school metrics no longer explain what the market wants. Knowing that early is more useful than pretending the market is still operating by yesterday's rules."],
+            "original": ["In this moment, you only have essentially three options", "be a cockroach and get to default profitable", "sell / get acquihired and join a far more ambitious company"]
+          },
+          "cn": {
+            "rewrite": ["Nikunj Kothari 描述了 seed-stage 创业者面对的一种尴尬现实：产品在增长，但 runway 正在变短。他给出的三个选项很直接：像蟑螂一样活到 default profitable；转向一个更贴近当前模型能力、需求增长更快的相邻领域；或者出售 / 被收购加入更有野心的公司，之后再回来创业。", "更大的提醒是，seed 到 Series A 的门槛每个月都在变高，旧式指标已经不能解释市场真正想要什么。早点看清这一点，比假装市场仍按昨天的规则运作更有用。"],
+            "original": ["在这个阶段，你基本只有三个选择。", "像蟑螂一样活到 default profitable。", "出售 / 被收购，加入一家更有野心的公司。"]
+          }
+        },
+        {
+          "authorKey": "x:danshipper",
+          "sourceUrl": "https://x.com/danshipper/status/2108215087030800657",
+          "en": {
+            "rewrite": ["Dan Shipper says Every has built Checks, a personal benchmarking platform for measuring how well new models perform on real work. The product idea is pointed: instead of debating model quality in the abstract, benchmark the tasks that matter to a specific person."],
+            "original": ["we've built a personal benchmarking platform, Checks, to help anyone measure how good new models are for their real work"]
+          },
+          "cn": {
+            "rewrite": ["Dan Shipper 介绍了 Every 做的个人 benchmark 平台 Checks，用来衡量新模型在真实工作中的表现。这个产品想解决的问题很具体：不要抽象地争论哪个模型更强，而是测试它对某个人真正重要的任务到底做得怎么样。"],
+            "original": ["我们做了一个 personal benchmarking platform，Checks，帮助任何人衡量新模型对真实工作的效果。"]
+          }
+        }
+      ]
+    }
+  ]
+}
