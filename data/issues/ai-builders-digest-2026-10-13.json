@@ -1,0 +1,143 @@
+{
+  "title": "AI Builders Digest — 2026-10-13",
+  "subtitle": "当 AI 能力开始分层，真正的竞争转向工作流、信任与底层算力。",
+  "publishDate": "2026-10-13",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "今天值得读的 8 条",
+    "text": "今天的主线很清楚：AI 的能力正在拉开一道越来越陡的鸿沟。少数人已经在用 agent 完成大型软件项目，多数人还把 AI 当成更好一点的搜索框。与此同时，产品团队开始补上信任和验证，基础设施团队则把战场推向芯片和推理速度。"
+  },
+  "archive": {
+    "title": "能力鸿沟日报",
+    "desc": "从 agent swarm、证据驱动开发到 frontier AI 芯片，今天的 feed 记录了 AI 从聊天工具走向工作系统的几个瞬间。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Generated through the Follow Builders skill",
+  "sections": [
+    {
+      "title": "能力曲线正在分叉 / The Capability Gap",
+      "desc": "同一个 AI 世界里，大多数人刚开始试用，少数人已经在管理成群的 agent。",
+      "cards": [
+        {
+          "authorKey": "x:karpathy",
+          "sourceUrl": "https://x.com/karpathy/status/2109361546505966046",
+          "en": {
+            "rewrite": ["Andrej Karpathy describes a sharp funnel in AI adoption: roughly 6 billion people have barely touched LLMs, about 1–2 billion use them casually, around 20 million use frontier models professionally in math and code, and only about 5,000 people see the most advanced internal systems.", "The strange part is that all these realities coexist. The gap widens with ambition, with domains that are digital and verifiable, and with access to better models. For the small group at the narrow end, projects that once took weeks or months can now be completed by agents from a prompt."],
+            "original": ["The funnel is driven by a combination of factors: 1. The impact scales with ambition, problem size, and horizon. 2. The jaggedness of the system. 3. Access. Free-tier, paid-tier, internal.", "And it is all happening at the same time."]
+          },
+          "cn": {
+            "rewrite": ["Andrej Karpathy 描述了一条陡峭的 AI 使用漏斗：约 60 亿人几乎没接触过 LLM，10–20 亿人只是偶尔使用，约 2000 万人在数学和代码工作中使用 frontier 模型，而真正接触到最先进内部系统的，只有约 5000 人。", "奇怪之处在于，这几种现实同时存在。鸿沟由问题的规模、领域是否数字化且可验证，以及模型访问权限共同拉大。对最窄处的那群人来说，过去要做几周或几个月的项目，现在可能只需要给 agent 一个 prompt。"],
+            "original": ["这条漏斗由几个因素驱动：1. 影响取决于野心、问题规模和时间跨度；2. 系统能力的不均匀性；3. 访问权限：免费层、付费层、内部系统。", "而这一切正在同时发生。"]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2109467575025578330",
+          "en": {
+            "rewrite": ["Aaron Levie sees the adoption funnel as an enterprise opportunity. Most people still use AI as a chatbot that approximates next-generation search, while agent swarms may eventually become the form factor for parallel work in software, science, finance, and other fields.", "The hard part is not only model capability. Companies must upgrade workflows, integrate data, and work through compliance, governance, and security before this style of AI can spread beyond software and AI research."],
+            "original": ["This is a good way to understand how early we actually are in AI diffusion right now.", "Companies need to upgrade their workflows, data needs to integrated and migrated into modern platforms, and companies will need to work through compliance, governance, and security frameworks to pull it off."]
+          },
+          "cn": {
+            "rewrite": ["Aaron Levie 认为，这条采用漏斗本身就是企业机会。大多数人还在把 AI 当成下一代搜索，而 agent swarm 可能最终会成为软件、科学、金融等领域并行工作的主要形态。", "难点不只是模型能力。AI 要走出软件和 AI 研究，企业还得升级工作流、整合数据，并解决合规、治理和安全问题。"],
+            "original": ["这是理解 AI 普及其实还处于多早期阶段的一个好方法。", "企业需要升级工作流，数据需要整合并迁移到现代平台，还需要建立合规、治理和安全框架。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "让 Agent 值得信任 / Making Agents Trustworthy",
+      "desc": "真正的生产力不只来自自动完成，也来自能拿出证据让人放心交付。",
+      "cards": [
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2109433961223180517",
+          "en": {
+            "rewrite": ["Peter Yang shares a practical bottleneck in agent-assisted development: people still do not trust the agent, especially when the software affects real users. The proposed answer is evidence-driven testing, with before-and-after checks and a clear record of what changed and why it is good.", "That does not remove manual review, but it moves the agent from 'trust me' to 'here is the evidence.'"],
+            "original": ["I'm not at a point where I trust the agent, especially with stuff that people are using.", "With evidence-driven testing, before and after, and even greploop, we're trying to build trust."]
+          },
+          "cn": {
+            "rewrite": ["Peter Yang 分享了 agent 开发的一个现实瓶颈：尤其当软件被真实用户使用时，人们还不敢完全信任 agent。一个可行答案是证据驱动测试，用前后对比和清晰的变更记录说明做了什么、为什么这样做。", "这不会消灭人工 review，但会把 agent 从“相信我”推进到“证据在这里”。"],
+            "original": ["我还没到可以信任 agent 的程度，尤其是涉及人们正在使用的东西时。", "通过证据驱动测试、前后对比，甚至 greploop，我们在尝试建立信任。"]
+          }
+        },
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2109329495341867391",
+          "en": {
+            "rewrite": ["Thariq argues that a truly useful superintelligence should not be opaque. Communication is itself a signal of intelligence, and products should build understanding with humans rather than simply disintermediate them."],
+            "original": ["We shouldn’t settle for a super intelligence that is opaque.", "We should strive to make products and models that build understanding with humans instead of disintermediating them."]
+          },
+          "cn": {
+            "rewrite": ["Thariq 认为，真正有用的 superintelligence 不应该是黑箱。沟通本身就是智能的信号，产品和模型应该帮助人类建立理解，而不是简单地把人从流程中拿掉。"],
+            "original": ["我们不应该满足于一个不透明的超级智能。", "我们应该努力让产品和模型与人类共同建立理解，而不是把人类中介掉。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "从模型调用到工作系统 / From Calls to Systems",
+      "desc": "好的 AI 产品正在减少不必要的模型调用，把确定的部分交给代码，把重复的信息组织成自己的系统。",
+      "cards": [
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2109410082769482174",
+          "en": {
+            "rewrite": ["Garry Tan makes a blunt engineering point: when a behavior is deterministic, replacing an LLM call with code is an obvious win. It produces better code and makes the result match what users actually want more reliably."],
+            "original": ["Replacing LLM calls with deterministic code is a no brainer and also results in better code that better matches what users want"]
+          },
+          "cn": {
+            "rewrite": ["Garry Tan 提了一个很直接的工程判断：如果一件事本来就是确定性的，用代码替换 LLM 调用是显而易见的选择。这样代码更好，结果也更稳定地符合用户真正想要的东西。"],
+            "original": ["用确定性代码替换 LLM 调用是显而易见的选择，也会产生更好的代码，更符合用户想要的结果。"]
+          }
+        },
+        {
+          "authorKey": "x:danshipper",
+          "sourceUrl": "https://x.com/danshipper/status/2109331798282915907",
+          "en": {
+            "rewrite": ["Dan Shipper built a feed that automatically tracks the books he has been reading since 2012, then wondered whether everyone should have one. The interesting product idea is not another reading list, but a persistent personal stream that turns scattered activity into something you can browse and learn from."],
+            "original": ["made a feed that automatically tracks the books im reading (and have read going back to 2012!)", "maybe we should have a feed for everybody"]
+          },
+          "cn": {
+            "rewrite": ["Dan Shipper 做了一个 feed，自动追踪他从 2012 年至今读过和正在读的书，然后开始思考：是不是每个人都应该有这样的 feed。真正有意思的不是又一个书单，而是把分散的个人活动变成一条可以回看、可以学习的持续信息流。"],
+            "original": ["做了一个 feed，自动追踪我正在读的书，以及从 2012 年开始读过的书。", "也许我们应该给每个人都做一个 feed。"]
+          }
+        },
+        {
+          "authorKey": "x:mattturck",
+          "sourceUrl": "https://x.com/mattturck/status/2109345191010472332",
+          "en": {
+            "rewrite": ["Matt Turck places today's new roles in a longer pattern: punch-card operators became Lotus Notes admins, Flash developers became DevOps and Tableau analysts, and now people are becoming agent managers and harness engineers. The tooling changes, but work tends to reorganize around the new layer."],
+            "original": ["People were punch card operators then they were Lotus Notes admins, then they were Flash developers and Dreamweaver webmasters, then they were DevOps and Tableau analysts, and now they’re becoming agent managers and harness engineers. It will work out just fine."]
+          },
+          "cn": {
+            "rewrite": ["Matt Turck 把今天的新岗位放进了一条更长的历史线里：打孔卡操作员变成 Lotus Notes 管理员，Flash 开发者变成 DevOps 和 Tableau 分析师，现在人们又开始成为 agent manager 和 harness engineer。工具会变，但工作总会围绕新的一层重新组织。"],
+            "original": ["人们曾是打孔卡操作员，然后是 Lotus Notes 管理员、Flash 开发者和 Dreamweaver webmaster，后来是 DevOps 和 Tableau 分析师，现在他们正在成为 agent manager 和 harness engineer。一切都会好起来。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "芯片就是产品的一部分 / Chips Are Part of the Product",
+      "desc": "当模型越来越大、推理越来越长，速度和 memory bandwidth 不再只是底层实现细节。",
+      "cards": [
+        {
+          "authorName": "Walter Goodwin",
+          "authorTag": "Fractile founder and CEO / No Priors",
+          "authorKey": "podcast:no-priors",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpeCP4wCxkA",
+          "en": {
+            "rewrite": ["Fractile founder and CEO Walter Goodwin is building inference chips for the world's largest models, with speed and long-context scaling as the core bet. His argument is that the current chip landscape looks more diverse than it really is: many platforms still share HBM, tensor cores, and advanced packaging.", "The harder-to-copy advantage is going all the way down the stack, from workload-aware architecture and front-end design to physical design and foundry work. In frontier AI, a three-to-six-month structural lead in chip deployment can decide who wins the next wave."],
+            "original": ["Fractile is a chip company. We build very, very fast inference chips for the world's largest models.", "It's equivalent of the frontier model for the chip space is if you can just find a way to structurally carve out a three to six months advantage, you will be winning all of those deployments."]
+          },
+          "cn": {
+            "rewrite": ["Fractile 创始人兼 CEO Walter Goodwin 正在为最大的模型打造 inference chip，把速度和长上下文扩展能力作为核心下注。他认为，今天的芯片市场看起来选择很多，但底层其实相当相似：很多平台都在用 HBM、tensor core 和先进封装。", "更难复制的优势，是从 workload-aware 架构、前端设计一路做到 physical design 和晶圆厂协作。对 frontier AI 来说，只要在芯片部署上结构性地领先三到六个月，就可能赢下下一波部署。"],
+            "original": ["Fractile 是一家芯片公司。我们为世界上最大的模型打造非常非常快的 inference chip。", "如果你能在芯片领域找到一种方式，结构性地领先三到六个月，就会赢下所有这些部署。"]
+          }
+        }
+      ]
+    }
+  ]
+}
