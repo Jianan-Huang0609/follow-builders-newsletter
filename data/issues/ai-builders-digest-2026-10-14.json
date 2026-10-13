@@ -1,0 +1,238 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-10-14",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线不是又多了几个 AI demo，而是 builder 正在重新安排工作的边界：Aaron Levie 看到 agent swarm 会先在网络安全这类可并行问题里落地，Guillermo Rauch 则提醒大家，CLI 的价值仍然是低摩擦和 Unix 式的简洁。另一边，Ryo Lu 把 Dictionary 和 Fitness 做进个人 OS，Zara Zhang 讲了一个很小但很动人的 coding 故事：模型负责把东西做出来，真正赋予它灵魂的仍然是人的经历。"
+  },
+  "archive": {
+    "title": "Agent 落地日报",
+    "desc": "从 agent swarm 与自适应 harness，到极简 CLI 和带有人情味的个人软件，AI 正从能力展示走向具体工作流。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-10-14 source feeds.",
+  "sections": [
+    {
+      "title": "Agent Infrastructure / Agent 基础设施",
+      "desc": "真正的 agent 系统，不只是模型更聪明，还要能自己选择合适的 harness，并把并行计算用在值得用的地方。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2109788979952558255",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie points to a likely end state for agents: once an AI sees the task, it may be better at choosing its own harness than humans are at designing that harness in advance.",
+              "The implication is subtle but important. Instead of prescribing one fixed workflow for every task, the system can decide what tools, scaffolding, and process it needs after it understands the problem.",
+              "He links this to research he calls a glimpse of the eventual architecture of agents, while keeping the claim focused on a design direction rather than a finished product."
+            ],
+            "original": [
+              "Ok this is quite cool research and ultimately must be the eventual architecture of agents. In the limit, AI will obviously be better at determining its own harness once it sees the task at hand, than us being able to do this in advance: https://t.co/jl6ZdeUFY1 https://t.co/7UOyjCGtdD"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 认为，agent 的终局可能是：看到任务之后，AI 自己选择 harness 的能力，会超过人类提前为它设计固定流程的能力。",
+              "这意味着系统不必对所有任务套同一套工作流，而是先理解问题，再决定需要哪些工具、脚手架和执行方式。",
+              "他把一项研究视为这种架构方向的一个早期信号，但并没有把它说成已经完成的产品。"
+            ],
+            "original": [
+              "这项研究很有意思，最终应该会成为 agent 的架构方向。归根结底，AI 看到任务之后，显然会比我们提前设计好 harness 更擅长决定自己需要什么。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2109682812811137061",
+          "en": {
+            "rewrite": [
+              "Levie expects agent swarms to become a core part of enterprise workflows wherever problems can be massively parallelized. Cybersecurity is an obvious early beneficiary: testing huge combinations of attack paths is exactly the kind of work that benefits from throwing compute at a wide search space.",
+              "His forecast is also economic: with all the IT systems, software, infrastructure, and data an enterprise must protect, these workloads could become one of the largest sources of token usage."
+            ],
+            "original": [
+              "Agent swarms are going to be a core part of many enterprise workflows in the future. The ability to throw compute at problems that you can massively parallelize will be too useful to not take advantage of.",
+              "Cyber will be one of the biggest beneficiaries of this as it’s a space where testing vast number of permutations of attacks ... is an incredibly useful property.",
+              "This will become one of the biggest token uses in large enterprises given the range of IT systems, software, physical infrastructure, and data that needs to be protected at all times."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Levie 预计，只要问题可以大规模并行化，agent swarm 就会成为企业工作流的核心部分。网络安全可能是最早受益的领域之一，因为测试海量攻击路径组合，本来就是一个宽搜索空间问题。",
+              "他的判断还有一层经济含义：企业要持续保护 IT 系统、软件、基础设施和数据，这类任务可能会成为 token 消耗最大的场景之一。"
+            ],
+            "original": [
+              "Agent swarm 未来会成为很多企业工作流的核心。对可以大规模并行化的问题投入计算量，价值太高，不可能不用。",
+              "网络安全会是最大受益者之一，因为测试大量攻击排列组合非常适合这种能力。",
+              "考虑到企业需要持续保护的 IT 系统、软件、物理基础设施和数据，这会成为大型企业最大的 token 使用场景之一。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Tools with Less Friction / 更低摩擦的工具",
+      "desc": "AI 工具的竞争不只在模型能力，也在于能不能让人少操心一层基础设施。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2109734766107099312",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch argues that coding CLIs are drifting away from their original promise as they accumulate daemons, layered TUIs, and client-server machinery. His standard is refreshingly simple: a CLI should deliver intelligence with zero friction and remain Unix-like.",
+              "He points to a 6 MB, model-agnostic tool built around MCP, Skills, Subagents, and ACP as an example of that minimal direction."
+            ],
+            "original": [
+              "Coding CLIs keep getting more complicated. Daemons, 3 layers of TUIs, client-server architectures.",
+              "The whole point of a CLI is to deliver intelligence with zero friction, and be unix-like.",
+              "Try https://t.co/OL0LzGtvAw. It's 6mb, starts in milliseconds, model-agnostic. It's tastefully minimal: MCP, Skills, Subagents and ACP built-in."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 认为，coding CLI 正在因为 daemon、多层 TUI 和 client-server 架构变得越来越复杂，逐渐偏离最初的承诺。他的标准很简单：CLI 应该以零摩擦交付 intelligence，同时保持 Unix 式的感觉。",
+              "他推荐了一个 6MB、毫秒级启动、model-agnostic 的工具，把 MCP、Skills、Subagents 和 ACP 放进一个尽量小的入口里。"
+            ],
+            "original": [
+              "Coding CLI 变得越来越复杂：daemon、三层 TUI、client-server 架构。",
+              "CLI 的全部意义，就是零摩擦地交付 intelligence，并且保持 Unix-like。",
+              "试试这个 6MB、毫秒启动、model-agnostic 的工具，内置 MCP、Skills、Subagents 和 ACP。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:ryolu_",
+          "sourceUrl": "https://x.com/ryolu_/status/2109568690358555064",
+          "en": {
+            "rewrite": [
+              "Ryo Lu keeps pushing ryOS toward a personal operating system rather than a single-purpose AI demo. The newest additions are Dictionary and Fitness: learn words, pronunciation, and kanji, then plan workouts and track body and food data with AI.",
+              "The notable detail is that both are described as small, usable surfaces made with a bot and Cursor, not as a grand platform announcement."
+            ],
+            "original": [
+              "new on ryOS: Dictionary + Fitness\n\nlearn new words, pronunciation, 漢字. plan workouts, track body and food with AI.\n\nmade with @bot @cursor_ai https://t.co/BXEp6UzL3H"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Ryo Lu 正在把 ryOS 推向个人 operating system，而不是一个单点 AI demo。最新加入的是 Dictionary 和 Fitness：学新词、练发音、学汉字，也可以用 AI 规划训练并记录身体和饮食数据。",
+              "有意思的是，他展示的是几个小而能用的界面，背后用到 bot 和 Cursor，而不是一次宏大的平台发布。"
+            ],
+            "original": [
+              "ryOS 新增 Dictionary + Fitness：学习新词、发音、汉字；用 AI 规划训练，追踪身体和饮食。用 @bot 和 @cursor_ai 做的。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Building with Human Context / 人的上下文仍然重要",
+      "desc": "模型让制作变便宜了，但产品为什么值得被记住，仍然取决于真实的人和真实的经历。",
+      "cards": [
+        {
+          "authorKey": "x:zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2109673430245421415",
+          "en": {
+            "rewrite": [
+              "Zara Zhang shares a small coding story with a large lesson. A friend turned someone's childhood memory of catching cockroaches with her mother into a simple game, and the person cried while playing it.",
+              "The game is not technically sophisticated; any current model can build something similar quickly. What gives it a soul is the human story and emotion behind it. Her conclusion is crisp: code is becoming a new medium for storytelling."
+            ],
+            "original": [
+              "The game isn’t technically sophisticated. Any model can build it pretty quickly now. What gives it a soul is the human story, experience, and emotion behind it.",
+              "Code is the new medium for storytelling."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zara Zhang 分享了一个很小、但很有分量的 coding 故事：有人把朋友童年时和妈妈一起抓蟑螂的记忆做成了一款简单游戏，对方玩着玩着哭了。",
+              "游戏本身并不复杂，现在的模型很快就能做出来。真正让它有灵魂的，是背后那段人的故事、经历和情绪。她的结论很干脆：code 正在成为一种新的 storytelling medium。"
+            ],
+            "original": [
+              "这个游戏在技术上并不复杂，现在任何模型都能很快做出来。让它有灵魂的，是背后的人类故事、经历和情绪。",
+              "Code 是新的 storytelling medium。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:adityaag",
+          "sourceUrl": "https://x.com/adityaag/status/2109748501982872003",
+          "en": {
+            "rewrite": [
+              "Aditya Agarwal sees a large gap between how frontier-lab employees use AI and how even the top 1% of AI organizations use the same public capabilities.",
+              "He expects that gap to persist for a while and sees a company opportunity in building a horizontal accelerant that helps more teams adopt the practices already visible at the frontier."
+            ],
+            "original": [
+              "There is a big delta in how frontier lab employees use AI and how even the top 1% of AI orgs use AI.",
+              "This is on public capabilities...I suspect this delta will exist for a while..",
+              "I also feel like there is a company opportunity in here that is a horizontal accelerant."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aditya Agarwal 观察到，frontier lab 员工使用 AI 的方式，和哪怕是 AI 组织前 1% 的团队之间，也存在很大的差距，而且双方用的是同样的公开能力。",
+              "他判断这种差距还会持续一段时间，因此这里可能存在一个公司机会：做一个横向 accelerant，把前沿团队已经在用的方法带给更多组织。"
+            ],
+            "original": [
+              "frontier lab 员工使用 AI 的方式，和哪怕是 AI 组织前 1% 的团队之间存在很大的差距。",
+              "这基于公开能力，我怀疑这种差距还会持续一段时间。",
+              "这里似乎存在一个做 horizontal accelerant 的公司机会。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Competitive Frontier / 竞争前沿",
+      "desc": "当更多公司进入 frontier，能力迭代和成本下降会同时加速。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2109711062757216738",
+          "en": {
+            "rewrite": [
+              "Levie reads Meta's full move into frontier AI as a market-structure change, not just another model launch. More serious competitors pushing the state of the art should accelerate progress and lower the token cost even at the highest capability levels.",
+              "For builders, the useful takeaway is that capability and price may keep improving together as competition broadens."
+            ],
+            "original": [
+              "Now that there are multiple players pushing the state of the art, this is going to lead to a further acceleration of advances, as well as the lowering cost of tokens for even the highest levels of capability."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Levie 把 Meta 全面进入 frontier AI 看成一次市场结构变化，而不只是又发了一个模型。更多认真推动 state of the art 的竞争者，会同时加速进步，并压低最高能力等级的 token 成本。",
+              "对 builder 来说，最实用的结论是：随着竞争扩大，能力和价格可能继续朝着更好的方向一起变化。"
+            ],
+            "original": [
+              "现在有多个玩家在推动 state of the art，这会进一步加速进步，也会降低最高能力等级的 token 成本。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:peteryang",
+          "sourceUrl": "https://x.com/peteryang/status/2109803399332213090",
+          "en": {
+            "rewrite": [
+              "Peter Yang's current favorite agent is Grok Bot, for a product-design reason rather than a benchmark claim: it is organized around personas instead of chat threads.",
+              "He uses separate bots for growth and customer support, YouTube research, family errands, and health coaching. The mental model is closer to hiring a small set of employees with clear jobs than opening one more general-purpose chat."
+            ],
+            "original": [
+              "It’s built on personas instead of chat threads, so it really feels like hiring employees to work for you. Each owns a specific job:",
+              "Behind the Growth owns customer support; YouTube Producer owns research and prep; Loving Husband owns errands for my family; Health Coach keeps my workouts on track."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 最近最喜欢的 agent 是 Grok Bot，原因不是 benchmark，而是产品组织方式：它围绕 persona，而不是 chat thread 来设计。",
+              "他分别用不同 bot 负责增长和客服、YouTube 研究、家庭跑腿以及健康管理。这个 mental model 更像是雇了一组职责清晰的员工，而不是再打开一个万能聊天窗口。"
+            ],
+            "original": [
+              "它围绕 persona 而不是 chat thread 构建，所以很像是雇员工为你工作。每个 bot 都有明确职责：增长 bot 负责客服，YouTube Producer 负责研究和准备，Loving Husband 负责家庭跑腿，Health Coach 负责训练。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
