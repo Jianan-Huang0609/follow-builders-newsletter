@@ -1,0 +1,211 @@
+{
+  "title": "AI Builders Digest — 2026-10-15",
+  "subtitle": "模型升级之后，真正的竞争开始转向执行、扩散与安全覆盖。",
+  "publishDate": "2026-10-15",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的 feed 里有一条很鲜明的主线：模型能力的新闻已经不只是“谁更聪明”，而是它能不能把复杂任务做完、能不能进入真实组织、能不能被更快地扩散。Box 的测试把 Gemini 4 Argon 放进企业文档任务里，看到的是完整执行能力；Aaron Levie 则把视线推向 agent 时代的网络安全。另一边，David Silver 和 Lasse Espeholt 仍在押注一条更激进的路线：让系统从经验中持续学习，而不是只从人类语言中学习。"
+  },
+  "archive": {
+    "title": "执行扩散日报",
+    "desc": "新模型正在从 benchmark 走向企业任务，而 agent 的下一场竞争会同时发生在安全覆盖、产品扩散和持续学习上。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-10-15 source feeds.",
+  "sections": [
+    {
+      "title": "从模型分数到任务完成 / From Scores to Finished Work",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2110046686198550539",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie says Gemini 4 Argon jumped 14 points over Gemini 3.1 Pro on Box's Complex Work evaluation, which uses hard enterprise-document tasks across industries.",
+              "The interesting part is not the headline score but the failure mode it changes: Argon was more likely to carry a task through, preserve the requested detail, catch missing data, and make its final recommendation consistent with its own diagnosis. In Box's examples, that meant correct funding-gap math, removing dangerous drugs from a care plan, choosing the right region to optimize, and noticing an incomplete meter log.",
+              "The model is becoming more useful when the job is not to produce a plausible paragraph, but to finish a chain of work without quietly dropping the hard parts."
+            ],
+            "original": [
+              "At Box, we've been testing Gemini 4 Argon on our Box AI Complex Work eval for the past week. It's a huge upgrade over Gemini 3.1 Pro, jumping by 14 percentage points across all our tests, and firmly at the frontier.",
+              "Gemini 4 is far more capable on math, logic, analytics, and deep knowledge ... It also works far harder to complete tasks fully without stopping short of the desired result."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 说，Gemini 4 Argon 在 Box 的 Complex Work 评测中比 Gemini 3.1 Pro 高了 14 个百分点，测试内容是跨行业的复杂企业文档任务。",
+              "真正有意思的不是分数，而是它改变了哪些失败方式：Argon 更能把任务做完，保留题目要求的细节，发现缺失数据，并让最终建议和自己的判断保持一致。Box 给出的例子包括准确完成 funding-gap 计算、从护理方案里移除危险药物、选对该优化的地区，以及发现仪表数据并不完整。",
+              "模型的价值正在从“写出一段像样的话”，转向“把一串工作做完，而且不悄悄漏掉最难的部分”。"
+            ],
+            "original": [
+              "Gemini 4 Argon 在 Box AI Complex Work 评测中比 Gemini 3.1 Pro 高了 14 个百分点。",
+              "它在数学、逻辑、分析和领域知识上更强，也更努力地把任务完整做完，而不是半途停下。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:danshipper",
+          "sourceUrl": "https://x.com/danshipper/status/2110056016872427944",
+          "en": {
+            "rewrite": [
+              "Dan Shipper offers the useful counterweight to the Gemini 4 excitement: on Every's senior-engineer benchmark, Gemini 4 Argon scored 21%, well below Sol 6 and Muse.",
+              "The takeaway is simple: a model can look excellent on one class of complex enterprise work and still struggle badly on another. Builder evaluations are becoming part of the product story, not an afterthought."
+            ],
+            "original": [
+              "gemini 4 argon really struggles on our senior engineer benchmark task",
+              "comes in at 21% far below Sol 6 and even Muse"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Dan Shipper 给 Gemini 4 的热度加了一脚刹车：在 Every 的 senior-engineer benchmark 上，Gemini 4 Argon 只有 21%，明显低于 Sol 6，甚至低于 Muse。",
+              "结论很简单：一个模型可以在复杂企业任务上表现出色，却在另一类工作上严重掉分。对 builder 来说，自己的评测正在成为产品叙事的一部分，而不是发布后的附属品。"
+            ],
+            "original": [
+              "Gemini 4 Argon 在我们的 senior engineer benchmark task 上表现很挣扎。",
+              "得分 21%，远低于 Sol 6，甚至低于 Muse。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "模型中立与产品扩散 / Model-Agnostic Distribution",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2110044152482365747",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch's reaction to Gemini 4 is less about picking a winner than about avoiding dependence on one. He argues that coding agents are the killer app of AI, while the rapid arrival of Muse Wonder and Gemini Argon is a reminder to stay model-agnostic and build around gateways and flexible infrastructure.",
+              "For builders, the practical implication is uncomfortable but useful: model quality is moving too quickly for a product architecture that assumes today's favorite model will remain the only one worth using."
+            ],
+            "original": [
+              "Everyone has, rightfully, pivoted back to coding. Coding agents are the killer app of AI.",
+              "getting Muse Wonder and Gemini Argon back-to-back is a reminder why you as an individual, and your company, should stay model agnostic and gateway-maxxx / fx-maxxx."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch 对 Gemini 4 的反应，重点不是押谁赢，而是不要被单一模型绑住。他认为 coding agent 是 AI 的 killer app，而 Muse Wonder 和 Gemini Argon 接连出现，正好提醒个人和公司保持 model-agnostic，围绕 gateway 和灵活基础设施来构建。",
+              "对 builder 来说，实际含义有点不舒服但很有用：模型变化太快了，产品架构不能假设今天最喜欢的那个模型会永远是唯一值得用的模型。"
+            ],
+            "original": [
+              "大家重新把重心放回 coding 是有道理的。Coding agents 是 AI 的 killer app。",
+              "Muse Wonder 和 Gemini Argon 接连出现，提醒你和你的公司应该保持 model agnostic，并把 gateway / 灵活基础设施做到极致。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2110128937049452575",
+          "en": {
+            "rewrite": [
+              "Replit CEO Amjad Masad argues that the frontier is not the only bottleneck. Even if frontier research stopped today, AI would still take another decade to diffuse through the economy, and Replit is working with solution partners to speed that diffusion up.",
+              "That frames the next opportunity less as inventing a smarter model and more as removing the organizational friction between a capable model and the people who could actually use it."
+            ],
+            "original": [
+              "You can pause frontier research today, and it would take AI another 10 years to diffuse into the economy. We're working with solutions partners to accelerate that."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Replit CEO Amjad Masad 认为，frontier 并不是唯一的瓶颈：即使今天停止前沿研究，AI 仍可能需要十年才能扩散进整个经济，而 Replit 正在和 solutions partners 一起加速这个过程。",
+              "这意味着下一波机会未必是发明更聪明的模型，也可能是消除模型能力与真实用户之间的组织摩擦。"
+            ],
+            "original": [
+              "今天就暂停 frontier research，AI 仍然要再花 10 年才能扩散进经济。我们正在和 solutions partners 合作加速这个过程。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Agent 的安全覆盖面 / The Agent Security Surface",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2110227571090788526",
+          "en": {
+            "rewrite": [
+              "Aaron Levie sees cybersecurity as one of the biggest future spaces for AI agents, precisely because agents expand both sides of the equation. They can increase the attack surface by working through every crack in a system, but they can also let security teams review every line of code, test huge numbers of exploit permutations, and investigate incidents faster than humans.",
+              "The opportunity is not a single security product. It spans labs, data providers, networks and firewalls, identity, endpoints, the SDLC, and enterprise data protection."
+            ],
+            "original": [
+              "Cyber is going to be one of the biggest spaces for AI agents in the future.",
+              "The ability to have agent swarms review every line of code, test any number of permutations of exploits, and research any incident faster than humans, will be a huge boost in how we secure systems in the future."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie 认为，网络安全会成为未来 agent 最大的应用空间之一，恰恰因为 agent 会同时放大攻防两面：它们可以顺着系统每个缝隙扩大攻击面，也可以让安全团队审查每一行代码、测试海量 exploit 组合，并比人更快调查事故。",
+              "机会不只属于某一个安全产品，而是横跨 labs、数据提供商、网络与 firewall、身份、端点、SDLC，以及企业数据保护。"
+            ],
+            "original": [
+              "网络安全会成为未来 AI agent 最大的领域之一。",
+              "让 agent swarm 审查每一行代码、测试任意数量的 exploit 组合、比人更快研究每起事故，会极大提升系统安全能力。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2110053836945756234",
+          "en": {
+            "rewrite": [
+              "Garry Tan points to a different kind of security unlock: giving your harness access to a real browser with real credentials. His recommendation of AsideAI is a reminder that agent capability is often gated by the environment it can actually operate in, not just by the model behind it."
+            ],
+            "original": [
+              "Giving your harnesses access to a real browser with your real credentials is a real unlock - highly recommend @AsideAI"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan 指向了另一种安全能力解锁：让 harness 能使用带真实凭证的真实浏览器。他推荐 AsideAI，也提醒我们，agent 的能力往往受限于它真正能操作的环境，而不只是背后的模型。"
+            ],
+            "original": [
+              "让 harness 使用带真实凭证的真实浏览器，是一个真正的解锁。强烈推荐 AsideAI。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "另一条通往智能的路 / Learning from Experience",
+      "cards": [
+        {
+          "authorKey": "podcast:training-data",
+          "authorName": "David Silver & Lasse Espeholt",
+          "authorTag": "Training Data",
+          "sourceUrl": "https://www.youtube.com/playlist?list=PLOhHNjZItNnMm5tdW61JpnyxeYH5NDDx8",
+          "en": {
+            "rewrite": [
+              "David Silver and Lasse Espeholt of Ineffable Intelligence are betting that superintelligence will come from systems that learn and discover through experience, not only from models trained on human language. Silver's core analogy is human history: we began knowing nothing and collectively discovered languages, mathematics, science, and technology.",
+              "Their contrarian move is institutional as much as technical. Silver says he left DeepMind because this path deserved an elite lab focused on it completely, rather than another corner of the LLM product race. The LLM era still taught him something important: once a system has seen enough data at scale, capabilities that seemed slow or difficult can become surprisingly fast after fine-tuning.",
+              "The wager is ambitious: build a system that can keep learning and discovering knowledge forever."
+            ],
+            "original": [
+              "Everything we learned, we discovered it for ourselves. And that's an incredible thing that no one has cracked yet in AI.",
+              "The right approach to solve AI was through learning from experience, through systems that discovered things for themselves ... and that would be the thing which would lead to the emergence of intelligence and ultimately superintelligence.",
+              "If you get things at the right scale, a lot of things which seem incredibly hard or they might be very slow, ... after that, the things that were slow can become very fast."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Ineffable Intelligence 的 David Silver 和 Lasse Espeholt 押注的是另一条路线：超级智能来自通过经验学习、自己发现知识的系统，而不只是来自在人类语言上训练的模型。Silver 的核心类比是人类历史：我们一开始什么都不知道，却集体发现了语言、数学、科学和技术。",
+              "他们的反共识选择既是技术性的，也是组织性的。Silver 说，离开 DeepMind 是因为这条路线值得一个全力聚焦的顶级实验室，而不是 LLM 产品竞赛里的一个角落。不过，LLM 时代也教会他一件重要的事：当系统在足够大的规模上见过足够多数据后，原本看起来很慢、很难的能力，经过 fine-tuning 可能会突然变快。",
+              "他们押注的是一个很大的目标：造出能够永远持续学习、持续发现知识的系统。"
+            ],
+            "original": [
+              "我们学到的一切，都是自己发现的。这是 AI 还没有破解的一件不可思议的事。",
+              "解决 AI 的正确路径是从经验中学习，让系统自己发现事物；这会带来智能，最终带来超级智能。",
+              "如果规模合适，很多看起来非常难、非常慢的事情，在那之后都可能变得非常快。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
