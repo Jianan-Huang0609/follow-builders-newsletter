@@ -1,0 +1,137 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-10-17",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线，是 AI 从“聊天工具”继续变成后台基础设施。Aaron Levie 认为，真正的 agent swarm 会把知识工作的并行度推到今天的 100 倍甚至 1000 倍；而 Meta 的 Muse 开源权重，则让企业可以把 frontier model 和低成本、定制化模型混搭起来。TypeSafe 的 Diogo Almeida 在播客里讲得更具体：Jev 不负责生成一段漂亮的文字，而是直接为软件做判断，重点也从“每秒多少 intelligence”转向“每美元多少 intelligence”。另一边，Boris Cherny 把 prompt injection 重新摆上台面，Aditya Agarwal 则把 interpretability 和 alignment 当成工程问题来看。"
+  },
+  "archive": {
+    "title": "智能后台日报",
+    "desc": "AI 正从对话界面走向可并行运行的后台系统：模型组合、机器原生决策和安全工程一起成为下一层基础设施。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-10-17 source feeds.",
+  "sections": [
+    {
+      "title": "Agents in the Background / 后台运行的 Agent",
+      "desc": "下一步不是和一个 agent 来回聊天，而是把一群 agent 派出去，等它们带着结果回来。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2110622982762803449",
+          "en": {
+            "rewrite": ["Aaron Levie argues that moving from back-and-forth chat to agents running in the background could mean 100X or 1000X more token consumption. The bottleneck in knowledge work is still moving data, reviewing documents, auditing code, and processing logs; agents can turn those individual tasks into parallel work.", "The important shift is from augmentation to delegation. People, workflows, triggers, and other agents will spin up swarms to protect codebases, QA every change, audit documents, and tackle net-new work. The remaining constraint is no longer imagination but enough compute."],
+            "original": ["Moving from chatting back and forth with agents, to having agents that you spin up in the background to do useful work for you is probably on the order of 100X or 1000X more token consumption than what we’re seeing today.", "These agents will get deployed as swarms by people, by workflows, by triggers, and by other agents."]
+          },
+          "cn": {
+            "rewrite": ["Aaron Levie 认为，从和 agent 来回聊天，转向让 agent 在后台自行工作，token 消耗可能会达到今天的 100 倍甚至 1000 倍。知识工作的瓶颈一直是搬运数据、审阅文档、检查代码和处理日志，而 agent 可以把这些任务拆开并行执行。", "关键变化是从“辅助”走向“委托”：人、工作流、触发器和其他 agent 都可以启动 agent swarm，去保护代码库、审查每次变更、检查文档风险，甚至处理过去根本不会做的新工作。"] ,
+            "original": ["从聊天转向让 agent 在后台做有用的工作，token 消耗可能是今天的 100 倍或 1000 倍。", "这些 agent 会由人、工作流、触发器和其他 agent 以 swarm 的方式部署。"]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2110787013809222141",
+          "en": {
+            "rewrite": ["Aaron Levie sees Meta's Muse open-weights model as a major step for OSS: enterprises can mix frontier models for orchestration and high-end tasks with low-cost, tailored models for repeatable workflows. That combination should accelerate AI diffusion and expand workloads across the stack."],
+            "original": ["They made a Muse open weights model, which is a huge step forward for OSS in the US.", "Enterprises will be able to mix and match frontier performance for orchestration and high end tasks, while being able to have low cost and tailored post trained models for repeatable workflows."]
+          },
+          "cn": {
+            "rewrite": ["Aaron Levie 把 Meta 的 Muse open-weights model 看作 OSS 的重要一步：企业可以用 frontier model 做编排和高难度任务，再用低成本、定制化的模型处理重复工作。这种组合会加速 AI 扩散，也会把整条技术栈的 workload 推高。"],
+            "original": ["他们做出了 Muse open weights model，这是美国 OSS 的巨大进步。", "企业可以混用 frontier model 做编排和高端任务，同时用低成本、定制化的 post-trained model 处理可重复工作。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Machine-Native Intelligence / 让软件直接做判断",
+      "desc": "Jev 的叙事不是“更会写字的模型”，而是把 AI 变成软件里的决策层。",
+      "cards": [
+        {
+          "authorKey": "podcast:mad",
+          "authorName": "Diogo Almeida",
+          "authorTag": "CEO, TypeSafe",
+          "sourceUrl": "https://www.youtube.com/@DataDrivenNYC/videos",
+          "en": {
+            "rewrite": ["The Jev thesis is simple but consequential: AI does not have to generate text to be useful. TypeSafe's model is built to make decisions inside software, with probabilities, thresholds, and developer control instead of one giant prompt. Diogo Almeida frames the goal as increasing “intelligence per dollar,” not just intelligence per second.", "His contrarian point is that practical automation starts by defining the task before scaling the model. Jev was built in stealth, uses open-weight models, and aims at machine-native intelligence for workflows such as email automation. The memorable standard is: “Build prod, not God.”"],
+            "original": ["I think the future is going to be intelligence per dollar primarily.", "Classification is AI-complete.", "Build prod, not God."]
+          },
+          "cn": {
+            "rewrite": ["Jev 的核心判断很简单，但影响不小：AI 不一定要生成文字才有用。TypeSafe 的模型直接在软件里做判断，用概率、阈值和开发者控制来工作，而不是把所有事情塞进一个巨型 prompt。Diogo Almeida 说，未来更重要的指标不是每秒多少 intelligence，而是每美元多少 intelligence。", "他的反直觉观点是，实用自动化的起点是先定义任务，再扩大模型规模。Jev 用 open-weight models 构建，目标是把 machine-native intelligence 放进邮件自动化等工作流。标准也很直白：“Build prod, not God。”"],
+            "original": ["我认为未来主要会看 intelligence per dollar。", "Classification is AI-complete。", "Build prod, not God。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Security Is Part of the Product / 安全已经是产品本身",
+      "desc": "Agent 越能做事，prompt injection 就越不能只当成一个边角 bug。",
+      "cards": [
+        {
+          "authorKey": "x:bcherny",
+          "sourceUrl": "https://x.com/bcherny/status/2110791698611855624",
+          "en": {
+            "rewrite": ["Boris Cherny says prompt injection has become an urgent industry-wide problem as agents take on more work. Anthropic has been making progress on the issue and is partnering with Gray Swan to host a competition, turning a notoriously fuzzy security problem into something builders can actively test."],
+            "original": ["As agents do more, it is increasingly urgent that we solve it across the industry.", "Really excited to partner with Gray Swan to host this competition."]
+          },
+          "cn": {
+            "rewrite": ["Boris Cherny 认为，随着 agent 承担越来越多的工作，prompt injection 已经变成整个行业都必须解决的紧迫问题。Anthropic 正在和 Gray Swan 合作举办竞赛，把这个长期模糊的安全问题变成 builder 可以主动测试的对象。"],
+            "original": ["随着 agent 做得越来越多，我们迫切需要整个行业一起解决这个问题。", "很高兴与 Gray Swan 合作举办这场竞赛。"]
+          }
+        },
+        {
+          "authorKey": "x:adityaag",
+          "sourceUrl": "https://x.com/adityaag/status/2110779602453066224",
+          "en": {
+            "rewrite": ["Aditya Agarwal points to Goodfire as a company worth watching because it treats interpretability and alignment as engineering problems. That framing matters: instead of treating model behavior as something to philosophize about after the fact, it asks whether we can build practical tools to inspect and steer it."],
+            "original": ["They are showing that interpretability and alignment can approached as engineering problems."]
+          },
+          "cn": {
+            "rewrite": ["Aditya Agarwal 认为 Goodfire 值得关注，因为它把 interpretability 和 alignment 当成工程问题来做。这个框架很重要：不是事后讨论模型行为，而是直接追问，我们能不能造出真正可用的工具去检查和引导它。"],
+            "original": ["他们正在证明，interpretability 和 alignment 可以作为工程问题来处理。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "What Models Know vs. What They Plan / 认识概念不等于理解意图",
+      "desc": "能识别一个概念，只说明模型看到了它；不说明我们知道它接下来想做什么。",
+      "cards": [
+        {
+          "authorKey": "x:danshipper",
+          "sourceUrl": "https://x.com/danshipper/status/2110831666587713810",
+          "en": {
+            "rewrite": ["Dan Shipper pushes back on a common shortcut in interpretability: finding a neuron that lights up for the Eiffel Tower does not tell you what a model is planning. Recognizing a concept is not the same as untangling the model's intent, and a neat feature-level explanation can create false confidence about alignment."],
+            "original": ["Knowing it recognizes the Eiffel Tower doesn’t tell you what the fuck it’s planning."]
+          },
+          "cn": {
+            "rewrite": ["Dan Shipper 反驳了 interpretability 里一个常见的捷径：找到一个遇到埃菲尔铁塔就亮起的 neuron，并不等于知道模型接下来打算做什么。识别一个概念和理解模型的意图不是一回事，漂亮的 feature-level 解释反而可能让人对 alignment 产生虚假的信心。"],
+            "original": ["知道它能识别埃菲尔铁塔，并不能告诉你它到底在计划什么。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Small Interfaces, New Possibilities / 小界面也能打开新玩法",
+      "desc": "当图片、文字和交互被放进同一个轻量载体，产品表达本身也在变化。",
+      "cards": [
+        {
+          "authorKey": "x:zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2110984552743309530",
+          "en": {
+            "rewrite": ["Zara Zhang shares a Harry Potter-style newspaper called The Toddler Times, where the images can come alive. It is a small demo, but it captures a useful product direction: familiar editorial formats can become interactive surfaces once images are no longer static."],
+            "original": ["Had a lot of fun making this Harry Potter style newspaper where the images can come alive: The Toddler Times"]
+          },
+          "cn": {
+            "rewrite": ["Zara Zhang 分享了一个《哈利·波特》风格的报纸 The Toddler Times，里面的图片可以“活”起来。它是个小 demo，但指向了一个有意思的产品方向：当图片不再是静态素材，熟悉的编辑形式也可以变成可交互的界面。"],
+            "original": ["做这个《哈利·波特》风格的报纸很开心，里面的图片可以活起来：The Toddler Times。"]
+          }
+        }
+      ]
+    }
+  ]
+}
