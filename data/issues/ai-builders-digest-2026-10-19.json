@@ -1,0 +1,137 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-10-19",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线不是又一个模型发布，而是 agent 正在进入真实工作流：有人把个人邮箱和工作账号交给多个 agent 协作，有人开始认真审计它们的权限；coding agent 从终端迁移到桌面，企业则在一边采用 agent 一边继续招工程师。底层也在变：数据库要为会写、会改、会删数据的 agent 重新设计，训练 agent 的 RL 系统甚至得先防模型学会作弊。"
+  },
+  "archive": {
+    "title": "Agent 落地日报",
+    "desc": "Agent 正从聊天窗口进入账号、数据库、代码工作流和企业组织，真正的挑战转向权限、基础设施与协作方式。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-10-19 source feeds.",
+  "sections": [
+    {
+      "title": "Agents Enter the Workflow / Agent 进入工作流",
+      "desc": "从跨账号协作到权限审计，agent 正在接触真正的个人与组织数据。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2111495392559067199",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux describes a small but telling experiment: his work agent, Burger, coordinated with his personal agent, Dorito, over email at his request, then worked with his CPA to file tax paperwork. It took 20 minutes.",
+              "The interesting part is not the tax task itself. It is the emerging pattern of agents acting as semi-independent collaborators across contexts, with email becoming the coordination layer."
+            ],
+            "original": ["My work dot \"Burger\" coordinated with my personal dot \"Dorito\" over email at my personal dots request to get documents, which then coordinated with with my CPA in order to file some tax stuff. Took 20 minutes. We're still so early."]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux 分享了一个很小、但很能说明问题的实验：他的工作 agent Burger 应个人 agent Dorito 的要求，通过邮件协调拿到文件，然后又和 CPA 协作完成报税材料。整个过程花了 20 分钟。",
+              "重点不只是报税，而是 agent 开始跨越工作与个人场景，像半独立的协作者一样行动，而邮件正在变成它们之间的协调层。"
+            ],
+            "original": ["我的工作 agent Burger 应个人 agent Dorito 的要求通过邮件拿文件，再和 CPA 协作报税，花了 20 分钟。我们还处在非常早期。"]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2111508293818671449",
+          "en": {
+            "rewrite": [
+              "Peter Yang offers a prompt for people with dozens of apps and agents connected to Google: audit every connection, distinguish sign-in from access to Gmail, Drive, Calendar and other data, flag broad or unfamiliar permissions, and show recommendations before changing anything.",
+              "The workflow is deliberately cautious: ask which apps are still used, explain what might break, require explicit approval, then verify the disconnection. As agents gain more access, permission hygiene becomes an everyday operating skill."
+            ],
+            "original": ["If you have way too many apps and agents (45!) connected to your Google account like me, here's a prompt to audit and remove them:", "Show me your recommendations before changing anything. Only disconnect apps I explicitly approve, then verify they're removed."]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 给出了一个适合“Google 账号连了几十个 App 和 agent”的审计 prompt：逐一检查连接，区分普通登录和 Gmail、Drive、Calendar 等数据权限，标记权限过宽、陌生供应商与重复连接，并在任何改动前先给出建议。",
+              "这个流程刻意保持谨慎：先确认哪些还在用，解释断开后可能影响什么，获得明确批准后再操作，最后验证确实已移除。Agent 权限越多，权限卫生就越像日常运维技能。"
+            ],
+            "original": ["如果你的 Google 账号像我一样连了太多 App 和 agent（45 个！），可以用 prompt 审计和移除它们。", "先展示建议，只有我明确批准的连接才能断开，然后验证确实移除了。"]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2111496600522805624",
+          "en": {
+            "rewrite": ["Peter Yang says the Claude Code app has become faster and arguably simpler than ChatGPT. His remaining gaps are better browser/computer use, remote control across threads, and live voice.", "That list is a useful snapshot of where the desktop agent experience still feels incomplete: execution across the computer, continuity across work, and a more natural interaction layer."],
+            "original": ["The Claude Code app is much faster now and arguably simpler to use than ChatGPT. The only things missing still are better browser/computer use, remote control for all threads, and live voice."]
+          },
+          "cn": {
+            "rewrite": ["Peter Yang 认为 Claude Code App 现在更快，也可能比 ChatGPT 更简单。它还缺的主要是更好的浏览器/电脑操作、跨 thread 的远程控制，以及实时语音。", "这份缺口清单也说明桌面 agent 体验还没补齐：要能操作整台电脑、在不同工作之间保持连续性，还要有更自然的交互层。"],
+            "original": ["Claude Code App 现在快很多，也可能比 ChatGPT 更简单；还缺更好的浏览器/电脑操作、所有 thread 的远程控制和实时语音。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Agent Stack Gets Real / Agent 技术栈进入深水区",
+      "desc": "当 agent 真正写入数据库、运行代码和接受训练，基础设施必须面对速度、隔离与作弊。",
+      "cards": [
+        {
+          "authorKey": "podcast:mad-podcast",
+          "sourceUrl": "https://www.youtube.com/@DataDrivenNYC/videos",
+          "authorName": "Andy Pavlo",
+          "authorTag": "The MAD Podcast with Matt Turck",
+          "en": {
+            "rewrite": ["Database professor Andy Pavlo argues that the AI/database relationship has moved beyond the vector-database moment. Agents now create, branch, write to, and sometimes delete databases, so the core question becomes how to let them experiment without touching the production system.", "His memorable warning is that agent development is moving at frightening speed: \"It's the wild west for people that don't know their history databases.\" Database branching offers a practical safety pattern—give an agent a real snapshot, let it change the copy, then promote only vetted changes.", "The bigger shift is architectural: databases are no longer passive storage behind an application. They are becoming an active workspace for agents, which makes isolation, auditability and recovery first-class product requirements."],
+            "original": ["Every month, there's a story where someone lost their production database because the agent deleted something.", "It's the wild west for people that don't know their history databases.", "Branching allows you to make a snapshot of the real database, have all the changes go to the snapshot and not affect production."]
+          },
+          "cn": {
+            "rewrite": ["数据库教授 Andy Pavlo 认为，AI 和数据库的关系已经走过了 vector database 时代。现在 agent 会创建、branch、写入，甚至删除数据库，核心问题变成：如何让它们在不碰生产环境的情况下大胆试错。", "他有一句很醒目的警告：「不了解数据库历史的人，正在面对一片西部荒野。」数据库 branching 提供了一种实用的安全模式：给 agent 一个真实数据的 snapshot，让它在副本上改，验证通过后再把改动上线。", "更大的变化是架构层面的：数据库不再只是应用背后的被动存储，而会成为 agent 的工作空间，因此隔离、审计和恢复都要变成一等产品能力。"],
+            "original": ["每个月都会有 agent 删除生产数据库内容、导致数据丢失的故事。", "不了解数据库历史的人，正在面对一片西部荒野。", "Branching 可以对真实数据库做 snapshot，让所有改动发生在 snapshot 上而不影响生产环境。"]
+          }
+        },
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2111494912562888939",
+          "en": {
+            "rewrite": ["Replit CEO Amjad Masad clarifies that Replit remains model agnostic: users can choose Anthropic and other supported models. OpenAI is the preferred default for Agent because of performance, cost and the partnership, not because the product is closing off model choice.", "It is a clean distinction between optimizing the default experience and locking the platform to one provider."],
+            "original": ["Replit remains model agnostic. Our users can choose Anthropic models as well as many other supported models.", "OpenAI is now our preferred partner powering Agent based on performance, cost, and strength of our partnership."]
+          },
+          "cn": {
+            "rewrite": ["Replit CEO Amjad Masad 澄清：Replit 仍然保持 model agnostic，用户可以选择 Anthropic 和其他支持的模型。OpenAI 成为 Agent 的首选默认模型，是基于性能、成本和合作关系，并不意味着平台放弃模型选择。", "这区分了两件事：优化默认体验，和把平台锁定在单一供应商。"],
+            "original": ["Replit 仍然 model agnostic，用户可以选择 Anthropic 和其他支持的模型。", "OpenAI 因性能、成本和合作关系成为 powering Agent 的首选伙伴。"]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2111525362446520466",
+          "en": {
+            "rewrite": ["Box CEO Aaron Levie pushes back on the idea that automation simply shrinks the need for engineers. Once agents can use tools, work with computers, write software on the fly and process data, many more problems become software-shaped—and therefore engineerable.", "His conclusion is not that manual coding disappears without consequence. It is that almost everything can become code, putting people who understand engineering in a stronger position across banking, life sciences and manufacturing."],
+            "original": ["Because agents can use tools, work with computers, write software on the fly, and process data like humans (but far faster), we can now throw ‘software’ at problems that never could reasonably be digitized before.", "Almost everything will be code, which means those that understand it are in a fantastic position."]
+          },
+          "cn": {
+            "rewrite": ["Box CEO Aaron Levie 反驳了“自动化只会减少工程师需求”的想法。Agent 能调用工具、操作电脑、即时写软件、处理数据之后，更多原本不适合数字化的问题都会变成 software-shaped，也就变成可以工程化的问题。", "他的结论不是手写代码消失了就什么都不重要，而是几乎一切都会变成 code，懂工程的人反而会在银行、生命科学和制造业里更占优势。"],
+            "original": ["Agent 能调用工具、操作电脑、即时写软件、像人一样但更快地处理数据，我们可以把 software 用到过去很难数字化的问题上。", "几乎一切都会变成 code，懂它的人会处在很好的位置。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Builder Economy / Builder 经济的下一层",
+      "desc": "工具更容易用之后，竞争焦点转向分发、用户选择和 AI 时代的商业组织方式。",
+      "cards": [
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2111350966419411070",
+          "en": {
+            "rewrite": ["Swyx shares the distribution reality behind an AI-focused media channel: more than one million unique viewers a month since May, but 58% are still new viewers and 68% are not subscribed. Most viewing happens from 7–11am PT; almost nobody watches after 5pm.", "The lesson is less about a vanity audience number than about conversion and timing. Reach is increasingly abundant; turning discovery into a durable relationship is the harder product problem."],
+            "original": [">1m unique viewers a month pretty much nonstop since May", "58% of viewers a month are new to us. 68% of viewers not subscribed", "most viewers 7am-11am PT daily. nobody watches after 5pm."]
+          },
+          "cn": {
+            "rewrite": ["Swyx 分享了一个 AI 内容频道背后的分发数据：从 5 月开始，月度独立观众基本一直超过 100 万，但其中 58% 仍是新观众，68% 没有订阅。观看高峰在太平洋时间早上 7–11 点，下午 5 点后几乎没人看。", "这不只是一个漂亮的受众数字，更说明转化和时间段才是难题：触达越来越容易，把一次发现变成长期关系才是产品问题。"],
+            "original": ["从五月起月度独立观众基本一直超过 100 万。", "每月 58% 的观众是新观众，68% 没有订阅。", "观众主要在太平洋时间每天 7–11 点观看，下午 5 点后没人看。"]
+          }
+        }
+      ]
+    }
+  ]
+}
