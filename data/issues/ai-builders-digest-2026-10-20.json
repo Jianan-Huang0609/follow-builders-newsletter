@@ -1,0 +1,101 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-10-20",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的 feed 里，最值得注意的不是又一个模型榜单，而是 AI 正在把更多工作变成可并行、可执行、可复用的系统：agent swarm 开始接管过去受限于人力的研究流程，builder 则把游戏、网站和防御工具直接做成了可运行的产品。另一条更底层的信号也很清楚：真正稀缺的能力，正在从“会用一个模型”转向“能把数据、工具和反馈组织起来”。"
+  },
+  "archive": {
+    "title": "并行智能日报",
+    "desc": "Agent 开始把研究、开发和防御工作拆成可并行的计算任务，而数据与基础设施能力决定了这些系统能走多远。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-10-20 source feeds.",
+  "sections": [
+    {
+      "title": "Compute Becomes a Workforce / 算力开始像一支工作队伍",
+      "desc": "当 agent 能调用工具、写代码、处理数据并彼此协调，很多过去受限于人工时间的工作，第一次有机会按计算量扩张。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2112051081014649303",
+          "en": {
+            "rewrite": ["Box CEO Aaron Levie argues that agent swarms matter because they turn compute into a new variable for economic work. Cybersecurity, life sciences, materials research, trading, QA, and data processing are often limited less by ideas than by the amount of planning, execution, review, and coordination humans can afford.", "The important shift is not simply having many agents. It is that agents can use tools, write code, process data, and coordinate toward a shared goal. If the models are good enough, adding tokens and compute can begin to substitute for the scarce human hours that currently bottleneck these workflows."],
+            "original": ["Here’s why agent swarms are going to be a very big deal. We can finally make compute a critical variable in a large number of important tasks in the economy which wasn’t possible before.", "The breakthrough is that in a world where agents can use tools, write code, process data, have strong domain depth, and can coordinate with each other, you can begin to solve arbitrarily complex problems by setting the right goals and applying enough tokens to the problem."]
+          },
+          "cn": {
+            "rewrite": ["Box CEO Aaron Levie 认为，agent swarm 的关键价值，是把算力变成经济活动里的新变量。网络安全、生命科学、材料研究、交易、QA 和数据处理，很多时候不是缺想法，而是受限于人类能投入多少规划、执行、复核和协调时间。", "真正的变化不只是 agent 变多，而是它们可以调用工具、写代码、处理数据，并围绕同一个目标协作。只要模型能力足够，增加 token 和 compute，就有可能替代目前卡住流程的人力小时。"],
+            "original": ["Agent swarm 之所以会非常重要，是因为我们终于能让 compute 成为大量重要经济任务里的关键变量。", "当 agent 能调用工具、写代码、处理数据、拥有领域深度并彼此协调时，只要设定正确目标并投入足够 token，就可以开始解决任意复杂的问题。"]
+          }
+        },
+        {
+          "authorKey": "podcast:no-priors",
+          "sourceUrl": "https://www.youtube.com/@NoPriorsPodcast",
+          "authorName": "Misha Laskin, ReflectionAI Co-Founder and CEO",
+          "authorTag": "No Priors Podcast",
+          "en": {
+            "rewrite": ["Reflection AI CEO Misha Laskin's account of building Beam is a reminder that frontier open models are not one clever algorithm away. A lab has to assemble talent, data, compute, usable infrastructure, pre-training, and reinforcement learning at the same time; his blunt summary is that you need to get roughly 30 things right.", "The strategic bet is that open models and reinforcement learning can make a new lab more capital-efficient while still requiring end-to-end control. Laskin says the field is moving from asking whether models can keep improving to asking where the resulting intelligence creates enough economic value to justify more compute."],
+            "original": ["You actually have to get 30 things right, and that’s why everything is hard because you have to get 30 things right.", "I do think that in terms of... there’s only so much CapEx that you can do. Right? ... the amount of intelligence you can extract per training FLOP is increasing.", "When you remove cyber offensive capabilities, you also remove cyber defensive capabilities."]
+          },
+          "cn": {
+            "rewrite": ["Reflection AI CEO Misha Laskin 讲 Beam 的过程，提醒我们：做 frontier open model 不是靠某个聪明算法就能完成的。人才、数据、compute、可用的基础设施、pre-training 和 reinforcement learning 必须同时到位；他的直白总结是，大约有 30 件事都必须做对。", "这条路线一方面借助 open model 和 RL 提高新实验室的资本效率，另一方面也要求团队把端到端能力握在自己手里。Laskin 说，行业正在从“模型能不能继续变强”转向“这些 intelligence 到底在哪些经济场景里值得继续投入 compute”。"],
+            "original": ["你实际上必须把 30 件事都做对，这就是为什么一切都很难。", "我确实认为，CapEx 总有上限。但每个 training FLOP 能提取出的 intelligence 正在增加。", "当你移除网络攻击能力时，也会同时移除网络防御能力。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Builders Ship the Loop / Builder 直接把闭环做出来",
+      "desc": "今天的几个案例都不是抽象地谈 AI，而是把模型接进一个能运行、能测试、能继续迭代的具体工作流。",
+      "cards": [
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2111884199359897953",
+          "en": {"rewrite": ["Claude Code engineer Thariq is exploring a game whose core loop is making rather than merely playing. Players could vibe-code their own characters, with the game distributed as open source so the community can extend and rebalance it.", "The interesting product signal is that generative tools may change what counts as the activity. Creation is no longer just a step before play; for some players, it is becoming the reason to stay engaged."], "original": ["One hook I kept coming back to was that I was having as much fun making the game + characters as I was playing it. What if that was the main hook?", "I'd distribute the game as open source, you could vibe code your own characters & it would balance it."]},
+          "cn": {"rewrite": ["Claude Code 工程师 Thariq 正在探索一种把“制作”本身变成核心玩法的游戏。玩家可以 vibe code 自己的角色，游戏以 open source 形式发布，再由社区继续扩展和调平衡。", "这里有个很有意思的产品信号：生成式工具可能会改变“活动本身”的定义。创作不再只是游戏开始前的一步，对一部分玩家来说，它可能就是留下来的理由。"], "original": ["我一直反复想到的一点是：制作游戏和角色，带给我的乐趣和玩游戏一样多。如果这才是主要玩法呢？", "我会把游戏做成 open source，你可以 vibe code 自己的角色，而它会负责平衡。"]}
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2111929486661018081",
+          "en": {"rewrite": ["Vercel CEO Guillermo Rauch used AI Gateway with a new DeepSeek model to improve a small game: sound, collision detection, a better ramp, and a camera that follows the car, for about 30 cents. It is a small demo, but a useful picture of what cheap, tool-connected iteration looks like."], "original": ["Tried out the new deepseek-v4.1-flash-1017-fast on AI Gateway to make a few improvements. It added sound, better collision detection, improved the ramp, camera that follows the car, etc. I think it cost 30 cents 😂"]},
+          "cn": {"rewrite": ["Vercel CEO Guillermo Rauch 用 AI Gateway 接上新的 DeepSeek 模型，给一个小游戏加了声音、更好的碰撞检测、改进后的斜坡，以及跟随汽车的 camera，成本大约 30 美分。它只是一个小 demo，却很直观地展示了低成本、工具连通的迭代会是什么样子。"], "original": ["我试了新的 deepseek-v4.1-flash-1017-fast，用 AI Gateway 做了几处改进：加声音、更好的碰撞检测、改进斜坡、跟随汽车的 camera 等。我觉得成本是 30 美分。😂"]}
+        }
+      ]
+    },
+    {
+      "title": "Data Is the Differentiator / 数据能力才是分水岭",
+      "desc": "当大家都能调用模型时，能不能处理真实世界的数据、搭好反馈回路，开始比会不会调用 API 更重要。",
+      "cards": [
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2112073533794971941",
+          "en": {"rewrite": ["Swyx argues that data engineers are increasingly more valuable than people who only know how to assemble a basic RAG demo. The distinction is between stitching together a retrieval layer and understanding data-intensive applications deeply enough to build reliable systems.", "His post is also a hiring signal: as AI products move into production, the scarce skill is not just model familiarity but the ability to make data pipelines, storage, evaluation, and application behavior work together."], "original": ["Data engineers > AI engineers", "there's a big difference between a \"RAG guy\" and a \"Data Intensive Applications\" person ... and there's never been a starker difference in demand in my entire career in tech"]},
+          "cn": {"rewrite": ["Swyx 认为，data engineer 正变得比只会拼一个基础 RAG demo 的人更有价值。两者的差别在于：前者不只是接一层 retrieval，而是足够深入地理解 data-intensive applications，能把可靠系统真正搭出来。", "这也是一条招聘信号：当 AI 产品进入生产环境，稀缺能力不只是熟悉模型，而是能让 data pipeline、存储、评测和应用行为协同工作。"], "original": ["Data engineer > AI engineer。", "‘RAG guy’ 和真正做 Data Intensive Applications 的人差别很大，而在我整个 tech 职业生涯里，需求差距从没这么明显过。"]}
+        },
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2111986818057118160",
+          "en": {"rewrite": ["Nikunj Kothari says people are still sleeping on Reatools despite its GitHub growth, calling the project 'truly bonkers.' The post is brief, but the useful signal is where builder attention is going: tools that make it easier to turn an idea into a working artifact can compound through developer adoption."], "original": ["This aged relatively well.. even with the GH growth, I think people are still sleeping on @reatools. It’s truly bonkers 💥"]},
+          "cn": {"rewrite": ["Nikunj Kothari 认为，即使 Reatools 的 GitHub 增长已经很明显，很多人仍然低估了它，甚至称它“真的离谱地强”。这条信息虽然很短，但指向了 builder 注意力正在流向哪里：能把想法更快变成可运行产物的工具，会通过开发者采用不断积累优势。"], "original": ["这件事现在看来确实说中了。即使 GitHub 还在增长，我觉得大家仍然低估了 @reatools。它真的很离谱。💥"]}
+        }
+      ]
+    },
+    {
+      "title": "Defense Needs Open Eyes / 防御需要更多开放的眼睛",
+      "desc": "今天的 feed 里，开放模型和安全防御不是两个互相排斥的话题，反而可能是同一套能力的两面。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2112034063934742720",
+          "en": {"rewrite": ["OpenAI's Thibault Sottiaux says the team worked with OpenCode after an attack so affected OpenAI API customers could get back in business and have credits refunded. He also points people to Daybreak Blue, a cyber-permissive setup intended for defense, with a blunt warning: prepare before an incident, not during one.", "The post makes operational security feel less like a policy document and more like an available toolchain that teams should exercise in advance."], "original": ["Our team worked with OpenCode to have their users who are also OpenAI API customers back in business and any credits refunded which would have been drawn in the attack.", "Also, you can request Daybreak Blue access to use our cyber permissive setup for defense. Do not wait until you have to deal with an incident. We’re here to help."]},
+          "cn": {"rewrite": ["OpenAI 的 Thibault Sottiaux 表示，团队已经和 OpenCode 协作，让同时使用 OpenAI API 的用户在攻击后恢复业务，并退还被攻击消耗的 credits。他还提醒大家申请 Daybreak Blue，用于防御场景的 cyber-permissive setup，并强调：不要等事故发生后才准备。", "这条更新把 operational security 从一份政策文件，变成了一套应该提前演练和使用的工具链。"], "original": ["我们的团队与 OpenCode 合作，让同时使用 OpenAI API 的用户恢复业务，并退还攻击中可能被消耗的 credits。", "你也可以申请 Daybreak Blue，使用我们的 cyber-permissive setup 做防御。不要等到必须处理事故时才行动。我们可以提供帮助。"]}
+        }
+      ]
+    }
+  ]
+}
