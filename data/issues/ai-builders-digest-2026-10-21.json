@@ -1,0 +1,141 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-10-21",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线是：agent 正在从「会聊天的工具」变成一套需要重新设计的工作系统。Thariq 提醒大家，多任务 agent 不等于更高效，先找出自己的 P0；Aaron Levie 则认为，模型越强，企业级 AI 越需要做深行业流程，而不是停在 wrapper 层。Guillermo Rauch 展示了另一条路：把 agent 最容易崩的 HTML artifact 基础设施做成开源底座。与此同时，Wabi 的 episodic chats 和 Cursor 的 RL 训练也在说明同一件事：真正的产品差异，越来越藏在上下文组织、运行环境和工作流里。"
+  },
+  "archive": {
+    "title": "Agent 工作流日报",
+    "desc": "agent 正从单点助手走向可分工、可持续运行的工作系统，产品差异开始落在上下文、基础设施和行业流程上。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-10-21 source feeds.",
+  "sections": [
+    {
+      "title": "From Chat to Focus / 从聊天走向聚焦",
+      "desc": "agent 越能同时做事，人反而越需要明确什么才是真正重要的事。",
+      "cards": [
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2112219173288120531",
+          "en": {
+            "rewrite": ["Thariq, who works on Claude Code at Anthropic, argues that most people multitasking with agents should slow down. The question is not how many agents you can keep busy, but what your P0 actually is and what it would look like to give it your full attention."],
+            "original": ["I think most people multi-tasking with agents could benefit from slowing down", "most of the stuff you're doing wont really matter- what's your P0? what would it look like if you gave it your full attention?"]
+          },
+          "cn": {
+            "rewrite": ["Anthropic 的 Claude Code 成员 Thariq 认为，多任务并行使用 agent 的人，反而应该慢下来。问题不是你能同时让多少个 agent 忙起来，而是：你的 P0 到底是什么？如果把全部注意力给它，结果会是什么样？"],
+            "original": ["大多数同时用多个 agent 做事的人，可能应该慢下来。", "很多正在做的事其实没那么重要：你的 P0 是什么？如果把全部注意力给它，会是什么样？"]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2112219327881761008",
+          "en": {
+            "rewrite": ["Nikunj Kothari says Wabi 2.0 gets a useful agent pattern right: one orchestrator plus topic-specific, episodic chats that can be shared and then archived. A trip or tax task gets its own temporary workspace instead of adding another permanent conversation to the pile. His only complaint is that the product is currently too proactive."],
+            "original": ["Wabi has this great paradigm of orchestrator (which is the main agent) and topic specific episodic chats that are for a single purpose.", "these are generated proactively AND don't need to stay forever (which is important).", "My only critique so far it's TOO proactive"]
+          },
+          "cn": {
+            "rewrite": ["Nikunj Kothari 认为，Wabi 2.0 把一种很实用的 agent 形态做对了：一个 orchestrator，加上一组按主题生成、用完就归档的 episodic chat。旅行或报税各自拥有临时工作区，不会继续给永久聊天列表添负担。唯一的问题是，它现在有点过于主动。"],
+            "original": ["Wabi 的模式是一个 orchestrator（主 agent）加上按主题、单一目的的 episodic chat。", "这些 chat 会主动生成，而且不需要永久保留，这一点很重要。", "目前唯一的批评是：它太主动了。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Enterprise Layer Gets Deeper / 企业层开始变深",
+      "desc": "模型能力越强，真正的差异越不在聊天框，而在行业流程和长期运行的系统。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2112404676436222170",
+          "en": {
+            "rewrite": ["Box CEO Aaron Levie makes the opposite bet from the 'models will commoditize everything' story: as models get better at long-running tasks and tool use, domain specialization may become more valuable. The moat moves into workflows, domain data, model routing, agent coordination, and the change management needed to alter how a business actually works."],
+            "original": ["as models are getting more capable, and can handle longer running tasks and better tool use, the ability to differentiate on a domain by domain basis goes up instead of down.", "in a world of agents using tools, tasks that run on for hours or days ... specialization of these systems goes up more."]
+          },
+          "cn": {
+            "rewrite": ["Box CEO Aaron Levie 做了一个和「模型会把一切商品化」相反的判断：模型越擅长长时间运行和调用工具，行业专业化可能越有价值。护城河会转移到工作流、领域数据、模型路由、agent 协同，以及真正改变企业工作方式所需要的 change management。"],
+            "original": ["模型越强、越能处理长任务和更好的工具调用，按行业做差异化的能力反而越强。", "在 agent 调用工具、任务运行数小时或数天的世界里，这些系统的专业化会更高。"]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2112278352514162834",
+          "en": {
+            "rewrite": ["Y Combinator CEO Garry Tan sees multiplayer agents in group chat as nearly inevitable, pointing to Wabi as an early example. The interesting shift is from one person talking to one assistant toward a shared space where people and agents can participate together."],
+            "original": ["Multiplayer agents as group chat seems quite inevitable and Wabi's built it"]
+          },
+          "cn": {
+            "rewrite": ["Y Combinator CEO Garry Tan 认为，group chat 里的 multiplayer agents 几乎不可避免，Wabi 已经做出了早期形态。变化不再是一个人和一个助手对话，而是人和多个 agent 共同进入同一个共享空间。"],
+            "original": ["把 multiplayer agent 做成 group chat，看起来几乎不可避免，Wabi 已经做出来了。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Durable Agent Infrastructure / 让 Agent 真正跑起来",
+      "desc": "当 agent 进入真实工作流，崩溃恢复、运行时和可移植性就成了产品本身。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2112247046082363821",
+          "en": {
+            "rewrite": ["Vercel CEO Guillermo Rauch open-sourced a fast HTML artifact builder powered by libfx. He says the painful part of making v0 durable was handling server crashes, flaky LLMs, and function limits; the new low-level plumbing turns that infrastructure into something free and reusable."],
+            "original": ["We open sourced a really fast HTML artifact builder. It's powered by libfx, making the agent durable.", "Building the low-level plumbing for v0 to survive server crashes, flaky LLMs, function limits was a huge pain.", "Now it's easy, free, and OSS"]
+          },
+          "cn": {
+            "rewrite": ["Vercel CEO Guillermo Rauch 开源了一个由 libfx 驱动的高速 HTML artifact builder。他说，给 v0 做持久化能力时，最痛苦的是处理服务器崩溃、不稳定的 LLM 和函数限制；这次把底层 plumbing 做成了免费、可复用的开源基础设施。"],
+            "original": ["我们开源了一个非常快的 HTML artifact builder，由 libfx 驱动，让 agent 更耐用。", "让 v0 能扛住服务器崩溃、不稳定的 LLM 和函数限制，底层 plumbing 很难做。", "现在它简单、免费，而且开源。"]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2112432076767289678",
+          "en": {
+            "rewrite": ["OpenAI's Codex and ChatGPT engineer Thibault Sottiaux posted a playful but revealing update: the project is still cooking, then reset. The high engagement around the post captures the current agent-builder mood—rapid iteration, visible failures, and shipping the next attempt anyway."],
+            "original": ["Day 15/ Nevermind, we're still cooking... and reset. Enjoy."]
+          },
+          "cn": {
+            "rewrite": ["OpenAI Codex 与 ChatGPT 工程师 Thibault Sottiaux 发了一条带着自嘲意味的进度更新：还在 cooking，然后 reset。高互动也很像当下 builder 的状态：快速迭代、失败公开可见，但下一次照样继续 ship。"],
+            "original": ["第 15 天：算了，我们还在 cooking……然后 reset。享受吧。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Designing the Training Loop / 训练环也需要产品思维",
+      "desc": "agent 的能力不只由模型决定，训练环境如何模拟真实工作同样关键。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2112256718281551955",
+          "en": {
+            "rewrite": ["Guillermo Rauch highlights a striking performance figure from the current AI infrastructure race: 1,000 tokens per second. In context, the number is a reminder that model UX is increasingly shaped by serving speed as much as by raw capability."],
+            "original": ["1,000 tokens per second btw"]
+          },
+          "cn": {
+            "rewrite": ["Guillermo Rauch 提到一个很醒目的性能数字：每秒 1,000 tokens。这个数字背后的提醒是，模型产品的体验越来越同时取决于 serving 速度和模型本身的能力。"],
+            "original": ["顺便一提：每秒 1,000 tokens。"]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2112368222809034980",
+          "en": {
+            "rewrite": ["Nikunj Kothari jokes about the startup memo that combines every fashionable ingredient at once: a peptide factory in a data center, robotics, a 'neolab,' proprietary data, tape-out, and a memory/CPU shortage. It is a compact warning against stacking buzzwords into a story before the underlying business is clear."],
+            "original": ["Waiting for someone to sell me a peptide factory built in a data center which is also a robotics neolab that is somehow collecting first party uniquely differentiated data..", "Make it 50/500 on a memo 🤝"]
+          },
+          "cn": {
+            "rewrite": ["Nikunj Kothari 调侃了一种把所有热门词都塞进 memo 的创业叙事：数据中心里的 peptide factory、robotics neolab、独家一手数据，再加上 tape-out 和 memory/CPU shortage。笑点背后其实是一个提醒：底层生意还没讲清楚前，不要先用 buzzword 堆出故事。"],
+            "original": ["等着有人卖给我一座建在数据中心里的 peptide factory，同时还是一个 robotics neolab，还能收集独特的一手数据。", "把它写成 50/500 的 memo。🤝"]
+          }
+        }
+      ]
+    }
+  ]
+}
