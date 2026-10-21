@@ -1,0 +1,141 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-10-22",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线是：agent 正在从一个会回答问题的模型，变成可以被交付、被观察、被长期运行的工作系统。Aaron Levie 看到的是企业软件的新形态：专门负责某个任务或领域的 autonomous systems；Guillermo Rauch 和 Peter Steinberger 则分别从 durability、sandbox 和多 agent 协作，把这件事落到了基础设施上。另一边，OpenAI 的 API cache、Google 的 Trusted Tester 社区和 Zara Zhang 对「signals > distribution」的判断，都在说明同一件事：真正的竞争力越来越来自工作流、反馈和复利，而不只是模型本身。"
+  },
+  "archive": {
+    "title": "Agent 系统化日报",
+    "desc": "从 API cache 到 durable harness，再到企业级 autonomous systems，agent 正在从聊天工具长成可持续运行的工作系统。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-10-22 source feeds.",
+  "sections": [
+    {
+      "title": "Agents Become Work Systems / Agent 变成工作系统",
+      "desc": "下一代 agent 的核心不是更像聊天机器人，而是能在工具、数据和人类监督之间完成一整段工作。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2112769686798832013",
+          "en": {
+            "rewrite": ["Box CEO Aaron Levie argues that autonomous systems dedicated to specific tasks or domains are the next form factor beyond LLM wrappers. Better tool and computer use lets agents operate across external systems, while stronger models improve judgment in domains such as legal, biology, security, and supply chains.", "The missing layer is the harness: sandboxes, file systems, data pipelines, and UX for human oversight. Together, these primitives make longer-running agents practical for enterprise workflows."],
+            "original": ["We clearly have an emerging form factor for what AI might look like for the foreseeable future as autonomous systems dedicated to specific tasks or domains.", "The harnesses and surrounding infra — sandboxes, file systems, data pipelines, etc. — allows for longer running agents."]
+          },
+          "cn": {
+            "rewrite": ["Box CEO Aaron Levie 认为，专门负责某个任务或领域的 autonomous systems，正在成为超越 LLM wrapper 的新形态。更强的 tool use 和 computer use 让 agent 能操作外部系统，模型能力提升则让它在法律、生物、代码安全、供应链等领域做出更好的判断。", "真正补齐这件事的是 harness：sandbox、文件系统、数据管道，以及支持人类监督的 UX。把这些基础原语组合起来，agent 才能在企业工作流里长时间运行。"],
+            "original": ["一种新的 AI 形态正在出现：专门负责特定任务或领域的 autonomous systems。", "harness 和周边基础设施让 agent 能运行更长时间。"]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2112658577110520122",
+          "en": {
+            "rewrite": ["Vercel CEO Guillermo Rauch says the durability infrastructure behind Eve and Workflows is being opened up to more harnesses, including Pi and OpenCode, whether they run locally, on Vercel, or in a DIY setup.", "He notes that Claude Code and Codex can also be made durable and observable, but are less efficient and portable for embedding because they were not designed for it and require an extra sandbox."],
+            "original": ["We're bringing a truly open-source, runtime-agnostic solution to harness durability.", "Even Claude Code and Codex can be made durable (and observable!) this way."]
+          },
+          "cn": {
+            "rewrite": ["Vercel CEO Guillermo Rauch 表示，支撑 Eve 和 Workflows 的 durability 基础设施正在开放给更多 harness，包括 Pi 和 OpenCode，无论它们运行在本地、Vercel 还是 DIY 环境。", "Claude Code 和 Codex 也可以通过这套方式获得持久运行和可观测性，但因为它们原本不是为嵌入式场景设计的，所以效率、可移植性更差，还需要额外的 sandbox。"],
+            "original": ["我们正在提供真正开源、与 runtime 无关的 harness durability 方案。", "Claude Code 和 Codex 也可以变得 durable 且 observable。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Infrastructure Layer / 基础设施正在补齐",
+      "desc": "缓存、依赖、协作方式都在被重新设计，agent 的可靠性开始进入工程细节。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2112712984644784534",
+          "en": {
+            "rewrite": ["OpenAI's Thibault Sottiaux says the API now supports 12-hour caching, while logged-in users across Codex and Work keep cache indefinitely and are guaranteed to hit it when returning to an old conversation or resuming after a few hours. The unglamorous detail matters: persistent context is becoming a product primitive."],
+            "original": ["You can now cache for 12h in the API and for logged in users across Codex & Work we keep cache forever."]
+          },
+          "cn": {
+            "rewrite": ["OpenAI 的 Thibault Sottiaux 透露，API 现在支持 12 小时 cache；Codex 和 Work 的登录用户则可以永久保留 cache，几小时后回来或继续旧对话时还能保证命中。这个看似不性感的细节很重要：持久上下文正在变成产品基础设施。"],
+            "original": ["API 现在可以 cache 12 小时，Codex 和 Work 的登录用户可以永久保留 cache。"]
+          }
+        },
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2112605703219347503",
+          "en": {
+            "rewrite": ["Peter Steinberger describes a workflow where Astra handles planning, Sol 6.1 handles coding through Codex CLI worktrees, and a second agent challenges the work to keep the process on track. His conclusion is practical: this setup works far better for him than simply relying on subagents."],
+            "original": ["Astra did the planning, Sol 6.1 did the coding.", "A second agent oversaw the work to keep Astra on track. Kinda like /goal, but instead of the same agent reviewing a text file, a second agent that challenges."]
+          },
+          "cn": {
+            "rewrite": ["Peter Steinberger 描述了一套多 agent 工作流：Astra 负责规划，Sol 6.1 通过 Codex CLI 的 worktree 写代码，再由第二个 agent 监督并挑战前面的工作，确保它不跑偏。他的实际结论是：这套流程比单纯依赖 subagents 好得多。"],
+            "original": ["Astra 负责规划，Sol 6.1 负责写代码。", "第二个 agent 监督工作，让 Astra 保持在轨道上。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "From Threads to Swarms / 从线程到 agent swarm",
+      "desc": "当单个模型不再是唯一计算单元，协作结构本身就成了新的性能杠杆。",
+      "cards": [
+        {
+          "authorKey": "x:adityaag",
+          "sourceUrl": "https://x.com/adityaag/status/2112579526379401408",
+          "en": {
+            "rewrite": ["Aditya Agarwal sees a familiar systems pattern in the progression from inference-time scaling to subagents to agent swarms: it rhymes with CPU threads, multi-core CPUs, and multi-node distributed systems. The implication is less about a catchy analogy than about a design direction: coordination and distribution will become first-class engineering problems."],
+            "original": ["Inference time scaling → Subagents → Agent Swarms looks an awful lot like CPU Threads → Multi-core CPUs → Multi-Node Distributed Systems. History rhymes well."]
+          },
+          "cn": {
+            "rewrite": ["Aditya Agarwal 看到了一条熟悉的系统演化路径：inference-time scaling → subagents → agent swarms，很像 CPU threads → multi-core CPUs → multi-node distributed systems。这个类比的价值不只是好记，而是在提醒我们：协作和分布式调度会成为一等工程问题。"],
+            "original": ["Inference time scaling → Subagents → Agent Swarms，很像 CPU Threads → Multi-core CPUs → Multi-Node Distributed Systems。历史总会押韵。"]
+          }
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2112530473994072225",
+          "en": {
+            "rewrite": ["Zara Zhang argues that for an early-stage product builder, an audience's biggest advantage is not distribution. It is the ability to test ideas and angles, then find the first 100 early adopters. Her compact rule: signals are more valuable than distribution."],
+            "original": ["The biggest advantage of having your own audience isn't even the distribution. It's being able to test different ideas/angles and find your first 100 early adopters. Signals > distribution."]
+          },
+          "cn": {
+            "rewrite": ["Zara Zhang 认为，对早期产品 builder 来说，拥有自己的 audience 最大的价值甚至不是分发，而是可以测试不同想法和角度，并找到最初的 100 个 early adopters。她的判断很简洁：signals > distribution。"],
+            "original": ["拥有自己的 audience 最大的优势甚至不是分发，而是测试不同想法和角度，找到最初的 100 个 early adopters。Signals > distribution。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Builder Feedback Loop / Builder 的反馈回路",
+      "desc": "产品、社区和安全工作的反馈速度，决定了新系统能不能真正跑起来。",
+      "cards": [
+        {
+          "authorKey": "x:joshwoodward",
+          "sourceUrl": "https://x.com/joshwoodward/status/2112676777290248675",
+          "en": {
+            "rewrite": ["Google Labs VP Josh Woodward says the Gemini App Trusted Tester community has crossed a major milestone, with strong demand from people who want to try early features across Web, Android, and iOS. Existing sign-ups are already included, while new testers can still join."],
+            "original": ["Lots of people want to try early stuff on Web, Android, and iOS! If you've signed up before, you're fully in."]
+          },
+          "cn": {
+            "rewrite": ["Google Labs VP Josh Woodward 表示，Gemini App 的 Trusted Tester 社区刚刚跨过一个重要里程碑，很多人都想在 Web、Android 和 iOS 上尝试早期功能。已经报名的人会自动加入，新用户也仍然可以申请。"],
+            "original": ["很多人想在 Web、Android 和 iOS 上尝试早期功能。如果你之前报名过，就已经完全加入了。"]
+          }
+        },
+        {
+          "authorKey": "x:sama",
+          "sourceUrl": "https://x.com/sama/status/2112652656602923366",
+          "en": {
+            "rewrite": ["Sam Altman says Aleksander has accepted OpenAI's request to take on the safety and security challenges ahead as the company confronts superintelligence, citing his strong fit for the work. The post is brief, but it makes the staffing of safety work visible as a core part of the next phase."],
+            "original": ["The safety and security challenges in front of us as we confront superintelligence are immense, and he has an excellent set of skills to work on this."]
+          },
+          "cn": {
+            "rewrite": ["Sam Altman 表示，Aleksander 已接受 OpenAI 的邀请，负责公司面对 superintelligence 时的安全与安保挑战，并称他的能力非常适合这项工作。这条帖子很短，但它把安全团队的配置明确放在了下一阶段的核心位置。"],
+            "original": ["当我们面对 superintelligence 时，前方的安全与安保挑战非常巨大，而他的能力非常适合处理这项工作。"]
+          }
+        }
+      ]
+    }
+  ]
+}
