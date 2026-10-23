@@ -1,0 +1,239 @@
+{
+  "title": "AI Builders Digest — 2026-10-24",
+  "subtitle": "双语精选版",
+  "publishDate": "2026-10-24",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线不是又一个模型发布，而是 AI 正在把软件工程、身份安全和小生意的经营方式一起改写。Swyx 关注的是 agent 能不能准确估时并在并行工作中自我修正；Guillermo Rauch 和 Aaron Levie 则提醒你，静态凭证与安全模糊化正在失效。另一边，Claude 把 auto mode 变成默认选项，Alex Albert 已经开始设想 AI 帮助经营本地小店。看起来，真正的分水岭不再是“有没有 AI”，而是你的系统能不能让它安全地行动。"
+  },
+  "archive": {
+    "title": "自动化边界日报",
+    "desc": "AI agent 正从聊天工具走向可执行系统，估时、身份安全和小企业工作流成为今天最值得关注的三个落点。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-10-24 source feed.",
+  "sections": [
+    {
+      "title": "Agents Start Doing the Work / Agent 开始真正做事",
+      "cards": [
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2113283272130412684",
+          "en": {
+            "rewrite": [
+              "Swyx says Opus 5.5 is the best work-estimator model he has used. That matters because delegation changes the meaning of an ETA: telling a human-sized story like “two or three working days” is no longer useful when an agent can parallelize the work and finish in hours.",
+              "The new operational skill is calibration. Builders need to know not just whether an agent can complete a task, but how long its particular kind of autonomy should take."
+            ],
+            "original": [
+              "Opus 5.5 is the best work estimator model i've ever used.",
+              "don't tell me that it's going to take 2-3 working days ... when ... it can get it done in 2-3 hours."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx 说，Opus 5.5 是他用过最好的工作量估算模型。这件事重要，是因为 delegation 正在重新定义 ETA：当 agent 可以并行处理、几小时完成任务时，再用“需要两三天”这种人类工作节奏来估算，就没什么意义了。",
+              "新的运营能力是 calibration：不只是知道 agent 能不能做，还要知道它在某类自主工作上到底应该花多久。"
+            ],
+            "original": [
+              "Opus 5.5 是我用过最好的工作量估算模型。",
+              "当它能在 2-3 小时完成时，不要告诉我需要 2-3 个工作日。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:claudeai",
+          "sourceUrl": "https://x.com/claudeai/status/2113360845409583307",
+          "en": {
+            "rewrite": [
+              "Claude is moving web, desktop, and mobile sessions on Pro, Max, and Team plans to auto mode by default. Instead of asking for approval at every step, an automated check blocks risky actions, with manual mode still available.",
+              "That is a small product setting with a large implication: the default interaction model is shifting from “assistant waits for permission” to “agent proceeds unless a safety check stops it.”"
+            ],
+            "original": [
+              "sessions across Claude web, desktop, and mobile apps will run in auto mode by default",
+              "an automated check blocks risky actions. Switch back to manual anytime."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude 准备让 Pro、Max 和 Team 用户在 web、桌面端与移动端默认使用 auto mode。它不会每一步都等你批准，而是通过自动检查拦截高风险操作，同时保留随时切回手动模式的选项。",
+              "这是一个很小的产品设置，却意味着交互范式正在变化：默认不再是“助手等你授权”，而是“agent 继续执行，除非安全检查把它拦下来”。"
+            ],
+            "original": [
+              "Claude web、桌面端和移动端的 session 默认会运行在 auto mode。",
+              "自动检查会拦截高风险操作，随时可以切回手动模式。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Security Has to Become Dynamic / 安全必须动态化",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2113399539227136084",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch argues that the era of static credentials is ending. Breaches will still happen, but the damage changes if attackers can only steal self-destructing keys instead of durable access to data and tokens.",
+              "His proposed direction is an OIDC equivalent of the web's green-lock moment: make short-lived, automatically expiring identity the default infrastructure primitive."
+            ],
+            "original": [
+              "It’s time to kill “static credentials”.",
+              "imagine if thieves could only steal “self-destructing keys” to your data and tokens.",
+              "Let’s do it for OIDC!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch 认为，静态凭证的时代该结束了。泄露仍然会发生，但如果攻击者拿到的只是会自动失效的 key，而不是对数据和 token 的长期访问权，后果就会完全不同。",
+              "他的方向是做一个 OIDC 版本的“绿色小锁”时刻：让短期、自动过期的身份成为默认基础设施。"
+            ],
+            "original": [
+              "是时候淘汰“静态凭证”了。",
+              "想象一下，窃贼只能偷到指向数据和 token 的“自毁 key”。",
+              "让我们为 OIDC 做到这一点。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2113499900399034689",
+          "en": {
+            "rewrite": [
+              "Aaron Levie says security through obscurity is effectively over because autonomous systems can inspect every crevice and try every permutation of attack. The consequence is not a single patch: legacy enterprise infrastructure, data pipelines, access controls, and security practices all need upgrading.",
+              "Agents will help defend the system too, by accelerating cleanup and simulating attack paths. But Levie stresses that preparing for this future is a long road, not a one-click AI upgrade."
+            ],
+            "original": [
+              "Any form of security through obscurity is fully over.",
+              "years and years of legacy enterprise infrastructure will need to be upgraded",
+              "Agents will help on the defensive side"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie 认为，靠隐藏实现安全的时代基本结束了，因为 autonomous systems 会检查每个角落，尝试每一种攻击组合。后果不是打一个补丁就够了：企业遗留基础设施、数据管道、权限控制和安全实践都需要升级。",
+              "Agent 也会成为防守方的工具，加速清理并模拟风险路径。但 Levie 强调，准备迎接这个未来是一条长路，不是点一下 AI 升级按钮。"
+            ],
+            "original": [
+              "任何形式的 security through obscurity 都彻底结束了。",
+              "多年的企业遗留基础设施都需要升级。",
+              "Agent 会在防守侧提供帮助。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Builder Stack Is Getting Wider / Builder 技术栈正在变宽",
+      "cards": [
+        {
+          "authorKey": "x:claudeai",
+          "sourceUrl": "https://x.com/claudeai/status/2113380126561800305",
+          "en": {
+            "rewrite": [
+              "Anthropic says new features and betas now ship the same day they go live on the native Claude Platform. Fast mode for Opus 5.5, code execution, and the Skills API are available immediately.",
+              "The notable shift is cadence: platform capabilities are becoming less like a quarterly product release and more like a continuously updating runtime for builders."
+            ],
+            "original": [
+              "New features and betas ship the same day they go live on the native Claude Platform.",
+              "Fast mode for Opus 5.5, code execution, the Skills API, and more are available today."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic 表示，新功能和 beta 现在会在原生 Claude Platform 上线当天同步提供。Opus 5.5 的 Fast mode、code execution 和 Skills API 都已经可用。",
+              "值得注意的是发布节奏：平台能力越来越不像季度发布的产品，更像一个持续更新的 builder runtime。"
+            ],
+            "original": [
+              "新功能和 beta 会在原生 Claude Platform 上线当天发布。",
+              "Opus 5.5 Fast mode、code execution、Skills API 今天都已可用。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2113451268316205515",
+          "en": {
+            "rewrite": [
+              "Rauch points to a generative UI example where an AI Gateway becomes a marketplace of tools. Add a tool to the AI SDK with literally one line of code and the interface can expose Google-like capabilities across search, weather, sports, stocks, and elections.",
+              "The interesting product idea is not just generated screens. It is an interface that assembles itself around the tools available to the agent."
+            ],
+            "original": [
+              "AI Gateway is itself a marketplace of tools.",
+              "you add a tool to @aisdk (literally 1LOC), and you get “Google”."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Rauch 分享了一个 generative UI 案例：AI Gateway 本身变成了一个工具 marketplace。只要用一行代码把工具加进 AI SDK，界面就能把搜索、天气、体育、股票和选举等能力组合出来。",
+              "真正有意思的不只是自动生成页面，而是界面会围绕 agent 当前可用的工具自己组装。"
+            ],
+            "original": [
+              "AI Gateway 本身就是一个工具 marketplace。",
+              "把一个工具加入 @aisdk，只需要一行代码，就能得到一个“Google”。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "AI Moves Into Everyday Operations / AI 进入日常经营",
+      "cards": [
+        {
+          "authorKey": "x:alexalbert__",
+          "authorName": "Alex Albert",
+          "authorTag": "Anthropic",
+          "sourceUrl": "https://x.com/alexalbert__/status/2113386454907007444",
+          "en": {
+            "rewrite": [
+              "Alex Albert sees a surprisingly large opportunity in using AI to run local small businesses. His bet is that products such as Claude Duet could matter to these businesses even more than Square or Google Maps did, because they can help across the whole operation rather than solve one narrow workflow.",
+              "It is still a side quest, not a product claim. But it points at a useful market test: the next wave of AI adoption may be measured in how many small businesses can operate with a tiny team."
+            ],
+            "original": [
+              "running a bunch of local small businesses with AI helping you out",
+              "products like Claude Duet could end up being bigger for these businesses than even things like Square or Google Maps were"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Alex Albert 看到一个很大的机会：让 AI 帮忙经营本地小生意。他的判断是，Claude Duet 这类产品对小企业的影响，可能比 Square 或 Google Maps 还大，因为它帮助的是整套经营，而不只是某一个狭窄流程。",
+              "这还只是一个 side quest，不是产品承诺。但它提出了一个很好的市场问题：下一波 AI 普及，也许要看有多少小企业能用很小的团队运转起来。"
+            ],
+            "original": [
+              "现在用 AI 帮忙经营一批本地小生意，会是一个很有趣的 side quest。",
+              "Claude Duet 可能对这些企业比 Square 或 Google Maps 还重要。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2113420357726257335",
+          "en": {
+            "rewrite": [
+              "Peter Yang describes the gap between AI progress and everyday healthcare administration: while people online discuss breakthroughs, his family is still faxing documents and physically delivering imaging on CD-ROMs during his mother's cancer treatment.",
+              "It is a blunt reminder that the most valuable AI opportunities may sit in unglamorous coordination layers, where the problem is not model capability but systems that still do not talk to each other."
+            ],
+            "original": [
+              "we are still faxing documents and physically delivering imaging in CD ROMs.",
+              "I read about all this great tech and breakthroughs on here meanwhile..."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 讲到一个 AI 进展与日常医疗管理之间的巨大落差：大家在网上讨论各种突破，但在母亲接受癌症治疗时，他的家人仍然要传真文件、亲自递送装在 CD-ROM 里的影像。",
+              "这提醒我们，最有价值的 AI 机会可能藏在不起眼的协调层里。问题往往不是模型能力不够，而是系统之间还不会互相沟通。"
+            ],
+            "original": [
+              "我们仍然在传真文件，亲自递送 CD-ROM 里的影像。",
+              "我在这里读到各种伟大的技术和突破，但与此同时……"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
