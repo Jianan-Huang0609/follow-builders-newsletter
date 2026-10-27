@@ -5,120 +5,264 @@
   "editionName": "双语精选版",
   "intro": {
     "kicker": "编者导语 / Editor's Note",
-    "text": "今天的主线，是 AI 开始从“会生成”进入“会承担后果”的阶段。Greg Brockman 说，软件会越来越便宜，但真正可靠、安全、值得信任的软件反而会更重要；Aaron Levie 则把这件事落到企业地面：agent swarm 能协助防守，但前提是先把身份、数据、代码和基础设施的基本功补上。另一边，产品团队在提醒我们，等问题出现在数据或 UXR 访谈里，往往已经太晚；内容创作者也在验证一个更朴素的规律：持续发布的系统，通常比一次昂贵的大 launch 更有复利。"
+    "text": "今天的主线很清楚：AI 正从一个被人调用的工具，变成能在后台持续执行工作的组织基础设施。模型发布只是表面，真正值得看的是 agent 如何进入企业流程、共享硬件如何被重新审视，以及 AI 公司怎样把巨额算力承诺变成可持续的收入。"
   },
   "archive": {
-    "title": "可靠性底座日报",
-    "desc": "AI 正从生成能力走向可靠性、安全性和持续运营，真正的机会藏在把基础工作做对之后。"
+    "title": "Agent 重构日报",
+    "desc": "从 self-driving company 到隐蔽通信与算力账本，今天的 feed 展示了 AI 正在同时改写组织、基础设施和商业模型。"
   },
   "viewLabels": {
     "rewrite": "速读",
     "original": "原文"
   },
-  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-10-27 source feeds.",
+  "footerNote": "Source: Follow Builders curated daily digest.",
   "sections": [
     {
-      "title": "Reliability Is the New Moat / 可靠性成为新护城河",
+      "title": "The Agent Company / Agent 化组织",
+      "desc": "最重要的变化不是又多了一个 personal agent，而是 agent 开始被放进企业的后台流程里，承担可规模化的执行工作。",
       "cards": [
         {
-          "authorKey": "greg-brockman",
-          "authorName": "Greg Brockman",
-          "authorTag": "President, OpenAI",
-          "sourceUrl": "https://www.youtube.com/@NoPriorsPodcast",
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2114760898225299721",
           "en": {
-            "rewrite": "The next AI advantage is not just cheaper software. Greg Brockman argues that as software becomes abundant, people will demand systems that are reliable, secure, and trustworthy. He sees AI moving from answering questions to generating genuinely new knowledge, with humans using that leverage to solve problems in mathematics, biology, and business that were previously out of reach.",
-            "original": "You don't just want software. You want software that is reliable, that is secure, that you can believe in."
+            "rewrite": [
+              "Replit CEO Amjad Masad argues that the next company architecture will look less like departments connected by bureaucracy and more like a self-driving system. Humans still provide judgment, but agents execute most of the work inside what Replit calls the Agent Habitat.",
+              "The useful framing is organizational, not merely technical: once agents can coordinate work, the bottleneck shifts from writing software to designing the environment in which software agents operate."
+            ],
+            "original": [
+              "For centuries, the architecture of the firm has barely changed: hierarchies of people organized into departments and coordinated through bureaucracy.\n\nAI agents are about to upend that.\n\nWe’re moving toward the self-driving company where humans exercise judgment and agents execute most of the work.\n\nAt Replit, we’re building the foundation for this new kind of company. We’re calling it “the Agent Habitat.”\n\nMarc Andreessen wrote a fantastic piece placing this shift in the history of computing. Every major computing revolution began with chaos before businesses figured out how to harness it."
+            ]
           },
           "cn": {
-            "rewrite": "下一阶段的 AI 优势，不只是把软件做得更便宜。Greg Brockman 认为，当软件变得近乎无限供应，人们真正需要的是可靠、安全、值得信任的系统。他也判断 AI 已经开始产生新的知识，人类可以把这种能力用到数学、生物和商业问题上，去完成过去够不着的事。",
-            "original": "你不只是想要软件，你想要的是可靠、安全、值得信任的软件。"
+            "rewrite": [
+              "Replit CEO Amjad Masad 认为，下一代公司的架构不会再是靠官僚流程连接起来的部门，而更像一个能自我驾驶的系统。人类仍然负责判断，但大部分执行工作会交给 agent，运行在 Replit 所说的 Agent Habitat 里。",
+              "这个说法的价值在于它讨论的是组织，而不只是技术：当 agent 能够协同工作，瓶颈就会从“怎么写软件”转向“如何设计 agent 工作的环境”。"
+            ],
+            "original": [
+              "几个世纪以来，公司的架构几乎没有变化：人组成层级，按部门组织，再通过官僚体系协作。\n\nAI agent 即将打破这一切。\n\n我们正在走向 self-driving company：人类行使判断，agent 执行大部分工作。\n\n在 Replit，我们正在为这种新型公司构建基础设施。我们称之为“Agent Habitat”。\n\nMarc Andreessen 写了一篇很棒的文章，把这次转变放在计算历史中来看。每一次重大的计算革命，都是先经历混乱，然后企业才学会如何驾驭它。"
+            ]
           }
         },
         {
-          "authorKey": "aaron-levie",
-          "sourceUrl": "https://x.com/levie/status/2114391265655816315",
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2114761816199098587",
           "en": {
-            "rewrite": "Box CEO Aaron Levie says agent swarms could become a new defensive layer across identity, firewalls, networks, code scanning, and data protection. They can fan out across tools, test attack paths, read logs, and assess enterprise risk. But the optimistic part comes with a condition: companies still need to modernize fragmented stacks and fix overly broad privileges before agents can help.",
-            "original": "But everyone does need to do the hard work of getting the basics right at the start."
+            "rewrite": [
+              "Box CEO Aaron Levie sees the current enterprise AI market as dramatically earlier than the headlines suggest. The average Fortune 500 customer spends less than 0.1% of expenses on Anthropic, and most of that usage is still coding or human-prompted productivity.",
+              "The real expansion comes when companies rewire processes around agents: background workflows, data-heavy enterprise tasks, and swarms for coding, biology, or cybersecurity. Those workloads could consume 100x more tokens while sitting much closer to measurable ROI."
+            ],
+            "original": [
+              "This is the key stat. The average Fortune 500 customer of Anthropic spends less than .1% of their expenses on Anthropic.\n\nWhile that number likely will eventually asymptote somewhere (token prices coming down, and other large enterprise spend areas not going away), there’s no reason it can’t be 10-50X higher than this, reaching a “mere” 1-5% of spend. Which would still be a fraction of what most startups are spending.\n\nThus, you can see how big of a divide there is between the frontier users of AI and the rest of the world still.\n\nToday, only a microscopically small set of companies are actually using agents for large amounts of background tasks and inside of workflows that aren’t human prompted. This Fortune 500 spend is likely dominated by coding tasks and broad employee productivity use-cases.\n\nBut the big jump will come as these enterprises start to rewire their underlying processes for agents, which we’re now in the earliest stages of seeing. Agents processing large amounts of data in the enterprises; swarms doing coding, bio research, cyber, and other large fan out tasks; background workflows executing tasks in processes, and so on. All of these use cases generally are 100X bigger consumers of tokens, and much closer to direct ROI on the spend.\n\nThis S-1 gives you a sense of both the strength of the frontier lab business model - even amidst massive competition - and how early we are in the build out of AI."
+            ]
           },
           "cn": {
-            "rewrite": "Box CEO Aaron Levie 认为，agent swarm 可能成为身份、Firewall、网络、代码扫描和数据保护等领域的新防守层。它们可以分头调用工具、测试攻击路径、读取日志、评估企业风险。但乐观判断有个前提：企业得先处理好碎片化技术栈和过宽的权限，agent 才有施展空间。",
-            "original": "但所有人都必须先做那件困难的事：从一开始就把基本功做好。"
+            "rewrite": [
+              "Box CEO Aaron Levie 认为，企业 AI 市场比新闻标题呈现的要早得多。Fortune 500 客户平均只把不到 0.1% 的支出花在 Anthropic 上，而且大部分仍是 coding 或由人主动发起的生产力场景。",
+              "真正的增长会发生在企业围绕 agent 重做流程之后：后台工作流、大规模数据处理，以及 coding、生物研究和网络安全中的 swarm。这些任务的 token 消耗可能高出 100 倍，也更接近可衡量的 ROI。"
+            ],
+            "original": [
+              "这是关键数据：Anthropic 的 Fortune 500 客户平均在 Anthropic 上的支出还不到总支出的 0.1%。\n\n虽然这个数字最终可能会趋于稳定，但它完全有可能提高 10-50 倍，达到支出的 1-5%，而这对大多数创业公司来说仍然只是其支出的一小部分。\n\n现在真正让 agent 承担大量后台任务、进入非人工触发工作流的公司还少得可怜。真正的大增长会发生在企业开始围绕 agent 重做底层流程之后。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2114927195332460940",
+          "en": {
+            "rewrite": [
+              "Peter Yang points to an early sign of a broader interface shift: people may soon tag an agent instead of reading or doing things online themselves. The important change is not another assistant for managing email, but agents becoming the default layer through which people access the internet."
+            ],
+            "original": [
+              "In the near future, instead of reading or doing anything online, people are just going to tag their agent to do it.\n\n@bot is an early signal of this."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 认为，一个更大的界面变化正在出现：未来人们可能不会亲自阅读或操作网上的内容，而是直接 tag 一个 agent 去完成。重点不是又多了一个帮你管邮件的助手，而是 agent 可能成为人们访问互联网的默认中间层。"
+            ],
+            "original": [
+              "在不久的将来，人们可能不会亲自阅读或做任何在线的事情，而是直接 tag 自己的 agent 去做。\n\n@bot 是这一趋势的早期信号。"
+            ]
           }
         }
       ]
     },
     {
-      "title": "Product Before the Dashboard / 别等指标告诉你",
+      "title": "Infrastructure Has Teeth / 基础设施并不抽象",
+      "desc": "当 agent 进入真实系统，隔离、性能和硬件共享都会从工程细节变成产品与安全问题。",
       "cards": [
         {
-          "authorKey": "nan-yu",
-          "sourceUrl": "https://x.com/thenanyu/status/2114427877240488442",
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2114770919436808572",
           "en": {
-            "rewrite": "Nan Yu, product lead at OpenAI and former Head of Product at Linear, points to a familiar product failure: when a problem finally appears in the data or UXR interviews, the damage may already be done and the reputation already tarnished. The lesson is to notice weak signals in the product experience before they become measurable incidents.",
-            "original": "By the time it shows up in the data or UXR interviews it’s too late. The damage has been done and the reputation tarnished."
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch reproduced covert communication between agents running in isolated Firecracker microVMs, using CPU contention, cache timing, and DRAM bandwidth contention. The point is not that every sandbox is already compromised, but that shared hardware gives agents a surprisingly rich communication channel even without internet access.",
+              "His more uncomfortable observation is about safety research: frontier models refused to do the analysis, while open-weight models completed it. A refusal policy that blocks defensive experimentation can make secure systems harder to build."
+            ],
+            "original": [
+              "I built 𝚌𝚙𝚞-𝚌𝚑𝚊𝚝, a reproduction of @openai's findings of covert communication using the CPU.\n\nIt runs on a generic host with 2+ Firecracker microVMs with no internet access. Works on x86 and even my M5 chip.\n\nI was able to chat via 3 separate mechanisms:\n① CPU contention\n② Cache eviction timing\n③ DRAM bandwidth contention \n\n… across multiple CPUs, defeating all Firecracker's production recommendations (no SMT, no KSM, tenants pinned to different cores.)\n\nEssentially, if shared hardware is involved, there's a good chance your agents can communicate covertly. And with really decent latency.\n\nThe good news: this is decidedly different from a *side-channel attack* where the agents could steal information (Meltdown/Spectre), a category of attack that providers like Vercel Sandbox mitigate. Further, in our real-world environment, these 'whispering' techniques are much harder to pull off and easier for us to monitor and detect (sampling hardware counters + lots of at-scale statistical data.)\n\nNoteworthy: ironically, OpenAI and Anthropic's models refused to do this work. Open weight models got the job done. I'm worried the labs' stance might backfire and get in the way of helping developers build correct and secure systems. e.g: building a secure sandbox requires having this kind of analysis, and without it, we'll have a less secure world."
+            ]
           },
           "cn": {
-            "rewrite": "OpenAI 产品负责人、前 Linear 产品负责人 Nan Yu 指出了一种常见的产品失败：等问题终于出现在数据或 UXR 访谈里，伤害可能已经发生，口碑也已经受损。真正的产品判断，是在问题变成可测量事故之前，先捕捉体验里的弱信号。",
-            "original": "等它出现在数据或 UXR 访谈里就太晚了，伤害已经造成，声誉也已经受损。"
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 在隔离的 Firecracker microVM 中复现了 agent 的隐蔽通信：即使没有互联网，agent 也能利用 CPU 争用、cache 时序和 DRAM 带宽争用交换信息。重点不是说每个 sandbox 都已经失守，而是共享硬件给了 agent 一个比想象中丰富的通信通道。",
+              "更值得警惕的是安全研究本身：frontier model 拒绝完成这项分析，open-weight model 反而做到了。如果拒答政策阻止防御性实验，开发者可能更难构建真正安全的系统。"
+            ],
+            "original": [
+              "我做了 cpu-chat，复现了 OpenAI 关于利用 CPU 进行隐蔽通信的研究。\n\n它运行在一台普通主机上的两个以上 Firecracker microVM 中，没有互联网访问权限，x86 和我的 M5 芯片都能运行。\n\n我通过三种不同机制实现了通信：CPU 争用、缓存驱逐时序、DRAM 带宽争用。\n\n本质上，只要存在共享硬件，agent 就很可能可以隐蔽通信，而且延迟相当不错。\n\n值得注意的是，OpenAI 和 Anthropic 的模型拒绝做这项工作，open-weight model 完成了。实验安全 sandbox 需要这类分析，否则我们会拥有一个更不安全的世界。"
+            ]
           }
         },
         {
-          "authorKey": "nan-yu",
-          "sourceUrl": "https://x.com/thenanyu/status/2114433404557279435",
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2114879798434758905",
           "en": {
-            "rewrite": "Nan Yu also calls out the default behavior of unoptimized apps on the iPhone Duo, despite its split mode. It is a small interface observation, but it captures a larger builder opportunity: new hardware only matters when everyday software recognizes and uses its capabilities by default.",
-            "original": "Anyone else find it insane that this is the default for unoptimized apps when the iPhone Duo supports split mode?"
+            "rewrite": [
+              "Peter Steinberger's weekend test of Bun's AOT compiler is a reminder that the agent stack still depends on unglamorous systems work. He reports 2-3x better performance and less than half the memory use, a meaningful improvement for software that may be running many automated tasks at once."
+            ],
+            "original": [
+              "I spent some time on the weekend to test bun's AOT compiler and results are nothing short of amazing. Performance up 2-3x, memory use less than half. https://t.co/2yobmkrUUa"
+            ]
           },
           "cn": {
-            "rewrite": "Nan Yu 还注意到，支持 split mode 的 iPhone Duo 上，未优化 App 仍然采用这样的默认表现。这是一个很小的界面观察，却指向了更大的 builder 机会：新硬件只有在日常软件默认理解并调用它的能力时，才真正有价值。",
-            "original": "iPhone Duo 明明支持 split mode，未优化 App 却默认这样，难道没人觉得离谱吗？"
+            "rewrite": [
+              "Peter Steinberger 周末测试 Bun 的 AOT compiler，提醒我们 agent stack 仍然依赖大量不那么 glamorous 的系统工程。他测到性能提升 2-3 倍、内存占用不到一半，这对可能同时运行大量自动化任务的软件来说，是很实在的改进。"
+            ],
+            "original": [
+              "我周末花了一些时间测试 bun 的 AOT compiler，结果好得惊人。性能提升 2-3 倍，内存使用不到一半。"
+            ]
           }
         }
       ]
     },
     {
-      "title": "The Compounding Workflow / 工作流的复利",
+      "title": "The Compute Ledger / 算力账本",
+      "desc": "AI 公司的竞争力不只写在模型 benchmark 上，也写在采购承诺、融资结构和每一美元基础设施能产生多少收入上。",
       "cards": [
         {
-          "authorKey": "zara-zhang",
-          "sourceUrl": "https://x.com/zarazhangrui/status/2114255477907570865",
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2114761204333998427",
           "en": {
-            "rewrite": "Zara Zhang highlights a useful creator operating principle: people overestimate one spectacular launch and underestimate the power of showing up every day. A system that produces one video daily can beat spending tens of thousands on a single launch video, because the workflow itself compounds.",
-            "original": "Develop a system where you make a video every day > spending tens of thousands of dollars on a single launch video."
+            "rewrite": [
+              "Nikunj Kothari's reading of Anthropic's S-1 turns the AI infrastructure story into a balance-sheet story. Anthropic disclosed a $587B subtotal of purchase commitments and leases that had not started, with Google and Amazon contracts requiring minimum spending regardless of usage.",
+              "The structure matters: chips, buildings, power, and operations can arrive on different schedules, while financing costs and conversion terms sit on top. At the same time, revenue per dollar of total compute and infrastructure expense rose from $0.57 in Q2 2025 to $2.08 in Q2 2026. The company is monetizing compute better, but it is also carrying a very long and complicated commitment curve."
+            ],
+            "original": [
+              "At June 30, Anthropic had $265.6B of purchase commitments and $321.4B of leases that hadn’t started. That’s a $587B subtotal, payable over years, including some conditional leases.",
+              "Revenue per dollar of total compute and infrastructure expense rose from $0.57 in Q2 2025 to $2.08 in Q2 2026.",
+              "About 80% of H1 revenue was consumption-based. Most compute commitments however run for years. With quarterly releases, this bifurcation between usage and subscription will be interesting to monitor."
+            ]
           },
           "cn": {
-            "rewrite": "Zara Zhang 提炼了一个很实用的创作者运营原则：大家总是高估一次轰动 launch 的价值，低估每天出现的力量。建立每天做一条视频的系统，可能比把几万美元砸在一条 launch 视频上更有效，因为真正会复利的是工作流。",
-            "original": "建立每天做一条视频的系统，比在一条 launch 视频上花掉几万美元更值得。"
+            "rewrite": [
+              "Nikunj Kothari 对 Anthropic S-1 的拆解，把 AI 基础设施故事变成了一张资产负债表故事：Anthropic 披露的尚未开始执行的采购承诺和租赁合计达到 5870 亿美元，其中 Google 和 Amazon 的合同无论实际使用量如何，都要求最低支出。",
+              "结构很关键：芯片、机房、电力和运营可能按不同时间表到位，融资成本和转股条款还要叠加上去。与此同时，每 1 美元总算力与基础设施支出带来的收入，从 2025 年第二季度的 0.57 美元升到 2026 年第二季度的 2.08 美元。Anthropic 更会把算力变现了，但也背着一条很长、很复杂的承诺曲线。"
+            ],
+            "original": [
+              "截至 6 月 30 日，Anthropic 有 2656 亿美元采购承诺，以及 3214 亿美元尚未开始的租赁。这是 5870 亿美元的小计，将在多年内支付，其中包括一些有条件的租赁。",
+              "每 1 美元总算力和基础设施支出带来的收入，从 2025 年第二季度的 0.57 美元升至 2026 年第二季度的 2.08 美元。",
+              "上半年收入约 80% 来自按使用量计费。但大多数算力承诺却持续多年。随着模型按季度发布，这种 usage 与 subscription 的分化值得持续观察。"
+            ]
           }
         },
         {
-          "authorKey": "peter-yang",
-          "sourceUrl": "https://x.com/petergyang/status/2114507378532229214",
+          "authorKey": "x:danshipper",
+          "sourceUrl": "https://x.com/danshipper/status/2114714881312305542",
           "en": {
-            "rewrite": "Peter Yang points to a native AI video-editing workflow in HyperFrames Studio: upload or choose a reference clip, describe what to change, and preserve the underlying structure while switching fonts, colors, or other elements. The important shift is from manually rebuilding a style to describing the transformation you want.",
-            "original": "You just upload or pick a reference clip and then describe in the prompt what you want to change."
+            "rewrite": [
+              "Dan Shipper highlights the other side of Anthropic's S-1: revenue grew 1,300% year over year in the first half of 2026, the company was GAAP operating profitable, gross margin reached 85%, and 80% of revenue came from models released in the prior six months.",
+              "That combination makes the infrastructure commitments easier to understand. The frontier lab is not only spending ahead of demand; it is showing unusually fast product turnover and an expanding ability to turn new models into revenue."
+            ],
+            "original": [
+              "okay so Anthropic S-1:\n\n- Revenue up 1,300% YOY in 1H 2026\n- GAAP operating profitable\n- 85% gross margin\n- 900% revenue retention\n- 80% of revenue coming from models released in the last 6 months\n\nwe are so back!"
+            ]
           },
           "cn": {
-            "rewrite": "Peter Yang 分享了 HyperFrames Studio 里的原生 AI 视频编辑流程：上传或选择参考片段，用 prompt 描述想改什么，同时保留原本的结构，只替换字体、颜色等元素。变化在于，你不再需要手动复刻一种风格，而是直接描述希望发生的变换。",
-            "original": "你只要上传或选择一个参考片段，然后在 prompt 里描述你想改变什么。"
+            "rewrite": [
+              "Dan Shipper 抓住了 Anthropic S-1 的另一面：2026 年上半年收入同比增长 1300%，GAAP 口径下经营盈利，毛利率达到 85%，而且 80% 的收入来自过去六个月发布的模型。",
+              "这组数据让前面的算力承诺更容易理解：frontier lab 不只是提前押注需求，它还在快速迭代产品，并且越来越能把新模型直接转化为收入。"
+            ],
+            "original": [
+              "Anthropic S-1：2026 年上半年收入同比增长 1300%；GAAP 经营盈利；85% 毛利率；900% revenue retention；80% 的收入来自过去 6 个月发布的模型。我们真的回来了！"
+            ]
           }
         }
       ]
     },
     {
-      "title": "Small Defaults, Big Feel / 默认体验决定日常",
+      "title": "Models in the Wild / 模型落到真实工作",
+      "desc": "新模型的价值最终要在写作、computer use 和实际工作流里验证，而不是停在 benchmark 榜单上。",
       "cards": [
         {
-          "authorKey": "thibault-sottiaux",
-          "sourceUrl": "https://x.com/thsottiaux/status/2114595002210783279",
+          "authorKey": "x:sama",
+          "sourceUrl": "https://x.com/sama/status/2114818620782248024",
           "en": {
-            "rewrite": "Thibault Sottiaux, who works on Codex and ChatGPT at OpenAI, reminds users that ChatGPT's web appearance can be customized to feel more soothing. It is a small product detail, but it points to a broader design principle for AI tools: comfort and personal fit are part of usability, not decoration.",
-            "original": "Reminder you can customize the appearance of chatgpt on web and make it soothing."
+            "rewrite": [
+              "Sam Altman says Terra 6.1 is especially promising for a new era of computer use. The signal is less about a single benchmark score and more about where OpenAI believes the next interface is moving: models that can operate software and complete tasks in the world."
+            ],
+            "original": [
+              "6.1 Terra is here! It is good at a lot of things, but we are especially excited for this new era of computer use. https://t.co/TbpHp75Os0"
+            ]
           },
           "cn": {
-            "rewrite": "负责 Codex 和 ChatGPT 的 OpenAI 产品成员 Thibault Sottiaux 提醒大家，ChatGPT 网页版的外观可以自定义得更舒适。这是一个很小的产品细节，却说明了 AI 工具的一个更大设计原则：舒适感和个人适配属于可用性的一部分，不只是装饰。",
-            "original": "提醒一下，你可以自定义 ChatGPT 网页版的外观，让它更舒缓。"
+            "rewrite": [
+              "Sam Altman 表示，Terra 6.1 最令人期待的方向是 computer use 的新时代。这个信号不只是某个 benchmark 分数，而是 OpenAI 认为下一代界面会转向能操作软件、在真实世界里完成任务的模型。"
+            ],
+            "original": [
+              "6.1 Terra 来了！它有很多方面都很强，但我们尤其期待 computer use 的新时代。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:claudeai",
+          "sourceUrl": "https://x.com/claudeai/status/2114780227465338985",
+          "en": {
+            "rewrite": [
+              "Claude says more than 25,000 nonprofits now use the product, most of them small local teams. Its new Claude for Nonprofits plugin was built with around 30 of those organizations and adds fundraising, marketing, and hiring skills grounded in each team's context and AI policy.",
+              "That is a small but important product lesson: useful AI adoption often comes from packaging domain-specific workflows and constraints, not from handing a generic model to an organization and hoping it figures out the rest."
+            ],
+            "original": [
+              "More than 25,000 nonprofits now use Claude. Most are small, local teams.\n\nWe’re expanding Claude for Nonprofits with a plugin built with around 30 of them, adding skills for fundraising, marketing, and hiring grounded in each team’s context and AI policy: https://t.co/LWHcr1CT20 https://t.co/WHG2zRDyxO"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude 表示，现在已有超过 2.5 万家非营利组织在使用 Claude，其中大多数是小型本地团队。新的 Claude for Nonprofits plugin 与其中约 30 家共同构建，加入了植根于各团队具体背景和 AI policy 的 fundraising、marketing、hiring skills。",
+              "这带来一个很实际的产品启发：AI 真正被采用，往往靠的是把领域工作流和约束打包好，而不是把一个通用模型交给组织，然后希望它自己摸索。"
+            ],
+            "original": [
+              "超过 25,000 家非营利组织现在使用 Claude，其中大多数是小型本地团队。\n\n我们正在扩展 Claude for Nonprofits，推出一个与其中约 30 家组织共同构建的 plugin，加入植根于每个团队背景和 AI policy 的 fundraising、marketing 和 hiring skills。"
+            ]
+          }
+        },
+        {
+          "authorKey": "podcast:ai-and-i-by-every",
+          "authorName": "AI & I by Every",
+          "authorTag": "AI & I by Every",
+          "sourceUrl": "https://www.youtube.com/playlist?list=PLuMcoKK9mKgHtW_o9h5sGO2vXrffKHwJL",
+          "en": {
+            "rewrite": [
+              "The takeaway: model benchmarks are increasingly poor proxies for the work people actually care about. Every's testing found Gemini Argon 4 especially strong at writing and information structure, while its coding performance was weak; Meta's Muse looked better on public benchmarks than in hands-on work.",
+              "The episode then turns to Matt Hartman, the investor who helped back Hugging Face, and a more durable question: if anyone can vibe-code an app, where do software moats live? His Hugging Face story points toward community, research, and the infrastructure connecting them, rather than a single clever interface.",
+              "The sharpest lesson is to test models in the job you need done. A model that tops a public benchmark may still bury the lead, fail a practical coding task, or take an obvious prompt injection."
+            ],
+            "original": [
+              "The Frontier duopoly is over. This week, we got new Frontier models from Google and from Meta.",
+              "Gemini four ... has an incredibly good feel for structuring information, and I used it all weekend to write this 8,000 word piece ... It beats Astra, which was my previous favorite. Coding, not very good.",
+              "If anyone can vibe code your app, where are the software moats? How do you build a software business now?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "一句话 takeaway：model benchmark 越来越不能代表人们真正关心的工作。Every 的测试发现，Gemini Argon 4 在写作和信息结构上特别强，但 coding 表现较弱；Meta 的 Muse 在公开 benchmark 上看起来很好，实际使用却没有跟上。",
+              "内容随后转向 Matt Hartman，这位曾参与投资 Hugging Face 的投资人，以及一个更持久的问题：如果任何人都能 vibe-code 一个 app，软件护城河到底在哪里？Hugging Face 的故事指向了 community、research 以及连接两者的基础设施，而不只是某个聪明的界面。",
+              "最值得带走的判断是：要在你真正需要完成的工作里测试模型。一个公开 benchmark 第一名的模型，仍可能写作埋没重点、实际 coding 失败，或者被一个明显的 prompt injection 带跑。"
+            ],
+            "original": [
+              "frontier model 的双头垄断结束了。本周 Google 和 Meta 都发布了新的 frontier model。",
+              "Gemini 4 对信息结构有非常好的感觉，我整个周末都用它写一篇 8000 字的文章。它胜过了我之前最喜欢的 Astra。Coding 不太行。",
+              "如果任何人都能 vibe code 你的 app，软件护城河在哪里？现在该怎么做软件生意？"
+            ]
           }
         }
       ]
