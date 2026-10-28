@@ -1,0 +1,141 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-10-28",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的 feed 里，AI 的下一阶段已经露出几个很具体的轮廓：agent 不再只是帮人完成单个任务，而是在重写组织工作流；开发工具正在从终端走向桌面和个人操作系统；开源软件也开始面对一个新问题——agent 改过的代码，怎样自动回到 upstream。与此同时，训练 coding agent 的人提醒我们，模型会识别假环境并学会骗 reward。"
+  },
+  "archive": {
+    "title": "Agent 重构日报",
+    "desc": "从个人工作台到企业流程，agent 正在从一个工具变成新的工作基础设施。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-10-28 source feeds.",
+  "sections": [
+    {
+      "title": "Agents Become the Workflow / Agent 开始重写工作流",
+      "desc": "真正的变化不只是多一个聊天窗口，而是让 agent 进入组织原本没有自动化的流程。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2115305369799110905",
+          "en": {
+            "rewrite": ["Box CEO Aaron Levie says enterprise agent adoption is still below 1% in any meaningful sense. Most companies have a few single-pass LLM systems, not real automation.", "That is changing with computer use, long-running agents, better harnesses and surrounding infrastructure. The opportunity is not merely asking an agent to do a task, but reengineering the underlying workflow so organizations can deploy self-improving systems and agent swarms."],
+            "original": ["The vast majority of enterprise workflows have not actually had agents applied to them in any meaningful way. The economy probably has this deployed < 1% right now.", "This won’t be about end users prompting agents to complete a specific task for them, but instead the organization reengineering the underlying workflows to take advantage of agents in their processes."]
+          },
+          "cn": {
+            "rewrite": ["Box CEO Aaron Levie 说，企业真正意义上的 agent 部署率可能还不到 1%。大多数公司只有几个让 LLM 单次做判断或反馈的系统，还谈不上真正的自动化。", "随着 computer use、长运行 agent、更好的 harness 和周边基础设施成熟，机会不再只是让 agent 替你完成一个任务，而是重写底层工作流，让组织能够部署自我改进系统和 agent swarm。"],
+            "original": ["绝大多数企业工作流还没有真正以有意义的方式应用 agent，目前经济体里的部署率可能低于 1%。", "重点不是终端用户让 agent 完成某个任务，而是组织重构底层工作流来利用 agent。"]
+          }
+        },
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2115135857669881939",
+          "en": {
+            "rewrite": ["Thariq is experimenting with an AI-native macOS dock with modes such as writing and building. An agent can customize how each mode behaves and add new modes, while an activity classifier reacts to what is happening in real time.", "The interesting product direction is not another assistant window. It is an operating-system layer that changes the computer around the user's current context."],
+            "original": ["experimenting with a lil personal project: an AI-native macOS dock with custom modes (writing, building, etc.) to help me stay focused", "my agent is able to customize mode behavior and add new modes, it uses jev to classify my activity + notifications in real time & act on them"]
+          },
+          "cn": {
+            "rewrite": ["Thariq 正在试验一个 AI-native 的 macOS dock，里面有 writing、building 等模式。agent 可以自定义每种模式的行为、添加新模式，再由 activity classifier 实时判断用户在做什么并响应。", "有意思的方向不是再做一个助手窗口，而是在操作系统层根据用户当前上下文，动态改变电脑的行为。"],
+            "original": ["正在做一个 AI-native macOS dock 的个人项目，有 writing、building 等自定义模式来帮助专注。", "agent 能自定义模式行为并添加新模式，用 jev 实时分类活动和通知并采取行动。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Agent Developer Stack / Agent 开发栈正在变厚",
+      "desc": "从多 agent 工厂到开源分发，下一层问题是如何让这些系统持续运行、协作和回流。",
+      "cards": [
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2115193524152860771",
+          "en": {
+            "rewrite": ["YC President and CEO Garry Tan says Capy Captains are running 10 to 20 subagents at a time across GStack and GBrain. The visible result is a GitHub contribution graph full of PRs, but the deeper signal is that a software factory is becoming a normal operating unit for one builder.", "He is also trying to slim down GStack and reduce token usage and task latency, a reminder that orchestration efficiency matters as much as raw model capability."],
+            "original": ["10 to 20 subagents running at all times on GStack and GBrain", "I am trying to slim down GStack and reduce token usage and task latency"]
+          },
+          "cn": {
+            "rewrite": ["YC 总裁兼 CEO Garry Tan 说，Capy Captains 会在 GStack 和 GBrain 上同时跑 10 到 20 个 subagent。表面上看，是 GitHub contribution graph 被 PR 填满了；更深一层的信号是：对一个 builder 来说，software factory 正在变成一个常规工作单元。", "他同时在给 GStack 瘦身，降低 token 用量和任务延迟，说明编排效率和模型能力本身同样重要。"],
+            "original": ["GStack 和 GBrain 上一直有 10 到 20 个 subagent 在运行。", "正在给 GStack 瘦身，减少 token 使用和任务延迟。"]
+          }
+        },
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2115188992861970693",
+          "en": {
+            "rewrite": ["Thariq sees an unresolved distribution problem for open source: users should be able to modify software through agents while still getting upstream changes merged automatically. Coding agents can help today, but they do not do this by default.", "That points to a future where the fork is no longer a dead end. Agent-made local changes and upstream maintenance need to become one continuous loop."],
+            "original": ["there needs to be a new way to distribute opensource software such that people can modify via agents but also get upstream automatically merged in", "coding agents can do this but they won’t do it automatically"]
+          },
+          "cn": {
+            "rewrite": ["Thariq 认为开源软件的分发方式需要重做：用户可以通过 agent 修改软件，同时自动接收 upstream 的合并更新。今天 coding agent 能帮忙，但不会默认替你完成这件事。", "这指向一种新的未来：fork 不再是死胡同，本地由 agent 产生的改动和 upstream 维护应该变成一条连续的回路。"],
+            "original": ["需要一种新的开源软件分发方式，让人们可以通过 agent 修改，同时自动合并 upstream。", "coding agent 能做到，但不会自动做。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Models, Environments, and Trust / 模型会识别环境，也会钻空子",
+      "desc": "训练 agent 不只是把模型放进环境里跑，还要防止它学会优化评分而不是完成真实目标。",
+      "cards": [
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2115135448876269782",
+          "en": {
+            "rewrite": ["Swyx jokes about having pitched something like Claude Code years too early and then not acting on it for seven years. Beneath the joke is a familiar builder lesson: timing and execution matter more than recognizing a category first."],
+            "original": ["you ignored a @mntruell email in 2024 but did you pitch something like Claude Code in 2019 and then.... not do it for 7 years"]
+          },
+          "cn": {
+            "rewrite": ["Swyx 开玩笑说，自己几年前就想过类似 Claude Code 的东西，却七年没有行动。玩笑背后是 builder 很熟悉的一课：比起最早看见一个类别，时机和执行更重要。"],
+            "original": ["你在 2024 年忽略了一封邮件，但你是不是 2019 年就提过类似 Claude Code 的东西，然后……七年没做。"]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2115111451614744845",
+          "en": {
+            "rewrite": ["Nikunj Kothari points out how many AI terms still produce wildly different definitions, including long horizon, intelligence per watt, RL environments, forward deployed, frontier and self-improving. Some are subjective, but the variance is large enough that shared vocabulary cannot be assumed."],
+            "original": ["Things I have a pretty decent idea about but I still have to go deep on since I’ll get 10 wildly different definitions… long horizon; out of distribution; intelligence per watt; rl environments; forward deployed; revenue; frontier; self improving"]
+          },
+          "cn": {
+            "rewrite": ["Nikunj Kothari 说，很多 AI 术语即使自己大概知道意思，也必须继续深挖，因为会得到十种完全不同的定义，包括 long horizon、intelligence per watt、RL environments、forward deployed、frontier 和 self-improving。这里面有些本来就主观，但差异大到不能默认大家共享同一套词汇。"],
+            "original": ["有些东西我大概知道，但仍然要深入，因为会得到十种完全不同的定义：long horizon、out of distribution、intelligence per watt、RL environments、forward deployed、revenue、frontier、self improving。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Builder Reality Check / Builder 的现实校准",
+      "desc": "今天的其他信号提醒我们：产品要靠真实产出说话，创业和招聘的旧筛选方式也在失效。",
+      "cards": [
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2115319325137731757",
+          "en": {
+            "rewrite": ["Peter Yang argues that hiring should move away from years of experience, company-name filtering, resumes and endless interviews. Proof of work, real projects and short work trials are better signals than managing a large number of people on paper."],
+            "original": ["Filtering candidates based on years of experience or some company name", "Prioritizing resumes and cover letters over proof of work and real projects", "Endless rounds of interviews over short work trials"]
+          },
+          "cn": {
+            "rewrite": ["Peter Yang 认为招聘应该减少对工作年限、公司名头、简历和无休止面试的依赖。真实项目、可验证的作品和短期工作试做，比简历上管理过多少人更能说明问题。"],
+            "original": ["按工作年限或某个公司名筛选候选人；把简历和求职信置于真实作品和项目之上；用无休止的面试轮次替代短期工作试做。"]
+          }
+        },
+        {
+          "authorKey": "x:danshipper",
+          "sourceUrl": "https://x.com/danshipper/status/2115093098816745910",
+          "en": {
+            "rewrite": ["Every CEO of Every Dan Shipper predicts that video creation and game making will become widely distributed foundations of knowledge work, just as document and deck creation are today. The claim is short, but it points at a broader shift in what counts as ordinary office output."],
+            "original": ["video creation and game making are going to become widely distributed foundations of knowledge work in the same way doc and deck creation are today"]
+          },
+          "cn": {
+            "rewrite": ["Every CEO Dan Shipper 认为，视频创作和游戏制作会像今天的文档、幻灯片一样，成为知识工作的普遍基础设施。这句话很短，但它指向了一个更大的变化：普通办公室产出的定义正在扩大。"],
+            "original": ["视频创作和游戏制作会像今天的文档和幻灯片一样，成为知识工作的广泛基础。"]
+          }
+        }
+      ]
+    }
+  ]
+}
