@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Builders Digest · 2026-10-29</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f6f3ed;
+    --accent: #c0392b;
+    --accent-light: #e8d5c4;
+    --border: #d4cdc0;
+    --muted: #7a7265;
+    --tag-bg: #e8e2d6;
+    --en-bg: #ffffff;
+    --cn-bg: #faf7f2;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.7;
+  }
+
+  .masthead, .intro, .section-header, .feed, footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .masthead { padding-top: 48px; }
+  .masthead-rule { border: none; border-top: 3px solid var(--ink); margin: 0 0 12px; }
+  .masthead-inner { display: flex; justify-content: center; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .masthead-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; letter-spacing: -0.4px; }
+  .masthead-subtitle { margin-top: 8px; padding-bottom: 10px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  .edition-strip {
+    position: relative;
+    margin-top: 8px;
+    min-height: 46px;
+    padding: 10px 132px 12px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.34);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+
+  .edition-strip .edition-sep { margin: 0 8px; color: #b8ae9f; }
+  .edition-strip-text { display: block; }
+  .edition-return-link { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; padding: 6px 10px; border: 1px dashed rgba(192, 57, 43, 0.55); border-radius: 999px; color: var(--accent); text-decoration: none; font-size: 12px; line-height: 1; letter-spacing: 0.06em; background: rgba(255, 255, 255, 0.45); transition: background 160ms ease, border-color 160ms ease, transform 160ms ease; }
+  .edition-return-link:hover, .edition-return-link:focus-visible { background: rgba(255, 255, 255, 0.82); border-color: var(--accent); transform: translateY(-50%) translateX(-1px); }
+  .edition-return-link:focus-visible { outline: none; }
+  .intro { padding-top: 22px; }
+  .intro-inner { max-width: 920px; margin: 0 auto; padding: 0 0 0 18px; border-left: 3px solid #d9cdbc; }
+  .intro-kicker { margin: 0 0 8px; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+  .intro p { margin: 0; max-width: none; color: var(--muted); font-size: clamp(15px, 1.6vw, 16px); line-height: 1.9; text-wrap: pretty; font-family: 'Noto Serif SC', serif; overflow-wrap: anywhere; }
+
+  .section-header { margin-top: 40px; }
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 4px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 24px; margin: 0 0 6px; }
+  .section-desc { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+
+  .feed { display: flex; flex-direction: column; gap: 20px; }
+  .card { background: var(--en-bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .card-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid #eee7dd; flex-wrap: wrap; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .avatar-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .avatar.is-fallback img { display: none; }
+  .avatar.is-fallback .avatar-fallback { display: flex; }
+
+  .author-info { flex: 1; min-width: 160px; }
+  .author-name { font-weight: 600; font-size: 15px; }
+  .author-name-row { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .author-handle { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+  .author-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; background: var(--tag-bg); color: var(--muted); padding: 4px 8px; border-radius: 999px; }
+  .author-tag.is-inline { padding: 3px 8px; }
+
+  .card-controls { margin-left: auto; display: inline-flex; gap: 8px; }
+  .view-toggle { border: 1px solid var(--border); background: transparent; color: var(--muted); padding: 6px 10px; border-radius: 999px; font-size: 12px; line-height: 1; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; }
+  .view-toggle.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .card-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .lang-col { padding: 18px 20px 22px; }
+  .lang-col.cn { background: var(--cn-bg); border-right: 1px solid #f0ece4; font-family: 'Noto Serif SC', serif; }
+  .lang-col.en { background: var(--en-bg); }
+  .lang-label { margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+  .content-shell { position: relative; transition: height 220ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .content-variant { position: absolute; inset: 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(4px); transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms; will-change: opacity, transform; }
+  .content-variant.is-active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s; }
+  .content-variant p, .content-variant li { margin: 0 0 12px; font-size: 14px; }
+  .content-variant ol { margin: 0 0 12px 20px; padding: 0; }
+  .inline-code { display: inline-block; font-family: 'IBM Plex Mono', monospace; background: #f4efe7; padding: 3px 6px; border-radius: 6px; margin-bottom: 8px; }
+
+  .card-footer { padding: 12px 20px 16px; border-top: 1px solid #eee7dd; background: #fcfaf6; }
+  .card-footer { display: flex; align-items: center; justify-content: space-between; }
+.card-footer a { color: var(--accent); text-decoration: none; font-size: 14px; }
+.eureka-btn { border: 1px dashed var(--accent); background: transparent; color: var(--accent); padding: 5px 12px; border-radius: 999px; font-size: 12px; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; opacity: 0.55; }
+.eureka-btn:hover { background: var(--accent); color: #fff; opacity: 1; border-style: solid; }
+.eureka-btn:active { transform: scale(0.96); }
+.eureka-toast { position: fixed; bottom: 32px; right: 32px; background: #1a1a1a; color: #fff; padding: 12px 20px; border-radius: 10px; font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 9999; opacity: 0; transform: translateY(12px); transition: opacity 240ms ease, transform 240ms ease; pointer-events: none; }
+.eureka-toast.show { opacity: 1; transform: translateY(0); }
+  footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 680px) {
+    .masthead-inner { align-items: center; }
+    .edition-strip { padding-right: 12px; padding-left: 12px; }
+    .edition-strip-text { padding-right: 0; }
+    .edition-return-link { position: static; transform: none; margin-top: 8px; font-size: 11px; }
+    .card-controls { margin-left: 0; }
+    .card-body { grid-template-columns: 1fr; }
+    .lang-col.cn { border-right: none; border-bottom: 1px solid #f0ece4; }
+    .edition-strip .edition-sep { margin: 0 5px; }
+    .intro-inner { padding-left: 14px; }
+    .intro p { line-height: 1.84; }
+  }
+</style>
+</head>
+<body data-publish-date="2026-10-29" data-issue-number="131" data-edition-name="双语精选版" data-view-label-rewrite="速读" data-view-label-original="原文" data-author-identities-path="/Users/jianan/.follow-builders/assets/author-identities.json" data-avatar-manifest-path="/Users/jianan/.follow-builders/assets/avatar-manifest.json">
+  <header class="masthead">
+    <hr class="masthead-rule">
+    <div class="masthead-inner">
+      <div class="masthead-title">AI Builders Digest</div>
+    </div>
+    <div class="masthead-subtitle">Bilingual edition · 双语对照版</div>
+    <div class="edition-strip">
+      <span class="edition-strip-text" id="edition-strip-text">第 131 期｜2026-10-29｜双语精选版｜9 条精选｜8 位作者｜4 个主题</span>
+      <a class="edition-return-link" href="../index.html">返回目录</a>
+    </div>
+  </header>
+
+  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="今天的主线，是 AI 正在从「替你完成任务」走向「改变你如何思考和组织工作」。一端是 Vercel 的 Agentic CI、Particle 的模型基础设施和 Claude for Legal 这样的底座，另一端是 Ryo Lu 对 human intellect augmentation 的提醒：工具变强不等于人应该变小。中间还有一个很现实的变化：世界模型、coding agent 和 AI 创作工具，正在把更多表达能力交给原本没有专业语言的人。">
+    <div class="intro-inner">
+      <div class="intro-kicker">编者导语 / Editor&#39;s Note</div>
+      <p class="intro-copy">今天的主线，是 AI 正在从「替你完成任务」走向「改变你如何思考和组织工作」。一端是 Vercel 的 Agentic CI、Particle 的模型基础设施和 Claude for Legal 这样的底座，另一端是 Ryo Lu 对 human intellect augmentation 的提醒：工具变强不等于人应该变小。中间还有一个很现实的变化：世界模型、coding agent 和 AI 创作工具，正在把更多表达能力交给原本没有专业语言的人。</p>
+    </div>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 01</div>
+    <h2 class="section-title">The New Agent Stack / Agent 新底座</h2>
+    <p class="section-desc">今天几条最硬的产品信号，都在把 agent 从聊天窗口推进到真实的软件交付和企业流程里。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:rauchg" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Vercel CEO Guillermo Rauch 认为，下一阶段的 coding 瓶颈不只在模型本身，也在模型周围的交付系统。Vercel CI 把更快的基础设施、Turborepo 的依赖图和 agentic 层放在一起，让 agent 可以检查、终止、触发和重放 CI。</p>
+              <p>真正有意思的是最后一步：CI 不再只是执行固定流水线，还要承接工程判断，比如判断某个测试到底值不值得跑。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Vercel CI 通过三件事解决 AI coding 瓶颈：更快更稳定的基础设施、Turborepo 集成，以及 Agentic CI。Agent 可以检查、终止、触发和重放 CI；未来 CI 甚至可以捕捉工程师判断，比如&quot;这些测试值得跑吗？&quot;。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Vercel CEO Guillermo Rauch says the next coding bottleneck is not just the model: it is the delivery system around the model. Vercel CI combines faster infrastructure, Turborepo&#39;s computed dependency graph and an agentic layer that lets agents inspect, abort, trigger and replay CI.</p>
+              <p>The interesting part is the last step. CI is being asked to hold engineering judgment, including deciding whether a test is worth running, rather than merely executing a fixed pipeline.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Vercel CI solves the &quot;AI coding bottleneck&quot; via:
+              ① Fast and stable infrastructure (faster work)
+              ② Turborepo integration (less work)
+              ③ Agentic CI
+
+              ① is obvious. Your CI is slow, flaky, goes down. We solve that. We operate 20 worldwide clusters doing millions of microVMs per day.
+
+              ② is less obvious, but very powerful. Turborepo was designed to intelligently skip and cache prior work. The graph of dependencies is computed, not written.
+
+              Ask your agent to migrate to @turborepo and start saving money and time. Even if you don&#39;t use us. But you should, it&#39;s really good.
+
+              ③ is a game-changer. 𝚟𝚎𝚛𝚌𝚎𝚕 𝚌𝚒 in the CLI is the first step, because now your agents can inspect, abort, trigger, replay CI. Vercel Agent can help optimize it. And this is just the start.
+
+              You can expect a lot of hooks and capabilities to make CI something far more intelligent, that can even capture the nuance and judgment an engineer would have (&quot;Are those tests even worth running?&quot;)
+
+              Agentic CI is the future of how we ship software. Excited to build it with you all!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/rauchg/status/2115539426684408300" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/rauchg/status/2115539426684408300" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="x:rauchg" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Rauch 把 model alias 叫作「模型的 DNS」：alias 解析到具体模型，同时提供流量调度能力。这样应用不必硬编码某个模型版本，团队可以在升级、成本和稳定性之间调度，而不用让每个开发者重新做一遍选择。</p>
+              <p>这是一个很小的命名抽象，却能带来很大的运维收益：模型选择从散落在应用代码里的决定，变成了基础设施策略。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>这就像模型的 DNS。一个会解析到模型的 alias，给你流量调度能力。它能解决很多问题：避免团队卡在旧模型版本上、节省成本，也消除&quot;选择困难&quot;。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Rauch describes model aliases as &quot;DNS for models&quot;: an alias resolves to a model and gives teams traffic-steering controls. That means applications do not have to be hard-wired to one model version, and teams can balance upgrades, cost and reliability without forcing every developer to make the same decision again.</p>
+              <p>It is a small naming abstraction with a large operational payoff: model choice becomes infrastructure policy instead of scattered application code.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>This is like DNS for models. An alias that *resolves* to a model, giving you traffic-steering abilities.
+
+              Solves a huge number of problems. From not having teams stuck on old model versions, to saving on costs, to removing “decision paralysis”. Try it!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/rauchg/status/2115573969369845855" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/rauchg/status/2115573969369845855" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="x:claudeai" data-author-name="Claude" data-author-tag="" data-author-handle="@claudeai" data-author-avatar="../assets/avatars/x-claudeai.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-claudeai.jpg" alt="Claude avatar"><span class="avatar-fallback">C</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Claude</div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle">@claudeai</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Claude for Legal 把常见法律工作包装成现成的 artifact：合同审查、监管趋势扫描、引用核查等。用户可以从内置示例开始，接入自己的文档和 connectors，再把结果分享给整个团队。</p>
+              <p>关键变化是：AI 不再只是一个回答律师问题的通用助手，而是变成可复用、可交接的团队工作流组件。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Claude for Legal 新增 ready-made artifacts gallery，覆盖合同审查、监管趋势扫描、引用核查等。可以从内置示例开始，加入自己的文档和 connectors，并分享给业务团队。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Claude for Legal is packaging common legal workflows as ready-made artifacts: contract review, regulatory horizon scans and cite checks. Users can start from an example, add their own documents and connectors, then share the result across the business.</p>
+              <p>The important shift is from a general assistant to reusable workflow objects. The model is not just answering a lawyer&#39;s question; it is becoming part of a repeatable process that a team can hand around.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>New in Claude for Legal: a gallery of ready-made artifacts for contract review, regulatory horizon scans, cite checks, and more.
+
+              Start from the built-in example, add your own documents and connectors, and share it with anyone across the business.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/claudeai/status/2115467192276025500" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="Claude" data-url="https://x.com/claudeai/status/2115467192276025500" data-author="Claude">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 02</div>
+    <h2 class="section-title">The Human in the Loop / 人仍然在环里</h2>
+    <p class="section-desc">AI 越来越会替你执行，越需要重新讨论什么不该被自动化，以及谁拥有系统的理解权。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:ryolu_" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Ryo Lu 认为，AI 进步不该只用「有多少工作不用我们做了」来衡量，更要看那些原本无法参与的人，现在能做什么。他理想中的 computer 是思维的延伸：把还没想清楚的念头放进去，移动、拆解，直到新的连接出现。</p>
+              <p>这也意味着，不是每一个困难步骤都该被视为 overhead。有时做出错误版本、重塑系统、弄懂它为什么这样工作，本身就是学习。判断 empowerment 的标准很简单：机器变得更强时，人有没有因此变小？</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>增强人类智力。计算机有趣，不是因为它能离开我完成工作，而是因为我能用它做什么。机器可以变得更强，而不让人变得更小。不是一个不再需要我们的世界，而是一个我们更有能力塑造的世界。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Ryo Lu argues for a larger definition of AI progress: not how much work happens without us, but what becomes possible for the person who could not participate before. His ideal computer is an extension of thought, a place to move ideas around until a better question appears.</p>
+              <p>That also means not treating every difficult step as overhead. Sometimes making the wrong version, reshaping the system and understanding why it works are how a person learns. His test for empowerment is simple: can the machine become more capable without making the person smaller?</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>augmenting human intellect
+
+              when i started making software, i wasn’t dreaming of a factory.
+
+              i loved that something on a screen could become an extension of my mind. a place to put a thought before i understood it. to move things around until new connections appeared. to make little systems that worked the way i worked, even if it made no sense to anyone else.
+
+              the computer wasn’t interesting because it could do work without me. it was interesting because of what i could do with it.
+
+              ...
+
+              the machine can become more capable without making the person smaller.
+
+              ...
+
+              not a world that no longer needs us.
+              a world we have more ability to shape.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/ryolu_/status/2115683228027912634" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/ryolu_/status/2115683228027912634" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="x:trq212" data-author-name="Thariq" data-author-tag="" data-author-handle="@trq212" data-author-avatar="../assets/avatars/x-trq212.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-trq212.jpg" alt="Thariq avatar"><span class="avatar-fallback">T</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Thariq</div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle">@trq212</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thariq 观察到 agent 时代一个很奇怪的倒置：技术人员担心自己的技能变得没用，非技术人员却拼命希望自己更懂技术，好让 agent 用得更好。新的分界线不再只是会不会 coding，而是能不能描述、塑造和引导一个系统。</p>
+              <p>他的补充把创作场景说得很具体：艺术家未必想让 AI 取代自己的审美，但希望能先画一个草图，再让 agent 把它发展成角色或动画概念。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>现在发生了一件很奇怪的事：技术人员很难过，觉得自己的技能没用了；非技术人员则拼命希望自己更懂技术，这样才能更好地使用 agent。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thariq spots a strange inversion in the agent era: technical people worry that their skills are becoming useless, while non-technical people wish they were more technical so they could use agents better. The gap is no longer simply coding versus non-coding; it is the ability to describe, shape and steer a system.</p>
+              <p>His follow-up makes the creative version concrete: artists may not want AI to replace their taste, but they do want to sketch an idea and have an agent help turn it into a character or animation concept.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>very weird thing happening rn
+
+              technical people are sad, they think their skills are now useless
+
+              non-technical people are desperately wishing they were more technical so they could use agents better</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/trq212/status/2115544056038350960" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="Thariq" data-url="https://x.com/trq212/status/2115544056038350960" data-author="Thariq">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 03</div>
+    <h2 class="section-title">Worlds, Models &amp; Creative Leverage / 世界模型与创作杠杆</h2>
+    <p class="section-desc">模型还没有抵达终点，但已经足够让创作者重新想象电影、游戏和个人表达的生产方式。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:petergyang" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang 认为，world model 现在还处在 GPT-3.5 阶段：demo 很惊艳，但一致性和 gameplay 仍然明显不够。他预计，等它们达到 GPT-5 或 GPT-6 的可靠程度，影响会大得多。</p>
+              <p>他举的例子不只是更便宜的视觉特效：导演给一帧画面，就能生成完整的巨龙大战；游戏创作者也能少花时间处理画面和声音，把精力放回真正决定游戏好不好玩的核心循环和机制。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>我觉得 world model 现在还处在 GPT 3.5 阶段，但不会太久。它们的 demo 很惊艳，却还没真正到位。等它们达到 GPT-5 或 GPT-6 阶段，我认为会对很多行业产生巨大影响：电影里的大特效镜头可以从一帧画面生成完整场景；游戏方面，world model 会让任何人更容易做出画面和声音很棒的游戏，但 gameplay 还没到位。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang thinks world models are still in their GPT-3.5 era: impressive demos, but obvious limits in consistency and gameplay. He expects a much bigger shift when they reach the reliability of GPT-5 or GPT-6.</p>
+              <p>His concrete prediction is not just cheaper visual effects. A director could create one frame and generate a full dragon-battle scene; a game maker could spend less time on graphics and sound and more people could build games whose core loops are genuinely their own.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I think world models are still in the GPT 3.5 era, but not for long.
+
+              Like the old Will Smith eating spaghetti videos, world models are impressive but not quite there yet.
+
+              But once they hit the GPT-5 or GPT-6 stage, I think they&#39;ll have massive implications for a lot of industries:
+
+              Movies - A big effects shot like a dragon battle takes a VFX studio months of work. With a great world model, a director could create a single frame and have AI generate the full scene from it.
+
+              Games - From my time working in gaming, I learned the real work is core loops, progression systems, and the mechanics that make a game fun. World models are already good at graphics and sound, but the gameplay isn&#39;t there yet. Still, they&#39;ll make it much easier for anyone to build their own game that looks and sounds amazing.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/petergyang/status/2115556794076741647" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/petergyang/status/2115556794076741647" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="podcast:ai-and-i" data-author-name="AI &amp; I by Every" data-author-tag="Fred Graver" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="AI &amp; I by Every avatar"><span class="avatar-fallback">A&amp;</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">AI &amp; I by Every</div>
+            <div class="author-tag is-inline">Fred Graver</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>核心 takeaway：对创作者来说，AI 最有价值的角色不是替你写，而是一个 virtual writers&#39; room。拿过四座 Emmy 的 filmmaker 和 technologist Fred Graver 从 National Lampoon、电视业一路走到 Disney Imagineering、Twitter 和 conversation design，亲眼经历过每一种新媒介如何改变创作者与观众的关系。</p>
+              <p>他的做法很具体：准备一份「我是谁」的 writer 文档，再准备一份正在探索的想法文档，让 AI 帮你检验两者的关系、寻找潜在受众，甚至模拟一个 focus group。更大的设想，是把领域经验、个人文化和制作决策放进同一个共享核心，让 AI 减少写作、营销和运营之间的摩擦。</p>
+              <p>重点不是消灭作者，而是把流水线式生产变成更循环、更协作的过程，让创作者有更多空间发现自己真正想表达什么。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>你应该创建一份&quot;我是谁&quot;的 writer 文档，放入你的灵感、喜欢的东西、读过的东西和想做的事；再准备一份正在创作的东西。这里不是让 AI 替你写，而是把 AI 当成一个 virtual writer&#39;s room、一群帮助你思考的 intelligence。影视行业还在用 Henry Ford 造汽车的方式做东西，但应该把流水线做成一个圆。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>The takeaway: AI is most useful to a creative person when it becomes a virtual writers&#39; room, not a machine that writes in their place. Emmy-winning filmmaker and technologist Fred Graver&#39;s career moved from National Lampoon and television to Disney Imagineering, Twitter and conversation design, so he has watched each new medium change the relationship between creators and audiences.</p>
+              <p>His practical setup is unusually specific. Keep a document about who you are as a writer, another about the idea you are exploring, and use AI to test the relationship between the two, identify an audience and simulate a focus group. His larger ambition is to put domain expertise, personal culture and production decisions into one shared core, turning AI into a way to reduce friction across writing, marketing and operations.</p>
+              <p>The point is not to remove authorship. It is to make the production process more circular and collaborative, so creators can spend more time discovering what they actually mean.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>You should create a who I am as a writer document, And you should throw in your inspirations, what you love, what you read, what you aspire to do, all of that. And then you also have a document that this is the thing I&#39;m working on.</p>
+              <p>None of that is about AI writing for you. Everything is about having AI as kind of a virtual writer&#39;s room, as a group of intelligences that can help you think through things.</p>
+              <p>People in show business still make things the way Henry Ford made cars. There&#39;s this assembly line. And if you say to them, No, make it a circle.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://www.youtube.com/playlist?list=PLuMcoKK9mKgHtW_o9h5sGO2vXrffKHwJL" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="AI &amp; I by Every" data-url="https://www.youtube.com/playlist?list=PLuMcoKK9mKgHtW_o9h5sGO2vXrffKHwJL" data-author="AI &amp; I by Every">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 04</div>
+    <h2 class="section-title">Scale, Cost &amp; the Builder Economy / 规模、成本与 Builder 经济</h2>
+    <p class="section-desc">当 agent 真正进入工作流，token、推理成本和模型供给都会从后台问题变成产品设计的一部分。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:levie" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Box CEO Aaron Levie 预计，agent 消耗的 token 会达到今天人类使用量的 1000 倍，因为它们会进入工作流、处理企业数据、构建软件、保护企业安全。如此规模下，不可能只依赖一个 frontier model：系统需要闭源模型、能力更强的 open weights，以及适合大工作负载的低成本方案。</p>
+              <p>这不是在讨论哪个模型榜单第一，而是在讨论需求的数量级。如果 agent 成为软件里的默认 worker，推理经济学和模型多样性就会变成核心基础设施。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Agent 消耗的 token 将是今天的 1000 倍，因为它们会运行在工作流里，处理数据、构建几乎所有软件、保护企业安全。要规模化，需要多种 frontier AI 路线：继续推进闭源模型，同时提升 open weights 的能力、安全性，并让它们更适合大规模工作负载。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Box CEO Aaron Levie expects agents to consume 1,000 times more tokens than people do today because they will operate inside workflows, process company data, build software and secure enterprises. That scale makes a single frontier model insufficient: the stack will need closed models, capable open weights and cheaper approaches for large workloads.</p>
+              <p>The argument is less about a flashy model leaderboard than about demand. If agents become the default workers inside software, inference economics and model diversity become core infrastructure.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Agents are going to consume 1,000X more tokens than we consume today.
+
+              Because they’re going to be running in our workflows, processing all of our data, building out nearly all software, securing enterprises, and much more. To do this at scale we will need a variety of approaches at the frontier of AI.
+
+              This includes continuing to push the boundaries of closed models, while also increasing the capability of open weights models, making them more secure, as well as making them more efficient for large workloads.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/levie/status/2115516370695987435" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/levie/status/2115516370695987435" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="x:garrytan" data-author-name="Garry Tan" data-author-tag="" data-author-handle="@garrytan" data-author-avatar="../assets/avatars/x-garrytan.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-garrytan.jpg" alt="Garry Tan avatar"><span class="avatar-fallback">GT</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Garry Tan</div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle">@garrytan</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Y Combinator CEO Garry Tan 提到 Particle 的目标：既站在最聪明模型的 frontier，又把每单位 intelligence 的美元成本压到最低。这句话很短，却点出了 agent 基础设施正在形成的竞争：能力重要，但只有规模化成本能撑住，产品才真正成立。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Particle 会同时追求最聪明模型的 frontier，以及每单位 intelligence 最低的美元成本。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Y Combinator CEO Garry Tan highlights Particle&#39;s ambition to sit at the frontier while offering the lowest dollar cost per unit of intelligence. It is a compact statement of the infrastructure race now forming around agents: capability matters, but the product only works if the economics survive at scale.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Particle will be on the frontier for smartest model at lowest dollar per unit of intelligence</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/garrytan/status/2115517748860375286" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="Garry Tan" data-url="https://x.com/garrytan/status/2115517748860375286" data-author="Garry Tan">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <footer data-source-note="Source: Follow Builders curated daily digest. Rebuilt from the 2026-10-29 source feeds.">Source: Follow Builders curated daily digest. Rebuilt from the 2026-10-29 source feeds.</footer>
+
+  <script>
+    function getTemplateAuthorSources() {
+      const sources = window.AI_BUILDERS_TEMPLATE_SOURCES || {};
+      return { identities: sources.identities || {}, avatars: sources.avatars || {} };
+    }
+
+    function getAuthorInitials(name) {
+      return (name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(function(part) { return part[0]; }).join('').toUpperCase();
+    }
+
+    function hydrateTemplateCopy() {
+      const intro = document.querySelector('.intro');
+      if (intro) {
+        const kicker = intro.querySelector('.intro-kicker');
+        const copy = intro.querySelector('.intro-copy');
+        if (kicker) kicker.textContent = intro.dataset.kicker || '';
+        if (copy) copy.textContent = intro.dataset.text || '';
+      }
+
+      const footer = document.querySelector('footer');
+      if (footer) footer.textContent = footer.dataset.sourceNote || '';
+
+      const rewriteLabel = document.body.dataset.viewLabelRewrite || '速读';
+      const originalLabel = document.body.dataset.viewLabelOriginal || '原文';
+      document.querySelectorAll('.view-toggle').forEach(function(button) {
+        if (button.dataset.viewTarget === 'rewrite') button.textContent = rewriteLabel;
+        if (button.dataset.viewTarget === 'original') button.textContent = originalLabel;
+      });
+    }
+
+    function hydrateAuthorMeta() {
+      const sources = getTemplateAuthorSources();
+      document.querySelectorAll('.card').forEach(function(card) {
+        const authorKey = card.dataset.authorKey || '';
+        const identity = sources.identities[authorKey] || {};
+        const avatarEntry = sources.avatars[authorKey] || {};
+
+        const name = identity.name || card.dataset.authorName || '';
+        const rawHandle = identity.handle || card.dataset.authorHandle || '';
+        const handle = rawHandle && rawHandle.startsWith('@') ? rawHandle : (rawHandle ? '@' + rawHandle : '');
+        const tag = identity.label || card.dataset.authorTag || '';
+        const avatar = avatarEntry.fileUrl || avatarEntry.localPath || card.dataset.authorAvatar || '';
+
+        const nameNode = card.querySelector('.author-name');
+        const tagNode = card.querySelector('.author-tag');
+        const handleNode = card.querySelector('.author-handle');
+        const avatarNode = card.querySelector('.avatar');
+        const avatarImg = card.querySelector('.avatar img');
+        const avatarFallback = card.querySelector('.avatar-fallback');
+
+        if (nameNode) nameNode.textContent = name;
+        if (tagNode) tagNode.textContent = tag;
+        if (handleNode) handleNode.textContent = handle;
+        if (avatarImg) {
+          avatarImg.src = avatar;
+          avatarImg.alt = name ? name + ' avatar' : 'Author avatar';
+        }
+        if (avatarNode) avatarNode.classList.toggle('is-fallback', !avatar);
+        if (avatarFallback) avatarFallback.textContent = getAuthorInitials(name);
+      });
+    }
+
+    function updateEditionStrip() {
+      const publishDate = document.body.dataset.publishDate;
+      const editionName = document.body.dataset.editionName || '双语精选版';
+      const editionStrip = document.getElementById('edition-strip-text');
+      if (!publishDate || !editionStrip) return;
+
+      const issueNumber = document.body.dataset.issueNumber || '';
+      if (!issueNumber) return;
+
+      const selectedCount = document.querySelectorAll('.card').length;
+      const authorCount = new Set([].slice.call(document.querySelectorAll('.author-handle')).map(function(node) { return node.textContent.trim(); }).filter(Boolean)).size;
+      const themeCount = document.querySelectorAll('.section-header').length;
+      const parts = ['第 ' + issueNumber + ' 期', publishDate, editionName, selectedCount + ' 条精选', authorCount + ' 位作者', themeCount + ' 个主题'];
+      editionStrip.innerHTML = parts.map(function(part) { return '<span class="edition-item">' + part + '</span>'; }).join('<span class="edition-sep">|</span>');
+    }
+
+    function measureVariantHeight(variant) {
+      const prevPosition = variant.style.position;
+      const prevInset = variant.style.inset;
+      const prevVisibility = variant.style.visibility;
+      const prevPointerEvents = variant.style.pointerEvents;
+      const prevOpacity = variant.style.opacity;
+      const prevTransform = variant.style.transform;
+      const prevTransition = variant.style.transition;
+      const prevOverflowY = variant.style.overflowY;
+      const prevDisplay = variant.style.display;
+
+      variant.style.position = 'relative';
+      variant.style.inset = 'auto';
+      variant.style.visibility = 'hidden';
+      variant.style.pointerEvents = 'none';
+      variant.style.opacity = '1';
+      variant.style.transform = 'none';
+      variant.style.transition = 'none';
+      variant.style.overflowY = 'visible';
+      variant.style.display = 'block';
+
+      const height = variant.scrollHeight;
+
+      variant.style.position = prevPosition;
+      variant.style.inset = prevInset;
+      variant.style.visibility = prevVisibility;
+      variant.style.pointerEvents = prevPointerEvents;
+      variant.style.opacity = prevOpacity;
+      variant.style.transform = prevTransform;
+      variant.style.transition = prevTransition;
+      variant.style.overflowY = prevOverflowY;
+      variant.style.display = prevDisplay;
+
+      return Math.ceil(height);
+    }
+
+    function getTargetHeight(shell, target) {
+      const variant = shell.querySelector('.content-variant[data-view="' + target + '"]');
+      return measureVariantHeight(variant);
+    }
+
+    function syncShellHeights() {
+      document.querySelectorAll('.content-shell').forEach(function(shell) {
+        const active = shell.querySelector('.content-variant.is-active');
+        const target = active ? active.dataset.view : 'rewrite';
+        shell.style.height = getTargetHeight(shell, target) + 'px';
+      });
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', function() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(syncShellHeights, 120);
+    });
+
+    document.querySelectorAll('.card').forEach(function(card) {
+      const buttons = card.querySelectorAll('.view-toggle');
+      const shells = card.querySelectorAll('.content-shell');
+
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          const target = button.dataset.viewTarget;
+          if (button.classList.contains('is-active')) return;
+
+          buttons.forEach(function(btn) {
+            btn.classList.toggle('is-active', btn === button);
+          });
+
+          shells.forEach(function(shell) {
+            const current = shell.querySelector('.content-variant.is-active');
+            const next = shell.querySelector('.content-variant[data-view="' + target + '"]');
+            if (!current || !next || current === next) return;
+
+            shell.style.height = shell.offsetHeight + 'px';
+            requestAnimationFrame(function() {
+              current.classList.remove('is-active');
+              next.classList.add('is-active');
+              shell.style.height = getTargetHeight(shell, target) + 'px';
+            });
+          });
+        });
+      });
+    });
+
+    hydrateTemplateCopy();
+    hydrateAuthorMeta();
+    updateEditionStrip();
+    syncShellHeights();
+
+    // Eureka save buttons
+    var EUREKA_URL = 'http://127.0.0.1:8087/eureka';
+    function showToast(msg, isError) {
+      var t = document.querySelector('.eureka-toast');
+      if (!t) {
+        t = document.createElement('div');
+        t.className = 'eureka-toast';
+        document.body.appendChild(t);
+      }
+      t.textContent = msg;
+      if (isError) t.style.background = '#c0392b';
+      else t.style.background = '#1a1a1a';
+      t.classList.add('show');
+      setTimeout(function() { t.classList.remove('show'); }, 2200);
+    }
+    document.querySelectorAll('.eureka-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var title = this.dataset.title || '';
+        var url = this.dataset.url || '';
+        var author = this.dataset.author || '';
+        var note = title ? title.slice(0, 80) : '';
+        var origText = this.textContent;
+        this.textContent = '...';
+        this.disabled = true;
+        fetch(EUREKA_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ title: note, url: url, author: author })
+        }).then(function(r) { return r.json(); })
+          .then(function(d) {
+            btn.textContent = d.ok ? '✓ Saved' : '✗ Error';
+            showToast(d.ok ? 'Saved to Eurekas ✓' : 'Save failed: ' + (d.error || 'unknown'), !d.ok);
+            if (d.ok) setTimeout(function() { btn.textContent = origText; btn.disabled = false; }, 1500);
+            else { btn.textContent = origText; btn.disabled = false; }
+          })
+          .catch(function(e) {
+            btn.textContent = origText; btn.disabled = false;
+            showToast('Eureka server not running — start it first', true);
+          });
+      });
+    });
+  </script>
+</body>
+</html>
