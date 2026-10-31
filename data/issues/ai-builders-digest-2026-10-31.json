@@ -1,0 +1,183 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-10-31",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的 feed 里，AI 正从“更聪明的聊天工具”变成一套真正会进入工作流的系统：agent 开始驻在每台桌面、应用可以自己维护，企业则必须用更严格的 sandbox、权限和审计把它们管起来。另一条很值得留意的线索是，builder 们正在重新争夺自己的工作环境，从自建 harness 到跨多个 agent 共享 context，工具的控制权本身也成了产品。"
+  },
+  "archive": {
+    "title": "Agent 落地日报",
+    "desc": "Agent 正进入桌面、应用和企业流程，随之而来的核心问题从“能不能做”转向“如何安全、持续、由谁控制”。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-10-31 source feeds.",
+  "sections": [
+    {
+      "title": "Agents Move Into the Workflow / Agent 进入工作流",
+      "desc": "今天最具体的信号不是模型又聪明了一点，而是 agent 开始承担持续运行、维护应用和跨工具工作的角色。",
+      "cards": [
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2116343923925041462",
+          "en": {
+            "rewrite": [
+              "Replit CEO Amjad Masad frames a product feature as a new software category: turn on autofix for a hosted app and it becomes “Self-Maintaining Software.” The important shift is from an agent that helps ship code to an application that can keep repairing itself after it is deployed.",
+              "That is a small sentence with a large implication for builders: maintenance, not initial generation, may become the first place where agentic software feels continuous rather than prompt-by-prompt."
+            ],
+            "original": ["If you host your apps on Replit and enable “autofix” it becomes Self-Maintaining Software. https://t.co/ezhwiI7ccw https://t.co/6uTsADTHro"]
+          },
+          "cn": {
+            "rewrite": [
+              "Replit CEO Amjad Masad 把一个产品功能说成了一个新软件类别：给托管在 Replit 上的应用打开 autofix，它就变成了“Self-Maintaining Software”。关键变化是，agent 不只是帮你把代码发出去，而是开始在部署之后持续修复应用。",
+              "这句话背后的含义不小：对 builder 来说，真正让 agent 像“持续运行的系统”而不是一次性 prompt 的，可能不是生成代码，而是维护代码。"
+            ],
+            "original": ["如果你把应用托管在 Replit 上并开启“autofix”，它就会变成 Self-Maintaining Software。https://t.co/ezhwiI7ccw https://t.co/6uTsADTHro"]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2116345666108854781",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch shares the direction in one line: an agent on every desktop. It is a useful counterpoint to the idea that agents will live only inside chat windows or developer terminals: the next interface may be a persistent worker sitting beside every application."
+            ],
+            "original": ["An agent on every desktop https://t.co/RwAVBTCNPk"]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 用一句话概括了方向：每台桌面上都有一个 agent。这提醒我们，agent 不一定只会住在聊天窗口或开发者终端里，下一步可能是一个一直待在应用旁边、随时能工作的常驻助手。"
+            ],
+            "original": ["每台桌面上都有一个 agent https://t.co/RwAVBTCNPk"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Control the Harness / 把控制权拿回来",
+      "desc": "当模型和平台会改变能力边界时，越来越多 builder 开始把 harness、context 和权限当成自己的基础设施。",
+      "cards": [
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2116153238563242385",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger makes the case for running your own harness instead of relying on one whose capabilities can be changed by a company at any time. The concern is not ideology; it is operational continuity. If the harness is part of your workflow, its permissions and behavior are infrastructure, and you should be able to control them."
+            ],
+            "original": ["Another reason why you wanna use your own harness and not one where companies change what you can or can’t do at will. https://t.co/eX9uv6spfR"]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger 认为，最好使用自己的 harness，而不是把工作流押在一个随时可能被公司改变能力边界的 harness 上。问题不只是理念，而是运行连续性：如果 harness 已经成了工作流的一部分，它的权限和行为就是基础设施，最好掌握在自己手里。"
+            ],
+            "original": ["另一个应该使用自己 harness 的理由：不要依赖一个公司可以随意改变你能做什么、不能做什么的 harness。https://t.co/eX9uv6spfR"]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2116303457774899251",
+          "en": {
+            "rewrite": [
+              "Y Combinator CEO Garry Tan describes GBrain Cloud as a way to run the same context across different agents and harnesses. His list is telling: different tools have different strengths, so the valuable layer may be the context that travels between them rather than any single assistant."
+            ],
+            "original": ["GBrain Cloud is the fastest way to get GBrain going across all your agents. Every harness has its strengths - Grok/Muse/Dots for personal, OpenClaw/Hermes for raw power, Claude Code/Codex/Capy for codegen\n\nGBrain lets you run your context on all of them\n\nhttps://t.co/liju9MjWoY"]
+          },
+          "cn": {
+            "rewrite": [
+              "Y Combinator CEO Garry Tan 把 GBrain Cloud 描述成一个让同一份 context 跨不同 agent 和 harness 运行的入口。他列出的工具组合很有意思：每个 harness 都有自己的强项，所以真正有价值的那一层，可能不是某一个助手，而是能在它们之间流动的 context。"
+            ],
+            "original": ["GBrain Cloud 是让 GBrain 跨所有 agent 运行的最快方式。每个 harness 都有自己的强项：Grok/Muse/Dots 适合个人使用，OpenClaw/Hermes 适合原始能力，Claude Code/Codex/Capy 适合代码生成。\n\nGBrain 让你可以在所有这些工具上运行自己的 context。\n\nhttps://t.co/liju9MjWoY"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Safety Becomes the Product / 安全本身成为产品",
+      "desc": "Agent 能做得越多，sandbox、最小权限和可审计的控制层就越不可能被当成附属功能。",
+      "cards": [
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2116183233784394039",
+          "en": {
+            "rewrite": [
+              "Amjad Masad says Replit has written a whitepaper on sandboxing agents to maximize productivity while reducing risk. Paired with the self-maintaining-software announcement, the signal is clear: the product challenge is not just giving agents more access, but designing an environment where that access can be useful without becoming unbounded."
+            ],
+            "original": ["We wrote a whitepaper on how to properly sandbox agents to maximize productivity and reduce risk.\n\nhttps://t.co/5ihrJ6zkGj"]
+          },
+          "cn": {
+            "rewrite": [
+              "Amjad Masad 说 Replit 写了一份关于 agent sandbox 的白皮书，目标是在降低风险的同时最大化生产力。把它和“Self-Maintaining Software”放在一起看，信号很清楚：真正的产品难题不是给 agent 更多权限，而是设计一个既能让它发挥作用、又不会失控的环境。"
+            ],
+            "original": ["我们写了一份白皮书，介绍如何正确地对 agent 做 sandbox，在最大化生产力的同时降低风险。\n\nhttps://t.co/5ihrJ6zkGj"]
+          }
+        },
+        {
+          "authorKey": "podcast:no-priors",
+          "sourceUrl": "https://www.youtube.com/@NoPriorsPodcast",
+          "authorName": "Jake Stauch, Serval Co-founder and CEO",
+          "authorTag": "No Priors",
+          "en": {
+            "rewrite": [
+              "The takeaway from Serval co-founder and CEO Jake Stauch is that enterprise autonomy only works when guardrails are treated as the core product. Serval brings coding agents to IT teams, then wraps them in approvals, staging, deterministic workflows and an audit trail so they can safely touch systems with elevated permissions.",
+              "Stauch's contrarian bet is to attack ServiceNow directly rather than build a thin AI layer on top of it. His reasoning is that code is a better way to express enterprise automation than drag-and-drop workflow builders, and AI finally makes code accessible to the people who actually run internal systems.",
+              "The memorable line is blunt: “Serval is the boundary. Serval is the guardrails.” In large, regulated companies, the magical personal-agent experience is less important than a system that can explain who approved an action, what it did, and why it was allowed."
+            ],
+            "original": ["On the other hand, autonomy is very scary in the enterprise. Serval is the boundary. Serval is the guardrails. We are the way that a large enterprise with a lot of rules and approvals and process and politics can adopt these tools safely and comfortably at scale.", "And so it's how do you build a system that makes it easy for everyone to be a builder. And the core insight here was that IT actually wants to build stuff."]
+          },
+          "cn": {
+            "rewrite": [
+              "Serval 联合创始人兼 CEO Jake Stauch 的核心判断是：企业 agent 要想真正自主，guardrails 就必须是产品本身。Serval 把 coding agent 交给 IT 团队，同时加上审批、staging、确定性 workflow 和 audit trail，让 agent 可以在获得更高权限的情况下安全触碰企业系统。",
+              "Stauch 更激进的地方在于，他选择直接挑战 ServiceNow，而不是在它上面再加一层薄薄的 AI。因为在他看来，code 比拖拽式 workflow builder 更适合表达企业自动化，而 AI 终于让真正负责内部系统的人也能用 code 来构建。",
+              "他有一句很准确的话：“Serval is the boundary. Serval is the guardrails.” 对大型、受监管的企业来说，个人 agent 的魔法感不如可追溯性重要：谁批准了动作、agent 做了什么、为什么允许它做，都必须说得清楚。"
+            ],
+            "original": ["另一方面，自主性在企业里很可怕。Serval 是边界，Serval 是 guardrails。我们让拥有大量规则、审批、流程和政治因素的大型企业，可以安全、放心地规模化采用这些工具。", "所以，如何构建一个让所有人都容易成为 builder 的系统？核心洞察是，IT 确实想要构建东西。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Shape of Intelligence / 智能会怎样进入经济",
+      "desc": "Feed 里的乐观主义并不是“岗位会自动消失”，而是提醒我们不要用静态模型预测一个会持续扩张的经济。",
+      "cards": [
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2116212322838655014",
+          "en": {
+            "rewrite": [
+              "Thariq argues that people are unusually bad at predicting how more intelligence will show up in the economy. His target is the neat but lazy forecast that AI will simply become expensive and unemploy everyone; he prefers an aligned superintelligence that can explain its work and make each person more effective.",
+              "The useful warning is about narratives as much as economics: repeating a simplistic future can turn it into a self-fulfilling story before we have understood the mechanisms."
+            ],
+            "original": ["the solution to economic doomerism is to be even more AGI-pilled\n\nI believe in a well-aligned ASI that can explain its work and bring us along, one that makes each individual maximally effective"]
+          },
+          "cn": {
+            "rewrite": [
+              "Thariq 认为，人们其实很不擅长预测“更多智能”到底会如何进入经济。他反对那种简单的预言：AI 只会越来越贵，然后让所有人失业；他相信更理想的方向是一个能解释自己、带着人一起走、让每个人都更高效的 aligned superintelligence。",
+              "这不只是经济判断，也是对叙事的提醒：如果我们还没弄清机制，就不断重复一个过于简单的未来，它可能先变成自我实现的故事。"
+            ],
+            "original": ["解决经济悲观主义的方法，是变得更加 AGI-pilled。\n\n我相信一个对齐良好的 ASI，它能解释自己的工作并带着我们一起走，让每个人都最大限度地发挥效率。"]
+          }
+        },
+        {
+          "authorKey": "x:claudeai",
+          "sourceUrl": "https://x.com/claudeai/status/2116220869479428500",
+          "en": {
+            "rewrite": [
+              "Claude's latest plan change is a concrete example of capability becoming a usage-policy decision: Max 5x is now Max, Max 20x is Ultra, and verified Ultra subscribers no longer face the five-hour limit. Weekly limits remain unchanged, so this is an expansion of burst capacity rather than an unlimited plan."
+            ],
+            "original": ["We’re renaming our Max plans: \n\nMax 5x → Max\nMax 20x → Ultra\n\nMax is still $100/month, and Ultra is still $200. If you’re a subscriber, there’s nothing you need to do.\n\nWe’re also removing the 5-hour limit for verified Ultra accounts, starting today with most existing subscribers. Newer accounts keep a temporary limit until they’re verified, which helps us prevent fraud and abuse. You'll get an email when it's removed.\n\nWeekly limits remain unchanged. View our plans here:  https://t.co/niRpyGF5Me"]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude 的最新套餐调整，是“模型能力”如何落到使用政策上的一个具体例子：Max 5x 改名为 Max，Max 20x 改名为 Ultra，完成验证的 Ultra 用户取消 5 小时限制。每周限额不变，所以这是扩大连续使用能力，而不是变成无限量套餐。"
+            ],
+            "original": ["我们要重新命名 Max 套餐：\n\nMax 5x → Max\nMax 20x → Ultra\n\nMax 仍然是每月 100 美元，Ultra 仍然是每月 200 美元。订阅用户无需做任何操作。\n\n我们也将从今天开始取消已验证 Ultra 账户的 5 小时限制，大多数现有订阅用户都会立即生效。新账户在完成验证前会暂时保留限制，以帮助防止欺诈和滥用。取消限制时你会收到邮件。\n\n每周限额不变。套餐详情：https://t.co/niRpyGF5Me"]
+          }
+        }
+      ]
+    }
+  ]
+}
