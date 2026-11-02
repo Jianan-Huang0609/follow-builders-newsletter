@@ -1,0 +1,141 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-11-02",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的信号很一致：AI 正从“帮我做一点事”走向“我来管理一支由 agent 组成的团队”。与此同时，真正拉开差距的仍然是底层基础设施、个人对工具链的掌控，以及把一个想法快速做成可用产品的能力。"
+  },
+  "archive": {
+    "title": "Agent组织日报",
+    "desc": "从个人开发到企业工作流，AI 的新杠杆正在把人从亲自执行推向管理并行工作的 agent。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest.",
+  "sections": [
+    {
+      "title": "From Coding to Orchestrating / 从写代码到调度工作",
+      "desc": "今天最值得注意的变化不是模型又多了一个功能，而是工作本身开始按 agent 的并行能力重新组织。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2117134917847093491",
+          "en": {
+            "rewrite": ["Aaron Levie, Box CEO, argues that knowledge workers are moving from using agents as incremental productivity tools to managing teams of agents. In information-heavy fields, parallel execution breaks the old link between hours worked and output, so the organizations that redesign their operations around agents early may compound their advantage."],
+            "original": ["Increasingly this will be the new job description for a lot of roles, not just coding. We’re clearly moving from a world where agents help us do our work incrementally better or faster, to us helping agents do their work.\n\nThis turns everyone in one of these positions to that of a manager of a team of agents, instead of an individual contributor with just some added leverage from AI. The biggest areas of impact will be information-heavy jobs, like coding, cybersecurity, legal work, biotech, engineering, and many other fields. \n\nAnd as a result, in these jobs your leverage will begin to be decoupled from the normal ratio of hours spent working to output generated. For essentially the history of knowledge work the main variable you had to play with was hours of work done (assuming fixed level talent/coordination/strategy).\n\nNow we’ve separated these variables because agents can parallelize work for us, to in theory execute as much as we need to pull off whatever goal we’re trying to accomplish. The people and organizations that discover this sooner, and orient their operations around it, will see compounding gains in their workflows."]
+          },
+          "cn": {
+            "rewrite": ["Box CEO Aaron Levie 认为，知识工作者正在从“让 agent 帮自己做得更快一点”，转向“管理一支 agent 团队”。在 coding、网络安全、法律、生物科技、工程等信息密集型领域，并行执行正在打破工作时长与产出之间的旧关系；越早按 agent 重构流程的组织，越可能获得复利式优势。"],
+            "original": ["越来越多岗位的新职责会是这样，而且不只是 coding。我们显然正在从 agent 帮我们把工作做得更好、更快一点，走向我们帮助 agent 完成它们的工作。\n\n这会把这些岗位上的每个人都变成一支 agent 团队的管理者，而不再只是一个获得 AI 杠杆的个人贡献者。影响最大的会是信息密集型工作，比如 coding、网络安全、法律、生物科技、工程等。\n\n因此，在这些工作中，你的杠杆会逐渐与“投入多少小时、产出多少结果”的通常比例脱钩。知识工作的历史上，假设人才、协调和策略水平固定，唯一能调整的主要变量就是工作时长。\n\n现在变量被拆开了，因为 agent 可以为我们并行执行工作，理论上可以按目标需要执行尽可能多的任务。更早发现这一点、并围绕它重构运营方式的人和组织，会在工作流中获得复利式增长。"]
+          }
+        },
+        {
+          "authorKey": "x:karpathy",
+          "sourceUrl": "https://x.com/karpathy/status/2116957135661945283",
+          "en": {
+            "rewrite": ["Andrej Karpathy built HackerTube over a weekend: Claude filtered 43 million Hacker News comments down to 6,454 repeatedly recommended videos, with no login and a representative frame instead of an algorithmically optimized thumbnail. The striking part is not the app itself; it is that a project which once implied weeks or months of work can now be specified, deployed, secured, and iterated through a few-shot interaction with a coding agent."],
+            "original": ["Weekend hack: HackerTube. I was annoyed with YouTube's recommendations so I had Claude filter down 43M comments over 20 years of HN to 6,454 videos that keep being recommended. *Significantly* better viewing experience, ~2 hours with Opus 5.5:\nhttps://t.co/JIhXN7OSh1\n\n- Excellent recs without any logins (state is kept in local browser session)\n- Thumbnail is a representative frame from middle of the video instead of the super duper A/B test hyper-optimized user uploads\n- Underlying data from the comment analysis as one zip file, point your Claude at it and ask for your own version\n- HackerTube Longs ✊\n\nA bit more on the process:\nI use Claude Code (desktop app for Mac), Opus 5.5 on Medium effort as my default. I only talk to Claude and have it do everything, the only manual work I helped with in tandem was in the browser (reminiscent of MenuGen): 1) I had to create some kind of API key from Google Cloud UI to query YouTube for video metadata, 2) I booted up a VPS box for serving and 3) I bought the domain name. Once the box was up I gave Claude the IP and told it update, secure, harden, deploy and optimize the code, and it did the whole thing.\n\nMany awesome projects that would have normally taken weeks/months even can now be few-shotted for breakfast. What else are we not thinking of."]
+          },
+          "cn": {
+            "rewrite": ["Andrej Karpathy 用一个周末做出了 HackerTube：让 Claude 从 20 年间 4300 万条 Hacker News 评论里筛出 6454 个被反复推荐的视频，不需要登录，也不用平台精心测试过的缩略图，而是取视频中段的代表画面。真正重要的不是这个应用本身，而是过去可能要做几周甚至几个月的项目，现在可以通过与 coding agent 的几轮交互完成指定、部署、安全加固和迭代。"],
+            "original": ["周末小 hack：HackerTube。我受够了 YouTube 的推荐，于是让 Claude 从 20 年间 Hacker News 的 4300 万条评论里筛出 6454 个反复被推荐的视频。观看体验明显更好，用 Opus 5.5 大约花了 2 小时：\nhttps://t.co/JIhXN7OSh1\n\n- 不需要登录也能获得很棒的推荐（状态保存在本地浏览器 session）\n- 缩略图取视频中段的代表画面，而不是用户上传、经过超级 A/B 测试优化的图片\n- 评论分析的底层数据打包成一个 zip 文件，你可以把它交给 Claude，让它做出自己的版本\n- HackerTube Longs ✊\n\n补充一点过程：我默认使用 Claude Code（Mac 桌面应用）和 Opus 5.5 的 Medium effort。我只和 Claude 对话，让它完成全部工作；唯一需要我配合的手动操作都发生在浏览器里：创建 Google Cloud API key、开一台 VPS、购买域名。服务器准备好后，我把 IP 给 Claude，让它更新、加固、部署和优化代码，整个流程就完成了。\n\n很多过去通常需要几周或几个月的优秀项目，现在可以在早餐时间通过 few-shot 做出来。还有什么是我们没想到的？"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Own the Stack / 把工具链握在自己手里",
+      "desc": "当模型能力越来越接近时，选择什么模型、如何组合工具、谁掌握运行环境，会变成更实际的竞争力。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2117000819623243925",
+          "en": {
+            "rewrite": ["Vercel CEO Guillermo Rauch makes the case for owning your intelligence layer: keep control of the harness, data, connections, runtime, and agents instead of depending on one provider's giant model. His point is less about rejecting large models than preserving optionality through local models and open source."],
+            "original": ["Own your intelligence.\n\nAnyone that opposes this has something to sell you (perhaps your own intelligence back to you.)\n\nLocal models need to continue proliferating. The “absolute unit” massive models may be out of reach for now locally, so your best option is to, indeed, keep your options open. Own your harness, data, connections, runtime: your agents. Embrace open source."]
+          },
+          "cn": {
+            "rewrite": ["Vercel CEO Guillermo Rauch 主张把自己的 intelligence layer 握在手里：掌控 harness、数据、连接、runtime 和 agent，而不是把一切押在某家供应商的巨型模型上。他并不是在否定大模型，而是在提醒大家用本地模型和开源保留选择权。"],
+            "original": ["掌握自己的 intelligence。\n\n任何反对这一点的人，都有东西想卖给你（也许是把你自己的 intelligence 再卖回给你）。\n\n本地模型需要继续发展。那些“绝对庞大”的模型目前可能还无法在本地运行，所以最好的选择确实是保留选项。掌控你的 harness、数据、连接、runtime，也就是你的 agent。拥抱开源。"]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2116946320674152810",
+          "en": {
+            "rewrite": ["Peter Yang's current tool stack is deliberately plural: ChatGPT and Codex for browser and computer use, Claude for design and video editing, Grok Bot for always-on agents and scheduled jobs, with Gemini still under evaluation for writing. The practical lesson is uncomfortable but useful: there may be no single best AI product, only a best fit for a specific job."],
+            "original": ["I wish I could just use one AI tool but right now there are clear winners in each category below:\n\nBrowser/computer use = ChatGPT + Codex\nDesign/video editing/\"taste\" = Claude\n24/7 agents and scheduled jobs = Grok Bot\n\nAlso, Gemini is underrated for writing but need to test it more."]
+          },
+          "cn": {
+            "rewrite": ["Peter Yang 现在的工具链是故意多元化的：浏览器和电脑操作用 ChatGPT + Codex，设计、视频编辑和“品味”交给 Claude，全天候 agent 与定时任务用 Grok Bot，写作方面还在继续测试 Gemini。实用的结论有点反直觉：也许不存在一个全能的最佳 AI，只有针对具体工作的最佳匹配。"],
+            "original": ["我希望自己只用一个 AI 工具，但现在每个类别里都有明显的赢家：\n\n浏览器/电脑操作 = ChatGPT + Codex\n设计/视频编辑/“品味” = Claude\n全天候 agent 和定时任务 = Grok Bot\n\n另外，Gemini 在写作方面被低估了，但我还需要继续测试。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Smaller, Cheaper, More Specific / 更小、更便宜、更专用",
+      "desc": "模型竞争不只发生在“谁更大”，也发生在一个更小的模型能否以更低成本把特定 agent 工作做好。",
+      "cards": [
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2117137390016073977",
+          "en": {
+            "rewrite": ["Garry Tan highlights a more economically interesting benchmark than raw model size: Particle-1 is claimed to match much larger models on agentic retrieval at one twenty-third the price. If that holds up in practice, the winning architecture for many products may be a well-chosen specialist model rather than the biggest available model."],
+            "original": ["Particle-1 is as good as much larger models for agentic retrieval but 1/23 the price\n\nhttps://t.co/1CmqlXOx8D https://t.co/7s33EuSO0L"]
+          },
+          "cn": {
+            "rewrite": ["Garry Tan 提到一个比模型尺寸更值得关注的指标：Particle-1 据称在 agentic retrieval 上能达到大得多的模型的水平，但价格只有二十三分之一。如果实际使用中也成立，很多产品的优胜方案可能不是最大的模型，而是选对一个专用模型。"],
+            "original": ["Particle-1 在 agentic retrieval 上和大得多的模型一样好，但价格只有后者的 1/23。\n\nhttps://t.co/1CmqlXOx8D https://t.co/7s33EuSO0L"]
+          }
+        },
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2116998155925360965",
+          "en": {
+            "rewrite": ["Replit CEO Amjad Masad describes a feedback widget that turns user feedback on a site into prompts for agents to build against. The interesting product move is closing the loop between what users say and what the agent changes, making feedback part of the development surface rather than a separate research queue."],
+            "original": ["You can enable this on Replit with one toggle. If you enable the “feedback widget” on your site, users’ feedback become prompts for the agents to build. https://t.co/QLBwKenews"]
+          },
+          "cn": {
+            "rewrite": ["Replit CEO Amjad Masad 介绍了一个 feedback widget：网站用户的反馈可以直接变成 agent 的构建提示。这个产品动作的关键，是把“用户说了什么”和“agent 改了什么”接成一个闭环，让反馈不再只是单独排队等待研究的材料，而是开发界面的一部分。"],
+            "original": ["在 Replit 里打开一个开关就能启用。如果你在网站上启用“feedback widget”，用户的反馈就会变成 agent 用来构建的 prompts。https://t.co/QLBwKenews"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Building in Public / 把产品做出来再说",
+      "desc": "一些最有用的信号来自正在动手的人：不一定是完整发布，但能看到他们如何缩短从想法到原型的距离。",
+      "cards": [
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2116976789046350040",
+          "en": {
+            "rewrite": ["Former Claude Code engineer Thariq is iterating on a game by adding a fire-fighting taekwondo character and replacing 3D models with generated sprites. It is a small but concrete example of generative assets changing the economics of prototyping: the creator can revise the visual language while the game is still taking shape."],
+            "original": ["adding a new character: a taekwondo master that fights with fire\n\nI also updated the art style from 3d models to use generated sprites https://t.co/4F60NS4TQy https://t.co/hLIVplRPrW"]
+          },
+          "cn": {
+            "rewrite": ["前 Claude Code 工程师 Thariq 正在迭代一款游戏：加入会用火战斗的跆拳道大师，并把美术风格从 3D 模型改成生成式 sprites。这是一个小而具体的例子，说明生成式素材正在改变原型开发的成本：游戏还没定型，创作者就可以持续重做视觉语言。"],
+            "original": ["加入一个新角色：会用火战斗的跆拳道大师。\n\n我还把美术风格从 3D 模型改成了生成式 sprites https://t.co/4F60NS4TQy https://t.co/hLIVplRPrW"]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2116988333096370443",
+          "en": {
+            "rewrite": ["Guillermo Rauch says he is testing Gemini on two high-complexity projects and that it is doing well. The useful signal here is not a broad leaderboard claim, but a builder reporting that model choice is becoming something to test directly against real, difficult work."],
+            "original": ["Working with Gemini on https://t.co/3Z4NESzNKd is hilarious 😂😂\n\nOther than being SUPER EXCITED!, I've been testing it on two high complexity projects and it's doing great. https://t.co/Vb16Fbyats"]
+          },
+          "cn": {
+            "rewrite": ["Guillermo Rauch 说，他正在两个高复杂度项目上测试 Gemini，表现不错。这个信号的价值不在于又一次泛泛的排行榜判断，而在于：模型选择越来越应该直接拿真实、困难的工作来测。"],
+            "original": ["和 Gemini 一起做 https://t.co/3Z4NESzNKd 太好笑了 😂😂\n\n除了超级兴奋之外，我还在两个高复杂度项目上测试它，表现非常好。https://t.co/Vb16Fbyats"]
+          }
+        }
+      ]
+    }
+  ]
+}
