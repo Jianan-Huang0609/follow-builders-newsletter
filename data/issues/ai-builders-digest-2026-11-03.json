@@ -1,0 +1,249 @@
+{
+  "title": "AI Builders Digest — 2026-11-03",
+  "subtitle": "Agent 开始进入自己的工作空间，产品也开始替用户做模型选择。",
+  "publishDate": "2026-11-03",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "今天值得读的 9 条动态",
+    "text": "今天的主线很清楚：agent 不只是一个聊天窗口，它需要带着身份、skills、代码仓库和记忆进入受控的工作空间；而在专业场景里，真正有价值的产品也不再要求用户自己挑模型。与此同时，AI 产品的瓶颈越来越像是 harness、上下文和协作方式，而不只是模型本身。"
+  },
+  "archive": {
+    "title": "Agent 工作空间日报",
+    "desc": "从受控执行环境、模型路由到专业 agent 产品，看看 AI builder 今天把注意力放在哪里。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Generated through the Follow Builders skill",
+  "sections": [
+    {
+      "title": "01｜Agent 需要自己的工作空间",
+      "desc": "从 sandbox 到 workspace，agent 的运行边界正在被重新定义。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2117338179535810957",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch argues that a stateless sandbox is the wrong benchmark for agents. An agent becomes useful when it arrives with its own workspace: identity, skills, repos, and memories.",
+              "He also points to Vercel Sandbox's reliability and security work across 19 global regions as the less glamorous infrastructure that makes agent products dependable."
+            ],
+            "original": [
+              "Stateless sandboxes are the wrong benchmark. Agents are only useful if they have their workspace with them (identity, skills, repos, memories…).",
+              "Vercel Sandbox team has been beautifully delivering on their latency & throughput SLOs, while prioritizing reliability and security."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch 认为，用无状态 sandbox 衡量 agent 是找错了指标。只有当 agent 带着自己的 workspace 一起工作——包括 identity、skills、repos 和 memories——它才真正有用。",
+              "他还提到 Vercel Sandbox 在 19 个全球区域持续做好延迟、吞吐、可靠性和安全，这些不那么性感的基础设施，才是 agent 产品能稳定运行的前提。"
+            ],
+            "original": [
+              "无状态 sandbox 是错误的 benchmark。Agent 只有带着自己的 workspace 才有用。",
+              "Vercel Sandbox 团队在延迟、吞吐 SLO 的同时，优先保证可靠性和安全。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2117499074496872882",
+          "en": {
+            "rewrite": [
+              "Amjad Masad says AI agents should run in dedicated, organization-controlled environments, with access limited to the resources required for each task. The implication is practical: agent deployment needs boundaries designed into the environment, not bolted on afterward."
+            ],
+            "original": [
+              "AI agents should operate in dedicated, organization-controlled environments with limited access to the resources each task requires."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Amjad Masad 认为，AI agent 应该运行在组织自己控制的专用环境里，并且只获得完成当前任务所需的资源。换句话说，agent 的边界应该直接设计进运行环境，而不是事后补一层权限。"
+            ],
+            "original": [
+              "AI agent 应该运行在组织控制的专用环境中，只能访问每项任务所需的资源。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "02｜模型选择，交给产品判断",
+      "desc": "用户不想研究模型排行榜，他们只想把工作做好。",
+      "cards": [
+        {
+          "authorKey": "podcast:latent-space",
+          "authorName": "Jacob Lauritzen",
+          "authorTag": "CTO of Legora",
+          "sourceUrl": "https://www.youtube.com/@LatentSpacePod",
+          "en": {
+            "rewrite": [
+              "Legora started as ChatGPT for Swedish law and grew into a legal agent that drafts, edits Word files, organizes documents, runs complex analysis, and orchestrates work between lawyers, clients, and agents.",
+              "The product team routes different parts of a task to different models. The goal is not to make lawyers choose between Sonnet and Opus; it is to keep them on the Pareto frontier while the product handles the trade-offs in cost, latency, and quality.",
+              "Lauritzen's useful dividing line is that roughly 60% of legal work is already tractable. The next frontier is less about making every answer smarter and more about cost, latency, and handling the remaining complex analysis."
+            ],
+            "original": [
+              "The way everything started was ChatGPT with Swedish laws and search tool in it.",
+              "I think we found it most effective to subdivide the problem and route on, like, as we subdivide the task.",
+              "There's probably like 60% of the work we can do really well right now, and from now on, it's like a cost and latency thing."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Legora 最初只是一个接入瑞典法律的 ChatGPT，后来成长为能起草文件、编辑 Word、整理资料、执行复杂分析，并协调律师、客户和 agent 协作的法律产品。",
+              "他们会把一个任务拆开，让不同部分使用不同模型。重点不是让律师自己在 Sonnet 和 Opus 之间做选择，而是由产品替用户处理成本、延迟和质量的取舍，让用户始终留在 Pareto frontier 上。",
+              "Lauritzen 给出的实用判断是：大约 60% 的法律工作现在已经能做得很好。下一步的关键不只是让答案更聪明，而是降低成本和延迟，并处理剩下的复杂分析。"
+            ],
+            "original": [
+              "一切始于一个接入瑞典法律和搜索工具的 ChatGPT。",
+              "把问题拆开，再根据拆分后的任务进行路由，对我们最有效。",
+              "现在大约 60% 的工作已经能做得很好，接下来更多是成本和延迟问题。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2117283355427495983",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux describes a product direction that makes model choice disappear: the user's dot chooses the best model for the task, using different models for different parts of the work. The product is becoming a routing layer, not a model picker."
+            ],
+            "original": [
+              "Your dot will choose the best model for the task, drawing on different models for different parts of the work."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux 描述了一种让模型选择消失的产品方向：由用户的 dot 为任务选出最合适的模型，并让任务的不同部分调用不同模型。产品正在从 model picker 变成 routing layer。"
+            ],
+            "original": [
+              "你的 dot 会为任务选择最佳模型，并为工作的不同部分调用不同模型。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "03｜Harness 和协作方式才是瓶颈",
+      "desc": "模型能力之外，真正影响交付速度的是工具链和多人协作结构。",
+      "cards": [
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2117333424403042330",
+          "en": {
+            "rewrite": [
+              "Peter Yang found that ChatGPT's writing suggestions were almost entirely bad while Gemini's were actually useful for an editing task. But the better model was held back by its harness: Antigravity did not have working browser use, so he had to paste Gemini's edits back into ChatGPT to finish the job.",
+              "The point is less about declaring a winner than about showing how product integrations can erase model quality gains."
+            ],
+            "original": [
+              "The best model for writing & editing is held back by its harness.",
+              "Antigravity doesn't seem to have working browser use so I basically have to paste all of Gemini's edits back into ChatGPT to make the edits in my browser."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 发现，ChatGPT 对一篇文章的改写建议几乎全都不好，而 Gemini 的建议确实有用。但更好的模型被 harness 拖住了：Antigravity 的浏览器能力还不能正常工作，他只能把 Gemini 的修改重新粘回 ChatGPT，才能在浏览器里完成编辑。",
+              "重点不只是比较谁的模型更强，而是产品集成可能直接抵消模型能力的提升。"
+            ],
+            "original": [
+              "最适合写作和编辑的模型，被它的 harness 拖住了。",
+              "Antigravity 的浏览器使用似乎还不能正常工作，所以我只能把 Gemini 的所有修改粘回 ChatGPT。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2117410016730964358",
+          "en": {
+            "rewrite": [
+              "Garry Tan says Capy Captains increased his issue-fixing throughput about 5x overnight. The unlock was not a smarter single agent, but coordination across captains and subthreads."
+            ],
+            "original": [
+              "Capy Captains increased my issue fixing throughput by about 5X overnight",
+              "Being able to coordinate across captains and subthreads is an insane unlock"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan 说，Capy Captains 让他的 issue 修复吞吐量一夜之间提升了约 5 倍。关键不是单个 agent 变得更聪明，而是 captains 和 subthreads 之间可以协调起来。"
+            ],
+            "original": [
+              "Capy Captains 让我的 issue 修复吞吐量一夜之间提升了约 5 倍。",
+              "能够在 captains 和 subthreads 之间协调，是一个疯狂的解锁。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thenanyu",
+          "sourceUrl": "https://x.com/thenanyu/status/2117432599559716940",
+          "en": {
+            "rewrite": [
+              "Nan Yu's blunt product take: except in rare circumstances, group chat is a terrible multiplayer AI experience and is virtually guaranteed to produce slop. The lesson is that adding more participants to an AI interface does not automatically create better collaboration."
+            ],
+            "original": [
+              "Except for rare circumstances, group chat is a terrible multiplayer AI experience.",
+              "Literally guaranteed slop"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nan Yu 的判断很直接：除了少数情况，group chat 都是糟糕的多人 AI 体验，几乎注定会产出 slop。把更多参与者塞进同一个 AI 界面，并不会自动变成更好的协作。"
+            ],
+            "original": [
+              "除非是少数特殊情况，group chat 都是糟糕的多人 AI 体验。",
+              "几乎注定会产出 slop。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "04｜更便宜的智能，和更大胆的产品",
+      "desc": "builders 正在测试新的模型使用方式，也在重新估算智能的价格。",
+      "cards": [
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2117305792923889731",
+          "en": {
+            "rewrite": [
+              "After a week of using the expensive tier, Thariq's takeaway is surprisingly non-maximalist: you do not need unlimited tokens to do great work, and the $200 plans are already amazing. His sharper prediction is that this is probably the most expensive intelligence will ever be."
+            ],
+            "original": [
+              "one week in my takeaway is that you don't need unlimited tokens to do great work, the $200 plans are amazing",
+              "and this is the most expensive intelligence will ever be"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thariq 用了一周高价档之后，得出的结论并不追求极限：想把工作做好，并不需要 unlimited tokens，200 美元的套餐已经非常强。更大胆的判断是：这可能已经是智能最贵的时候。"
+            ],
+            "original": [
+              "你不需要 unlimited tokens 也能做出很好的工作，200 美元的套餐已经很棒。",
+              "这会是智能最贵的时候。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2117384926052135106",
+          "en": {
+            "rewrite": [
+              "Garry Tan flags a new use for smaller models: direct manipulation of model weights. It is a compact signal that the next round of AI tooling may not only call models, but also program them at the weight level."
+            ],
+            "original": [
+              "Interesting new use of smaller models: direct manipulation of weights"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan 注意到小模型的一种新用法：直接操作模型 weights。这释放出一个简短但有意思的信号：下一轮 AI 工具不只是调用模型，也可能开始在 weight 层对模型进行编程。"
+            ],
+            "original": [
+              "小模型的一个有意思的新用法：直接操作 weights。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
