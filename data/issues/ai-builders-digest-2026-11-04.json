@@ -1,0 +1,274 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-11-04",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线，是 AI 正在从「会回答」进入「接管工作流」：Vercel 把安全审查做成了可以下载的安全团队，Grok 的电话功能开始替人处理等待、议价和预约，Claude Code 则从需要逐条确认，走到了可以自主完成迁移和新产品。另一边，企业采用 agent 仍在混乱期，AI 带来的生产力差距可能已经从 30–50% 拉到 5–10 倍。基础设施也没有变简单：Nebius CTO 讲的不是买到 GPU 就赢，而是软件、存储、网络和新硬件适配共同构成的 AI Cloud。"
+  },
+  "archive": {
+    "title": "工作流接管日报",
+    "desc": "AI 正从聊天工具进入真实工作流：安全、电话、代码、企业部署和基础设施都在争夺下一层自动化入口。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-11-04 source feeds.",
+  "sections": [
+    {
+      "title": "AI Starts Doing the Work / AI 开始直接做事",
+      "desc": "从电话、代码到安全审查，agent 正在从建议者变成执行者。",
+      "cards": [
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2117783921748558185",
+          "en": {
+            "rewrite": [
+              "Peter Yang highlights Grok's new phone-call feature as a surprisingly concrete step toward useful agents: it can negotiate a bill, cancel a subscription, wait on hold for an airline refund, make a reservation, or call several contractors and put the quotes into a table.",
+              "It currently works with US numbers, but the important shift is operational rather than conversational: the agent stays on the line, handles the annoying middle, and returns a result."
+            ],
+            "original": [
+              "That's why I love Grok @Bot's new phone call feature.",
+              "Negotiate any bill; cancel subscriptions; wait on hold; make reservations; get contractor quotes.",
+              "Note that this only works with US numbers for now but it's nevertheless a game changer."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 介绍了 Grok 新的电话功能：它可以替你谈账单、取消订阅、在航空公司电话里一直等待人工、预订餐厅，还能同时打给几家承包商，把报价整理成表格。",
+              "目前只支持美国号码，但真正的变化不在于它会聊天，而在于它能留在线路上处理最烦人的中间环节，最后交付一个结果。"
+            ],
+            "original": [
+              "Grok @Bot 新的电话功能可以谈账单、取消订阅、等待人工、预约和询价。",
+              "目前只支持美国号码，但仍然是 game changer。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2117734833824948373",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch says Vercel's internal security agent, nicknamed hacker, audits every line of code automatically. It is now available for any repo, whether or not the repo is hosted on Vercel.",
+              "His argument is pointed: security cannot depend on an engineer having the right skill installed or adding 'please make secure' to a prompt. Vercel is effectively packaging the output of a security team as software."
+            ],
+            "original": [
+              "Vercel has an internal security agent that is astonishingly effective.",
+              "Every single line of code gets audited, automatically.",
+              "If you wanted to 'download a security team' as software, this is the closest you get today."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 说，Vercel 内部有一个名叫 hacker 的安全 agent，会自动审查每一行代码。现在任何 repo 都能启用它，不要求代码托管在 Vercel 上。",
+              "他的判断很直接：安全不能依赖工程师恰好装了某个 skill，也不能靠在 prompt 里加一句「请保证安全」。Vercel 正在把一整个安全团队封装成软件。"
+            ],
+            "original": [
+              "Vercel 有一个非常有效的内部安全 agent。",
+              "每一行代码都会被自动审查。",
+              "如果你想把一个安全团队下载成软件，这是目前最接近的东西。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:catwu",
+          "sourceUrl": "https://x.com/_catwu/status/2117731934340337676",
+          "en": {
+            "rewrite": [
+              "Cat Wu's farewell from Anthropic is also a compact history of Claude Code's evolution. Two years ago, she used it to build an RL environment without manually writing a line of code; early users approved permission prompts one by one, while today's default is trusting Claude to auto-approve.",
+              "The trajectory she describes is the real product story: from answering questions and writing tests to large migrations and new products."
+            ],
+            "original": [
+              "Two years ago, when Claude Code was a small internal tool, I asked it to build an RL env.",
+              "Today, the default is trusting Claude's judgment to auto-approve. Claude does large migrations and builds new products."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Cat Wu 离开 Anthropic 时，也顺手写下了一段 Claude Code 的产品进化史。两年前，她让当时还是内部小工具的 Claude Code 构建 RL environment，自己没有手写一行代码；早期用户要逐个批准权限，而现在的默认状态已经变成信任 Claude 自动批准。",
+              "她描述的产品轨迹很清楚：从回答问题、写测试，到执行大规模迁移和构建新产品。"
+            ],
+            "original": [
+              "两年前 Claude Code 还是内部小工具时，我让它构建一个 RL env。",
+              "现在默认是信任 Claude 的判断自动批准；Claude 会做大规模迁移和构建新产品。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The New Productivity Gap / 新的生产力鸿沟",
+      "desc": "模型能力、agent harness 和组织采用速度，正在把人与人之间的产出差距拉大。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2117505799937577263",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie thinks the divergence in AI output may be at its widest even as adoption becomes mainstream. Better models, longer-running tasks, agentic harnesses, stronger datasets, and multi-agent systems have changed the ceiling of productivity.",
+              "His estimate is stark: in two years, the upper limit moved from roughly 30–50% better productivity to 5–10X depending on the field. The gap between people at the frontier and people ignoring AI is becoming an order-of-magnitude gap."
+            ],
+            "original": [
+              "The upper limits on productivity gains have gone from 30-50% to now likely 5-10X depending on the field.",
+              "The distance is only getting wider from here given the rate of progress we're likely to see with RSI."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 认为，AI 使用越普及，产出差距反而可能越大。更强的模型、更长时间运行的任务、agentic harness、更好的数据集，以及多 agent 系统一起抬高了生产力上限。",
+              "他的估计很激进：两年时间里，生产力提升的上限从大约 30–50% 变成了视领域而定的 5–10 倍。站在前沿的人和完全不关注 AI 的人之间，正在出现数量级差距。"
+            ],
+            "original": [
+              "生产力提升上限从 30–50% 变成了视领域而定的 5–10 倍。",
+              "考虑到 RSI 可能带来的进展，这个差距只会继续扩大。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2117761721750475146",
+          "en": {
+            "rewrite": [
+              "Replit CEO Amjad Masad's one-line diagnosis is useful precisely because it is not tidy: enterprise adoption of agents and vibe coding is deep in its chaotic phase. The technology is arriving before organizations have settled on workflows, controls, or buying patterns."
+            ],
+            "original": [
+              "We're deep in the chaotic phase of enterprise adoption of agents and vibe coding."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Replit CEO Amjad Masad 给企业采用 agent 和 vibe coding 下了一个不太整齐、但很准确的判断：现在正处在混乱期。技术已经进来了，但组织还没有确定工作流、控制方式和采购模式。"
+            ],
+            "original": [
+              "我们正深处于企业采用 agent 和 vibe coding 的混乱期。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Builders Rebuild the Stack / Builder 正在重做整套栈",
+      "desc": "新的 CLI、数据库和自我改进回路，正在补上 agent 时代的基础设施。",
+      "cards": [
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2117773647868018897",
+          "en": {
+            "rewrite": [
+              "Nikunj Kothari recommends two underused Claude Code skills: /insights and /playground. He runs /insights on a biweekly cron to improve his setup, combines it with X bookmarks about software factories, and uses /playground to visualize workflows and simulate learning loops.",
+              "His most interesting move is pairing Codex and Claude Code to find dead code, hot paths, and latency improvements. The tool is becoming a self-improving software factory rather than a one-off coding assistant."
+            ],
+            "original": [
+              "My two favorite default skills on Claude Code ... are a) /insights and b) /playground.",
+              "I pair it with X bookmarks that show all the new ways to build a software factory.",
+              "My new favorite thing is to pair Codex + Claude Code ... to find dead code, hot pathways, latency improvements."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj Kothari 推荐了两个被低估的 Claude Code 默认 skill：/insights 和 /playground。他每两周用 cron 跑一次 /insights，让它持续改进自己的配置；再把 X 上关于 software factory 的收藏接进来，用 /playground 可视化工作流、模拟学习回路。",
+              "最有意思的是，他把 Codex 和 Claude Code 配对，用来找 dead code、hot path 和延迟问题。工具正在变成能自我改进的 software factory，而不只是一次性的 coding assistant。"
+            ],
+            "original": [
+              "Claude Code 默认 skill 里，我最喜欢的两个是 /insights 和 /playground。",
+              "我把它和展示 software factory 新做法的 X 收藏配对。",
+              "我现在最喜欢把 Codex + Claude Code 配对，用来找 dead code、hot path 和延迟优化。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:mattturck",
+          "sourceUrl": "https://x.com/mattturck/status/2117741948609949932",
+          "en": {
+            "rewrite": [
+              "Matt Turck calls SurrealDB 4 a major moment after years of unglamorous open-source work. The database combines vector, graph, and document models, is ACID compliant, supports native Postgres/MySQL, and scales through Cloudflare.",
+              "The broader point is less about a feature list than about endurance: an initial open-source pop is only the beginning; world-class infrastructure takes years of rebuilding."
+            ],
+            "original": [
+              "SurrealDB 4 is now that product. Multi-model (vector, graph, document), ACID compliant, w/ a rebuilt engine, native Postgres/MySQL support + massive scalability via Cloudflare handling 10B+ peak rows/sec.",
+              "The modern database for the agentic era."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Matt Turck 认为 SurrealDB 4 是一个重要时刻：经历多年不够光鲜的开源基础设施工作后，它现在把 vector、graph、document 多模型、ACID、原生 Postgres/MySQL 支持和 Cloudflare 扩展能力放进了同一个产品。",
+              "更大的启发不只是功能列表，而是耐力：开源项目早期获得关注只是起点，真正世界级的基础设施需要多年重建。"
+            ],
+            "original": [
+              "SurrealDB 4 现在已经是那个产品：多模型、ACID、重建的引擎、原生 Postgres/MySQL 支持，并通过 Cloudflare 实现大规模扩展。",
+              "面向 agentic 时代的现代数据库。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "AI Cloud Is Software First / AI Cloud 首先是软件问题",
+      "desc": "GPU 只是入口，真正的竞争在于把不断变化的硬件变成可用的云产品。",
+      "cards": [
+        {
+          "authorKey": "podcast:unsupervised-learning",
+          "authorName": "Unsupervised Learning",
+          "authorTag": "Ep 96 · Nebius CTO",
+          "sourceUrl": "https://www.youtube.com/@RedpointAI",
+          "en": {
+            "rewrite": [
+              "The takeaway: an AI cloud is not a pile of GPUs. Nebius CTO Neela argues that the moat is software that can serve both a customer running one GPU for half an hour and a customer consuming tens of thousands of GPUs in one interconnected cluster.",
+              "Nebius describes itself as software-first: hardware provides the foundation, but virtualization, storage, networking, isolation, and support for constantly changing NVIDIA architectures are what turn capacity into a product. The CTO's memorable line is that they are building large scale and selling it almost like retail.",
+              "The demand problem is not solved by capacity alone. Training customers are now routinely pushing shared storage to hundreds of gigabytes per second, while independent AI clouds compete for the mid-tier companies that want to become large companies."
+            ],
+            "original": [
+              "Our product and business was launched on the idea that software is the moat.",
+              "We believe that this is extremely important. Being able to build large scale, but have the possibility almost like sell it in retail in a sense.",
+              "We are building the cloud on the solid foundation of hardware. We're not a hardware first company.",
+              "It's about throughput. It's about latency."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "一句话 takeaway：AI cloud 不是 GPU 堆场。Nebius CTO Neela 认为，真正的护城河是软件，既能服务半小时只用一块 GPU 的客户，也能服务一次消耗数万块 GPU 的超大集群。",
+              "Nebius 把自己定义成 software-first：硬件是地基，但 virtualization、storage、networking、隔离能力，以及对不断变化的 NVIDIA 架构的适配，才是把容量变成产品的关键。她有一句很形象的话：既要做大规模，又要几乎像零售一样卖出去。",
+              "容量本身也没有解决需求问题。训练客户现在会把共享存储推到每秒数百 GB，而独立 AI cloud 争夺的是那些想成为大公司的中型客户。"
+            ],
+            "original": [
+              "我们的产品和业务建立在一个判断上：软件才是护城河。",
+              "既能构建大规模，又几乎像零售一样卖出去，这非常重要。",
+              "我们是在硬件的坚实基础上构建 cloud，不是一家 hardware-first 公司。",
+              "关键是吞吐量，也是延迟。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Control the Future / 未来仍要由人控制",
+      "desc": "能力增长越快，关于控制权和边界的判断越不能被省略。",
+      "cards": [
+        {
+          "authorKey": "x:sama",
+          "sourceUrl": "https://x.com/sama/status/2117794005165748448",
+          "en": {
+            "rewrite": [
+              "Sam Altman states OpenAI's boundary plainly: people should remain in control of the future. Humans should not be relegated to doing whatever AI systems decide is worth rewarding, and that requirement should ultimately constrain the progress of superintelligence."
+            ],
+            "original": [
+              "People should always be in control of the future.",
+              "People should not cede control of the future to superintelligence, and that requirement should ultimately constrain AI progress."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Sam Altman 把 OpenAI 的边界说得很清楚：未来应该始终由人控制。人不应该被 relegated 成只做 AI 系统认为值得奖励的事情，而这个要求最终也应该约束 superintelligence 的发展速度。"
+            ],
+            "original": [
+              "未来应该始终由人控制。",
+              "人不应该把未来的控制权交给 superintelligence，这个要求最终应该约束 AI 的进步。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
