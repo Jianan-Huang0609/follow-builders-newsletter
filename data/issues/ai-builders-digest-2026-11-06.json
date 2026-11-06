@@ -1,0 +1,237 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-11-06",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线，是 agent 正在从“会回答”走向“能长期做事”：它需要读懂企业里散落的上下文，按时间和地点主动提醒，还要在更安全的沙盒里执行。与此同时，模型的输出形态、基础设施的垂直化，以及 AI 产品如何真正进入日常生活，都在一起变化。"
+  },
+  "archive": {
+    "title": "Agent 长期化日报",
+    "desc": "从企业上下文检索、长期记忆和主动提醒，到安全沙盒与机器原生模型，agent 正在变成能持续工作的系统。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-11-06 source feeds.",
+  "sections": [
+    {
+      "title": "Agents That Keep Working / 会持续做事的 Agent",
+      "desc": "真正有用的 agent 不只是在当下回答问题，而是会记住、等待、提醒，并在合适的时机继续推进。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2118440831355068671",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch argues that “doing stuff for you over time” is the killer app for agents. Muse and Instinct consolidate memories at night, remind you in the morning, and follow up after a set number of days.",
+              "The infrastructure underneath matters: Vercel Schedules can be defined at runtime, scale infinitely, and run outside the Sandbox, making recurring compute cheap enough to invoke when needed."
+            ],
+            "original": [
+              "“Doing stuff for you over time” is the killer app of agents.",
+              "Vercel Schedules are like Cron on steroids. They can be defined at runtime, scale infinitely, and sit outside of the Sandbox."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 认为，agent 的 killer app 是“随着时间替你做事”。Muse 和 Instinct 会在夜间整理记忆，早上提醒你，也会在上次互动后的若干天再主动跟进。",
+              "底层基础设施同样关键：Vercel Schedules 可以运行时定义、无限扩展，并在 Sandbox 外执行，让周期性任务可以在需要时低成本调用计算。"
+            ],
+            "original": [
+              "“随着时间替你做事”是 agent 的 killer app。",
+              "Vercel Schedules 像是强化版 Cron，可以运行时定义、无限扩展，并且位于 Sandbox 之外。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2118399561324699655",
+          "en": {
+            "rewrite": [
+              "Thariq shares a deceptively simple prompt pattern for agents like Instinct: track when you last did the laundry, and if five days have passed, remind you 30 minutes after you get home on a weekday until you confirm or postpone it.",
+              "The interesting part is not the chore. It is the combination of memory, location, time, and a persistent follow-up loop—small pieces that turn an assistant into something closer to a personal operating system."
+            ],
+            "original": [
+              "one of my favorite prompts for agents like Instinct is location based reminders",
+              "If it's been more than 5 days, remind me 30 minutes after I get home on a week day and bug me until I confirm or delay"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thariq 分享了一个给 Instinct 这类 agent 的小而典型的 prompt：记住你上次洗衣服的时间；如果超过 5 天，就在工作日你回家 30 分钟后提醒你，并持续追问，直到你确认或延后。",
+              "重点不在洗衣服，而在记忆、位置、时间和持续跟进这几块能力的组合。它们拼在一起，助手才开始接近个人操作系统。"
+            ],
+            "original": [
+              "我最喜欢的 agent prompt 之一，是给 Instinct 这类 agent 设置基于位置的提醒。",
+              "如果超过 5 天，就在工作日我回家 30 分钟后提醒我，并一直催我，直到我确认或延后。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Context Is the Product / 上下文就是产品",
+      "desc": "企业 agent 的瓶颈越来越不是模型会不会推理，而是能不能在权限边界内找到正确的资料。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2118498574497665316",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie expects enterprises to have 100 times more agents working with their data and systems than people do today. Every deployment still comes down to one question: can the agent retrieve the context needed to decide, research, or act?",
+              "Because roughly 90% of enterprise data is unstructured, Box is partnering with NVIDIA on context retrieval that combines lexical and semantic search while respecting access controls, security, and governance. The pitch is simple: files become useful to agents only when the right agent can find the right file."
+            ],
+            "original": [
+              "We’re going to have 100X more agents in the enterprise working with our data and systems than even people do today.",
+              "90% of the data in an enterprise is unstructured data... we need effective ways for agents to get access to this critical enterprise content."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 预计，企业里与数据和系统协作的 agent 数量，最终会达到今天员工数量的 100 倍。每次部署最后都绕不开一个问题：agent 能不能拿到做判断、研究或执行任务所需的上下文？",
+              "企业约 90% 的数据是非结构化的，因此 Box 正与 NVIDIA 合作，把 lexical search 和 semantic search 结合起来，同时遵守权限、安全和数据治理。核心并不复杂：只有在正确的 agent 找到正确的文件时，文件才真正对 agent 有用。"
+            ],
+            "original": [
+              "企业里与数据和系统协作的 agent 数量，会达到今天员工数量的 100 倍。",
+              "企业 90% 的数据是非结构化数据，我们需要让 agent 有效访问这些关键企业内容。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:claudeai",
+          "sourceUrl": "https://x.com/claudeai/status/2118403114890137895",
+          "en": {
+            "rewrite": [
+              "Claude is testing Personal Finance in the US: connect selected accounts and ask questions about balances and transactions in everyday language. Access is read-only, so Claude cannot move, manage, or invest the money.",
+              "The product choice is telling. A useful financial agent can start by making private, messy account data understandable, without pretending that it should be allowed to take control of the account."
+            ],
+            "original": [
+              "Introducing Personal Finance in Claude, in beta in the US.",
+              "Access is read-only, and Claude can't move, manage, or invest your money."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude 正在美国测试 Personal Finance：用户可以连接选定的账户，用日常语言询问余额和交易记录。访问权限是只读的，Claude 不能转账、管理或投资你的钱。",
+              "这个产品选择很有代表性：一个有用的金融 agent 可以先把私密、混乱的账户数据讲明白，但不必假装自己应该获得账户控制权。"
+            ],
+            "original": [
+              "Claude Personal Finance 在美国进入 beta。",
+              "访问是只读的，Claude 不能转移、管理或投资你的钱。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Security and Vertical Infrastructure / 安全与垂直基础设施",
+      "desc": "agent 越能执行真实任务，沙盒、内核、形式化证明等底层能力就越不能靠默认配置凑合。",
+      "cards": [
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2118503241390665776",
+          "en": {
+            "rewrite": [
+              "Replit CEO Amjad Masad says the platform’s custom Kernel build lets it avoid 96% of the Linux zero-day vulnerabilities that show up elsewhere. He points readers to Replit’s new Sandbox design.",
+              "The broader signal is that AI coding platforms are becoming infrastructure companies: the execution environment is no longer a detail behind the product, but part of the product’s safety and reliability story."
+            ],
+            "original": [
+              "There are so many Linux zero-day vulnerabilities these days, but on Replit we’re able to avoid 96% of them with our custom Kernel build.",
+              "Read about our new sandbox design."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Replit CEO Amjad Masad 表示，Replit 的定制 Kernel 可以避开其他环境中出现的 96% Linux zero-day 漏洞，并将读者引向 Replit 新的 Sandbox 设计。",
+              "更大的信号是：AI coding 平台正在变成基础设施公司。执行环境不再只是产品背后的细节，而是安全性和可靠性的一部分。"
+            ],
+            "original": [
+              "Linux zero-day 漏洞越来越多，但 Replit 通过定制 Kernel 可以避开其中 96%。",
+              "了解我们的新 sandbox 设计。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2118569441860723112",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux argues that formal proofs covering tens of millions of lines of code are no longer absurdly ambitious. They are entering the range that should be considered when designing new systems.",
+              "His companion point is less comfortable: humans have not been very good at writing secure infrastructure. The eventual destination may be hypersecure software, but getting there will involve turbulence."
+            ],
+            "original": [
+              "Formal proofs of tens of millions of lines of code are not a ridiculous thing anymore.",
+              "The endstate will be hypersecure infrastructure and software for all, but we're going to go through some turbulence before we reach that."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux 认为，覆盖数千万行代码的形式化证明已经不再是荒唐的目标，设计新系统时应该开始认真考虑它。",
+              "他的另一层判断更不舒服：人类并不擅长编写安全基础设施。最终可能会有高度安全的软件，但抵达那里之前，系统会经历一段动荡期。"
+            ],
+            "original": [
+              "覆盖数千万行代码的形式化证明已经不再是荒唐的事。",
+              "最终会有高度安全的基础设施和软件，但到达那里前会经历动荡。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "From Human Text to Machine-Native Systems / 从人类文本到机器原生系统",
+      "desc": "模型和产品正在重新思考：输出是否必须是给人看的字符串，以及 AI 能否进入更自然的消费场景。",
+      "cards": [
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2118527182092071179",
+          "en": {
+            "rewrite": [
+              "Garry Tan points to what he calls the first long-horizon benchmark for private-equity and investment-banking work, and says that solving high-finance workflows is part of the path to AGI.",
+              "The interesting shift is from short benchmark answers to work that requires sustained context, multi-step reasoning, and a useful result over a longer horizon."
+            ],
+            "original": [
+              "This is the first long horizon benchmark for PE/IB work",
+              "Solving high finance is on the path to AGI"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan 提到一个他称为首个面向 PE/IB 工作的 long-horizon benchmark，并认为解决高端金融工作流是通往 AGI 的一部分路径。",
+              "有意思的变化，是评测重点从短答案转向需要持续上下文、多步推理，以及最终交付可用结果的长期任务。"
+            ],
+            "original": [
+              "这是首个面向 PE/IB 工作的 long-horizon benchmark。",
+              "解决高端金融问题，是通往 AGI 的路径之一。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2118537836098203781",
+          "en": {
+            "rewrite": [
+              "Peter Yang imagines Suno and Tesla putting song creation directly into the car: voice-dictate a song while driving, then listen to the result instead of the radio.",
+              "It is a small but concrete picture of AI becoming a native layer in everyday products. The interface is not a chat window; it is the place where the activity already happens."
+            ],
+            "original": [
+              "Can folks from Suno and Tesla add the app to the cars by default.",
+              "It'll be amazing to just drive and voice dictate to create songs to listen to."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 想象 Suno 和 Tesla 把创作歌曲直接放进车里：开车时用语音口述一首歌，然后听自己的作品，不再听电台。",
+              "这是 AI 变成日常产品原生层的一个具体画面。入口不是聊天窗口，而是人们本来就在进行活动的那个场景。"
+            ],
+            "original": [
+              "Suno 和 Tesla 能不能默认把这个 App 加进车里？",
+              "开车时用语音口述创作歌曲来听，会很棒。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
