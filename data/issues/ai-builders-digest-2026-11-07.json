@@ -1,0 +1,128 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-11-07",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线不是又一个更大的模型，而是 AI 正在从聊天框钻进真实工作流：Thariq 看到 creator app 把 MCP 内置进去，Guillermo Rauch 认为生成式 UI 会成为人和 agent 协作的主界面，Garry Tan 则提醒 builder 用 eval 驱动 skill 的生长。另一边，Peter Yang 观察到多模型应用正在被模型公司吸收，Nikunj Kothari 用一个讽刺得很准确的融资剧本，拆穿 token 经济里的虚假繁荣。播客里，Fabian Theis 把同一套逻辑推到生物实验室：从观察和预测，走向真正 steering 下一次实验。"
+  },
+  "archive": {
+    "title": "Agent 进入工作流日报",
+    "desc": "AI agent 正从独立工具变成嵌入创作、软件和实验流程的协作者，而真正的壁垒开始转向上下文、评估和数据。"
+  },
+  "viewLabels": { "rewrite": "速读", "original": "原文" },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-11-07 source feeds.",
+  "sections": [
+    {
+      "title": "Agents Inside the Tools / Agent 进入工具内部",
+      "desc": "下一步不是让人离开熟悉的软件，而是让 agent 在软件里完成一部分工作。",
+      "cards": [
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2118822238262853904",
+          "en": {
+            "rewrite": ["Former Claude Code builder Thariq points to a pattern worth watching: creator apps such as Instagram Edits and Roblox Studio are shipping with built-in MCPs. Agents can handle part of the work, while power users stay in the tools they already know and continue from there.", "The important shift is not full automation. It is collaboration at the application layer."],
+            "original": ["creator apps like Instagram Edits and Roblox Studio shipping with built-in MCPs, so agents can do some of the work while power users can collaborate and continue the work in tools that they're used to"]
+          },
+          "cn": {
+            "rewrite": ["前 Claude Code builder Thariq 注意到一个值得追踪的趋势：Instagram Edits、Roblox Studio 这类创作应用，开始把 MCP 直接内置进去。agent 可以先做一部分，熟悉工具的 power user 再接着完成。", "关键变化不是彻底自动化，而是协作发生在应用内部。"],
+            "original": ["像 Instagram Edits 和 Roblox Studio 这样的创作应用开始内置 MCP，让 agent 做一部分工作，power user 仍能在熟悉的工具里协作并继续完成。"]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2118856239719608353",
+          "en": {
+            "rewrite": ["Vercel CEO Guillermo Rauch argues that generative UI for conversational agents could become the dominant Human-Agent Interaction paradigm. His recipe combines the AI SDK, Chat SDK and json-render to go directly from an LLM to UI inside Slack and Teams.", "The implication is straightforward: an agent's answer does not have to be text. It can be the interface needed to act on the answer."],
+            "original": ["Generative UI for conversational agents. Combining @aisdk with Chat SDK and json-render, you can go straight from LLM to UI on platforms like Slack and Teams. I believe this will become the dominant Human-Agent Interaction (HAI) paradigm"]
+          },
+          "cn": {
+            "rewrite": ["Vercel CEO Guillermo Rauch 认为，面向 conversational agent 的 generative UI，可能会成为主流的 Human-Agent Interaction 范式。他用 AI SDK、Chat SDK 和 json-render，把 LLM 的输出直接变成 Slack、Teams 里的 UI。", "含义很直接：agent 的回答不必只是文字，也可以直接生成完成任务所需要的界面。"],
+            "original": ["面向 conversational agent 的 generative UI。结合 AI SDK、Chat SDK 和 json-render，可以在 Slack、Teams 等平台上直接从 LLM 生成 UI。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Model Layer Is Reorganizing / 模型层正在重组",
+      "desc": "多模型入口的价值仍然存在，但模型厂商正在把最好的应用往自己体内吸收。",
+      "cards": [
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2118811231545122998",
+          "en": {
+            "rewrite": ["Peter Yang sees a tension in the AI application market: products that can use models from multiple labs, such as Conductor and Cursor, are increasingly being acquired by the labs themselves. The remaining examples he points to, including T3 and Orca, are open source.", "His view is that user and enterprise demand for model-agnostic applications is still real, even as the platform layer consolidates."],
+            "original": ["Feels like all the apps that can use models from different labs like @conductor_build, cursor and others are getting acquired by the labs themselves. The ones remaining like @t3dotcodes and @orca_build are open source. Personally I think there’s still a lot of user and enterprise demand for apps that can use models from different labs."]
+          },
+          "cn": {
+            "rewrite": ["Peter Yang 看到 AI 应用市场里的一组张力：Conductor、Cursor 这类能调用多家模型的产品，正越来越多被模型公司自己收购；剩下的 T3、Orca 等例子则是开源的。", "他的判断是，尽管平台层在集中，用户和企业对 model-agnostic 应用的需求依然真实存在。"],
+            "original": ["能调用不同实验室模型的应用似乎都在被模型公司收购。剩下的 T3、Orca 是开源的，但用户和企业对多模型应用仍有很大需求。"]
+          }
+        },
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2118905788915982341",
+          "en": {
+            "rewrite": ["Swyx is committing to weekly coverage of a possible Anthropic IPO, bringing his equity-analyst background back into the AI conversation. He frames it as a standing question rather than a prediction: whether and when the company goes public, and what the market will make of it."],
+            "original": ["we are committing to weekly coverage of the Anthropic IPO all the way until it does or doesn't happen"]
+          },
+          "cn": {
+            "rewrite": ["Swyx 决定持续每周追踪 Anthropic 可能进行的 IPO，把自己做 mega-IPO 分析师时的那套视角重新带回 AI 讨论。他没有做确定预测，而是把它变成一个持续观察的问题：公司何时、是否上市，以及市场会如何定价。"],
+            "original": ["我们会每周持续报道 Anthropic IPO，直到它发生或确定不会发生。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Build the Feedback Loop / 把反馈回路建起来",
+      "desc": "当模型变强，skill 和 agent 的价值越来越取决于能否持续评估、删改和更新。",
+      "cards": [
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2118920030243139596",
+          "en": {
+            "rewrite": ["Y Combinator CEO Garry Tan says eval-driven development loops are necessary for agent skills. As each new model improves, you should remove skills you no longer need; he just removed /investigate because Opus 5.5 handled the job better without it.", "The useful principle is less about any particular model and more about treating skills as tested, disposable layers rather than permanent instructions."],
+            "original": ["Eval-driven development loops for agent skills is necessary. Every new model gets better. You can remove things you don't need anymore. I just removed /investigate as a skill because Opus 5.5 does it better without it."]
+          },
+          "cn": {
+            "rewrite": ["Y Combinator CEO Garry Tan 认为，agent skill 必须有 eval-driven development loop。每个新模型变强之后，就该删掉不再需要的 skill；他最近就因为 Opus 5.5 不需要额外指令，移除了 /investigate。", "真正有用的原则不是某个具体模型，而是把 skill 当成可测试、可淘汰的层，而不是永久不变的说明书。"],
+            "original": ["agent skill 需要 eval-driven development loop。每个新模型都会变强，不再需要的东西可以删除；Opus 5.5 不需要 /investigate，所以我把它移除了。"]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2118758688567792008",
+          "en": {
+            "rewrite": ["Nikunj Kothari's satire of building a $100M company in two weeks works because every absurd line is assembled from things he says have happened to him: token-heavy products, inflated metrics, staged demand, tranche-by-tranche fundraising and outsourced vision.", "The joke is a warning about confusing activity around AI with evidence of a business."],
+            "original": ["before I get obliterated this is satire, but every sentence in there individually has personally happened to me"]
+          },
+          "cn": {
+            "rewrite": ["Nikunj Kothari 讽刺「两周做出一家 1 亿美元公司」的剧本之所以准，是因为每个荒谬细节都来自他亲历过的事情：token 堆出来的产品、夸大的指标、拼出来的需求、分批抬高的估值，以及外包出来的 vision。", "笑点背后是一个提醒：AI 周围的忙碌，不等于一门生意已经有了证据。"],
+            "original": ["先说明这是讽刺，但里面每一句单独拿出来，都确实发生在我身上。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "From Prediction to Steering / 从预测走向操控实验",
+      "desc": "AI for Science 的下一步，不只是建立 world model，而是用它决定下一次实验做什么。",
+      "cards": [
+        {
+          "authorKey": "podcast:latent-space",
+          "authorName": "Fabian Theis",
+          "authorTag": "Latent Space · Helmholtz Munich",
+          "sourceUrl": "https://www.youtube.com/@LatentSpacePod",
+          "en": {
+            "rewrite": ["Fabian Theis describes a three-step arc for computational biology: mapping cells, predicting how they respond to perturbations, and now steering the next experiment. His group's Lab Compass is an inverse generative model that works backward from a desired biological state to suggest what should be done next.", "The hard part is not only the model. Researchers must trust a prediction enough to spend real experimental time testing it. That is why the emerging moat is the combination of models and unique data generated through repeated lab-in-the-loop cycles."],
+            "original": ["From mapping, we went to prediction. But now we can go to actually steering the next experiment.", "Lab Compass ... allows you, once you have a forward world model, to tell you what you need to do in order to reach a certain state.", "The ultimate vision being that we want to RL everything. We want to do RL also in this loop."]
+          },
+          "cn": {
+            "rewrite": ["Fabian Theis 把 computational biology 的路线概括成三步：先 mapping 细胞，再预测 perturbation 后的反应，现在要进一步 steering 下一次实验。他所在团队的 Lab Compass 是一个 inverse generative model，可以从目标生物状态反推下一步该做什么。", "难点不只是模型，而是要让研究者愿意花真实的实验时间去验证预测。因此正在形成的壁垒，是模型和通过反复 lab-in-the-loop 产生的独特数据的结合。"],
+            "original": ["我们从 mapping 走向 prediction，但现在可以真正 steering 下一次实验。", "Lab Compass 能在有了 forward world model 后，告诉你为了达到某个状态需要做什么。", "最终愿景是把一切都 RL 化，也把 RL 放进这个 loop。"]
+          }
+        }
+      ]
+    }
+  ]
+}
