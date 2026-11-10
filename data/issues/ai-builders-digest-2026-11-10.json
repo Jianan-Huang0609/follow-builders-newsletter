@@ -1,0 +1,239 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-11-10",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线，是 AI 正在从「会回答」走向「能持续做事」。Guillermo Rauch 说，真正让 agent 规模化的不是再造一个复杂 harness，而是给它云端 sandbox 和可回调的事件机制；Aaron Levie 则把这件事推到更远：下一波 autonomous collaborators 不只在软件行业，也会进入动画、电影、游戏、制造和产品设计。另一边，Madhu Guru 提醒产品经理，AI 的价值不是替代某一个岗位，而是让 PM 在整个产品生命周期里同时拥有更深的用户理解、原型能力、技术判断和 GTM 洞察。"
+  },
+  "archive": {
+    "title": "协作机器日报",
+    "desc": "AI agent 正从单次生成走向云端协作：基础设施补上事件和 sandbox，产品与知识工作也开始进入 autonomous collaborators 阶段。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-11-10 source feeds.",
+  "sections": [
+    {
+      "title": "Agents Need a Place to Work / Agent 需要工作场所",
+      "desc": "模型能力越强，单台电脑越快成为瓶颈；下一层基础设施是可扩展的 sandbox 和事件流。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2119878364794372162",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch's takeaway from testing the new frontier model is blunt: once a model can delegate and orchestrate large amounts of parallel work, one computer is no longer enough. You need cloud sandboxes that can spin up and down as the work changes.",
+              "His practical advice is deliberately unglamorous: install the Vercel CLI, configure the plugin, and let the agent use the /offload-to-sandbox skill. The bottlenecks become your ambition and your available parallel compute, not an elaborate multi-agent harness."
+            ],
+            "original": [
+              "these new generation of models can take on unprecedented bodies of parallel work",
+              "To actually seize this intelligence, you need cloud sandboxes. Full stop.",
+              "Your bottleneck is now ① your ambition and ② your parallel computing power."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch 试用新一代 frontier model 后的判断很直接：当模型可以委派并编排大量并行工作时，一台电脑很快就不够用了。你需要能随任务动态启停的 cloud sandbox。",
+              "他的实践建议反而很朴素：装好 Vercel CLI，配置 plugin，让 agent 使用 /offload-to-sandbox skill。真正的瓶颈变成了你的野心和并行算力，而不是一个越来越复杂的 multi-agent harness。"
+            ],
+            "original": [
+              "新一代模型可以承担前所未有的大量并行工作。",
+              "要真正用上这种智能，你需要 cloud sandbox。就这么简单。",
+              "现在的瓶颈是：你的野心，以及你的并行计算能力。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2119891138450755670",
+          "en": {
+            "rewrite": [
+              "Rauch is also bullish on MCP for a reason bigger than AI: a universal open protocol for systems to communicate could be civilization-scale infrastructure. The missing piece was callbacks across sessions—an agent could read and write, but could not tell you later that an event had happened.",
+              "MCP Events fills that gap. An agent can subscribe to deployment.succeeded instead of polling, and Vercel is adding the pattern to its own MCP."
+            ],
+            "original": [
+              "even AI aside, it'll be a civilization-scale accomplishment to get all our systems communicating through one universal open protocol.",
+              "MCP could read and write, but it couldn't tell you later 'this event happened.' MCP Events fixes this.",
+              "Instead of polling, it can subscribe to deployment.succeeded."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Rauch 看好 MCP，理由甚至不止是 AI：让所有系统通过一个 universal open protocol 通信，本身就可能是文明级基础设施。过去缺的一块是跨 session 的 callback：agent 能读写，却不能在之后告诉你某个事件已经发生。",
+              "MCP Events 补上了这块能力。agent 可以订阅 deployment.succeeded，不必反复 polling；Vercel 也准备把这种模式加入自己的 MCP。"
+            ],
+            "original": [
+              "即使不考虑 AI，让所有系统通过一个 universal open protocol 通信，也会是文明级成就。",
+              "MCP 能读写，却不能稍后告诉你「这个事件发生了」。MCP Events 解决了它。",
+              "它可以订阅 deployment.succeeded，而不是 polling。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The PM Role Gets Deeper / PM 角色变深",
+      "desc": "AI 不只是替代某个环节，而是在产品生命周期的每一段都把 PM 往更深处推。",
+      "cards": [
+        {
+          "authorKey": "x:realmadhuguru",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2119999748086362466",
+          "en": {
+            "rewrite": [
+              "Madhu Guru proposes a simple exercise for product leaders: draw the full lifecycle from market understanding to design, development, and GTM, then ask how much deeper PMs can go in every stage with AI.",
+              "The opportunity is not to replace every function. It is to let PMs build broader user and market understanding, move from ideas to working prototypes, inspect technical constraints, run their own analytics, and understand the GTM funnel well enough to shape strategy."
+            ],
+            "original": [
+              "using AI, how much deeper can PMs go on every stage?",
+              "This is not about PMs replacing every role.",
+              "this is about raising the bar on the PM role, so they combine their breadth with much greater depth."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Madhu Guru 给产品负责人出了个简单练习：把市场理解、设计、开发、GTM 的完整生命周期画出来，再问一句：借助 AI，PM 能不能在每个阶段都走得更深？",
+              "机会不在于替代每一个职能，而在于让 PM 同时拥有更广的用户与市场理解、更快的原型能力、对技术约束的判断、自己跑 analytics 的能力，以及足以参与产品战略的 GTM funnel 洞察。"
+            ],
+            "original": [
+              "借助 AI，PM 能在每个阶段走得多深？",
+              "这不是要让 PM 替代所有角色。",
+              "而是提高 PM 这个角色的上限，让他们把 breadth 和更大的 depth 结合起来。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2119987129204047894",
+          "en": {
+            "rewrite": [
+              "Aaron Levie sees the next wave of AI adoption moving far beyond software engineering. Coding and computer use, combined with domain understanding and general reasoning, can create autonomous collaborators for animation, film, gaming, manufacturing, architecture, product design, robotics, and more.",
+              "His framing is that 'software is eating the world' is finally expanding through AI. These categories do not have inherently finite demand; more automation can mean more output, not merely the same output at lower cost."
+            ],
+            "original": [
+              "we’re entering the era of autonomous collaborators in a number of industries that haven’t yet had their claude code or codex moment yet.",
+              "We’ll see it in animation, film production, gaming, manufacturing, architecture, product design, robotics, and more.",
+              "Software is eating the world is finally happening in a much bigger way because of AI."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie 认为，AI 的下一波落地会远远超出软件工程。coding、computer use、行业知识和通用 reasoning 结合起来，会在动画、电影、游戏、制造、建筑、产品设计、机器人等领域创造 autonomous collaborators。",
+              "他的 framing 是：「software is eating the world」终于会借助 AI 大规模扩张。这些工作的需求并不是天然有限的，自动化可能带来更多产出，而不只是用更低成本做同样的事。"
+            ],
+            "original": [
+              "我们正在进入 autonomous collaborators 的时代，很多行业还没迎来自己的 Claude Code 或 Codex 时刻。",
+              "动画、电影制作、游戏、制造、建筑、产品设计、机器人等都会受到影响。",
+              "因为 AI，Software is eating the world 终于以大得多的方式发生了。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Fable 5.2 Turns Ideas Into Things / Fable 5.2 把想法变成东西",
+      "desc": "新模型的信号不只是 benchmark，而是它会不会让人开始做以前不会做的项目。",
+      "cards": [
+        {
+          "authorKey": "x:danshipper",
+          "sourceUrl": "https://x.com/danshipper/status/2119869228207546638",
+          "en": {
+            "rewrite": [
+              "Dan Shipper's day-zero read on Fable 5.2 is less about a score and more about behavior: people at Every are building their own professional tools, games for their kids, and documentaries instead of slide decks.",
+              "The model is slow and token-hungry, so it is not the default choice for quick writing or everyday coding. But for a big job, the workflow changes: define what done means, set a budget, leave it running overnight, and let it spend extra time testing."
+            ],
+            "original": [
+              "People are making their own creative software, games for their kids, and documentaries instead of slide decks.",
+              "Give it a big job and leave it running overnight or over a weekend.",
+              "The best measure of a new model is whether it makes you try things you wouldn’t have tried before."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Dan Shipper 对 Fable 5.2 的 day-zero 判断，不是看一个分数，而是看人的行为：Every 团队开始做自己的专业工具、给孩子做游戏、把研究做成纪录片，而不是只做 slide deck。",
+              "它很慢，也很耗 token，所以不适合日常写作或快速来回 coding。但面对大任务，工作方式变了：先定义什么叫 done，设好预算，放它跑一晚，再让它继续花时间测试。"
+            ],
+            "original": [
+              "人们开始做自己的 creative software、给孩子做游戏、做纪录片，而不是 slide deck。",
+              "给它一个大任务，让它跑一整晚或一个周末。",
+              "衡量新模型最好的方式，是看它有没有让你尝试以前不会尝试的东西。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:alexalbert__",
+          "sourceUrl": "https://x.com/alexalbert__/status/2119916954337349737",
+          "en": {
+            "rewrite": [
+              "Alex Albert gave Fable 5.2 a PDF of one of Leonardo da Vinci's notebooks, and the model turned the inventions into interactive objects. His point is a useful education thesis: historical material that used to be trapped on a page can become something students explore."
+            ],
+            "original": [
+              "I gave Fable 5.2 a PDF of one of Leonardo da Vinci’s 500-year-old notebooks and it made his inventions real for me to interact with.",
+              "Anything from history that’s been stuck on a page can now be something you explore."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Alex Albert 把 Leonardo da Vinci 一本 500 年前的笔记 PDF 交给 Fable 5.2，模型把里面的发明变成了可以互动的对象。他看到的教育意义很具体：过去只能停留在纸面上的历史材料，现在可以变成学生真正去探索的东西。"
+            ],
+            "original": [
+              "我把 Leonardo da Vinci 一本 500 年前的笔记 PDF 给了 Fable 5.2，它让我可以和他的发明互动。",
+              "所有曾经被困在纸面上的历史内容，现在都可以变成你能探索的东西。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "A Little More Agency / 再多一点自主性",
+      "desc": "从 self-healing software 到跨设备控制，agent 正在从输出内容走向操作环境。",
+      "cards": [
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2119893236747780567",
+          "en": {
+            "rewrite": [
+              "Amjad Masad answers the familiar question—who maintains vibe-coded apps?—with a provocative direction: self-healing software. The post is brief, but the idea shifts maintenance from a human-only recurring chore toward software that can detect and repair some of its own problems."
+            ],
+            "original": [
+              "But who maintains vibe coded apps?",
+              "How about self-healing software..."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Amjad Masad 用一个有点挑衅的方向回答了那个老问题：「vibe-coded app 谁来维护？」答案可以是 self-healing software。原文很短，但它把维护从人类必须反复承担的工作，推向了软件自己发现并修复一部分问题。"
+            ],
+            "original": [
+              "但 vibe-coded app 谁来维护？",
+              "self-healing software 怎么样……"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2120021043876106429",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux announces a small but telling expansion for Dots: it can now control multiple machines in addition to the cloud computer provided by default. The agent is no longer confined to its own hosted workspace; it can reach across the user's computing environment."
+            ],
+            "original": [
+              "Dots can now control many machines in addition to its own little cloud computer that we provide by default."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux 分享了 Dots 一个小但很关键的扩展：除了默认提供的 cloud computer，它现在还能控制多台机器。agent 不再只被限制在自己的托管工作区，而是开始跨进用户的计算环境。"
+            ],
+            "original": [
+              "Dots 现在除了默认提供的 cloud computer，还能控制多台机器。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
