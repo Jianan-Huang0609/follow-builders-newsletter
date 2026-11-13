@@ -1,0 +1,263 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-11-13",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线，是 agent 开始进入真实工作流之后，产品和基础设施一起变了形。Claude 不再只是会回答问题，而是能坐进会议、留下笔记、在现场被团队纠正；Replit Agent 开始替企业买东西和投广告；OpenAI 则把自动修补和自动 red teaming 推到一起。另一边，Cursor 训练 Composer 2 时发现模型会识别假环境并作弊，Isomorphic Labs 甚至把药物研发的终点设成尽量搬进电脑。工具正在变强，但真正难的仍然是上下文、反馈回路和可验证的结果。"
+  },
+  "archive": {
+    "title": "Agent 进入工作流日报",
+    "desc": "从会议记录和企业采购到代码安全与药物研发，agent 正从聊天工具变成需要真实上下文、反馈和验证的工作系统。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-11-13 source feeds.",
+  "sections": [
+    {
+      "title": "Agents Enter the Workflow / Agent 进入真实工作流",
+      "desc": "今天最值得注意的不是 agent 又会做什么，而是它们开始进入会议、采购和团队协作的现场。",
+      "cards": [
+        {
+          "authorKey": "x:claudeai",
+          "sourceUrl": "https://x.com/claudeai/status/2120973996304830859",
+          "en": {
+            "rewrite": [
+              "Claude Meetings makes Claude a visible participant in Google Meet. Teammates can ask it questions out loud or in chat, have it start a document, watch what it builds, and correct it while the work is taking shape.",
+              "After the call, Claude keeps the notes, action items, transcript, and anything it created on the meeting page. The important shift is from post-meeting summarizer to an agent operating inside the meeting's shared context."
+            ],
+            "original": [
+              "Claude joins as a visible participant. Ask it a question out loud or in chat, or have it start a doc.",
+              "Your team can see what it’s building and correct it as it takes shape."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude Meetings 让 Claude 以一个可见的参与者身份加入 Google Meet。团队成员可以直接在语音或聊天里问它问题，让它起草文档，实时看到它在做什么，并在结果成形的过程中纠正它。",
+              "会议结束后，笔记、行动项、transcript 以及 Claude 创建的内容都会留在会议页面里。真正的变化是：Claude 不再只是会后总结工具，而是开始在会议的共享上下文里直接工作。"
+            ],
+            "original": [
+              "Claude 作为可见参与者加入会议，可以在语音或聊天里提问，也可以让它开始写文档。",
+              "团队能看到它正在构建什么，并在成形过程中纠正它。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2121018020520931712",
+          "en": {
+            "rewrite": [
+              "Replit CEO Amjad Masad says Replit Agent can now buy things for a business, including ads to acquire new customers. The agent is moving from producing software to taking actions that spend money on behalf of a company.",
+              "That is a meaningful boundary crossing: once an agent can purchase, the product needs clearer permissions, budgets, and accountability than a normal coding assistant."
+            ],
+            "original": [
+              "You can now ask Replit Agent to buy stuff for your business, including buying ads to acquire new customers!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Replit CEO Amjad Masad 表示，Replit Agent 现在可以替企业购买东西，包括投放广告来获取新客户。agent 开始从「产出软件」跨到「代表公司花钱并采取行动」。",
+              "这是一个很重要的边界变化：一旦 agent 能执行采购，产品就需要比普通 coding assistant 更清晰的权限、预算和责任机制。"
+            ],
+            "original": [
+              "现在可以让 Replit Agent 为你的业务买东西，包括购买广告来获取新客户。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:alexalbert__",
+          "sourceUrl": "https://x.com/alexalbert__/status/2120983722182988206",
+          "en": {
+            "rewrite": [
+              "Anthropic researcher Alex Albert frames the current Claude bottleneck simply: getting good work out of Claude is often about finding the context it is missing and closing that gap. Claude Meetings is one way to bring those missing slices of context into the system.",
+              "The lesson is practical: capability is not only a model question. The surrounding workflow determines whether the model can see enough of the problem to be useful."
+            ],
+            "original": [
+              "A lot of getting good work out of Claude now is just finding the context it’s missing and figuring out how to close that gap.",
+              "Claude Meetings is one way to bring in the remaining slices and has proved very useful internally."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic researcher Alex Albert 把当前 Claude 的瓶颈说得很简单：想让 Claude 做出好结果，很多时候就是找到它缺失的上下文，然后把这个缺口补上。Claude Meetings 正是把剩余上下文带进系统的一种方式。",
+              "这条经验很实用：能力不只是模型本身的问题，周围的工作流决定了模型能不能看到足够完整的问题。"
+            ],
+            "original": [
+              "现在让 Claude 做好工作，很大一部分就是找到它缺少的上下文，并想办法补上。",
+              "Claude Meetings 是带入剩余上下文的一种方式，在内部已经很有用。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Models Need Real Feedback / 模型需要真实反馈",
+      "desc": "模型会适应训练环境，甚至学会作弊；真正的 agent 训练因此越来越像完整的产品运行。",
+      "cards": [
+        {
+          "authorKey": "podcast:no-priors",
+          "sourceUrl": "https://www.youtube.com/watch?v=UDTr9yUnLUI",
+          "authorName": "Max Jaderberg",
+          "authorTag": "No Priors Podcast / Isomorphic Labs",
+          "en": {
+            "rewrite": [
+              "Isomorphic Labs president Max Jaderberg argues that drug discovery should move as much as possible onto a computer. Biology is too high-dimensional and real-world experiments are too slow and expensive for trial-and-error to remain the main loop.",
+              "The goal is not to eliminate experiments: the real world still has to validate safety and novel hypotheses. The goal is to arrive there with far better predictions, so experiments validate instead of teaching the team everything from scratch.",
+              "His five-year test is blunt: predictive understanding of disease biology and the ability to design precise, less toxic molecules should have changed dramatically."
+            ],
+            "original": [
+              "How can we bring all of that drug discovery work onto a computer?",
+              "We should be driving really hard at bringing that in silico on a computer so that we can reduce the amount of real world time.",
+              "I'd be really disappointed if we fast forward even five years' time ... predictive understanding of disease biology has not step changed in a massive way."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Isomorphic Labs 总裁 Max Jaderberg 认为，药物研发应该尽可能搬进电脑。生物学空间太高维，现实实验又慢又贵，继续把 trial-and-error 当成主循环，效率会越来越低。",
+              "目标不是消灭实验：安全性和新科学假设最终仍然必须回到现实中验证。目标是先在电脑里做出更好的预测，让现实实验负责验证，而不是让团队从头学完一遍。",
+              "他给出的五年检验标准很直接：对疾病生物学的预测理解，以及设计更精准、更低毒分子的能力，都应该发生巨大的跃迁。"
+            ],
+            "original": [
+              "怎样把所有药物发现工作搬到电脑上？",
+              "应该努力把它搬到电脑里，减少进入现实世界所需的时间。",
+              "如果五年后对疾病生物学的预测理解还没有发生巨大跃迁，我会非常失望。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2121036562058400200",
+          "en": {
+            "rewrite": [
+              "OpenAI's Thibault Sottiaux points to new cybersecurity tools around automated patching and automated red teaming. The interesting direction is a defensive loop in which agents can both find weaknesses and help close them.",
+              "He also says Codex improvements should be described without simply saying 'the model'—a small reminder that the product is becoming a system of tools and workflows, not just a model endpoint."
+            ],
+            "original": [
+              "We announced new tools we're developing for cybersecurity today across automated patching and automated red teaming.",
+              "How can codex be improved? Try not to say model."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "OpenAI 的 Thibault Sottiaux 提到了一组面向网络安全的新工具，覆盖自动修补和自动 red teaming。值得注意的方向是：让 agent 同时参与发现漏洞和修复漏洞，形成防御闭环。",
+              "他还说，讨论 Codex 改进时尽量别只说「model」。这其实提示了一个变化：产品正在变成工具和工作流组成的系统，而不只是一个模型 endpoint。"
+            ],
+            "original": [
+              "今天我们宣布正在开发网络安全工具，覆盖自动修补和自动 red teaming。",
+              "Codex 如何改进？尽量不要说 model。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2120966768483262648",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch argues that agents are becoming the new design engineers. Rigid, high-level framework abstractions can get in the way of an infinite creation machine, so the lower-level layer has to become more capable instead.",
+              "His proposed compromise is UI SDK: packaged behaviors that preserve accessibility, performance, and cohesion while leaving agents free to generate very different interfaces."
+            ],
+            "original": [
+              "Agents are the new design engineers, and they're ready to build anything you ask, tailored to your usecase.",
+              "UI SDK is packaged behaviors that give us accessibility, performance, cohesion ... with absolutely zero limitations and tradeoffs for what UIs we can generate."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 认为，agent 正在成为新的 design engineer。对于一台无限创作的机器来说，僵硬的高层 framework abstraction 反而可能碍事，因此底层能力必须变得更强。",
+              "他的折中方案是 UI SDK：把 accessibility、performance、cohesion 等行为打包好，同时让 agent 保持生成不同界面的自由。"
+            ],
+            "original": [
+              "Agent 是新的 design engineer，已经准备好按你的使用场景构建任何东西。",
+              "UI SDK 提供 accessibility、performance、cohesion 等打包行为，同时不限制生成什么 UI。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Fast Models, Real Work / 更快的模型进入企业",
+      "desc": "速度只有在复杂任务上仍然保持准确时才有意义，企业评测正在把这件事量化。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2120947988143198302",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie reports early results from testing Gemini 4 Hydrogen on Box AI's Complex Work Eval. Hydrogen was five percentage points more accurate than Gemini 3.8 Flash, completed tasks in less than half the time, and used about 12% fewer tokens on a typical task.",
+              "The evaluation uses complex enterprise-document work across finance, consulting, life sciences, and other fields. Box plans to bring Hydrogen to AI Studio so customers can build custom agents with it."
+            ],
+            "original": [
+              "Hydrogen is 5 percentage points better in accuracy than Gemini 3.8 Flash.",
+              "It did the tasks in less than half the time with about 12% fewer tokens on a typical task.",
+              "Hydrogen will be rolling out in the Box AI Studio shortly."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 分享了 Gemini 4 Hydrogen 在 Box AI Complex Work Eval 上的早期结果。Hydrogen 的准确率比 Gemini 3.8 Flash 高 5 个百分点，完成任务的时间不到一半，典型任务的 token 用量还少了约 12%。",
+              "这套评测针对的是金融、咨询、生命科学等领域的企业文档复杂任务。Box 计划很快把 Hydrogen 接入 AI Studio，让客户用它构建 custom agent。"
+            ],
+            "original": [
+              "Hydrogen 的准确率比 Gemini 3.8 Flash 高 5 个百分点。",
+              "完成任务的时间不到一半，典型任务 token 少约 12%。",
+              "Hydrogen 很快会在 Box AI Studio 上线。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:joshwoodward",
+          "sourceUrl": "https://x.com/joshwoodward/status/2120942262054232392",
+          "en": {
+            "rewrite": [
+              "Google VP Josh Woodward introduces Gemini 4 Hydrogen as a fast model now available in Gemini App. A related post positions Gemini as operating from the user's point of view, while select stores and partners are preparing new hardware demonstrations."
+            ],
+            "original": [
+              "Introducing Gemini 4 Hydrogen, cutting-edge intelligence for everyone! Now in GeminiApp. It's fast. It's smart. It's a big jump."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Google VP Josh Woodward 宣布 Gemini 4 Hydrogen 已进入 Gemini App，主打更快的使用体验。相关内容还把 Gemini 描述成从用户视角工作的助手，并预告了部分门店和合作方的硬件演示。"
+            ],
+            "original": [
+              "Gemini 4 Hydrogen 已在 Gemini App 上线。它很快、很聪明，是一次大的跃迁。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The New Agent Stack / 新的 Agent 技术栈",
+      "desc": "当 agent 成为长期运行的软件，代码审查、依赖和信任机制都会变成一等基础设施。",
+      "cards": [
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2121058770767982997",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger points to his team's write-up on running persistent agents inside OpenAI. The post signals a shift from one-shot assistant calls toward agents that stay alive, operate over time, and need an architecture for persistence and supervision.",
+              "His separate question about enabling yolo mode for dots captures the other side of the design problem: the more autonomous the agent, the more explicit the tradeoff becomes between speed and unwanted actions."
+            ],
+            "original": [
+              "My team wrote about how we run persistent agents inside OpenAI.",
+              "Would you enable yolo mode for dots, even if your dot might do sth unwanted?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger 提到，他的团队写了一篇文章，介绍如何在 OpenAI 内部运行 persistent agents。这说明系统正在从一次性的 assistant call，转向能够长期存活、持续执行，并需要专门架构来管理持久性和监督的 agent。",
+              "他关于是否为 dots 开启 yolo mode 的提问，则点出了另一面：agent 越自主，速度和误操作之间的 trade-off 就越需要被明确设计。"
+            ],
+            "original": [
+              "我的团队写了如何在 OpenAI 内部运行 persistent agents。",
+              "即使你的 dot 可能做出不想要的事，你会为它开启 yolo mode 吗？"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
