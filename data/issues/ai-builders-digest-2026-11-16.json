@@ -1,0 +1,207 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-11-16",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线，是 AI builder 正在把“做出来”推进到更细的工程层：Guillermo Rauch 发布了 xeet，用 Rust/Wasm 在约 1ms 内像素级渲染 X 帖子，还把 verification engineering 直接做进 autorepo；Dan Shipper 则展示了 skill 如何通过 autoresearch 迭代到更贴近个人口味。另一边，Anthropic 的 Nate Parrott 提醒我们，原型周期已经从几周压到一两天，但把东西交到用户手里、理解他们是否真的会用，依然没有被压缩。再加上 Codex 的容量错误可能终于被修好，今天更像一份“工具变快之后，工程和判断力往哪里走”的小报告。"
+  },
+  "archive": {
+    "title": "验证工程日报",
+    "desc": "AI 工具正在把渲染、原型、skill 迭代和服务稳定性推进到更细的工程层，而用户验证仍然是无法跳过的一步。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-11-16 source feeds.",
+  "sections": [
+    {
+      "title": "Verification Engineering / 验证工程",
+      "desc": "当 agent 开始写基础设施，真正难的部分不只是生成，而是持续验证它是否还和原实现一致。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2122184794209714368",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch introduces xeet, a hermetic X post renderer written in safe Rust/Wasm. It renders a post to PNG in roughly 1ms without a browser, network, filesystem, or system fonts, while reproducing Blink and HarfBuzz layout behavior, CJK, math, emoji fallbacks, and X's show-more rules.",
+              "The more interesting part is how it was built: xeet is an autorepo. An oracle boots Chrome to verify tens of thousands of layout rules, then a CI canary watches the original and files signed PRs for agents to act on. Rauch calls the approach verification engineering, and it is a useful template for making generated infrastructure trustworthy."
+            ],
+            "original": [
+              "Introducing xeet: a hermetic, pixel-perfect X post renderer in safe Rust / wasm. Zero browser, network, filesystem, system fonts. Renders a post to PNG in ~1ms.",
+              "It's structured as an autorepo. An oracle boots up Chrome, and verifies tens of thousands of text layout rules. A CI canary then watches the evolution of the original, and files signed PRs for agents to act on."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 发布了 xeet：一个用 safe Rust/Wasm 写的、封闭可复现的 X 帖子渲染器。它不需要浏览器、网络、文件系统或系统字体，大约 1ms 就能把帖子渲染成 PNG，同时复现 Blink、HarfBuzz 的排版行为，以及 CJK、数学符号、emoji fallback 和 X 的折叠规则。",
+              "更值得注意的是它的构建方式：xeet 是一个 autorepo。一个 oracle 会启动 Chrome，验证数万条布局规则；CI canary 再持续观察原实现的变化，并生成带签名的 PR 交给 agent 处理。Rauch 把这叫作 verification engineering，这是一套让生成式基础设施变得可信的实用模板。"
+            ],
+            "original": [
+              "xeet 是一个 safe Rust/Wasm 写的、像素级准确的 X 帖子渲染器，不需要浏览器、网络、文件系统或系统字体，约 1ms 输出 PNG。",
+              "它采用 autorepo：oracle 启动 Chrome 验证数万条排版规则，CI canary 观察原实现的变化，并生成带签名的 PR 供 agent 处理。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2122127120055034258",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch also shares a smaller but telling example of AI-assisted building: he made a CLI to diagnose system slowdowns, and the model named it hog. The joke is that models are already getting good at naming things, while cache invalidation and naming still sit among computer science's famously hard problems.",
+              "It is a light post, but it captures a familiar builder workflow: let the model handle the low-stakes creative surface, then keep the engineering judgment for what the tool actually does."
+            ],
+            "original": [
+              "AI models are getting really good at naming things. I created a little CLI to diagnose system slowdowns, and it named it hog.",
+              "Given they're already good at cache invalidation, maybe computer science's hardest problems are solved after all."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch 还分享了一个更轻巧、但很有 builder 味道的例子：他做了一个诊断系统变慢原因的 CLI，模型给它起名叫 hog。玩笑背后是一个事实：模型已经很擅长处理命名这类创意表层，而 cache invalidation 和命名仍然是计算机科学里出了名的难题。",
+              "这条内容虽然轻，但很像现在的实际工作流：把低风险的创意部分交给模型，工程判断则留给人来决定这个工具到底应该做什么。"
+            ],
+            "original": [
+              "AI 模型已经很擅长起名字了。我做了一个诊断系统变慢原因的小 CLI，它给它起名叫 hog。",
+              "既然它们连 cache invalidation 都已经很擅长了，也许计算机科学最难的问题都解决了。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Prototype Bottleneck / 原型之后的瓶颈",
+      "desc": "生成一个可用原型变快了，但真正把它交到人手里、理解使用行为，仍然需要时间。",
+      "cards": [
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2122060856498524510",
+          "en": {
+            "rewrite": [
+              "Peter Yang quotes Nate Parrott of Anthropic on the most important thing AI has not compressed: user learning. With an engineering background from The Browser Company, Parrott says ideas that once took weeks to prototype can now be built in one or two days. But getting the product into people's hands and understanding whether they will use it still takes time.",
+              "That distinction matters for builders: faster implementation expands the number of ideas you can test, but it does not remove the need for contact with real users."
+            ],
+            "original": [
+              "Now at Anthropic, you can kind of do that in one to two days. So you've really compressed the cycle of building. What you haven't compressed is the cycle of putting it in people's hands and understanding if they're going to use it."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 转述了 Anthropic 的 Nate Parrott 对一个关键事实的判断：AI 压缩了 build cycle，却没有压缩用户学习周期。Parrott 有 The Browser Company 的工程背景，他说，过去需要几周验证的想法，现在一两天就能做出来；但把产品交到用户手里、理解他们是否会用，依然需要时间。",
+              "这对 builder 很重要：更快的实现速度意味着你能测试更多想法，但它并没有取消和真实用户接触的必要。"
+            ],
+            "original": [
+              "现在在 Anthropic，类似的东西一两天就能做出来。build cycle 被大幅压缩了，但把东西交给用户、理解他们是否会用的周期并没有被压缩。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2122132596352327816",
+          "en": {
+            "rewrite": [
+              "Peter Yang shares Nate Parrott's practical fix for Claude's recurring visual defaults. In a fresh context, the model may believe its familiar serif, off-white, orange, and edge-bar treatment is original. A Claude Design prompt can explicitly name those biases and tell the model not to use them unless requested.",
+              "The useful lesson is not a magic style prompt; it is to treat a model's repeated aesthetic choices as a known prior that can be documented and counterweighted."
+            ],
+            "original": [
+              "In Claude's mind, it's only ever done this once, so it thinks this is totally original.",
+              "For this particular model, you tend to overly bias toward these two fonts and colors. So don't use them unless the user asks you to."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 分享了 Nate Parrott 对 Claude 固定视觉套路的一个实用修正：模型在 fresh context 里，可能会把自己熟悉的衬线字体、米白背景、橙色和卡片边缘装饰当成原创。解决方法是在 Claude Design prompt 里明确写出这些偏好，并要求除非用户指定，否则不要使用。",
+              "真正有用的不是某个神奇的风格 prompt，而是把模型反复出现的审美选择当作已知先验，写下来，再主动施加反向约束。"
+            ],
+            "original": [
+              "在 Claude 看来，它只做过一次，所以会觉得这完全是原创。",
+              "对于这个模型，你往往会过度偏向这两种字体和颜色，所以除非用户要求，否则不要使用。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Compounding Skills / 会复利的 Skill",
+      "desc": "Skill 不只是一次性提示词，也可以像实验系统一样，通过反复使用和评估逐步贴近个人标准。",
+      "cards": [
+        {
+          "authorKey": "x:danshipper",
+          "sourceUrl": "https://x.com/danshipper/status/2122091033001337134",
+          "en": {
+            "rewrite": [
+              "Every CEO Dan Shipper says his team has been working on compounding skills: skills that improve each time they are used. He made one for context-window summaries, then used autoresearch to iterate until it reached 80% of his taste compared with a no-skill baseline.",
+              "The interesting shift is from writing a skill once to evaluating it as a system. Personal taste becomes a measurable target, and repeated use becomes the feedback loop."
+            ],
+            "original": [
+              "We've been working hard on compounding skills lately (skills that get better every time you use them).",
+              "I made a skill to help us write context window summaries, and used autoresearch to iterate until it hit 80% of my taste on summaries vs. a no-skill baseline."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Every CEO Dan Shipper 说，他们最近一直在做“会复利的 skill”：每使用一次，就变得更好的 skill。他做了一个帮助写 context window summary 的 skill，再用 autoresearch 反复迭代，直到相对于不使用 skill 的 baseline，结果达到了自己口味的 80%。",
+              "关键变化是：skill 不再是写完就结束的一次性 prompt，而是一个可以被评估的系统。个人偏好变成可测目标，重复使用则变成反馈回路。"
+            ],
+            "original": [
+              "我们最近一直在努力做会复利的 skill，也就是每次使用都会变好的 skill。",
+              "我做了一个帮助写 context window summary 的 skill，并用 autoresearch 迭代，直到相对于不使用 skill 的 baseline，达到了我个人口味的 80%。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Tools Becoming Infrastructure / 工具开始变成基础设施",
+      "desc": "从服务容量到 agent 控制现实设备，builder 关注的已经不只是模型能力，还有工具能否稳定地接入世界。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2122206990101536852",
+          "en": {
+            "rewrite": [
+              "OpenAI Codex team member Thibault Sottiaux suggests the team may have finally fixed the recurring 'model at capacity' errors. It is a small status update, but capacity failures are exactly the kind of infrastructure friction that can erase the value of an otherwise capable coding agent.",
+              "For builders, reliability is part of the product now: the model has to be available when the workflow reaches the point where it needs to run."
+            ],
+            "original": [
+              "Codex team might have actually fixed the \"model at capacity\" errors that have been pestering you."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "OpenAI Codex 团队成员 Thibault Sottiaux 暗示，反复出现的“model at capacity”错误可能终于修好了。这是一条很短的状态更新，但容量问题正是最容易抹掉 coding agent 实际价值的基础设施摩擦。",
+              "对 builder 来说，可靠性现在已经是产品的一部分：当工作流走到需要运行模型的那一步，模型必须真的可用。"
+            ],
+            "original": [
+              "Codex 团队可能真的已经修好了那些一直困扰大家的“model at capacity”错误。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thenanyu",
+          "sourceUrl": "https://x.com/thenanyu/status/2122096965865664924",
+          "en": {
+            "rewrite": [
+              "OpenAI product builder Nan Yu asks for a plug-and-play home automation hub that Codex could see as another computer and control directly. The question points toward a practical next step for agents: not just writing code on a screen, but operating the physical systems around us through a simple, computer-like interface."
+            ],
+            "original": [
+              "What’s the best home automation hub out there if I just wanna use Codex to control everything?",
+              "Ideally, something plug-and-play that my Codex just sees as another computer, more or less."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "OpenAI 产品 builder Nan Yu 在寻找一种即插即用的家庭自动化 hub：让 Codex 把它当成另一台电脑，直接控制家里的一切。这个问题指向 agent 的下一步落点：不只是在屏幕上写代码，而是通过一个足够简单、像电脑一样的接口，操作我们身边的真实系统。"
+            ],
+            "original": [
+              "如果我只想用 Codex 控制一切，最好的家庭自动化 hub 是什么？",
+              "理想情况是即插即用，让我的 Codex 基本把它当成另一台电脑。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
