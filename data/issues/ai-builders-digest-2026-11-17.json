@@ -1,0 +1,173 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-11-17",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的 feed 里，最值得注意的不是又多了几个 agent，而是 agent 正在从工具变成工作环境：软件工厂会被模型继续自动化，真正难的是让多个 agent 在同一个 workspace 里协作。与此同时，infra、eval、memory 和 token 使用量都在向上游移动，AI-native engineering 开始有了更具体的形状。"
+  },
+  "archive": {
+    "title": "Agent 工作台日报",
+    "desc": "Agent 正从单点工具走向协作工作台，基础设施、评测、记忆和工程教育随之一起重构。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-11-17 source feeds.",
+  "sections": [
+    {
+      "title": "From Software Factories to Agent Workspaces / 从软件工厂到 Agent 工作台",
+      "desc": "今天最强的一条主线是：写代码本身正在被进一步商品化，下一层竞争会转向 agent 如何共同工作。",
+      "cards": [
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2122438326431154210",
+          "en": {
+            "rewrite": ["Former Claude Code engineer Thariq argues that software factories may be a temporary problem: models will learn to build them for us. The more durable design question is the workspace where agents collaborate with a human, which shifts the product frontier from code generation to orchestration."],
+            "original": ["software factories feel like a temporary problem. the models will learn to build them for you\n\nthe more interesting question to me is how to build a workspace where agents can collaborate with you"]
+          },
+          "cn": {
+            "rewrite": ["前 Claude Code 工程师 Thariq 认为，软件工厂可能只是一个阶段性问题，模型最终会学会替你搭建它们。更持久的产品问题，是如何设计一个让多个 agent 和人一起工作的 workspace，竞争也因此从‘生成代码’转向‘编排协作’。"],
+            "original": ["软件工厂感觉像是一个暂时性问题。模型会学会替你构建它们。\n\n对我来说，更有意思的问题是：如何构建一个让 agent 能与你协作的工作区。"]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2122543500814336281",
+          "en": {
+            "rewrite": ["Investor and builder Nikunj Kothari sketches 2026's infra progression in four quarters: vibe coding, harnesses, sandboxes, then agentic CI. His unanswered question is the useful one: once every layer has multiple providers, what becomes the next bottleneck?"],
+            "original": ["2026 infra wars in a nutshell..\n\nVibe coding in Q1 \nHarnesses in Q2 \nSandboxes in Q3 \nAgentic CI in Q4\n\nMore providers than I can keep track of. \n\nAny guesses for what comes next?"]
+          },
+          "cn": {
+            "rewrite": ["投资人兼 builder Nikunj Kothari 用四个季度概括了 2026 的 infra 演进：vibe coding、harness、sandbox，最后是 agentic CI。真正值得追问的不是供应商够不够多，而是每一层都出现多个选择后，下一处瓶颈会落在哪里。"],
+            "original": ["2026 基础设施战争一览：\n\nQ1 Vibe coding\nQ2 Harnesses\nQ3 Sandboxes\nQ4 Agentic CI\n\n供应商多到我都记不住了。\n\n大家猜猜接下来是什么？"]
+          }
+        },
+        {
+          "authorKey": "podcast:latent-space",
+          "sourceUrl": "https://www.youtube.com/@LatentSpacePod",
+          "authorName": "Mihail Eric",
+          "authorTag": "Latent Space Podcast",
+          "en": {
+            "rewrite": ["The takeaway from Stanford adjunct professor and Monaco Head of AI Mihail Eric is that AI-native engineering does not remove the need for fundamentals; it raises the floor. His refreshed Modern Software Developer course now emphasizes context engineering, architecture, and production judgment for engineers working with large codebases. The practical lesson is blunt: implementation details can be delegated more often, but humans still need to own system design and trade-offs."],
+            "original": ["The idea of, like, very careful context engineering. The idea of, like, really thinking through sort of like design and architecture as a way of handling really complex tasks.", "A well-trained AI native engineer ... can be some of the most useful assets like any company around."]
+          },
+          "cn": {
+            "rewrite": ["Stanford 兼职教授、Monaco AI 负责人 Mihail Eric 的核心判断是：AI-native engineering 没有让基础能力失效，反而抬高了入场门槛。他更新后的 Modern Software Developer 课程，把重点放在 context engineering、架构和生产环境判断上。实际工作里，implementation detail 可以更多交给 agent，但系统设计和 trade-off 仍然需要人来负责。"],
+            "original": ["非常仔细的 context engineering。以及真正想清楚设计和架构，把它们作为处理复杂任务的方式。", "一个训练良好的 AI-native engineer，可以成为任何公司最有用的资产之一。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Agents Become the Users / Agent 开始成为用户",
+      "desc": "当软件面对的不只是人，而是会行动的 agent，产品研究、评测和交互设计都会换一套方法。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2122415506451841215",
+          "en": {
+            "rewrite": ["Vercel CEO Guillermo Rauch describes a change in the software loop: the old user was a human interviewed for needs, while the new user can be an agent evaluated through repeated tests. That makes evals less like a final QA gate and more like the equivalent of user research for agent-facing products."],
+            "original": ["The old way: users are human, you run user interviews, get inspired, mock up user journeys.\n\nThe new way: users are agents, you run evals, evals inform the software engineering loop."]
+          },
+          "cn": {
+            "rewrite": ["Vercel CEO Guillermo Rauch 描述了一次软件开发闭环的变化：过去的用户是人，要靠访谈了解需求；新的用户可能是 agent，要靠持续跑 eval 来观察行为。这样一来，eval 不再只是上线前的 QA 门槛，而更像是面向 agent 产品的用户研究。"],
+            "original": ["旧方式：用户是人，你做用户访谈，获得灵感，模拟用户旅程。\n\n新方式：用户是 agent，你运行 eval，eval 反过来影响软件工程闭环。"]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2122347721298510021",
+          "en": {
+            "rewrite": ["Peter Yang distills five ways to get Claude past generic AI design: provide real context, study familiar UX patterns, document the model's visual biases, start with wireframes, and generate multiple options before remixing. The important move is to turn taste into an explicit feedback system instead of hoping a single prompt produces judgment."],
+            "original": ["1. Give Claude context upfront.\n2. Research familiar UX patterns.\n3. Make Claude aware of its design biases.\n4. Start with wireframes.\n5. Ask for multiple options, then remix them."]
+          },
+          "cn": {
+            "rewrite": ["Peter Yang 总结了让 Claude 摆脱 AI 设计感的五个办法：先给真实上下文，研究用户熟悉的 UX 模式，把模型的视觉偏见写进设计文件，先做 wireframe，最后让它生成多套方案再 remix。关键不在于寻找一个神奇 prompt，而是把审美变成可反复反馈的系统。"],
+            "original": ["1. 提前给 Claude 上下文。\n2. 研究熟悉的 UX 模式。\n3. 让 Claude 意识到自己的设计偏见。\n4. 从 wireframe 开始。\n5. 先要多个选项，再 remix。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Own the Intelligence Stack / 掌握自己的智能栈",
+      "desc": "模型能力变强之后，真正的控制权问题落在数据、路由、记忆和基础设施所有权上。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2122458782294847807",
+          "en": {
+            "rewrite": ["Rauch's four-part roadmap is less about picking the best model and more about avoiding dependence on any single provider: use open SDKs and harnesses, own model choice through gateways, keep traces and data under your control, then move toward private inference. The architecture is a claim about leverage: intelligence should become a replaceable component of your stack."],
+            "original": ["Own your intelligence roadmap:\n① Use open SDKs &amp; harnesses\n② Own model choice with Gateways\n③ Own your traces and data, enforce ZDR\n④ Own your models with private inference"]
+          },
+          "cn": {
+            "rewrite": ["Rauch 的四步路线并不是在教你选哪一个最强模型，而是在减少对单一供应商的依赖：使用开放 SDK 和 harness，通过 gateway 掌握模型选择，自己保管 traces 与数据，最后走向 private inference。这背后的架构判断是，智能应该成为技术栈里可替换、可掌控的组件。"],
+            "original": ["掌握你的 intelligence roadmap：\n① 使用开放 SDK 和 harness\n② 通过 Gateway 掌握模型选择\n③ 掌握 traces 和数据，执行 ZDR\n④ 通过 private inference 掌握自己的模型"]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2122576951080792543",
+          "en": {
+            "rewrite": ["Garry Tan says his GBrain backend will replace Postgres plus pgvector, or pglite, with a Rust engine for vector search, graph search, embeddings, RAG, and HNSW. The notable signal is not merely another database announcement; it is an attempt to make memory and retrieval a first-class substrate for a software factory."],
+            "original": ["Fun project for GBrain coming in the next few weeks using Vorflux as my software factory: GBrain backend engine written in Rust\n\nThis will replace postgres+pgvector or pglite as the backing store for vector search, graph search, embeddings, RAG and HNSW"]
+          },
+          "cn": {
+            "rewrite": ["Garry Tan 表示，GBrain 后端将用 Rust 编写的 engine 替代 Postgres + pgvector 或 pglite，承载 vector search、graph search、embeddings、RAG 和 HNSW。值得注意的不只是又一个数据库项目，而是 memory 与 retrieval 正在被当成 software factory 的一等底座来重做。"],
+            "original": ["接下来几周 GBrain 会有一个有趣项目，用 Vorflux 作为我的 software factory：GBrain 后端 engine 用 Rust 编写。\n\n它会替代 postgres+pgvector 或 pglite，作为 vector search、graph search、embeddings、RAG 和 HNSW 的底层存储。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Tokens, Scale and the Next Work Curve / Token、规模与下一条工作曲线",
+      "desc": "模型真正进入生产之后，token 消耗不再是成本表上的一个数字，而是整个自动化规模的先行指标。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2122508098351038532",
+          "en": {
+            "rewrite": ["Box CEO Aaron Levie argues that token spend per employee has no visible ceiling because coding is finally becoming useful, then unlocking tool use and computer use across knowledge work. The next jump comes from background agents and swarms running in parallel, so the important economic question is not whether tokens rise, but what new work becomes viable when they do."],
+            "original": ["The chart of token spend per employee still has no ceiling in sight.", "Once you have agents that can code, use computers, leverage any tool out there, and understand a variety of domains, you can begin to throw them at a wide variety of knowledge work tasks.", "So basically tokens are only going up from here."]
+          },
+          "cn": {
+            "rewrite": ["Box CEO Aaron Levie 认为，人均 token 消耗还看不到上限：coding 终于开始真正可用，接着会打开 tool use 和 computer use，让 agent 进入更多知识工作。下一次跃迁来自后台 agent 和并行 swarm，因此关键经济问题不是 token 会不会继续增长，而是 token 增长后哪些工作终于值得自动化。"],
+            "original": ["人均 token 消耗的图表还看不到上限。", "当 agent 能编码、使用电脑、调用任何工具，并理解多个领域后，就可以把它们投入大量此前难以自动化的知识工作。", "所以基本上，token 只会从这里继续上涨。"]
+          }
+        },
+        {
+          "authorKey": "x:danshipper",
+          "sourceUrl": "https://x.com/danshipper/status/2122541401804054826",
+          "en": {
+            "rewrite": ["Dan Shipper proposes ranking AI-era feeds by proof of work: let agents report how many tokens they used on a piece of content, then use that signal for feeds read by humans and agents. It is only a musing, but it points at a real problem: when generation becomes cheap, effort and verification need new visible signals."],
+            "original": ["what if the best way to rank a feed in the AI age is proof of work.\n\nallow agents to report how many tokens they’ve used based on a piece of content, and use that to rank it on a feed that humans and agents read"]
+          },
+          "cn": {
+            "rewrite": ["Dan Shipper 提了一个 AI 时代 feed 排序的想法：把 proof of work 作为信号，让 agent 报告自己在一段内容上用了多少 token，再用于同时面向人和 agent 的 feed 排序。虽然只是一个设想，但它碰到了真实问题：内容生成变便宜之后，投入和验证该如何被看见。"],
+            "original": ["如果 AI 时代给 feed 排序的最佳方式是 proof of work 呢？\n\n允许 agent 报告它在一段内容上用了多少 token，并用这个信号给人和 agent 都会阅读的 feed 排序。"]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Infrastructure Friction / 基础设施的摩擦",
+      "desc": "Agent 要真正工作，权限、运行环境和依赖体积这些看似琐碎的细节，都会变成产品体验。",
+      "cards": [
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2122463466304971068",
+          "en": {
+            "rewrite": ["Peter Steinberger captures the user experience problem in one exchange: people want fewer permission alerts so agents can work on macOS without constant babysitting, while Apple's answer appears to be more alarming prompts. As agents act on our behalf, permissions stop being background OS plumbing and become part of the agent product itself."],
+            "original": ["People: Please reduce the number of permission alerts so agents can work on macOS without constant babysitting\n\nApple: I hear you, here’s some new scary alerts"]
+          },
+          "cn": {
+            "rewrite": ["Peter Steinberger 用一来一回概括了 agent 的体验问题：用户希望减少权限弹窗，让 agent 在 macOS 上工作时不用一直 babysit；系统给出的回应却像是更多吓人的提醒。随着 agent 代表我们行动，权限不再只是操作系统后台细节，而会直接成为 agent 产品体验的一部分。"],
+            "original": ["用户：请减少权限提醒的数量，让 agent 能在 macOS 上工作，不用一直 babysit。\n\nApple：我听到了，这是一些新的吓人提醒。"]
+          }
+        }
+      ]
+    }
+  ]
+}
