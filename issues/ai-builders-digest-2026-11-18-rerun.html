@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Builders Digest · 2026-11-18</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f6f3ed;
+    --accent: #c0392b;
+    --accent-light: #e8d5c4;
+    --border: #d4cdc0;
+    --muted: #7a7265;
+    --tag-bg: #e8e2d6;
+    --en-bg: #ffffff;
+    --cn-bg: #faf7f2;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.7;
+  }
+
+  .masthead, .intro, .section-header, .feed, footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .masthead { padding-top: 48px; }
+  .masthead-rule { border: none; border-top: 3px solid var(--ink); margin: 0 0 12px; }
+  .masthead-inner { display: flex; justify-content: center; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .masthead-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; letter-spacing: -0.4px; }
+  .masthead-subtitle { margin-top: 8px; padding-bottom: 10px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  .edition-strip {
+    position: relative;
+    margin-top: 8px;
+    min-height: 46px;
+    padding: 10px 132px 12px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.34);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+
+  .edition-strip .edition-sep { margin: 0 8px; color: #b8ae9f; }
+  .edition-strip-text { display: block; }
+  .edition-return-link { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; padding: 6px 10px; border: 1px dashed rgba(192, 57, 43, 0.55); border-radius: 999px; color: var(--accent); text-decoration: none; font-size: 12px; line-height: 1; letter-spacing: 0.06em; background: rgba(255, 255, 255, 0.45); transition: background 160ms ease, border-color 160ms ease, transform 160ms ease; }
+  .edition-return-link:hover, .edition-return-link:focus-visible { background: rgba(255, 255, 255, 0.82); border-color: var(--accent); transform: translateY(-50%) translateX(-1px); }
+  .edition-return-link:focus-visible { outline: none; }
+  .intro { padding-top: 22px; }
+  .intro-inner { max-width: 920px; margin: 0 auto; padding: 0 0 0 18px; border-left: 3px solid #d9cdbc; }
+  .intro-kicker { margin: 0 0 8px; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+  .intro p { margin: 0; max-width: none; color: var(--muted); font-size: clamp(15px, 1.6vw, 16px); line-height: 1.9; text-wrap: pretty; font-family: 'Noto Serif SC', serif; overflow-wrap: anywhere; }
+
+  .section-header { margin-top: 40px; }
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 4px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 24px; margin: 0 0 6px; }
+  .section-desc { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+
+  .feed { display: flex; flex-direction: column; gap: 20px; }
+  .card { background: var(--en-bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .card-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid #eee7dd; flex-wrap: wrap; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .avatar-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .avatar.is-fallback img { display: none; }
+  .avatar.is-fallback .avatar-fallback { display: flex; }
+
+  .author-info { flex: 1; min-width: 160px; }
+  .author-name { font-weight: 600; font-size: 15px; }
+  .author-name-row { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .author-handle { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+  .author-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; background: var(--tag-bg); color: var(--muted); padding: 4px 8px; border-radius: 999px; }
+  .author-tag.is-inline { padding: 3px 8px; }
+
+  .card-controls { margin-left: auto; display: inline-flex; gap: 8px; }
+  .view-toggle { border: 1px solid var(--border); background: transparent; color: var(--muted); padding: 6px 10px; border-radius: 999px; font-size: 12px; line-height: 1; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; }
+  .view-toggle.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .card-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .lang-col { padding: 18px 20px 22px; }
+  .lang-col.cn { background: var(--cn-bg); border-right: 1px solid #f0ece4; font-family: 'Noto Serif SC', serif; }
+  .lang-col.en { background: var(--en-bg); }
+  .lang-label { margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+  .content-shell { position: relative; transition: height 220ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .content-variant { position: absolute; inset: 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(4px); transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms; will-change: opacity, transform; }
+  .content-variant.is-active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s; }
+  .content-variant p, .content-variant li { margin: 0 0 12px; font-size: 14px; }
+  .content-variant ol { margin: 0 0 12px 20px; padding: 0; }
+  .inline-code { display: inline-block; font-family: 'IBM Plex Mono', monospace; background: #f4efe7; padding: 3px 6px; border-radius: 6px; margin-bottom: 8px; }
+
+  .card-footer { padding: 12px 20px 16px; border-top: 1px solid #eee7dd; background: #fcfaf6; }
+  .card-footer { display: flex; align-items: center; justify-content: space-between; }
+.card-footer a { color: var(--accent); text-decoration: none; font-size: 14px; }
+.eureka-btn { border: 1px dashed var(--accent); background: transparent; color: var(--accent); padding: 5px 12px; border-radius: 999px; font-size: 12px; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; opacity: 0.55; }
+.eureka-btn:hover { background: var(--accent); color: #fff; opacity: 1; border-style: solid; }
+.eureka-btn:active { transform: scale(0.96); }
+.eureka-toast { position: fixed; bottom: 32px; right: 32px; background: #1a1a1a; color: #fff; padding: 12px 20px; border-radius: 10px; font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 9999; opacity: 0; transform: translateY(12px); transition: opacity 240ms ease, transform 240ms ease; pointer-events: none; }
+.eureka-toast.show { opacity: 1; transform: translateY(0); }
+  footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 680px) {
+    .masthead-inner { align-items: center; }
+    .edition-strip { padding-right: 12px; padding-left: 12px; }
+    .edition-strip-text { padding-right: 0; }
+    .edition-return-link { position: static; transform: none; margin-top: 8px; font-size: 11px; }
+    .card-controls { margin-left: 0; }
+    .card-body { grid-template-columns: 1fr; }
+    .lang-col.cn { border-right: none; border-bottom: 1px solid #f0ece4; }
+    .edition-strip .edition-sep { margin: 0 5px; }
+    .intro-inner { padding-left: 14px; }
+    .intro p { line-height: 1.84; }
+  }
+</style>
+</head>
+<body data-publish-date="2026-11-18" data-issue-number="151" data-edition-name="双语精选版" data-view-label-rewrite="速读" data-view-label-original="原文" data-author-identities-path="/Users/jianan/.follow-builders/assets/author-identities.json" data-avatar-manifest-path="/Users/jianan/.follow-builders/assets/avatar-manifest.json">
+  <header class="masthead">
+    <hr class="masthead-rule">
+    <div class="masthead-inner">
+      <div class="masthead-title">AI Builders Digest</div>
+    </div>
+    <div class="masthead-subtitle">Bilingual edition · 双语对照版</div>
+    <div class="edition-strip">
+      <span class="edition-strip-text" id="edition-strip-text">第 151 期｜2026-11-18｜双语精选版｜8 条精选｜8 位作者｜5 个主题</span>
+      <a class="edition-return-link" href="../index.html">返回目录</a>
+    </div>
+  </header>
+
+  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="今天的主线不是某个模型又赢了，而是模型开始真正进入工作流：有人把 agent 交给结果，有人把多 agent 变成可编程的团队，还有人把浏览器、Workspace 和图像生成变成可以直接调用的执行层。6.2 的发布也提醒我们，能力提升只是前半场，速度、成本和「好不好用」才决定它能不能留下来。">
+    <div class="intro-inner">
+      <div class="intro-kicker">编者导语 / Editor&#39;s Note</div>
+      <p class="intro-copy">今天的主线不是某个模型又赢了，而是模型开始真正进入工作流：有人把 agent 交给结果，有人把多 agent 变成可编程的团队，还有人把浏览器、Workspace 和图像生成变成可以直接调用的执行层。6.2 的发布也提醒我们，能力提升只是前半场，速度、成本和「好不好用」才决定它能不能留下来。</p>
+    </div>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 01</div>
+    <h2 class="section-title">Models Have to Feel Good / 模型不只要聪明</h2>
+    <p class="section-desc">6.2 的讨论把评价标准拉回了真实使用：速度、成本、token 效率和使用时的摩擦感，才是模型能否成为日常工具的关键。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:sama" data-author-name="Sam Altman" data-author-tag="" data-author-handle="@sama" data-author-avatar="../assets/avatars/x-sama.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-sama.jpg" alt="Sam Altman avatar"><span class="avatar-fallback">SA</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Sam Altman</div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle">@sama</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Sam Altman 宣布 6.2 Sol 和 Astra 时，强调了一个容易被忽略的点：token 效率本身就是产品能力，不只是基础设施指标。真正的目标不是又赢了一次 benchmark，而是让用户在速度和成本成为瓶颈之前，能把更多事情做完。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>6.2 Sol 和 Astra 发布了。
+
+              这些模型能力很强，而且 token 效率很高；希望大家能从中获得很大价值。
+
+              尤其是 6.2 Sol ultrafast，我觉得大家会很喜欢。 https://t.co/KNjtDKRwj7</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Sam Altman announces 6.2 Sol and Astra with an emphasis that is easy to miss: token efficiency is part of the product, not merely an infrastructure metric. The promise is less about a benchmark victory than about letting users get more work done before speed and cost become the bottleneck.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>6.2 Sol and Astra are out.
+
+              These models can do amazing things and are very token-efficient; we hope people will get great value from them.
+
+              In particular, 6.2 Sol ultrafast is something I think people will really enjoy. https://t.co/KNjtDKRwj7</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/sama/status/2122798039899263456" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="Sam Altman" data-url="https://x.com/sama/status/2122798039899263456" data-author="Sam Altman">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="x:thsottiaux" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>OpenAI 的 Thibault Sottiaux 给发布热潮补上了更有用的注脚：6.2 确实是一次明显跃升，但在品味和使用舒适度上仍不完美。更现实的问题是，模型可能在发布前几天还在快速变化，早期 demo 不一定代表今天的体验，所以真实反馈比精心剪辑的发布视频更重要。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>今天大家对 6.2 Sol/Astra 的感受之所以和 influencer 们不同，有个有趣原因：我们很早就给了一些人权限，但过去 3-4 天又做了很多改动，我很确定这几天没有重新测试，而视频是上周做的。
+
+              别误会，相比 GPT 前代，这些模型确实是一次很大的跃升，但它们绝不是完美的。团队也很期待未来在品味和使用舒适度上继续改进。感谢大家的反馈，我们听到了！</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>OpenAI&#39;s Thibault Sottiaux offers the more useful caveat to the launch hype: 6.2 is a substantial jump, but it is not perfect, especially around taste and niceness of use. Early impressions can also be stale when models are still changing days before release, which makes real-world feedback more valuable than polished launch demos.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>One of the funny reasons for the difference in vibes between the influencers and the crowd today on 6.2 Sol/Astra is that we gave a few folks access a while ago and then made a lot of changes in the last 3-4 days and I&#39;m pretty sure no re-testing was done within those days and the videos were produced last week.
+
+              Don&#39;t get me wrong, while the models are a hefty jump compared to their GPT predecessors, they are by no means perfect and there are a few things the teams are excited for the models to get better at in future iterations in terms of taste and niceness of use. Love all the feedback and we hear you!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/thsottiaux/status/2122929634916679820" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/thsottiaux/status/2122929634916679820" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 02</div>
+    <h2 class="section-title">Agents Own Outcomes / Agent 开始接手结果</h2>
+    <p class="section-desc">下一层抽象不是让 AI 多做几个小任务，而是让它持续拥有一个问题域、调度子 agent，并用结果而不是聊天记录来汇报。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:swyx" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx 对 Devin Bots 最有价值的判断是：自动化的基本单位正在从单个任务上移。拥有独立记忆、目标和身份的 bot，可以管理子 agent、彼此协作，并通过 artifact 而不是一大段聊天来汇报。实际启示是，让 agent 对一个结果负责，而不是把它包装成无所不能的「AI 员工」。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>devin bots 是把多 agent 团队做对了：
+              - 始终在线、主动工作（但以 ROI 为调校目标）
+              - 对结果负责，而不是只做任务（也能和其他 bot 协作）
+              - 管理子 agent 团队（并自我审查）
+              - 到处可用（电话、短信、Slack 等）
+              - 通过交互式 artifact，也就是 devinapps，持续汇报，而不是输出很长的聊天记录（HTML 就够了™）</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx&#39;s strongest observation about Devin Bots is that the useful unit of automation is moving above the single task. Persistent bots have their own memory, goals and identity; they can manage subagents, collaborate and report through artifacts rather than dumping a long chat. The practical lesson is to ask an agent to own an outcome, not to pretend it is an all-purpose AI employee.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>devin bots are multi-agent teams done right:
+              - always on, proactive (but tuned for ROI)
+              - own outcomes not tasks (but can collab w others)
+              - manages teams of subagents (and reviews itself)
+              - available everywhere (call text slack whatever hello @interaction)
+              - consistent reporting thru interactive artifacts aka devinapps not long chats (HTML is all you need™ @trq212)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/swyx/status/2122746401482592549" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/swyx/status/2122746401482592549" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="x:amasad" data-author-name="Amjad Masad" data-author-tag="" data-author-handle="@amasad" data-author-avatar="../assets/avatars/x-amasad.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-amasad.jpg" alt="Amjad Masad avatar"><span class="avatar-fallback">AM</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Amjad Masad</div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle">@amasad</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Replit CEO Amjad Masad 认为，agent swarm 是 AI 的新 scaling 方向：不只是把单个模型做大，或给它更多思考时间，而是让多个 agent 并行探索、互相挑战，再合并出单个 agent 不容易找到的方案。Replit 想做的是把这套集体智能压缩成一个 prompt，让复杂编排从专业基础设施变成普通用户可以调用的产品能力。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Agent swarm 是 AI 下一阶段的 scaling frontier。
+
+              过去几年，我们通过训练更大的模型、给它们更多思考时间来扩展智能。但还有另一个维度：让多个 agent 并行运行，探索不同路径、互相挑战，并共同解决单个 agent 不容易发现的问题。
+
+              OpenAI 已经通过数学领域的突破展示了这种方法的潜力。
+
+              直到现在，自己实验 agent swarm 还需要搭建复杂的编排基础设施。
+
+              从今天开始，在 Replit 上启动一个 agent swarm 只需要一个 prompt。
+
+              很期待当集体机器智能变得人人可编程后，人们会发现什么。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Replit CEO Amjad Masad argues that agent swarms are a new scaling axis: instead of only making one model larger or giving it more time, run many agents in parallel to explore, challenge and combine approaches. Replit&#39;s pitch is to make that collective intelligence available through one prompt, turning orchestration from specialized infrastructure into a product primitive.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Agent swarms are the next scaling frontier for AI.
+
+              For years, we’ve scaled intelligence by training larger models and giving them more time to think. But there’s another dimension: running many agents in parallel, exploring different approaches, challenging each other, and working together on solutions that no single agent could easily discover.
+
+              OpenAI has already demonstrated the potential of this approach with breakthroughs in mathematics.
+
+              Until now, experimenting with agent swarms yourself required building complicated orchestration infrastructure.
+
+              Starting today on Replit, spinning up a swarm of agents is just one prompt away.
+
+              Excited to see what people discover when we make collective machine intelligence programmable by anyone.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/amasad/status/2122809964649459861" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="Amjad Masad" data-url="https://x.com/amasad/status/2122809964649459861" data-author="Amjad Masad">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 03</div>
+    <h2 class="section-title">The Interface Becomes the Worker / 接口开始替人做事</h2>
+    <p class="section-desc">当模型能直接调用 Gmail、Calendar、支付、电话和文档，AI 的价值就从「回答得好」转向「把事情办完」。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:joshwoodward" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Google 的 Josh Woodward 描述了 Gemini 新的任务层：它可以打电话给本地商家、付款结账、在手机上发消息、处理转发到 Gmail 的邮件，还能跨 Docs、Sheets 和 Calendar 工作。真正的变化不是又多了一个聊天功能，而是助手开始进入那些未完成工作实际存在的界面，把任务交接变成可能。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Gemini 现在可以在六个国家免费帮你完成任务！我们为那些被课程、会议和接送孩子填满一天、总有任务堆积的人打造了它。我们的目标是让 Gemini 把事情办完，同时帮你节省时间和金钱。
+
+              三项重大更新：
+
+              1）基于全新的 Gemini 4 Hydrogen 模型，Gemini 可以免费为美国、日本、韩国、加拿大、澳大利亚和印度数亿人完成任务。
+
+              2）许多用户期待的功能正在推出，先从美国开始：
+              * 通过 Google Duplex 致电本地商家
+              * 通过 Google Pay 付款和结账
+              * 通过 RCS 在 Android 或 iOS 上给 Gemini 发消息
+              * 通过 Gmail 把邮件转发给 Gemini
+              * 通过 Google Password Manager 登录网站，不把密码分享给 Google 之外的服务
+
+              3）Gemini 与 Google Workspace 的集成也迎来了最大更新。工具触发更可靠，而且无需离开 Gemini 就能做更多事：起草或发送邮件，创建和编辑 Docs 或 Sheets，一次添加多个 Calendar 日程。
+
+              准备好把下一个任务交给它了吗？</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Google&#39;s Josh Woodward describes Gemini&#39;s new task layer as a direct handoff: it can call local businesses, pay and check out, text from mobile, process forwarded Gmail, and work across Docs, Sheets and Calendar. The important shift is not another chat feature; it is an assistant that can cross the interfaces where unfinished work actually lives.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Gemini can now do your tasks free of charge in six countries! We’ve built it for anyone who has tasks piling up during all the classes, meetings, and school drop-offs that fill the day. Our goal is for Gemini to get the job done and save you time and money along the way.
+
+              3 major updates:
+
+              1) Running on our new Gemini 4 Hydrogen model, Gemini can get stuff done at no cost for hundreds of millions of people across the US, Japan, Korea, Canada, Australia, and India.
+
+              2) Many highly requested features are rolling out now, starting in the US:
+              * Call local businesses (via Google Duplex)
+              * Pay and check out (via Google Pay)
+              * Text Gemini on Android or iOS (via RCS)
+              * Forward emails to Gemini (via Gmail)
+              * Sign into sites without sharing passwords outside Google (via Google Password Manager)
+
+              3) We’ve also landed our biggest update yet for the Gemini &lt;&gt; Google Workspace integration. The tools trigger more reliably, and you can do much more without ever leaving Gemini. Draft or send emails. Create and edit Docs or Sheets. Add multiple Calendar events at once.
+
+              Ready to hand off your next task? We can’t wait to see what Gemini crosses off your list first.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/joshwoodward/status/2122737427970425171" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/joshwoodward/status/2122737427970425171" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 04</div>
+    <h2 class="section-title">Software That Watches Itself / 软件开始自我优化</h2>
+    <p class="section-desc">浏览器 agent 和专用沙盒把 AI 从代码生成推进到运行、测试、优化的闭环；这比又一个代码补全功能更接近真正的执行系统。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:rauchg" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Vercel CEO Guillermo Rauch 认为 agent-browser vitals 对 web performance 是一次重要变化：浏览器可以观察软件的真实使用状态，并参与优化。开发闭环因此开始改变，生产环境里的行为可以直接成为 agent 的反馈，而不必等人事后逐项检查。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>这对 web performance 来说确实是件大事。agent-browser vitals 太聪明了……自我优化的软件已经来了！ https://t.co/rTkIyaUmLh</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Vercel CEO Guillermo Rauch calls agent-browser vitals a major web-performance shift: the browser can observe software in use and help optimize it. That points toward a different kind of development loop, where production behavior becomes feedback for the agent instead of something humans inspect only after the fact.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Actually a huge deal for web performance. 𝚊𝚐𝚎𝚗𝚝-𝚋𝚛𝚘𝚠𝚜𝚎𝚛 𝚟𝚒𝚝𝚊𝚕𝚜 is so smart… self-optimizing software is here! https://t.co/rTkIyaUmLh</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/rauchg/status/2122830064152899991" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/rauchg/status/2122830064152899991" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+
+    <article class="card" data-author-key="x:mattturck" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Matt Turck 提到 Daytona 为 computer-use agent 提供 macOS sandbox，让它们能够构建和测试 Apple 应用。这个细节很关键：如果 agent 只能在通用 Linux 环境里工作，它就无法真正覆盖用户的工作；执行环境本身正在变成产品的一部分。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Daytona 继续推动 agentic infra 创新，率先提供 macOS sandbox，支持在 Mac 上运行 computer-use agent，以及构建和测试 Apple 应用 https://t.co/wAYXaDLpXK</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Matt Turck highlights Daytona&#39;s macOS sandboxes for computer-use agents that need to build and test Apple apps. The detail matters because agentic software cannot stay useful if it only works in a generic Linux box; the execution environment itself is becoming part of the product.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Daytona continues to push agentic infra innovation - first to provide macOS sandboxes, for computer-use agents on Macs and building and testing Apple apps https://t.co/wAYXaDLpXK</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://x.com/mattturck/status/2122726760185741673" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="" data-url="https://x.com/mattturck/status/2122726760185741673" data-author="">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 05</div>
+    <h2 class="section-title">From Pixels to Actions / 从生成像素到理解动作</h2>
+    <p class="section-desc">今天唯一的播客把视线拉得更远：图像、视频和机器人动作可能不是三条路线，而是同一套世界模型逐步长出来的不同接口。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="podcast:latent-space" data-author-name="Latent Space" data-author-tag="Latent Space Podcast" data-author-handle="" data-author-avatar="../assets/avatars/podcast-latent-space.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/podcast-latent-space.jpg" alt="Latent Space avatar"><span class="avatar-fallback">LS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Latent Space</div>
+            <div class="author-tag is-inline">Latent Space Podcast</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>核心 takeaway：Black Forest Labs 不把自己看成单纯的图像生成实验室，video modeling 是理解世界如何运作、最终预测动作的一条路径。latent diffusion 的共同发明者 Andreas Blattmann，以及参与 SDXL、Flux 等模型的 founding researcher Dustin Podell，讲的是一条从开源图像模型，走向视频、图像编辑和机器人的路线。</p>
+              <p>实际信号是 Flux Context：日常图像编辑可以从手工操作变成一句指令，虽然最高端的创意工作仍然需要人。更大的趋势是，几家前沿团队都在从像素走向 world model 和 robotics，生成模型的用途可能不只是制作媒体，也包括学习环境如何行动。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>BFL 创立的目的不是成为一家图像生成实验室。Video modeling 实际上是理解我们这个世界如何运作的核心手段。</p>
+              <p>你只需要给机器人示范一次动作，然后它就应该能完成类似的动作，这才是真正的超人类智能</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>The takeaway: Black Forest Labs does not see itself as merely an image-generation lab; video modeling is a route toward understanding how the world works and eventually predicting actions. Andreas Blattmann, co-inventor of latent diffusion, and Dustin Podell, a founding researcher behind models including SDXL and Flux, describe a path from open-source image models to video, image editing and robotics.</p>
+              <p>The practical signal is Flux Context: everyday image editing can become an instruction rather than a manual workflow, even if the highest-end creative work still needs humans. The larger pattern is that several frontier teams are moving from pixels toward world models and robotics, suggesting that generation may be useful not just for making media but for learning how an environment behaves.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>BFL was not founded to be an image generation lab. Video modeling is actually the central means to understanding how our world basically works.</p>
+              <p>You should be showing a robot an action one time, and then it should be able to do this, and this would be truly a superhuman intelligence</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://www.youtube.com/watch?v=8cGfJOU3AlQ" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a>
+        <button class="eureka-btn" type="button" title="Save to Eurekas" data-title="Latent Space" data-url="https://www.youtube.com/watch?v=8cGfJOU3AlQ" data-author="Latent Space">💡 Eureka</button>
+      </div>
+    </article>
+  </section>
+
+  <footer data-source-note="Source: Follow Builders curated daily digest. Rebuilt from the 2026-11-18 source feeds.">Source: Follow Builders curated daily digest. Rebuilt from the 2026-11-18 source feeds.</footer>
+
+  <script>
+    function getTemplateAuthorSources() {
+      const sources = window.AI_BUILDERS_TEMPLATE_SOURCES || {};
+      return { identities: sources.identities || {}, avatars: sources.avatars || {} };
+    }
+
+    function getAuthorInitials(name) {
+      return (name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(function(part) { return part[0]; }).join('').toUpperCase();
+    }
+
+    function hydrateTemplateCopy() {
+      const intro = document.querySelector('.intro');
+      if (intro) {
+        const kicker = intro.querySelector('.intro-kicker');
+        const copy = intro.querySelector('.intro-copy');
+        if (kicker) kicker.textContent = intro.dataset.kicker || '';
+        if (copy) copy.textContent = intro.dataset.text || '';
+      }
+
+      const footer = document.querySelector('footer');
+      if (footer) footer.textContent = footer.dataset.sourceNote || '';
+
+      const rewriteLabel = document.body.dataset.viewLabelRewrite || '速读';
+      const originalLabel = document.body.dataset.viewLabelOriginal || '原文';
+      document.querySelectorAll('.view-toggle').forEach(function(button) {
+        if (button.dataset.viewTarget === 'rewrite') button.textContent = rewriteLabel;
+        if (button.dataset.viewTarget === 'original') button.textContent = originalLabel;
+      });
+    }
+
+    function hydrateAuthorMeta() {
+      const sources = getTemplateAuthorSources();
+      document.querySelectorAll('.card').forEach(function(card) {
+        const authorKey = card.dataset.authorKey || '';
+        const identity = sources.identities[authorKey] || {};
+        const avatarEntry = sources.avatars[authorKey] || {};
+
+        const name = identity.name || card.dataset.authorName || '';
+        const rawHandle = identity.handle || card.dataset.authorHandle || '';
+        const handle = rawHandle && rawHandle.startsWith('@') ? rawHandle : (rawHandle ? '@' + rawHandle : '');
+        const tag = identity.label || card.dataset.authorTag || '';
+        const avatar = avatarEntry.fileUrl || avatarEntry.localPath || card.dataset.authorAvatar || '';
+
+        const nameNode = card.querySelector('.author-name');
+        const tagNode = card.querySelector('.author-tag');
+        const handleNode = card.querySelector('.author-handle');
+        const avatarNode = card.querySelector('.avatar');
+        const avatarImg = card.querySelector('.avatar img');
+        const avatarFallback = card.querySelector('.avatar-fallback');
+
+        if (nameNode) nameNode.textContent = name;
+        if (tagNode) tagNode.textContent = tag;
+        if (handleNode) handleNode.textContent = handle;
+        if (avatarImg) {
+          avatarImg.src = avatar;
+          avatarImg.alt = name ? name + ' avatar' : 'Author avatar';
+        }
+        if (avatarNode) avatarNode.classList.toggle('is-fallback', !avatar);
+        if (avatarFallback) avatarFallback.textContent = getAuthorInitials(name);
+      });
+    }
+
+    function updateEditionStrip() {
+      const publishDate = document.body.dataset.publishDate;
+      const editionName = document.body.dataset.editionName || '双语精选版';
+      const editionStrip = document.getElementById('edition-strip-text');
+      if (!publishDate || !editionStrip) return;
+
+      const issueNumber = document.body.dataset.issueNumber || '';
+      if (!issueNumber) return;
+
+      const selectedCount = document.querySelectorAll('.card').length;
+      const authorCount = new Set([].slice.call(document.querySelectorAll('.author-handle')).map(function(node) { return node.textContent.trim(); }).filter(Boolean)).size;
+      const themeCount = document.querySelectorAll('.section-header').length;
+      const parts = ['第 ' + issueNumber + ' 期', publishDate, editionName, selectedCount + ' 条精选', authorCount + ' 位作者', themeCount + ' 个主题'];
+      editionStrip.innerHTML = parts.map(function(part) { return '<span class="edition-item">' + part + '</span>'; }).join('<span class="edition-sep">|</span>');
+    }
+
+    function measureVariantHeight(variant) {
+      const prevPosition = variant.style.position;
+      const prevInset = variant.style.inset;
+      const prevVisibility = variant.style.visibility;
+      const prevPointerEvents = variant.style.pointerEvents;
+      const prevOpacity = variant.style.opacity;
+      const prevTransform = variant.style.transform;
+      const prevTransition = variant.style.transition;
+      const prevOverflowY = variant.style.overflowY;
+      const prevDisplay = variant.style.display;
+
+      variant.style.position = 'relative';
+      variant.style.inset = 'auto';
+      variant.style.visibility = 'hidden';
+      variant.style.pointerEvents = 'none';
+      variant.style.opacity = '1';
+      variant.style.transform = 'none';
+      variant.style.transition = 'none';
+      variant.style.overflowY = 'visible';
+      variant.style.display = 'block';
+
+      const height = variant.scrollHeight;
+
+      variant.style.position = prevPosition;
+      variant.style.inset = prevInset;
+      variant.style.visibility = prevVisibility;
+      variant.style.pointerEvents = prevPointerEvents;
+      variant.style.opacity = prevOpacity;
+      variant.style.transform = prevTransform;
+      variant.style.transition = prevTransition;
+      variant.style.overflowY = prevOverflowY;
+      variant.style.display = prevDisplay;
+
+      return Math.ceil(height);
+    }
+
+    function getTargetHeight(shell, target) {
+      const variant = shell.querySelector('.content-variant[data-view="' + target + '"]');
+      return measureVariantHeight(variant);
+    }
+
+    function syncShellHeights() {
+      document.querySelectorAll('.content-shell').forEach(function(shell) {
+        const active = shell.querySelector('.content-variant.is-active');
+        const target = active ? active.dataset.view : 'rewrite';
+        shell.style.height = getTargetHeight(shell, target) + 'px';
+      });
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', function() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(syncShellHeights, 120);
+    });
+
+    document.querySelectorAll('.card').forEach(function(card) {
+      const buttons = card.querySelectorAll('.view-toggle');
+      const shells = card.querySelectorAll('.content-shell');
+
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          const target = button.dataset.viewTarget;
+          if (button.classList.contains('is-active')) return;
+
+          buttons.forEach(function(btn) {
+            btn.classList.toggle('is-active', btn === button);
+          });
+
+          shells.forEach(function(shell) {
+            const current = shell.querySelector('.content-variant.is-active');
+            const next = shell.querySelector('.content-variant[data-view="' + target + '"]');
+            if (!current || !next || current === next) return;
+
+            shell.style.height = shell.offsetHeight + 'px';
+            requestAnimationFrame(function() {
+              current.classList.remove('is-active');
+              next.classList.add('is-active');
+              shell.style.height = getTargetHeight(shell, target) + 'px';
+            });
+          });
+        });
+      });
+    });
+
+    hydrateTemplateCopy();
+    hydrateAuthorMeta();
+    updateEditionStrip();
+    syncShellHeights();
+
+    // Eureka save buttons
+    var EUREKA_URL = 'http://127.0.0.1:8087/eureka';
+    function showToast(msg, isError) {
+      var t = document.querySelector('.eureka-toast');
+      if (!t) {
+        t = document.createElement('div');
+        t.className = 'eureka-toast';
+        document.body.appendChild(t);
+      }
+      t.textContent = msg;
+      if (isError) t.style.background = '#c0392b';
+      else t.style.background = '#1a1a1a';
+      t.classList.add('show');
+      setTimeout(function() { t.classList.remove('show'); }, 2200);
+    }
+    document.querySelectorAll('.eureka-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var title = this.dataset.title || '';
+        var url = this.dataset.url || '';
+        var author = this.dataset.author || '';
+        var note = title ? title.slice(0, 80) : '';
+        var origText = this.textContent;
+        this.textContent = '...';
+        this.disabled = true;
+        fetch(EUREKA_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ title: note, url: url, author: author })
+        }).then(function(r) { return r.json(); })
+          .then(function(d) {
+            btn.textContent = d.ok ? '✓ Saved' : '✗ Error';
+            showToast(d.ok ? 'Saved to Eurekas ✓' : 'Save failed: ' + (d.error || 'unknown'), !d.ok);
+            if (d.ok) setTimeout(function() { btn.textContent = origText; btn.disabled = false; }, 1500);
+            else { btn.textContent = origText; btn.disabled = false; }
+          })
+          .catch(function(e) {
+            btn.textContent = origText; btn.disabled = false;
+            showToast('Eureka server not running — start it first', true);
+          });
+      });
+    });
+  </script>
+</body>
+</html>
