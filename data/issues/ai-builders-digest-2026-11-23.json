@@ -1,0 +1,232 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-11-23",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线不是又一个模型发布，而是 agent 时代的基础设施和判断力开始浮出水面：Sam Altman 提议用 perplexity 等指标为 frontier model 建立共同边界，Aaron Levie 则把问题落到更具体的地方——当 agent 成群结队地做长期项目，知识共享、任务追踪和权限控制都要重写。Guillermo Rauch 提醒大家，免费的 stealth model 可能拿你的数据换取推理；Nan Yu 的玩笑则很朴素：vibecoded 项目想要稳定扩展，先用 Postgres。最后，Every 的 Dan Shipper 给出一个更人的答案：模型把能力变便宜之后，真正稀缺的是你如何用自己的责任感和视角去排序、选择、推进。"
+  },
+  "archive": {
+    "title": "Agent 底座日报",
+    "desc": "从模型自律边界到 agent 协作底座，再到数据安全和人的判断力，AI 产品正在进入真正的系统工程阶段。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-11-23 source feeds.",
+  "sections": [
+    {
+      "title": "Agents Need a New Operating System / Agent 需要新的操作系统",
+      "desc": "当 agent 开始并行处理长期项目，真正难的不是让它们动起来，而是让它们共享知识、追踪任务并安全地协作。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2124658150771188157",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie argues that long-running agent work will force a redesign of the orchestration layer. Once swarms of agents parallelize a goal, they need primitives for sharing knowledge, tracking tasks, and coordinating with humans at a throughput far beyond people.",
+              "The catch is access control: agents need enough access to be useful, but they also become a much faster security risk. Levie sees a wide opening for both horizontal infrastructure and vertical, domain-specific systems."
+            ],
+            "original": [
+              "As agents take on more and more long running project work, and you have swarms of agents that parallelize work against a goal, the agent harness and architecture for orchestration will have to evolve.",
+              "One of the biggest shifts is how those agents collectively share their knowledge, keep track of the tasks, and also coordinate with human users."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 认为，长期运行的 agent 工作会逼着 orchestration 层重做。等一群 agent 开始并行推进同一个目标，它们需要共享知识、追踪任务、和人协作，而且吞吐量要远高于人类团队。",
+              "难点在权限：给得太少，agent 无法工作；给得太多，它们又会成为更高速的安全风险。Levie 认为，横向基础设施和垂直行业系统都会出现机会。"
+            ],
+            "original": [
+              "当 agent 承担越来越多的长期项目工作，agent harness 和 orchestration 架构都必须进化。",
+              "最大的变化之一，是 agent 如何集体共享知识、追踪任务，以及与人类用户协作。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thenanyu",
+          "sourceUrl": "https://x.com/thenanyu/status/2124592238974156861",
+          "en": {
+            "rewrite": [
+              "OpenAI product leader Nan Yu's joke contains a very old lesson for very new software: the secret prompt that makes vibecoded projects scale and perform better is simply, 'Use Postgres.' AI can make the first version cheap; durable primitives still matter."
+            ],
+            "original": [
+              "I found a secret prompt that makes all your vibecoded projects scale and perform better, with higher reliability.",
+              "Use Postgres"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "OpenAI 产品负责人 Nan Yu 的玩笑里藏着一个很老派、但对新软件依然有效的教训：让 vibecoded 项目更容易扩展、更可靠的 secret prompt 就一句话：「Use Postgres」。AI 可以把第一版变得很便宜，但耐用的基础设施原语依然重要。"
+            ],
+            "original": [
+              "让所有 vibecoded 项目扩展更好、性能更好、可靠性更高的 secret prompt：Use Postgres。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Trust Is Part of the Product / 信任就是产品的一部分",
+      "desc": "模型能力越强，数据边界、评测标准和安全承诺就越不能靠一句口号带过。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2124595496849445079",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch warns that a 'free' stealth model with zero-data-retention claims can be an industrial-scale data-exfiltration mechanism. His point is operational, not abstract: sending company secrets, customer data, and code to an unknown provider is not a bargain; it is a security incident waiting to be explained.",
+              "He contrasts that with Vercel AI Gateway, which built real-world token volume without taking those shortcuts and plans to push its trust, privacy, and security bar higher."
+            ],
+            "original": [
+              "These stealth models are mechanisms of industrial scale data exfiltration to nation state programs, I strongly suspect, and the Dragos research seems to confirm.",
+              "Imagine explaining to your boss: sorry chief, I had to try this really cool ZDR free stealth model… all our secrets, customer data, and code are now in a different continent!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 警告，打着「免费」和 zero-data-retention 旗号的 stealth model，可能变成工业规模的数据外泄机制。重点不是抽象的安全焦虑，而是一个很现实的解释场景：把公司机密、客户数据和代码送到未知服务商那里，绝不算捡便宜。",
+              "他把 Vercel AI Gateway 当作对照：在不走这些捷径的前提下积累真实 token 用量，并继续提高 trust、privacy 和 security 的标准。"
+            ],
+            "original": [
+              "这些 stealth model，我强烈怀疑是向民族国家项目进行工业规模数据外泄的机制，Dragos 的研究似乎也印证了这一点。",
+              "你怎么跟老板解释：我只是想试试这个很酷的 ZDR 免费 stealth model，结果我们的秘密、客户数据和代码现在都在另一个大陆？"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2124604574606795002",
+          "en": {
+            "rewrite": [
+              "Replit CEO Amjad Masad says desktop AI apps are generally a security and privacy nightmare, then points to the counterexample Replit built with Windows: a security model strong enough for Christie's to choose Replit for secure agentic work. The product pitch is inseparable from the security architecture."
+            ],
+            "original": [
+              "Desktop AI apps are generally a security & privacy nightmare.",
+              "We worked with Windows to ship a world-class security model for Replit Desktop."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Replit CEO Amjad Masad 说，桌面 AI app 普遍是 security 和 privacy 的噩梦；随后他给出 Replit 与 Windows 合作做出的反例：它的安全模型强到足以让 Christie's 选择 Replit 来做 secure agentic work。对这类产品来说，产品卖点和安全架构已经分不开了。"
+            ],
+            "original": [
+              "桌面 AI 应用通常是 security 和 privacy 的噩梦。",
+              "我们与 Windows 合作，为 Replit Desktop 做出了 world-class 的安全模型。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Governing the Frontier / 给 Frontier Model 设边界",
+      "desc": "当能力进展速度超过共识建立速度，行业开始寻找可以共同测量、共同约束的指标。",
+      "cards": [
+        {
+          "authorKey": "x:sama",
+          "sourceUrl": "https://x.com/sama/status/2124551883130114403",
+          "en": {
+            "rewrite": [
+              "OpenAI CEO Sam Altman proposes that frontier model developers jointly establish norms for evaluation, red-teaming, and transparency before models are deployed. He suggests common limits based on perplexity and other measurements, with progress beyond those limits tied to concrete advances in understanding and monitoring model behavior.",
+              "The important shift is from asking each lab to self-police privately to defining a shared industry threshold for when capability development should pause."
+            ],
+            "original": [
+              "I believe frontier model developers should jointly endeavour to establish shared norms for how to evaluate such models and red-team safety cases for them by the time they are first used, including shared transparency standards.",
+              "I further propose common limits, based on perplexity and other measurements, that developers are committed to not crossing until our ability to understand and monitor AI behavior achieves a certain concrete milestone."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "OpenAI CEO Sam Altman 提议，frontier model 开发者在模型首次使用前，就共同建立评测、red-team 和透明度标准。他还建议用 perplexity 等指标设置共同边界，只有当行业对模型行为的理解和监测能力达到具体里程碑后，才越过这些边界。",
+              "真正的变化，是从要求每家实验室私下自律，转向定义一个行业共同认可的能力阈值。"
+            ],
+            "original": [
+              "frontier model 开发者应该共同建立评测这些模型、对安全案例做 red-team 的规范，并建立共同的透明度标准。",
+              "我进一步提议基于 perplexity 等指标设置共同限制，在我们理解和监测 AI 行为的能力达到具体里程碑前，开发者承诺不越过这些限制。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2124583459356373052",
+          "en": {
+            "rewrite": [
+              "Swyx highlights the logic behind OpenAI's perplexity proposal: if surprising capabilities emerge mainly from progress in compression, perplexity could become a shared benchmark for general intelligence even as development becomes more automated. He notes that the chart makes large-scale pretraining look like the main plot, while many post-training debates are the B plot."
+            ],
+            "original": [
+              "OpenAI proposes perplexity as the universal metric for industry self regulation and pacing (as opposed to eg FLOPS).",
+              "the main way new surprising capabilities emerge is by progress on compression"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx 抓住了 OpenAI 提议 perplexity 的底层逻辑：如果新的意外能力主要来自 compression 的进步，那么即使开发过程越来越自动化，perplexity 也可能成为衡量 general intelligence 的共同 benchmark。他认为，大规模 pretraining 才是主线，许多 post-training 争论更像是 B 线。"
+            ],
+            "original": [
+              "OpenAI 提议用 perplexity 作为行业自我监管和控制节奏的通用指标，而不是 FLOPS。",
+              "新的意外能力出现的主要方式，是 compression 持续进步。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "What Humans Still Add / 人还在增加什么",
+      "desc": "模型把生成能力变成公共基础设施之后，稀缺的部分转向了责任、视角和选择。",
+      "cards": [
+        {
+          "authorName": "Dan Shipper",
+          "authorTag": "Every CEO / AI & I by Every",
+          "authorKey": "podcast:ai-and-i",
+          "sourceUrl": "https://www.youtube.com/watch?v=WstNofgQF5Q",
+          "en": {
+            "rewrite": [
+              "The takeaway from Every CEO Dan Shipper's talk is that AI makes generation cheap, but ranking remains humanly valuable. One team can give the same survey to the same model and produce very different useful insights because each person brings a responsibility, a perspective, and a reason to decide that one possibility matters more than the others.",
+              "Shipper's practical example is his own week: with agents, he analyzed customer data, built a game, found a business opportunity, and made a CRM. The point is not that one person replaces five specialists. It is that a person's perspective can direct a cheap, powerful model toward work that actually matters."
+            ],
+            "original": [
+              "Great work is the perspective you bring to the model.",
+              "Generation is really cheap, but ranking is hard.",
+              "what is actually expensive and rare is how you use them using your perspective"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Every CEO Dan Shipper 的核心判断是：AI 让生成变得便宜，但排序依然有人的价值。同一支团队把同一份 survey 交给同一个模型，每个人仍会找到不同而有用的洞察，因为每个人带着自己的责任、视角，以及判断某个可能性为什么值得推进的理由。",
+              "他的亲身例子是：用 agents 分析客户数据、做游戏、找到业务机会、搭 CRM。重点不是一个人替代五个专家，而是人的视角可以把一个便宜而强大的模型，引向真正重要的工作。"
+            ],
+            "original": [
+              "伟大的工作，是你带给模型的视角。",
+              "生成真的很便宜，但排序很难。",
+              "真正昂贵且稀缺的，是你如何用自己的视角使用这些能力。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2124654108124848350",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch argues that AI should be aimed at human understandability and conceptualization, not only at producing artifacts. Even if an LLM can jump straight from a theorem to CPU instructions, we still want the paper, walkthrough, concepts, and insights—the intermediate representation that lets humans understand what happened."
+            ],
+            "original": [
+              "Rather than art, we ought to point AI towards human-understandability and conceptualization.",
+              "The Riemann proof should come with a paper, a walkthrough, new concepts and insights."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch 认为，AI 的目标不该只是产出作品，还应该指向 human understandability 和 conceptualization。即使 LLM 能从定理直接跳到 CPU instructions，我们仍然需要 paper、walkthrough、概念和洞察，也就是让人类理解发生了什么的 intermediate representation。"
+            ],
+            "original": [
+              "与其追求艺术，我们应该让 AI 指向人类可理解性和概念化。",
+              "Riemann proof 应该附带 paper、walkthrough、新概念和洞察。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
