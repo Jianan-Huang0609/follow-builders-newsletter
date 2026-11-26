@@ -1,0 +1,225 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-11-26",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的主线，是 agent 开始从「会写代码」走向「能在真实系统里交付」。Karpathy 让 Claude 把美国真实公共数据变成一张 Civilization 风格地图；Madhu 提醒，coding 速度变快不等于业务真的更快，周围的实验、评估、发布和 GTM 系统也得一起 AI-native。Levie 则把 coding 当成知识工作的预告片：先协调 agent，最后甚至只给目标。另一边，Noam Brown 解释了为什么理解人的非理性，可能比套用漂亮的 game theory 更接近通用智能。"
+  },
+  "archive": {
+    "title": "真实系统日报",
+    "desc": "AI agent 正从代码工具进入真实工作系统：数据、组织、隐私、基础设施和人的行为都要一起被重新设计。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-11-26 source feeds.",
+  "sections": [
+    {
+      "title": "Agents Meet the Real World / Agent 进入真实世界",
+      "desc": "真正有意思的 demo，不是模型会不会写代码，而是它能不能把现实数据、工具和工作流拼成一个可用系统。",
+      "cards": [
+        {
+          "authorKey": "x:karpathy",
+          "sourceUrl": "https://x.com/karpathy/status/2125779541952246039",
+          "en": {
+            "rewrite": [
+              "Andrej Karpathy asked Claude to populate a Civilization-style map with real US data. Opus 5.5 downloaded and parsed 31 public data sources, reconciled them onto a 25-kilometer hex grid, and turned GDP into gold yields, industry into city districts, and workforce composition into citizens.",
+              "The result has 19 lenses, a City View for 524 metros, and an Explorer that can turn any column for more than 3,100 counties into a table and scatter plot. Karpathy says he is not sure where it is going yet, but the experiment shows a coding agent moving from generating software to building a whole data product from a loose idea."
+            ],
+            "original": [
+              "I asked Claude to populate a Civilization-style game map with real data from the US. Opus 5.5 downloaded and parse a ton of public data and 7 hours and 45K lines of code later... it works :)",
+              "31 real data sources ... all reconciled onto one 25 km hex grid.",
+              "It's deployed here: https://t.co/QMhmafXMj5"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Andrej Karpathy 让 Claude 用美国真实数据填充一张 Civilization 风格地图。Opus 5.5 下载并解析了 31 个公共数据源，把它们统一到 25 公里的六边形网格里：GDP 变成金币产出，产业变成城市区域，劳动力结构变成城市人口。",
+              "最终产品有 19 个观察视角、覆盖 524 个都会区的 City View，还能把 3100 多个县的任意数据列变成表格和散点图。Karpathy 说自己还不知道它最终会变成什么，但这个实验说明 coding agent 已经不只是生成代码，而是在从一个模糊想法搭建完整的数据产品。"
+            ],
+            "original": [
+              "我让 Claude 用美国真实数据填充一张 Civilization 风格的游戏地图，Opus 5.5 花了 7 小时、写了 4.5 万行代码，最后跑起来了。",
+              "31 个真实数据源，全部统一到一个 25 公里六边形网格。",
+              "已部署在这里：https://t.co/QMhmafXMj5"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:realmadhuguru",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2125630707640783322",
+          "en": {
+            "rewrite": [
+              "Madhu Guru argues that AI-native teams will eventually force the surrounding organization to become AI-native too. Coding velocity is already up, but shipped products and business impact remain unchanged in many companies because experimentation, evaluation, launch processes, and go-to-market are still built for the old world.",
+              "His practical prescription is to map the entire product lifecycle and rebuild it from the ground up: tooling, team structure, and GTM included. A faster engine cannot make a slow system move faster."
+            ],
+            "original": [
+              "AI native teams will eventually force the surrounding organization to become AI native too.",
+              "coding velocity is way up thanks to AI, while actual shipped products and business impact are unchanged in most companies.",
+              "map out your product lifecycle and rebuild it ground up - tooling, team structure, gtm, everything."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Madhu Guru 认为，AI-native 团队最终会逼着周围的组织也变成 AI-native。coding 速度确实变快了，但很多公司的实际产品和业务影响并没有变化，因为实验、评估、发布和 GTM 依然是旧系统。",
+              "他的建议很具体：把完整的产品生命周期画出来，然后从 tooling、团队结构到 GTM 全部重建。发动机更快，不代表整辆车就能跑得更快。"
+            ],
+            "original": [
+              "AI-native 团队最终会迫使周围组织也变成 AI-native。",
+              "AI 让 coding 速度大幅提升，但大多数公司的实际产品和业务影响没有变化。",
+              "把产品生命周期画出来，从头重建 tooling、团队结构、GTM，一切都重建。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The New Work Interface / 新的工作接口",
+      "desc": "coding 可能只是知识工作的试验田：人先协调 agent，最后只给它目标。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2125837181398950233",
+          "en": {
+            "rewrite": [
+              "Aaron Levie sees coding as a window into the future of a large share of knowledge work. First, people move from doing the research, typing, and value creation themselves to coordinating agents. Then even that coordination can become a bottleneck, and humans start giving agents goals to optimize against.",
+              "The pattern will reach manufacturing, architecture, life sciences, materials, and cyber. The hard limit is verification: wherever work cannot be checked easily, humans stay in the loop longer."
+            ],
+            "original": [
+              "The first step for most jobs is that we go from doing most of the research, typing, and value creation manually ... to soon coordinating the work that agents are doing.",
+              "We will be giving agents goals to optimize against and they’ll go off on and increasingly solve larger problems for us.",
+              "One big hurdle ... will be that much of this work remains non-verifiable."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie 把 coding 看成大量知识工作的未来窗口。第一步，人们从亲自做 research、打字和创造价值，转向协调 agent；再往后，连协调本身都可能拖慢 agent，于是人只需要给 agent 一个要优化的目标。",
+              "这个模式会扩展到制造、建筑、生命科学、材料科学和 cyber。真正的限制是验证：工作越难检查，人就越需要留在 loop 里。"
+            ],
+            "original": [
+              "大多数工作的第一步，是从手工完成 research、打字和价值创造，转向协调 agent 的工作。",
+              "我们会给 agent 要优化的目标，让它们去解决越来越大的问题。",
+              "一个大障碍是，这些工作很多仍然无法验证。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2125685667833520237",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch says workflows became 10x faster again, which matters because harness durability depends on reducing latency between agent turns. His broader point is that as AI gets smarter, implementation details such as permissions, diffs, commands, and tool calls start to blur away.",
+              "The harness becomes a high-performance vehicle for code and command execution, plus a durable storage engine. Rauch says all of fx still fits in 6MB while carrying subagents, MCP, skills, sessions, durability, ACP, a TUI, and network transport."
+            ],
+            "original": [
+              "We made workflows 10x faster again.",
+              "For harness durability ... this is a big deal, as it crushes latency in between turns.",
+              "All of fx still fits in 6mb: subagents, MCP, skills, sessions, durability, ACP, TUI, network transport…"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch 说，workflows 又快了 10 倍。对 agent harness 的 durability 来说，这很关键，因为每一轮之间的延迟被大幅压低了。他更大的判断是：AI 越聪明，权限、diff、命令和 tool call 这些实现细节就越会被隐藏。",
+              "harness 会变成一辆高性能的代码与命令执行载具，同时也是持久化存储引擎。Rauch 说，fx 仍然能把 subagents、MCP、skills、sessions、durability、ACP、TUI 和网络传输全部装进 6MB。"
+            ],
+            "original": [
+              "workflows 又快了 10 倍。",
+              "对于 harness durability，这是大事，因为它大幅压低了 turn 之间的延迟。",
+              "fx 的全部功能仍能装进 6MB。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Privacy and Infrastructure / 隐私与基础设施",
+      "desc": "AI 要进入更多工作，隐私和可验证性就不能再是产品上线后的补丁。",
+      "cards": [
+        {
+          "authorKey": "x:sama",
+          "sourceUrl": "https://x.com/sama/status/2125638790593274259",
+          "en": {
+            "rewrite": [
+              "Sam Altman says OpenAI is testing Private Inference, part of OpenAI Private Intelligence, with a small group of customers. The pitch is straightforward: stronger privacy protections can make frontier AI useful for more work, while business privacy remains important for a healthy ecosystem.",
+              "He also points to ZDR with Private Safety Processing, which enables automated safety reviews without giving OpenAI personnel access to the underlying content."
+            ],
+            "original": [
+              "We’re now testing Private Inference, our latest offering as part of OpenAI Private Intelligence, with a small group of customers.",
+              "Stronger privacy protections will make frontier AI useful for a lot more work.",
+              "ZDR with Private Safety Processing enables automated safety reviews without giving OpenAI personnel access to the underlying content."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Sam Altman 表示，OpenAI 正在和一小批客户测试 Private Inference，这是 OpenAI Private Intelligence 的一部分。逻辑很直接：更强的隐私保护，才能让 frontier AI 进入更多工作；而企业隐私也是健康生态的基础。",
+              "他还提到，ZDR 配合 Private Safety Processing，可以在不让 OpenAI 员工接触底层内容的情况下完成自动安全审查。"
+            ],
+            "original": [
+              "我们正在和一小批客户测试 Private Inference，这是 OpenAI Private Intelligence 的最新产品。",
+              "更强的隐私保护会让 frontier AI 对更多工作有用。",
+              "ZDR + Private Safety Processing 可以在 OpenAI 员工无法访问底层内容时完成自动安全审查。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2125664998454366305",
+          "en": {
+            "rewrite": [
+              "Amjad Masad argues that large-scale software migration is now viable, provided the results can be verified. That matters because critical infrastructure is still running on aging software systems, where the cost of leaving everything untouched keeps accumulating."
+            ],
+            "original": [
+              "Large scale software migration is now viable provided you can verify the results.",
+              "This is exceptionally important given the aging software systems running critical infrastructure."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Amjad Masad 认为，只要能验证结果，大规模软件迁移现在已经可行。这件事之所以重要，是因为关键基础设施仍然运行在老旧软件系统上，继续不动的代价会不断累积。"
+            ],
+            "original": [
+              "只要能验证结果，大规模软件迁移现在已经可行。",
+              "考虑到关键基础设施仍运行在老旧软件系统上，这尤其重要。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Beyond Rationality / 超越理性模型",
+      "desc": "从 poker 到 diplomacy 再到 reasoning，真正难的不是算出最优解，而是理解真实的人会怎样行动。",
+      "cards": [
+        {
+          "authorKey": "podcast:training-data",
+          "sourceUrl": "https://www.youtube.com/watch?v=tRaFbDFBl_A",
+          "authorName": "Noam Brown",
+          "authorTag": "Training Data",
+          "en": {
+            "rewrite": [
+              "OpenAI's Noam Brown traces his path from poker bots to diplomacy and reasoning. The surprising lesson is that game theory's clean assumption—that everyone is rational—breaks down when you need to negotiate with actual people. A perfectly rational offer in the ultimatum game can be rejected because it feels unfair; diplomacy bots built around the same logic made similar mistakes.",
+              "The better route was to train on human data, imitate people closely, and then reason about the best action given how people actually behave. Brown's memorable summary: 'Do not assume rationality, but to just assume that people are gonna behave like people.'"
+            ],
+            "original": [
+              "The problem with game theory is that it assumes ... that all the other players are rational, and people are not actually rational.",
+              "The real way to make a superhuman diplomacy AI is to train on human data, to just understand people.",
+              "Do not assume rationality, but to just assume that people are gonna behave like people."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "OpenAI 的 Noam Brown 回顾了自己从 poker bot 到 diplomacy、再到 reasoning 的路径。最反直觉的教训是：game theory 那个干净的前提——所有人都是理性的——一旦面对真实的人就会失效。最后通牒博弈里，理论上合理的微小报价会因为不公平感而被拒绝；按同一逻辑构建的 diplomacy bot 也会犯类似错误。",
+              "更好的路线是用人类数据训练模型，尽可能模仿人的行为，再根据人真实的行为方式判断下一步。Brown 最值得记住的一句是：「不要假设理性，而要假设人会像人一样行动。」"
+            ],
+            "original": [
+              "game theory 的问题在于，它假设其他玩家都是理性的，但人其实并不理性。",
+              "要做出超人的 diplomacy AI，真正的方法是用人类数据训练，去理解人。",
+              "不要假设理性，而要假设人会像人一样行动。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
