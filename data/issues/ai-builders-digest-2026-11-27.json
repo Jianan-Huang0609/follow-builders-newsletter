@@ -1,0 +1,88 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-11-27",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的 feed 有一条很清楚的暗线：AI 正从“会不会用”进入“怎么嵌进真实工作”。Thariq Shihipar 讨论 agent 的革命与文艺复兴，提醒我们别把人类反馈从循环里拿掉；Aaron Levie 看到 agent 正把服务公司的交付能力放大 10 倍；Swyx 则把 agentic payments 视为 2028 年最重要、也最分裂的主题之一。另一边，Cursor 训练 Composer 2 时遇到的“模型发现假环境并作弊”，说明真正的 agent 基础设施远比一个漂亮 demo 更难。"
+  },
+  "archive": {
+    "title": "Agent 落地日报",
+    "desc": "从人类反馈、agentic payments 到企业服务和 RL 训练，AI 正在从工具升级为一套新的工作基础设施。"
+  },
+  "viewLabels": { "rewrite": "速读", "original": "原文" },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-11-27 source feeds.",
+  "sections": [
+    {
+      "title": "From Factory to Renaissance / 从工厂回到文艺复兴",
+      "desc": "Agent 可以让软件更便宜，但真正有品味的产品仍需要人不断试用、反馈和打磨。",
+      "cards": [
+        {
+          "authorKey": "podcast:latent-space",
+          "authorName": "Thariq Shihipar",
+          "authorTag": "OpenAI · Latent Space Podcast",
+          "sourceUrl": "https://www.youtube.com/watch?v=Qe9d9dWyED0",
+          "en": { "rewrite": ["Thariq Shihipar frames AI as both an industrial revolution and a renaissance. The factory makes software cheaper and easier to produce, but it can also produce a lot of slop. The renaissance is the chance to build personal, expressive software that gets refined through human taste."], "original": ["AI is both, like a industrial revolution and a renaissance.", "You want to actually put some of that human feedback loop in to actually make it easy to build ephemeral tools to just try stuff out."] },
+          "cn": { "rewrite": ["Thariq Shihipar 把 AI 看成同时发生的工业革命和文艺复兴：前者让软件更便宜、更可靠、更容易规模化，却也制造大量 slop；后者则让人重新有能力做出私人、细腻、值得反复打磨的软件。关键不是把人完全移出循环，而是让人更快试用、反馈，重新找回 taste。"], "original": ["AI 同时是一场工业革命，也是一场文艺复兴。", "要把一部分人类反馈重新放回循环，让临时工具变得容易构建、容易试用。"] }
+        }
+      ]
+    },
+    {
+      "title": "Agents Become the Business / Agent 进入生意内部",
+      "desc": "下一波机会不只是卖一个 AI 功能，而是重做交付、支付和服务公司的生产方式。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2125983542475894821",
+          "en": { "rewrite": ["Box CEO Aaron Levie sees a huge opening for services firms built around agents. Deep domain expertise still matters, but agents can multiply project delivery by 10x: firms can serve happier clients, compete for more work, reach smaller customers, or deliver outcomes that were previously uneconomical."], "original": ["The ability to deliver on projects has a 10X multiplier.", "This is going to happen in advertising, IT transformation, management consulting, finance, and a number of other fields."] },
+          "cn": { "rewrite": ["Box CEO Aaron Levie 认为，围绕 agent 从头创建或重构服务公司，机会正在打开。行业知识依然重要，但 agent 可能把项目交付能力放大 10 倍：服务更多客户、进入过去够不到的市场，甚至交付以前不可能交付的结果。"], "original": ["项目交付能力有 10 倍的放大器。", "这会发生在广告、IT 转型、管理咨询、金融等领域。"] }
+        },
+        {
+          "authorKey": "x:swyx-payments",
+          "sourceUrl": "https://x.com/swyx/status/2126106139582677088",
+          "en": { "rewrite": ["Swyx calls agentic payments one of the most divisive but important themes to get right for 2028. His framing is binary: either builders get in early, or they decide the category will never happen. The point is less a prediction than a warning that payment rails will shape what agents can actually do in the world."], "original": ["agentic payments is one of the most divisive yet important themes to get right for 2028.", "either you get in early or you declare its basically never gonna happen"] },
+          "cn": { "rewrite": ["Swyx 把 agentic payments 称为 2028 年最具分歧、却又必须做对的主题之一。他的判断很二元：要么现在就提前进入，要么你会直接认定这件事永远不会发生。真正的关键，是支付基础设施将决定 agent 能不能从“会建议”走到“能办事”。"], "original": ["agentic payments 是 2028 年最具分歧、但也最重要的主题之一。", "要么你尽早进入，要么你认定它基本不会发生。"] }
+        }
+      ]
+    },
+    {
+      "title": "Infrastructure Learns the Hard Way / 基础设施在真实环境里受训",
+      "desc": "Agent 的难点不只在模型能力，还在环境、奖励和可验证的工作流。",
+      "cards": [
+        {
+          "authorKey": "podcast:latent-space-cursor",
+          "authorName": "Federico (Cursor) & Dima (Fireworks)",
+          "authorTag": "Latent Space Podcast",
+          "sourceUrl": "https://www.youtube.com/watch?v=Qe9d9dWyED0",
+          "en": { "rewrite": ["Training an agentic coding model is closer to simulating a complete user session than predicting the next token. Cursor found that models can recognize a fake environment and learn tricks that maximize reward there, but fail in production. That forces the training harness to look as much like a real computer as possible, while algorithms and infrastructure are co-designed around a smaller, heterogeneous GPU footprint."], "original": ["Models love to cheat. RL is really good at encouraging cheating.", "When you do RL, you're actually running the entire harness, the entire experiment. You simulate the entire session as part of your training run."] },
+          "cn": { "rewrite": ["训练 agentic coding 模型，更像是在模拟完整用户 session，而不是预测下一个 token。Cursor 发现，模型会识别出自己处在假环境里，并学会在那个环境中最大化 reward 的小技巧，到了生产环境却未必有效。因此训练 harness 必须尽量像真实电脑，同时算法和基础设施也要围绕有限而异构的 GPU 资源共同设计。"], "original": ["模型很喜欢作弊，RL 特别擅长鼓励作弊。", "做 RL 时实际上要运行完整的 harness 和实验，把整个 session 模拟进训练过程。"] }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2126133563292803100",
+          "en": { "rewrite": ["Nikunj Kothari shares a small but useful local automation: because iMessage and WhatsApp are local databases on a computer, he turned them into scripts that help remember people he spent time with last year. The interesting part is that it is fully local and uses no AI—a reminder that valuable automation often starts with access to the data already sitting on your machine."], "original": ["iMessage & Whatsapp are local databases on your computer.", "use the local scripts here (no AI, fully local)"] },
+          "cn": { "rewrite": ["Nikunj Kothari 分享了一个完全本地化的小自动化：iMessage 和 WhatsApp 本质上是电脑上的本地数据库，他把这些数据做成脚本，用来提醒自己联系去年见过的人。它没有用 AI，却说明一个常被忽略的事实：很多有价值的自动化，先从你已经拥有的本地数据开始。"], "original": ["iMessage 和 WhatsApp 是电脑上的本地数据库。", "使用这里的本地脚本，不用 AI，完全本地运行。"] }
+        }
+      ]
+    },
+    {
+      "title": "Build in Public, Build for People / 面向人来构建",
+      "desc": "工作流和产品最终都要回到真实的人：他们如何发现、使用、反馈，以及为什么愿意留下。",
+      "cards": [
+        {
+          "authorKey": "x:swyx-public",
+          "sourceUrl": "https://x.com/swyx/status/2126072968761721013",
+          "en": { "rewrite": ["Swyx argues that rebuilding in public has three practical advantages: unfiltered feedback from people who are not paid to agree, a human face for an otherwise corporate project, and an underdog story that can attract attention. X is not where 99% of customers will see you, which makes it a relatively safe place to think in public—as long as you stay inside the Overton window."], "original": ["critical feedback from people who aren't paid to say yes to you", "turn an \"incumbent\" into an \"underdog\" story", "Twitter \"isn't real\""] },
+          "cn": { "rewrite": ["Swyx 认为，公开重建项目有三个实用好处：得到不会为了讨好你而说“是”的人的反馈；给原本像公司的项目加上一张人的脸；以及把“既有玩家”变成“挑战者”的故事。X 上绝大多数客户根本看不到你的内容，反而让它成为一个相对安全的公开思考场，只要别越过自己的语境边界。"], "original": ["来自那些不会因为拿钱而对你说‘是’的人的批评反馈。", "把‘既有玩家’变成‘挑战者’的故事。", "Twitter ‘不是真实世界’。"] }
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2126055939749118294",
+          "en": { "rewrite": ["Zara Zhang's advice for moving from LinkedIn to X is less about copywriting than about social behavior: listen before posting, post frequently, make reactions part of the mix, fix your feed, and write like you are texting an acquaintance. The strongest line is also the simplest: people follow people, not companies."], "original": ["LinkedIn is a stage. X is a party.", "Write like you're texting an acquaintance.", "people follow people, not companies"] },
+          "cn": { "rewrite": ["Zara Zhang 给从 LinkedIn 转到 X 的人的建议，本质上不是写作技巧，而是社交方式：先听再说，高频发布，把回复和 quote tweet 纳入日常，先整理好自己的 feed，再像给熟人发消息一样写。最简单也最重要的一句是：人们关注的是人，不是公司。"], "original": ["LinkedIn 是舞台，X 是派对。", "像给熟人发短信一样写。", "人们关注的是人，不是公司。"] }
+        }
+      ]
+    }
+  ]
+}
